@@ -405,6 +405,13 @@ EQUAL U3 7
 CONFERTITLE 超凡会员
 SETAUTOGETEXP 1 1000000 0 * 0 65535 400
 
+; ============================================
+; 调用lua脚本对应的登录回调
+#IF
+#ACT
+CALLLUA CC_QManage @login
+
+
 
 
 ; 登录开启，2s

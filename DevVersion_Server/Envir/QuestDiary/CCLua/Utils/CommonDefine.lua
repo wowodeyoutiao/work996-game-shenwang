@@ -288,7 +288,8 @@ CommonDefine = {
     VAR_S_SELECT_ITEM = 'S0',
     VAR_S_SELECT_COMPOSE_ITEMS = 'S1',          --选择的所有待合成装备 唯一ID ,分割    
 
-    --玩家数字变量，下线保存   U0 - U254
+    --玩家数字变量，下线保存   U0 - U254  lua脚本使用从130开始
+    --[[
     VAR_U_ADVANCE_SKILL1_LV = 'U51',            --进阶技能等级保存，用于伤害计算  占用
     VAR_U_ADVANCE_SKILL2_LV = 'U52',
     VAR_U_ADVANCE_SKILL3_LV = 'U53',
@@ -319,7 +320,7 @@ CommonDefine = {
     VAR_U_ADVANCE_SKILL28_LV = 'U78',
     VAR_U_ADVANCE_SKILL29_LV = 'U79',
     VAR_U_ADVANCE_SKILL30_LV = 'U80',    
-
+    
     VAR_U_GUANZHI_LEVEL = 'U100',               --玩家的官职等级
     VAR_U_GUANZHI_CURREXP = 'U101',             --玩家的官职当前经验
     VAR_U_ZCDHW_LEVEL1 = 'U102',                --玩家的紫宸殿护卫1等级
@@ -353,6 +354,10 @@ CommonDefine = {
     VAR_U_TREASUREMAP_CURRID = 'U126',          --当前对应的藏宝图配置id
     VAR_U_BIAOCHE_CURRID = 'U127',              --当前对应的镖车配置ID
     VAR_U_BIAOCHE_REFRESH_TIMES = 'U128',       --镖车刷新次数，接受镖车后清0
+    ]]--
+    VAR_U_SUPER_BOX_TOTAL_NUM = 'U130',         --超级宝箱  保有总数量
+    VAR_U_SUPER_BOX_CURR_LV = 'U131',           --超级宝箱  当前等级
+    VAR_U_SUPER_BOX_ONCE_OPEN_NUM = 'U132',     --超级宝箱  一次开几个箱子
     
     --玩家字符型变量，下线保存 T0 - T254
     VAR_T_EQUIPPOS_STRENGTH_INFO = 'T1',        --玩家的装备位强化信息
