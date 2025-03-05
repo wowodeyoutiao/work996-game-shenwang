@@ -41,6 +41,8 @@ local function _Includes()
     -- cfgItemCompose = require("Envir/QuestDiary/CCLua/GameConfig/cfgItemCompose")
     -- cfgItemValidComposeList = {}
     -- cfgUnpackItem = require("Envir/QuestDiary/CCLua/GameConfig/cfgUnpackItem")    
+    cfgSuperBoxLevel = require("Envir/QuestDiary/CCLua/GameConfig/cfgSuperBoxLevel")
+    cfgSuperBoxRewardPool = require("Envir/QuestDiary/CCLua/GameConfig/cfgSuperBoxRewardPool")
 
 
     
@@ -103,6 +105,35 @@ local function _Includes()
 
     -- --调试日志
     -- --LOGCreate()
+
+    ------------------------------------------------------------配置数据修正缓存------------------------------------------------------
+    ------------------------------------------------------------配置数据修正缓存------------------------------------------------------
+    ------------------------------------------------------------配置数据修正缓存------------------------------------------------------
+
+    --超级宝箱升级
+    for _, value in pairs(cfgSuperBoxLevel) do
+        if (value.upgradeneeditems ~= nil) and (value.upgradeneeditems ~= '') then
+            value.upgradeneeditems_tab = BF_Json2Table(value.upgradeneeditems)
+        else
+            value.upgradeneeditems_tab = {}
+        end    
+        
+        if (value.rewardpool ~= nil) and (value.rewardpool ~= '') then
+            value.rewardpool_tab = BF_Json2Table(value.rewardpool)
+        else
+            value.rewardpool_tab = {}
+        end       
+    end 
+
+    --超级宝箱奖池
+    for _, value in pairs(cfgSuperBoxRewardPool) do
+        if (value.poollist ~= nil) and (value.poollist ~= '') then
+            value.poollist_tab = BF_Json2Table(value.poollist)
+        else
+            value.poollist_tab = {}
+        end       
+    end     
+
 
     -- --装备位强化表
     -- for _, value in pairs(cfgEquipPosStrength) do

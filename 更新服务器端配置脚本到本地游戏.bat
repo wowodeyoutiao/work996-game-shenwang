@@ -1,7 +1,6 @@
 @echo off
 Echo ============== Copy Config To Server EnvirData =================
-Echo ==xcopy /y ".\NewConfig\cfg_att_score.xls" "E:\Game996\MirServer\Mir200\Envir\Data\" /I /E
-Echo ==xcopy /y ".\NewConfig\cfg_custpro_caption.xls" "E:\Game996\MirServer\Mir200\Envir\Data\" /I /E
+xcopy /y ".\DevVersion_Server\NewConfig\*.xls" ".\DevVersion_Server\Envir\Data\" /I /E
 
 Echo ============== Copy ScriptConfig To Server =================
 xcopy /y .\DevVersion_Server\Envir\Data\*.*  E:\Game996_ShenWang\MirServer\Mir200\Envir\Data\ /I /E
