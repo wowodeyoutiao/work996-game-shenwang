@@ -238,6 +238,8 @@ CommonDefine = {
     EXTEND_STORAGE_ONCE_ADDNUM = 8,                                  --扩展一次仓库增加的格子数量
     EXTEND_STORAGE_ONCE_NEEDITEMS = {{name='绑定元宝', num=800}},     --扩展一次仓库所需的道具消耗
     SHOW_QUICK_TIP_MIN_LEVEL = 20,                                   --显示快捷提示的最小等级
+    DAY_SUPER_BOX_MAX_ADD_NUM = 100,                                 --每天可以获得的超级宝箱的最大数量
+
 
     --通用的特殊地图内原地复活的消耗，随次数变化
     COMMON_LOCAL_RELIVE_NEED_ITEMS = {{{name='金币', num=10000}}, {{name='金币', num=20000}}, {{name='金币', num=30000}}, {{name='金币', num=40000}}, {{name='金币', num=50000}},
@@ -376,6 +378,7 @@ CommonDefine = {
     VAR_T_EXTENDGIFT_REWARDDATA = 'T14',                 --进阶礼包领奖信息
 
     --玩家数字变量，下线保存，0点重置 J0 - J499
+    --[[
     VAR_J_DAY_BAOZHU_BOSS_TIMES = 'J1',         --玩家今日进入宝珠BOSS地图的次数
     VAR_J_DAY_GUAZHI_ADDEXP = 'J2',             --玩家今日获得的官职经验
     VAR_J_DAY_GUAZHI_GETREWARD = 'J3',          --玩家今日是否已领取官职奖励
@@ -394,6 +397,8 @@ CommonDefine = {
     VAR_J_DAY_TREASUREMAP_USETIMES = 'J16',             --玩家 今日使用藏宝图次数
     VAR_J_DAY_TREASUREMAP_NO_PANELTIP_FLAG = 'J17',     --玩家 今日不再显示藏宝图的提示面板
     VAR_J_DAY_BIAOCHE_ACCEPT_TIMES = 'J18',             --玩家 今日接镖次数
+    ]]--
+    VAR_J_DAY_SUPERBOX_ADDNUM = 'J101',                 --玩家 今日获得超级宝箱次数
     
     --玩家字符变量，下线保存，0点重置 Z0 - Z499
     VAR_Z_DAY_EVERYDAYTASK_COUNTER_DATA = 'Z1',         --玩家 每日任务 子任务计数
@@ -558,6 +563,9 @@ CommonDefine = {
     TASK_STATUS_ACCEPT = 2,                       --已接受，未完成
     TASK_STATUS_FINISH = 3,                       --已完成，未领奖
     TASK_STATUS_END = 4,                          --已领奖，结束    
+
+    --addbutton 里面对应的buttonid
+    ADD_BUTTON_ID_1 = 9001,                       --超级宝箱界面对应的buttonid
 }
 
 --装备位对应的名称

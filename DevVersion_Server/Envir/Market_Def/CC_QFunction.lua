@@ -320,6 +320,10 @@ function treasuremap_button(actor, sid)
     TreasureMap.DoOperButton(actor, sid)
 end
 
+function opensuperboxmanager_button(actor, sid)
+    OpenSuperBoxManager.DoOperButton(actor, sid)
+end
+
 function changename_button(actor, sparam)
     if BF_IsNullObj(actor) or not BF_IsNumberStr(sparam) then
         return
@@ -344,6 +348,7 @@ function changename_button(actor, sparam)
         close(actor)
     end
 end
+
 ----------------------------------------------------------------按钮回调函数end--------------------------------------------------------------------------
 
 

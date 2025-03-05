@@ -5904,3 +5904,30 @@ CHECKLEVELEX ? 999999
 #ACT
 MAPMOVE kuafu02 294 63 3
 BREAK
+
+
+;==============================================================================新功能回调 cookie========================================================
+[@opensuperboxmanager_button_1]
+#IF
+#ACT
+CALLLUA CC_QFunction @opensuperboxmanager_button,1
+
+[@opensuperboxmanager_button_2]
+#IF
+#ACT
+CALLLUA CC_QFunction @opensuperboxmanager_button,2
+
+[@opensuperboxmanager_button_3]
+#IF
+#ACT
+CALLLUA CC_QFunction @opensuperboxmanager_button,3
+
+[@opensuperboxmanager_button_4]
+#IF
+#ACT
+CALLLUA CC_QFunction @opensuperboxmanager_button,4
+
+[@opensuperboxmanager_button_5]
+#IF
+#ACT
+CALLLUA CC_QFunction @opensuperboxmanager_button,5
