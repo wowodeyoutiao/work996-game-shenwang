@@ -101,6 +101,7 @@ local function _Includes()
     -- require("Envir/QuestDiary/CCLua/GameModule/TreasureMap")
     -- require("Envir/QuestDiary/CCLua/GameModule/YunBiaoManager")
     require("Envir/QuestDiary/CCLua/GameModule/OpenSuperBoxManager")
+    require("Envir/QuestDiary/CCLua/GameModule/GMHelper")
 
 
     -- --µ˜ ‘»’÷æ

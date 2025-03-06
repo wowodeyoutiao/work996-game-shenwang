@@ -251,14 +251,6 @@ function mainuibase_openpanel(actor, sid)
     MainUIBase.OpenPanel(actor, sid)
 end
 
-function topicon_openpanel(actor, sid, sparam)
-    TopIcon.OpenPanel(actor, sid, sparam)
-end
-
-function topicon_dogmoper(actor, sid)
-    TopIcon.DoGmOper(actor, sid)
-end
-
 function baozhuboss_button(actor, sid)
     BaoZhuBossManager.DoMapButton(actor, sid)
 end
@@ -322,6 +314,14 @@ end
 
 function opensuperboxmanager_button(actor, sid)
     OpenSuperBoxManager.DoOperButton(actor, sid)
+end
+
+function gmhelper_openpanel(actor)
+    GMHelper.OpenPanel(actor)
+end
+
+function gmhelper_button(actor, sid)
+    GMHelper.DoGmOper(actor, sid)
 end
 
 function changename_button(actor, sparam)
