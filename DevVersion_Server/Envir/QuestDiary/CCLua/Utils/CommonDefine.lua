@@ -518,6 +518,8 @@ CommonDefine = {
     FUNC_ID_TREASUREMAP = 23,                   --藏宝图
     FUNC_ID_COMPOSE = 24,                       --合成系统
     FUNC_ID_EXTEND_GIFT = 25,                   --进阶礼包
+    FUNC_ID_SUPERBOX = 26,                      --超级宝箱
+    FUNC_ID_GMHELPER = 27,                      --GM辅助系统
     
 
     --快捷前往
@@ -566,6 +568,9 @@ CommonDefine = {
 
     --addbutton 里面对应的buttonid
     ADD_BUTTON_ID_1 = 9001,                       --超级宝箱界面对应的buttonid
+    ADD_BUTTON_ID_2 = 9002,                       --GMHelper的buttonid
+    ADD_BUTTON_ID_3 = 9003,                       --NPC大号对话框的buttonid
+    ADD_BUTTON_ID_4 = 9004,                       --通用功能对话框的buttonid
 }
 
 --装备位对应的名称

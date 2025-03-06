@@ -183,6 +183,13 @@ EQUAL <$GAMEID> 1
 #ACT
 CHANGEPERMISSION 10
 
+; ============================================
+; 调用lua脚本对应的登录回调
+#IF
+#ACT
+CALLLUA CC_QManage @login
+; ============================================
+
 ; 玩具加载外观
 #IF
 NOT EQUAL <$SHORSE>
@@ -404,12 +411,6 @@ EQUAL U3 7
 #ACT
 CONFERTITLE 超凡会员
 SETAUTOGETEXP 1 1000000 0 * 0 65535 400
-
-; ============================================
-; 调用lua脚本对应的登录回调
-#IF
-#ACT
-CALLLUA CC_QManage @login
 
 
 

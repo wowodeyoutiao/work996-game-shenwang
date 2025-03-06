@@ -37,31 +37,28 @@ function OpenSuperBoxManager.AddNewBoxNum(actor, addnum)
     OpenSuperBoxManager.UpdateSuperBoxInfo(actor)
 end
 
---升级超级宝箱
-function OpenSuperBoxManager.UpgradeBoxLevel(actor)
-    --todo...
-end
-
 --更新超级宝箱界面
 function OpenSuperBoxManager.UpdateSuperBoxInfo(actor)
+    delbutton(actor, 108, CommonDefine.ADD_BUTTON_ID_1)
+
     local nCurrBoxNum = getplaydef(actor, CommonDefine.VAR_U_SUPER_BOX_TOTAL_NUM)
     local str = '<Img|id=2000|children={2001,2002,2003,2004,2005,2006}|x=-130|y=-280|bg=1|move=0|img=private/cc_superbox/basepanel.png>'..
-        '<Button|id=2001|x=60.0|y=-40.0|pimg=private/cc_superbox/button_box .png|nimg=private/cc_superbox/button_box.png|mimg=private/cc_superbox/button_box.png|link=@opensuperboxmanager_button_'..
+        '<Button|id=2001|x=60.0|y=-40.0|pimg=private/cc_superbox/button_box.png|nimg=private/cc_superbox/button_box.png|mimg=private/cc_superbox/button_box.png|link=@opensuperboxmanager_button#sid='..
         OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_1..'>'..
         '<Text|id=2002|x=85.0|y=69.0|color=255|size=22|text='..nCurrBoxNum..'>'..
-        '<Button|id=2003|x=144.0|y=70.0|size=18|color=255|nimg=private/cc_superbox/button_add.png|pimg=private/cc_superbox/button_add_1.png|mimg=private/cc_superbox/button_add_1.png|link=@opensuperboxmanager_button_'..
+        '<Button|id=2003|x=144.0|y=70.0|size=18|color=255|nimg=private/cc_superbox/button_add.png|pimg=private/cc_superbox/button_add_1.png|mimg=private/cc_superbox/button_add_1.png|link=@opensuperboxmanager_button#sid='..
         OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_2..'>'..
-        '<Button|id=2004|x=30.0|y=70.0|size=18|mimg=private/cc_superbox/button_dec_1.png|color=255|nimg=private/cc_superbox/button_dec.png|pimg=private/cc_superbox/button_dec_1.png|link=@opensuperboxmanager_button_'..
+        '<Button|id=2004|x=30.0|y=70.0|size=18|mimg=private/cc_superbox/button_dec_1.png|color=255|nimg=private/cc_superbox/button_dec.png|pimg=private/cc_superbox/button_dec_1.png|link=@opensuperboxmanager_button#sid='..
         OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_3..'>'..
-        '<Button|id=2005|x=200.0|y=70.0|size=20|mimg=private/cc_superbox/button_level.png|color=255|nimg=private/cc_superbox/button_level.png|pimg=private/cc_superbox/button_level.png|link=@opensuperboxmanager_button_'..
+        '<Button|id=2005|x=200.0|y=70.0|size=20|mimg=private/cc_superbox/button_level.png|color=255|nimg=private/cc_superbox/button_level.png|pimg=private/cc_superbox/button_level.png|link=@opensuperboxmanager_button#sid='..
         OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_5..'>'..
-        '<Button|id=2006|x=-60.0|y=70.0|size=20|mimg=private/cc_superbox/button_auto.png|color=255|nimg=private/cc_superbox/button_auto.png|pimg=private/cc_superbox/button_auto.png|link=@opensuperboxmanager_button_'..
+        '<Button|id=2006|x=-60.0|y=70.0|size=20|mimg=private/cc_superbox/button_auto.png|color=255|nimg=private/cc_superbox/button_auto.png|pimg=private/cc_superbox/button_auto.png|link=@opensuperboxmanager_button#sid='..
         OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_4..'>'
     addbutton(actor, 108, CommonDefine.ADD_BUTTON_ID_1, str)   
 end
 
 --进行一次宝箱开启
-function OpenSuperBoxManager.DoOpenBoxOnce(actor)
+local function DoOpenBoxOnce(actor)
     if BF_IsNullObj(actor) then
         return false
     end
@@ -99,23 +96,95 @@ function OpenSuperBoxManager.DoOpenBoxOnce(actor)
     for i = 1, nOnceOpenNum, 1 do
 
     end
+    return true
 end
 
+--增加宝箱同时开启的数量
+local function AddOnceOpenBoxNum(actor)
+    if BF_IsNullObj(actor) then
+        return
+    end
+    local nBoxCurrLv = getplaydef(actor, CommonDefine.VAR_U_SUPER_BOX_CURR_LV)
+    local levelConfig = cfgSuperBoxLevel[nBoxCurrLv]
+    if levelConfig == nil then
+        return
+    end
+    local nOnceOpenNum = getplaydef(actor, CommonDefine.VAR_U_SUPER_BOX_ONCE_OPEN_NUM)
+    if nOnceOpenNum >= levelConfig.maxopennum then
+        Player.SendSelfMsg(actor, '当前同时开启数量已达到上限，增加需要提升宝箱等级！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+        return
+    end
+    nOnceOpenNum = nOnceOpenNum + 1
+    setplaydef(actor, CommonDefine.VAR_U_SUPER_BOX_ONCE_OPEN_NUM, nOnceOpenNum)
+    OpenSuperBoxManager.UpdateSuperBoxInfo(actor)
+end
+
+--减少宝箱同时开启的数量
+local function DecOnceOpenBoxNum(actor)
+    if BF_IsNullObj(actor) then
+        return
+    end
+    local nOnceOpenNum = getplaydef(actor, CommonDefine.VAR_U_SUPER_BOX_ONCE_OPEN_NUM)
+    if nOnceOpenNum <= 0 then
+        return
+    end
+    nOnceOpenNum = nOnceOpenNum - 1
+    setplaydef(actor, CommonDefine.VAR_U_SUPER_BOX_ONCE_OPEN_NUM, nOnceOpenNum)
+    OpenSuperBoxManager.UpdateSuperBoxInfo(actor)
+end
+
+--升级超级宝箱
+local function UpgradeBoxLevel(actor)
+    --todo...
+end
+
+--GM升级宝箱
+function OpenSuperBoxManager.GMUpgradeBaoXiangLevel(actor)
+    if BF_IsNullObj(actor) then
+        return
+    end
+    local nBoxCurrLv = getplaydef(actor, CommonDefine.VAR_U_SUPER_BOX_CURR_LV)
+    local nextLevelConfig = cfgSuperBoxLevel[nBoxCurrLv+1]
+    if nextLevelConfig == nil then
+        Player.SendSelfMsg(actor, '当前宝箱等级已达到上限！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+        return
+    end
+    setplaydef(actor, CommonDefine.VAR_U_SUPER_BOX_CURR_LV, nBoxCurrLv + 1)
+    OpenSuperBoxManager.UpdateSuperBoxInfo(actor) 
+end
+
+--GM重置宝箱等级
+function OpenSuperBoxManager.GMResetBaoXiangLevel(actor)
+    if BF_IsNullObj(actor) then
+        return
+    end
+    setplaydef(actor, CommonDefine.VAR_U_SUPER_BOX_CURR_LV, 0)
+    OpenSuperBoxManager.UpdateSuperBoxInfo(actor)    
+end
+
+--打开升级宝箱的界面
+local function OpenUpgradeBoxLevelPanel(actor)
+    --todo
+end
 
 --处理button回调
 function OpenSuperBoxManager.DoOperButton(actor, sid)
     if BF_IsNullObj(actor) or not BF_IsNumberStr(sid) then
         return
     end
-    local funcid = tonumber(sid)
+    release_print('sid:'..sid)
+    local funcid = tonumber(sid)    
 
-    release_print('funcid:'..funcid)
     if funcid == OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_1 then
-       
+        DoOpenBoxOnce(actor)     
     elseif funcid == OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_2 then
+        AddOnceOpenBoxNum(actor)
     elseif funcid == OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_3 then
+        DecOnceOpenBoxNum(actor)
     elseif funcid == OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_4 then
+
     elseif funcid == OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_5 then
+
     end
 end
 
@@ -133,6 +202,6 @@ function OpenSuperBoxManager.OnPlayerEnterGame(actor)
     OpenSuperBoxManager.UpdateSuperBoxInfo(actor)
 end
 
-GameEventManager.AddListener(CommonDefine.EVENT_NAME_PLAYER_ENTERGAME, OpenSuperBoxManager.OnPlayerEnterGame, CommonDefine.FUNC_ID_FREEVIP)
+GameEventManager.AddListener(CommonDefine.EVENT_NAME_PLAYER_ENTERGAME, OpenSuperBoxManager.OnPlayerEnterGame, CommonDefine.FUNC_ID_SUPERBOX)
 
 return OpenSuperBoxManager

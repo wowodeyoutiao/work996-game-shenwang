@@ -5907,27 +5907,30 @@ BREAK
 
 
 ;==============================================================================新功能回调 cookie========================================================
-[@opensuperboxmanager_button_1]
+[@opensuperboxmanager_button]
 #IF
 #ACT
-CALLLUA CC_QFunction @opensuperboxmanager_button,1
+CALLLUA CC_QFunction @opensuperboxmanager_button,<$STR(S$sid)>
+BREAK
 
-[@opensuperboxmanager_button_2]
+[@gmhelper_openpanel]
 #IF
 #ACT
-CALLLUA CC_QFunction @opensuperboxmanager_button,2
+CALLLUA CC_QFunction @gmhelper_openpanel
+BREAK
 
-[@opensuperboxmanager_button_3]
+[@gmhelper_button]
 #IF
 #ACT
-CALLLUA CC_QFunction @opensuperboxmanager_button,3
+CALLLUA CC_QFunction @gmhelper_button,<$STR(S$sid1)>
+BREAK
 
-[@opensuperboxmanager_button_4]
+[@cc_delbuttonid3]
 #IF
 #ACT
-CALLLUA CC_QFunction @opensuperboxmanager_button,4
+DELBUTTON 1101 9003
 
-[@opensuperboxmanager_button_5]
+[@cc_delbuttonid4]
 #IF
 #ACT
-CALLLUA CC_QFunction @opensuperboxmanager_button,5
+DELBUTTON 1101 9004
