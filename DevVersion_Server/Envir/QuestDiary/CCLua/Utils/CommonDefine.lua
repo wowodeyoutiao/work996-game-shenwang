@@ -287,8 +287,11 @@ CommonDefine = {
     VAR_N_ITEM_COMPOSE_CHOOSE_ITEM1 = 'N34',    --玩家道具合成时，选择的第一件合成物品，每次使用需检测
 
     --玩家字符型变量，下线不保存 S0 - S99
+    --[[
     VAR_S_SELECT_ITEM = 'S0',
     VAR_S_SELECT_COMPOSE_ITEMS = 'S1',          --选择的所有待合成装备 唯一ID ,分割    
+    ]]--
+    VAR_S_SUPERBOX_ITEMLIST = 'S50',
 
     --玩家数字变量，下线保存   U0 - U254  lua脚本使用从130开始
     --[[

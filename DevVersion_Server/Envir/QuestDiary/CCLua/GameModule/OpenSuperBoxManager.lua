@@ -44,7 +44,7 @@ function OpenSuperBoxManager.UpdateSuperBoxInfo(actor)
     local nCurrBoxNum = getplaydef(actor, CommonDefine.VAR_U_SUPER_BOX_TOTAL_NUM)
     local nOnceOpenNum = getplaydef(actor, CommonDefine.VAR_U_SUPER_BOX_ONCE_OPEN_NUM)
     local nBoxCurrLv = getplaydef(actor, CommonDefine.VAR_U_SUPER_BOX_CURR_LV)
-    local str = '<Img|id=2000|children={2001,2002,2003,2004,2005,2006,2007}|x=-130|y=-280|bg=1|move=0|img=private/cc_superbox/basepanel.png>'..
+    local strPanel = '<Img|id=2000|children={2001,2002,2003,2004,2005,2006,2007,2008}|x=-130|y=-280|bg=1|move=0|img=private/cc_superbox/basepanel.png>'..
         '<Button|id=2001|x=60.0|y=-40.0|pimg=private/cc_superbox/button_box.png|nimg=private/cc_superbox/button_box.png|mimg=private/cc_superbox/button_box.png|link=@opensuperboxmanager_button#sid='..
         OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_1..'>'..
         '<Text|id=2002|x=85.0|y=69.0|color=255|size=20|text=同:'..nOnceOpenNum..'>'..
@@ -57,7 +57,28 @@ function OpenSuperBoxManager.UpdateSuperBoxInfo(actor)
         OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_5..'>'..
         '<Button|id=2007|x=-60.0|y=70.0|size=20|mimg=private/cc_superbox/button_auto.png|color=255|nimg=private/cc_superbox/button_auto.png|pimg=private/cc_superbox/button_auto.png|link=@opensuperboxmanager_button#sid='..
         OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_4..'|text=等级:'..nBoxCurrLv..'>'
-    addbutton(actor, 108, CommonDefine.ADD_BUTTON_ID_1, str)   
+
+    local strItemUniqueIDs = getplaydef(actor, CommonDefine.VAR_S_SUPERBOX_ITEMLIST)
+    if strItemUniqueIDs ~= '' then
+        local tabUniqueIDs = string.split(strItemUniqueIDs, ',')
+        if tabUniqueIDs ~= false then
+            local strIDs = ''
+            local startid = 2010            
+            for seq, value in ipairs(tabUniqueIDs) do
+                local currid = startid + seq
+                if strIDs ~= '' then
+                    strIDs = strIDs..','
+                end
+                strIDs = strIDs..currid
+                local currx = 30 + 70 * (seq - 1)
+                local curry = 30
+                strPanel = strPanel..'<DBItemShow|id='..currid..'|x='..currx..'|y='..curry..'|makeindex='..value..'|link=@testjump>'
+            end
+            strPanel = strPanel..'<Img|id=2008|children={'..strIDs..'}|x=-130|y=-280|bg=1|move=0|img=private/cc_superbox/basepanel2.png>'
+        end
+    end
+
+    addbutton(actor, 108, CommonDefine.ADD_BUTTON_ID_1, strPanel)   
 end
 
 --进行一次宝箱开启
@@ -128,7 +149,7 @@ local function DoOpenBoxOnce(actor)
     nCurrBoxNum = nCurrBoxNum - nOnceOpenNum
     setplaydef(actor, CommonDefine.VAR_U_SUPER_BOX_TOTAL_NUM, nCurrBoxNum)
 
-    local newItemUniqueIDTab = {}
+    local strItemUniqueIDs = ''
     for _, itemid in ipairs(newItemIDTab) do
         local sItemName = getstditeminfo(itemid, CommonDefine.STDITEMINFO_NAME)
         local newitemobj = giveitem(actor, sItemName, 1, 0, '超级宝箱')
@@ -139,10 +160,14 @@ local function DoOpenBoxOnce(actor)
             EquipInitGift.InitEquipGiftAB(actor, newitemobj)
             refreshitem(actor, newitemobj)
             local nNewMakeIndex = getiteminfo(actor, newitemobj, CommonDefine.ITEMINFO_UNIQUEID)
-            newItemUniqueIDTab[#newItemUniqueIDTab+1] = nNewMakeIndex
+            if strItemUniqueIDs ~= '' then
+                strItemUniqueIDs = strItemUniqueIDs..','
+            end
+            strItemUniqueIDs = strItemUniqueIDs..nNewMakeIndex
         end    
     end
 
+    setplaydef(actor, CommonDefine.VAR_S_SUPERBOX_ITEMLIST, strItemUniqueIDs)
     OpenSuperBoxManager.UpdateSuperBoxInfo(actor)
     return true
 end

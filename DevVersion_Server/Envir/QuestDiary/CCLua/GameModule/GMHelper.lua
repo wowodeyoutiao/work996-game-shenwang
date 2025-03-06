@@ -18,7 +18,8 @@ function GMHelper.OpenPanel(actor)
         '<Button|x=40|y=120|nimg=public/bg_hhzy_01_3.png|text=增加10个宝箱|link=@gmhelper_button#sid1=1003>'..
         '<Button|x=40|y=150|nimg=public/bg_hhzy_01_3.png|text=增加8w攻击|color=253|link=@gmhelper_button#sid1=1004>'..
         '<Button|x=40|y=180|nimg=public/bg_hhzy_01_3.png|text=增加8w魔法|color=253|link=@gmhelper_button#sid1=1005>'..
-        '<Button|x=40|y=210|nimg=public/bg_hhzy_01_3.png|text=增加8w道术|color=253|link=@gmhelper_button#sid1=1006>'
+        '<Button|x=40|y=210|nimg=public/bg_hhzy_01_3.png|text=增加8w道术|color=253|link=@gmhelper_button#sid1=1006>'..
+        '<Button|x=40|y=240|nimg=public/bg_hhzy_01_3.png|text=等级设置60|link=@gmhelper_button#sid1=1007>'
     --[[
         '<Button|x=40|y=60|nimg=public/bg_hhzy_01_3.png|text=100w金币10w元宝5k绑元|link=@gmhelper_button,2>'..                      
         '<Button|x=40|y=90|nimg=public/bg_hhzy_01_3.png|text=给五星魂石|link=@gmhelper_button,3>'..
@@ -300,7 +301,10 @@ function GMHelper.DoGmOper(actor, sid)
         recalcabilitys(actor)        
     elseif sid == '1006' then
         addattlist(actor, CommonDefine.ABILITY_GROUP_TEMPTEST, "+", "3#7#80000|3#8#80000")      
-        recalcabilitys(actor)                
+        recalcabilitys(actor)  
+    elseif sid == '1007' then
+        changelevel(actor, '=', 60)
+        Player.FullHPMP(actor)           
     end   
 end
 

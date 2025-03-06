@@ -174,7 +174,7 @@ function EquipRandomABManager.InitEquipRandomAB(actor, equipitem, testabnum)
     end
 
     local randomid = cfg_equip[itemid].RandomID
-    if randomid <= 0 then
+    if (randomid == nil) or (randomid <= 0) then
         return
     end
     local qualitylv = cfg_equip[itemid].QualityLv
