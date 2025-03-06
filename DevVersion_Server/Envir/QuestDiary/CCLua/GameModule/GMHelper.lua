@@ -14,7 +14,11 @@ function GMHelper.OpenPanel(actor)
     end
     local sPanelStr = '<Button|x=40|y=30|nimg=public/bg_hhzy_01_3.png|text=等级加10级|link=@gmhelper_button#sid1=1>'..
         '<Button|x=40|y=60|nimg=public/bg_hhzy_01_3.png|text=超级宝箱升级|link=@gmhelper_button#sid1=1001>'..
-        '<Button|x=40|y=90|nimg=public/bg_hhzy_01_3.png|text=超级宝箱重置|link=@gmhelper_button#sid1=1002>'
+        '<Button|x=40|y=90|nimg=public/bg_hhzy_01_3.png|text=超级宝箱重置|link=@gmhelper_button#sid1=1002>'..
+        '<Button|x=40|y=120|nimg=public/bg_hhzy_01_3.png|text=增加10个宝箱|link=@gmhelper_button#sid1=1003>'..
+        '<Button|x=40|y=150|nimg=public/bg_hhzy_01_3.png|text=增加8w攻击|color=253|link=@gmhelper_button#sid1=1004>'..
+        '<Button|x=40|y=180|nimg=public/bg_hhzy_01_3.png|text=增加8w魔法|color=253|link=@gmhelper_button#sid1=1005>'..
+        '<Button|x=40|y=210|nimg=public/bg_hhzy_01_3.png|text=增加8w道术|color=253|link=@gmhelper_button#sid1=1006>'
     --[[
         '<Button|x=40|y=60|nimg=public/bg_hhzy_01_3.png|text=100w金币10w元宝5k绑元|link=@gmhelper_button,2>'..                      
         '<Button|x=40|y=90|nimg=public/bg_hhzy_01_3.png|text=给五星魂石|link=@gmhelper_button,3>'..
@@ -23,7 +27,7 @@ function GMHelper.OpenPanel(actor)
         '<Button|x=40|y=180|nimg=public/bg_hhzy_01_3.png|text=给粉色灵玉|link=@gmhelper_button,6>'..
         '<Button|x=40|y=210|nimg=public/bg_hhzy_01_3.png|text=学习职业技能|link=@gmhelper_button,13>'..                      
         '<Button|x=40|y=240|nimg=public/bg_hhzy_01_3.png|text=赠送洗炼测试装备|color=253|link=@gmhelper_button,999>'..
-        '<Button|x=40|y=270|nimg=public/bg_hhzy_01_3.png|text=增加8000攻击|color=253|link=@gmhelper_button,998>'..
+        
 
         '<Button|x=200|y=30|nimg=public/bg_hhzy_01_3.png|text=删除主线任务|link=@gmhelper_button,102>'..
         '<Button|x=200|y=60|nimg=public/bg_hhzy_01_3.png|text=初始主线任务|link=@gmhelper_button,101>'..                      
@@ -280,18 +284,23 @@ function GMHelper.DoGmOper(actor, sid)
         RechargeManager.DoRecharge(actor, 10, 1)
     elseif sid == '157' then
         RechargeManager.DoRecharge(actor, 100, 1)
-    elseif sid == '998' then
-        addattlist(actor, CommonDefine.ABILITY_GROUP_TEMPTEST, "=", "3#3#800000|3#4#800000|3#5#8000|3#6#8000|3#7#8000|3#8#8000|")      
-        recalcabilitys(actor)
-        setplaydef(actor, CommonDefine.VAR_Z_DAY_EVERYDAYTASK_COUNTER_DATA, '')        
-        setplaydef(actor, CommonDefine.VAR_J_DAY_TREASUREMAP_NO_PANELTIP_FLAG, 0)
-        setplaydef(actor, CommonDefine.VAR_J_DAY_BIAOCHE_ACCEPT_TIMES, 0)
     elseif sid == '999' then
         Player.TestSuperInitPlayer(actor)
     elseif sid == '1001' then
         OpenSuperBoxManager.GMUpgradeBaoXiangLevel(actor)
     elseif sid == '1002' then
         OpenSuperBoxManager.GMResetBaoXiangLevel(actor)
+    elseif sid == '1003' then
+        OpenSuperBoxManager.AddNewBoxNum(actor, 10)
+    elseif sid == '1004' then
+        addattlist(actor, CommonDefine.ABILITY_GROUP_TEMPTEST, "+", "3#3#80000|3#4#80000")      
+        recalcabilitys(actor)
+    elseif sid == '1005' then
+        addattlist(actor, CommonDefine.ABILITY_GROUP_TEMPTEST, "+", "3#5#80000|3#6#80000")      
+        recalcabilitys(actor)        
+    elseif sid == '1006' then
+        addattlist(actor, CommonDefine.ABILITY_GROUP_TEMPTEST, "+", "3#7#80000|3#8#80000")      
+        recalcabilitys(actor)                
     end   
 end
 

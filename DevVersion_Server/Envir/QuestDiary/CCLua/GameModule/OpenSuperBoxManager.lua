@@ -13,7 +13,7 @@ local function GetDayMaxAddBoxNum(actor)
 end
 
 --增加当前的宝箱累计数量
-function OpenSuperBoxManager.AddNewBoxNum(actor, addnum)    
+function OpenSuperBoxManager.AddNewBoxNum(actor, addnum)
     if BF_IsNullObj(actor) or (addnum == nil) or (addnum <= 0) then
         return
     end
@@ -31,7 +31,7 @@ function OpenSuperBoxManager.AddNewBoxNum(actor, addnum)
     setplaydef(actor, CommonDefine.VAR_J_DAY_SUPERBOX_ADDNUM, nDayAddNum)
 
     local nCurrBoxNum = getplaydef(actor, CommonDefine.VAR_U_SUPER_BOX_TOTAL_NUM)
-    nCurrBoxNum = nCurrBoxNum + nDayAddNum
+    nCurrBoxNum = nCurrBoxNum + nFinalAddNum
     setplaydef(actor, CommonDefine.VAR_U_SUPER_BOX_TOTAL_NUM, nCurrBoxNum)
 
     OpenSuperBoxManager.UpdateSuperBoxInfo(actor)
@@ -42,18 +42,21 @@ function OpenSuperBoxManager.UpdateSuperBoxInfo(actor)
     delbutton(actor, 108, CommonDefine.ADD_BUTTON_ID_1)
 
     local nCurrBoxNum = getplaydef(actor, CommonDefine.VAR_U_SUPER_BOX_TOTAL_NUM)
-    local str = '<Img|id=2000|children={2001,2002,2003,2004,2005,2006}|x=-130|y=-280|bg=1|move=0|img=private/cc_superbox/basepanel.png>'..
+    local nOnceOpenNum = getplaydef(actor, CommonDefine.VAR_U_SUPER_BOX_ONCE_OPEN_NUM)
+    local nBoxCurrLv = getplaydef(actor, CommonDefine.VAR_U_SUPER_BOX_CURR_LV)
+    local str = '<Img|id=2000|children={2001,2002,2003,2004,2005,2006,2007}|x=-130|y=-280|bg=1|move=0|img=private/cc_superbox/basepanel.png>'..
         '<Button|id=2001|x=60.0|y=-40.0|pimg=private/cc_superbox/button_box.png|nimg=private/cc_superbox/button_box.png|mimg=private/cc_superbox/button_box.png|link=@opensuperboxmanager_button#sid='..
         OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_1..'>'..
-        '<Text|id=2002|x=85.0|y=69.0|color=255|size=22|text='..nCurrBoxNum..'>'..
-        '<Button|id=2003|x=144.0|y=70.0|size=18|color=255|nimg=private/cc_superbox/button_add.png|pimg=private/cc_superbox/button_add_1.png|mimg=private/cc_superbox/button_add_1.png|link=@opensuperboxmanager_button#sid='..
+        '<Text|id=2002|x=85.0|y=69.0|color=255|size=20|text=同:'..nOnceOpenNum..'>'..
+        '<Text|id=2003|x=150.0|y=-20.0|color=255|size=20|text=总数:'..nCurrBoxNum..'>'..
+        '<Button|id=2004|x=144.0|y=70.0|size=18|color=255|nimg=private/cc_superbox/button_add.png|pimg=private/cc_superbox/button_add_1.png|mimg=private/cc_superbox/button_add_1.png|link=@opensuperboxmanager_button#sid='..
         OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_2..'>'..
-        '<Button|id=2004|x=30.0|y=70.0|size=18|mimg=private/cc_superbox/button_dec_1.png|color=255|nimg=private/cc_superbox/button_dec.png|pimg=private/cc_superbox/button_dec_1.png|link=@opensuperboxmanager_button#sid='..
+        '<Button|id=2005|x=30.0|y=70.0|size=18|mimg=private/cc_superbox/button_dec_1.png|color=255|nimg=private/cc_superbox/button_dec.png|pimg=private/cc_superbox/button_dec_1.png|link=@opensuperboxmanager_button#sid='..
         OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_3..'>'..
-        '<Button|id=2005|x=200.0|y=70.0|size=20|mimg=private/cc_superbox/button_level.png|color=255|nimg=private/cc_superbox/button_level.png|pimg=private/cc_superbox/button_level.png|link=@opensuperboxmanager_button#sid='..
+        '<Button|id=2006|x=200.0|y=70.0|size=20|mimg=private/cc_superbox/button_level.png|color=255|nimg=private/cc_superbox/button_level.png|pimg=private/cc_superbox/button_level.png|link=@opensuperboxmanager_button#sid='..
         OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_5..'>'..
-        '<Button|id=2006|x=-60.0|y=70.0|size=20|mimg=private/cc_superbox/button_auto.png|color=255|nimg=private/cc_superbox/button_auto.png|pimg=private/cc_superbox/button_auto.png|link=@opensuperboxmanager_button#sid='..
-        OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_4..'>'
+        '<Button|id=2007|x=-60.0|y=70.0|size=20|mimg=private/cc_superbox/button_auto.png|color=255|nimg=private/cc_superbox/button_auto.png|pimg=private/cc_superbox/button_auto.png|link=@opensuperboxmanager_button#sid='..
+        OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_4..'|text=等级:'..nBoxCurrLv..'>'
     addbutton(actor, 108, CommonDefine.ADD_BUTTON_ID_1, str)   
 end
 
@@ -66,7 +69,7 @@ local function DoOpenBoxOnce(actor)
     if nCurrBoxNum <= 0 then
         Player.SendSelfMsg(actor, '当前没有可以开启的宝箱！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
         return false
-    end
+    end    
 
     local nBoxCurrLv = getplaydef(actor, CommonDefine.VAR_U_SUPER_BOX_CURR_LV)
     local levelConfig = cfgSuperBoxLevel[nBoxCurrLv]
@@ -84,6 +87,10 @@ local function DoOpenBoxOnce(actor)
     if nOnceOpenNum <= 0 then
         return false
     end
+    if nOnceOpenNum > getbagblank(actor) then
+        Player.SendSelfMsg(actor, '空间不足，清先整理背包！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+        return false
+    end
 
     local nPlayerLv = Player.GetLevel(actor)
     local boxPoolConfig = cfgSuperBoxRewardPool[nPlayerLv]
@@ -93,9 +100,50 @@ local function DoOpenBoxOnce(actor)
         return false
     end
 
+    --随机出要开箱子生成的道具id
+    local newItemIDTab = {}
     for i = 1, nOnceOpenNum, 1 do
-
+        local config = BF_GetRandomTab(levelConfig.rewardpool_tab, -1)
+        if config then
+            local poolid = config.poolid
+            local rewardPoolConfig = cfgSuperBoxRewardPool[nPlayerLv]
+            if rewardPoolConfig then
+                for _, value in ipairs(rewardPoolConfig.poollist_tab) do
+                    if value.poolid == poolid then
+                        local rand = math.random(1, #value.idlist)
+                        newItemIDTab[#newItemIDTab+1] = value.idlist[rand]
+                        break
+                    end
+                end
+            end
+        end
     end
+
+    if table.isempty(newItemIDTab) then
+        --正常情况不会有空的
+        release_print('DoOpenBoxOnce error 2222 level:'..nPlayerLv)
+        return
+    end
+
+    nCurrBoxNum = nCurrBoxNum - nOnceOpenNum
+    setplaydef(actor, CommonDefine.VAR_U_SUPER_BOX_TOTAL_NUM, nCurrBoxNum)
+
+    local newItemUniqueIDTab = {}
+    for _, itemid in ipairs(newItemIDTab) do
+        local sItemName = getstditeminfo(itemid, CommonDefine.STDITEMINFO_NAME)
+        local newitemobj = giveitem(actor, sItemName, 1, 0, '超级宝箱')
+        if not BF_IsNullObj(newitemobj) then
+            --生成装备的初始洗炼属性
+            EquipRandomABManager.InitEquipRandomAB(actor, newitemobj)
+            --装备的天赋属性
+            EquipInitGift.InitEquipGiftAB(actor, newitemobj)
+            refreshitem(actor, newitemobj)
+            local nNewMakeIndex = getiteminfo(actor, newitemobj, CommonDefine.ITEMINFO_UNIQUEID)
+            newItemUniqueIDTab[#newItemUniqueIDTab+1] = nNewMakeIndex
+        end    
+    end
+
+    OpenSuperBoxManager.UpdateSuperBoxInfo(actor)
     return true
 end
 
@@ -172,7 +220,7 @@ function OpenSuperBoxManager.DoOperButton(actor, sid)
     if BF_IsNullObj(actor) or not BF_IsNumberStr(sid) then
         return
     end
-    release_print('sid:'..sid)
+
     local funcid = tonumber(sid)    
 
     if funcid == OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_1 then

@@ -12,16 +12,16 @@ local function _Includes()
     cfg_item = require("Envir/QuestDiary/CCLua/GameConfig/cfg_item")
     -- cfg_magic= require("Envir/QuestDiary/CCLua/GameConfig/cfg_magic")
     -- cfg_game_data = require("Envir/QuestDiary/CCLua/GameConfig/cfg_game_data")
-    
+
     -- cfgEquipPosStrength = require("Envir/QuestDiary/CCLua/GameConfig/cfgEquipPosStrength")
     -- cfgEquipPosUpgradeStar = require("Envir/QuestDiary/CCLua/GameConfig/cfgEquipPosStar")
     -- cfgWeaponLuck = require("Envir/QuestDiary/CCLua/GameConfig/cfgWeaponLuck")
-    -- cfgRandomABCreate = require("Envir/QuestDiary/CCLua/GameConfig/cfgRandomABCreate")
-    -- cfgRandomABPool = require("Envir/QuestDiary/CCLua/GameConfig/cfgRandomABPool")
+    cfgRandomABCreate = require("Envir/QuestDiary/CCLua/GameConfig/cfgRandomABCreate")
+    cfgRandomABPool = require("Envir/QuestDiary/CCLua/GameConfig/cfgRandomABPool")
     -- cfgSkillUpgrade = require("Envir/QuestDiary/CCLua/GameConfig/cfgSkillUpgrade")
     -- cfgSkillAdvanceUpgrade = require("Envir/QuestDiary/CCLua/GameConfig/cfgSkillAdvanceUpgrade")
     -- cfgEquipValidComposeList = {}
-    -- cfgEquipInitGift = require("Envir/QuestDiary/CCLua/GameConfig/cfgEquipInitGift")
+    cfgEquipInitGift = require("Envir/QuestDiary/CCLua/GameConfig/cfgEquipInitGift")
     -- cfgBaoZhuBossInfo = require("Envir/QuestDiary/CCLua/GameConfig/cfgBaoZhuBossInfo")
     -- cfgGuanZhi = require("Envir/QuestDiary/CCLua/GameConfig/cfgGuanZhi")
     -- cfgOfflineHuWei = require("Envir/QuestDiary/CCLua/GameConfig/cfgOfflineHuWei")
@@ -45,7 +45,6 @@ local function _Includes()
     cfgSuperBoxRewardPool = require("Envir/QuestDiary/CCLua/GameConfig/cfgSuperBoxRewardPool")
 
 
-    
     --通用定义
     require("Envir/QuestDiary/CCLua/Utils/CommonDefine")
     require("Envir/QuestDiary/CCLua/Utils/CSS")
@@ -74,9 +73,7 @@ local function _Includes()
     -- require("Envir/QuestDiary/CCLua/GameModule/ClientMsgProcess")
     -- require("Envir/QuestDiary/CCLua/GameModule/RechargeManager")
     -- require("Envir/QuestDiary/CCLua/GameModule/EquipPosStrengthManager")
-    -- require("Envir/QuestDiary/CCLua/GameModule/EquipPosStarManager")
-    -- require("Envir/QuestDiary/CCLua/GameModule/EquipRandomABManager")
-    -- require("Envir/QuestDiary/CCLua/GameModule/EquipInitGift")
+    -- require("Envir/QuestDiary/CCLua/GameModule/EquipPosStarManager")    
     -- require("Envir/QuestDiary/CCLua/GameModule/SkillUpgrade")
     -- require("Envir/QuestDiary/CCLua/GameModule/ItemComposeManager")
     -- require("Envir/QuestDiary/CCLua/GameModule/ItemUseManager")
@@ -99,9 +96,11 @@ local function _Includes()
     -- require("Envir/QuestDiary/CCLua/GameModule/SingleBossManager")
     -- require("Envir/QuestDiary/CCLua/GameModule/EverydayTask")
     -- require("Envir/QuestDiary/CCLua/GameModule/TreasureMap")
-    -- require("Envir/QuestDiary/CCLua/GameModule/YunBiaoManager")
+    -- require("Envir/QuestDiary/CCLua/GameModule/YunBiaoManager")    
     require("Envir/QuestDiary/CCLua/GameModule/OpenSuperBoxManager")
     require("Envir/QuestDiary/CCLua/GameModule/GMHelper")
+    require("Envir/QuestDiary/CCLua/GameModule/EquipInitGift")
+    require("Envir/QuestDiary/CCLua/GameModule/EquipRandomABManager")
 
 
     -- --调试日志
@@ -133,7 +132,40 @@ local function _Includes()
         else
             value.poollist_tab = {}
         end       
-    end     
+    end   
+    
+    --装备天赋
+    for _, value in pairs(cfgEquipInitGift) do
+        if (value.abilitypool ~= nil) and (value.abilitypool ~= '') then
+            value.abilitypool_tab = BF_Json2Table(value.abilitypool)
+        else
+            value.abilitypool_tab = {}
+        end      
+    end      
+
+    --装备洗炼
+    for _, value in pairs(cfgRandomABCreate) do
+        if (value.ABNumPool ~= nil) and (value.ABNumPool ~= '') then
+            value.ABNumPool_Tab = BF_Json2Table(value.ABNumPool)
+        else
+            value.ABNumPool_Tab = {}
+        end
+        
+        if (value.ABKindPool ~= nil) and (value.ABKindPool ~= '') then
+            value.ABKindPool_Tab = BF_Json2Table(value.ABKindPool)
+        else
+            value.ABKindPool_Tab = {}
+        end        
+    end
+    
+    for _, value in pairs(cfgRandomABPool) do
+        if (value.RangeValue ~= nil) and (value.RangeValue ~= '') then
+            value.RangeValue_Tab = BF_Json2Table(value.RangeValue)
+        else
+            value.RangeValue_Tab = {}
+        end       
+    end
+
 
 
     -- --装备位强化表
@@ -177,29 +209,6 @@ local function _Includes()
     --         value.needitems_tab = {}
     --     end        
     -- end 
-    
-    -- --装备洗炼
-    -- for _, value in pairs(cfgRandomABCreate) do
-    --     if (value.ABNumPool ~= nil) and (value.ABNumPool ~= '') then
-    --         value.ABNumPool_Tab = BF_Json2Table(value.ABNumPool)
-    --     else
-    --         value.ABNumPool_Tab = {}
-    --     end
-        
-    --     if (value.ABKindPool ~= nil) and (value.ABKindPool ~= '') then
-    --         value.ABKindPool_Tab = BF_Json2Table(value.ABKindPool)
-    --     else
-    --         value.ABKindPool_Tab = {}
-    --     end        
-    -- end
-    
-    -- for _, value in pairs(cfgRandomABPool) do
-    --     if (value.RangeValue ~= nil) and (value.RangeValue ~= '') then
-    --         value.RangeValue_Tab = BF_Json2Table(value.RangeValue)
-    --     else
-    --         value.RangeValue_Tab = {}
-    --     end       
-    -- end
 
     -- --技能升级
     -- for _, value in pairs(cfgSkillUpgrade) do
@@ -251,15 +260,6 @@ local function _Includes()
     --         end
     --     end
     -- end    
-
-    -- --装备天赋
-    -- for _, value in pairs(cfgEquipInitGift) do
-    --     if (value.abilitypool ~= nil) and (value.abilitypool ~= '') then
-    --         value.abilitypool_tab = BF_Json2Table(value.abilitypool)
-    --     else
-    --         value.abilitypool_tab = {}
-    --     end      
-    -- end  
     
     -- --灵珠BOSS
     -- for _, value in pairs(cfgBaoZhuBossInfo) do
