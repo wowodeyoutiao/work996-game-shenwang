@@ -7,7 +7,7 @@ local function _Includes()
     require("Envir/QuestDiary/CCLua/LuaLibrary/Logger")    
 
     -- --≈‰÷√±Ì     
-    -- cfg_att_score = require("Envir/QuestDiary/CCLua/GameConfig/cfg_att_score")
+    cfg_att_score = require("Envir/QuestDiary/CCLua/GameConfig/cfg_att_score")
     cfg_equip = require("Envir/QuestDiary/CCLua/GameConfig/cfg_equip")
     cfg_item = require("Envir/QuestDiary/CCLua/GameConfig/cfg_item")
     -- cfg_magic= require("Envir/QuestDiary/CCLua/GameConfig/cfg_magic")

@@ -54,9 +54,9 @@ function OpenSuperBoxManager.UpdateSuperBoxInfo(actor)
         '<Button|id=2005|x=30.0|y=70.0|size=18|mimg=private/cc_superbox/button_dec_1.png|color=255|nimg=private/cc_superbox/button_dec.png|pimg=private/cc_superbox/button_dec_1.png|link=@opensuperboxmanager_button#sid='..
         OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_3..'>'..
         '<Button|id=2006|x=200.0|y=70.0|size=20|mimg=private/cc_superbox/button_level.png|color=255|nimg=private/cc_superbox/button_level.png|pimg=private/cc_superbox/button_level.png|link=@opensuperboxmanager_button#sid='..
-        OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_5..'>'..
+        OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_4..'|text=等级:'..nBoxCurrLv..'>'..
         '<Button|id=2007|x=-60.0|y=70.0|size=20|mimg=private/cc_superbox/button_auto.png|color=255|nimg=private/cc_superbox/button_auto.png|pimg=private/cc_superbox/button_auto.png|link=@opensuperboxmanager_button#sid='..
-        OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_4..'|text=等级:'..nBoxCurrLv..'>'
+        OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_5..'|text=开启自动>'
 
     local strItemUniqueIDs = getplaydef(actor, CommonDefine.VAR_S_SUPERBOX_ITEMLIST)
     if strItemUniqueIDs ~= '' then
@@ -72,7 +72,7 @@ function OpenSuperBoxManager.UpdateSuperBoxInfo(actor)
                 strIDs = strIDs..currid
                 local currx = 30 + 70 * (seq - 1)
                 local curry = 30
-                strPanel = strPanel..'<DBItemShow|id='..currid..'|x='..currx..'|y='..curry..'|makeindex='..value..'|link=@testjump>'
+                strPanel = strPanel..'<MKItemShow|id='..currid..'|x='..currx..'|y='..curry..'|makeindex='..value..'|showtips=1|bgtype=1|link=@testjump>'
             end
             strPanel = strPanel..'<Img|id=2008|children={'..strIDs..'}|x=-130|y=-280|bg=1|move=0|img=private/cc_superbox/basepanel2.png>'
         end
@@ -127,12 +127,14 @@ local function DoOpenBoxOnce(actor)
         local config = BF_GetRandomTab(levelConfig.rewardpool_tab, -1)
         if config then
             local poolid = config.poolid
+release_print('poolid:'..poolid)            
             local rewardPoolConfig = cfgSuperBoxRewardPool[nPlayerLv]
             if rewardPoolConfig then
                 for _, value in ipairs(rewardPoolConfig.poollist_tab) do
                     if value.poolid == poolid then
                         local rand = math.random(1, #value.idlist)
                         newItemIDTab[#newItemIDTab+1] = value.idlist[rand]
+release_print('itemid:'..value.idlist[rand])                        
                         break
                     end
                 end
