@@ -363,6 +363,7 @@ CommonDefine = {
     VAR_U_SUPER_BOX_TOTAL_NUM = 'U130',         --超级宝箱  保有总数量
     VAR_U_SUPER_BOX_CURR_LV = 'U131',           --超级宝箱  当前等级
     VAR_U_SUPER_BOX_ONCE_OPEN_NUM = 'U132',     --超级宝箱  一次开几个箱子
+    VAR_U_SUPER_BOX_CHOOSE_CONDITION_1 = 'U133',--超级宝箱  保留宝箱选择的条件1编号 - 品质
     
     --玩家字符型变量，下线保存 T0 - T254
     VAR_T_EQUIPPOS_STRENGTH_INFO = 'T1',        --玩家的装备位强化信息
@@ -574,6 +575,7 @@ CommonDefine = {
     ADD_BUTTON_ID_2 = 9002,                       --GMHelper的buttonid
     ADD_BUTTON_ID_3 = 9003,                       --NPC大号对话框的buttonid
     ADD_BUTTON_ID_4 = 9004,                       --通用功能对话框的buttonid
+    ADD_BUTTON_ID_5 = 9005,                       --超级宝箱的弹出界面 升级和自动设置 共用
 }
 
 --装备位对应的名称

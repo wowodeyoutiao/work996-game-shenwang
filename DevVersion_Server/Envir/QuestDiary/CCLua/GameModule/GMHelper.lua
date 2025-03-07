@@ -19,9 +19,9 @@ function GMHelper.OpenPanel(actor)
         '<Button|x=40|y=150|nimg=public/bg_hhzy_01_3.png|text=增加8w攻击|color=253|link=@gmhelper_button#sid1=1004>'..
         '<Button|x=40|y=180|nimg=public/bg_hhzy_01_3.png|text=增加8w魔法|color=253|link=@gmhelper_button#sid1=1005>'..
         '<Button|x=40|y=210|nimg=public/bg_hhzy_01_3.png|text=增加8w道术|color=253|link=@gmhelper_button#sid1=1006>'..
-        '<Button|x=40|y=240|nimg=public/bg_hhzy_01_3.png|text=等级设置60|link=@gmhelper_button#sid1=1007>'
-    --[[
-        '<Button|x=40|y=60|nimg=public/bg_hhzy_01_3.png|text=100w金币10w元宝5k绑元|link=@gmhelper_button,2>'..                      
+        '<Button|x=40|y=240|nimg=public/bg_hhzy_01_3.png|text=100w金币10w元宝5k绑元|link=@gmhelper_button#sid1=2>'..
+        '<Button|x=40|y=270|nimg=public/bg_hhzy_01_3.png|text=等级设置60|link=@gmhelper_button#sid1=1007>'
+    --[[                              
         '<Button|x=40|y=90|nimg=public/bg_hhzy_01_3.png|text=给五星魂石|link=@gmhelper_button,3>'..
         '<Button|x=40|y=120|nimg=public/bg_hhzy_01_3.png|text=无敌|link=@gmhelper_button,4>'..
         '<Button|x=40|y=150|nimg=public/bg_hhzy_01_3.png|text=各种升级材料加2000|link=@gmhelper_button,5>'..

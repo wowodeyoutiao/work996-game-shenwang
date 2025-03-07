@@ -5910,7 +5910,7 @@ BREAK
 [@opensuperboxmanager_button]
 #IF
 #ACT
-CALLLUA CC_QFunction @opensuperboxmanager_button,<$STR(S$sid)>
+CALLLUA CC_QFunction @opensuperboxmanager_button,<$STR(S$sid)>,<$STR(S$chooseitem)>
 BREAK
 
 [@gmhelper_openpanel]
