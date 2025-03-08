@@ -13,15 +13,14 @@ CommonDefine = {
     GENDER_WOMAN = 1,
 
     --基础道具ID
-    ITEMID_GOLD = 1,        --金币
-    ITEMID_YB = 2,          --元宝
-    ITEMID_BINDGOLD = 3,    --绑定金币
+    ITEMID_GOLD = 28,        --金币
+    ITEMID_YB = 1,          --元宝
     ITEMID_BINDYB = 4,      --绑定元宝
-    ITEMID_JINGANGSHI = 5,  --金刚石
+    ITEMID_JINGANGSHI = 2,  --金刚石
     ITEMID_EXP = 6,         --经验
-    ITEMID_MOFANGZHEN_JIFEN = 20,   --魔方阵积分
-    ITEMID_XINYUNFU = 208,  --幸运符
-    ITEMID_BAODIFU = 209,   --保底符
+    --ITEMID_MOFANGZHEN_JIFEN = 20,   --魔方阵积分
+    --ITEMID_XINYUNFU = 208,  --幸运符
+    --ITEMID_BAODIFU = 209,   --保底符
 
     --道具的Stdmode
     ITEM_STDMODE_SOULSTONE = 53,    --魂石的stdmode
@@ -255,37 +254,42 @@ CommonDefine = {
     VAR_I_CURR_DYNNPC_GROUPID = 'I1',            --当前系统对应的动态NPC的组编号,玩家登录时+1赋值
 
     --玩家数字变量，下线不保存 N0 - N99
-    VAR_N_NPC_CHECKBOX_1 = 'N4',                --玩家NPC对话框中的第一个CheckBox选项
-    VAR_N_NPC_CHECKBOX_2 = 'N5',                --玩家NPC对话框中的第二个CheckBox选项
-    VAR_N_NPC_CHECKBOX_3 = 'N6',                --玩家NPC对话框中的第三个CheckBox选项
-    VAR_N_NPC_CHECKBOX_4 = 'N7',                --玩家NPC对话框中的第四个CheckBox选项
-    VAR_N_NPC_CHECKBOX_5 = 'N8',                --玩家NPC对话框中的第五个CheckBox选项
-    VAR_N_NPC_CHECKBOX_6 = 'N9',                --玩家NPC对话框中的第六个CheckBox选项
-    VAR_N_NPC_CHECKBOX_7 = 'N10',               --玩家NPC对话框中的第七个CheckBox选项
-    VAR_N_NPC_CHECKBOX_8 = 'N11',               --玩家NPC对话框中的第八个CheckBox选项
-    VAR_N_NPC_CHECKBOX_9 = 'N12',               --玩家NPC对话框中的第九个CheckBox选项
-    VAR_N_NPC_CHECKBOX_10 = 'N13',              --玩家NPC对话框中的第十个CheckBox选项
+--[[
     VAR_N_CHOOSE_ITEM_MAKEIDX = 'N14',          --玩家选择的背包中的道具makeidx
     VAR_N_CURR_NPC_DATA_PAGE1 = 'N15',          --玩家当前的NPC数据中的页数
     VAR_N_SOULSTONE_JBLEVEL = 'N16',            --玩家魂石羁绊等级
     VAR_N_CURR_DYNNPC_GROUPID = 'N17',          --玩家魂当前的动态NPC的组ID
     VAR_N_CURR_RANDOMBOSS_FIGHTING_ID = 'N18',  --玩家当前触发的随机BOSS的挑战ID
     VAR_N_LAST_OPER_TIME1 = 'N19',              --玩家上一次操作的时间记录1   用于处理一些需要操作短时间冷却的  几秒钟的CD
-    VAR_N_LAST_OPER_TIME2 = 'N20',              --玩家上一次操作的时间记录2   用于处理一些需要操作短时间冷却的  几秒钟的CD
-    VAR_N_LAST_ATTACK_MODE = 'N21',             --保存玩家当前的攻击模式
-    VAR_U_CURR_TASKLINEID = 'N22',              --当前打开的任务对话对应的tasklineid
-    VAR_N_NPC_CHECKBOX_11 = 'N23',              --玩家NPC对话框中的第十一个CheckBox选项
-    VAR_N_NPC_CHECKBOX_12 = 'N24',              --玩家NPC对话框中的第十二个CheckBox选项
-    VAR_N_NPC_CHECKBOX_13 = 'N25',              --玩家NPC对话框中的第十三个CheckBox选项    
-    VAR_N_NPC_CHECKBOX_14 = 'N26',              --玩家NPC对话框中的第十四个CheckBox选项    
-    VAR_N_CHOOSE_RECYCLE_TYPE = 'N27',          --玩家选择的回收类型
+    VAR_N_LAST_OPER_TIME2 = 'N20',              --玩家上一次操作的时间记录2   用于处理一些需要操作短时间冷却的  几秒钟的CD    
+    VAR_U_CURR_TASKLINEID = 'N22',              --当前打开的任务对话对应的tasklineid  
+    
     VAR_N_COMMON_LOCAL_RELIVE_TIMES = 'N28',    --通用原地复活次数
     VAR_N_SELECT_COMPOSE_PILE_NUM = 'N29',      --合成可叠加道具时，选择的单个合成数量
     VAR_N_NPC_TEMPPARAM1 = 'N30',               --玩家NPC操作的参数1
-    VAR_N_CHOOSE_OPER_TYPE = 'N31',             --玩家选择的操作类型  通用的临时变量 例如选择技能升级还是技能强化
-    VAR_N_LAST_PLAYERPOWER = 'N32',             --玩家最近一次变化的战力
-    VAR_N_LAST_NPC_CHOOSEID = 'N33',            --玩家最近一次NPC选择的id
+    VAR_N_CHOOSE_OPER_TYPE = 'N31',             --玩家选择的操作类型  通用的临时变量 例如选择技能升级还是技能强化    
     VAR_N_ITEM_COMPOSE_CHOOSE_ITEM1 = 'N34',    --玩家道具合成时，选择的第一件合成物品，每次使用需检测
+]]--    
+
+    VAR_N_NPC_CHECKBOX_1 = 'N51',                --玩家NPC对话框中的第一个CheckBox选项
+    VAR_N_NPC_CHECKBOX_2 = 'N52',                --玩家NPC对话框中的第二个CheckBox选项
+    VAR_N_NPC_CHECKBOX_3 = 'N53',                --玩家NPC对话框中的第三个CheckBox选项
+    VAR_N_NPC_CHECKBOX_4 = 'N54',                --玩家NPC对话框中的第四个CheckBox选项
+    VAR_N_NPC_CHECKBOX_5 = 'N55',                --玩家NPC对话框中的第五个CheckBox选项
+    VAR_N_NPC_CHECKBOX_6 = 'N56',                --玩家NPC对话框中的第六个CheckBox选项
+    VAR_N_NPC_CHECKBOX_7 = 'N57',               --玩家NPC对话框中的第七个CheckBox选项
+    VAR_N_NPC_CHECKBOX_8 = 'N58',               --玩家NPC对话框中的第八个CheckBox选项
+    VAR_N_NPC_CHECKBOX_9 = 'N59',               --玩家NPC对话框中的第九个CheckBox选项
+    VAR_N_NPC_CHECKBOX_10 = 'N60',              --玩家NPC对话框中的第十个CheckBox选项
+    VAR_N_NPC_CHECKBOX_11 = 'N61',              --玩家NPC对话框中的第十一个CheckBox选项
+    VAR_N_NPC_CHECKBOX_12 = 'N62',              --玩家NPC对话框中的第十二个CheckBox选项
+    VAR_N_NPC_CHECKBOX_13 = 'N63',              --玩家NPC对话框中的第十三个CheckBox选项    
+    VAR_N_NPC_CHECKBOX_14 = 'N64',              --玩家NPC对话框中的第十四个CheckBox选项      
+    VAR_N_NPC_CHECKBOX_15 = 'N65',              --玩家NPC对话框中的第十五个CheckBox选项      
+    VAR_N_LAST_PLAYERPOWER = 'N66',             --玩家最近一次变化的战力
+    VAR_N_LAST_NPC_CHOOSEID = 'N67',            --玩家最近一次NPC选择的id    
+    VAR_N_LAST_ATTACK_MODE = 'N68',             --保存玩家当前的攻击模式
+    VAR_N_CHOOSE_RECYCLE_TYPE = 'N69',          --玩家选择的回收类型
 
     --玩家字符型变量，下线不保存 S0 - S99
     --[[
@@ -410,51 +414,51 @@ CommonDefine = {
     VAR_Z_DAY_EVERYDAYTASK_REWARD_DATA = 'Z2',          --玩家 每日任务 子任务领奖记录
     
 
-    --玩家的位标记，下线保存  索引【1~800】
-    VAR_HUM_BITFLAG_USE_XYF = 1,                --祝福是否使用幸运符
-    VAR_HUM_BITFLAG_USE_BDF = 2,                --祝福是否使用保底符
-    VAR_HUM_BITFLAG_RECYCLE_BAOZHU_1 = 3,       --白色灵珠是否回收
-    VAR_HUM_BITFLAG_RECYCLE_BAOZHU_2 = 4,       --绿色灵珠是否回收
-    VAR_HUM_BITFLAG_RECYCLE_BAOZHU_3 = 5,       --蓝色灵珠是否回收
-    VAR_HUM_BITFLAG_RECYCLE_BAOZHU_4 = 6,       --紫色灵珠是否回收
-    VAR_HUM_BITFLAG_RECYCLE_BAOZHU_5 = 7,       --粉色灵珠是否回收
-    VAR_HUM_BITFLAG_RECYCLE_BAOZHU_6 = 8,       --橙色灵珠是否回收
-    VAR_HUM_BITFLAG_RECYCLE_BAOZHU_KEEPBETTER = 9,  --灵珠回收时，是否保留比穿戴更好的    
-    VAR_HUM_BITFLAG_MFZ_ADDTIME_FLAG1 = 10,         --魔方阵 增加时间标记1 确认后用1次换增加30分钟
-    VAR_HUM_BITFLAG_MFZ_ADDTIME_FLAG2 = 11,         --魔方阵 增加时间标记2 确认后时间不足自动用次数换时间
-    VAR_HUM_BITFLAG_FREEVIP_TASK_DRAWFLAG1 = 12,    --免费VIP任务1 是否领奖
-    VAR_HUM_BITFLAG_FREEVIP_TASK_DRAWFLAG2 = 13,    --免费VIP任务2 是否领奖
-    VAR_HUM_BITFLAG_FREEVIP_TASK_DRAWFLAG3 = 14,    --免费VIP任务3 是否领奖
-    VAR_HUM_BITFLAG_FREEVIP_TASK_DRAWFLAG4 = 15,    --免费VIP任务4 是否领奖
-    VAR_HUM_BITFLAG_FREEVIP_TASK_DRAWFLAG5 = 16,    --免费VIP任务5 是否领奖
-    VAR_HUM_BITFLAG_NPC_TEMP_CHOOSE_FLAG = 17,      --NPC上的临时操作标记
-    VAR_HUM_BITFLAG_FIRSTRECHARGE_REWARD1 = 18,     --首充奖励领取标记1
-    VAR_HUM_BITFLAG_FIRSTRECHARGE_REWARD2 = 19,     --首充奖励领取标记2
-    VAR_HUM_BITFLAG_FIRSTRECHARGE_REWARD3 = 20,     --首充奖励领取标记3
+    --玩家的位标记，下线保存  索引【1~800】  200开始
+    VAR_HUM_BITFLAG_USE_XYF = 201,                --祝福是否使用幸运符
+    VAR_HUM_BITFLAG_USE_BDF = 202,                --祝福是否使用保底符
+    VAR_HUM_BITFLAG_RECYCLE_BAOZHU_1 = 203,       --白色灵珠是否回收
+    VAR_HUM_BITFLAG_RECYCLE_BAOZHU_2 = 204,       --绿色灵珠是否回收
+    VAR_HUM_BITFLAG_RECYCLE_BAOZHU_3 = 205,       --蓝色灵珠是否回收
+    VAR_HUM_BITFLAG_RECYCLE_BAOZHU_4 = 206,       --紫色灵珠是否回收
+    VAR_HUM_BITFLAG_RECYCLE_BAOZHU_5 = 207,       --粉色灵珠是否回收
+    VAR_HUM_BITFLAG_RECYCLE_BAOZHU_6 = 208,       --橙色灵珠是否回收
+    VAR_HUM_BITFLAG_RECYCLE_BAOZHU_KEEPBETTER = 209,  --灵珠回收时，是否保留比穿戴更好的    
+    VAR_HUM_BITFLAG_MFZ_ADDTIME_FLAG1 = 210,         --魔方阵 增加时间标记1 确认后用1次换增加30分钟
+    VAR_HUM_BITFLAG_MFZ_ADDTIME_FLAG2 = 211,         --魔方阵 增加时间标记2 确认后时间不足自动用次数换时间
+    VAR_HUM_BITFLAG_FREEVIP_TASK_DRAWFLAG1 = 212,    --免费VIP任务1 是否领奖
+    VAR_HUM_BITFLAG_FREEVIP_TASK_DRAWFLAG2 = 213,    --免费VIP任务2 是否领奖
+    VAR_HUM_BITFLAG_FREEVIP_TASK_DRAWFLAG3 = 214,    --免费VIP任务3 是否领奖
+    VAR_HUM_BITFLAG_FREEVIP_TASK_DRAWFLAG4 = 215,    --免费VIP任务4 是否领奖
+    VAR_HUM_BITFLAG_FREEVIP_TASK_DRAWFLAG5 = 216,    --免费VIP任务5 是否领奖
+    VAR_HUM_BITFLAG_NPC_TEMP_CHOOSE_FLAG = 217,      --NPC上的临时操作标记
+    VAR_HUM_BITFLAG_FIRSTRECHARGE_REWARD1 = 218,     --首充奖励领取标记1
+    VAR_HUM_BITFLAG_FIRSTRECHARGE_REWARD2 = 219,     --首充奖励领取标记2
+    VAR_HUM_BITFLAG_FIRSTRECHARGE_REWARD3 = 220,     --首充奖励领取标记3
 
-    VAR_HUM_BITFLAG_RECYCLE_ITEM1_1 = 21,           --白色装备是否回收
-    VAR_HUM_BITFLAG_RECYCLE_ITEM1_2 = 22,           --绿色装备是否回收
-    VAR_HUM_BITFLAG_RECYCLE_ITEM1_3 = 23,           --蓝色装备是否回收
-    VAR_HUM_BITFLAG_RECYCLE_ITEM1_4 = 24,           --紫色装备是否回收
-    VAR_HUM_BITFLAG_RECYCLE_ITEM1_5 = 25,           --粉色装备是否回收
-    VAR_HUM_BITFLAG_RECYCLE_ITEM1_6 = 26,           --金色装备是否回收
-    VAR_HUM_BITFLAG_RECYCLE_ITEM1_7 = 27,           --红色装备是否回收
-    VAR_HUM_BITFLAG_RECYCLE_ITEM2_1 = 28,           --白色直升宝石是否回收
-    VAR_HUM_BITFLAG_RECYCLE_ITEM2_2 = 29,           --绿色直升宝石是否回收
-    VAR_HUM_BITFLAG_RECYCLE_ITEM2_3 = 30,           --蓝色直升宝石是否回收
-    VAR_HUM_BITFLAG_RECYCLE_ITEM2_4 = 31,           --紫色直升宝石是否回收
-    VAR_HUM_BITFLAG_RECYCLE_ITEM2_5 = 32,           --粉色直升宝石是否回收
-    VAR_HUM_BITFLAG_RECYCLE_ITEM2_6 = 33,           --金色直升宝石是否回收
-    VAR_HUM_BITFLAG_RECYCLE_ITEM2_7 = 34,           --红色直升宝石是否回收
-    VAR_HUM_BITFLAG_ACTIVATED_AUTORECYCLE = 35,     --激活自动回收功能
-    VAR_HUM_BITFLAG_AUTORECYCLE_ITEM1 = 36,         --勾选装备自动回收
-    VAR_HUM_BITFLAG_AUTORECYCLE_ITEM2 = 37,         --勾选直升宝石自动回收
-    VAR_HUM_BITFLAG_IS_FIRST_RANDOMBOSS_REWARD = 38,       --是否是第一个战力boss的奖励
-    VAR_HUM_BITFLAG_IS_FIRST_RANDOMBOSS_TRIGGER = 39,      --是否是触发的第一个战力boss
+    VAR_HUM_BITFLAG_RECYCLE_ITEM1_1 = 221,           --白色装备是否回收
+    VAR_HUM_BITFLAG_RECYCLE_ITEM1_2 = 222,           --绿色装备是否回收
+    VAR_HUM_BITFLAG_RECYCLE_ITEM1_3 = 223,           --蓝色装备是否回收
+    VAR_HUM_BITFLAG_RECYCLE_ITEM1_4 = 224,           --紫色装备是否回收
+    VAR_HUM_BITFLAG_RECYCLE_ITEM1_5 = 225,           --粉色装备是否回收
+    VAR_HUM_BITFLAG_RECYCLE_ITEM1_6 = 226,           --金色装备是否回收
+    VAR_HUM_BITFLAG_RECYCLE_ITEM1_7 = 227,           --红色装备是否回收
+    VAR_HUM_BITFLAG_RECYCLE_ITEM2_1 = 228,           --白色直升宝石是否回收
+    VAR_HUM_BITFLAG_RECYCLE_ITEM2_2 = 229,           --绿色直升宝石是否回收
+    VAR_HUM_BITFLAG_RECYCLE_ITEM2_3 = 230,           --蓝色直升宝石是否回收
+    VAR_HUM_BITFLAG_RECYCLE_ITEM2_4 = 231,           --紫色直升宝石是否回收
+    VAR_HUM_BITFLAG_RECYCLE_ITEM2_5 = 232,           --粉色直升宝石是否回收
+    VAR_HUM_BITFLAG_RECYCLE_ITEM2_6 = 233,           --金色直升宝石是否回收
+    VAR_HUM_BITFLAG_RECYCLE_ITEM2_7 = 234,           --红色直升宝石是否回收
+    VAR_HUM_BITFLAG_ACTIVATED_AUTORECYCLE = 235,     --激活自动回收功能
+    VAR_HUM_BITFLAG_AUTORECYCLE_ITEM1 = 236,         --勾选装备自动回收
+    VAR_HUM_BITFLAG_AUTORECYCLE_ITEM2 = 237,         --勾选直升宝石自动回收
+    VAR_HUM_BITFLAG_IS_FIRST_RANDOMBOSS_REWARD = 238,       --是否是第一个战力boss的奖励
+    VAR_HUM_BITFLAG_IS_FIRST_RANDOMBOSS_TRIGGER = 239,      --是否是触发的第一个战力boss
 
 
-    VAR_HUM_BITFLAG_NEW_PLAYER_INIT_FLAG = 100,     --玩家是否进行新手初始化
-    VAR_HUM_BITFLAG_RELIVE_DIALOGUE_FLAG = 101,     --玩家是否当前已有复活框弹出
+    VAR_HUM_BITFLAG_NEW_PLAYER_INIT_FLAG = 300,     --玩家是否进行新手初始化
+    VAR_HUM_BITFLAG_RELIVE_DIALOGUE_FLAG = 301,     --玩家是否当前已有复活框弹出
 
     --道具的int变量 1-50
     ITEM_INTVAR_ADDLUCK_LV = 1,                 --道具的祝福等级
@@ -668,6 +672,7 @@ CommonDefine.CHECK_BOX_VAR = {
     CommonDefine.VAR_N_NPC_CHECKBOX_12,
     CommonDefine.VAR_N_NPC_CHECKBOX_13,
     CommonDefine.VAR_N_NPC_CHECKBOX_14,
+    CommonDefine.VAR_N_NPC_CHECKBOX_15,
 }
 
 --玩家的基础装备位  对应强化，升星，普通穿戴

@@ -113,9 +113,10 @@ function OpenSuperBoxManager.UpdateSuperBoxInfo(actor)
                     local currx = 30 + 80 * nColumn
                     local curry = 30 + 100 * (nLine - 1)
                     strPanel = strPanel..'<Text|id='..textid..'|x='..currx..'|y='..curry..'|width=70|color='..itemcolor..'|size=12|text='..itemshowname..'>'..
-                        '<MKItemShow|id='..itemshowid..'|x='..(currx+4)..'|y='..(curry+20)..'|width=70|height=70|makeindex='..value..'|showtips=1|bgtype=1|link=@testjump>'
+                        '<MKItemShow|id='..itemshowid..'|x='..(currx+4)..'|y='..(curry+20)..'|width=70|height=70|makeindex='..value..'|showtips=1|bgtype=1>'                        
                 end
             end
+
             local buttonid = 2099
             strIDs = strIDs..','..buttonid
             local tempy = 30 + 100 * nLine + 30
@@ -390,12 +391,7 @@ local function QuickRecycleOpenItemList(actor)
                 local nItemUniqueID = tonumber(value)
                 local itemobj = getitembymakeindex(actor, nItemUniqueID)
                 if not BF_IsNullObj(itemobj) then
-                    ------------------------------------
-                    ---------------------------------------
-                    ---------------------------------------
-                    ---------------------------------------
-                    ---------------------------------------
-                    ---完成回收
+                    
                 end
             end          
         end

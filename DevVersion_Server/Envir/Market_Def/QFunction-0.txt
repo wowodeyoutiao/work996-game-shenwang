@@ -5931,6 +5931,14 @@ BREAK
 CALLLUA CC_QFunction @recyclemanager_button,<$STR(S$sid)>
 BREAK
 
+[@set_recycle_option]
+#IF
+#ACT
+CALLLUA CC_QFunction @set_recycle_option,<$STR(S$sid)>
+BREAK
+
+
+
 [@cc_exit_npcsayext]
 #IF
 #ACT

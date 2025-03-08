@@ -20,7 +20,7 @@ local AUTO_RECYCLE_BITFLAGVAR = {
     [RECYCLE_TYPE_1] = CommonDefine.VAR_HUM_BITFLAG_AUTORECYCLE_ITEM1,
     [RECYCLE_TYPE_2] = CommonDefine.VAR_HUM_BITFLAG_AUTORECYCLE_ITEM2,
 }
-local AUTO_RECYCLE_CHECKBOX_TEMPVAR = 'N26'
+local AUTO_RECYCLE_CHECKBOX_TEMPVAR = CommonDefine.VAR_N_NPC_CHECKBOX_15
 
 
 local CHECK_TYPE_NONE = 0                  --无进一步条件检测
@@ -84,15 +84,15 @@ function RecycleManager.ShowRecyclePanelInfo(actor)
         '<Button|id=202|x=688.0|y=20.0|pimg=public/1900000511.png|nimg=public/1900000510.png|link=@cc_exit_specialui>'    
 
     local nStartX = 100
-    local nStartY = 100
-    for seq, key in ipairs(keys) do
+    local nStartY = 100   
+    for seq, key in ipairs(keys) do      
         local cfginfo = cfgRecycleSetting[key]
         local flag = getflagstatus(actor, cfginfo.flagvar)
         local id1 = startid + (seq-1) * 2 + 1
         local id2 = startid + (seq-1) * 2 + 2
         local color = cfginfo.showcolor
         msg = msg..'<CheckBox|x='..nStartX..'|y='..nStartY..'|id='..id1..'|nimg=private/cc_common/checkbox_1.png|pimg=private/cc_common/checkbox_2.png|checkboxid='..
-            cfginfo.tempvar..'|default='..flag..'|delay=0|count=1|link=@set_recycle_option,'..cfginfo.id..'>'..
+            cfginfo.tempvar..'|default='..flag..'|delay=0|count=1|link=@set_recycle_option#sid='..cfginfo.id..'>'..
             '<Text|text='..cfginfo.tip..'|x='..(nStartX+30)..'|y='..(nStartY+5)..'|id='..id2..'|color='..color..'>'            
         if seq % 3 == 0 then
             nStartX = 100
@@ -104,7 +104,7 @@ function RecycleManager.ShowRecyclePanelInfo(actor)
 
     local tempx = 95
     local tempy = 315
-    --玩家NPC对话框中的第十四个CheckBox选项 
+    --玩家NPC对话框中的第十五个CheckBox选项 
     local tempflag = getflagstatus(actor, AUTO_RECYCLE_BITFLAGVAR[recycletype])
     msg = msg..'<CheckBox|x='..tempx..'|y='..tempy..'|id=214|nimg=private/cc_common/checkbox_1.png|pimg=private/cc_common/checkbox_2.png|checkboxid='..AUTO_RECYCLE_CHECKBOX_TEMPVAR..
         '|default='..tempflag..'|delay=0|count=1|link=@recyclemanager_button#sid='..RECYCLEMANAGER_BUTTONFUNC_ID_5..'>'
@@ -403,6 +403,10 @@ function RecycleManager.DoAutoRecycleItem(actor, itemobj)
         end
     end
 end
+
+---------单独做个回收
+------------单独做个回收
+------------单独做个回收
 
 GameEventManager.AddListener(CommonDefine.EVENT_NAME_PLAYER_ADDBAGITEM, RecycleManager.DoAutoRecycleItem, CommonDefine.FUNC_ID_RECYCLE_MANAGER)
 
