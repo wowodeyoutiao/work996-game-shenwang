@@ -5925,12 +5925,20 @@ BREAK
 CALLLUA CC_QFunction @gmhelper_button,<$STR(S$sid1)>
 BREAK
 
-[@cc_delbuttonid3]
+[@recyclemanager_button]
+#IF
+#ACT
+CALLLUA CC_QFunction @recyclemanager_button,<$STR(S$sid)>
+BREAK
+
+[@cc_exit_npcsayext]
 #IF
 #ACT
 DELBUTTON 1101 9003
+BREAK
 
-[@cc_delbuttonid4]
+[@cc_exit_specialui]
 #IF
 #ACT
 DELBUTTON 1101 9004
+BREAK

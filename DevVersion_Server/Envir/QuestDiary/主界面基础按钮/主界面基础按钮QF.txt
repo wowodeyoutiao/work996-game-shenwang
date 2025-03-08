@@ -1,0 +1,896 @@
+[@基础按钮QF]
+{
+
+[@查看八卦UI]
+#CALL [\悬浮按钮\八卦功能.txt] @查看角色八卦
+
+[@打开周末狂欢]
+#CALL [\03自定义按钮\周末狂欢998.txt] @周末狂欢998
+
+[@新服首发礼包]
+#CALL [\03自定义按钮\新服首发礼包.txt] @首发福利按钮
+
+[@合服限时礼包]
+#CALL [\03自定义按钮\合服限时活动.txt] @合服活动界面
+
+[@BOSS挑战礼包]
+#CALL [\03自定义按钮\BOSS挑战.txt] @查看BOSS挑战
+
+[@首充8元]
+#CALL [\03自定义按钮\首充8元.txt] @首充福利
+
+[@VIP客服]
+#CALL [\03自定义按钮\VIP客服.txt] @VIP客服UI
+
+[@VIP客服7706]
+#CALL [\03自定义按钮\VIP客服7706.txt] @VIP客服UI7706
+
+[@查看帝王令]
+#CALL [\03自定义按钮\查看帝王令.txt] @帝王令系统
+
+[@游戏攻略]
+#CALL [\03自定义按钮\新手攻略.txt] @新手攻略
+
+[@每日398礼包]
+#CALL [\03自定义按钮\每日398礼包.txt] @充值福利398
+
+[@端午战令]
+#CALL [\03自定义按钮\端午战令UI.txt] @端午战令UI
+
+[@畅玩礼包]
+; 悦玩联运
+#IF
+EQUAL <$GAMEID> 7706
+#ACT
+#CALL [\03自定义按钮\关注微信yw.txt] @关注微信YW
+BREAK
+
+; 微变联运
+#IF
+EQUAL <$GAMEID> 6015
+#ACT
+#CALL [\03自定义按钮\关注微信ly.txt] @关注微信EX
+BREAK
+
+#IF
+#ACT
+#CALL [\03自定义按钮\关注微信.txt] @关注微信
+
+
+
+
+[@唯一会员]
+#CALL [\03自定义按钮\充值礼包.txt] @充值礼包
+
+; 微变IOS
+[@元宝充值]
+#IF
+EQUAL <$GAMEID> 6879
+#ACT
+MOV S$渠道充值面板 <Img|children={10,11,12,13,14,15,16,17}|x=-30|y=-42|img=public/1900000610.png>
+INC S$渠道充值面板 <Text|a=4|id=10|x=400|y=20|color=70|size=20|outline=1|text=充值>
+
+INC S$渠道充值面板 <Img|id=11|children={111,112,113,114,115,116,117,118}|x=35||y=050|img=public/1900000665.png>
+INC S$渠道充值面板 <Img|id=12|children={121,122,123,124,125,126,127,128}|x=275|y=050|img=public/1900000665.png>
+INC S$渠道充值面板 <Img|id=13|children={131,132,133,134,135,136,137,138}|x=515|y=050|img=public/1900000665.png>
+INC S$渠道充值面板 <Img|id=14|children={141,142,143,144,145,146,147,148}|x=35||y=190|img=public/1900000665.png>
+INC S$渠道充值面板 <Img|id=15|children={151,152,153,154,155,156,157,158}|x=275|y=190|img=public/1900000665.png>
+INC S$渠道充值面板 <Img|id=16|children={161,162,163,164,165,166,167,168}|x=515|y=190|img=public/1900000665.png>
+
+INC S$渠道充值面板 <Text|a=4|id=111|x=115|y=20|color=161|outline=1|size=20|text=充值6元>
+INC S$渠道充值面板 <Text|a=4|id=121|x=115|y=20|color=161|outline=1|size=20|text=充值30元>
+INC S$渠道充值面板 <Text|a=4|id=131|x=115|y=20|color=161|outline=1|size=20|text=充值128元>
+INC S$渠道充值面板 <Text|a=4|id=141|x=115|y=20|color=161|outline=1|size=20|text=充值198元>
+INC S$渠道充值面板 <Text|a=4|id=151|x=115|y=20|color=161|outline=1|size=20|text=充值328元>
+INC S$渠道充值面板 <Text|a=4|id=161|x=115|y=20|color=161|outline=1|size=20|text=充值648元>
+
+INC S$渠道充值面板 <Img|id=112|x=0|y=20|width=125|height=125|img=public/bbal/shop_cz2.png>
+INC S$渠道充值面板 <Img|id=122|x=0|y=20|width=125|height=125|img=public/bbal/shop_cz3.png>
+INC S$渠道充值面板 <Img|id=132|x=0|y=20|width=125|height=125|img=public/bbal/shop_cz4.png>
+INC S$渠道充值面板 <Img|id=142|x=0|y=20|width=125|height=125|img=public/bbal/shop_cz5.png>
+INC S$渠道充值面板 <Img|id=152|x=0|y=20|width=125|height=125|img=public/bbal/shop_cz6.png>
+INC S$渠道充值面板 <Img|id=162|x=0|y=20|width=115|height=115|img=public/bbal/shop_cz7.png>
+
+INC S$渠道充值面板 <RText|id=113|x=110|y=40|color=250|size=16|outline=1|text=可获得6万元宝\附赠60积分>
+INC S$渠道充值面板 <RText|id=123|x=110|y=40|color=250|size=16|outline=1|text=可获得30万元宝\附赠300积分>
+INC S$渠道充值面板 <RText|id=133|x=110|y=40|color=250|size=16|outline=1|text=可获得128万元宝\附赠1280积分>
+INC S$渠道充值面板 <RText|id=143|x=110|y=40|color=250|size=16|outline=1|text=可获得198万元宝\附赠1980积分>
+INC S$渠道充值面板 <RText|id=153|x=110|y=40|color=250|size=16|outline=1|text=可获得328万元宝\附赠3280积分>
+INC S$渠道充值面板 <RText|id=163|x=110|y=40|color=250|size=16|outline=1|text=可获得648万元宝\附赠6480积分>
+
+; INC S$渠道充值面板 <Button|id=114|x=0|y=118|nimg=public/bbal/shop_1.png|width=238|height=22|size=16|color=161|outlinecolor=11|text=　　　两倍爆率卷*1>
+; INC S$渠道充值面板 <Button|id=124|x=0|y=118|nimg=public/bbal/shop_1.png|width=238|height=22|size=16|color=161|outlinecolor=11|text=　　　五倍爆率卷*1>
+INC S$渠道充值面板 <Button|id=134|x=0|y=118|nimg=public/bbal/shop_1.png|width=238|height=22|size=16|color=161|outlinecolor=11|text=　　　两倍爆率卷>
+INC S$渠道充值面板 <Button|id=144|x=0|y=118|nimg=public/bbal/shop_1.png|width=238|height=22|size=16|color=161|outlinecolor=11|text=　　　五倍爆率卷>
+INC S$渠道充值面板 <Button|id=154|x=0|y=118|nimg=public/bbal/shop_1.png|width=238|height=22|size=16|color=161|outlinecolor=11|text=　　　十倍爆率卷>
+INC S$渠道充值面板 <Button|id=164|x=0|y=118|nimg=public/bbal/shop_1.png|width=238|height=22|size=16|color=161|outlinecolor=11|text=　　　魔族指令书>
+
+INC S$渠道充值面板 <Layout|id=115|x=0|y=0|width=238|height=138|color=X|link=@拉起支付#档位=1#充值金额=6>
+INC S$渠道充值面板 <Layout|id=125|x=0|y=0|width=238|height=138|color=X|link=@拉起支付#档位=2#充值金额=30>
+INC S$渠道充值面板 <Layout|id=135|x=0|y=0|width=238|height=138|color=X|link=@拉起支付#档位=3#充值金额=128>
+INC S$渠道充值面板 <Layout|id=145|x=0|y=0|width=238|height=138|color=X|link=@拉起支付#档位=4#充值金额=198>
+INC S$渠道充值面板 <Layout|id=155|x=0|y=0|width=238|height=138|color=X|link=@拉起支付#档位=5#充值金额=328>
+INC S$渠道充值面板 <Layout|id=165|x=0|y=0|width=238|height=138|color=X|link=@拉起支付#档位=6#充值金额=648>
+
+INC S$渠道充值面板 <Text|id=17|x=35|y=350|color=161|size=18|outline=1|text=以上首次充值赠送奖励将通过邮件发放，请注意查收>
+
+ADDBUTTON 40 88 <$STR(S$渠道充值面板)>
+#ELSEACT
+DELBUTTON 40 88
+
+
+#IF
+EQUAL <$GAMEID> 1
+#ACT
+#Call [\悬浮按钮\悬浮按钮展开.txt] @悬浮按钮展开
+#Call [\主界面基础按钮\主界面基础按钮QM.txt] @基础按钮QM
+#Call [\04人物属性\称号刷新.txt] @刷新称号
+SENDMSG 9 重新载入UI
+BREAK
+
+#IF
+#ACT
+OPENHYPERLINK 26
+GOTO @点击特殊清理
+
+
+[@拉起支付]
+#IF
+NOT EQUAl S$充值金额
+#ACT
+MOVR N$支付方式 1 3
+Pullpay <$STR(S$充值金额)> <$STR(N$支付方式)> 1 <$STR(S$档位)>
+
+
+
+[@交易行]
+#IF
+NOT ISONMAP RXSC042
+#ACT
+SENDMSG 9 当前区域不能使用
+BREAK
+
+#IF
+#ACT
+MOV S$交易行列表 <Layout|x=-1200|y=0|width=1800|height=800|color=X|link=@关闭弹出按钮>
+INC S$交易行列表 <Img|children={1011,1012}|x=-330.0|y=70|width=120|height=120|img=public/1900000677.png|scale9r=10|scale9l=10|scale9b=10|scale9t=10>
+INC S$交易行列表 <ListView|id=1011|children={10111,10112}|x=5|y=5|width=110|height=150|direction=1|bounce=0|margin=5|reload=0>
+INC S$交易行列表 <Button|id=10111|y=0|nimg=public/1900000653.png|width=110|height=35|color=151|size=18|text=装备交易|link=@打开装备交易>
+INC S$交易行列表 <Button|id=10112|y=0|nimg=public/1900000652.png|width=110|height=35|color=151|size=18|text=账号交易|link=@打开账号交易>
+INC S$交易行列表 <Text|id=1012|x=5|y=90|color=7|size=16||text=点击空白处关闭>
+ADDBUTTON 102 1011 <$STR(S$交易行列表)>
+
+[@关闭弹出按钮]
+#IF
+#ACT
+DELBUTTON 102 1011
+BREAK
+
+[@开启盒子]
+#IF
+NOT CHECKKUAFU
+#ACT
+OPENHYPERLINK 111
+
+[@打开装备交易]
+#IF
+#ACT
+DELBUTTON 102 1011
+OPENHYPERLINK 27
+BREAK
+
+[@打开账号交易]
+#IF
+NOT INSAFEZONE
+#ACT
+SENDMSG 9 请在安全区使用
+BREAK
+
+
+#IF
+NOT CHECKKUAFU
+#ACT
+; 交易行在7.18 8点后可以开启
+DELBUTTON 102 1011
+OPENHYPERLINK 35
+BREAK
+
+
+
+[@角色]
+#IF
+#ACT
+OPENHYPERLINK 1
+
+[@背包]
+#IF
+#ACT
+OPENHYPERLINK 7
+
+#IF
+EQUAL S$回收引导 开始
+CHECK [50] 0
+#ACT
+Navigation 7 101 点我回收
+
+
+[@技能]
+#IF
+#ACT
+OPENHYPERLINK 4
+
+[@组队]
+#IF
+#ACT
+OPENHYPERLINK 17
+
+[@行会]
+#IF
+#ACT
+OPENHYPERLINK 31
+
+[@拍卖行]
+#IF
+NOT CHECKKUAFU
+#ACT
+OPENHYPERLINK 27
+
+[@设置]
+#IF
+#ACT
+OPENHYPERLINK 23
+
+[@退出]
+#IF
+#ACT
+OPENHYPERLINK 29
+
+[@商城]
+#IF
+CHECKKUAFU
+#ACT
+SENDMSG 9 此区域无法使用
+BREAK
+
+#IF
+#ACT
+OPENHYPERLINK 9
+GOTO @清理直购标识
+
+[@排行榜]
+#IF
+NOT CHECKKUAFU
+#ACT
+OPENHYPERLINK 32
+
+[@交易]
+#IF
+NOT CHECKKUAFU
+#ACT
+OPENHYPERLINK 33
+
+
+[@刷新]
+#IF
+#ACT
+REFRESHBAG
+
+
+[@在线回收]
+#call [\03自定义按钮\装备回收.txt] @装备回收 
+
+;新回收功能
+[@newrecycle_openpanel]
+#IF
+#ACT
+CALLLUA CC_QFunction @newrecycle_openpanel
+
+
+[@仓库]
+#IF
+#Act
+OPENSTORAGE
+
+[@支付宝充值]
+#IF
+NOT CHECKKUAFU
+#ACT
+OPENHYPERLINK 26
+GOTO @清理直购标识
+
+[@微信充值]
+#IF
+NOT CHECKKUAFU
+#ACT
+OPENHYPERLINK 26
+GOTO @清理直购标识
+
+[@交易市场]
+#IF
+NOT CHECKKUAFU
+#ACT
+OPENHYPERLINK 35
+
+[@综合服务]
+
+; 点开商城、充值等清理直购标识
+[@清理直购标识]
+#IF
+#ACT
+MOV_EX 0 U101 U104 U105 U107
+
+[@屏蔽飘字]
+#IF
+EQUAL T34 1
+#ACT
+MOV T34
+SENDMSG 9 已屏蔽显示，首爆、BOSS刷新、主界面货币等将不再展示
+#ELSEACT
+MOV T34 1
+SENDMSG 9 已取消屏蔽
+
+#IF
+#ACT
+GOTO @基础按钮QM
+BREAK
+
+
+[@开始挂机]
+#IF
+#Act
+StartAutoPlayGame
+Break
+
+[@停止挂机]
+#IF
+#Act
+StopAutoPlayGame
+BREAK
+
+
+[@StartAutoPlayGame]
+#IF
+LARGE N$PK 0
+#ACT
+StopAutoPlayGame
+SENDMSG 9 战斗状态无法挂机。
+BREAK
+
+#OR
+ISONMAP dgfx
+ISONMAP rxsc807
+ISONMAP rxsc042
+ISONMAP kuafu03
+#ACT
+StopAutoPlayGame
+SENDMSG 9 当前地图不能自动挂机
+BREAK
+
+#IF
+#Act
+MOV N$挂机状态 1
+SendMsg 6 {您开启了一键挂机功能【<$STR(N$挂机状态)>】|250:15:1}
+
+#IF
+Equal <$CLIENTFLAG> 1
+#Act
+Mov S$挂机 <Button|x=-140|y=-375|color=251|mimg=private\main\Skill\1900012709.png|nimg=private\main\Skill\1900012709.png|pimg=private\main\Skill\1900012709.png|link=@停止挂机>
+Inc S$挂机 <Effect|x=-110|y=-345|effectid=4005|effecttype=0|scale=0.5>
+DELBUTTON 104 1 
+ADDBUTTON 104 1 <$STR(S$挂机)>
+
+#IF
+Equal <$CLIENTFLAG> 2
+#Act
+Mov S$挂机 <Button|x=-180|y=-375|color=251|mimg=private\main\Skill\1900012709.png|nimg=private\main\Skill\1900012709.png|pimg=private\main\Skill\1900012709.png|link=@停止挂机>
+Inc S$挂机 <Effect|x=-150|y=-345|effectid=4005|effecttype=0|scale=0.5>
+DELBUTTON 104 1
+ADDBUTTON 104 1 <$STR(S$挂机)>
+
+[@StopAutoPlayGame]
+#IF
+#ACT
+Mov N$挂机状态 0
+SendMsg 6 {您关闭了一键挂机功能【<$STR(N$挂机状态)>】|250:0:1}
+
+#IF
+Equal <$CLIENTFLAG> 1
+#Act
+Mov S$挂机 <Button|x=-140|y=-375|color=251|mimg=private\main\Skill\1900012708.png|size=16|nimg=private\main\Skill\1900012708.png|pimg=private\main\Skill\1900012708.png|link=@开始挂机>
+DELBUTTON 104 1
+ADDBUTTON 104 1 <$STR(S$挂机)>
+
+#IF
+Equal <$CLIENTFLAG> 2
+#Act
+Mov S$挂机 <Button|x=-180|y=-375|color=251|mimg=private\main\Skill\1900012708.png|size=16|nimg=private\main\Skill\1900012708.png|pimg=private\main\Skill\1900012708.png|link=@开始挂机>
+DELBUTTON 104 1
+ADDBUTTON 104 1 <$STR(S$挂机)>
+
+
+[@查看暴富排名]
+; 刷新排名，20S刷新1次
+#IF
+SMALL G0 2
+SMALL G10 <$UTCNOW8>
+#ACT
+MOV G10 20
+INC G10 <$UTCNOW8>
+SortHumVar 杀怪数 S$杀怪排名 N$杀怪积分 0 1 20
+
+MOV N1 1
+WHILE N1 < 21
+ADDSTRVALUE A25 <$STR(N1)> <$STR(S$杀怪排名<$STR(N1)>)>:<$STR(N$杀怪积分<$STR(N1)>)>
+INC N1 1
+ENDWHILE
+
+;根据页码读取数据
+#IF
+#ACT
+MOV N$UIDDDD 9
+MOV S$UIDDDD
+MOV S$排名UI显示
+
+MOV N1 1
+WHILE N1 < 21
+INC N$UIDDDD 1
+INC S$UIDDDD <$STR(N$UIDDDD)>,
+GetValidstr <$GETSTRVALUE(A25,<$STR(N1)>)> : S$排名角色 S$排名分数
+
+VAR_CHECK <$STR(S$排名角色)> = <$USERNAME> 250 7 N$显示颜色
+VAR_CHECK <$STR(S$排名分数)> = 0 - <$STR(S$排名角色)> S$排名角色
+
+INC S$排名UI显示 <Img|id=<$STR(N$UIDDDD)>|children={<$STR(N$UIDDDD)>1,<$STR(N$UIDDDD)>2,<$STR(N$UIDDDD)>3}|x=0|y=0|img=public/1900000676.png|width=260|height=25|scale9r=10|scale9l=10|scale9b=10|scale9t=10>
+INC S$排名UI显示 <RText|id=<$STR(N$UIDDDD)>1|x=8|y=0|color=<$STR(N$显示颜色)>||size=18|text=<$STR(N1)>.>
+INC S$排名UI显示 <RText|id=<$STR(N$UIDDDD)>2|x=50|y=0|color=<$STR(N$显示颜色)>||size=18|text=<$STR(S$排名角色)>>
+INC S$排名UI显示 <RText|id=<$STR(N$UIDDDD)>3|x=150|y=0|color=<$STR(N$显示颜色)>||size=18|text=<$STR(S$排名分数)>积分>
+INC N1 1
+ENDWHILE
+
+LIST_CHECK <$STR(A25)> =<$USERNAME>: N$自己的排名
+
+#IF
+EQUAL N$自己的排名
+#ACT
+MOV S$自己的排名 未上榜
+#ELSEACt
+MOV S$自己的排名 <$STR(N$自己的排名)>名
+
+#IF
+#SAY
+<Img|x=0.0|y=0.0|reset=1|show=0|bg=1|move=1|img=public/wz/50fabb28_65678.png|loadDelay=0|esc=1>
+<Layout|x=322.0|y=39.0|width=80|height=80|scale9l=10|scale9t=10|scale9r=10|scale9b=10|link=@exit>
+<Button|x=327.0|y=49.0|height=30|pimg=public/1900000510_2.png|size=18|color=255|nimg=public/1900000510_1.png|link=@exit>
+<Button|x=170|y=52|color=116|size=18|outline=2|nimg=public/alpha_1px.png|text=暴富排名>
+<Text|x=40|y=75|color=161|outline=1|size=18|text=在活动地图每击杀1只怪可获得10\积分，累计积分可获得排名奖励。>
+<Img|x=40|y=135|img=public/1900000676.png|width=260|height=250|scale9r=10|scale9l=10|scale9b=10|scale9t=10>
+
+<ListView|children={<$STR(S$UIDDDD)>}|x=40|y=135|width=260|height=250|direction=1|bounce=1|margin=3|reload=0>
+<$STR(S$排名UI显示)>
+<Text|x=40|y=390|outline=1|color=250|size=16|text=当前排名:<$STR(S$自己的排名)>>
+
+<Button|x=45|y=420|nimg=public/1900001024.png|link=@查看暴富排名#奖励说明=1>
+
+#IF
+CHECK [42] 0
+#SAY
+<Button|x=198|y=420|nimg=public/anniu.png|text=领取奖励|link=@领取暴富奖励>
+#ELSESAY
+<Img|x=210|y=400|img=public/word_bqzy_01.png>
+
+#IF
+EQUAL S$奖励说明 1
+#SAY
+<Layout|x=-1000|y=-1000|width=1800|height=1800|link=@查看暴富排名#奖励说明=0>
+<Img|x=0|y=0|img=public/bg_npc_02.png>
+<Text||x=20|y=20|color=250|size=18|outline=1|text=一夜暴富奖励说明：>
+<RText|x=20|y=55|color=103|size=18|outline=1|text=在活动地图每击杀1只怪可获得10积分，累计积\分可获得排名奖励。奖励规则如下：>
+<RText|x=20|y=110|color=250|size=16|outline=1|text=
+<累积第01名：金刚石×300万　元宝×888万　充值×100 /FCOLOR=249>\
+<累积第02名：金刚石×200万　元宝×666万　充值×50  /FCOLOR=254>\
+<累积第03名：金刚石×100万　元宝×333万　充值×30  /FCOLOR=151>\
+<累积第04名：金刚石×90万　元宝×280万	        /FCOLOR=250>\
+<累积第05名：金刚石×80万　元宝×230万	        /FCOLOR=250>\
+<累积第06名：金刚石×70万　元宝×200万	        /FCOLOR=250>\
+<累积第07名：金刚石×60万　元宝×180万	        /FCOLOR=250>\
+<累积第08名：金刚石×50万　元宝×160万	        /FCOLOR=250>\
+<累积第09名：金刚石×45万　元宝×140万	        /FCOLOR=250>\
+<累积第10名：金刚石×40万　元宝×120万	        /FCOLOR=250>\
+<累积第11-15名：金刚石×30万　元宝×100万	        /FCOLOR=103>\
+<累积第16-20名：金刚石×20万　元宝×70万	        /FCOLOR=103>\
+<累积大于10：金刚石×10万	元　宝×50万	        /FCOLOR=103>>
+<RText|x=20|y=470|color=250|size=18|outline=1|text=*所有奖励，待活动结束后可领取。>
+
+
+
+[@领取暴富奖励]
+#IF
+NOT EQUAL G0 1
+#ACT
+SENDMSG 9 非活动时间，无法领取。
+BREAK
+#IF
+CHECKVAR HUMAN 杀怪数 < 10
+#ACT
+SENDMSG 9 活动积分小于10，无法领取。
+BREAK
+
+#IF
+CHECK [42] 1
+#ACT
+SENDMSG 9 不能重复领取
+BREAK
+
+#IF
+EQUAL <$HOUR> 18
+#ACT
+SENDMSG 9 活动结束后开始领取。
+BREAK
+
+#IF
+#ACT
+SET [42] 1
+MOV N$自己的排名 0
+LIST_CHECK <$STR(A25)> =<$USERNAME>: N$自己的排名
+
+#IF
+EQUAL N$自己的排名 0
+#ACT
+SENDMSG 9 未在排行榜，无法领取奖励
+BREAK
+
+
+#IF
+LARGE N$自己的排名 20
+#ACT
+SETNPCMSG 领取暴富奖励|<$STR(N$自己的排名)>
+MONEY 元宝 + 500000
+MONEY 金刚石 + 100000
+SENDMSG 9 领取成功，获得一夜暴富参与奖励。
+SENDMSG 0 恭喜玩家[<$USERNAME>]成功领取一夜暴富活动参与奖励。
+BREAK
+#IF
+LARGE N$自己的排名 14
+#ACT
+SETNPCMSG 领取暴富奖励|<$STR(N$自己的排名)>
+MONEY 元宝 + 700000
+MONEY 金刚石 + 200000
+SENDMSG 9 领取成功，获得一夜暴富15-20名奖励。
+SENDMSG 0 恭喜玩家[<$USERNAME>]成功领取一夜暴富活动15-20名奖励。
+BREAK
+#IF
+LARGE N$自己的排名 10
+#ACT
+SETNPCMSG 领取暴富奖励|<$STR(N$自己的排名)>
+MONEY 元宝 + 1000000
+MONEY 金刚石 + 300000
+SENDMSG 9 领取成功，获得一夜暴富11-15名奖励。
+SENDMSG 0 恭喜玩家[<$USERNAME>]成功领取一夜暴富活动11-15名奖励。
+BREAK
+#IF
+EQUAL N$自己的排名 10
+#ACT
+SETNPCMSG 领取暴富奖励|<$STR(N$自己的排名)>
+MONEY 元宝 + 1200000
+MONEY 金刚石 + 400000
+SENDMSG 9 领取成功，获得一夜暴富<$STR(N$自己的排名)>名奖励。
+SENDMSG 0 恭喜玩家[<$USERNAME>]成功领取一夜暴富活动<$STR(N$自己的排名)>名奖励。
+BREAK
+#IF
+EQUAL N$自己的排名 9
+#ACT
+SETNPCMSG 领取暴富奖励|<$STR(N$自己的排名)>
+MONEY 元宝 + 1400000
+MONEY 金刚石 + 450000
+SENDMSG 9 领取成功，获得一夜暴富<$STR(N$自己的排名)>名奖励。
+SENDMSG 0 恭喜玩家[<$USERNAME>]成功领取一夜暴富活动<$STR(N$自己的排名)>名奖励。
+BREAK
+#IF
+EQUAL N$自己的排名 8
+#ACT
+SETNPCMSG 领取暴富奖励|<$STR(N$自己的排名)>
+MONEY 元宝 + 1600000
+MONEY 金刚石 + 500000
+SENDMSG 9 领取成功，获得一夜暴富<$STR(N$自己的排名)>名奖励。
+SENDMSG 0 恭喜玩家[<$USERNAME>]成功领取一夜暴富活动<$STR(N$自己的排名)>名奖励。
+BREAK
+#IF
+EQUAL N$自己的排名 7
+#ACT
+SETNPCMSG 领取暴富奖励|<$STR(N$自己的排名)>
+MONEY 元宝 + 1800000
+MONEY 金刚石 + 600000
+SENDMSG 9 领取成功，获得一夜暴富<$STR(N$自己的排名)>名奖励。
+SENDMSG 0 恭喜玩家[<$USERNAME>]成功领取一夜暴富活动<$STR(N$自己的排名)>名奖励。
+BREAK
+#IF
+EQUAL N$自己的排名 6
+#ACT
+SETNPCMSG 领取暴富奖励|<$STR(N$自己的排名)>
+MONEY 元宝 + 2000000
+MONEY 金刚石 + 700000
+SENDMSG 9 领取成功，获得一夜暴富<$STR(N$自己的排名)>名奖励。
+SENDMSG 0 恭喜玩家[<$USERNAME>]成功领取一夜暴富活动<$STR(N$自己的排名)>名奖励。
+BREAK
+#IF
+EQUAL N$自己的排名 5
+#ACT
+SETNPCMSG 领取暴富奖励|<$STR(N$自己的排名)>
+MONEY 元宝 + 2300000
+MONEY 金刚石 + 800000
+SENDMSG 9 领取成功，获得一夜暴富<$STR(N$自己的排名)>名奖励。
+SENDMSG 0 恭喜玩家[<$USERNAME>]成功领取一夜暴富活动<$STR(N$自己的排名)>名奖励。
+BREAK
+#IF
+EQUAL N$自己的排名 4
+#ACT
+SETNPCMSG 领取暴富奖励|<$STR(N$自己的排名)>
+MONEY 元宝 + 2800000
+MONEY 金刚石 + 900000
+SENDMSG 9 领取成功，获得一夜暴富<$STR(N$自己的排名)>名奖励。
+SENDMSG 0 恭喜玩家[<$USERNAME>]成功领取一夜暴富活动<$STR(N$自己的排名)>名奖励。
+BREAK
+#IF
+EQUAL N$自己的排名 3
+#ACT
+SETNPCMSG 领取暴富奖励|<$STR(N$自己的排名)>
+MONEY 元宝 + 3630000
+MONEY 金刚石 + 1000000
+MONEY 积分 + 300
+MONEY 充值 + 30
+MONEY 充值点 + 30
+SENDMSG 9 领取成功，获得一夜暴富<$STR(N$自己的排名)>名奖励。
+SENDMSG 0 恭喜玩家[<$USERNAME>]成功领取一夜暴富活动<$STR(N$自己的排名)>名奖励。
+BREAK
+#IF
+EQUAL N$自己的排名 2
+#ACT
+SETNPCMSG 领取暴富奖励|<$STR(N$自己的排名)>
+MONEY 元宝 + 7160000
+MONEY 金刚石 + 2000000
+MONEY 积分 + 500
+MONEY 充值 + 50
+MONEY 充值点 + 50
+SENDMSG 9 领取成功，获得一夜暴富<$STR(N$自己的排名)>名奖励。
+SENDMSG 0 恭喜玩家[<$USERNAME>]成功领取一夜暴富活动<$STR(N$自己的排名)>名奖励。
+BREAK
+#IF
+EQUAL N$自己的排名 1
+#ACT
+SETNPCMSG 领取暴富奖励|<$STR(N$自己的排名)>
+MONEY 元宝 + 9880000
+MONEY 金刚石 + 3000000
+MONEY 积分 + 1000
+MONEY 充值 + 100
+MONEY 充值点 + 100
+SENDMSG 9 领取成功，获得一夜暴富<$STR(N$自己的排名)>名奖励。
+SENDMSG 0 恭喜玩家[<$USERNAME>]成功领取一夜暴富活动<$STR(N$自己的排名)>名奖励。
+BREAK
+
+
+[@拜财神完成]
+#IF
+#ACT
+FORMULATION <$UTCNOW8>-<$STR(N$拜财神开始)> N$拜财神冷却
+
+#IF
+SMALL N$拜财神冷却 5
+#ACT
+BREAK
+
+#IF
+NOT ISONMAP csm
+#ACT
+BREAK
+
+#OR
+NOT EQUAL <$HOUR> 17
+NOT SMALL <$MINUTE> 5
+#ACT
+GOTO @读秒回城
+SENDMSG 9 活动结束
+BREAK
+
+#OR
+NOT LARGE <$UTCNOW8> $春节开始
+NOT SMALL <$UTCNOW8> $春节结束
+#ACT
+GOTO @读秒回城
+SENDMSG 9 活动结束
+BREAK
+
+#IF
+#ACT
+PLAYEFFECT 55062 0 38 1 0
+MOV S$权重奖池 红包(小)#15|红包(中)#10|红包(大)#5|新年烟花#15|庆典蛋糕#5|元宝#25|金刚石#20|福气#5
+RANSJSTR <$STR(S$权重奖池)> 1 3 S$权重结果 S$奖池剩余
+
+#IF
+EQUAL S$权重结果 福气
+#ACT
+MOVR N$货币奖励 1 4
+MONEY <$STR(S$权重结果)> + <$STR(N$货币奖励)>
+SENDMSG 9 拜财神获得祝福，奖励[<$STR(S$权重结果)>*<$STR(N$货币奖励)>]
+
+#OR
+EQUAL S$权重结果 元宝
+EQUAL S$权重结果 金刚石
+#ACT
+MOVR N$货币奖励 1000 15000
+MONEY <$STR(S$权重结果)> + <$STR(N$货币奖励)>
+SENDMSG 9 拜财神获得祝福，奖励[<$STR(S$权重结果)>*<$STR(N$货币奖励)>]
+
+#IF
+NOT EQUAL S$权重结果 元宝
+NOT EQUAL S$权重结果 福气
+NOT EQUAL S$权重结果 金刚石
+#ACT
+GIVE <$STR(S$权重结果)> 1
+GUILDNOTICEMSG 249 11 玩家{[<$USERNAME>]|253:0:1}参与{新年财神活动|151:0:1}获得{[<$STR(S$权重结果)>]|250:0:1}
+
+
+#IF
+#ACT
+MOV N$拜财神开始 <$UTCNOW8>
+SHOWPROGRESSBARDLG 5 @拜财神完成 财神到，好运来... 0
+BREAK
+
+[@关闭详细状态]
+#IF
+#ACT
+DELBUTTON 101 999999
+
+
+
+
+
+[@关闭八卦UI]
+#IF
+EQUAL <$CLIENTFLAG> 2
+#ACT
+MOV S$主界面按钮 <Button|id=41101|x=328|y=130|nimg=public/1900000641.png|color=007|size=18|outline=2|clickInterval=268|text=八　\卦　\　|link=@打开八卦UI>
+INC S$主界面按钮 <Button|id=41102|x=328|y=060|nimg=public/1900000640.png|color=151|size=18|outline=2|clickInterval=268|text=生　\肖　\　|link=@关闭八卦UI>
+#ELSEACT
+MOV S$主界面按钮 <Button|id=41101|x=268|y=120|nimg=public/1900000641.png|color=007|size=16|outline=2|clickInterval=268|text=八　\卦　\　|link=@打开八卦UI>
+INC S$主界面按钮 <Button|id=41102|x=268|y=050|nimg=public/1900000640.png|color=151|size=16|outline=2|clickInterval=268|text=生　\肖　\　|link=@关闭八卦UI>
+
+#IF
+#ACT
+DELBUTTON 41 412
+ADDBUTTON 41 410 <$STR(S$主界面按钮)>
+
+[@打开八卦UI]
+#IF
+EQUAL <$CLIENTFLAG> 2
+#ACT
+MOV S$八卦主界面 <Img|x=24|y=37|img=public/bagua/bg_jewelry_1.png>
+INC S$八卦主界面 <Button|x=30|y=35|nimg=public/bagua/lock.png|color=151|size=18|clickInterval=268|link=@label>
+MOV S$主界面按钮 <Button|id=41102|x=328|y=060|nimg=public/1900000641.png|color=007|size=18|outline=2|clickInterval=268|text=生　\肖　\　|link=@关闭八卦UI>
+INC S$主界面按钮 <Button|id=41101|x=328|y=130|nimg=public/1900000640.png|color=151|size=18|outline=2|clickInterval=268|text=八　\卦　\　|link=@打开八卦UI>
+#ELSEACT
+MOV S$八卦主界面 <Img|x=20|y=27|img=public/bagua/bg_sx_01.png|width=240>
+MOV S$主界面按钮 <Button|id=41102|x=268|y=050|nimg=public/1900000641.png|color=007|size=16|outline=2|clickInterval=268|text=生　\肖　\　|link=@关闭八卦UI>
+INC S$主界面按钮 <Button|id=41101|x=268|y=120|nimg=public/1900000640.png|color=151|size=16|outline=2|clickInterval=268|text=八　\卦　\　|link=@打开八卦UI>
+
+
+
+#IF
+#ACT
+ADDBUTTON 41 410 <$STR(S$主界面按钮)>
+ADDBUTTON 41 412 <$STR(S$八卦主界面)>
+
+[@查看详细状态]
+#IF
+EQUAL <$GAMEID> 1
+#ACT
+MOV S$子ID 12,13,14,15,16,17,18,19
+MOV S$单机调试 <Img|x=0|y=0|children={33,66}|img=public/wz/6ef91da1_36089.png|width=138|height=425|scale9r=20|scale9l=20|scale9b=20|scale9t=20>
+INC S$单机调试 <Button|id=33|x=138|y=0|nimg=public/1900000510.png|pimg=public/1900000511.png|clickInterval=268|link=@关闭详细状态>
+INC S$单机调试 <ListView|id=66|children={<$STR(S$子ID)>}|x=17|y=17|width=120|height=410|direction=1|bounce=1|margin=1|color=C|reload=0>
+INC S$单机调试 <Button|id=12|x=0|y=0|nimg=public/anniu.png|color=151|size=16|text=重新加载UI|link=@重新加载UI>
+INC S$单机调试 <Button|id=13|x=0|y=0|nimg=public/anniu.png|color=151|size=16|text=QF测试功能2|link=@QF测试功能2>
+INC S$单机调试 <Button|id=14|x=0|y=0|nimg=public/anniu.png|color=151|size=16|text=QF测试功能3|link=@QF测试功能3>
+INC S$单机调试 <Button|id=15|x=0|y=0|nimg=public/anniu.png|color=151|size=16|text=QF测试功能4|link=@QF测试功能4>
+INC S$单机调试 <Button|id=16|x=0|y=0|nimg=public/anniu.png|color=151|size=16|text=QF测试功能5|link=@QF测试功能5>
+INC S$单机调试 <Button|id=17|x=0|y=0|nimg=public/anniu.png|color=151|size=16|text=QF测试功能6|link=@QF测试功能6>
+INC S$单机调试 <Button|id=18|x=0|y=0|nimg=public/anniu.png|color=151|size=16|text=QF测试功能7|link=@QF测试功能7>
+INC S$单机调试 <Button|id=19|x=0|y=0|nimg=public/anniu.png|color=151|size=16|text=QF测试功能8|link=@QF测试功能8>
+ADDBUTTON 101 999999 <$STR(S$单机调试)>
+
+#IF
+EQUAL A71 开启
+#ACT
+#CALL [调试功能.txt] @调试功能UI
+
+
+[@重新加载UI]
+#IF
+EQUAL <$GAMEID> 1
+#ACT
+#Call [\悬浮按钮\悬浮按钮展开.txt] @悬浮按钮展开
+#Call [\主界面基础按钮\主界面基础按钮QM.txt] @基础按钮QM
+#Call [\04人物属性\称号刷新.txt] @刷新称号
+SENDMSG 9 重新载入UI
+
+[@QF测试功能2]
+#IF
+EQUAL <$GAMEID> 1
+#ACT
+THROWITEM <$MAP> <$X> <$Y> 2 藏宝图 1|0 1 0 0
+SENDMSG 9 QF测试功能2
+
+[@QF测试功能3]
+#IF
+EQUAL <$GAMEID> 1
+#ACT
+THROWITEM <$MAP> <$X> <$Y> 2 藏宝图 1|0 1 0 0
+SENDMSG 9 QF测试功能3
+
+[@QF测试功能4]
+#IF
+EQUAL <$GAMEID> 1
+#ACT
+MAILGIVE 绝世神兵[限时] 1
+SENDMAIL 3214 铁匠的礼物 恭喜你武器首次尝试+7，无论成功失败相信都是一种挑战。赠送一把三红BUFF武器，你拿去试试。
+
+[@QF测试功能5]
+#IF
+EQUAL <$GAMEID> 1
+#ACT
+; SENDCUSTMSG 1110 {"data":123}
+MOV S$TEMP
+MOV N1 1
+while N1 < 4
+MOVR N$积分 10000 99999
+ADDSTRVALUE S$TEMP 玩家名字<$STR(N1)> <$STR(N$积分)>
+INC N1 1
+endwhile
+
+SENDMSG 6 <$STR(S$TEMP)>
+
+
+[@QF测试功能6]
+#IF
+EQUAL <$GAMEID> 1
+#ACT
+; teamManager_create <$USERNAME> <$USERACCOUNT><$UTCNOW8>
+MOV G65 <$HFCOUNT>
+FORMULATION <$UTCNOW8>+172800 A65
+
+[@QF测试功能7]
+#IF
+EQUAL <$GAMEID> 1
+#ACT
+MOV S$黑夜效果 <Img|x=0|y=0|img=public/wz/bg.png|width=<$SCREENWIDTH>|height=<$SCREENHEIGHT>>
+INC S$黑夜效果 <Img|x=0|y=0|img=public/wz/bg.png|width=<$SCREENWIDTH>|height=<$SCREENHEIGHT>>
+INC S$黑夜效果 <Img|x=0|y=0|img=public/wz/bg.png|width=<$SCREENWIDTH>|height=<$SCREENHEIGHT>>
+ADDBUTTON 101 1061 <$STR(S$黑夜效果)>
+
+
+[@QF测试功能8]
+; #IF
+; CHECK_TODAY_WAR
+; #ACT
+; SENDMSG 9 今日攻沙|<$STR(G0)>
+; #ELSEACT
+; SENDMSG 9 今日不攻沙|<$STR(G0)>
+; BREAK
+
+; #IF
+; EQUAL <$GAMEID> 1
+; #ACT
+; MOV U100 28
+; MOV T33 
+; sendmsg 9 重置回馈完成
+; BREAK
+
+#IF
+EQUAL <$GAMEID> 1
+#ACT
+; ChangeHumNewValue 21 100 60
+ChangeHumNewValue 24 1000 10
+sendmsg 9 暴击属性生效了
+BREAK
+
+
+}

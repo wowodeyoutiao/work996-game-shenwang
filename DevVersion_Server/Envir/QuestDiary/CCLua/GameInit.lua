@@ -34,7 +34,7 @@ local function _Includes()
     -- cfgActivityNewPlayerRecharge = require("Envir/QuestDiary/CCLua/GameConfig/cfgActivityNewPlayerRecharge")
     -- cfgActivityOpenServer = require("Envir/QuestDiary/CCLua/GameConfig/cfgActivityOpenServer")
     -- cfgActivityExtendGift = require("Envir/QuestDiary/CCLua/GameConfig/cfgActivityExtendGift")
-    -- cfgRecycleSetting = require("Envir/QuestDiary/CCLua/GameConfig/cfgRecycleSetting")
+    cfgRecycleSetting = require("Envir/QuestDiary/CCLua/GameConfig/cfgRecycleSetting")
     -- cfgPublicBossInfo = require("Envir/QuestDiary/CCLua/GameConfig/cfgPublicBossInfo")
     -- cfgSingleBossInfo = require("Envir/QuestDiary/CCLua/GameConfig/cfgSingleBossInfo")
     -- cfgEverydayTask = require("Envir/QuestDiary/CCLua/GameConfig/cfgEverydayTask")
@@ -86,8 +86,7 @@ local function _Includes()
     -- require("Envir/QuestDiary/CCLua/GameModule/RandomBossManager")
     -- require("Envir/QuestDiary/CCLua/GameModule/FreeVIPManager")
     -- require("Envir/QuestDiary/CCLua/GameModule/TaskLineConfig")
-    -- require("Envir/QuestDiary/CCLua/GameModule/TaskManager")
-    -- require("Envir/QuestDiary/CCLua/GameModule/RecycleManager")
+    -- require("Envir/QuestDiary/CCLua/GameModule/TaskManager")    
     -- require("Envir/QuestDiary/CCLua/GameModule/FirstRecharge")
     -- require("Envir/QuestDiary/CCLua/GameModule/ActivityNewPlayerRecharge")
     -- require("Envir/QuestDiary/CCLua/GameModule/ActivityOpenServer")
@@ -101,6 +100,7 @@ local function _Includes()
     require("Envir/QuestDiary/CCLua/GameModule/GMHelper")
     require("Envir/QuestDiary/CCLua/GameModule/EquipInitGift")
     require("Envir/QuestDiary/CCLua/GameModule/EquipRandomABManager")
+    require("Envir/QuestDiary/CCLua/GameModule/RecycleManager")
 
 
     -- --调试日志
@@ -166,6 +166,25 @@ local function _Includes()
         end       
     end
 
+    --RecycleManager
+    for _, value in pairs(cfgRecycleSetting) do
+        if (value.recycleitems ~= nil) and (value.recycleitems ~= '') then
+            value.recycleitems_tab = BF_Json2Table(value.recycleitems)
+        else
+            value.recycleitems_tab = {}
+        end
+
+        if (value.stdmodelist ~= nil) and (value.stdmodelist ~= '') then
+            value.stdmodelist_tab = BF_Json2Table(value.stdmodelist)
+        else
+            value.stdmodelist_tab = {}
+        end       
+        if (value.itemidlist ~= nil) and (value.itemidlist ~= '') then
+            value.itemidlist_tab = BF_Json2Table(value.itemidlist)
+        else
+            value.itemidlist_tab = {}
+        end        
+    end        
 
 
     -- --装备位强化表
@@ -409,26 +428,6 @@ local function _Includes()
     --         value.needitems_tab = BF_Json2Table(value.needitems)
     --     else
     --         value.needitems_tab = {}
-    --     end        
-    -- end    
-
-    -- --RecycleManager
-    -- for _, value in pairs(cfgRecycleSetting) do
-    --     if (value.recycleitems ~= nil) and (value.recycleitems ~= '') then
-    --         value.recycleitems_tab = BF_Json2Table(value.recycleitems)
-    --     else
-    --         value.recycleitems_tab = {}
-    --     end
-
-    --     if (value.stdmodelist ~= nil) and (value.stdmodelist ~= '') then
-    --         value.stdmodelist_tab = BF_Json2Table(value.stdmodelist)
-    --     else
-    --         value.stdmodelist_tab = {}
-    --     end       
-    --     if (value.itemidlist ~= nil) and (value.itemidlist ~= '') then
-    --         value.itemidlist_tab = BF_Json2Table(value.itemidlist)
-    --     else
-    --         value.itemidlist_tab = {}
     --     end        
     -- end    
 

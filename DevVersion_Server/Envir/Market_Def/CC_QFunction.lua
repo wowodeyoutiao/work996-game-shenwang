@@ -324,6 +324,10 @@ function gmhelper_button(actor, sid)
     GMHelper.DoGmOper(actor, sid)
 end
 
+function newrecycle_openpanel(actor)
+    RecycleManager.ShowRecycleEnterUI(actor)
+end
+
 function changename_button(actor, sparam)
     if BF_IsNullObj(actor) or not BF_IsNumberStr(sparam) then
         return

@@ -49,6 +49,18 @@ function OpenSuperBoxManager.AddNewBoxNum(actor, addnum)
     OpenSuperBoxManager.UpdateSuperBoxInfo(actor)
 end
 
+function OpenSuperBoxManager.GMAddNewBoxNum(actor, addnum)
+    if BF_IsNullObj(actor) or (addnum == nil) or (addnum <= 0) then
+        return
+    end
+
+    local nCurrBoxNum = getplaydef(actor, CommonDefine.VAR_U_SUPER_BOX_TOTAL_NUM)
+    nCurrBoxNum = nCurrBoxNum + addnum
+    setplaydef(actor, CommonDefine.VAR_U_SUPER_BOX_TOTAL_NUM, nCurrBoxNum)
+
+    OpenSuperBoxManager.UpdateSuperBoxInfo(actor)
+end
+
 --更新超级宝箱界面
 function OpenSuperBoxManager.UpdateSuperBoxInfo(actor)
     delbutton(actor, 108, CommonDefine.ADD_BUTTON_ID_1)
@@ -75,21 +87,40 @@ function OpenSuperBoxManager.UpdateSuperBoxInfo(actor)
         local tabUniqueIDs = string.split(strItemUniqueIDs, ',')
         if tabUniqueIDs ~= false then
             local strIDs = ''
-            local startid = 2010            
+            local startid = 2010   
+            local startid1 = 2030
+            local nLine = 0
+            local nColumn = 0
             for seq, value in ipairs(tabUniqueIDs) do
-                local currid = startid + seq
-                if strIDs ~= '' then
-                    strIDs = strIDs..','
+                local nItemUniqueID = tonumber(value)
+                local itemobj = getitembymakeindex(actor, nItemUniqueID)
+                if not BF_IsNullObj(itemobj) then
+                    local itemshowname = getiteminfo(actor, itemobj, CommonDefine.ITEMINFO_CHGEDNAME)
+                    local itemid = getiteminfo(actor, itemobj, CommonDefine.ITEMINFO_ITEMIDX)
+                    local itemcolor = getstditeminfo(itemid, CommonDefine.STDITEMINFO_NAMECOLOR)
+                    local itemshowid = startid + seq
+                    local textid = startid1 + seq
+                    if strIDs ~= '' then
+                        strIDs = strIDs..','
+                    end
+                    strIDs = strIDs..itemshowid..','..textid
+                    if seq % 5 == 1 then
+                        nLine = nLine + 1
+                        nColumn = 0
+                    else
+                        nColumn = nColumn + 1
+                    end                    
+                    local currx = 30 + 80 * nColumn
+                    local curry = 30 + 100 * (nLine - 1)
+                    strPanel = strPanel..'<Text|id='..textid..'|x='..currx..'|y='..curry..'|width=70|color='..itemcolor..'|size=12|text='..itemshowname..'>'..
+                        '<MKItemShow|id='..itemshowid..'|x='..(currx+4)..'|y='..(curry+20)..'|width=70|height=70|makeindex='..value..'|showtips=1|bgtype=1|link=@testjump>'
                 end
-                strIDs = strIDs..currid
-                local currx = 30 + 70 * (seq - 1)
-                local curry = 30
-                strPanel = strPanel..'<MKItemShow|id='..currid..'|x='..currx..'|y='..curry..'|makeindex='..value..'|showtips=1|bgtype=1|link=@testjump>'
             end
-            local buttonid = 2020
+            local buttonid = 2099
             strIDs = strIDs..','..buttonid
-            strPanel = strPanel..'<Img|id=2008|children={'..strIDs..'}|x=-100|y=-200|bg=1|move=0|img=private/cc_superbox/panel_itemlist.png>'..
-                '<Button|id='..buttonid..'|x=150|y=100|mimg=private/cc_common/button_1.png|nimg=private/cc_common/button_1.png|size=20|color=255|text=一键回收|link=@opensuperboxmanager_button#sid='..
+            local tempy = 30 + 100 * nLine + 30
+            strPanel = strPanel..'<Img|id=2008|children={'..strIDs..'}|x=-100|y=-200|height='..(tempy+50)..'|bg=1|move=0|scale9r=10|scale9l=10|scale9b=10|scale9t=10|img=private/cc_superbox/panel_itemlist.png>'..
+                '<Button|id='..buttonid..'|x=170|y='..tempy..'|mimg=private/cc_common/button_1.png|nimg=private/cc_common/button_1.png|size=20|color=255|text=一键回收|link=@opensuperboxmanager_button#sid='..
                 OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_10..'>'              
         end
     end
@@ -143,17 +174,15 @@ local function DoOpenBoxOnce(actor)
         local config = BF_GetRandomTab(levelConfig.rewardpool_tab, -1)
         if config then
             local poolid = config.poolid
---release_print('poolid:'..poolid)            
             local rewardPoolConfig = cfgSuperBoxRewardPool[nPlayerLv]
-            if rewardPoolConfig then
+            if rewardPoolConfig then                     
                 for _, value in ipairs(rewardPoolConfig.poollist_tab) do
                     if value.poolid == poolid then
                         local rand = math.random(1, #value.idlist)
-                        newItemIDTab[#newItemIDTab+1] = value.idlist[rand]
---release_print('itemid:'..value.idlist[rand])                        
+                        newItemIDTab[#newItemIDTab+1] = value.idlist[rand]                 
                         break
                     end
-                end
+                end        
             end
         end
     end
@@ -170,7 +199,7 @@ local function DoOpenBoxOnce(actor)
     local strItemUniqueIDs = ''
     for _, itemid in ipairs(newItemIDTab) do
         local sItemName = getstditeminfo(itemid, CommonDefine.STDITEMINFO_NAME)
-        local newitemobj = giveitem(actor, sItemName, 1, 0, '超级宝箱')
+        local newitemobj = giveitem(actor, sItemName, 1, 0, '超级宝箱')        
         if not BF_IsNullObj(newitemobj) then
             --生成装备的初始洗炼属性
             EquipRandomABManager.InitEquipRandomAB(actor, newitemobj)
@@ -181,7 +210,7 @@ local function DoOpenBoxOnce(actor)
             if strItemUniqueIDs ~= '' then
                 strItemUniqueIDs = strItemUniqueIDs..','
             end
-            strItemUniqueIDs = strItemUniqueIDs..nNewMakeIndex
+            strItemUniqueIDs = strItemUniqueIDs..nNewMakeIndex       
         end    
     end
 

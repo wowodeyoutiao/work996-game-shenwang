@@ -690,7 +690,7 @@ local config = {
 	},
 	[28] = { 
 		Idx = 28,
-		Name = "»õ±Ò27",
+		Name = "½ð±Ò",
 		StdMode = 41,
 		Shape = 0,
 		Weight = 0,
@@ -702,7 +702,7 @@ local config = {
 		Need = 0,
 		NeedLevel = 0,
 		Price = 0,
-		Color = 0,
+		Color = 161,
 		OverLap = 0,
 		Suit = 0,
 		Article = 0,

@@ -19,7 +19,7 @@ function GMHelper.OpenPanel(actor)
         '<Button|x=40|y=150|nimg=public/bg_hhzy_01_3.png|text=增加8w攻击|color=253|link=@gmhelper_button#sid1=1004>'..
         '<Button|x=40|y=180|nimg=public/bg_hhzy_01_3.png|text=增加8w魔法|color=253|link=@gmhelper_button#sid1=1005>'..
         '<Button|x=40|y=210|nimg=public/bg_hhzy_01_3.png|text=增加8w道术|color=253|link=@gmhelper_button#sid1=1006>'..
-        '<Button|x=40|y=240|nimg=public/bg_hhzy_01_3.png|text=100w金币10w元宝5k绑元|link=@gmhelper_button#sid1=2>'..
+        '<Button|x=40|y=240|nimg=public/bg_hhzy_01_3.png|text=100w金币10w元宝10w绑元|link=@gmhelper_button#sid1=2>'..
         '<Button|x=40|y=270|nimg=public/bg_hhzy_01_3.png|text=等级设置60|link=@gmhelper_button#sid1=1007>'
     --[[                              
         '<Button|x=40|y=90|nimg=public/bg_hhzy_01_3.png|text=给五星魂石|link=@gmhelper_button,3>'..
@@ -90,7 +90,7 @@ function GMHelper.DoGmOper(actor, sid)
     elseif sid == '2' then
         changemoney(actor, CommonDefine.ITEMID_GOLD, '+', 1000000, 'DoGmOper', true)
         changemoney(actor, CommonDefine.ITEMID_YB, '+', 100000, 'DoGmOper', true)
-        changemoney(actor, CommonDefine.ITEMID_BINDYB, '+', 5000, 'DoGmOper', true)
+        changemoney(actor, CommonDefine.ITEMID_BINDYB, '+', 100000, 'DoGmOper', true)
         changemoney(actor, CommonDefine.ITEMID_MOFANGZHEN_JIFEN, '+', 5000, 'DoGmOper', true)
     elseif sid == '3' then  
         giveitem(actor, '5级红魂石', 12)
@@ -292,7 +292,7 @@ function GMHelper.DoGmOper(actor, sid)
     elseif sid == '1002' then
         OpenSuperBoxManager.GMResetBaoXiangLevel(actor)
     elseif sid == '1003' then
-        OpenSuperBoxManager.AddNewBoxNum(actor, 10)
+        OpenSuperBoxManager.GMAddNewBoxNum(actor, 100)
     elseif sid == '1004' then
         addattlist(actor, CommonDefine.ABILITY_GROUP_TEMPTEST, "+", "3#3#80000|3#4#80000")      
         recalcabilitys(actor)

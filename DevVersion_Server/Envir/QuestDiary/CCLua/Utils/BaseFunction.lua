@@ -323,8 +323,8 @@ function BF_NPCSayExt(actor, msg, width, height)
         finalheight = height
     end
     local allmsg = "<Img|img=public/bg_npc_01.png|width="..finalwidth.."|height="..finalheight.."|scale9t=10|scale9r=10|scale9b=10|scale9l=10|bg=1|move=0|reset=1>"..
-                    "<Layout|x="..(finalwidth-5).."|y=3|width=80|height=80|link=@cc_delbuttonid3>"..
-                    "<Button|x="..(finalwidth-5).."|y=2|nimg=public/1900000510.png|pimg=public/1900000511.png|link=@cc_delbuttonid3>"..msg;    
+                    "<Layout|x="..(finalwidth-5).."|y=3|width=80|height=80|link=@cc_exit_npcsayext>"..
+                    "<Button|x="..(finalwidth-5).."|y=2|nimg=public/1900000510.png|pimg=public/1900000511.png|link=@cc_exit_npcsayext>"..msg;    
     --say(actor, allmsg)
     addbutton(actor, 1101, CommonDefine.ADD_BUTTON_ID_3, allmsg)
 end

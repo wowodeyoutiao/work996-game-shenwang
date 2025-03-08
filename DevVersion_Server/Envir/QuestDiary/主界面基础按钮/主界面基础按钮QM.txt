@@ -1,0 +1,172 @@
+[@基础按钮QM]
+{
+#IF
+#ACT
+GOTO @切割经验刷新
+GOTO @战力刷新显示
+
+#IF
+EQUAL <$CLIENTFLAG> 2
+#ACT
+MOV S$八卦按钮 <Button|id=39101|x=293|y=50|nimg=public/bagua/open_bt2.png|pimg=public/bagua/open_bt1.png|clickInterval=268|link=@查看八卦UI>
+#ELSEACT
+MOV S$八卦按钮 <Button|id=39101|x=220|y=75|nimg=public/bagua/open_bt2.png|pimg=public/bagua/open_bt1.png|clickInterval=268|link=@查看八卦UI>
+
+#IF
+EQUAL <$GAMEID> 1
+#ACT
+ADDBUTTON 39 391 <$STR(S$八卦按钮)>
+
+
+; 移动端
+#IF
+EQUAL <$CLIENTFLAG> 2
+#ACT
+MOV S$主界面按钮 <Button|id=3554|x=152|y=-105|width=60|height=60|nimg=custom/a00007.png|link=@商城>
+ADDBUTTON 108 3 <$STR(S$主界面按钮)>
+MOV S$主界面按钮 <Button|id=3555|x=-100|y=-140|width=65|height=64|nimg=private/main/bottom/1900013010.png|link=@角色>
+ADDBUTTON 107 4 <$STR(S$主界面按钮)>
+MOV S$主界面按钮 <Button|id=3556|x=-180|y=-140|width=65|height=64|nimg=private/main/bottom/1900013011.png|link=@背包>
+ADDBUTTON 107 5 <$STR(S$主界面按钮)>
+MOV S$主界面按钮 <Button|x=-220|y=-55|width=30|height=30|nimg=private/main/Button_3/1900012054.png|link=@自定义排行榜>
+ADDBUTTON 108 7 <$STR(S$主界面按钮)>
+
+MOV S$主界面按钮 <Button|x=92|y=30|nimg=private/main/bottom/1900013014.png|link=@组队>
+ADDBUTTON 109 2 <$STR(S$主界面按钮)>
+MOV S$主界面按钮 <Button|x=162|y=30|nimg=private/main/bottom/1900013013.png|link=@行会>
+ADDBUTTON 109 3 <$STR(S$主界面按钮)>
+
+MOV S$主界面按钮 <Button|x=92|y=100|nimg=private/main/bottom/1900012595.png|link=@商城>
+ADDBUTTON 109 4 <$STR(S$主界面按钮)>
+MOV S$主界面按钮 <Button|x=162|y=100|nimg=private/main/bottom/1900013017.png|link=@设置>
+ADDBUTTON 109 5 <$STR(S$主界面按钮)>
+MOV S$主界面按钮 <Button|x=162|y=170|nimg=private/main/bottom/1900013018.png|link=@退出>
+ADDBUTTON 109 7 <$STR(S$主界面按钮)>
+; 挂机按钮
+Mov S$挂机0 <Button|x=-180|y=-375|mimg=private/main/Skill/1900012708.png|nimg=private/main/Skill/1900012708.png|link=@开始挂机>
+ADDBUTTON 104 1 <$STR(S$挂机0)>
+; 充值比例提示
+MOV S$充值界面提示 <Text|x=260|y=90|outline=1|color=250|size=18|text=充值元宝1:10赠送积分（可在商城兑换道具等）>
+INC S$充值界面提示 <RText|x=10|y=250|color=255|outline=1|size=18|text=充值100-999额外赠送10%\充值1000-5000额外赠送15%\充值5000+额外赠送20%>
+INC S$充值界面提示 <RText|x=10|y=340|color=007|outline=1|size=18|text=*额外赠送金额不可领取冠名称号>
+ADDBUTTON 40 40 <$STR(S$充值界面提示)>
+
+; 界面左上
+MOV S$图标2 <Button|x=0|y=0|width=60|height=37|nimg=custom/cs002.png|link=@查看详细状态>
+INC S$图标2 <Img|x=50|y=0|width=173|height=37|img=custom/cs001.png>
+INC S$图标2 <Img|x=214|y=0|width=173|height=37|img=custom/cs001.png>
+INC S$图标2 <Img|x=66|y=0|width=37|height=33|img=custom/000124.png>
+INC S$图标2 <Text|outlinecolor=0|outline=1|text=$STM(MONEY_元宝)|x=107|y=1|size=20>
+INC S$图标2 <Img|x=220|y=0|width=37|height=33|img=custom/000283.png>
+INC S$图标2 <Text|outlinecolor=0|outline=1|text=$STM(MONEY_金刚石)|x=265|y=1|size=20>
+ADDBUTTON 101 99 <$STR(S$图标2)>
+
+; 背包按钮信息
+MOV S$背包货币 <Img|x=35|y=345|width=30|height=30|img=custom/000124.png>
+INC S$背包货币 <Text|x=65|y=348|text=$STM(MONEY_元宝)|size=17>
+INC S$背包货币 <Img|x=35|y=376|width=30|height=30|img=custom/000283.png>
+INC S$背包货币 <Text|x=65|y=379||text=$STM(MONEY_金刚石)|size=17>
+INC S$背包货币 <Img|x=35|y=408|width=30|height=30|img=custom/000284.png>
+INC S$背包货币 <Text|x=65|y=409|color=250|size=17|text=$STM(MONEY_神力值)　[神力]>
+ADDBUTTON 7 99 <$STR(S$背包货币)>
+
+MOV S$背包按钮2 <Button|id=101|x=300|y=395|nimg=public/bbal/20000.png|width=100|height=36|link=@newrecycle_openpanel>
+MOV S$背包按钮1 <Button|id=102|x=410|y=350|nimg=public/bbal/20002.png|width=100|height=36|link=@刷新>
+MOV S$背包按钮3 <Button|id=103|x=410|y=395|nimg=public/bbal/20004.png|width=100|height=36|link=@仓库>
+ADDBUTTON 7 1 <$STR(S$背包按钮1)>
+ADDBUTTON 7 2 <$STR(S$背包按钮2)>
+ADDBUTTON 7 3 <$STR(S$背包按钮3)>
+
+
+#IF
+EQUAL <$CLIENTFLAG> 2
+NOT SMALL <$UTCNOW8> $春节开始
+NOT LARGE <$UTCNOW8> $春节结束
+#ACT
+; 背包
+MOV S$活动UI <Img|x=0|y=-28|img=public/hd_ui/bag_biankuang_xue.png>
+ADDBUTTON 7 2023 <$STR(S$活动UI)>
+MOV S$活动UI <Img|id=35551|x=-96|y=-148|img=public/hd_ui/main_xue02.png>
+INC S$活动UI <Img|id=35552|x=-175|y=-148|img=public/hd_ui/main_xue02.png>
+ADDBUTTON 107 2025 <$STR(S$活动UI)>
+
+
+;PC新加
+#IF
+EQUAL <$CLIENTFLAG> 1
+#ACT
+MOV S$主界面按钮 <Button|x=-155|y=-108|nimg=public/bbal/paihang_1.png|link=@自定义排行榜>
+ADDBUTTON 104 7 <$STR(S$主界面按钮)>
+MOV S$主界面按钮 <Button|id=3554|x=-90|y=-40|nimg=private/main-win32/20000013.png|link=@商城>
+ADDBUTTON 104 3 <$STR(S$主界面按钮)>
+
+; 背包图标
+MOV S$背包货币 <Img|x=25|y=280|width=30|height=30|img=custom/000124.png>
+INC S$背包货币 <Text|x=55|y=288|color=255|text=$STM(MONEY_元宝)|size=16>
+INC S$背包货币 <Img|x=25|y=305|width=30|height=30|img=custom/000283.png>
+INC S$背包货币 <Text|x=55|y=311|color=255|text=$STM(MONEY_金刚石)|size=16>
+INC S$背包货币 <Img|x=25|y=330|width=30|height=30|img=custom/000284.png>
+INC S$背包货币 <Text|x=55|y=334|color=250|text=$STM(MONEY_神力值)[神力]|size=16>
+ADDBUTTON 7 99 <$STR(S$背包货币)>
+
+MOV S$背包按钮1 <Button|id=101|x=300|y=325|color=161|size=14|width=85|height=30|nimg=public/wz/bt21.png|text=在线回收|link=@在线回收>
+MOV S$背包按钮2 <Button|id=102|x=300|y=290|color=161|size=14|width=85|height=30|nimg=public/wz/bt11.png|text=刷新背包|link=@刷新>
+MOV S$背包按钮3 <Button|id=103|x=205|y=325|color=161|size=14|width=85|height=30|nimg=public/wz/bt11.png|text=随身仓库|link=@仓库>
+ADDBUTTON 7 1 <$STR(S$背包按钮1)>
+ADDBUTTON 7 2 <$STR(S$背包按钮2)>
+ADDBUTTON 7 3 <$STR(S$背包按钮3)>
+
+; 挂机按钮
+Mov S$背包按钮0 <Button|x=-140|y=-375|mimg=private/main/Skill/1900012708.png|nimg=private/main/Skill/1900012708.png|link=@开始挂机>
+ADDBUTTON 104 1 <$STR(S$背包按钮0)>
+
+; 充值比例提示
+MOV S$充值界面提示 <Text|x=300|y=80|color=250|outline=1|size=13|text=充值元宝1:10赠送积分（可在商城兑换道具等）>
+INC S$充值界面提示 <RText|x=10|y=220|color=255|outline=1|size=13|text=充值100-999额外赠送10%\充值1000-5000额外赠送15%\充值5000+额外赠送20%>
+INC S$充值界面提示 <RText|x=10|y=310|color=007|outline=1|size=13|text=*额外赠送金额不可领取冠名称号>
+ADDBUTTON 40 40 <$STR(S$充值界面提示)>
+
+
+#IF
+Equal <$CLIENTFLAG> 1
+NOT SMALL <$UTCNOW8> $春节开始
+NOT LARGE <$UTCNOW8> $春节结束
+#ACT
+; 背包
+MOV S$活动UI <Img|x=0|y=5|img=public/hd_ui/bag_biankuang_xue.png>
+ADDBUTTON 7 2023 <$STR(S$活动UI)>
+; 主界面聊天框雪堆
+MOV S$活动UI <Img|x=240|y=-165|img=public/hd_ui/main_xue04.png>
+ADDBUTTON 103 2024 <$STR(S$活动UI)>
+INC S$活动UI <Img|x=-330|y=-165|img=public/hd_ui/main_xue03.png>
+ADDBUTTON 104 2025 <$STR(S$活动UI)>
+
+
+
+[@切割经验刷新]
+#OR
+EQUAL U2 0
+NOT EQUAL <$CLIENTFLAG> 2
+#ACT
+BREAK
+
+#IF
+LARGE U2 99
+#ACT
+MOV S$神力值展示 <RText|x=-90|y=-25|color=255|outline=1|text=神石<已满级/FCOLOR=250>|size=16>
+ADDBUTTON 108 31 <$STR(S$神力值展示)>
+BREAK
+
+#IF
+#ACT
+ReadCacheConfigFileItem ..\QuestDiary\01配置项\神石配置项.ini 神石配置 <$STR(U2)> N$神石需求
+VAR_CHECK <$MONEY(神力值)> < <$STR(N$神石需求)> 249 250 N$信息COLOR
+
+MOV S$神力值展示 <RText|x=-160|y=-25|color=255|outline=1|size=16|text=神石<<$STR(U2)>/FCOLOR=250>级　升级需要<<$STR(N$神石需求)>/<$MONEY(神力值)>/FCOLOR=<$STR(N$信息COLOR)>>>
+ADDBUTTON 108 31 <$STR(S$神力值展示)>
+
+
+}
+
+
+

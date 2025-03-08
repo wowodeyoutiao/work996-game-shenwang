@@ -118,6 +118,7 @@ CommonDefine = {
     STDITEMINFO_NEEDLV = 10,             --使用等级
     STDITEMINFO_PARAM1 = 11,             --自定义变量1
     STDITEMINFO_PARAM2 = 12,             --自定义变量2
+    STDITEMINFO_NAMECOLOR = 13,          --道具颜色
 
     --实体道具信息
     ITEMINFO_UNIQUEID = 1,               --唯一ID
