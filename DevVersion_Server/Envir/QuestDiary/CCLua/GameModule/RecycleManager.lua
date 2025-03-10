@@ -88,6 +88,7 @@ function RecycleManager.ShowRecyclePanelInfo(actor)
     for seq, key in ipairs(keys) do      
         local cfginfo = cfgRecycleSetting[key]
         local flag = getflagstatus(actor, cfginfo.flagvar)
+
         local id1 = startid + (seq-1) * 2 + 1
         local id2 = startid + (seq-1) * 2 + 2
         local color = cfginfo.showcolor
@@ -362,11 +363,11 @@ function RecycleManager.DoBagItemRecycle(actor)
     local bagitems = getbagitems(actor)
     if bagitems and type(bagitems)=="table" then
         local finalrecycitems = {}
-        for _, singleitem in ipairs(bagitems) do
+        for _, singleitem in ipairs(bagitems) do       
             local bFlag, targitems = RecycleManager.IsItemNeedRecycle(actor, singleitem)
             if bFlag == true then
                local rec = {itemobj = singleitem, recycleitems=targitems} 
-               finalrecycitems[#finalrecycitems+1] = rec               
+               finalrecycitems[#finalrecycitems+1] = rec  
             end
         end
 
@@ -383,14 +384,14 @@ function RecycleManager.DoBagItemRecycle(actor)
 end
 
 --玩家获得道具时触发，自动回收
-function RecycleManager.DoAutoRecycleItem(actor, itemobj)
-    if BF_IsNullObj(actor) or BF_IsNullObj(itemobj) then 
+function RecycleManager.DoAutoRecycleItem(actor, singleitemobj)
+    if BF_IsNullObj(actor) or BF_IsNullObj(singleitemobj) then 
         return
     end
     local finalrecycitems = {}
-    local bFlag, targitems = RecycleManager.IsItemNeedAutoRecycle(actor, itemobj)
+    local bFlag, targitems = RecycleManager.IsItemNeedAutoRecycle(actor, singleitemobj)
     if bFlag == true then    
-       local rec = {itemobj = itemobj, recycleitems=targitems} 
+       local rec = {itemobj = singleitemobj, recycleitems=targitems} 
        finalrecycitems[#finalrecycitems+1] = rec               
     end
     for _, value in ipairs(finalrecycitems) do
@@ -404,9 +405,32 @@ function RecycleManager.DoAutoRecycleItem(actor, itemobj)
     end
 end
 
----------单独做个回收
-------------单独做个回收
-------------单独做个回收
+--单独做个回收给开超级宝箱用
+function RecycleManager.SuperBoxForceRecycleItemList(actor, itemobjlist)
+    if BF_IsNullObj(actor) or (itemobjlist==nil) then 
+        return
+    end
+    if type(itemobjlist)=="table" then
+        local finalrecycitems = {}
+        for _, singleitem in ipairs(itemobjlist) do
+            local bFlag, targitems = RecycleManager.IsItemNeedRecycle(actor, singleitem)
+            if bFlag == true then
+               local rec = {itemobj = singleitem, recycleitems=targitems} 
+               finalrecycitems[#finalrecycitems+1] = rec               
+            end
+        end
+        for _, value in ipairs(finalrecycitems) do
+            if not BF_IsNullObj(value.itemobj) then
+                local makeindex = getiteminfo(actor, value.itemobj, CommonDefine.ITEMINFO_UNIQUEID)
+                local itemcount = getiteminfo(actor, value.itemobj, CommonDefine.ITEMINFO_OVERLAP)
+                itemcount = math.max(1, itemcount)
+                delitembymakeindex(actor, makeindex, itemcount, 'opensuperboxrecycle')
+                Player.GiveItemsToBagOrMail(actor, value.recycleitems, '超级宝箱一键回收')
+            end
+        end
+    end
+end
+
 
 GameEventManager.AddListener(CommonDefine.EVENT_NAME_PLAYER_ADDBAGITEM, RecycleManager.DoAutoRecycleItem, CommonDefine.FUNC_ID_RECYCLE_MANAGER)
 

@@ -196,6 +196,23 @@ function Player.DelRedPoint(actor, winid, buttonid)
     end
 end
 
+--检查装备是否装备在身上
+function Player.CheckEquipIsOnBody(actor, itemobj)
+    if BF_IsNullObj(actor) or BF_IsNullObj(itemobj) then
+        return false
+    end
+
+    for i = 1, #CommonDefine.BASE_EQUIPMENT_POS, 1 do
+        local equipitem = linkbodyitem(actor, CommonDefine.BASE_EQUIPMENT_POS[i])
+        if not BF_IsNullObj(equipitem) then
+            if getiteminfo(actor, equipitem, CommonDefine.ITEMINFO_UNIQUEID) == getiteminfo(actor, itemobj, CommonDefine.ITEMINFO_UNIQUEID) then
+               return true 
+            end
+        end
+    end
+    return false
+end
+
 --检查货币数量
 function Player.CheckMoneyNum(actor, moneytype, num)
     local moneynum = querymoney(actor, moneytype)
@@ -685,6 +702,22 @@ function Player.CheckSpeedUpStatus(actor)
 
     changespeedex(actor, 2, nSpeedUp)
     changespeedex(actor, 3, nSpeedUp)
+end
+
+--自定义的道具描述显示
+function Player.ShowItemEx(actor, makeindex)
+    if BF_IsNullObj(actor) or (makeindex==nil) or (makeindex==0) then
+        return
+    end
+
+    local itemobj = getitembymakeindex(actor, makeindex)
+    if BF_IsNullObj(itemobj) then
+        return
+    end
+
+    local itemjson = getitemjsonex(itemobj)
+    local tempstr = [[<ItemShow|x=0.0|y=0.0|width=70|height=70|itemdata=]]..itemjson..[[|showtips=1|bgtype=1|color=250>]]
+    say(actor, tempstr)
 end
 
 --[[

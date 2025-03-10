@@ -23,6 +23,15 @@ CommonDefine = {
     --ITEMID_BAODIFU = 209,   --保底符
 
     --道具的Stdmode
+    ITEM_STDMODE_WEAPON = 5,        --武器
+    ITEM_STDMODE_DRESS = 10,        --衣服
+    ITEM_STDMODE_HELMET = 15,       --头盔
+    ITEM_STDMODE_NECKLACE = 20,     --项链
+    ITEM_STDMODE_RING = 22,         --戒指
+    ITEM_STDMODE_ARMRING = 24,      --手镯
+    ITEM_STDMODE_BOOTS = 62,        --鞋子
+    ITEM_STDMODE_BELT = 64,         --腰带
+    
     ITEM_STDMODE_SOULSTONE = 53,    --魂石的stdmode
 
     --装备位
@@ -239,6 +248,8 @@ CommonDefine = {
     EXTEND_STORAGE_ONCE_NEEDITEMS = {{name='绑定元宝', num=800}},     --扩展一次仓库所需的道具消耗
     SHOW_QUICK_TIP_MIN_LEVEL = 20,                                   --显示快捷提示的最小等级
     DAY_SUPER_BOX_MAX_ADD_NUM = 100,                                 --每天可以获得的超级宝箱的最大数量
+    OPEN_SUPERBOX_SPEEDUP_ONCE_NEEDITEMS = {{name='技能书页', num=10}},   --超级宝箱升级加速一次需要的道具
+    OPEN_SUPERBOX_SPEEDUP_ONCE_ADDSECONDS = 60,                          --超级宝箱升级加速一次对应的秒数
 
 
     --通用的特殊地图内原地复活的消耗，随次数变化
@@ -367,8 +378,10 @@ CommonDefine = {
     ]]--
     VAR_U_SUPER_BOX_TOTAL_NUM = 'U130',         --超级宝箱  保有总数量
     VAR_U_SUPER_BOX_CURR_LV = 'U131',           --超级宝箱  当前等级
-    VAR_U_SUPER_BOX_ONCE_OPEN_NUM = 'U132',     --超级宝箱  一次开几个箱子
-    VAR_U_SUPER_BOX_CHOOSE_CONDITION_1 = 'U133',--超级宝箱  保留宝箱选择的条件1编号 - 品质
+    VAR_U_SUPER_BOX_ONCE_OPEN_NUM = 'U132',     --超级宝箱  一次开几个箱子    
+    VAR_U_SUPER_BOX_START_UPGRADE_TIME = 'U133',--超级宝箱  开始升级的时间
+    VAR_U_SUPER_BOX_CHOOSE_CONDITION_1 = 'U134',--超级宝箱  保留宝箱选择的条件1编号 - 品质
+    
     
     --玩家字符型变量，下线保存 T0 - T254
     VAR_T_EQUIPPOS_STRENGTH_INFO = 'T1',        --玩家的装备位强化信息
@@ -414,7 +427,8 @@ CommonDefine = {
     VAR_Z_DAY_EVERYDAYTASK_REWARD_DATA = 'Z2',          --玩家 每日任务 子任务领奖记录
     
 
-    --玩家的位标记，下线保存  索引【1~800】  200开始
+    --玩家的位标记，下线保存  索引【1~800】  1-99是支持保存的，其它不保存，但要注意原版本已使用的 check [XX]
+    --[[
     VAR_HUM_BITFLAG_USE_XYF = 201,                --祝福是否使用幸运符
     VAR_HUM_BITFLAG_USE_BDF = 202,                --祝福是否使用保底符
     VAR_HUM_BITFLAG_RECYCLE_BAOZHU_1 = 203,       --白色灵珠是否回收
@@ -436,13 +450,6 @@ CommonDefine = {
     VAR_HUM_BITFLAG_FIRSTRECHARGE_REWARD2 = 219,     --首充奖励领取标记2
     VAR_HUM_BITFLAG_FIRSTRECHARGE_REWARD3 = 220,     --首充奖励领取标记3
 
-    VAR_HUM_BITFLAG_RECYCLE_ITEM1_1 = 221,           --白色装备是否回收
-    VAR_HUM_BITFLAG_RECYCLE_ITEM1_2 = 222,           --绿色装备是否回收
-    VAR_HUM_BITFLAG_RECYCLE_ITEM1_3 = 223,           --蓝色装备是否回收
-    VAR_HUM_BITFLAG_RECYCLE_ITEM1_4 = 224,           --紫色装备是否回收
-    VAR_HUM_BITFLAG_RECYCLE_ITEM1_5 = 225,           --粉色装备是否回收
-    VAR_HUM_BITFLAG_RECYCLE_ITEM1_6 = 226,           --金色装备是否回收
-    VAR_HUM_BITFLAG_RECYCLE_ITEM1_7 = 227,           --红色装备是否回收
     VAR_HUM_BITFLAG_RECYCLE_ITEM2_1 = 228,           --白色直升宝石是否回收
     VAR_HUM_BITFLAG_RECYCLE_ITEM2_2 = 229,           --绿色直升宝石是否回收
     VAR_HUM_BITFLAG_RECYCLE_ITEM2_3 = 230,           --蓝色直升宝石是否回收
@@ -450,15 +457,39 @@ CommonDefine = {
     VAR_HUM_BITFLAG_RECYCLE_ITEM2_5 = 232,           --粉色直升宝石是否回收
     VAR_HUM_BITFLAG_RECYCLE_ITEM2_6 = 233,           --金色直升宝石是否回收
     VAR_HUM_BITFLAG_RECYCLE_ITEM2_7 = 234,           --红色直升宝石是否回收
-    VAR_HUM_BITFLAG_ACTIVATED_AUTORECYCLE = 235,     --激活自动回收功能
-    VAR_HUM_BITFLAG_AUTORECYCLE_ITEM1 = 236,         --勾选装备自动回收
-    VAR_HUM_BITFLAG_AUTORECYCLE_ITEM2 = 237,         --勾选直升宝石自动回收
+    
     VAR_HUM_BITFLAG_IS_FIRST_RANDOMBOSS_REWARD = 238,       --是否是第一个战力boss的奖励
     VAR_HUM_BITFLAG_IS_FIRST_RANDOMBOSS_TRIGGER = 239,      --是否是触发的第一个战力boss
 
 
     VAR_HUM_BITFLAG_NEW_PLAYER_INIT_FLAG = 300,     --玩家是否进行新手初始化
     VAR_HUM_BITFLAG_RELIVE_DIALOGUE_FLAG = 301,     --玩家是否当前已有复活框弹出
+    ]]--
+
+    --70
+    --71
+    --74
+    --75
+    --76
+    --77
+    --79
+
+    VAR_HUM_BITFLAG_RECYCLE_ITEM1_1 = 80,           --白色装备是否回收
+    VAR_HUM_BITFLAG_RECYCLE_ITEM1_2 = 81,           --绿色装备是否回收
+    VAR_HUM_BITFLAG_RECYCLE_ITEM1_3 = 82,           --蓝色装备是否回收
+    VAR_HUM_BITFLAG_RECYCLE_ITEM1_4 = 83,           --紫色装备是否回收
+    VAR_HUM_BITFLAG_RECYCLE_ITEM1_5 = 84,           --粉色装备是否回收
+    VAR_HUM_BITFLAG_RECYCLE_ITEM1_6 = 85,           --金色装备是否回收
+    VAR_HUM_BITFLAG_RECYCLE_ITEM1_7 = 86,           --红色装备是否回收 
+    --87
+    --88
+    --89
+    --90
+    
+    --96
+    VAR_HUM_BITFLAG_ACTIVATED_AUTORECYCLE = 97,     --激活自动回收功能
+    VAR_HUM_BITFLAG_AUTORECYCLE_ITEM1 = 98,         --勾选装备自动回收    
+    VAR_HUM_BITFLAG_AUTORECYCLE_ITEM2 = 99,         --勾选直升宝石自动回收
 
     --道具的int变量 1-50
     ITEM_INTVAR_ADDLUCK_LV = 1,                 --道具的祝福等级

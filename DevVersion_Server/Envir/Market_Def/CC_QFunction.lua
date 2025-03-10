@@ -328,6 +328,10 @@ function newrecycle_openpanel(actor)
     RecycleManager.ShowRecycleEnterUI(actor)
 end
 
+function cc_showitemex(actor, makeindex)
+    Player.ShowItemEx(actor, makeindex)
+end
+
 function changename_button(actor, sparam)
     if BF_IsNullObj(actor) or not BF_IsNumberStr(sparam) then
         return

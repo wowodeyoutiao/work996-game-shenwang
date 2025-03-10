@@ -5937,7 +5937,11 @@ BREAK
 CALLLUA CC_QFunction @set_recycle_option,<$STR(S$sid)>
 BREAK
 
-
+[@cc_showitemex]
+#IF
+#ACT
+CALLLUA CC_QFunction @cc_showitemex,<$STR(S$makeindex)>
+BREAK
 
 [@cc_exit_npcsayext]
 #IF

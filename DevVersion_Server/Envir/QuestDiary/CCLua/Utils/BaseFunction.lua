@@ -86,6 +86,15 @@ function BF_GetMinute(t)
     return tonumber(os.date("%M", t));
 end
 
+--根据秒数返回时间字符串
+function BF_ConvertSecondsToTimeStr(seconds)
+    local hours = math.floor(seconds / 3600)
+    local remaining = seconds % 3600
+    local minutes = math.floor(remaining / 60)
+    local secs = remaining % 60
+    return string.format("%02d:%02d:%02d", hours, minutes, secs)
+end
+
 --根据装备名字返回装备位
 function BF_GetEquipPosByNameOrID(nameorid)    
     local stdmode = getstditeminfo(nameorid, CommonDefine.STDITEMINFO_STDMODE)
