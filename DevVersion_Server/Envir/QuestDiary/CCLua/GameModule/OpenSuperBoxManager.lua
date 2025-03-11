@@ -321,22 +321,68 @@ local function OpenUpgradeBoxLevelPanel(actor)
     if levelConfig then
         sNeedItemStr = BF_GetSimpleItemTableDescStr(levelConfig.upgradeneeditems_tab)
     end
-    local strPanel = '<Img|id=2100|children={2102,2101,2103,2104,2105,2106,2107,2108,2109}|x=40|y=-560|img=private/cc_superbox/panel_level.jpg|move=0|reset=1|bg=1|esc=1|show=0>'..
+    local strPanel = '<Img|id=2100|children={2102,2101,2103,2104,2105,2106,2107,2108,2109,2110,2111,2112}|x=40|y=-560|img=private/cc_superbox/panel_level.jpg|move=0|reset=1|bg=1|esc=1|show=0>'..
         '<Layout|id=2102|x=256.0|y=2.0|width=80|height=80|link=@opensuperboxmanager_button#sid='..
         OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_5..'>'..
         '<Button|id=2101|x=257.0|y=0.0|pimg=public/1900000511.png|nimg=public/1900000510.png|link=@opensuperboxmanager_button#sid='..
         OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_5..'>'..
         '<Text|id=2103|x=85.0|y=20.0|color=255|size=20|text=宝箱升级>'..
-        '<Text|id=2104|x=81.0|y=60.0|color=255|size=18|text=当前等级：'..nBoxCurrLv..'>'
-    if nextLevelConfig == nil then
-        strPanel = strPanel..'<Text|id=2106|x=70.0|y=250.0|color=255|size=18|text=已达到最大等级>'
+        '<Text|id=2104|x=60.0|y=50.0|color=255|size=16|text=当前等级:'..nBoxCurrLv..'>'
+    if nextLevelConfig ~= nil then
+        strPanel = strPanel..'<Text|id=2110|x=150.0|y=50.0|color=255|size=16|text=下一等级:'..(nBoxCurrLv+1)..'>'
     else
+        strPanel = strPanel..'<Text|id=2110|x=150.0|y=50.0|color=255|size=16|text=[达到最大等级])>'
+    end
+
+    local strItems = ''
+    local nStartID = 2120
+    for seq, value in ipairs(CommonDefine.ITEM_QUALITY_COLORNAME) do
+        local nLayoutID = nStartID + seq
+        if strItems ~= '' then
+            strItems = strItems..','
+        end
+        strItems = strItems..nLayoutID
+
+        local nTextID1 = nStartID + 10 + seq
+        local nTextID2 = nStartID + 20 + seq
+        local nTextID3 = nStartID + 30 + seq
+        local strTextIDs = nTextID1..','..nTextID2..','..nTextID3
+        strPanel = strPanel..'<Layout|id='..nLayoutID..'|children={'..strTextIDs..'}|width=220|height=20>'..
+            '<Text|id='..nTextID1..'|x=10|y=0|color=255|size=16|text='..value..'品质:>'..
+            '<Text|id='..nTextID2..'|x=90|y=0|color=255|size=16|text=15%>'
+        if nextLevelConfig ~= nil then
+            strPanel = strPanel..'<Text|id='..nTextID3..'|x=180|y=0|color=255|size=16|text=25%>'
+        end
+    end
+
+    if true then
+        local nLayoutID = nStartID
+        if strItems ~= '' then
+            strItems = strItems..','
+        end
+        strItems = strItems..nLayoutID
+        local nTextID1 = nStartID + 10
+        local nTextID2 = nStartID + 20
+        local nTextID3 = nStartID + 30
+        local strTextIDs = nTextID1..','..nTextID2..','..nTextID3
+        strPanel = strPanel..'<Layout|id='..nLayoutID..'|children={'..strTextIDs..'}|width=220|height=20>'..
+            '<Text|id='..nTextID1..'|x=10|y=0|color=255|size=16|text=开箱上限:>'..
+            '<Text|id='..nTextID2..'|x=90|y=0|color=255|size=16|text='..levelConfig.maxopennum..'>'        
+        if nextLevelConfig ~= nil then
+            strPanel = strPanel..'<Text|id='..nTextID3..'|x=180|y=0|color=255|size=16|text='..nextLevelConfig.maxopennum..'>'
+        end
+    end
+
+    strPanel = strPanel..'<ListView|id=2112|children={'..strItems..'}|x=14.0|y=70.0|width=230|height=180|margin=0|direction=1>'
+
+    if nextLevelConfig ~= nil then
         local nStartUpgradeTime = getplaydef(actor, CommonDefine.VAR_U_SUPER_BOX_START_UPGRADE_TIME)
         if nStartUpgradeTime <= 0 then
             local timestr = BF_ConvertSecondsToTimeStr(levelConfig.upgradeneedseconds)
-            strPanel = strPanel..'<Text|id=2105|x=28.0|y=140.0|color=255|size=18|Text=升级耗时:'..timestr..'>'..
-                '<Text|id=2106|x=28.0|y=160.0|color=255|size=18|text=升级消耗：'..sNeedItemStr..'>'..
-                '<Button|id=2107|x=70.0|y=250.0|mimg=private/cc_common/button_1.png|nimg=private/cc_common/button_1.png|size=18|color=255|text=升级|link=@opensuperboxmanager_button#sid='..
+            release_print(timestr)
+            strPanel = strPanel..'<Text|id=2105|x=28.0|y=250.0|color=255|size=18|text=升级耗时：'..timestr..'>'..
+                '<Text|id=2106|x=28.0|y=280.0|color=255|size=18|text=升级消耗：'..sNeedItemStr..'>'..
+                '<Button|id=2107|x=70.0|y=310.0|mimg=private/cc_common/button_1.png|nimg=private/cc_common/button_1.png|size=18|color=255|text=升级|link=@opensuperboxmanager_button#sid='..
                 OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_8..'>'
         else
             local leftseconds = 0
@@ -355,12 +401,12 @@ local function OpenUpgradeBoxLevelPanel(actor)
                 if not Player.CheckItemsEnough(actor, totalneeditems, '') then
                     tempcolor = CSS.NPC_RED
                 end                
-                strPanel = strPanel..'<Text|id=2108|x=28.0|y=140.0|color=255|size=18|text=升级耗时：>'..
-                    '<COUNTDOWN|id=2105|x=120.0|y=140.0|color=255|size=18|showWay=1|time='..leftseconds..'|link=@opensuperboxmanager_button#sid='..
+                strPanel = strPanel..'<Text|id=2108|x=28.0|y=250.0|color=255|size=18|text=升级耗时：>'..
+                    '<COUNTDOWN|id=2105|x=120.0|y=250.0|color=255|size=18|showWay=1|time='..leftseconds..'|link=@opensuperboxmanager_button#sid='..
                     OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_4..'>'..
-                    '<Text|id=2106|x=28.0|y=160.0|color=255|size=18|text=加速消耗：>'..
-                    '<Text|id=2109|x=120.0|y=160.0|color='..tempcolor..'|size=18|text='..sNeedItemStr..'>'..
-                    '<Button|id=2107|x=70.0|y=250.0|mimg=private/cc_common/button_1.png|nimg=private/cc_common/button_1.png|size=18|color=255|text=加速|link=@opensuperboxmanager_button#sid='..
+                    '<Text|id=2106|x=28.0|y=280.0|color=255|size=18|text=加速消耗：>'..
+                    '<Text|id=2109|x=120.0|y=280.0|color='..tempcolor..'|size=18|text='..sNeedItemStr..'>'..
+                    '<Button|id=2107|x=70.0|y=310.0|mimg=private/cc_common/button_1.png|nimg=private/cc_common/button_1.png|size=18|color=255|text=加速|link=@opensuperboxmanager_button#sid='..
                     OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_14..'>'
             end
         end
