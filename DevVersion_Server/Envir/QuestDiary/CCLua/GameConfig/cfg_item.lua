@@ -776,10 +776,10 @@ local config = {
 		effectParam = 0,
 		pickset = 0,
 	},
-	[100] = { 
-		Idx = 100,
+	[1001] = { 
+		Idx = 1001,
 		Name = "º”ÀŸæÌ÷·",
-		StdMode = 44,
+		StdMode = 42,
 		Shape = 0,
 		Weight = 1,
 		Anicount = 0,
@@ -791,7 +791,7 @@ local config = {
 		NeedLevel = 0,
 		Price = 1000,
 		Color = 251,
-		OverLap = 0,
+		OverLap = 99999,
 		Article = 0,
 		Job = 0,
 	},
