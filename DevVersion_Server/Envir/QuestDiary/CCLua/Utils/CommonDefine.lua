@@ -146,6 +146,7 @@ CommonDefine = {
     ITEM_QUALITY_PINK = 4,                --粉色
     ITEM_QUALITY_GOLD = 5,                --金色
     ITEM_QUALITY_RED = 6,                 --红色
+    ITEM_QUALITY_TOP = 7,                 --至尊
 
     ITEM_QUALITY_COLORNAME = {},          --道具的品质颜色名字
 
@@ -680,6 +681,7 @@ CommonDefine.ITEM_QUALITY_COLORNAME = {
     [CommonDefine.ITEM_QUALITY_PINK+1]      = '粉色',
     [CommonDefine.ITEM_QUALITY_GOLD+1]      = '金色',
     [CommonDefine.ITEM_QUALITY_RED+1]       = '红色',
+    [CommonDefine.ITEM_QUALITY_TOP+1]       = '至尊',
 }
 
 --元宝洗炼对应的消耗
