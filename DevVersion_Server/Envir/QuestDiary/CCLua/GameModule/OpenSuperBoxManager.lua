@@ -14,7 +14,6 @@ local OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_10 = 10  --一键回收
 local OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_11 = 11  --选择保留的品质条件
 local OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_12 = 12  --关闭宝箱列表界面
 local OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_13 = 13  --一键穿戴
-local OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_14 = 14  --进行宝箱升级加速
 
 local SELECT_CONDITION_QUALITY_LIST = {
     {showstr='绿色品质以上', minquality=CommonDefine.ITEM_QUALITY_GREEN},
@@ -407,7 +406,7 @@ local function OpenUpgradeBoxLevelPanel(actor)
                     '<Text|id=2106|x=28.0|y=280.0|color=255|size=18|text=加速消耗：>'..
                     '<Text|id=2109|x=120.0|y=280.0|color='..tempcolor..'|size=18|text='..sNeedItemStr..'>'..
                     '<Button|id=2107|x=70.0|y=310.0|mimg=private/cc_common/button_1.png|nimg=private/cc_common/button_1.png|size=18|color=255|text=加速|link=@opensuperboxmanager_button#sid='..
-                    OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_14..'>'
+                    OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_9..'>'
             end
         end
     end
@@ -643,7 +642,7 @@ function OpenSuperBoxManager.DoOperButton(actor, sid, sparam)
     elseif funcid == OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_8 then
         StartUpgradeBoxLevel(actor)
     elseif funcid == OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_9 then
-
+        SpeedupUpgradeBoxLevel(actor)
     elseif funcid == OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_10 then
         QuickRecycleOpenItemList(actor)
     elseif funcid == OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_11 then
@@ -652,9 +651,7 @@ function OpenSuperBoxManager.DoOperButton(actor, sid, sparam)
     elseif funcid == OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_12 then
         CloseOpenBoxItemListPanel(actor)
     elseif funcid == OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_13 then
-        QuickTakeOnBetterEquip(actor)
-    elseif funcid == OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_14 then
-        SpeedupUpgradeBoxLevel(actor)
+        QuickTakeOnBetterEquip(actor)        
     end
 end
 
