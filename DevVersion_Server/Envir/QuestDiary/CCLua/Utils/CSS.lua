@@ -7,6 +7,9 @@ CSS = {
     QUALITY_PINK = 253,
     QUALITY_ORANGE = 116,
     QUALITY_RED = 22,
+    QUALITY_TOP = 146,
+
+    QUALITY_COLOR = {},
     
     --NPCÎÄ±¾ÑÕÉ«
     NPC_WHITE = 161,
@@ -37,6 +40,18 @@ CSS = {
     NPC_TOP_START_Y = 20,    
     NPC_CENTER_START_X = 220,
 }
+
+CSS.QUALITY_COLOR = {
+    [CommonDefine.ITEM_QUALITY_WHITE+1]     = CSS.QUALITY_WHITE,
+    [CommonDefine.ITEM_QUALITY_GREEN+1]     = CSS.QUALITY_GREEN,
+    [CommonDefine.ITEM_QUALITY_BLUE+1]      = CSS.QUALITY_BLUE,
+    [CommonDefine.ITEM_QUALITY_PURPLE+1]    = CSS.QUALITY_PURPLE,
+    [CommonDefine.ITEM_QUALITY_PINK+1]      = CSS.QUALITY_PINK,
+    [CommonDefine.ITEM_QUALITY_GOLD+1]      = CSS.QUALITY_ORANGE,
+    [CommonDefine.ITEM_QUALITY_RED+1]       = CSS.QUALITY_RED,
+    [CommonDefine.ITEM_QUALITY_TOP+1]       = CSS.QUALITY_TOP,
+}
+
 
 function CSS.GetQualityColor(qualitylv)
     if qualitylv == CommonDefine.ITEM_QUALITY_WHITE then

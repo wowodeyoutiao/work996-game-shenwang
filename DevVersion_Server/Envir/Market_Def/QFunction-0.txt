@@ -1179,11 +1179,13 @@ DEC U60 <$STR(N$临时)>
 [@TakeOnEx]
 #CALL [\04人物属性\爆率免伤.txt] @属性刷新EX
 #CALL [\04人物属性\刷新神器等级.txt] @神器等级刷新
+CALLLUA CC_QFunction @takeonex
 
 
 [@TakeOffEx]
 #CALL [\04人物属性\爆率免伤.txt] @属性刷新EX
 #CALL [\04人物属性\刷新神器等级.txt] @神器等级刷新
+CALLLUA CC_QFunction @takeoffex
 
 ; 打开指定窗口 佩戴任何装备都关闭（炼器大师 铁匠功能）
 #IF
@@ -1315,6 +1317,11 @@ ISONMAP KUAFU03
 RANDOMEX 50 100
 #ACT
 STOP
+BREAK
+
+#IF
+#ACT
+CALLLUA CC_QFunction @checkdropuseitems
 BREAK
 
 [@DropBagItemsBefore]
@@ -5612,11 +5619,16 @@ MESSAGEBOX 系统：编辑公共需要领取第六档礼包!
 [@AddBag]
 #CALL [\03自定义按钮\自动使用.TXT] @自动使用
 
+;#IF
+;CHECK [40] 1
+;NOT CHECKBAGSIZE 16
+;#ACT
+;#CALL [\03自定义按钮\装备自动回收.txt] @装备自动回收
+
+;新的装备回收
 #IF
-CHECK [40] 1
-NOT CHECKBAGSIZE 16
 #ACT
-#CALL [\03自定义按钮\装备自动回收.txt] @装备自动回收
+CALLLUA CC_QFunction @addbag,<$NEWBAGITEMID>
 
 [@DeleteTask]
 #IF
@@ -5953,4 +5965,47 @@ BREAK
 #IF
 #ACT
 DELBUTTON 1101 9004
+BREAK
+
+
+[@newmainuibase_openpanel]
+#IF
+#ACT
+CALLLUA CC_QFunction @newmainuibase_openpanel,<$STR(S$sid)>
+BREAK
+
+
+
+[@show_rule_panel]
+#IF
+#ACT
+CALLLUA CC_QFunction @show_rule_panel,<$STR(S$funcid)>
+BREAK
+
+[@show_base_panel]
+#IF
+#ACT
+CALLLUA CC_QFunction @show_base_panel,<$STR(S$funcid)>
+BREAK
+
+[@function_button]
+#IF
+#ACT
+CALLLUA CC_QFunction @function_button,<$STR(S$funcid)>,<$STR(S$sid)>,<$STR(S$param1)>
+BREAK
+
+
+
+
+;回调类的
+[@equippos_star_auto_upgrade]
+#IF
+#ACT
+DELAYGOTO 1000 @equippos_star_auto_upgrade_callback
+BREAK
+
+[@equippos_star_auto_upgrade_callback]
+#IF
+#ACT
+CALLLUA CC_QFunction @equippos_star_auto_upgrade_callback
 BREAK

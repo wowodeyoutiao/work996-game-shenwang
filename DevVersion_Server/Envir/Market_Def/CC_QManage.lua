@@ -32,11 +32,11 @@ function login(actor)
 
     --触发玩家上线的事件监听
     GameEventManager.DoTriggerEvent(CommonDefine.EVENT_NAME_PLAYER_ENTERGAME, actor)
-
---[[
     --检测加速状态
     Player.CheckSpeedUpStatus(actor)        
     recalcabilitys(actor)
+    
+--[[        
     --更新战力信息
     local currpower = Player.GetPlayerPower(actor);
     setplaydef(actor, CommonDefine.VAR_N_LAST_PLAYERPOWER, currpower);

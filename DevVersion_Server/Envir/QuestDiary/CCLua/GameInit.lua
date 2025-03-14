@@ -13,8 +13,8 @@ local function _Includes()
     -- cfg_magic= require("Envir/QuestDiary/CCLua/GameConfig/cfg_magic")
     -- cfg_game_data = require("Envir/QuestDiary/CCLua/GameConfig/cfg_game_data")
 
-    -- cfgEquipPosStrength = require("Envir/QuestDiary/CCLua/GameConfig/cfgEquipPosStrength")
-    -- cfgEquipPosUpgradeStar = require("Envir/QuestDiary/CCLua/GameConfig/cfgEquipPosStar")
+    cfgEquipPosStrength = require("Envir/QuestDiary/CCLua/GameConfig/cfgEquipPosStrength")
+    cfgEquipPosUpgradeStar = require("Envir/QuestDiary/CCLua/GameConfig/cfgEquipPosStar")
     -- cfgWeaponLuck = require("Envir/QuestDiary/CCLua/GameConfig/cfgWeaponLuck")
     cfgRandomABCreate = require("Envir/QuestDiary/CCLua/GameConfig/cfgRandomABCreate")
     cfgRandomABPool = require("Envir/QuestDiary/CCLua/GameConfig/cfgRandomABPool")
@@ -29,7 +29,7 @@ local function _Includes()
     -- cfgRandomBossTriggerPool = require("Envir/QuestDiary/CCLua/GameConfig/cfgRandomBossTriggerPool")
     -- cfgFreeVIP = require("Envir/QuestDiary/CCLua/GameConfig/cfgFreeVIP")
     -- cfgFreeVIPTask = require("Envir/QuestDiary/CCLua/GameConfig/cfgFreeVIPTask")
-    -- cfgFunctionCtrl = require("Envir/QuestDiary/CCLua/GameConfig/cfgFunctionCtrl")
+    cfgFunctionCtrl = require("Envir/QuestDiary/CCLua/GameConfig/cfgFunctionCtrl")
     -- cfgFirstRecharge = require("Envir/QuestDiary/CCLua/GameConfig/cfgFirstRecharge")
     -- cfgActivityNewPlayerRecharge = require("Envir/QuestDiary/CCLua/GameConfig/cfgActivityNewPlayerRecharge")
     -- cfgActivityOpenServer = require("Envir/QuestDiary/CCLua/GameConfig/cfgActivityOpenServer")
@@ -59,7 +59,7 @@ local function _Includes()
     ]]--
 
     -- --UI
-    -- require("Envir/QuestDiary/CCLua/UI/MainUIBase")
+    require("Envir/QuestDiary/CCLua/UI/NewMainUIBase")
     -- require("Envir/QuestDiary/CCLua/UI/TopIcon")
     -- require("Envir/QuestDiary/CCLua/UI/GameCurrencyUI")
 
@@ -72,8 +72,8 @@ local function _Includes()
     -- --GameModule
     -- require("Envir/QuestDiary/CCLua/GameModule/ClientMsgProcess")
     -- require("Envir/QuestDiary/CCLua/GameModule/RechargeManager")
-    -- require("Envir/QuestDiary/CCLua/GameModule/EquipPosStrengthManager")
-    -- require("Envir/QuestDiary/CCLua/GameModule/EquipPosStarManager")    
+    require("Envir/QuestDiary/CCLua/GameModule/EquipPosStrengthManager")
+    require("Envir/QuestDiary/CCLua/GameModule/EquipPosStarManager")    
     -- require("Envir/QuestDiary/CCLua/GameModule/SkillUpgrade")
     -- require("Envir/QuestDiary/CCLua/GameModule/ItemComposeManager")
     -- require("Envir/QuestDiary/CCLua/GameModule/ItemUseManager")
@@ -187,38 +187,38 @@ local function _Includes()
     end        
 
 
-    -- --装备位强化表
-    -- for _, value in pairs(cfgEquipPosStrength) do
-    --     if (value.addprop ~= nil) and (value.addprop ~= '') then    
-    --         value.addprop_tab = BF_Json2Table(value.addprop)
-    --         value.addprop_desctab = BF_GetPropDescTableByJson(value.addprop)
-    --     else
-    --         value.addprop_tab = {}
-    --         value.addprop_desctab = {}
-    --     end
+    --装备位强化表
+    for _, value in pairs(cfgEquipPosStrength) do
+        if (value.addprop ~= nil) and (value.addprop ~= '') then    
+            value.addprop_tab = BF_Json2Table(value.addprop)
+            value.addprop_desctab = BF_GetPropDescTableByJson(value.addprop)
+        else
+            value.addprop_tab = {}
+            value.addprop_desctab = {}
+        end
         
-    --     if (value.needitems ~= nil) and (value.needitems ~= '') then
-    --         value.needitems_tab = BF_Json2Table(value.needitems)
-    --     else
-    --         value.needitems_tab = {}
-    --     end        
-    -- end
+        if (value.needitems ~= nil) and (value.needitems ~= '') then
+            value.needitems_tab = BF_Json2Table(value.needitems)
+        else
+            value.needitems_tab = {}
+        end        
+    end
 
-    -- --装备位升星表
-    -- for _, value in pairs(cfgEquipPosUpgradeStar) do
-    --     if (value.addprop ~= nil) and (value.addprop ~= '') then
-    --         value.addprop_tab = BF_Json2Table(value.addprop)
-    --         value.addprop_desctab = BF_GetPropDescTableByJson(value.addprop)
-    --     else
-    --         value.addprop_tab = {}
-    --         value.addprop_desctab = {}
-    --     end
-    --     if (value.needitems ~= nil) and (value.needitems ~= '') then
-    --         value.needitems_tab = BF_Json2Table(value.needitems)
-    --     else
-    --         value.needitems_tab = {}
-    --     end        
-    -- end 
+    --装备位升星表
+    for _, value in pairs(cfgEquipPosUpgradeStar) do
+        if (value.addprop ~= nil) and (value.addprop ~= '') then
+            value.addprop_tab = BF_Json2Table(value.addprop)
+            value.addprop_desctab = BF_GetPropDescTableByJson(value.addprop)
+        else
+            value.addprop_tab = {}
+            value.addprop_desctab = {}
+        end
+        if (value.needitems ~= nil) and (value.needitems ~= '') then
+            value.needitems_tab = BF_Json2Table(value.needitems)
+        else
+            value.needitems_tab = {}
+        end        
+    end 
     
     -- --装备祝福表
     -- for _, value in pairs(cfgWeaponLuck) do

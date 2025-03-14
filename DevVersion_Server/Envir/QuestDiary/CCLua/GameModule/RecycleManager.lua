@@ -231,10 +231,13 @@ function RecycleManager.SetAutoRecycleOption(actor)
         return
     end
 
+    --[[
+    --取消自动回收的激活逻辑
     if getflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_ACTIVATED_AUTORECYCLE) ~= 1 then
         RecycleManager.ShowActivatedAutoRecyclePanel(actor)
         return
     end
+    ]]--
 
     local recycletype = getplaydef(actor, CommonDefine.VAR_N_CHOOSE_RECYCLE_TYPE)
     local tempvar = getplaydef(actor, AUTO_RECYCLE_CHECKBOX_TEMPVAR)

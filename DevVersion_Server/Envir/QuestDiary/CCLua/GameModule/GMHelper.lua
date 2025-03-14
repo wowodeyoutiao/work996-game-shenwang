@@ -4,7 +4,7 @@ function GMHelper.InitUI(actor)
     --gm ²âÊÔÄ£Ê½
     if getgmlevel(actor) > 0 then
         release_print()
-        addbutton(actor, 104, CommonDefine.ADD_BUTTON_ID_2, '<Button|x=-250|y=-350|nimg=official/top/1900012530.png|link=@gmhelper_openpanel>')
+        addbutton(actor, 104, CommonDefine.ADD_BUTTON_ID_2, '<Button|x=-280|y=-460|nimg=official/top/1900012530.png|link=@gmhelper_openpanel>')
     end
 end
 

@@ -125,9 +125,13 @@ function clicknewtask(actor, taskid)
 end
 
 --道具进背包 这里是异步的
-function addbag(actor, itemobj)
-    --触发玩家道具进背包的事件监听
-    GameEventManager.DoTriggerEvent(CommonDefine.EVENT_NAME_PLAYER_ADDBAGITEM, actor, itemobj)
+function addbag(actor, makeindex)
+    local itemobj = getitembymakeindex(actor, makeindex)
+    --if (not BF_IsNullObj(itemobj)) and (not Player.CheckEquipIsOnBody(actor, itemobj)) then
+    if not BF_IsNullObj(itemobj) then
+        --触发玩家道具进背包的事件监听
+        GameEventManager.DoTriggerEvent(CommonDefine.EVENT_NAME_PLAYER_ADDBAGITEM, actor, itemobj)    
+    end
 end
 
 --进入地图触发
@@ -332,6 +336,10 @@ function cc_showitemex(actor, makeindex)
     Player.ShowItemEx(actor, makeindex)
 end
 
+function newmainuibase_openpanel(actor, sid)
+    NewMainUIBase.OpenPanel(actor, sid)
+end
+
 function changename_button(actor, sparam)
     if BF_IsNullObj(actor) or not BF_IsNumberStr(sparam) then
         return
@@ -356,6 +364,46 @@ function changename_button(actor, sparam)
         close(actor)
     end
 end
+
+--规则说明面板
+function show_rule_panel(actor, sfuncid)    
+    if BF_IsNullObj(actor) or not BF_IsNumberStr(sfuncid) then
+        return
+    end
+    local funcid = tonumber(sfuncid)
+    if funcid == CommonDefine.FUNC_ID_EQUIPPOS_STRENGTH then
+        EquipPosStrengthManager.ShowRulePanel(actor)
+    elseif funcid == CommonDefine.FUNC_ID_EQUIPPOS_STAR then
+        EquipPosStarManager.ShowRulePanel(actor)
+    end
+end
+
+--显示基础面板
+function show_base_panel(actor, sfuncid)
+    if BF_IsNullObj(actor) or not BF_IsNumberStr(sfuncid) then
+        return
+    end
+    local funcid = tonumber(sfuncid)
+    if funcid == CommonDefine.FUNC_ID_EQUIPPOS_STRENGTH then
+        EquipPosStrengthManager.ShowBasePanel(actor)
+    elseif funcid == CommonDefine.FUNC_ID_EQUIPPOS_STAR then
+        EquipPosStarManager.ShowBasePanel(actor)        
+    end
+end
+
+--对应的功能操作
+function function_button(actor, sfuncid, sid, sparam)
+    if BF_IsNullObj(actor) or not BF_IsNumberStr(sfuncid) then
+        return
+    end
+    local funcid = tonumber(sfuncid)    
+    if funcid == CommonDefine.FUNC_ID_EQUIPPOS_STRENGTH then
+        EquipPosStrengthManager.DoOperButton(actor, sid, sparam)
+    elseif funcid == CommonDefine.FUNC_ID_EQUIPPOS_STAR then
+        EquipPosStarManager.DoOperButton(actor, sid, sparam)        
+    end
+end
+
 
 ----------------------------------------------------------------按钮回调函数end--------------------------------------------------------------------------
 
@@ -395,6 +443,11 @@ end
 
 function hide_power_callback(actor)
     delbutton(actor, 108, 998)
+end
+
+function equippos_star_auto_upgrade_callback(actor)
+    EquipPosStarManager.EquipPosAutoUpgradeStar(actor)
+    EquipPosStarManager.ShowBasePanel(actor)
 end
 ----------------------------------------------------------------玩家延迟回调end--------------------------------------------------------------------------
 

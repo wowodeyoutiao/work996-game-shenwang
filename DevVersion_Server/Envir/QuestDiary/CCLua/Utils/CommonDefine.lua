@@ -385,20 +385,20 @@ CommonDefine = {
     
     
     --玩家字符型变量，下线保存 T0 - T254
-    VAR_T_EQUIPPOS_STRENGTH_INFO = 'T1',        --玩家的装备位强化信息
-    VAR_T_EQUIPPOS_UPGRADESTAR_INFO = 'T2',     --玩家的装备位升星信息
-    VAR_T_SOULSTONE_SLOT_INFO = 'T3',           --玩家的魂石槽位信息
-    VAR_T_OFFLINE_REWARD_INFO = 'T4',           --玩家的离线奖励相关信息   
-    VAR_T_COUNTERDATA_TASKLINE1 = 'T5',         --任务1线的计数变量
-    VAR_T_COUNTERDATA_TASKLINE2 = 'T6',         --任务2线的计数变量
-    VAR_T_COUNTERDATA_TASKLINE3 = 'T7',         --任务3线的计数变量
-    VAR_T_NEWPLAYER_SINGLERECHARGE_REWARDDATA = 'T8',    --新人充值返利领奖信息--单充
-    VAR_T_NEWPLAYER_TOTALRECHARGE_REWARDDATA = 'T9',     --新人充值返利领奖信息--累充
-    VAR_T_OPENSERVER_REWARDDATA1 = 'T10',                --开服活动领奖信息--每日活跃
-    VAR_T_OPENSERVER_REWARDDATA2 = 'T11',                --开服活动领奖信息--每周活跃
-    VAR_T_OPENSERVER_REWARDDATA3 = 'T12',                --开服活动领奖信息--等级达标
-    VAR_T_OPENSERVER_REWARDDATA4 = 'T13',                --开服活动领奖信息--战力达标
-    VAR_T_EXTENDGIFT_REWARDDATA = 'T14',                 --进阶礼包领奖信息
+    VAR_T_EQUIPPOS_STRENGTH_INFO = 'T41',        --玩家的装备位强化信息
+    VAR_T_EQUIPPOS_UPGRADESTAR_INFO = 'T42',     --玩家的装备位升星信息
+    VAR_T_SOULSTONE_SLOT_INFO = 'T43',           --玩家的魂石槽位信息
+    VAR_T_OFFLINE_REWARD_INFO = 'T44',           --玩家的离线奖励相关信息   
+    VAR_T_COUNTERDATA_TASKLINE1 = 'T45',         --任务1线的计数变量
+    VAR_T_COUNTERDATA_TASKLINE2 = 'T46',         --任务2线的计数变量
+    VAR_T_COUNTERDATA_TASKLINE3 = 'T47',         --任务3线的计数变量
+    VAR_T_NEWPLAYER_SINGLERECHARGE_REWARDDATA = 'T48',    --新人充值返利领奖信息--单充
+    VAR_T_NEWPLAYER_TOTALRECHARGE_REWARDDATA = 'T49',     --新人充值返利领奖信息--累充
+    VAR_T_OPENSERVER_REWARDDATA1 = 'T50',                --开服活动领奖信息--每日活跃
+    VAR_T_OPENSERVER_REWARDDATA2 = 'T51',                --开服活动领奖信息--每周活跃
+    VAR_T_OPENSERVER_REWARDDATA3 = 'T52',                --开服活动领奖信息--等级达标
+    VAR_T_OPENSERVER_REWARDDATA4 = 'T53',                --开服活动领奖信息--战力达标
+    VAR_T_EXTENDGIFT_REWARDDATA = 'T54',                 --进阶礼包领奖信息
 
     --玩家数字变量，下线保存，0点重置 J0 - J499
     --[[
@@ -446,7 +446,7 @@ CommonDefine = {
     VAR_HUM_BITFLAG_FREEVIP_TASK_DRAWFLAG3 = 214,    --免费VIP任务3 是否领奖
     VAR_HUM_BITFLAG_FREEVIP_TASK_DRAWFLAG4 = 215,    --免费VIP任务4 是否领奖
     VAR_HUM_BITFLAG_FREEVIP_TASK_DRAWFLAG5 = 216,    --免费VIP任务5 是否领奖
-    VAR_HUM_BITFLAG_NPC_TEMP_CHOOSE_FLAG = 217,      --NPC上的临时操作标记
+
     VAR_HUM_BITFLAG_FIRSTRECHARGE_REWARD1 = 218,     --首充奖励领取标记1
     VAR_HUM_BITFLAG_FIRSTRECHARGE_REWARD2 = 219,     --首充奖励领取标记2
     VAR_HUM_BITFLAG_FIRSTRECHARGE_REWARD3 = 220,     --首充奖励领取标记3
@@ -487,7 +487,7 @@ CommonDefine = {
     --89
     --90
     
-    --96
+    VAR_HUM_BITFLAG_NPC_TEMP_CHOOSE_FLAG = 96,      --NPC上的临时操作标记
     VAR_HUM_BITFLAG_ACTIVATED_AUTORECYCLE = 97,     --激活自动回收功能
     VAR_HUM_BITFLAG_AUTORECYCLE_ITEM1 = 98,         --勾选装备自动回收    
     VAR_HUM_BITFLAG_AUTORECYCLE_ITEM2 = 99,         --勾选直升宝石自动回收
@@ -561,6 +561,7 @@ CommonDefine = {
     FUNC_ID_EXTEND_GIFT = 25,                   --进阶礼包
     FUNC_ID_SUPERBOX = 26,                      --超级宝箱
     FUNC_ID_GMHELPER = 27,                      --GM辅助系统
+    FUNC_ID_NEWMAINUI = 28,                     --新主界面
     
 
     --快捷前往

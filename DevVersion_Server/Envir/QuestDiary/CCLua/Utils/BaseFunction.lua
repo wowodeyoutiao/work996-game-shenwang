@@ -51,6 +51,12 @@ function BF_HasDuplicates(table)
     return false -- 没有找到重复，返回false
 end
 
+--保留小数点后几位
+function BF_KeepPointNum(num, decimal_places)
+    local factor = 10 ^ decimal_places
+    return math.floor(num * factor + 0.5) / factor
+end
+
 --将数字转化为显示字符串，对于过万的显示为**万
 function BF_NumToShowStr(num)
     if num == nil then
@@ -59,7 +65,11 @@ function BF_NumToShowStr(num)
 
     local str = ''
     if num >= 10000 then
-        str = ''..math.floor(num / 10000)..'万'
+        if num % 10000 == 0 then
+            str = ''..math.floor(num / 10000)..'万'
+        else
+            str = ''..BF_KeepPointNum(num / 10000, 2)..'万'
+        end        
     else
         str = ''..num
     end
@@ -335,6 +345,7 @@ function BF_NPCSayExt(actor, msg, width, height)
                     "<Layout|x="..(finalwidth-5).."|y=3|width=80|height=80|link=@cc_exit_npcsayext>"..
                     "<Button|x="..(finalwidth-5).."|y=2|nimg=public/1900000510.png|pimg=public/1900000511.png|link=@cc_exit_npcsayext>"..msg;    
     --say(actor, allmsg)
+    delbutton(actor, 1101, CommonDefine.ADD_BUTTON_ID_3)
     addbutton(actor, 1101, CommonDefine.ADD_BUTTON_ID_3, allmsg)
 end
 
@@ -344,6 +355,7 @@ function BF_ShowSpecialUI(actor, msg)
         return
     end    
     --say(actor, msg)
+    delbutton(actor, 1101, CommonDefine.ADD_BUTTON_ID_4)
     addbutton(actor, 1101, CommonDefine.ADD_BUTTON_ID_4, msg)
 end
 

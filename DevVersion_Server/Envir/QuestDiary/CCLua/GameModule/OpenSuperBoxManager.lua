@@ -347,7 +347,7 @@ local function OpenUpgradeBoxLevelPanel(actor)
         local nTextID3 = nStartID + 30 + seq
         local strTextIDs = nTextID1..','..nTextID2..','..nTextID3
         strPanel = strPanel..'<Layout|id='..nLayoutID..'|children={'..strTextIDs..'}|width=220|height=20>'..
-            '<Text|id='..nTextID1..'|x=10|y=0|color=255|size=16|text='..value..'品质:>'..
+            '<Text|id='..nTextID1..'|x=10|y=0|color='..CSS.QUALITY_COLOR[seq]..'|size=16|text='..value..'品质:>'..
             '<Text|id='..nTextID2..'|x=90|y=0|color=255|size=16|text=15%>'
         if nextLevelConfig ~= nil then
             strPanel = strPanel..'<Text|id='..nTextID3..'|x=180|y=0|color=255|size=16|text=25%>'

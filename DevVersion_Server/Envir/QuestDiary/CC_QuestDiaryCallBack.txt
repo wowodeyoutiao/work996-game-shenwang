@@ -1,0 +1,7 @@
+;delaygoto 回调类的
+[@equippos_star_auto_upgrade]
+#IF
+#ACT
+SENDMSG 9 AABBCCDDEEFF
+CALLLUA CC_QFunction @equippos_star_auto_upgrade_callback
+BREAK
