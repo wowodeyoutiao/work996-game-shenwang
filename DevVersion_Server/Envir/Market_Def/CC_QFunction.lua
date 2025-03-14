@@ -62,10 +62,12 @@ function playlevelup(actor)
 end
 
 -- 穿戴装备触发
-function takeonex(actor, equipitem, pos, itemname, makeindex)
-    if (actor == nil) or (equipitem == nil) or (pos == nil) then
+--function takeonex(actor, equipitem, pos, itemname, makeindex)
+function takeonex(actor, spos, smakeindex)
+    if (actor == nil) or not BF_IsNumberStr(smakeindex) or not BF_IsNumberStr(spos) then
         return
-    end
+    end    
+    local pos = tonumber(spos)
     --根据装备位的强化等级 更新当前穿戴装备强化属性
     EquipPosStrengthManager.UpdateEquipStrengthLvInPos(actor, pos)    
     --根据装备位的星级 更新当前穿戴装备星级及属性 注意：强化在升星前
@@ -75,10 +77,14 @@ function takeonex(actor, equipitem, pos, itemname, makeindex)
 end
 
 -- 脱下装备触发
-function takeoffex(actor, equipitem, pos, itemname, makeindex)
-    if (actor == nil) or (equipitem == nil) or (pos == nil) then
+--function takeoffex(actor, equipitem, pos, itemname, makeindex)
+function takeoffex(actor, spos, smakeindex)
+    if (actor == nil) or not BF_IsNumberStr(smakeindex) or not BF_IsNumberStr(spos) then
         return
     end
+    local pos = tonumber(spos)
+    local makeindex = tonumber(smakeindex)
+    local equipitem = getitembymakeindex(actor, makeindex)
     --清空脱掉装备的强化属性
     EquipPosStrengthManager.ClearEquipStrengthLv(actor, equipitem, pos)    
     --清空脱掉装备的星级属性
@@ -429,7 +435,7 @@ function update_power_callback(actor)
     if lastpower ~= currpower then
         local diffpower = currpower - lastpower
         setplaydef(actor, CommonDefine.VAR_N_LAST_PLAYERPOWER, currpower)
-        Player.SendSelfMsg(actor, '当前战力:'..currpower, CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+        --Player.SendSelfMsg(actor, '当前战力:'..currpower, CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
         InnerUpdatePowerShow(actor)    
         if (diffpower > 0) and (lastpower > 0) then
             local showstr = '+'..diffpower

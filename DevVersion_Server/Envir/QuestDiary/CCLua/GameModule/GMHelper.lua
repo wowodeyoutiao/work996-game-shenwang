@@ -3,7 +3,6 @@ GMHelper = {}
 function GMHelper.InitUI(actor)
     --gm 测试模式
     if getgmlevel(actor) > 0 then
-        release_print()
         addbutton(actor, 104, CommonDefine.ADD_BUTTON_ID_2, '<Button|x=-280|y=-460|nimg=official/top/1900012530.png|link=@gmhelper_openpanel>')
     end
 end
@@ -20,7 +19,10 @@ function GMHelper.OpenPanel(actor)
         '<Button|x=40|y=180|nimg=public/bg_hhzy_01_3.png|text=增加8w魔法|color=253|link=@gmhelper_button#sid1=1005>'..
         '<Button|x=40|y=210|nimg=public/bg_hhzy_01_3.png|text=增加8w道术|color=253|link=@gmhelper_button#sid1=1006>'..
         '<Button|x=40|y=240|nimg=public/bg_hhzy_01_3.png|text=100w金币10w元宝10w绑元|link=@gmhelper_button#sid1=2>'..
-        '<Button|x=40|y=270|nimg=public/bg_hhzy_01_3.png|text=等级设置60|link=@gmhelper_button#sid1=1007>'
+        '<Button|x=40|y=270|nimg=public/bg_hhzy_01_3.png|text=等级设置60|link=@gmhelper_button#sid1=1007>'..
+
+        '<Button|x=200|y=30|nimg=public/bg_hhzy_01_3.png|text=清空装备位强化|link=@gmhelper_button#sid1=1008>'..
+        '<Button|x=200|y=60|nimg=public/bg_hhzy_01_3.png|text=清空装备位星级|link=@gmhelper_button#sid1=1009>'
     --[[                              
         '<Button|x=40|y=90|nimg=public/bg_hhzy_01_3.png|text=给五星魂石|link=@gmhelper_button,3>'..
         '<Button|x=40|y=120|nimg=public/bg_hhzy_01_3.png|text=无敌|link=@gmhelper_button,4>'..
@@ -304,7 +306,17 @@ function GMHelper.DoGmOper(actor, sid)
         recalcabilitys(actor)  
     elseif sid == '1007' then
         changelevel(actor, '=', 60)
-        Player.FullHPMP(actor)           
+        Player.FullHPMP(actor)   
+    elseif sid == '1008' then
+        setplaydef(actor, CommonDefine.VAR_T_EQUIPPOS_STRENGTH_INFO, '')
+        for i = 1, #CommonDefine.BASE_EQUIPMENT_POS, 1 do
+            EquipPosStrengthManager.ClearEquipStrengthLvInPos(actor, CommonDefine.BASE_EQUIPMENT_POS[i])
+        end        
+    elseif sid == '1009' then
+        setplaydef(actor, CommonDefine.VAR_T_EQUIPPOS_UPGRADESTAR_INFO, '')
+        for i = 1, #CommonDefine.BASE_EQUIPMENT_POS, 1 do
+            EquipPosStarManager.ClearEquipStarLvInPos(actor, CommonDefine.BASE_EQUIPMENT_POS[i])
+        end  
     end   
 end
 

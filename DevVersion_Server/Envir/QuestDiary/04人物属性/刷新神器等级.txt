@@ -1,0 +1,381 @@
+[@神器等级刷新]
+{
+#IF
+#ACT
+DELBUFF 71008
+DELBUFF 71009
+DELBUFF 71010
+DELBUFF 71011
+DELBUFF 71012
+DELBUFF 71013
+DELBUFF 71014
+DELBUFF 71015
+DELBUFF 71016
+DELBUFF 71017
+DELBUFF 71018
+DELBUFF 71019
+DELBUFF 71020
+DELBUFF 71021
+DELBUFF 71022
+CHANGESPEED 1 0
+MOV S$BUFFNAME1
+MOV S$BUFFNAME2
+MOV S$BUFFNAME3
+MOV N$武器等级 0
+MOV N$钻石等级 0
+MOV N$盾牌等级 0
+MOV N$鲜花等级 0
+MOV N$勋章等级 0
+MOV N$心心等级 0
+
+MOV N$复活概率 0
+MOV N$复活冷却 0
+MOV N$蛛网概率 0
+MOV N$蛛网冷却 0
+MOV N$禁锢概率 0
+MOV N$禁锢冷却 0
+MOV N$鞭尸概率 0
+MOV N$掠夺概率 0
+MOV N$电击概率 0
+MOV N$电击冷却 0
+MOV N$电击伤害 0
+MOV N$奇遇次数 0
+
+MOV S$神石 <$DRUM>
+MOV S$钻石 <$CHARM>
+MOV S$盾牌 <$SHIELD>
+MOV S$鲜花 <$HORSE>
+MOV S$勋章 <$RIGHTHAND>
+MOV S$心心 <$BUJUK>
+
+MOV N$神石等级 <$cfg_特殊BUFF配置(<$GetTypeBRow(cfg_特殊BUFF配置,0,<$STR(S$神石)>)>_4)>
+MOV N$钻石等级 <$cfg_特殊BUFF配置(<$GetTypeBRow(cfg_特殊BUFF配置,0,<$STR(S$钻石)>)>_4)>
+MOV N$盾牌等级 <$cfg_特殊BUFF配置(<$GetTypeBRow(cfg_特殊BUFF配置,0,<$STR(S$盾牌)>)>_4)>
+MOV N$鲜花等级 <$cfg_特殊BUFF配置(<$GetTypeBRow(cfg_特殊BUFF配置,0,<$STR(S$鲜花)>)>_4)>
+MOV N$勋章等级 <$cfg_特殊BUFF配置(<$GetTypeBRow(cfg_特殊BUFF配置,0,<$STR(S$勋章)>)>_4)>
+MOV N$心心等级 <$cfg_特殊BUFF配置(<$GetTypeBRow(cfg_特殊BUFF配置,0,<$STR(S$心心)>)>_4)>
+
+MOV N$复活概率 <$cfg_特殊BUFF配置(<$GetTypeBRow(cfg_特殊BUFF配置,0,<$STR(S$神石)>)>_1)>
+MOV N$鞭尸概率 <$cfg_特殊BUFF配置(<$GetTypeBRow(cfg_特殊BUFF配置,0,<$STR(S$钻石)>)>_1)>
+MOV N$蛛网概率 <$cfg_特殊BUFF配置(<$GetTypeBRow(cfg_特殊BUFF配置,0,<$STR(S$盾牌)>)>_1)>
+MOV N$电击概率 <$cfg_特殊BUFF配置(<$GetTypeBRow(cfg_特殊BUFF配置,0,<$STR(S$鲜花)>)>_1)>
+MOV N$禁锢概率 <$cfg_特殊BUFF配置(<$GetTypeBRow(cfg_特殊BUFF配置,0,<$STR(S$勋章)>)>_1)>
+MOV N$掠夺概率 <$cfg_特殊BUFF配置(<$GetTypeBRow(cfg_特殊BUFF配置,0,<$STR(S$心心)>)>_1)>
+
+MOV N$复活冷却 <$cfg_特殊BUFF配置(<$GetTypeBRow(cfg_特殊BUFF配置,0,<$STR(S$神石)>)>_2)>
+MOV N$蛛网冷却 <$cfg_特殊BUFF配置(<$GetTypeBRow(cfg_特殊BUFF配置,0,<$STR(S$盾牌)>)>_2)>
+MOV N$电击冷却 <$cfg_特殊BUFF配置(<$GetTypeBRow(cfg_特殊BUFF配置,0,<$STR(S$鲜花)>)>_2)>
+MOV N$禁锢冷却 <$cfg_特殊BUFF配置(<$GetTypeBRow(cfg_特殊BUFF配置,0,<$STR(S$勋章)>)>_2)>
+
+MOV N$电击伤害 <$cfg_特殊BUFF配置(<$GetTypeBRow(cfg_特殊BUFF配置,0,<$STR(S$鲜花)>)>_3)>
+
+
+; 帝王令鞭尸
+#IF
+CHECK [8] 1
+#ACT
+INC N$鞭尸概率 10
+
+; 读取强化BUFF的爆率/移动速度
+#IF
+CHECKSOCKETABLEITEM 1 0 N$BUFFIDX1 S$BUFFNAME1
+#ACT
+INC N$鞭尸概率 <$cfg_强化BUFF配置(<$GetTypeBRow(cfg_强化BUFF配置,0,<$STR(S$BUFFNAME1)>)>_8)>
+INC N$奇遇次数 <$cfg_强化BUFF配置(<$GetTypeBRow(cfg_强化BUFF配置,0,<$STR(S$BUFFNAME1)>)>_10)>
+#IF
+CHECKSOCKETABLEITEM 1 1 N$BUFFIDX2 S$BUFFNAME2
+#ACT
+INC N$鞭尸概率 <$cfg_强化BUFF配置(<$GetTypeBRow(cfg_强化BUFF配置,0,<$STR(S$BUFFNAME2)>)>_8)>
+INC N$奇遇次数 <$cfg_强化BUFF配置(<$GetTypeBRow(cfg_强化BUFF配置,0,<$STR(S$BUFFNAME2)>)>_10)>
+#IF
+CHECKSOCKETABLEITEM 1 2 N$BUFFIDX3 S$BUFFNAME3
+#ACT
+INC N$鞭尸概率 <$cfg_强化BUFF配置(<$GetTypeBRow(cfg_强化BUFF配置,0,<$STR(S$BUFFNAME3)>)>_8)>
+INC N$奇遇次数 <$cfg_强化BUFF配置(<$GetTypeBRow(cfg_强化BUFF配置,0,<$STR(S$BUFFNAME3)>)>_10)>
+
+; 移动速度
+#OR
+EQUAL S$BUFFNAME1 迅捷3
+EQUAL S$BUFFNAME2 迅捷3
+EQUAL S$BUFFNAME3 迅捷3
+#ACT
+CHANGESPEED 1 1
+
+
+; 给角色挂载BUFF（根据BUFF分组，互斥）
+#IF
+LARGE <$cfg_强化BUFF配置(<$GetTypeBRow(cfg_强化BUFF配置,0,<$STR(S$BUFFNAME1)>)>_13)> 0
+#ACT
+ADDBUFF <$cfg_强化BUFF配置(<$GetTypeBRow(cfg_强化BUFF配置,0,<$STR(S$BUFFNAME1)>)>_13)>
+#IF
+LARGE <$cfg_强化BUFF配置(<$GetTypeBRow(cfg_强化BUFF配置,0,<$STR(S$BUFFNAME2)>)>_13)> 0
+#ACT
+ADDBUFF <$cfg_强化BUFF配置(<$GetTypeBRow(cfg_强化BUFF配置,0,<$STR(S$BUFFNAME2)>)>_13)>
+#IF
+LARGE <$cfg_强化BUFF配置(<$GetTypeBRow(cfg_强化BUFF配置,0,<$STR(S$BUFFNAME3)>)>_13)> 0
+#ACT
+ADDBUFF <$cfg_强化BUFF配置(<$GetTypeBRow(cfg_强化BUFF配置,0,<$STR(S$BUFFNAME3)>)>_13)>
+
+
+#IF
+NOT EQUAL <$WEAPON>
+#ACT
+GetDBItemFieldValue <$WEAPON> Needlevel N$武器等级
+
+
+#IF
+#ACT
+DELAYGOTO 10 @刀魂数量刷新
+DELAYGOTO 10 @BUFF状态ICON
+
+#IF
+NOT CHECKKUAFU
+#ACT
+DELAYGOTO 10 @刷新角色等级
+
+
+
+[@修正冷却时间]
+#OR
+SMALL N$冷却<$STR(N1)> 0
+LARGE N$冷却<$STR(N1)> 99999
+#ACT
+MOV U7<$STR(N1)> 0
+MOV N$冷却<$STR(N1)> 0
+
+[@BUFF状态ICON]
+#IF
+; 重新计算冷却时间
+#ACT
+MOV N1 0
+while N1 < 5
+MOV N$冷却<$STR(N1)> <$STR(U7<$STR(N1)>)>
+DEC N$冷却<$STR(N1)> <$UTCNOW8>
+GOTO @修正冷却时间
+INC N1 1
+endwhile
+
+#IF
+Equal <$CLIENTFLAG> 1
+#ACT
+MOV S$BUFF_ICON <ListView|children={20000,21000,22000,23000,24000,25000,26000}|x=230|y=5|width=330|height=60|direction=2|bounce=0|margin=1|reload=0>
+INC S$BUFF_ICON <Layout|id=20000|x=0|y=0|width=10|height=10|color=X>
+#IF
+Equal <$CLIENTFLAG> 2
+#ACT
+MOV S$BUFF_ICON <ListView|children={20000,21000,22000,23000,24000,25000,26000}|x=265|y=35|width=330|height=60|direction=2|bounce=0|margin=1|reload=0>
+INC S$BUFF_ICON <Layout|id=20000|x=0|y=0|width=10|height=10|color=X>
+
+; 复活BUFF
+#IF
+LARGE N$冷却1 0
+LARGE N$复活概率 0
+#ACT
+MOV S$BUFF描述 复活概率:<$STR(N$复活概率)>%\复活冷却:<$STR(N$复活冷却)>S
+INC S$BUFF_ICON <Layout|id=21000|children={21001}|x=0|y=0|width=40|height=40|color=X>
+INC S$BUFF_ICON <Img|id=21001|children={21002}|tips=<$STR(S$BUFF描述)>|tipsy=50|x=0|y=0|img=custom/bufficon/000441.png|grey=1>
+INC S$BUFF_ICON <COUNTDOWN|a=4|id=21002|x=15|y=30|time=<$STR(N$冷却1)>|count=1|size=14|color=250|outline=1|link=@复活计时结束>
+
+#IF
+SMALL N$冷却1 1
+LARGE N$复活概率 0
+#ACT
+MOV S$BUFF描述 复活概率:<$STR(N$复活概率)>%\复活冷却:<$STR(N$复活冷却)>S
+INC S$BUFF_ICON <Layout|id=21000|children={21001}|x=0|y=0|width=40|height=40|color=X>
+INC S$BUFF_ICON <Img|id=21001|children={21002}|tips=<$STR(S$BUFF描述)>|tipsy=50|x=0|y=0|img=custom/bufficon/000441.png>
+INC S$BUFF_ICON <Text|a=4|id=21002|x=15|y=30|color=250|size=14|outline=1|text=复活>
+
+; 蜘蛛网BUFF
+#IF
+LARGE N$冷却2 0
+LARGE N$蛛网概率 0
+#ACT
+MOV S$BUFF描述 蛛网概率:<$STR(N$蛛网概率)>%\蛛网冷却:<$STR(N$蛛网冷却)>S
+INC S$BUFF_ICON <Layout|id=22000|children={22001}|x=0|y=0|width=40|height=40|color=X>
+INC S$BUFF_ICON <Img|id=22001|children={22002}|tips=<$STR(S$BUFF描述)>|tipsy=50|x=0|y=0|img=custom/bufficon/000080.png|grey=1>
+INC S$BUFF_ICON <COUNTDOWN|a=4|id=22002|x=15|y=30|time=<$STR(N$冷却2)>|count=1|size=14|color=250|outline=1|link=@蛛网计时结束>
+
+#IF
+SMALL N$冷却2 1
+LARGE N$蛛网概率 0
+#ACT
+MOV S$BUFF描述 蛛网概率:<$STR(N$蛛网概率)>%\蛛网冷却:<$STR(N$蛛网冷却)>S
+INC S$BUFF_ICON <Layout|id=22000|children={22001}|x=0|y=0|width=40|height=40|color=X>
+INC S$BUFF_ICON <Img|id=22001|children={22002}|tips=<$STR(S$BUFF描述)>|tipsy=50|x=0|y=0|img=custom/bufficon/000080.png>
+INC S$BUFF_ICON <Text|a=4|id=22002|x=15|y=30|color=250|size=14|outline=1|text=蛛网>
+
+; 禁锢BUFF
+#IF
+LARGE N$冷却3 0
+LARGE N$禁锢概率 0
+#ACT
+MOV S$BUFF描述 禁锢概率:<$STR(N$禁锢概率)>%\禁锢冷却:<$STR(N$禁锢冷却)>S
+INC S$BUFF_ICON <Layout|id=23000|children={23001}|x=0|y=0|width=40|height=40|color=X>
+INC S$BUFF_ICON <Img|id=23001|children={23002}|tips=<$STR(S$BUFF描述)>|tipsy=50|x=0|y=0|img=custom/bufficon/000442.png|grey=1>
+INC S$BUFF_ICON <COUNTDOWN|a=4|id=23002|x=15|y=30|time=<$STR(N$冷却3)>|count=1|size=14|color=250|outline=1|link=@禁锢计时结束>
+
+#IF
+SMALL N$冷却3 1
+LARGE N$禁锢概率 0
+#ACT
+MOV S$BUFF描述 禁锢概率:<$STR(N$禁锢概率)>%\禁锢冷却:<$STR(N$禁锢冷却)>S
+INC S$BUFF_ICON <Layout|id=23000|children={23001}|x=0|y=0|width=40|height=40|color=X>
+INC S$BUFF_ICON <Img|id=23001|children={23002}|tips=<$STR(S$BUFF描述)>|tipsy=50|x=0|y=0|img=custom/bufficon/000442.png>
+INC S$BUFF_ICON <Text|a=4|id=23002|x=15|y=30|color=250|size=14|outline=1|text=禁锢>
+
+; 禁锢BUFF
+#IF
+LARGE N$冷却4 0
+LARGE N$电击概率 0
+#ACT
+MOV S$BUFF描述 电击概率:<$STR(N$电击概率)>%\电击冷却:<$STR(N$电击冷却)>S\附加伤害:<$STR(N$电击伤害)>%
+INC S$BUFF_ICON <Layout|id=24000|children={24001}|x=0|y=0|width=40|height=40|color=X>
+INC S$BUFF_ICON <Img|id=24001|children={24002}|tips=<$STR(S$BUFF描述)>|tipsy=50|x=0|y=0|img=custom/bufficon/000029.png|grey=1>
+INC S$BUFF_ICON <COUNTDOWN|a=4|id=24002|x=15|y=30|time=<$STR(N$冷却4)>|count=1|size=14|color=250|outline=1|link=@电击计时结束>
+
+#IF
+SMALL N$冷却4 1
+LARGE N$电击概率 0
+#ACT
+MOV S$BUFF描述 电击概率:<$STR(N$电击概率)>%\电击冷却:<$STR(N$电击冷却)>S\附加伤害:<$STR(N$电击伤害)>%
+INC S$BUFF_ICON <Layout|id=24000|children={24001}|x=0|y=0|width=40|height=40|color=X>
+INC S$BUFF_ICON <Img|id=24001|children={24002}|tips=<$STR(S$BUFF描述)>|tipsy=50|x=0|y=0|img=custom/bufficon/000029.png>
+INC S$BUFF_ICON <Text|a=4|id=24002|x=15|y=30|color=250|size=14|outline=1|text=电击>
+
+; 掠夺BUFF
+#IF
+LARGE N$掠夺概率 0
+#ACT
+MOV S$BUFF描述 掠夺概率:<$STR(N$掠夺概率)>%
+INC S$BUFF_ICON <Layout|id=25000|children={25001}|x=0|y=0|width=40|height=40|color=X>
+INC S$BUFF_ICON <Img|id=25001|children={25002}|tips=<$STR(S$BUFF描述)>|tipsy=50|x=0|y=0|img=custom/bufficon/000026.png>
+INC S$BUFF_ICON <Text|a=4|id=25002|x=15|y=30|color=250|size=14|outline=1|text=掠夺>
+
+
+; 鞭尸BUFF
+#IF
+LARGE N$鞭尸概率 0
+#ACT
+MOV S$BUFF描述 鞭尸概率:<$STR(N$鞭尸概率)>%
+INC S$BUFF_ICON <Layout|id=26000|children={26001}|x=0|y=0|width=40|height=40|color=X>
+INC S$BUFF_ICON <Img|id=26001|children={26002}|tips=<$STR(S$BUFF描述)>|tipsy=50|x=0|y=1|img=custom/bufficon/000437.png>
+INC S$BUFF_ICON <Text|a=4|id=26002|x=15|y=29|color=250|size=14|outline=1|text=鞭尸>
+
+#IF
+#ACT
+ADDBUTTON 101 444444 <$STR(S$BUFF_ICON)>
+
+
+
+[@刀魂数量刷新]
+#IF
+CHECKLEVELEX ? 1
+#ACT
+MOV N$神石刀魂 0
+MOV N$勋章刀魂 0
+MOV N$盾牌刀魂 0
+MOV N$钻石刀魂 0
+MOV N$之心刀魂 0
+MOV N$鲜花刀魂 0
+GetDBItemFieldValue <$DRUM> 	 Price N$神石刀魂
+GetDBItemFieldValue <$RIGHTHAND> Price N$勋章刀魂
+GetDBItemFieldValue <$SHIELD> 	 Price N$盾牌刀魂
+GetDBItemFieldValue <$CHARM> 	 Price N$钻石刀魂
+GetDBItemFieldValue <$BUJUK> 	 Price N$之心刀魂
+GetDBItemFieldValue <$HORSE> 	 Price N$鲜花刀魂
+
+MOV N$装备刀魂 <$STR(U14)>
+INC N$装备刀魂 <$STR(N$神石刀魂)>
+INC N$装备刀魂 <$STR(N$勋章刀魂)>
+INC N$装备刀魂 <$STR(N$盾牌刀魂)>
+INC N$装备刀魂 <$STR(N$钻石刀魂)>
+INC N$装备刀魂 <$STR(N$之心刀魂)>
+INC N$装备刀魂 <$STR(N$鲜花刀魂)>
+
+; 读取强化BUFF的刀魂
+; 上面读取鞭尸的时候获取过1次，这里不用获取了，直接用
+; #IF
+; CHECKSOCKETABLEITEM 1 0 N$BUFFIDX1 S$BUFFNAME1
+; CHECKSOCKETABLEITEM 1 1 N$BUFFIDX2 S$BUFFNAME2
+; CHECKSOCKETABLEITEM 1 2 N$BUFFIDX3 S$BUFFNAME3
+; #ACT
+
+#IF
+NOT EQUAL S$BUFFNAME1
+#ACT
+INC N$装备刀魂 <$cfg_强化BUFF配置(<$GetTypeBRow(cfg_强化BUFF配置,0,<$STR(S$BUFFNAME1)>)>_6)>
+#IF
+NOT EQUAL S$BUFFNAME2
+#ACT
+INC N$装备刀魂 <$cfg_强化BUFF配置(<$GetTypeBRow(cfg_强化BUFF配置,0,<$STR(S$BUFFNAME2)>)>_6)>
+#IF
+NOT EQUAL S$BUFFNAME3
+#ACT
+INC N$装备刀魂 <$cfg_强化BUFF配置(<$GetTypeBRow(cfg_强化BUFF配置,0,<$STR(S$BUFFNAME3)>)>_6)>
+
+; 防止溢出
+#IF
+LARGE N$装备刀魂 500
+#ACT
+MOV N$装备刀魂 100
+
+#IF
+NOT EQUAL U121 <$STR(N$装备刀魂)>
+#ACT
+MOV U121 <$STR(N$装备刀魂)>
+CALCVAR HUMAN 刀魂数 = <$STR(U121)>
+SAVEVAR HUMAN 刀魂数
+
+
+[@刷新角色等级]
+#IF
+#ACT
+MOV N$附加等级 0
+
+; 武器BUFF等级
+#IF
+CHECKSOCKETABLEITEM 1 3 N$BUFFIDX4 S$BUFFNAME4
+#ACT
+DEC S$BUFFNAME4 巅峰
+INC N$附加等级 <$STR(S$BUFFNAME4)>
+
+; 渡劫
+#IF
+CHECKTITLE 黑暗·恐怖深渊
+#ACT
+INC N$附加等级 1
+
+; 转生
+#IF
+CHECKTITLE 地狱·灵魂锁连
+#ACT
+INC N$附加等级 1
+
+; 卧龙圣物10级
+#IF
+CHECKTITLE 混乱·恶魔重生
+#ACT
+INC N$附加等级 1
+
+#IF
+ISADMIN
+#ACT
+;SENDMSG 9 附加等级:<$STR(N$附加等级)>|U125:<$STR(U125)>|SERVERIDX:<$SERVERIDX>|<$LEVEL>
+
+
+
+#IF
+NOT EQUAL N$附加等级 <$STR(U125)>
+#ACT
+FORMULATION <$LEVEL>-<$STR(U125)>+<$STR(N$附加等级)> N$修正等级
+CHANGELEVEL = <$STR(N$修正等级)>
+MOV U125 <$STR(N$附加等级)>
+
+#IF
+EQUAL <$GAMEID> 1
+#ACT
+SENDMSG 6 角色附加等级：<$STR(U125)>
+
+
+
+}

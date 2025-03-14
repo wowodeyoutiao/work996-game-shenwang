@@ -378,7 +378,6 @@ local function OpenUpgradeBoxLevelPanel(actor)
         local nStartUpgradeTime = getplaydef(actor, CommonDefine.VAR_U_SUPER_BOX_START_UPGRADE_TIME)
         if nStartUpgradeTime <= 0 then
             local timestr = BF_ConvertSecondsToTimeStr(levelConfig.upgradeneedseconds)
-            release_print(timestr)
             strPanel = strPanel..'<Text|id=2105|x=28.0|y=250.0|color=255|size=18|text=升级耗时：'..timestr..'>'..
                 '<Text|id=2106|x=28.0|y=280.0|color=255|size=18|text=升级消耗：'..sNeedItemStr..'>'..
                 '<Button|id=2107|x=70.0|y=310.0|mimg=private/cc_common/button_1.png|nimg=private/cc_common/button_1.png|size=18|color=255|text=升级|link=@opensuperboxmanager_button#sid='..

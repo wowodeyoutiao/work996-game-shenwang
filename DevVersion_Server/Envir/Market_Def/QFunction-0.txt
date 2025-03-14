@@ -1179,13 +1179,13 @@ DEC U60 <$STR(N$临时)>
 [@TakeOnEx]
 #CALL [\04人物属性\爆率免伤.txt] @属性刷新EX
 #CALL [\04人物属性\刷新神器等级.txt] @神器等级刷新
-CALLLUA CC_QFunction @takeonex
+CALLLUA CC_QFunction @takeonex,<$CURRTAKETEMPOS>,<$CURRTEMMAKEINDEX>
 
 
 [@TakeOffEx]
 #CALL [\04人物属性\爆率免伤.txt] @属性刷新EX
 #CALL [\04人物属性\刷新神器等级.txt] @神器等级刷新
-CALLLUA CC_QFunction @takeoffex
+CALLLUA CC_QFunction @takeoffex,<$CURRTAKETEMPOS>,<$CURRTEMMAKEINDEX>
 
 ; 打开指定窗口 佩戴任何装备都关闭（炼器大师 铁匠功能）
 #IF

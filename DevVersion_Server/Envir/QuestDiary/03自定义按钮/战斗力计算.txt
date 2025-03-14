@@ -1,7 +1,7 @@
 [@战力计算]
 #IF
 #ACT
-DELAYGOTO 100 @update_power_callback
+;DELAYGOTO 100 @update_power_callback
 BREAK
 
 [@战力计算1]
