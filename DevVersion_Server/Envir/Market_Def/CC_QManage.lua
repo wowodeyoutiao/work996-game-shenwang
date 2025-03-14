@@ -36,15 +36,12 @@ function login(actor)
     Player.CheckSpeedUpStatus(actor)        
     recalcabilitys(actor)
     
---[[        
     --更新战力信息
     local currpower = Player.GetPlayerPower(actor);
-    setplaydef(actor, CommonDefine.VAR_N_LAST_PLAYERPOWER, currpower);
-    Player.SendSelfMsg(actor, '当前战力:'..currpower, CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
-    local str = '<Img|id=5010|children={5011}|x=272|y=30|img=private/cc_mainui/zhanli.png>'..
-        '<Text|id=5011|text='..currpower..'|x=100|y=16|color='..CSS.NPC_WHITE..'|size=25>'
-    addbutton(actor, 101, 999, str)    
-]]--
+    setplaydef(actor, CommonDefine.VAR_N_LAST_PLAYERPOWER, currpower);    
+    local str = '<Effect|x=-550|y=-40|effectid=15001|effecttype=0|scale=0.8>'..
+        '<TextAtlas|x=-460|y=-20|img=public/zhnli_num.png|schar=0|iheight=20|iwidth=13|text='..currpower..'>'
+    addbutton(actor, 108, CommonDefine.ADD_BUTTON_ID_6, str)    
 end
 
 ----------------------------------------------------------------触发回调函数end--------------------------------------------------------------------------

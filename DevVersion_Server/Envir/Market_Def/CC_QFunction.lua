@@ -51,14 +51,14 @@ end
 -- 人物属性改变时触发
 function sendability(actor)
     --延迟展现战力变化，防止短时间触发多次
-    delaygoto(actor, 100, "update_power_callback", 0)
+    --delaygoto(actor, 100, "update_power_callback", 0)
 end
 
 -- 玩家升级触发
 function playlevelup(actor) 
     SkillUpgrade.CheckAutoLearnSkill(actor)
     --延迟展现战力变化，防止短时间触发多次
-    delaygoto(actor, 100, "update_power_callback", 0)    
+    --delaygoto(actor, 100, "update_power_callback", 0)    
 end
 
 -- 穿戴装备触发
@@ -415,11 +415,11 @@ function treasuremap_dig_callback(actor)
 end
 
 local function InnerUpdatePowerShow(actor)
-    delbutton(actor, 101, 999)
+    delbutton(actor, 108, CommonDefine.ADD_BUTTON_ID_6)
     local currpower = Player.GetPlayerPower(actor)
-    local str = '<Img|id=5010|children={5011}|x=272|y=30|img=private/cc_mainui/zhanli.png>'..
-        '<Text|id=5011|text='..currpower..'|x=100|y=16|color='..CSS.NPC_WHITE..'|size=25>'
-    addbutton(actor, 101, 999, str)
+    local str = '<Effect|x=-550|y=-40|effectid=15001|effecttype=0|scale=0.8>'..
+        '<TextAtlas|x=-460|y=-20|img=public/zhnli_num.png|schar=0|iheight=20|iwidth=13|text='..currpower..'>'
+    addbutton(actor, 108, CommonDefine.ADD_BUTTON_ID_6, str)    
 end
 
 function update_power_callback(actor)
@@ -433,16 +433,16 @@ function update_power_callback(actor)
         InnerUpdatePowerShow(actor)    
         if (diffpower > 0) and (lastpower > 0) then
             local showstr = '+'..diffpower
-            local strPanelInfo = '<Img|id=5000|children={5001}|x=220|y=-240|img=private/cc_mainui/zhanli_tip.png>'..
+            local strPanelInfo = '<Img|id=5000|children={5001}|x=-550|y=-100|img=private/cc_mainui/zhanli_tip.png>'..
                 '<Text|id=5001|text='..showstr..'|x=100|y=28|color='..CSS.NPC_LIGHTGREEN..'|size=25>'
-            addbutton(actor, 108, 998, strPanelInfo)
+            addbutton(actor, 108, CommonDefine.ADD_BUTTON_ID_7, strPanelInfo)
             delaygoto(actor, 3000, "hide_power_callback", 0)
         end
     end    
 end
 
 function hide_power_callback(actor)
-    delbutton(actor, 108, 998)
+    delbutton(actor, 108, CommonDefine.ADD_BUTTON_ID_7)
 end
 
 function equippos_star_auto_upgrade_callback(actor)

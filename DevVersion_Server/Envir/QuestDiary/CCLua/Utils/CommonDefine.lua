@@ -614,6 +614,8 @@ CommonDefine = {
     ADD_BUTTON_ID_3 = 9003,                       --NPC大号对话框的buttonid
     ADD_BUTTON_ID_4 = 9004,                       --通用功能对话框的buttonid
     ADD_BUTTON_ID_5 = 9005,                       --超级宝箱的弹出界面 升级和自动设置 共用
+    ADD_BUTTON_ID_6 = 9006,                       --战力显示
+    ADD_BUTTON_ID_7 = 9007,                       --战力变化显示
 }
 
 --装备位对应的名称

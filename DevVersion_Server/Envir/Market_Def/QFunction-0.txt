@@ -3720,6 +3720,13 @@ CHECKLEVELEX = 500
 Gmexecute ReleaseShutup <$USERNAME>
 BREAK
 
+; 新增 回调战力刷新
+#IF
+#ACT
+DELAYGOTO 100 @update_power_callback
+BREAK
+
+
 [@StdModeFunc120]
 #IF
 #ACT
@@ -5712,12 +5719,16 @@ OPENNPCSHOWEX 15 3 2
 ; 属性变化刷新战力
 [@SendAbility]
 ; 刷新战力，20秒
-#IF
-SMALL U64 <$UTCNOW8>
-#ACT
-FORMULATION <$UTCNOW8>+20 U64
-#CALL [\03自定义按钮\战斗力计算.txt] @战力计算
+; #IF
+; SMALL U64 <$UTCNOW8>
+; #ACT
+; FORMULATION <$UTCNOW8>+20 U64
+; #CALL [\03自定义按钮\战斗力计算.txt] @战力计算
 
+#IF
+#ACT
+DELAYGOTO 100 @update_power_callback
+BREAK
 
 
 ; 地图BOSS刷新提示
@@ -6008,4 +6019,24 @@ BREAK
 #IF
 #ACT
 CALLLUA CC_QFunction @equippos_star_auto_upgrade_callback
+BREAK
+
+;实际回调刷新战力
+[@update_power_callback]
+#IF
+#ACT
+CALLLUA CC_QFunction @update_power_callback
+BREAK
+
+;延迟删除战力变化的显示提示
+[@delay_hide_power_callback]
+#IF
+#ACT
+DELAYGOTO 3000 @hide_power_callback
+BREAK
+
+[@hide_power_callback]
+#IF
+#ACT
+CALLLUA CC_QFunction @hide_power_callback
 BREAK

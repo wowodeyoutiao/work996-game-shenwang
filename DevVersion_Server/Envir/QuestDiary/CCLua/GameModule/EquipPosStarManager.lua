@@ -599,7 +599,7 @@ function EquipPosStarManager.EquipPosAutoUpgradeStar(actor, startflag)
         setflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_NPC_TEMP_CHOOSE_FLAG, 1)
         EquipPosUpgradeStarOnce(actor)
         callscript(actor, 'QFunction-0', '@equippos_star_auto_upgrade')
-        --callscriptex(actor, 'DELAYGOTO', 1000, 'CC_QuestDiaryCallBack@equippos_star_auto_upgrade')
+        --callscriptex(actor, 'DELAYGOTO', 1000, '@equippos_star_auto_upgrade')
         --delaygoto(actor, 1000, "equippos_star_auto_upgrade", 0)
     end
 end

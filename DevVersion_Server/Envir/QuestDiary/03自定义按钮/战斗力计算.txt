@@ -1,0 +1,295 @@
+[@战力计算]
+#IF
+#ACT
+DELAYGOTO 100 @update_power_callback
+BREAK
+
+[@战力计算1]
+{
+#IF
+CHECK [72] 1
+#ACT
+CALCVAR HUMAN 战斗力 = 1
+CALCVAR HUMAN 等级数 = 1
+CALCVAR HUMAN 爆率数 = 1
+CALCVAR HUMAN 刀魂数 = 1
+SAVEVAR HUMAN 战斗力
+SAVEVAR HUMAN 等级数
+SAVEVAR HUMAN 爆率数
+SAVEVAR HUMAN 刀魂数
+BREAK
+
+#IF
+#Act
+MOV	N$血量战力 <$MAXHP>
+MOV	N$攻击战力 <$MAXDC>
+MOV N$防御战力 <$MAXAC>
+MOV N$魔御战力 <$MAXMAC>
+MOV N$暴击战力 <$VALUE0>
+MOV N$攻伤战力 <$VALUE1>
+MOV N$减伤战力 <$VALUE2>
+MOV N$魔免战力 <$VALUE3>
+MOV N$忽视战力 <$VALUE4>
+MOV N$反弹战力 <$VALUE5>
+MOV N$爆伤战力 <$VALUE11>
+MOV N$转生战力 <$RELEVEL>
+ 
+DIV N$血量战力 10
+Mul	N$攻击战力 10
+MUL N$防御战力 10
+MUL N$魔御战力 10
+MUL N$暴击战力 1000
+MUL N$攻伤战力 1000
+MUL N$减伤战力 1000
+MUL N$魔免战力 1000
+MUL N$忽视战力 1000
+MUL N$反弹战力 1000
+MUL N$爆伤战力 1000
+MUL N$转生战力 10000
+
+MOV N$战力计算 <$STR(N$血量战力)>
+INC N$战力计算 <$STR(N$攻击战力)>
+INC N$战力计算 <$STR(N$防御战力)>
+INC N$战力计算 <$STR(N$魔御战力)>
+INC N$战力计算 <$STR(N$暴击战力)>
+INC N$战力计算 <$STR(N$攻伤战力)>
+INC N$战力计算 <$STR(N$减伤战力)>
+INC N$战力计算 <$STR(N$魔免战力)>
+INC N$战力计算 <$STR(N$忽视战力)>
+INC N$战力计算 <$STR(N$反弹战力)>
+INC N$战力计算 <$STR(N$爆伤战力)>
+INC N$战力计算 <$STR(N$转生战力)>
+
+delaygoto 100 @全局红点检测
+
+
+#IF
+CHECKTITLE 花魁榜首
+#ACT
+INC N$战力计算 88888
+#IF
+CHECKTITLE 花魁榜二
+#ACT
+INC N$战力计算 30000
+#IF
+CHECKTITLE 花魁榜三
+#ACT
+INC N$战力计算 10000
+
+
+; 战力大于1000万不显示
+#IF
+LARGE N$战力计算 10000000
+#ACT
+get_post_data S$上报数据 {"gcode":"战力预警","gvalue":"<$STR(N$战力计算)>","desc":""}
+HTTPPOST http://211.149.241.27:4473/api/api996/gm_log 0 <$STR(S$上报数据)>
+MOV N$战力计算 0
+
+
+#IF
+NOT EQUAL U120 <$STR(N$战力计算)>
+#ACT
+MOV U120 <$STR(N$战力计算)>
+CALCVAR HUMAN 战斗力 = <$STR(U120)>
+SAVEVAR HUMAN 战斗力
+GOTO @战力刷新显示
+
+
+; --------------------------修改原来为 [@战力刷新显示]
+[@战力刷新显示1]
+#IF
+Equal <$CLIENTFLAG> 2
+#ACT
+MOV S$战斗力显示 <Effect|x=-550|y=-40|effectid=15001|effecttype=0|scale=0.8>
+INC S$战斗力显示 <TextAtlas|x=-460|y=-20|img=public/zhnli_num.png|schar=0|iheight=20|iwidth=13|text=<$STR(U120)>>
+addbutton 108 447 <$STR(S$战斗力显示)>
+BREAK
+
+#IF
+Equal <$CLIENTFLAG> 1
+#ACT
+MOV S$战斗力显示 <Effect|x=-88|y=-172|effectid=15001|effecttype=0|scale=0.8>
+INC S$战斗力显示 <TextAtlas|x=0|y=-152|img=public/zhnli_num.png|schar=0|iheight=20|iwidth=13|text=<$STR(U120)>>
+addbutton 108 447 <$STR(S$战斗力显示)>
+BREAK
+
+
+[@全局红点检测]
+#IF
+#ACT
+MOV N$礼包CHECK 0
+MOV N$礼包398元 0
+MOV N$会员CHECK 0
+
+; 攻略
+#IF
+CHECK [43] 0
+#ACT
+REDDOT 102 6001 55 15
+#ELSEACT
+REDDEL 102 6001
+
+
+; 帝王令红点
+#IF
+CHECK [8] 0
+LARGE J8 1800
+#ACT
+REDDOT 102 6002 55 15
+#ELSEACT
+REDDEL 102 6002
+
+; 畅玩礼包红点 检测礼包码
+#IF
+EQUAL <$GETSTRVALUE(T20,44730)> 0
+#ACT
+MOV N$礼包CHECK 1
+
+; 畅玩礼包红点 检测在线奖励
+#IF
+CHECK [21] 0
+NOT SMALL J8 600
+#ACT
+MOV N$礼包CHECK 1
+#IF
+CHECK [23] 0
+NOT SMALL J8 1800
+#ACT
+MOV N$礼包CHECK 1
+#IF
+CHECK [24] 0
+NOT SMALL J8 3200
+#ACT
+MOV N$礼包CHECK 1
+#IF
+CHECK [25] 0
+NOT SMALL J8 6400
+#ACT
+MOV N$礼包CHECK 1
+#IF
+CHECK [26] 0
+NOT SMALL J8 12800
+#ACT
+MOV N$礼包CHECK 1
+#IF
+CHECK [27] 0
+NOT SMALL J8 19200
+#ACT
+MOV N$礼包CHECK 1
+
+
+#IF
+EQUAL N$礼包CHECK 1
+#ACT
+REDDOT 102 10555 55 15
+#ELSEACT
+REDDEL 102 10555
+
+
+; 每日398红点 检测每日礼包
+#IF
+CHECK [51] 0
+NOT SMALL J0 18
+#ACT
+MOV N$礼包398元 1
+#IF
+CHECK [52] 0
+NOT SMALL J0 38
+#ACT
+MOV N$礼包398元 1
+#IF
+CHECK [53] 0
+NOT SMALL J0 78
+#ACT
+MOV N$礼包398元 1
+#IF
+CHECK [54] 0
+NOT SMALL J0 118
+#ACT
+MOV N$礼包398元 1
+#IF
+CHECK [55] 0
+NOT SMALL J0 268
+#ACT
+MOV N$礼包398元 1
+#IF
+CHECK [56] 0
+NOT SMALL J0 398
+#ACT
+MOV N$礼包398元 1
+
+
+#IF
+EQUAL N$礼包398元 1
+#ACT
+REDDOT 102 6113 55 15
+#ELSEACT
+REDDEL 102 6113
+
+
+; 唯一会员红点
+#IF
+SMALL U3 1
+CHECKMONEY 充值 ? 18
+NOT EQUAL S$会员服务 1
+#ACT
+MOV N$会员CHECK 1
+#IF
+SMALL U3 2
+CHECKMONEY 充值 ? 28
+NOT EQUAL S$会员服务 1
+#ACT
+MOV N$会员CHECK 1
+#IF
+SMALL U3 3
+CHECKMONEY 充值 ? 58
+NOT EQUAL S$会员服务 1
+#ACT
+MOV N$会员CHECK 1
+#IF
+SMALL U3 4
+CHECKMONEY 充值 ? 98
+NOT EQUAL S$会员服务 1
+#ACT
+MOV N$会员CHECK 1
+#IF
+SMALL U3 5
+CHECKMONEY 充值 ? 138
+NOT EQUAL S$会员服务 1
+#ACT
+MOV N$会员CHECK 1
+#IF
+SMALL U3 6
+CHECKMONEY 充值 ? 268
+NOT EQUAL S$会员服务 1
+#ACT
+MOV N$会员CHECK 1
+#IF
+SMALL U3 7
+CHECKMONEY 充值 ? 398
+NOT EQUAL S$会员服务 1
+#ACT
+MOV N$会员CHECK 1
+
+#IF
+EQUAL N$会员CHECK 1
+#ACT
+REDDOT 102 6003 55 15
+#ELSEACT
+REDDEL 102 6003
+
+#IF
+NOT DAYOFWEEK SAT
+NOT DAYOFWEEK SUN
+#ACT
+BREAK
+
+#IF
+LARGE G0 6
+EQUAL <$GETSTRVALUE(T32,免费)>
+#ACT
+REDDOT 102 6116 55 15
+#ELSEACT
+REDDEL 102 6116
+
+}
