@@ -77,9 +77,9 @@ local function _Includes()
     -- require("Envir/QuestDiary/CCLua/GameModule/SkillUpgrade")
     -- require("Envir/QuestDiary/CCLua/GameModule/ItemComposeManager")
     -- require("Envir/QuestDiary/CCLua/GameModule/ItemUseManager")
-    -- require("Envir/QuestDiary/CCLua/GameModule/BaoZhuManager")
+    require("Envir/QuestDiary/CCLua/GameModule/BaoZhuManager")
     -- require("Envir/QuestDiary/CCLua/GameModule/BaoZhuBossManager")
-    -- require("Envir/QuestDiary/CCLua/GameModule/SoulStoneManager")
+    require("Envir/QuestDiary/CCLua/GameModule/SoulStoneManager")
     -- require("Envir/QuestDiary/CCLua/GameModule/GuanZhiManager")
     -- require("Envir/QuestDiary/CCLua/GameModule/OfflineHuWeiManager")
     -- require("Envir/QuestDiary/CCLua/GameModule/MoFangZhenManager")
@@ -289,16 +289,16 @@ local function _Includes()
     --     end      
     -- end
 
-    -- --»êÊ¯î¿°í
-    -- for _, value in pairs(SoulStoneManager.JI_BAN_CFG_INFO) do
-    --     if value.addprop_tab ~= nil then
-    --         value.addprop_desctab = BF_GetPropDescTableByTab(value.addprop_tab)
-    --         value.addprop_abstr = BF_GetAbilityStrByABTab(value.addprop_tab)
-    --     else
-    --         value.addprop_desctab = {}
-    --         value.addprop_abstr = ''
-    --     end
-    -- end
+    --»êÊ¯î¿°í
+    for _, value in pairs(SoulStoneManager.JI_BAN_CFG_INFO) do
+        if value.addprop_tab ~= nil then
+            value.addprop_desctab = BF_GetPropDescTableByTab(value.addprop_tab)
+            value.addprop_abstr = BF_GetAbilityStrByABTab(value.addprop_tab)
+        else
+            value.addprop_desctab = {}
+            value.addprop_abstr = ''
+        end
+    end
 
     -- --¹ÙÖ°
     -- for _, value in pairs(cfgGuanZhi) do
@@ -485,5 +485,4 @@ function UIncludes()
     if errinfo then
         release_print("UIncludes", errinfo)
     end
-    --release_print(100000000)
 end

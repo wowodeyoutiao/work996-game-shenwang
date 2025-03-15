@@ -267,9 +267,6 @@ CommonDefine = {
 
     --玩家数字变量，下线不保存 N0 - N99
 --[[
-    VAR_N_CHOOSE_ITEM_MAKEIDX = 'N14',          --玩家选择的背包中的道具makeidx
-    VAR_N_CURR_NPC_DATA_PAGE1 = 'N15',          --玩家当前的NPC数据中的页数
-    VAR_N_SOULSTONE_JBLEVEL = 'N16',            --玩家魂石羁绊等级
     VAR_N_CURR_DYNNPC_GROUPID = 'N17',          --玩家魂当前的动态NPC的组ID
     VAR_N_CURR_RANDOMBOSS_FIGHTING_ID = 'N18',  --玩家当前触发的随机BOSS的挑战ID
     VAR_N_LAST_OPER_TIME1 = 'N19',              --玩家上一次操作的时间记录1   用于处理一些需要操作短时间冷却的  几秒钟的CD
@@ -277,10 +274,7 @@ CommonDefine = {
     VAR_U_CURR_TASKLINEID = 'N22',              --当前打开的任务对话对应的tasklineid  
     
     VAR_N_COMMON_LOCAL_RELIVE_TIMES = 'N28',    --通用原地复活次数
-    VAR_N_SELECT_COMPOSE_PILE_NUM = 'N29',      --合成可叠加道具时，选择的单个合成数量
-    VAR_N_NPC_TEMPPARAM1 = 'N30',               --玩家NPC操作的参数1
-    VAR_N_CHOOSE_OPER_TYPE = 'N31',             --玩家选择的操作类型  通用的临时变量 例如选择技能升级还是技能强化    
-    VAR_N_ITEM_COMPOSE_CHOOSE_ITEM1 = 'N34',    --玩家道具合成时，选择的第一件合成物品，每次使用需检测
+
 ]]--    
 
     VAR_N_NPC_CHECKBOX_1 = 'N51',                --玩家NPC对话框中的第一个CheckBox选项
@@ -302,6 +296,13 @@ CommonDefine = {
     VAR_N_LAST_NPC_CHOOSEID = 'N67',            --玩家最近一次NPC选择的id    
     VAR_N_LAST_ATTACK_MODE = 'N68',             --保存玩家当前的攻击模式
     VAR_N_CHOOSE_RECYCLE_TYPE = 'N69',          --玩家选择的回收类型
+    VAR_N_CHOOSE_ITEM_MAKEIDX = 'N70',          --玩家选择的背包中的道具makeidx
+    VAR_N_CURR_NPC_DATA_PAGE1 = 'N71',          --玩家当前的NPC数据中的页数
+    VAR_N_SOULSTONE_JBLEVEL = 'N72',            --玩家魂石羁绊等级    
+    VAR_N_NPC_TEMPPARAM1 = 'N73',               --玩家NPC操作的参数1
+    VAR_N_SELECT_COMPOSE_PILE_NUM = 'N74',      --合成可叠加道具时，选择的单个合成数量    
+    VAR_N_CHOOSE_OPER_TYPE = 'N75',             --玩家选择的操作类型  通用的临时变量 例如选择技能升级还是技能强化    
+    VAR_N_ITEM_COMPOSE_CHOOSE_ITEM1 = 'N76',    --玩家道具合成时，选择的第一件合成物品，每次使用需检测    
 
     --玩家字符型变量，下线不保存 S0 - S99
     --[[

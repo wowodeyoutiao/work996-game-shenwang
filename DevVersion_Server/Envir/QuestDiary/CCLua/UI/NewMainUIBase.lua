@@ -44,7 +44,13 @@ function NewMainUIBase.OpenPanel(actor, sid)
     elseif sid == UI_ICON_BAOZHU then
         
     elseif sid == UI_ICON_SOULSTONE then
-        
+        if not Player.IsFunctionOpen(actor, CommonDefine.FUNC_ID_SOUL_STONE, true) then
+            return
+        end
+        setplaydef(actor, CommonDefine.VAR_N_LAST_NPC_CHOOSEID, -1)
+        setplaydef(actor, CommonDefine.VAR_N_CHOOSE_ITEM_MAKEIDX, 0)        --清空选择的道具
+        setplaydef(actor, CommonDefine.VAR_N_CURR_NPC_DATA_PAGE1, 1)        --设置数据页面编号为1    
+        SoulStoneManager.ShowBasePanel(actor)
     elseif sid == UI_ICON_GUANZHI then
         
     elseif sid == UI_ICON_HUWEI then

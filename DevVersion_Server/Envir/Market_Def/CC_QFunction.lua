@@ -381,6 +381,8 @@ function show_rule_panel(actor, sfuncid)
         EquipPosStrengthManager.ShowRulePanel(actor)
     elseif funcid == CommonDefine.FUNC_ID_EQUIPPOS_STAR then
         EquipPosStarManager.ShowRulePanel(actor)
+    elseif funcid == CommonDefine.FUNC_ID_SOUL_STONE then
+        SoulStoneManager.ShowRulePanel(actor)        
     end
 end
 
@@ -394,6 +396,8 @@ function show_base_panel(actor, sfuncid)
         EquipPosStrengthManager.ShowBasePanel(actor)
     elseif funcid == CommonDefine.FUNC_ID_EQUIPPOS_STAR then
         EquipPosStarManager.ShowBasePanel(actor)        
+    elseif funcid == CommonDefine.FUNC_ID_SOUL_STONE then
+        SoulStoneManager.ShowBasePanel(actor)         
     end
 end
 
@@ -407,6 +411,8 @@ function function_button(actor, sfuncid, sid, sparam)
         EquipPosStrengthManager.DoOperButton(actor, sid, sparam)
     elseif funcid == CommonDefine.FUNC_ID_EQUIPPOS_STAR then
         EquipPosStarManager.DoOperButton(actor, sid, sparam)        
+    elseif funcid == CommonDefine.FUNC_ID_SOUL_STONE then
+        SoulStoneManager.DoOperButton(actor, sid, sparam)         
     end
 end
 
