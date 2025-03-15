@@ -107,17 +107,21 @@ function checkdropuseitems(actor, pos, itemidx)
 end
 
 --穿戴前触发 针对魂石的处理
-function takeonbefore12(actor, itemobj)
-    if not BF_IsNullObj(actor) and not BF_IsNullObj(itemobj) then
-        local itemidx = getiteminfo(actor, itemobj, CommonDefine.ITEMINFO_ITEMIDX)
-        local stdmode = getstditeminfo(itemidx, CommonDefine.STDITEMINFO_STDMODE)
-        if stdmode == CommonDefine.ITEM_STDMODE_SOULSTONE then
-            Player.QuickGoTo(actor, CommonDefine.QUICK_GOTO_SOULSTONE)
-            Player.SendSelfMsg(actor, '请在魂石大师处进行魂石穿戴！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
-            return false
+--function takeonbefore12(actor, itemobj)
+function takeonbefore12(actor, makeindx)
+    if not BF_IsNullObj(actor) and (makeindx ~= nil) then
+        local itemobj = getitembymakeindex(actor, makeindx)
+        if not BF_IsNullObj(makeindx) then
+            local itemidx = getiteminfo(actor, itemobj, CommonDefine.ITEMINFO_ITEMIDX)
+            local stdmode = getstditeminfo(itemidx, CommonDefine.STDITEMINFO_STDMODE)
+            if stdmode == CommonDefine.ITEM_STDMODE_SOULSTONE then
+                Player.SendSelfMsg(actor, '请在魂石系统中穿戴！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+                SoulStoneManager.ShowBasePanel(actor)
+                return false
+            end            
         end
     end
-    return true
+    return false
 end
 
 -- 点击NPC

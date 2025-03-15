@@ -1229,6 +1229,13 @@ BREAK
 
 [@TakeOff9]
 
+;---------ªÍ Ø
+[@TakeOnBefore12]
+#IF
+#ACT
+CALLLUA CC_QFunction @takeonbefore12,<$CURRTEMMAKEINDEX>
+STOP
+
 ;------------------------∂‹≈∆
 [@TakeOn16]
 

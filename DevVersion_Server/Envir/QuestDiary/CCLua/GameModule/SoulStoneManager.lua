@@ -568,9 +568,14 @@ local function GetSingleSoulStoneShowInfo(actor, slotid)
     local nTempMin = (currPageNo - 1) * nBagItemCountPerPage + 1
     local nTempMax = currPageNo * nBagItemCountPerPage    
     local sValidItemIDList, bDataFinished = Bag.GetBagItemIDInStdmodeStr(actor, CommonDefine.ITEM_STDMODE_SOULSTONE, config.shape, nTempMin, nTempMax)
+    --[[
     strPanelInfo = strPanelInfo..'<BAGITEMS|id=521|x=80|y=20|select='..strSelect..'|filter3='..sValidItemIDList..
         '|count='..nBagItemCountPerPage..'|showtips=1|selecttype=1|row=2|dblink=@function_button#funcid='..
         CommonDefine.FUNC_ID_SOUL_STONE..'#sid='..SOULSTONE_BUTTONFUNC_ID_5..'>'      
+    ]]--
+    strPanelInfo = strPanelInfo..'<BAGITEMS|id=521|x=80|y=20|select=<$STR(S0)>|filter3='..sValidItemIDList..
+        '|count='..nBagItemCountPerPage..'|showtips=1|selecttype=1|row=2|dblink=@function_button#funcid='..
+        CommonDefine.FUNC_ID_SOUL_STONE..'#sid='..SOULSTONE_BUTTONFUNC_ID_5..'>'          
  
     if currPageNo > 1 then
         strPanelInfo = strPanelInfo..'<Text|id=522|text=上一页|size=18|x=20|y=130|color='..CSS.NPC_YELLOW..'|link=@function_button#funcid='..
@@ -836,7 +841,7 @@ local function DoFillHoleStone(actor, sholeseq)
     if slotcfg == nil then
        return 
     end
-
+release_print(44444)
     if getbagblank(actor) < 1 then
         Player.SendSelfMsg(actor, '请整理出至少1个背包空格！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
         return
@@ -846,6 +851,7 @@ local function DoFillHoleStone(actor, sholeseq)
         Player.SendSelfMsg(actor, '请双击选择魂石！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
         return
     end   
+release_print(5555)    
     --效验是否为背包道具
     local chooseItemObj = Bag.GetItemByMakeindex(actor, chooseItemMakeIdx)
     if BF_IsNullObj(chooseItemObj) then
@@ -951,7 +957,7 @@ function SoulStoneManager.DoOperButton(actor, sid, sparam)
         setplaydef(actor, CommonDefine.VAR_N_NPC_TEMPPARAM1, 0)
     elseif funcid == SOULSTONE_BUTTONFUNC_ID_3 then
         setplaydef(actor, CommonDefine.VAR_N_LAST_NPC_CHOOSEID,  param)
-    elseif funcid == SOULSTONE_BUTTONFUNC_ID_4 then
+    elseif funcid == SOULSTONE_BUTTONFUNC_ID_4 then     
         DoFillHoleStone(actor, param)
     elseif funcid == SOULSTONE_BUTTONFUNC_ID_5 then
         local strSelect = getplaydef(actor, CommonDefine.VAR_S_SELECT_ITEM)
