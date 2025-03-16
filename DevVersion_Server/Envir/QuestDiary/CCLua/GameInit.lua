@@ -10,7 +10,7 @@ local function _Includes()
     cfg_att_score = require("Envir/QuestDiary/CCLua/GameConfig/cfg_att_score")
     cfg_equip = require("Envir/QuestDiary/CCLua/GameConfig/cfg_equip")
     cfg_item = require("Envir/QuestDiary/CCLua/GameConfig/cfg_item")
-    -- cfg_magic= require("Envir/QuestDiary/CCLua/GameConfig/cfg_magic")
+    cfg_magic= require("Envir/QuestDiary/CCLua/GameConfig/cfg_magic")
     -- cfg_game_data = require("Envir/QuestDiary/CCLua/GameConfig/cfg_game_data")
 
     cfgEquipPosStrength = require("Envir/QuestDiary/CCLua/GameConfig/cfgEquipPosStrength")
@@ -18,8 +18,8 @@ local function _Includes()
     -- cfgWeaponLuck = require("Envir/QuestDiary/CCLua/GameConfig/cfgWeaponLuck")
     cfgRandomABCreate = require("Envir/QuestDiary/CCLua/GameConfig/cfgRandomABCreate")
     cfgRandomABPool = require("Envir/QuestDiary/CCLua/GameConfig/cfgRandomABPool")
-    -- cfgSkillUpgrade = require("Envir/QuestDiary/CCLua/GameConfig/cfgSkillUpgrade")
-    -- cfgSkillAdvanceUpgrade = require("Envir/QuestDiary/CCLua/GameConfig/cfgSkillAdvanceUpgrade")
+    cfgSkillUpgrade = require("Envir/QuestDiary/CCLua/GameConfig/cfgSkillUpgrade")
+    cfgSkillAdvanceUpgrade = require("Envir/QuestDiary/CCLua/GameConfig/cfgSkillAdvanceUpgrade")
     -- cfgEquipValidComposeList = {}
     cfgEquipInitGift = require("Envir/QuestDiary/CCLua/GameConfig/cfgEquipInitGift")
     -- cfgBaoZhuBossInfo = require("Envir/QuestDiary/CCLua/GameConfig/cfgBaoZhuBossInfo")
@@ -74,7 +74,7 @@ local function _Includes()
     -- require("Envir/QuestDiary/CCLua/GameModule/RechargeManager")
     require("Envir/QuestDiary/CCLua/GameModule/EquipPosStrengthManager")
     require("Envir/QuestDiary/CCLua/GameModule/EquipPosStarManager")    
-    -- require("Envir/QuestDiary/CCLua/GameModule/SkillUpgrade")
+    require("Envir/QuestDiary/CCLua/GameModule/SkillUpgrade")
     -- require("Envir/QuestDiary/CCLua/GameModule/ItemComposeManager")
     -- require("Envir/QuestDiary/CCLua/GameModule/ItemUseManager")
     require("Envir/QuestDiary/CCLua/GameModule/BaoZhuManager")
@@ -229,23 +229,23 @@ local function _Includes()
     --     end        
     -- end 
 
-    -- --技能升级
-    -- for _, value in pairs(cfgSkillUpgrade) do
-    --     if (value.needitems ~= nil) and (value.needitems ~= '') then
-    --         value.needitems_tab = BF_Json2Table(value.needitems)
-    --     else
-    --         value.needitems_tab = {}
-    --     end        
-    -- end 
+    --技能升级
+    for _, value in pairs(cfgSkillUpgrade) do
+        if (value.needitems ~= nil) and (value.needitems ~= '') then
+            value.needitems_tab = BF_Json2Table(value.needitems)
+        else
+            value.needitems_tab = {}
+        end        
+    end 
 
-    -- --强化技能升级
-    -- for _, value in pairs(cfgSkillAdvanceUpgrade) do
-    --     if (value.needitems ~= nil) and (value.needitems ~= '') then
-    --         value.needitems_tab = BF_Json2Table(value.needitems)
-    --     else
-    --         value.needitems_tab = {}
-    --     end        
-    -- end
+    --强化技能升级
+    for _, value in pairs(cfgSkillAdvanceUpgrade) do
+        if (value.needitems ~= nil) and (value.needitems ~= '') then
+            value.needitems_tab = BF_Json2Table(value.needitems)
+        else
+            value.needitems_tab = {}
+        end        
+    end
 
     -- ---------------------------------------------------------------
     -- --新道具合成        

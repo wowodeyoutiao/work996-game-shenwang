@@ -59,7 +59,9 @@ function NewMainUIBase.OpenPanel(actor, sid)
     elseif sid == UI_ICON_HUWEI then
         
     elseif sid == UI_ICON_SKILL then
-        
+        setplaydef(actor, CommonDefine.VAR_N_LAST_NPC_CHOOSEID, -1)
+        setplaydef(actor, CommonDefine.VAR_N_CHOOSE_OPER_TYPE, 0)
+        SkillUpgrade.ShowBasePanel(actor)
     elseif sid == UI_ICON_COMPOSE then
         
     end

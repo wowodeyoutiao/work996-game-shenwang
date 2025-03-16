@@ -267,14 +267,12 @@ CommonDefine = {
 
     --玩家数字变量，下线不保存 N0 - N99
 --[[
-    VAR_N_CURR_DYNNPC_GROUPID = 'N17',          --玩家魂当前的动态NPC的组ID
+    VAR_N_CURR_DYNNPC_GROUPID = 'N17',          --玩家当前的动态NPC的组ID
     VAR_N_CURR_RANDOMBOSS_FIGHTING_ID = 'N18',  --玩家当前触发的随机BOSS的挑战ID
     VAR_N_LAST_OPER_TIME1 = 'N19',              --玩家上一次操作的时间记录1   用于处理一些需要操作短时间冷却的  几秒钟的CD
     VAR_N_LAST_OPER_TIME2 = 'N20',              --玩家上一次操作的时间记录2   用于处理一些需要操作短时间冷却的  几秒钟的CD    
     VAR_U_CURR_TASKLINEID = 'N22',              --当前打开的任务对话对应的tasklineid  
-    
     VAR_N_COMMON_LOCAL_RELIVE_TIMES = 'N28',    --通用原地复活次数
-
 ]]--    
 
     VAR_N_NPC_CHECKBOX_1 = 'N51',                --玩家NPC对话框中的第一个CheckBox选项
@@ -311,38 +309,6 @@ CommonDefine = {
 
     --玩家数字变量，下线保存   U0 - U254  lua脚本使用从130开始
     --[[
-    VAR_U_ADVANCE_SKILL1_LV = 'U51',            --进阶技能等级保存，用于伤害计算  占用
-    VAR_U_ADVANCE_SKILL2_LV = 'U52',
-    VAR_U_ADVANCE_SKILL3_LV = 'U53',
-    VAR_U_ADVANCE_SKILL4_LV = 'U54',
-    VAR_U_ADVANCE_SKILL5_LV = 'U55',
-    VAR_U_ADVANCE_SKILL6_LV = 'U56',
-    VAR_U_ADVANCE_SKILL7_LV = 'U57',
-    VAR_U_ADVANCE_SKILL8_LV = 'U58',
-    VAR_U_ADVANCE_SKILL9_LV = 'U59',
-    VAR_U_ADVANCE_SKILL10_LV = 'U60',
-    VAR_U_ADVANCE_SKILL11_LV = 'U61',
-    VAR_U_ADVANCE_SKILL12_LV = 'U62',
-    VAR_U_ADVANCE_SKILL13_LV = 'U63',
-    VAR_U_ADVANCE_SKILL14_LV = 'U64',
-    VAR_U_ADVANCE_SKILL15_LV = 'U65',
-    VAR_U_ADVANCE_SKILL16_LV = 'U66',
-    VAR_U_ADVANCE_SKILL17_LV = 'U67',
-    VAR_U_ADVANCE_SKILL18_LV = 'U68',
-    VAR_U_ADVANCE_SKILL19_LV = 'U69',
-    VAR_U_ADVANCE_SKILL20_LV = 'U70',
-    VAR_U_ADVANCE_SKILL21_LV = 'U71',
-    VAR_U_ADVANCE_SKILL22_LV = 'U72',
-    VAR_U_ADVANCE_SKILL23_LV = 'U73',
-    VAR_U_ADVANCE_SKILL24_LV = 'U74',
-    VAR_U_ADVANCE_SKILL25_LV = 'U75',
-    VAR_U_ADVANCE_SKILL26_LV = 'U76',
-    VAR_U_ADVANCE_SKILL27_LV = 'U77',
-    VAR_U_ADVANCE_SKILL28_LV = 'U78',
-    VAR_U_ADVANCE_SKILL29_LV = 'U79',
-    VAR_U_ADVANCE_SKILL30_LV = 'U80',    
-    
-
     VAR_U_MOFANG_CURR_LAYER = 'U107',           --玩家当前进入的魔方阵的层数
     VAR_U_MOFANG_LEFT_BUYTIMES = 'U108',        --玩家当前剩余购买的进入魔方地图的次数
     VAR_U_MOFANGZHEN_ID = 'U109',               --玩家魔方阵当前进入的ID
@@ -383,6 +349,37 @@ CommonDefine = {
     VAR_U_ZCDHW_LEVEL3 = 'U144',                --玩家的紫宸殿护卫3等级
     VAR_U_ZCDHW_LEVEL4 = 'U145',                --玩家的紫宸殿护卫4等级
     VAR_U_ZCDHW_LEVEL5 = 'U146',                --玩家的紫宸殿护卫5等级    
+
+    VAR_U_ADVANCE_SKILL1_LV = 'U151',            --进阶技能等级保存，用于伤害计算  占用
+    VAR_U_ADVANCE_SKILL2_LV = 'U152',
+    VAR_U_ADVANCE_SKILL3_LV = 'U153',
+    VAR_U_ADVANCE_SKILL4_LV = 'U154',
+    VAR_U_ADVANCE_SKILL5_LV = 'U155',
+    VAR_U_ADVANCE_SKILL6_LV = 'U156',
+    VAR_U_ADVANCE_SKILL7_LV = 'U157',
+    VAR_U_ADVANCE_SKILL8_LV = 'U158',
+    VAR_U_ADVANCE_SKILL9_LV = 'U159',
+    VAR_U_ADVANCE_SKILL10_LV = 'U160',
+    VAR_U_ADVANCE_SKILL11_LV = 'U161',
+    VAR_U_ADVANCE_SKILL12_LV = 'U162',
+    VAR_U_ADVANCE_SKILL13_LV = 'U163',
+    VAR_U_ADVANCE_SKILL14_LV = 'U164',
+    VAR_U_ADVANCE_SKILL15_LV = 'U165',
+    VAR_U_ADVANCE_SKILL16_LV = 'U166',
+    VAR_U_ADVANCE_SKILL17_LV = 'U167',
+    VAR_U_ADVANCE_SKILL18_LV = 'U168',
+    VAR_U_ADVANCE_SKILL19_LV = 'U169',
+    VAR_U_ADVANCE_SKILL20_LV = 'U170',
+    VAR_U_ADVANCE_SKILL21_LV = 'U171',
+    VAR_U_ADVANCE_SKILL22_LV = 'U172',
+    VAR_U_ADVANCE_SKILL23_LV = 'U173',
+    VAR_U_ADVANCE_SKILL24_LV = 'U174',
+    VAR_U_ADVANCE_SKILL25_LV = 'U175',
+    VAR_U_ADVANCE_SKILL26_LV = 'U176',
+    VAR_U_ADVANCE_SKILL27_LV = 'U177',
+    VAR_U_ADVANCE_SKILL28_LV = 'U178',
+    VAR_U_ADVANCE_SKILL29_LV = 'U179',
+    VAR_U_ADVANCE_SKILL30_LV = 'U180',     
     
     
     --玩家字符型变量，下线保存 T0 - T254
@@ -563,6 +560,7 @@ CommonDefine = {
     FUNC_ID_SUPERBOX = 26,                      --超级宝箱
     FUNC_ID_GMHELPER = 27,                      --GM辅助系统
     FUNC_ID_NEWMAINUI = 28,                     --新主界面
+    FUNC_ID_SKILLUPGRADE = 29,                  --技能进阶
     
 
     --快捷前往

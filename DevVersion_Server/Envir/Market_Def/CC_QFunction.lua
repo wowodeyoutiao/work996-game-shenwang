@@ -390,6 +390,8 @@ function show_rule_panel(actor, sfuncid)
         SoulStoneManager.ShowRulePanel(actor)      
     elseif funcid == CommonDefine.FUNC_ID_GUANZHI then
         GuanZhiManager.ShowRulePanel(actor)
+    elseif funcid == CommonDefine.FUNC_ID_SKILLUPGRADE then
+        SkillUpgrade.ShowRulePanel(actor)        
     end
 end
 
@@ -407,6 +409,8 @@ function show_base_panel(actor, sfuncid)
         SoulStoneManager.ShowBasePanel(actor)         
     elseif funcid == CommonDefine.FUNC_ID_GUANZHI then
         GuanZhiManager.ShowBasePanel(actor)
+    elseif funcid == CommonDefine.FUNC_ID_SKILLUPGRADE then
+        SkillUpgrade.ShowBasePanel(actor)
     end
 end
 
@@ -424,6 +428,8 @@ function function_button(actor, sfuncid, sid, sparam)
         SoulStoneManager.DoOperButton(actor, sid, sparam)   
     elseif funcid == CommonDefine.FUNC_ID_GUANZHI then
         GuanZhiManager.DoOperButton(actor, sid, sparam)
+    elseif funcid == CommonDefine.FUNC_ID_SKILLUPGRADE then
+        SkillUpgrade.DoOperButton(actor, sid, sparam)
     end
 end
 
