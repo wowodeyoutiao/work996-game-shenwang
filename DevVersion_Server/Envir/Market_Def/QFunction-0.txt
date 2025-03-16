@@ -3474,6 +3474,11 @@ ADDBUFF 71000 10
 SENDMSG 9 [凯旋]击杀敌人后自身恢复血量20%
 BREAK
 
+#IF
+#ACT
+CALLLUA CC_QFunction @killplay,<$KILLPlayNAME>
+BREAK
+
 ;---------------------复活
 [@Revival]
 
@@ -6011,8 +6016,6 @@ BREAK
 #ACT
 CALLLUA CC_QFunction @function_button,<$STR(S$funcid)>,<$STR(S$sid)>,<$STR(S$param1)>
 BREAK
-
-
 
 
 ;回调类的

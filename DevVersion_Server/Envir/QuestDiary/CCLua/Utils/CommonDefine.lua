@@ -342,13 +342,7 @@ CommonDefine = {
     VAR_U_ADVANCE_SKILL29_LV = 'U79',
     VAR_U_ADVANCE_SKILL30_LV = 'U80',    
     
-    VAR_U_GUANZHI_LEVEL = 'U100',               --玩家的官职等级
-    VAR_U_GUANZHI_CURREXP = 'U101',             --玩家的官职当前经验
-    VAR_U_ZCDHW_LEVEL1 = 'U102',                --玩家的紫宸殿护卫1等级
-    VAR_U_ZCDHW_LEVEL2 = 'U103',                --玩家的紫宸殿护卫2等级
-    VAR_U_ZCDHW_LEVEL3 = 'U104',                --玩家的紫宸殿护卫3等级
-    VAR_U_ZCDHW_LEVEL4 = 'U105',                --玩家的紫宸殿护卫4等级
-    VAR_U_ZCDHW_LEVEL5 = 'U106',                --玩家的紫宸殿护卫5等级
+
     VAR_U_MOFANG_CURR_LAYER = 'U107',           --玩家当前进入的魔方阵的层数
     VAR_U_MOFANG_LEFT_BUYTIMES = 'U108',        --玩家当前剩余购买的进入魔方地图的次数
     VAR_U_MOFANGZHEN_ID = 'U109',               --玩家魔方阵当前进入的ID
@@ -381,6 +375,14 @@ CommonDefine = {
     VAR_U_SUPER_BOX_ONCE_OPEN_NUM = 'U132',     --超级宝箱  一次开几个箱子    
     VAR_U_SUPER_BOX_START_UPGRADE_TIME = 'U133',--超级宝箱  开始升级的时间
     VAR_U_SUPER_BOX_CHOOSE_CONDITION_1 = 'U134',--超级宝箱  保留宝箱选择的条件1编号 - 品质
+
+    VAR_U_GUANZHI_LEVEL = 'U140',               --玩家的官职等级
+    VAR_U_GUANZHI_CURREXP = 'U141',             --玩家的官职当前经验
+    VAR_U_ZCDHW_LEVEL1 = 'U142',                --玩家的紫宸殿护卫1等级
+    VAR_U_ZCDHW_LEVEL2 = 'U143',                --玩家的紫宸殿护卫2等级
+    VAR_U_ZCDHW_LEVEL3 = 'U144',                --玩家的紫宸殿护卫3等级
+    VAR_U_ZCDHW_LEVEL4 = 'U145',                --玩家的紫宸殿护卫4等级
+    VAR_U_ZCDHW_LEVEL5 = 'U146',                --玩家的紫宸殿护卫5等级    
     
     
     --玩家字符型变量，下线保存 T0 - T254

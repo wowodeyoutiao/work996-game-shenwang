@@ -178,8 +178,9 @@ function onkillmob(hitter, mon)
 end
 
 --击杀玩家触发
-function killplay(killer, deather)
-    GameEventManager.DoTriggerEvent(CommonDefine.EVENT_NAME_KILL_PLAYER, killer, deather)
+--function killplay(killer, deather)
+function killplay(killer, deathername)
+    GameEventManager.DoTriggerEvent(CommonDefine.EVENT_NAME_KILL_PLAYER, killer, deathername)
 end
 
 --任意地图击杀怪物触发
@@ -386,7 +387,9 @@ function show_rule_panel(actor, sfuncid)
     elseif funcid == CommonDefine.FUNC_ID_EQUIPPOS_STAR then
         EquipPosStarManager.ShowRulePanel(actor)
     elseif funcid == CommonDefine.FUNC_ID_SOUL_STONE then
-        SoulStoneManager.ShowRulePanel(actor)        
+        SoulStoneManager.ShowRulePanel(actor)      
+    elseif funcid == CommonDefine.FUNC_ID_GUANZHI then
+        GuanZhiManager.ShowRulePanel(actor)
     end
 end
 
@@ -402,6 +405,8 @@ function show_base_panel(actor, sfuncid)
         EquipPosStarManager.ShowBasePanel(actor)        
     elseif funcid == CommonDefine.FUNC_ID_SOUL_STONE then
         SoulStoneManager.ShowBasePanel(actor)         
+    elseif funcid == CommonDefine.FUNC_ID_GUANZHI then
+        GuanZhiManager.ShowBasePanel(actor)
     end
 end
 
@@ -416,7 +421,9 @@ function function_button(actor, sfuncid, sid, sparam)
     elseif funcid == CommonDefine.FUNC_ID_EQUIPPOS_STAR then
         EquipPosStarManager.DoOperButton(actor, sid, sparam)        
     elseif funcid == CommonDefine.FUNC_ID_SOUL_STONE then
-        SoulStoneManager.DoOperButton(actor, sid, sparam)         
+        SoulStoneManager.DoOperButton(actor, sid, sparam)   
+    elseif funcid == CommonDefine.FUNC_ID_GUANZHI then
+        GuanZhiManager.DoOperButton(actor, sid, sparam)
     end
 end
 

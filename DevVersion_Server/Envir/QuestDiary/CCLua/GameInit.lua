@@ -23,7 +23,7 @@ local function _Includes()
     -- cfgEquipValidComposeList = {}
     cfgEquipInitGift = require("Envir/QuestDiary/CCLua/GameConfig/cfgEquipInitGift")
     -- cfgBaoZhuBossInfo = require("Envir/QuestDiary/CCLua/GameConfig/cfgBaoZhuBossInfo")
-    -- cfgGuanZhi = require("Envir/QuestDiary/CCLua/GameConfig/cfgGuanZhi")
+    cfgGuanZhi = require("Envir/QuestDiary/CCLua/GameConfig/cfgGuanZhi")
     -- cfgOfflineHuWei = require("Envir/QuestDiary/CCLua/GameConfig/cfgOfflineHuWei")
     -- cfgMoFangZhen = require("Envir/QuestDiary/CCLua/GameConfig/cfgMoFangZhen")
     -- cfgRandomBossTriggerPool = require("Envir/QuestDiary/CCLua/GameConfig/cfgRandomBossTriggerPool")
@@ -80,7 +80,7 @@ local function _Includes()
     require("Envir/QuestDiary/CCLua/GameModule/BaoZhuManager")
     -- require("Envir/QuestDiary/CCLua/GameModule/BaoZhuBossManager")
     require("Envir/QuestDiary/CCLua/GameModule/SoulStoneManager")
-    -- require("Envir/QuestDiary/CCLua/GameModule/GuanZhiManager")
+    require("Envir/QuestDiary/CCLua/GameModule/GuanZhiManager")
     -- require("Envir/QuestDiary/CCLua/GameModule/OfflineHuWeiManager")
     -- require("Envir/QuestDiary/CCLua/GameModule/MoFangZhenManager")
     -- require("Envir/QuestDiary/CCLua/GameModule/RandomBossManager")
@@ -300,29 +300,29 @@ local function _Includes()
         end
     end
 
-    -- --官职
-    -- for _, value in pairs(cfgGuanZhi) do
-    --     if (value.addprop ~= nil) and (value.addprop ~= '') then    
-    --         value.addprop_tab = BF_Json2Table(value.addprop)
-    --         value.addprop_desctab = {}
-    --         value.addprop_desctab[CommonDefine.JOB_Z] = BF_GetPropDescTableByJson(value.addprop, CommonDefine.JOB_Z)
-    --         value.addprop_desctab[CommonDefine.JOB_F] = BF_GetPropDescTableByJson(value.addprop, CommonDefine.JOB_F)
-    --         value.addprop_desctab[CommonDefine.JOB_D] = BF_GetPropDescTableByJson(value.addprop, CommonDefine.JOB_D)
-    --         value.addprop_abstr = BF_GetAbilityStrByABTab(value.addprop_tab)
-    --     else
-    --         value.addprop_tab = {}
-    --         value.addprop_desctab = {}
-    --         value.addprop_desctab[CommonDefine.JOB_Z] = {}
-    --         value.addprop_desctab[CommonDefine.JOB_F] = {}
-    --         value.addprop_desctab[CommonDefine.JOB_D] = {}
-    --         value.addprop_abstr = ''
-    --     end   
-    --     if (value.dayrewards ~= nil) and (value.dayrewards ~= '') then
-    --         value.dayrewards_tab = BF_Json2Table(value.dayrewards)
-    --     else
-    --         value.dayrewards_tab = {}
-    --     end          
-    -- end
+    --官职
+    for _, value in pairs(cfgGuanZhi) do
+        if (value.addprop ~= nil) and (value.addprop ~= '') then    
+            value.addprop_tab = BF_Json2Table(value.addprop)
+            value.addprop_desctab = {}
+            value.addprop_desctab[CommonDefine.JOB_Z] = BF_GetPropDescTableByJson(value.addprop, CommonDefine.JOB_Z)
+            value.addprop_desctab[CommonDefine.JOB_F] = BF_GetPropDescTableByJson(value.addprop, CommonDefine.JOB_F)
+            value.addprop_desctab[CommonDefine.JOB_D] = BF_GetPropDescTableByJson(value.addprop, CommonDefine.JOB_D)
+            value.addprop_abstr = BF_GetAbilityStrByABTab(value.addprop_tab)
+        else
+            value.addprop_tab = {}
+            value.addprop_desctab = {}
+            value.addprop_desctab[CommonDefine.JOB_Z] = {}
+            value.addprop_desctab[CommonDefine.JOB_F] = {}
+            value.addprop_desctab[CommonDefine.JOB_D] = {}
+            value.addprop_abstr = ''
+        end   
+        if (value.dayrewards ~= nil) and (value.dayrewards ~= '') then
+            value.dayrewards_tab = BF_Json2Table(value.dayrewards)
+        else
+            value.dayrewards_tab = {}
+        end          
+    end
 
     -- --紫宸殿离线成长
     -- for _, value in pairs(cfgOfflineHuWei) do

@@ -573,7 +573,12 @@ local function GetSingleSoulStoneShowInfo(actor, slotid)
         '|count='..nBagItemCountPerPage..'|showtips=1|selecttype=1|row=2|dblink=@function_button#funcid='..
         CommonDefine.FUNC_ID_SOUL_STONE..'#sid='..SOULSTONE_BUTTONFUNC_ID_5..'>'      
     ]]--
-    strPanelInfo = strPanelInfo..'<BAGITEMS|id=521|x=80|y=20|select=<$STR(S0)>|filter3='..sValidItemIDList..
+    local s1 = parsetext("<$STR(S0)>", actor);
+    --这里的bagitem的选择取值还有问题？？？？？？？？？？？？？？？？？？？？？？？？？？？？？
+    --这里的bagitem的选择取值还有问题？？？？？？？？？？？？？？？？？？？？？？？？？？？？？
+    --这里的bagitem的选择取值还有问题？？？？？？？？？？？？？？？？？？？？？？？？？？？？？
+    --这里的bagitem的选择取值还有问题？？？？？？？？？？？？？？？？？？？？？？？？？？？？？
+    strPanelInfo = strPanelInfo..'<BAGITEMS|id=521|x=80|y=20|select='..s1..'>|filter3='..sValidItemIDList..
         '|count='..nBagItemCountPerPage..'|showtips=1|selecttype=1|row=2|dblink=@function_button#funcid='..
         CommonDefine.FUNC_ID_SOUL_STONE..'#sid='..SOULSTONE_BUTTONFUNC_ID_5..'>'          
  

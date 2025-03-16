@@ -52,7 +52,10 @@ function NewMainUIBase.OpenPanel(actor, sid)
         setplaydef(actor, CommonDefine.VAR_N_CURR_NPC_DATA_PAGE1, 1)        --设置数据页面编号为1    
         SoulStoneManager.ShowBasePanel(actor)
     elseif sid == UI_ICON_GUANZHI then
-        
+        if not Player.IsFunctionOpen(actor, CommonDefine.FUNC_ID_GUANZHI, true) then
+            return
+        end    
+        GuanZhiManager.ShowBasePanel(actor)      
     elseif sid == UI_ICON_HUWEI then
         
     elseif sid == UI_ICON_SKILL then
