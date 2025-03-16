@@ -63,7 +63,12 @@ function NewMainUIBase.OpenPanel(actor, sid)
         setplaydef(actor, CommonDefine.VAR_N_CHOOSE_OPER_TYPE, 0)
         SkillUpgrade.ShowBasePanel(actor)
     elseif sid == UI_ICON_COMPOSE then
-        
+        if not Player.IsFunctionOpen(actor, CommonDefine.FUNC_ID_COMPOSE, true) then
+            return
+        end
+        setplaydef(actor, CommonDefine.VAR_N_LAST_NPC_CHOOSEID, 0)
+        setplaydef(actor, CommonDefine.VAR_N_NPC_TEMPPARAM1, 0)
+        ItemComposeManager.ShowBasePanel(actor)
     end
 end
 

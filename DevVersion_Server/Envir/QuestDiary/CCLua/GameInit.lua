@@ -38,8 +38,8 @@ local function _Includes()
     -- cfgPublicBossInfo = require("Envir/QuestDiary/CCLua/GameConfig/cfgPublicBossInfo")
     -- cfgSingleBossInfo = require("Envir/QuestDiary/CCLua/GameConfig/cfgSingleBossInfo")
     -- cfgEverydayTask = require("Envir/QuestDiary/CCLua/GameConfig/cfgEverydayTask")
-    -- cfgItemCompose = require("Envir/QuestDiary/CCLua/GameConfig/cfgItemCompose")
-    -- cfgItemValidComposeList = {}
+    cfgItemCompose = require("Envir/QuestDiary/CCLua/GameConfig/cfgItemCompose")
+    cfgItemValidComposeList = {}
     -- cfgUnpackItem = require("Envir/QuestDiary/CCLua/GameConfig/cfgUnpackItem")    
     cfgSuperBoxLevel = require("Envir/QuestDiary/CCLua/GameConfig/cfgSuperBoxLevel")
     cfgSuperBoxRewardPool = require("Envir/QuestDiary/CCLua/GameConfig/cfgSuperBoxRewardPool")
@@ -75,7 +75,7 @@ local function _Includes()
     require("Envir/QuestDiary/CCLua/GameModule/EquipPosStrengthManager")
     require("Envir/QuestDiary/CCLua/GameModule/EquipPosStarManager")    
     require("Envir/QuestDiary/CCLua/GameModule/SkillUpgrade")
-    -- require("Envir/QuestDiary/CCLua/GameModule/ItemComposeManager")
+    require("Envir/QuestDiary/CCLua/GameModule/ItemComposeManager")
     -- require("Envir/QuestDiary/CCLua/GameModule/ItemUseManager")
     require("Envir/QuestDiary/CCLua/GameModule/BaoZhuManager")
     -- require("Envir/QuestDiary/CCLua/GameModule/BaoZhuBossManager")
@@ -247,38 +247,38 @@ local function _Includes()
         end        
     end
 
-    -- ---------------------------------------------------------------
-    -- --新道具合成        
-    -- ---------------------------------------------------------------
-    -- for _, value in pairs(cfgItemCompose) do
-    --     if (value.needitems ~= nil) and (value.needitems ~= '') then
-    --         value.needitems_tab = BF_Json2Table(value.needitems)
-    --     else
-    --         value.needitems_tab = {}
-    --     end
-    --     if (value.srcitemlist ~= nil) and (value.srcitemlist ~= '') then
-    --         value.srcitemlist_tab = BF_Json2Table(value.srcitemlist)
-    --     else
-    --         value.srcitemlist_tab = {}
-    --     end
-    --     if (value.composetarginfo ~= nil) and (value.composetarginfo ~= '') then
-    --         value.composetarginfo_tab = BF_Json2Table(value.composetarginfo)
-    --     else
-    --         value.composetarginfo_tab = {}
-    --     end  
+    ---------------------------------------------------------------
+    --新道具合成        
+    ---------------------------------------------------------------
+    for _, value in pairs(cfgItemCompose) do
+        if (value.needitems ~= nil) and (value.needitems ~= '') then
+            value.needitems_tab = BF_Json2Table(value.needitems)
+        else
+            value.needitems_tab = {}
+        end
+        if (value.srcitemlist ~= nil) and (value.srcitemlist ~= '') then
+            value.srcitemlist_tab = BF_Json2Table(value.srcitemlist)
+        else
+            value.srcitemlist_tab = {}
+        end
+        if (value.composetarginfo ~= nil) and (value.composetarginfo ~= '') then
+            value.composetarginfo_tab = BF_Json2Table(value.composetarginfo)
+        else
+            value.composetarginfo_tab = {}
+        end  
         
-    --     if type(value.srcitemlist_tab) == 'table' then
-    --         for _, value1 in pairs(value.srcitemlist_tab) do
-    --             local type = value.composetype
-    --             if cfgItemValidComposeList[type] == nil then
-    --                 cfgItemValidComposeList[type] = {}
-    --             end
-    --             if not cfgItemValidComposeList[type][value1.id] then
-    --                 cfgItemValidComposeList[type][value1.id] = true
-    --             end
-    --         end
-    --     end
-    -- end    
+        if type(value.srcitemlist_tab) == 'table' then
+            for _, value1 in pairs(value.srcitemlist_tab) do
+                local type = value.composetype
+                if cfgItemValidComposeList[type] == nil then
+                    cfgItemValidComposeList[type] = {}
+                end
+                if not cfgItemValidComposeList[type][value1.id] then
+                    cfgItemValidComposeList[type][value1.id] = true
+                end
+            end
+        end
+    end    
     
     -- --灵珠BOSS
     -- for _, value in pairs(cfgBaoZhuBossInfo) do
