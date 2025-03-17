@@ -394,11 +394,13 @@ function show_rule_panel(actor, sfuncid)
         SkillUpgrade.ShowRulePanel(actor)   
     elseif funcid == CommonDefine.FUNC_ID_COMPOSE then
         ItemComposeManager.ShowRulePanel(actor)
+    elseif funcid == CommonDefine.FUNC_ID_OFFLINE then
+        OfflineHuWeiManager.ShowRulePanel(actor)
     end
 end
 
 --ÏÔÊ¾»ù´¡Ãæ°å
-function show_base_panel(actor, sfuncid)
+function show_base_panel(actor, sfuncid, sparam)
     if BF_IsNullObj(actor) or not BF_IsNumberStr(sfuncid) then
         return
     end
@@ -415,6 +417,8 @@ function show_base_panel(actor, sfuncid)
         SkillUpgrade.ShowBasePanel(actor)
     elseif funcid == CommonDefine.FUNC_ID_COMPOSE then
         ItemComposeManager.ShowBasePanel(actor)
+    elseif funcid == CommonDefine.FUNC_ID_OFFLINE then
+        OfflineHuWeiManager.ShowBasePanel(actor, sparam)
     end
 end
 
@@ -436,6 +440,8 @@ function function_button(actor, sfuncid, sid, sparam)
         SkillUpgrade.DoOperButton(actor, sid, sparam)
     elseif funcid == CommonDefine.FUNC_ID_COMPOSE then
         ItemComposeManager.DoOperButton(actor, sid, sparam)
+    elseif funcid == CommonDefine.FUNC_ID_OFFLINE then
+        OfflineHuWeiManager.DoOperButton(actor, sid, sparam)
     end
 end
 

@@ -586,11 +586,13 @@ CommonDefine = {
     QUICK_GOTO_ZCD = 20,                        --紫宸殿 离线护卫
 
     --脚本创建的动态npcid    最终的npcid是 系统组编号*10000+动态id
+    --[[
     DYN_NPC_ZCD_HUWEI1 = 101,                     --紫宸殿护卫1
     DYN_NPC_ZCD_HUWEI2 = 102,                     --紫宸殿护卫2
     DYN_NPC_ZCD_HUWEI3 = 103,                     --紫宸殿护卫3
     DYN_NPC_ZCD_HUWEI4 = 104,                     --紫宸殿护卫4
     DYN_NPC_ZCD_HUWEI5 = 105,                     --紫宸殿护卫5
+    ]]--
 
     --任务线ID
     TASK_LINE_ID_MAIN = 100,                      --任务线，主线任务

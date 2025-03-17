@@ -6008,7 +6008,7 @@ BREAK
 [@show_base_panel]
 #IF
 #ACT
-CALLLUA CC_QFunction @show_base_panel,<$STR(S$funcid)>
+CALLLUA CC_QFunction @show_base_panel,<$STR(S$funcid)>,<$STR(S$param1)>
 BREAK
 
 [@function_button]

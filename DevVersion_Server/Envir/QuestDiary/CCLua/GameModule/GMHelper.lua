@@ -23,7 +23,11 @@ function GMHelper.OpenPanel(actor)
 
         '<Button|x=200|y=30|nimg=public/bg_hhzy_01_3.png|text=清空装备位强化|link=@gmhelper_button#sid1=1008>'..
         '<Button|x=200|y=60|nimg=public/bg_hhzy_01_3.png|text=清空装备位星级|link=@gmhelper_button#sid1=1009>'..
-        '<Button|x=200|y=90|nimg=public/bg_hhzy_01_3.png|text=给五星魂石|link=@gmhelper_button#sid1=3>'
+        '<Button|x=200|y=90|nimg=public/bg_hhzy_01_3.png|text=给五星魂石|link=@gmhelper_button#sid1=3>'..
+
+
+
+        '<Button|x=500|y=240|nimg=public/bg_hhzy_01_3.png|text=临时测试|link=@gmhelper_button,1999>'
     --[[                                      
         '<Button|x=40|y=120|nimg=public/bg_hhzy_01_3.png|text=无敌|link=@gmhelper_button,4>'..
         '<Button|x=40|y=150|nimg=public/bg_hhzy_01_3.png|text=各种升级材料加2000|link=@gmhelper_button,5>'..
@@ -317,6 +321,10 @@ function GMHelper.DoGmOper(actor, sid)
         for i = 1, #CommonDefine.BASE_EQUIPMENT_POS, 1 do
             EquipPosStarManager.ClearEquipStarLvInPos(actor, CommonDefine.BASE_EQUIPMENT_POS[i])
         end  
+
+
+    elseif sid == '1999' then
+        giveitem(actor, '金币', 3000, 0, 'test')       
     end   
 end
 
