@@ -58,8 +58,6 @@ function OfflineHuWeiManager.OnResetDay(actor)
     end
 end
 
-GameEventManager.AddListener(CommonDefine.EVENT_NAME_PLAYER_ENTERGAME, OfflineHuWeiManager.OnPlayerEnterGame, CommonDefine.FUNC_ID_OFFLINE)
-GameEventManager.AddListener(CommonDefine.EVENT_NAME_PLAYER_LEAVEGAME, OfflineHuWeiManager.OnPlayerLeaveGame, CommonDefine.FUNC_ID_OFFLINE)
 GameEventManager.AddListener(CommonDefine.EVENT_NAME_PLAYER_RESETDAY, OfflineHuWeiManager.OnResetDay, CommonDefine.FUNC_ID_OFFLINE)
 
 

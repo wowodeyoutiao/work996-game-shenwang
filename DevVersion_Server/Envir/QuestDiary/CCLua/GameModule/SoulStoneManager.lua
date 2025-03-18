@@ -822,7 +822,10 @@ function SoulStoneManager.ShowBasePanel(actor)
         strPanelInfo = strPanelInfo..'<ListView|id=54|children={'..idstr1..'}|x=52.0|y=58.0|width=300|height=320|direction=1|margin=0>'        
 
     end
+
+    
     BF_ShowSpecialUI(actor, strPanelInfo)
+    --say(actor, strPanelInfo)
 end
 
 --镶嵌替换魂石
@@ -846,7 +849,6 @@ local function DoFillHoleStone(actor, sholeseq)
     if slotcfg == nil then
        return 
     end
-release_print(44444)
     if getbagblank(actor) < 1 then
         Player.SendSelfMsg(actor, '请整理出至少1个背包空格！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
         return
@@ -856,7 +858,7 @@ release_print(44444)
         Player.SendSelfMsg(actor, '请双击选择魂石！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
         return
     end   
-release_print(5555)    
+
     --效验是否为背包道具
     local chooseItemObj = Bag.GetItemByMakeindex(actor, chooseItemMakeIdx)
     if BF_IsNullObj(chooseItemObj) then
