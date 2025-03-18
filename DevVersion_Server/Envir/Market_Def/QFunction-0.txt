@@ -855,6 +855,11 @@ SENDMSG 6 人物首饰盒开启成功
 MOV T5 <$YEAR><$MONTH><$DAY>
 MOV T10 <$HOUR>:<$MINUTE>:<$SECOND>
 
+#IF
+#ACT
+CALLLUA CC_QFunction @resetday
+BREAK
+
 ; 沙巴克奖励
 SET [22] 0
 
@@ -6008,7 +6013,7 @@ BREAK
 [@show_base_panel]
 #IF
 #ACT
-CALLLUA CC_QFunction @show_base_panel,<$STR(S$funcid)>
+CALLLUA CC_QFunction @show_base_panel,<$STR(S$funcid)>,<$STR(S$param1)>
 BREAK
 
 [@function_button]
@@ -6016,7 +6021,6 @@ BREAK
 #ACT
 CALLLUA CC_QFunction @function_button,<$STR(S$funcid)>,<$STR(S$sid)>,<$STR(S$param1)>
 BREAK
-
 
 ;回调类的
 [@equippos_star_auto_upgrade]
