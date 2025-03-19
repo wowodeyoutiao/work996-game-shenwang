@@ -215,8 +215,8 @@ GameEventManager.AddListener(CommonDefine.EVENT_NAME_PLAYER_ENTERGAME, EquipPosS
 --显示规则面板
 function EquipPosStarManager.ShowRulePanel(actor)
     local strPanelInfo = '<Img|id=10|children={11,12,21,22,23,24}|x=268.0|y=69.0|show=0|esc=1|reset=1|img=private/cc_common/rule_panel.png|bg=1|move=0>'..
-        '<Layout|id=11|x=525.0|y=-1.0|width=80|height=80|link=@show_base_panel#funcid='..CommonDefine.FUNC_ID_EQUIPPOS_STAR..'>'..
-        '<Button|id=12|x=528.0|y=0.0|nimg=public/1900000510.png|pimg=public/1900000511.png|link=@show_base_panel#funcid='..CommonDefine.FUNC_ID_EQUIPPOS_STAR..'>'
+        '<Layout|id=11|x=525.0|y=-1.0|width=80|height=80|link=@show_base_panel>'..
+        '<Button|id=12|x=528.0|y=0.0|nimg=public/1900000510.png|pimg=public/1900000511.png|link=@show_base_panel>'
 
     local tempCurrX = 20
     local tempCurrY = 50
@@ -325,14 +325,14 @@ local function GetSingleEquipPosShowInfo(actor, equippos)
             sPanelStr = sPanelStr..'<Text|id=501|text=已升至满星状态！|x=200|y=30|color='..CSS.NPC_LIGHTGREEN..'>'
         else
             local tempCurrY = 10
-            sPanelStr = sPanelStr..'<Button|id=501|x=120|y='..tempCurrY..'|mimg=private/cc_equip_star/1.png|nimg=private/cc_equip_star/1.png|link=@function_button#funcid='..            
-                CommonDefine.FUNC_ID_EQUIPPOS_STAR..'#sid='..EQUIPPOS_STAR_BUTTONFUNC_ID_2..'>'
+            sPanelStr = sPanelStr..'<Button|id=501|x=120|y='..tempCurrY..'|mimg=private/cc_equip_star/1.png|nimg=private/cc_equip_star/1.png|link=@function_button,'..            
+                EQUIPPOS_STAR_BUTTONFUNC_ID_2..'>'
             if getflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_NPC_TEMP_CHOOSE_FLAG) == 0 then
-                sPanelStr = sPanelStr..'<Button|id=502|x=350|y='..tempCurrY..'|mimg=private/cc_equip_star/2.png|nimg=private/cc_equip_star/2.png|link=@function_button#funcid='..            
-                CommonDefine.FUNC_ID_EQUIPPOS_STAR..'#sid='..EQUIPPOS_STAR_BUTTONFUNC_ID_3..'>'
+                sPanelStr = sPanelStr..'<Button|id=502|x=350|y='..tempCurrY..'|mimg=private/cc_equip_star/2.png|nimg=private/cc_equip_star/2.png|link=@function_button,'..
+                    EQUIPPOS_STAR_BUTTONFUNC_ID_3..'>'
             else
-                sPanelStr = sPanelStr..'<Button|id=502|x=350|y='..tempCurrY..'|mimg=private/cc_equip_star/4.png|nimg=private/cc_equip_star/4.png|link=@function_button#funcid='..            
-                CommonDefine.FUNC_ID_EQUIPPOS_STAR..'#sid='..EQUIPPOS_STAR_BUTTONFUNC_ID_4..'>'
+                sPanelStr = sPanelStr..'<Button|id=502|x=350|y='..tempCurrY..'|mimg=private/cc_equip_star/4.png|nimg=private/cc_equip_star/4.png|link=@function_button,'..
+                    EQUIPPOS_STAR_BUTTONFUNC_ID_4..'>'
             end
 
             local nStartX = 80    
@@ -350,7 +350,7 @@ local function GetSingleEquipPosShowInfo(actor, equippos)
                 local checkvar = CommonDefine.CHECK_BOX_VAR[seq]
                 local flag = getplaydef(actor, checkvar)
                 sPanelStr = sPanelStr..'<CheckBox|id='..boxid..'|x='..nStartX..'|y='..nStartY..'|nimg=private/cc_common/checkbox_1.png|pimg=private/cc_common/checkbox_2.png|checkboxid='..
-                    checkvar..'|default='..flag..'|delay=0|count=1|link=@function_button#funcid='..CommonDefine.FUNC_ID_EQUIPPOS_STAR..'#sid='..EQUIPPOS_STAR_BUTTONFUNC_ID_5..'#param1='..i..'>'..
+                    checkvar..'|default='..flag..'|delay=0|count=1|link=@function_button,'..EQUIPPOS_STAR_BUTTONFUNC_ID_5..','..i..'>'..
                     '<Text|id='..textid..'|text='..i..'星|x='..(nStartX+30)..'|y='..(nStartY+5)..'|color='..CSS.NPC_YELLOW..'>'            
                 nStartX = nStartX + 80
             end
@@ -388,10 +388,10 @@ function EquipPosStarManager.ShowBasePanel(actor)
     end
 
     local strPanelInfo = '<Img|id=10|children={11,12,13,14,15,16}|x=20.0|y=16.0|reset=1|img=private/cc_equip_star/8.png|show=0|esc=1|move=0|bg=1|loadDelay=0>'..
-        '<Layout|id=11|x=813.0|y=14.0|width=80|height=80|link=@cc_exit_specialui>'..
-        '<Button|id=12|x=814.0|y=14.0|nimg=public/1900000510.png|pimg=public/1900000511.png|link=@cc_exit_specialui>'..
+        '<Layout|id=11|x=813.0|y=14.0|width=80|height=80|link=@exit>'..
+        '<Button|id=12|x=814.0|y=14.0|nimg=public/1900000510.png|pimg=public/1900000511.png|link=@exit>'..
         '<Text|id=13|x=72.0|y=70.0|size=18|color=151|text=选择槽位>'..
-        '<Button|id=16|x=700.0|y=14.0|esc=0|nimg=private/cc_common/button_help.png|pimg=private/cc_common/button_help.png|link=@show_rule_panel#funcid='..CommonDefine.FUNC_ID_EQUIPPOS_STAR..'>'
+        '<Button|id=16|x=700.0|y=14.0|esc=0|nimg=private/cc_common/button_help.png|pimg=private/cc_common/button_help.png|link=@show_rule_panel>'
 
     local idstr1 = ''
     for seq, _ in ipairs(posTab) do
@@ -412,15 +412,15 @@ function EquipPosStarManager.ShowBasePanel(actor)
             setplaydef(actor, CommonDefine.VAR_N_LAST_NPC_CHOOSEID, choosepos)
         end
         if choosepos == value.pos then
-            strPanelInfo = strPanelInfo..'<Img|id='..baseid..'|children={'..textid1..','..textid2..'}x=-6.0|y=0.0|img=private/cc_equip_star/5.png|link=@function_button#funcid='..
-                CommonDefine.FUNC_ID_EQUIPPOS_STAR..'#sid='..EQUIPPOS_STAR_BUTTONFUNC_ID_1..'#param1='..value.pos..'>'
+            strPanelInfo = strPanelInfo..'<Img|id='..baseid..'|children={'..textid1..','..textid2..'}x=-6.0|y=0.0|img=private/cc_equip_star/5.png|link=@function_button,'..
+                EQUIPPOS_STAR_BUTTONFUNC_ID_1..','..value.pos..'>'
             strPanelInfo = strPanelInfo..'<Text|id='..textid1..'|x=20.0|y=5.0|size=18|color='..CSS.NPC_YELLOW..'|text='..value.name..'槽位>'
                 ..'<Text|id='..textid2..'|x=50.0|y=25.0|size=18|color='..CSS.NPC_YELLOW..'|text='..value.level..'星>'
             --对应当前选中的装备槽位
             strPanelInfo = strPanelInfo..GetSingleEquipPosShowInfo(actor, value.pos)                
         else
-            strPanelInfo = strPanelInfo..'<Img|id='..baseid..'|children={'..textid1..','..textid2..'}x=-6.0|y=0.0|img=private/cc_equip_star/6.png|link=@function_button#funcid='..
-                CommonDefine.FUNC_ID_EQUIPPOS_STAR..'#sid='..EQUIPPOS_STAR_BUTTONFUNC_ID_1..'#param1='..value.pos..'>'
+            strPanelInfo = strPanelInfo..'<Img|id='..baseid..'|children={'..textid1..','..textid2..'}x=-6.0|y=0.0|img=private/cc_equip_star/6.png|link=@function_button,'..
+                EQUIPPOS_STAR_BUTTONFUNC_ID_1..','..value.pos..'>'
             strPanelInfo = strPanelInfo..'<Text|id='..textid1..'|x=20.0|y=5.0|size=18|color='..CSS.NPC_WHITE..'|text='..value.name..'槽位>'
                 ..'<Text|id='..textid2..'|x=50.0|y=25.0|size=18|color='..CSS.NPC_WHITE..'|text='..value.level..'星>'
         end
@@ -493,9 +493,7 @@ local function EquipPosUpgradeStarOnce(actor)
 
         --触发装备位升星
         --[[
-        --------------------------
-        -----------------------------
-        -----------------------------todo........
+        -----------------------------------------------------todo
         FreeVIPManager.TriggerChgTaskCounter(actor, FreeVIPManager.TASK_TYPE_UPGRADE_EQUIPSTAR, 'max', nextPosLevel)        
         ]]--
     else
@@ -514,11 +512,9 @@ local function EquipPosUpgradeStarOnce(actor)
         EquipPosStarManager.UpdateEquipStarLvInPos(actor, equippos)        
     end 
     
-    --每日必做计数   
+    --每日必做计数        
     --[[
-    --------------------------
-    -----------------------------
-    -----------------------------todo........    
+    -----------------------------------------------------todo    
     EverydayTask.AddTaskCounter(actor, CommonDefine.FUNC_ID_EQUIPPOS_STAR, 1)          
     ]]--
 end
@@ -598,9 +594,7 @@ function EquipPosStarManager.EquipPosAutoUpgradeStar(actor, startflag)
     else
         setflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_NPC_TEMP_CHOOSE_FLAG, 1)
         EquipPosUpgradeStarOnce(actor)
-        callscript(actor, 'QFunction-0', '@equippos_star_auto_upgrade')
-        --callscriptex(actor, 'DELAYGOTO', 1000, '@equippos_star_auto_upgrade')
-        --delaygoto(actor, 1000, "equippos_star_auto_upgrade", 0)
+        delaygoto(actor, 1000, 'equippos_star_auto_upgrade', 0)
     end
 end
 
@@ -702,9 +696,7 @@ function EquipPosStarManager.RandomUpgradePosToTargStarNum(actor, targstarnum)
     setplaydef(actor, CommonDefine.VAR_T_EQUIPPOS_UPGRADESTAR_INFO, infoStr)
     EquipPosStarManager.UpdateEquipStarLvInPos(actor, poslist[rand])
     --[[
-    --------------------------
-    -----------------------------
-    -----------------------------todo........    
+    -----------------------------------------------------todo    
     FreeVIPManager.TriggerChgTaskCounter(actor, FreeVIPManager.TASK_TYPE_UPGRADE_EQUIPSTAR, 'max', targstarnum) 
     ]]--
     Player.SendSelfMsg(actor, CommonDefine.EQUIPPOS_NAME[currpos]..'槽位星级升至'..targstarnum, CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)

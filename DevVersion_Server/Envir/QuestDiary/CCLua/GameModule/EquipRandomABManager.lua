@@ -526,9 +526,12 @@ local function DoRandomABWithGold(actor)
     EquipRandomABManager.CreateNewRandomABInSeq(actor, equipitem, 0)
 
     --触发金币洗炼
+    --[[
+    ------------------------------------------todo
     FreeVIPManager.TriggerChgTaskCounter(actor, FreeVIPManager.TASK_TYPE_EQUIPRANDOMAB_GOLDTIMES, '+', 1)
     --每日必做计数        
     EverydayTask.AddTaskCounter(actor, CommonDefine.FUNC_ID_EQUIP_RANDOMAB, 1)              
+    ]]--
 end
 
 --元宝洗炼
@@ -572,10 +575,13 @@ local function DoRandomABWithYB(actor)
     --进行洗炼操作    
     EquipRandomABManager.CreateNewRandomABInSeq(actor, equipitem, 1)
 
-    --触发元宝洗炼
+    --[[
+    -------------------------------------------todo....
+    --触发元宝洗炼    
     FreeVIPManager.TriggerChgTaskCounter(actor, FreeVIPManager.TASK_TYPE_EQUIPRANDOMAB_YBTIMES, '+', 1)    
     --每日必做计数        
     EverydayTask.AddTaskCounter(actor, CommonDefine.FUNC_ID_EQUIP_RANDOMAB, 1)                  
+    ]]--
 end
 
 --放弃洗炼结果

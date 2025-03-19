@@ -324,15 +324,10 @@ function BF_GetEquipCustomABTab(actor, equipitem, groupid)
 end
 
 --扩展的大号NPC对话框
-function BF_NPCSayExt(actor, msg, width, height)
+function BF_NPCSayExt(actor, msg, styleflag, width, height)
     if (actor == nil) or (msg == nil) then
         return
     end
-    --[[
-    local allmsg = "<Img|bg=1|move=1|reset=0|img=public/bg_npc_04.jpg>"..
-                    "<Layout|x=540|width=80|height=80|link=@exit>"..
-                    "<Button|x=540|nimg=public/1900000510.png|pimg=public/1900000511.png|link=@exit>"..msg;  
-    ]]--
     local finalwidth = 540
     local finalheight = 280
     if width then
@@ -344,19 +339,27 @@ function BF_NPCSayExt(actor, msg, width, height)
     local allmsg = "<Img|img=public/bg_npc_01.png|width="..finalwidth.."|height="..finalheight.."|scale9t=10|scale9r=10|scale9b=10|scale9l=10|bg=1|move=0|reset=1>"..
                     "<Layout|x="..(finalwidth-5).."|y=3|width=80|height=80|link=@cc_exit_npcsayext>"..
                     "<Button|x="..(finalwidth-5).."|y=2|nimg=public/1900000510.png|pimg=public/1900000511.png|link=@cc_exit_npcsayext>"..msg;    
-    --say(actor, allmsg)
-    delbutton(actor, 1101, CommonDefine.ADD_BUTTON_ID_3)
-    addbutton(actor, 1101, CommonDefine.ADD_BUTTON_ID_3, allmsg)
+
+    if (styleflag~=nil) and (styleflag==1) then
+        delbutton(actor, 1101, CommonDefine.ADD_BUTTON_ID_3)
+        addbutton(actor, 1101, CommonDefine.ADD_BUTTON_ID_3, allmsg)
+    else
+        say(actor, msg)
+    end     
 end
 
 --专用的UI显示
-function BF_ShowSpecialUI(actor, msg)
+function BF_ShowSpecialUI(actor, msg, styleflag)
     if (actor == nil) or (msg == nil) then
         return
     end    
-    --say(actor, msg)
-    delbutton(actor, 1101, CommonDefine.ADD_BUTTON_ID_4)
-    addbutton(actor, 1101, CommonDefine.ADD_BUTTON_ID_4, msg)
+
+    if (styleflag~=nil) and (styleflag==1) then
+        delbutton(actor, 1101, CommonDefine.ADD_BUTTON_ID_4)
+        addbutton(actor, 1101, CommonDefine.ADD_BUTTON_ID_4, msg)
+    else
+        say(actor, msg)
+    end
 end
 
 --返回地图中刷新的boss的信息
@@ -526,7 +529,12 @@ function BF_GetRandomTab(infoTab, wholeprop)
     if wholeprop == -1 then
         _totalprop = 0
         for _, value in ipairs(infoTab) do
-            _totalprop = _totalprop + value.prop
+            if (value.prop == nil) then
+                local str = json2tbl(infoTab)
+                BF_DebugOut('BF_GetRandomTab prop is null:'..str)
+            else
+                _totalprop = _totalprop + value.prop
+            end            
         end
     end
     if _totalprop <= 0 then

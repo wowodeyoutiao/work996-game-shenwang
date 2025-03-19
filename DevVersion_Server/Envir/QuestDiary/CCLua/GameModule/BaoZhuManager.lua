@@ -150,7 +150,7 @@ function BaoZhuManager.DoAutoRecycleBaoZhu(actor, itemobj)
 end
 
 --玩家登录时触发
-function BaoZhuManager.OnPlayerEnterGame(actor)
+function BaoZhuManager.OnPlayerEnterGame(actor)	
 	--开启生肖宝盒的功能  这个后面可以调整到升级或其它地方触发
 	setsndaitembox(actor, 1)
 end

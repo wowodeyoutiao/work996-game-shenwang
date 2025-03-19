@@ -42,9 +42,7 @@ function GuanZhiManager.AddExp(actor, addexp, daylimit)
         setplaydef(actor, CommonDefine.VAR_J_DAY_GUAZHI_ADDEXP, dayaddexp)
 
         --每日必做计数        
-        --[[
         EverydayTask.AddTaskCounter(actor, CommonDefine.FUNC_ID_GUANZHI, addexp)  
-        ]]--
     end
 
     local currexp = getplaydef(actor, CommonDefine.VAR_U_GUANZHI_CURREXP) + addexp
@@ -72,11 +70,10 @@ function GuanZhiManager.OnPlayerEnterGame(actor)
 end
 
 --击杀玩家时触发
-function GuanZhiManager.OnKillPlayer(killer, deathername)
-    if BF_IsNullObj(killer) or (deathername==nil) or (deathername=='') then
+function GuanZhiManager.OnKillPlayer(killer, deather)
+    if BF_IsNullObj(killer) or BF_IsNullObj(deather) then
         return
     end
-    local deather = getplayerbyname(deathername)
     if (not Player.IsPlayer(killer)) or (not Player.IsPlayer(deather)) then
         return
     end
@@ -90,14 +87,14 @@ GameEventManager.AddListener(CommonDefine.EVENT_NAME_KILL_PLAYER, GuanZhiManager
 
 
 
+
+
 ---------------------------通用npc对话----------------------------------------
 
 function GuanZhiManager.ShowRulePanel(actor)
     local strPanelInfo = '<Img|id=10|children={11,12,21,22,23,24,25,26,27}|x=268.0|y=69.0|show=0|esc=1|reset=1|img=private/cc_common/rule_panel.png|bg=1|move=0>'..
-        '<Layout|id=11|x=525.0|y=-1.0|width=80|height=80|link=@show_base_panel#funcid='..
-        CommonDefine.FUNC_ID_GUANZHI..'>'..
-        '<Button|id=12|x=528.0|y=0.0|nimg=public/1900000510.png|pimg=public/1900000511.png|link=@show_base_panel#funcid='..
-        CommonDefine.FUNC_ID_GUANZHI..'>'
+        '<Layout|id=11|x=525.0|y=-1.0|width=80|height=80|link=@show_base_panel>'..
+        '<Button|id=12|x=528.0|y=0.0|nimg=public/1900000510.png|pimg=public/1900000511.png|link=@show_base_panel>'
 
     local tempCurrX = 20
     local tempCurrY = 50
@@ -129,10 +126,9 @@ function GuanZhiManager.ShowBasePanel(actor)
 
 
     local strPanelInfo = '<Img|id=10|children={11,12,13,14,15,16}|x=105.0|y=50.0|height=448|show=0|bg=1|move=0|reset=1|esc=1|loadDelay=0|img=private/cc_guanzhi/2.png>'..
-        '<Layout|id=11|x=812.0|y=12.0|width=80|height=80|link=@cc_exit_specialui>'..
-        '<Button|id=12|x=813.0|y=13.0|pimg=public/1900000511.png|nimg=public/1900000510.png|link=@cc_exit_specialui>'..
-        '<Button|id=16|x=700.0|y=14.0|esc=0|nimg=private/cc_common/button_help.png|pimg=private/cc_common/button_help.png|link=@show_rule_panel#funcid='..
-        CommonDefine.FUNC_ID_GUANZHI..'>'
+        '<Layout|id=11|x=812.0|y=12.0|width=80|height=80|link=@exit>'..
+        '<Button|id=12|x=813.0|y=13.0|pimg=public/1900000511.png|nimg=public/1900000510.png|link=@exit>'..
+        '<Button|id=16|x=700.0|y=14.0|esc=0|nimg=private/cc_common/button_help.png|pimg=private/cc_common/button_help.png|link=@show_rule_panel>'
 
     local tempLeftX = 20
     local tempLeftY = 10
@@ -212,8 +208,7 @@ function GuanZhiManager.ShowBasePanel(actor)
         else
             tempCurrX = tempCurrX - 40
             strPanelInfo = strPanelInfo..'<Button|id=71|x='..tempCurrX..'|y='..tempCurrY..'|color='..CSS.NPC_WHITE..
-                '|mimg=private/cc_common/button_1.png|nimg=private/cc_common/button_1.png|size=18|text=领取官俸|link=@function_button#funcid='..
-                CommonDefine.FUNC_ID_GUANZHI..'#sid='..NPCPANEL_BUTTONFUNC_ID_1..'>'..
+                '|mimg=private/cc_common/button_1.png|nimg=private/cc_common/button_1.png|size=18|text=领取官俸|link=@function_button,'..NPCPANEL_BUTTONFUNC_ID_1..'>'..
                 '<Text|id=72|text=('..rewarditemdesc..')|x='..(tempCurrX+120)..'|y='..(tempCurrY+6)..'|size=20|color='..CSS.NPC_YELLOW..'>'
             Player.AddRedPoint(actor, 0, 71, 10, 10)
         end

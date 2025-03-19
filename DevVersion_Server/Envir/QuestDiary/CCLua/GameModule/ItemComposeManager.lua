@@ -208,9 +208,9 @@ end
 
 function ItemComposeManager.ShowBasePanel(actor, makeindex, itemlist)
     local strPanelInfo = '<Img|id=10|children={11,12,13,21,22,23,24,25,26,40,51,52,53,61,62,63,71,72,80}|x=31.0|y=19.0|img=private/cc_compose/12.png|move=0|show=0|reset=1|esc=1|bg=1|loadDelay=0>'..
-        '<Layout|id=11|x=813.0|y=14.0|width=80|height=80|link=@cc_exit_specialui>'..
-        '<Button|id=12|x=814.0|y=14.0|nimg=public/1900000510.png|pimg=public/1900000511.png|link=@cc_exit_specialui>'..
-		'<Button|id=13|x=700.0|y=14.0|esc=0|nimg=private/cc_common/button_help.png|pimg=private/cc_common/button_help.png|link=@show_rule_panel#funcid='..CommonDefine.FUNC_ID_COMPOSE..'>'
+        '<Layout|id=11|x=813.0|y=14.0|width=80|height=80|link=@exit>'..
+        '<Button|id=12|x=814.0|y=14.0|nimg=public/1900000510.png|pimg=public/1900000511.png|link=@exit>'..
+		'<Button|id=13|x=700.0|y=14.0|esc=0|nimg=private/cc_common/button_help.png|pimg=private/cc_common/button_help.png|link=@show_rule_panel>'
 
 	local composetype = getplaydef(actor, CommonDefine.VAR_N_LAST_NPC_CHOOSEID)
 	if composetype == 0 then
@@ -224,10 +224,10 @@ function ItemComposeManager.ShowBasePanel(actor, makeindex, itemlist)
 		local curry = 86 + (seq - 1) * 50
 		if value.ctype == composetype then
 			strPanelInfo = strPanelInfo..'<Button|id='..currid..'|x='..currx..'|y='..curry..'|mimg=private/cc_compose/2.png|nimg=private/cc_compose/2.png|size=20|color=255|text='..value.showname..
-				'|link=@function_button#funcid='..CommonDefine.FUNC_ID_COMPOSE..'#sid='..COMPOSE_BUTTONFUNC_ID_1..'#param1='..value.ctype..'>'
+				'|link=@function_button,'..COMPOSE_BUTTONFUNC_ID_1..','..value.ctype..'>'
 		else
 			strPanelInfo = strPanelInfo..'<Button|id='..currid..'|x='..currx..'|y='..curry..'|mimg=private/cc_compose/1.png|nimg=private/cc_compose/1.png|size=20|color=255|text='..value.showname..
-				'|link=@function_button#funcid='..CommonDefine.FUNC_ID_COMPOSE..'#sid='..COMPOSE_BUTTONFUNC_ID_1..'#param1='..value.ctype..'>'
+				'|link=@function_button,'..COMPOSE_BUTTONFUNC_ID_1..','..value.ctype..'>'
 		end
 	end
 
@@ -243,7 +243,7 @@ function ItemComposeManager.ShowBasePanel(actor, makeindex, itemlist)
     local sValidItemIDList, bDataFinished = GetBagItemIDCanComposeStr(actor, composetype, nTempMin, nTempMax)
     if sValidItemIDList ~= '' then
     	strPanelInfo = strPanelInfo..'<BAGITEMS|id=40|x=195|y=90|select='..strSelectItem1..'|filter3='..sValidItemIDList..'|count='..BAG_ITEM_COUNT_PER_PAGE..
-			'|showtips=1|selecttype=1|row=5|dblink=@function_button#funcid='..CommonDefine.FUNC_ID_COMPOSE..'#sid='..COMPOSE_BUTTONFUNC_ID_4..'>'
+			'|showtips=1|selecttype=1|row=5|dblink=@function_button,'..COMPOSE_BUTTONFUNC_ID_4..'>'
     else
         strPanelInfo = strPanelInfo..'<Text|text=暂无对应可合成的道具！|x=250|y=120|color='..CSS.NPC_WHITE..'>'
     end
@@ -258,13 +258,12 @@ function ItemComposeManager.ShowBasePanel(actor, makeindex, itemlist)
 		if IsPiledItemComposeType(composetype) then
 			strPanelInfo = strPanelInfo..'<Text|id=61|text=批量放入将自动放满道具|x=570|y=420|size=18|color='..CSS.NPC_WHITE..'>'..
 				'<Button|id=62|x=560|y=370|mimg=private/cc_compose/3.png|nimg=private/cc_compose/3.png|text=放入一个|size=18|color='..CSS.NPC_WHITE..
-				'|link=@function_button#funcid='..CommonDefine.FUNC_ID_COMPOSE..'#sid='..COMPOSE_BUTTONFUNC_ID_11..'>'..
+				'|link=@function_button,'..COMPOSE_BUTTONFUNC_ID_11..'>'..
 				'<Button|id=63|x=680|y=370|mimg=private/cc_compose/3.png|nimg=private/cc_compose/3.png|text=批量放入|size=18|color='..CSS.NPC_WHITE..
-				'|link=@function_button#funcid='..CommonDefine.FUNC_ID_COMPOSE..'#sid='..COMPOSE_BUTTONFUNC_ID_12..'>'
+				'|link=@function_button,'..COMPOSE_BUTTONFUNC_ID_12..'>'
 		else
 			strPanelInfo = strPanelInfo..'<Text|id=61|text=自动放入可合成道具！|x=570|y=420|size=20|color='..CSS.NPC_WHITE..'>'..
-				'<Button|id=62|x=620|y=370|mimg=private/cc_compose/7.png|nimg=private/cc_compose/7.png|link=@function_button#funcid='..
-				CommonDefine.FUNC_ID_COMPOSE..'#sid='..COMPOSE_BUTTONFUNC_ID_5..'>'
+				'<Button|id=62|x=620|y=370|mimg=private/cc_compose/7.png|nimg=private/cc_compose/7.png|link=@function_button,'..COMPOSE_BUTTONFUNC_ID_5..'>'
 		end
 	else
 		strPanelInfo = strPanelInfo..'<ItemShow|id=51|x=637.0|y=94.0|width=70|height=70|itemid=0|itemcount=1|bgtype=1|showtips=1>'..
@@ -274,12 +273,10 @@ function ItemComposeManager.ShowBasePanel(actor, makeindex, itemlist)
 	end	
 
     if currPageNo > 1 then
-        strPanelInfo = strPanelInfo..'<Text|id=71|text=上一页|x=210|y=460|color='..CSS.NPC_WHITE..'|link=@function_button#funcid='..
-		CommonDefine.FUNC_ID_COMPOSE..'#sid='..COMPOSE_BUTTONFUNC_ID_2..'>'
+        strPanelInfo = strPanelInfo..'<Text|id=71|text=上一页|x=210|y=460|color='..CSS.NPC_WHITE..'|link=@function_button,'..COMPOSE_BUTTONFUNC_ID_2..'>'
     end
     if not bDataFinished then
-        strPanelInfo = strPanelInfo..'<Text|id=72|text=下一页|x=460|y=460|color='..CSS.NPC_WHITE..'|link=@function_button#funcid='..
-		CommonDefine.FUNC_ID_COMPOSE..'#sid='..COMPOSE_BUTTONFUNC_ID_3..'>'
+        strPanelInfo = strPanelInfo..'<Text|id=72|text=下一页|x=460|y=460|color='..CSS.NPC_WHITE..'|link=@function_button,'..COMPOSE_BUTTONFUNC_ID_3..'>'
     end	
 
 	local tempparam = getplaydef(actor, CommonDefine.VAR_N_NPC_TEMPPARAM1)	
@@ -287,15 +284,13 @@ function ItemComposeManager.ShowBasePanel(actor, makeindex, itemlist)
 		strPanelInfo = strPanelInfo..'<Img|id=80|children={81,82,83,84}|x=300.0|y=180.0|img=private/cc_compose/11.png|move=0|show=0|reset=1|esc=1|bg=1|loadDelay=0>'..
 			'<Text|id=81|x=160.0|y=15.0|color=151|size=20|text=合成结果>'..
 			'<Text|id=82|x=70.0|y=80.0|color=255|size=18|text=合成失败，不要灰心，下次会有好运！>'..
-			'<Button|id=83|x=150.0|y=155.0|color=255|mimg=private/cc_compose/3.png|nimg=private/cc_compose/3.png|size=18|text=确定|link=@function_button#funcid='..
-			CommonDefine.FUNC_ID_COMPOSE..'#sid='..COMPOSE_BUTTONFUNC_ID_1..'>'
+			'<Button|id=83|x=150.0|y=155.0|color=255|mimg=private/cc_compose/3.png|nimg=private/cc_compose/3.png|size=18|text=确定|link=@function_button,'..COMPOSE_BUTTONFUNC_ID_1..'>'
 	elseif tempparam == 1 then
 		if makeindex ~= nil then
 			strPanelInfo = strPanelInfo..'<Img|id=80|children={81,82,83,84}|x=300.0|y=180.0|img=private/cc_compose/11.png|move=0|show=0|reset=1|esc=1|bg=1|loadDelay=0>'..
 				'<Text|id=81|x=160.0|y=15.0|color=151|size=20|text=合成结果>'..
 				'<Text|id=82|x=40.0|y=60.0|color=255|size=18|text=恭喜获得：>'..
-				'<Button|id=83|x=150.0|y=155.0|color=255|mimg=private/cc_compose/3.png|nimg=private/cc_compose/3.png|size=18|text=确定|link=@function_button#funcid='..
-				CommonDefine.FUNC_ID_COMPOSE..'#sid='..COMPOSE_BUTTONFUNC_ID_1..'>'..
+				'<Button|id=83|x=150.0|y=155.0|color=255|mimg=private/cc_compose/3.png|nimg=private/cc_compose/3.png|size=18|text=确定|link=@function_button,'..COMPOSE_BUTTONFUNC_ID_1..'>'..
 				'<MKItemShow|id=84|x=160|y=80|makeindex='..makeindex..'|count=1|showtips=1|bgtype=1|canmove=0>'	
 		end
 	elseif tempparam == 2 then
@@ -307,8 +302,7 @@ function ItemComposeManager.ShowBasePanel(actor, makeindex, itemlist)
 			strPanelInfo = strPanelInfo..'<Img|id=80|children={81,82,83'..idstr..'}|x=300.0|y=180.0|img=private/cc_compose/11.png|move=0|show=0|reset=1|esc=1|bg=1|loadDelay=0>'..
 				'<Text|id=81|x=160.0|y=15.0|color=151|size=20|text=合成结果>'..
 				'<Text|id=82|x=40.0|y=60.0|color=255|size=18|text=恭喜获得：>'..
-				'<Button|id=83|x=150.0|y=155.0|color=255|mimg=private/cc_compose/3.png|nimg=private/cc_compose/3.png|size=18|text=确定|link=@function_button#funcid='..
-				CommonDefine.FUNC_ID_COMPOSE..'#sid='..COMPOSE_BUTTONFUNC_ID_1..'>'
+				'<Button|id=83|x=150.0|y=155.0|color=255|mimg=private/cc_compose/3.png|nimg=private/cc_compose/3.png|size=18|text=确定|link=@function_button,'..COMPOSE_BUTTONFUNC_ID_1..'>'
 			for key, value in ipairs(itemlist) do
 				local currx = 40 + 70 * (key-1)
 				strPanelInfo = strPanelInfo..'<ItemShow|id='..(90+key)..'|x='..currx..'|y=80|itemid='..value.id..'|itemcount='..value.num..'|bgtype=1|showtips=1>'
@@ -333,9 +327,9 @@ function ItemComposeManager.ChooseOtherItemPanel(actor)
     end	
 
     local strPanelInfo = '<Img|id=10|children={11,12,13,21,22,23,24,25,26,40,51,52,53,61,62,63,80}|x=31.0|y=19.0|img=private/cc_compose/12.png|move=0|show=0|reset=1|esc=1|bg=1|loadDelay=0>'..
-        '<Layout|id=11|x=813.0|y=14.0|width=80|height=80|link=@cc_exit_specialui>'..
-        '<Button|id=12|x=814.0|y=14.0|nimg=public/1900000510.png|pimg=public/1900000511.png|link=@cc_exit_specialui>'..
-		'<Button|id=13|x=700.0|y=14.0|esc=0|nimg=private/cc_common/button_help.png|pimg=private/cc_common/button_help.png|link=@show_rule_panel#funcid='..CommonDefine.FUNC_ID_COMPOSE..'>'
+        '<Layout|id=11|x=813.0|y=14.0|width=80|height=80|link=@exit>'..
+        '<Button|id=12|x=814.0|y=14.0|nimg=public/1900000510.png|pimg=public/1900000511.png|link=@exit>'..
+		'<Button|id=13|x=700.0|y=14.0|esc=0|nimg=private/cc_common/button_help.png|pimg=private/cc_common/button_help.png|link=@show_rule_panel>'
 
 	local composetype = getplaydef(actor, CommonDefine.VAR_N_LAST_NPC_CHOOSEID)
 	if composetype == 0 then
@@ -350,10 +344,10 @@ function ItemComposeManager.ChooseOtherItemPanel(actor)
 		local curry = 86 + (seq - 1) * 50
 		if value.ctype == composetype then
 			strPanelInfo = strPanelInfo..'<Button|id='..currid..'|x='..currx..'|y='..curry..'|mimg=private/cc_compose/2.png|nimg=private/cc_compose/2.png|size=20|color=255|text='..value.showname..
-				'|link=@function_button#funcid='..CommonDefine.FUNC_ID_COMPOSE..'#sid='..COMPOSE_BUTTONFUNC_ID_1..'#param1='..value.ctype..'>'
+				'|link=@function_button,'..COMPOSE_BUTTONFUNC_ID_1..','..value.ctype..'>'
 		else
 			strPanelInfo = strPanelInfo..'<Button|id='..currid..'|x='..currx..'|y='..curry..'|mimg=private/cc_compose/1.png|nimg=private/cc_compose/1.png|size=20|color=255|text='..value.showname..
-				'|link=@function_button#funcid='..CommonDefine.FUNC_ID_COMPOSE..'#sid='..COMPOSE_BUTTONFUNC_ID_1..'#param1='..value.ctype..'>'
+				'|link=@function_button,'..COMPOSE_BUTTONFUNC_ID_1..','..value.ctype..'>'
 		end
 	end
 
@@ -384,7 +378,7 @@ function ItemComposeManager.ChooseOtherItemPanel(actor)
 			strPanelInfo = strPanelInfo..'<Text|id=61|text=成功概率：'..showrate..'%|x=590|y=360|color='..CSS.NPC_WHITE..'>'..
 				'<Text|id=62|text=合成消耗：'..sConsumeInfo..'|x=590|y=390|color='..CSS.NPC_WHITE..'>'..
 				'<Button|id=63|x=620|y=420|mimg=private/cc_compose/3.png|nimg=private/cc_compose/3.png|text=开始合成|size=18|color='..CSS.NPC_WHITE..
-				'|link=@function_button#funcid='..CommonDefine.FUNC_ID_COMPOSE..'#sid='..COMPOSE_BUTTONFUNC_ID_6..'>'
+				'|link=@function_button,'..COMPOSE_BUTTONFUNC_ID_6..'>'
 		end	
 	else	
 		local pilenum = getplaydef(actor, CommonDefine.VAR_N_SELECT_COMPOSE_PILE_NUM)	
@@ -399,7 +393,7 @@ function ItemComposeManager.ChooseOtherItemPanel(actor)
 			strPanelInfo = strPanelInfo..'<Text|id=61|text=成功概率：'..showrate..'%|x=590|y=360|color='..CSS.NPC_WHITE..'>'..
 				'<Text|id=62|text=合成消耗：'..sConsumeInfo..'|x=590|y=390|color='..CSS.NPC_WHITE..'>'..
 				'<Button|id=63|x=620|y=420|mimg=private/cc_compose/3.png|nimg=private/cc_compose/3.png|text=开始合成|size=18|color='..CSS.NPC_WHITE..
-				'|link=@function_button#funcid='..CommonDefine.FUNC_ID_COMPOSE..'#sid='..COMPOSE_BUTTONFUNC_ID_13..'>'				
+				'|link=@function_button,'..COMPOSE_BUTTONFUNC_ID_13..'>'				
 		else
 			strPanelInfo = strPanelInfo..'<ItemShow|id=51|x=637.0|y=94.0|width=70|height=70|itemid='..firstitemid..'|itemcount=1|bgtype=1|showtips=1>'..
 				'<ItemShow|id=52|x=559.0|y=227.0|width=70|height=70|itemid=0|itemcount=1|bgtype=1|showtips=1>'..
@@ -412,8 +406,8 @@ end
 
 function ItemComposeManager.ShowRulePanel(actor)
     local strPanelInfo = '<Img|id=10|children={11,12,21,22,23,24,25,26,27}|x=268.0|y=69.0|show=0|esc=1|reset=1|img=private/cc_common/rule_panel.png|bg=1|move=0>'..
-        '<Layout|id=11|x=525.0|y=-1.0|width=80|height=80|link=@show_base_panel#funcid='..CommonDefine.FUNC_ID_COMPOSE..'>'..
-        '<Button|id=12|x=528.0|y=0.0|nimg=public/1900000510.png|pimg=public/1900000511.png|link=@show_base_panel#funcid='..CommonDefine.FUNC_ID_COMPOSE..'>'
+        '<Layout|id=11|x=525.0|y=-1.0|width=80|height=80|link=@show_base_panel>'..
+        '<Button|id=12|x=528.0|y=0.0|nimg=public/1900000510.png|pimg=public/1900000511.png|link=@show_base_panel>'
 
     local tempCurrX = 20
     local tempCurrY = 50
@@ -588,6 +582,7 @@ local function DoCompose(actor)
         Player.SendSelfMsg(actor, '选择的合成道具的数量不足'..CommonDefine.ITEM_COMPOSE_NEED_NUM..'个！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
         return
     end
+release_print(1111)	
     local itemMakeidxList = {}
     if strSelectTable ~= false then
         for _, value in ipairs(strSelectTable) do
@@ -597,10 +592,12 @@ local function DoCompose(actor)
             itemMakeidxList[#itemMakeidxList+1] = tonumber(value)
         end        
     end
+release_print(22222)		
     if BF_HasDuplicates(itemMakeidxList) then
         --外挂
         return
     end
+release_print(3333)		
     local chooseItemObjList = {}
     for _, value in ipairs(itemMakeidxList) do
         local itemobj = Bag.GetItemByMakeindex(actor, value)
@@ -611,6 +608,7 @@ local function DoCompose(actor)
             chooseItemObjList[#chooseItemObjList+1] = itemobj
         end
     end
+release_print(4444)		
     local cfgCurrComposeTab = GetCfgComposeTab(actor, chooseItemObjList)
     if cfgCurrComposeTab == nil then
         Player.SendSelfMsg(actor, '未找到有效的合成配置！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
@@ -627,15 +625,13 @@ local function DoCompose(actor)
     for _, value in ipairs(itemMakeidxList) do
         delitembymakeindex(actor, value)
     end
-
+release_print(55555)	
     --最终合成
     local bComposeFlag, newItemMakeIdx = DoFinalEquipCompose(actor, cfgCurrComposeTab)
     if bComposeFlag then
         --触发装备合成成功
 		--[[
-		----------------------------------------------------
-		-------------------------------------------------------
-		-------------------------------------------------------todo		
+		-----------------------------------------todo
         FreeVIPManager.TriggerChgTaskCounter(actor, FreeVIPManager.TASK_TYPE_COMPOSE_EQUIP_SUCCESSTIMES, '+', 1)       
 		]]--
 		show_success_panel(actor, newItemMakeIdx)
@@ -643,11 +639,9 @@ local function DoCompose(actor)
 		show_fail_panel(actor)
     end
 
-    --每日必做计数       
+    --每日必做计数        
 	--[[
-	----------------------------------------------------
-	-------------------------------------------------------
-	-------------------------------------------------------todo
+	-----------------------------------------todo	
     EverydayTask.AddTaskCounter(actor, CommonDefine.FUNC_ID_COMPOSE, 1)       	
 	]]--
 end
@@ -728,11 +722,9 @@ local function DoComposeEx(actor)
 		show_fail_panel(actor)
 	end
 
-    --每日必做计数      
+    --每日必做计数   
 	--[[
-	----------------------------------------------------
-	-------------------------------------------------------
-	-------------------------------------------------------todo	
+	-----------------------------------------todo	
     EverydayTask.AddTaskCounter(actor, CommonDefine.FUNC_ID_COMPOSE, pilecount)       	
 	]]--
 end

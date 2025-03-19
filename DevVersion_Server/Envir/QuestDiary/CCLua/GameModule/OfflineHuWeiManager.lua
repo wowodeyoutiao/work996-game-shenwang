@@ -73,8 +73,8 @@ function OfflineHuWeiManager.ShowRulePanel(actor)
     end
     
     local strPanelInfo = '<Img|id=10|children={11,12,21,22,23,24,25,26}|x=268.0|y=69.0|show=0|esc=1|reset=1|img=private/cc_common/rule_panel.png|bg=1|move=0>'..
-        '<Layout|id=11|x=525.0|y=-1.0|width=80|height=80|link=@show_base_panel#funcid='..CommonDefine.FUNC_ID_OFFLINE..'#param1='..sparam..'>'..
-        '<Button|id=12|x=528.0|y=0.0|nimg=public/1900000510.png|pimg=public/1900000511.png|link=@show_base_panel#funcid='..CommonDefine.FUNC_ID_OFFLINE..'#param1='..sparam..'>'
+        '<Layout|id=11|x=525.0|y=-1.0|width=80|height=80|link=@show_base_panel,'..sparam..'>'..
+        '<Button|id=12|x=528.0|y=0.0|nimg=public/1900000510.png|pimg=public/1900000511.png|link=@show_base_panel,'..sparam..'>'
 
     local tempCurrX = 20
     local tempCurrY = 50
@@ -190,22 +190,20 @@ function OfflineHuWeiManager.ShowBasePanel(actor, sparam)
     local cfgNextLv = cfgOfflineHuWei[nextKey]
     if cfgNextLv == nil then
         bCurrIsMaxLv = true
-    end
+    end        
 
     local strPanelInfo = '<Img|id=10|children={11,12,13,14,15,16,17,18,101,102,103,104,105}|x=150.0|y=50.0|height=448|show=0|move=0|reset=1|bg=1|img=private/cc_offline/1.png|esc=1|loadDelay=0>'..
-        '<Layout|id=11|x=812.0|y=12.0|width=80|height=80|link=@cc_exit_specialui>'..
-        '<Button|id=12|x=813.0|y=13.0|pimg=public/1900000511.png|nimg=public/1900000510.png|link=@cc_exit_specialui>'..        
+        '<Layout|id=11|x=812.0|y=12.0|width=80|height=80|link=@exit>'..
+        '<Button|id=12|x=813.0|y=13.0|pimg=public/1900000511.png|nimg=public/1900000510.png|link=@exit>'..        
         '<Text|id=13|x=380.0|y=18.0|size=20|color=161|text='..cfgHuWeiNpc.npcname..'>'..
-        '<Button|id=18|x=700.0|y=14.0|esc=0|nimg=private/cc_common/button_help.png|pimg=private/cc_common/button_help.png|link=@show_rule_panel#funcid='..CommonDefine.FUNC_ID_OFFLINE..'>'
-
+        '<Button|id=18|x=700.0|y=14.0|esc=0|nimg=private/cc_common/button_help.png|pimg=private/cc_common/button_help.png|link=@show_rule_panel>'
     for i = 1, #ZCD_NPC_LIST, 1 do
         local ctype = ZCD_NPC_LIST[i].hwtype
         local showname = ZCD_NPC_LIST[i].npcname
         local currx = -20
         local curry = 40 + (i - 1) * 40
         local currid = 100 + i
-        strPanelInfo = strPanelInfo..'<Button|id='..currid..'|x='..currx..'|y='..curry..'|text='..showname..'|nimg=private/cc_common/button_2.png|mimg=private/cc_common/button_2.png|link=@show_base_panel#funcid='..
-            CommonDefine.FUNC_ID_OFFLINE..'#param1='..ctype..'>'
+        strPanelInfo = strPanelInfo..'<Button|id='..currid..'|x='..currx..'|y='..curry..'|text='..showname..'|nimg=private/cc_common/button_2.png|mimg=private/cc_common/button_2.png|link=@show_base_panel,'..ctype..'>'
     end        
     
     --当前等级属性
@@ -263,6 +261,7 @@ function OfflineHuWeiManager.ShowBasePanel(actor, sparam)
     strPanelInfo = strPanelInfo..'<Layout|id=15|children={'..idstr..'}|x=72.0|y=100.0|width=480|height=180>'
 
 
+
     idstr = '51,52,53'
     local tempCurrX = 0
     local tempCurrY = 0
@@ -275,10 +274,11 @@ function OfflineHuWeiManager.ShowBasePanel(actor, sparam)
         local sConsumeInfo = BF_GetItemTableDescStr(actor, cfgCurrLv.needitems_tab)
         strPanelInfo = strPanelInfo..'<Text|id=52|text=升级消耗:  '..sConsumeInfo..'|size=18|x='..(tempCurrX+20)..'|y='..tempCurrY..'|color='..CSS.NPC_WHITE..'>'
         tempCurrY = tempCurrY + 50
-        strPanelInfo = strPanelInfo..'<Button|id=53|x='..(tempCurrX+200)..'|y='..tempCurrY..'|color='..CSS.NPC_WHITE..'|mimg=private/cc_common/button_1.png|nimg=private/cc_common/button_1.png|size=18|text=升    级|link=@function_button#funcid='..
-            CommonDefine.FUNC_ID_OFFLINE..'#sid='..NPCPANEL_BUTTONFUNC_ID_1..'#param1='..huweitype..'>'
+        strPanelInfo = strPanelInfo..'<Button|id=53|x='..(tempCurrX+200)..'|y='..tempCurrY..'|color='..CSS.NPC_WHITE..'|mimg=private/cc_common/button_1.png|nimg=private/cc_common/button_1.png|size=18|text=升    级|link=@function_button,'..
+            NPCPANEL_BUTTONFUNC_ID_1..','..huweitype..'>'
     end
     strPanelInfo = strPanelInfo..'<Layout|id=17|children={'..idstr..'}|x=72.0|y=290.0|width=480|height=120>'
+
 
 
     idstr = '61,62,63,64'
@@ -301,8 +301,8 @@ function OfflineHuWeiManager.ShowBasePanel(actor, sparam)
         strPanelInfo = strPanelInfo..'<Text|id=61|text=当前离线收益:|size=18|x='..tempCurrX..'|y='..(tempCurrY+20)..'|color='..CSS.NPC_WHITE..'>'
         strPanelInfo = strPanelInfo..'<Text|id=62|text='..offlineitemdesc..' |size=18|x='..tempCurrX..'|y='..(tempCurrY+50)..'|color='..CSS.NPC_WHITE..'>'
         strPanelInfo = strPanelInfo..'<Text|id=63|text=(收益达到上限后不再累计)|size=15|x='..tempCurrX..'|y='..(tempCurrY+80)..'|color='..CSS.NPC_LIGHTGREEN..'>'       
-        strPanelInfo = strPanelInfo..'<Button|id=64|x='..(tempCurrX+40)..'|y='..(tempCurrY+120)..'|color='..CSS.NPC_WHITE..'|mimg=private/cc_common/button_1.png|nimg=private/cc_common/button_1.png|size=18|text=收    取|link=@function_button#funcid='..
-            CommonDefine.FUNC_ID_OFFLINE..'#sid='..NPCPANEL_BUTTONFUNC_ID_2..'#param1='..huweitype..'>'
+        strPanelInfo = strPanelInfo..'<Button|id=64|x='..(tempCurrX+40)..'|y='..(tempCurrY+120)..'|color='..CSS.NPC_WHITE..'|mimg=private/cc_common/button_1.png|nimg=private/cc_common/button_1.png|size=18|text=收    取|link=@function_button,'..
+            NPCPANEL_BUTTONFUNC_ID_2..','..huweitype..'>'
     else
         strPanelInfo = strPanelInfo..'<Text|id=61|text=升级后领取离线收益|size=18|x='..tempCurrX..'|y='..(tempCurrY+100)..'|color='..CSS.NPC_LIGHTGREEN..'>'
     end

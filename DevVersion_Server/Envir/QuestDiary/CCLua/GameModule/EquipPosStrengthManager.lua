@@ -82,60 +82,6 @@ function EquipPosStrengthManager.UpdateEquipStrengthLvInPos(actor, pos)
     recalcabilitys(actor)
 end
 
---更新指定装备位的装备星级及属性
-function EquipPosStrengthManager.UpdateEquipStarLvInPos(actor, pos)
-	if (actor == nil) or (pos == nil) then
-		return
-	end		
-    local infoStr = getplaydef(actor, CommonDefine.VAR_T_EQUIPPOS_STRENGTH_INFO)
-    if infoStr == '' then
-		return        
-    end
-	if not EquipPosStrengthManager.IsValidEquipPosForUpgradeStar(pos) then
-		return
-	end
-	local equipitem = linkbodyitem(actor, pos)
-	if equipitem == '0' then
-		return
-	end
-	local infoTab = json2tbl(infoStr)
-	if (infoTab == nil) or table.isempty(infoTab) then
-		return
-	end
-
-	local sid = ''..pos
-	local curPosLevel = 0
-    if infoTab[sid] ~= nil then
-        curPosLevel = infoTab[sid]
-    end
-    if curPosLevel <= 0 then
-        return
-    end
-
-    local bJob = Player.GetJob(actor)
-    local cfgCurrKey = EquipPosStrengthManager.GetUpgradeStarCfgKey(bJob, pos, curPosLevel)
-    if cfgEquipPosStrength[cfgCurrKey] == nil then
-        return
-    end
-
-	--增加自定义的星级和扩展属性
-    local sGroupShowName = '['..CommonDefine.EQUIPPOS_NAME[pos]..'槽位星级]: +'..curPosLevel	
-	BF_SetCustomEquipABGroup(actor, equipitem, cfgEquipPosStrength[cfgCurrKey].addprop_tab, CommonDefine.ITEM_CUSTOMEAB_GROUP_1, sGroupShowName, 253)
-    setitemaddvalue(actor, equipitem, 2, 3, curPosLevel);
-    
-    --计算星级的加成属性对于对应装备位上装备【基础属性+强化属性】的百分比强化的实际加成属性点
-    local strAddAbility = GetEquipPosStarAddAbilityStr(actor, pos, equipitem, cfgCurrKey)
-    if strAddAbility ~= '' then
-        local sGroupName = CommonDefine.EQUIPPOS_ADDAB_GROUP_NAME[pos]
-        if (sGroupName ~= nil) and (sGroupName ~= '') then
-            addattlist(actor, sGroupName,"=",strAddAbility)
-        end                
-    end
-
-    refreshitem(actor, equipitem)
-    recalcabilitys(actor)	
-end
-
 --返回玩家指定装备位对应的强化配置key
 function EquipPosStrengthManager.GetPlayerCfgKey(actor, pos)
 	if (actor == nil) or (pos == nil) then
@@ -226,8 +172,8 @@ end
 --显示规则面板
 function EquipPosStrengthManager.ShowRulePanel(actor)
     local strPanelInfo = '<Img|id=10|children={11,12,21,22,23,24}|x=268.0|y=69.0|show=0|esc=1|reset=1|img=private/cc_common/rule_panel.png|bg=1|move=0>'..
-        '<Layout|id=11|x=525.0|y=-1.0|width=80|height=80|link=@show_base_panel#funcid='..CommonDefine.FUNC_ID_EQUIPPOS_STRENGTH..'>'..
-        '<Button|id=12|x=528.0|y=0.0|nimg=public/1900000510.png|pimg=public/1900000511.png|link=@show_base_panel#funcid='..CommonDefine.FUNC_ID_EQUIPPOS_STRENGTH..'>'
+        '<Layout|id=11|x=525.0|y=-1.0|width=80|height=80|link=@show_base_panel>'..
+        '<Button|id=12|x=528.0|y=0.0|nimg=public/1900000510.png|pimg=public/1900000511.png|link=@show_base_panel>'
 
     local tempCurrX = 20
     local tempCurrY = 50
@@ -336,10 +282,11 @@ local function GetSingleEquipPosShowInfo(actor, equippos)
         if bCurrIsMaxLv then
             sPanelStr = sPanelStr..'<Text|id=501|text=已达到最高强化等级！|x=200|y=30|color='..CSS.NPC_LIGHTGREEN..'>'
         else
-            sPanelStr = sPanelStr..'<Button|id=501|x=120|y=10|text=强化一次|size=18|color='..CSS.NPC_WHITE..'|mimg=private/cc_equip_strength/3.png|nimg=private/cc_equip_strength/3.png|link=@function_button#funcid='..
-                CommonDefine.FUNC_ID_EQUIPPOS_STRENGTH..'#sid='..EQUIPPOS_STRENGTH_BUTTONFUNC_ID_2..'>'
-            sPanelStr = sPanelStr..'<Button|id=502|x=350|y=10|text=强化十次|size=18|color='..CSS.NPC_WHITE..'|mimg=private/cc_equip_strength/3.png|nimg=private/cc_equip_strength/3.png|link=@function_button#funcid='..
-                CommonDefine.FUNC_ID_EQUIPPOS_STRENGTH..'#sid='..EQUIPPOS_STRENGTH_BUTTONFUNC_ID_3..'>'
+            local tempCurrY = 10
+            sPanelStr = sPanelStr..'<Button|id=501|x=120|y=10|text=强化一次|size=18|color='..CSS.NPC_WHITE..'|mimg=private/cc_equip_strength/3.png|nimg=private/cc_equip_strength/3.png|link=@function_button,'..            
+                EQUIPPOS_STRENGTH_BUTTONFUNC_ID_2..'>'
+            sPanelStr = sPanelStr..'<Button|id=502|x=350|y=10|text=强化十次|size=18|color='..CSS.NPC_WHITE..'|mimg=private/cc_equip_strength/3.png|nimg=private/cc_equip_strength/3.png|link=@function_button,'..            
+                EQUIPPOS_STRENGTH_BUTTONFUNC_ID_3..'>'
         end
         sPanelStr = sPanelStr..'<Layout|id=500|children={'..idstr..'}|x=0|y=310.0|width=580|height=110>'
     end
@@ -403,10 +350,10 @@ function EquipPosStrengthManager.ShowBasePanel(actor)
     end
 
     local strPanelInfo = '<Img|id=10|children={11,12,13,14,15,16}|x=20.0|y=16.0|reset=1|img=private/cc_equip_strength/8.png|show=0|esc=1|move=0|bg=1|loadDelay=0>'..
-        '<Layout|id=11|x=813.0|y=14.0|width=80|height=80|link=@cc_exit_specialui>'..
-        '<Button|id=12|x=814.0|y=14.0|nimg=public/1900000510.png|pimg=public/1900000511.png|link=@cc_exit_specialui>'..
+        '<Layout|id=11|x=813.0|y=14.0|width=80|height=80|link=@exit>'..
+        '<Button|id=12|x=814.0|y=14.0|nimg=public/1900000510.png|pimg=public/1900000511.png|link=@exit>'..
         '<Text|id=13|x=72.0|y=70.0|size=18|color=151|text=选择槽位>'..
-        '<Button|id=16|x=700.0|y=14.0|esc=0|nimg=private/cc_common/button_help.png|pimg=private/cc_common/button_help.png|link=@show_rule_panel#funcid='..CommonDefine.FUNC_ID_EQUIPPOS_STRENGTH..'>'
+        '<Button|id=16|x=700.0|y=14.0|esc=0|nimg=private/cc_common/button_help.png|pimg=private/cc_common/button_help.png|link=@show_rule_panel>'
 
     local idstr1 = ''
     for seq, _ in ipairs(posTab) do
@@ -427,15 +374,15 @@ function EquipPosStrengthManager.ShowBasePanel(actor)
             setplaydef(actor, CommonDefine.VAR_N_LAST_NPC_CHOOSEID, choosepos)
         end
         if choosepos == value.pos then
-            strPanelInfo = strPanelInfo..'<Img|id='..baseid..'|children={'..textid1..','..textid2..'}x=-6.0|y=0.0|img=private/cc_equip_strength/5.png|link=@function_button#funcid='..
-                CommonDefine.FUNC_ID_EQUIPPOS_STRENGTH..'#sid='..EQUIPPOS_STRENGTH_BUTTONFUNC_ID_1..'#param1='..value.pos..'>'
+            strPanelInfo = strPanelInfo..'<Img|id='..baseid..'|children={'..textid1..','..textid2..'}x=-6.0|y=0.0|img=private/cc_equip_strength/5.png|link=@function_button,'..
+                EQUIPPOS_STRENGTH_BUTTONFUNC_ID_1..','..value.pos..'>'
             strPanelInfo = strPanelInfo..'<Text|id='..textid1..'|x=20.0|y=5.0|size=18|color='..CSS.NPC_YELLOW..'|text='..value.name..'槽位>'
                 ..'<Text|id='..textid2..'|x=50.0|y=25.0|size=18|color='..CSS.NPC_YELLOW..'|text='..value.level..'级>'
             --对应当前选中的装备槽位
             strPanelInfo = strPanelInfo..GetSingleEquipPosShowInfo(actor, value.pos)                
         else
-            strPanelInfo = strPanelInfo..'<Img|id='..baseid..'|children={'..textid1..','..textid2..'}x=-6.0|y=0.0|img=private/cc_equip_strength/6.png|link=@function_button#funcid='..
-                CommonDefine.FUNC_ID_EQUIPPOS_STRENGTH..'#sid='..EQUIPPOS_STRENGTH_BUTTONFUNC_ID_1..'#param1='..value.pos..'>'                
+            strPanelInfo = strPanelInfo..'<Img|id='..baseid..'|children={'..textid1..','..textid2..'}x=-6.0|y=0.0|img=private/cc_equip_strength/6.png|link=@function_button,'..
+                EQUIPPOS_STRENGTH_BUTTONFUNC_ID_1..','..value.pos..'>'
             strPanelInfo = strPanelInfo..'<Text|id='..textid1..'|x=20.0|y=5.0|size=18|color='..CSS.NPC_WHITE..'|text='..value.name..'槽位>'
                 ..'<Text|id='..textid2..'|x=50.0|y=25.0|size=18|color='..CSS.NPC_WHITE..'|text='..value.level..'级>'
         end        
@@ -511,12 +458,12 @@ local function EquipPosStrengthUpgradeOnce(actor)
 
     --更新当前装备位的强化状态
     EquipPosStrengthManager.UpdateEquipStrengthLvInPos(actor, equippos)  
-    
     --更新当前装备位的升星加成属性
     EquipPosStarManager.UpdateEquipStarLvInPos(actor, equippos)
 
+    --每日必做计数       
     --[[
-    --每日必做计数        
+    ------------------------------------------------todo    
     EverydayTask.AddTaskCounter(actor, CommonDefine.FUNC_ID_EQUIPPOS_STRENGTH, 1)      
     ]]--
 end
@@ -590,16 +537,12 @@ local function EquipPosStrengthUpgradeTenTimes(actor)
     
         --更新当前装备位的强化状态
         EquipPosStrengthManager.UpdateEquipStrengthLvInPos(actor, equippos)  
-
         --更新当前装备位的升星加成属性
         EquipPosStarManager.UpdateEquipStarLvInPos(actor, equippos)  
-
-
+        
+        --每日必做计数  
         --[[
-        --------------------------------------------------------------------
-        -----------------------------------------------------------------------
-        -----------------------------------------------------------------------todo        
-        --每日必做计数        
+        ------------------------------------------------todo
         EverydayTask.AddTaskCounter(actor, CommonDefine.FUNC_ID_EQUIPPOS_STRENGTH, 10)              
         ]]--
     end

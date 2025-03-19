@@ -376,8 +376,11 @@ function changename_button(actor, sparam)
     end
 end
 
+
+-------------------------------------------------------新逻辑还是从原来的NPC脚本走--------------------------------------------
 --规则说明面板
-function show_rule_panel(actor, sfuncid)    
+function show_rule_panel_fromtxt(actor, sfuncid)  
+    release_print(1111)  
     if BF_IsNullObj(actor) or not BF_IsNumberStr(sfuncid) then
         return
     end
@@ -400,7 +403,7 @@ function show_rule_panel(actor, sfuncid)
 end
 
 --显示基础面板
-function show_base_panel(actor, sfuncid, sparam)
+function show_base_panel_fromtxt(actor, sfuncid, sparam)
     if BF_IsNullObj(actor) or not BF_IsNumberStr(sfuncid) then
         return
     end
@@ -423,7 +426,7 @@ function show_base_panel(actor, sfuncid, sparam)
 end
 
 --对应的功能操作
-function function_button(actor, sfuncid, sid, sparam)
+function function_button_fromtxt(actor, sfuncid, sid, sparam)
     if BF_IsNullObj(actor) or not BF_IsNumberStr(sfuncid) then
         return
     end
@@ -445,6 +448,67 @@ function function_button(actor, sfuncid, sid, sparam)
     end
 end
 
+---------------------------------------------------------------------------------------------------------------------------------
+
+--规则说明面板
+function show_rule_panel(actor)    
+    local currfuncid = getplaydef(actor, CommonDefine.VAR_N_CURR_FUNCTION_ID)
+    if currfuncid == CommonDefine.FUNC_ID_EQUIPPOS_STRENGTH then
+        EquipPosStrengthManager.ShowRulePanel(actor)
+    elseif currfuncid == CommonDefine.FUNC_ID_EQUIPPOS_STAR then
+        EquipPosStarManager.ShowRulePanel(actor)
+    elseif currfuncid == CommonDefine.FUNC_ID_SOUL_STONE then
+        SoulStoneManager.ShowRulePanel(actor)      
+    elseif currfuncid == CommonDefine.FUNC_ID_GUANZHI then
+        GuanZhiManager.ShowRulePanel(actor)
+    elseif currfuncid == CommonDefine.FUNC_ID_SKILLUPGRADE then
+        SkillUpgrade.ShowRulePanel(actor)   
+    elseif currfuncid == CommonDefine.FUNC_ID_COMPOSE then
+        ItemComposeManager.ShowRulePanel(actor)
+    elseif currfuncid == CommonDefine.FUNC_ID_OFFLINE then
+        OfflineHuWeiManager.ShowRulePanel(actor)
+    end    
+end
+
+--显示基础面板
+function show_base_panel(actor, sparam)
+    local currfuncid = getplaydef(actor, CommonDefine.VAR_N_CURR_FUNCTION_ID)
+    if currfuncid == CommonDefine.FUNC_ID_EQUIPPOS_STRENGTH then
+        EquipPosStrengthManager.ShowBasePanel(actor)
+    elseif currfuncid == CommonDefine.FUNC_ID_EQUIPPOS_STAR then
+        EquipPosStarManager.ShowBasePanel(actor)        
+    elseif currfuncid == CommonDefine.FUNC_ID_SOUL_STONE then
+        SoulStoneManager.ShowBasePanel(actor)         
+    elseif currfuncid == CommonDefine.FUNC_ID_GUANZHI then
+        GuanZhiManager.ShowBasePanel(actor)
+    elseif currfuncid == CommonDefine.FUNC_ID_SKILLUPGRADE then
+        SkillUpgrade.ShowBasePanel(actor)
+    elseif currfuncid == CommonDefine.FUNC_ID_COMPOSE then
+        ItemComposeManager.ShowBasePanel(actor)
+    elseif currfuncid == CommonDefine.FUNC_ID_OFFLINE then
+        OfflineHuWeiManager.ShowBasePanel(actor, sparam)
+    end    
+end
+
+--对应的功能操作
+function function_button(actor, sid, sparam)
+    local currfuncid = getplaydef(actor, CommonDefine.VAR_N_CURR_FUNCTION_ID)
+    if currfuncid == CommonDefine.FUNC_ID_EQUIPPOS_STRENGTH then
+        EquipPosStrengthManager.DoOperButton(actor, sid, sparam)
+    elseif currfuncid == CommonDefine.FUNC_ID_EQUIPPOS_STAR then
+        EquipPosStarManager.DoOperButton(actor, sid, sparam)        
+    elseif currfuncid == CommonDefine.FUNC_ID_SOUL_STONE then
+        SoulStoneManager.DoOperButton(actor, sid, sparam)   
+    elseif currfuncid == CommonDefine.FUNC_ID_GUANZHI then
+        GuanZhiManager.DoOperButton(actor, sid, sparam)
+    elseif currfuncid == CommonDefine.FUNC_ID_SKILLUPGRADE then
+        SkillUpgrade.DoOperButton(actor, sid, sparam)
+    elseif currfuncid == CommonDefine.FUNC_ID_COMPOSE then
+        ItemComposeManager.DoOperButton(actor, sid, sparam)
+    elseif currfuncid == CommonDefine.FUNC_ID_OFFLINE then
+        OfflineHuWeiManager.DoOperButton(actor, sid, sparam)
+    end    
+end
 
 ----------------------------------------------------------------按钮回调函数end--------------------------------------------------------------------------
 
@@ -486,9 +550,16 @@ function hide_power_callback(actor)
     delbutton(actor, 108, CommonDefine.ADD_BUTTON_ID_7)
 end
 
+--txt里回调的
 function equippos_star_auto_upgrade_callback(actor)
     EquipPosStarManager.EquipPosAutoUpgradeStar(actor)
     EquipPosStarManager.ShowBasePanel(actor)
+end
+
+--lua直接回调
+function equippos_star_auto_upgrade(actor)
+    EquipPosStarManager.EquipPosAutoUpgradeStar(actor)
+    EquipPosStarManager.ShowBasePanel(actor)    
 end
 ----------------------------------------------------------------玩家延迟回调end--------------------------------------------------------------------------
 

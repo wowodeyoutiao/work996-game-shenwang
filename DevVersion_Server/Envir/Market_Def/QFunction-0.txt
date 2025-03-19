@@ -6003,23 +6003,22 @@ CALLLUA CC_QFunction @newmainuibase_openpanel,<$STR(S$sid)>
 BREAK
 
 
-
 [@show_rule_panel]
 #IF
 #ACT
-CALLLUA CC_QFunction @show_rule_panel,<$STR(S$funcid)>
+CALLLUA CC_QFunction @show_rule_panel_fromtxt,<$STR(S$funcid)>
 BREAK
 
 [@show_base_panel]
 #IF
 #ACT
-CALLLUA CC_QFunction @show_base_panel,<$STR(S$funcid)>,<$STR(S$param1)>
+CALLLUA CC_QFunction @show_base_panel_fromtxt,<$STR(S$funcid)>,<$STR(S$param1)>
 BREAK
 
 [@function_button]
 #IF
 #ACT
-CALLLUA CC_QFunction @function_button,<$STR(S$funcid)>,<$STR(S$sid)>,<$STR(S$param1)>
+CALLLUA CC_QFunction @function_button_fromtxt,<$STR(S$funcid)>,<$STR(S$sid)>,<$STR(S$param1)>
 BREAK
 
 ;回调类的

@@ -475,8 +475,8 @@ GameEventManager.AddListener(CommonDefine.EVENT_NAME_PLAYER_ENTERGAME, SoulStone
 --显示规则面板
 function SoulStoneManager.ShowRulePanel(actor)
     local strPanelInfo = '<Img|id=10|children={11,12,21,22,23,24,25,26,27,28,29}|x=268.0|y=69.0|show=0|esc=1|reset=1|img=private/cc_common/rule_panel.png|bg=1|move=0>'..
-        '<Layout|id=11|x=525.0|y=-1.0|width=80|height=80|link=@show_base_panel#funcid='..CommonDefine.FUNC_ID_SOUL_STONE..'>'..
-        '<Button|id=12|x=528.0|y=0.0|nimg=public/1900000510.png|pimg=public/1900000511.png|link=@show_base_panel#funcid='..CommonDefine.FUNC_ID_SOUL_STONE..'>'
+        '<Layout|id=11|x=525.0|y=-1.0|width=80|height=80|link=@show_base_panel>'..
+        '<Button|id=12|x=528.0|y=0.0|nimg=public/1900000510.png|pimg=public/1900000511.png|link=@show_base_panel>'
 
     local tempCurrX = 20
     local tempCurrY = 50
@@ -525,8 +525,7 @@ local function GetSingleSoulStoneShowInfo(actor, slotid)
         '<Text|id=501|x=240.0|y=10.0|size=22|color='..CSS.NPC_YELLOW..'|text='..config.name..'>'..
         '<Layout|id=502|children={511,512,513,514}|x=0|y=60|width=580|height=120>'..
         '<Layout|id=503|children={521,522,523,524,525}|x=0|y=180|width=580|height=240>'..
-        '<Button|id=504|x=450|y=10|mimg=private/cc_soulstone/2.png|nimg=private/cc_soulstone/2.png|link=@function_button#funcid='..
-        CommonDefine.FUNC_ID_SOUL_STONE..'#sid='..SOULSTONE_BUTTONFUNC_ID_10..'>'
+        '<Button|id=504|x=450|y=10|mimg=private/cc_soulstone/2.png|nimg=private/cc_soulstone/2.png|link=@function_button,'..SOULSTONE_BUTTONFUNC_ID_10..'>'
      
     --已镶嵌的魂石
     for i = 1, CommonDefine.SOUL_STONE_SLOT_MAX_HOLE_NUM, 1 do
@@ -541,12 +540,12 @@ local function GetSingleSoulStoneShowInfo(actor, slotid)
         local showid = 510 + 20 + i
         local textid = 510 + 40 + i
         if cfgstoneitem == nil then
-            strPanelInfo = strPanelInfo..'<Img|id='..imgid..'|x='..tempx..'|y='..tempy..'|move=0|show=0|bg=1|esc=1|reset=1|img=private/cc_soulstone/13.png|link=@function_button#funcid='..
-                CommonDefine.FUNC_ID_SOUL_STONE..'#sid='..SOULSTONE_BUTTONFUNC_ID_4..'#param1='..i..'>'
+            strPanelInfo = strPanelInfo..'<Img|id='..imgid..'|x='..tempx..'|y='..tempy..'|move=0|show=0|bg=1|esc=1|reset=1|img=private/cc_soulstone/13.png|link=@function_button,'..            
+                SOULSTONE_BUTTONFUNC_ID_4..','..i..'>'
         else
             strPanelInfo = strPanelInfo..'<Img|id='..imgid..'|children={'..showid..','..textid..'}|x='..tempx..'|y='..tempy..'|move=0|show=0|bg=1|esc=1|reset=1|img=private/cc_soulstone/13.png>'            
-            strPanelInfo = strPanelInfo..'<ItemShow|id='..showid..'|x=15|y=15|itemid='..stoneidx..'|itemcount=1|showtips=1|dblink=@function_button#funcid='..
-                CommonDefine.FUNC_ID_SOUL_STONE..'#sid='..SOULSTONE_BUTTONFUNC_ID_4..'#param1='..i..'>'
+            strPanelInfo = strPanelInfo..'<ItemShow|id='..showid..'|x=15|y=15|itemid='..stoneidx..'|itemcount=1|showtips=1|dblink=@function_button,'..            
+                SOULSTONE_BUTTONFUNC_ID_4..','..i..'>'
 
             local wxtype = infoTab[sid].wxlist[i]
             if wxtype > 0 then
@@ -568,33 +567,20 @@ local function GetSingleSoulStoneShowInfo(actor, slotid)
     local nTempMin = (currPageNo - 1) * nBagItemCountPerPage + 1
     local nTempMax = currPageNo * nBagItemCountPerPage    
     local sValidItemIDList, bDataFinished = Bag.GetBagItemIDInStdmodeStr(actor, CommonDefine.ITEM_STDMODE_SOULSTONE, config.shape, nTempMin, nTempMax)
-    --[[
     strPanelInfo = strPanelInfo..'<BAGITEMS|id=521|x=80|y=20|select='..strSelect..'|filter3='..sValidItemIDList..
-        '|count='..nBagItemCountPerPage..'|showtips=1|selecttype=1|row=2|dblink=@function_button#funcid='..
-        CommonDefine.FUNC_ID_SOUL_STONE..'#sid='..SOULSTONE_BUTTONFUNC_ID_5..'>'      
-    ]]--
-    local s1 = parsetext("<$STR(S0)>", actor);
-    --这里的bagitem的选择取值还有问题？？？？？？？？？？？？？？？？？？？？？？？？？？？？？
-    --这里的bagitem的选择取值还有问题？？？？？？？？？？？？？？？？？？？？？？？？？？？？？
-    --这里的bagitem的选择取值还有问题？？？？？？？？？？？？？？？？？？？？？？？？？？？？？
-    --这里的bagitem的选择取值还有问题？？？？？？？？？？？？？？？？？？？？？？？？？？？？？
-    strPanelInfo = strPanelInfo..'<BAGITEMS|id=521|x=80|y=20|select='..s1..'>|filter3='..sValidItemIDList..
-        '|count='..nBagItemCountPerPage..'|showtips=1|selecttype=1|row=2|dblink=@function_button#funcid='..
-        CommonDefine.FUNC_ID_SOUL_STONE..'#sid='..SOULSTONE_BUTTONFUNC_ID_5..'>'          
+        '|count='..nBagItemCountPerPage..'|showtips=1|selecttype=1|row=2|dblink=@function_button,'..SOULSTONE_BUTTONFUNC_ID_5..'>'      
  
     if currPageNo > 1 then
-        strPanelInfo = strPanelInfo..'<Text|id=522|text=上一页|size=18|x=20|y=130|color='..CSS.NPC_YELLOW..'|link=@function_button#funcid='..
-        CommonDefine.FUNC_ID_SOUL_STONE..'#sid='..SOULSTONE_BUTTONFUNC_ID_6..'>'
+        strPanelInfo = strPanelInfo..'<Text|id=522|text=上一页|size=18|x=20|y=130|color='..CSS.NPC_YELLOW..'|link=@function_button,'..SOULSTONE_BUTTONFUNC_ID_6..'>'
     end
     if not bDataFinished then
-        strPanelInfo = strPanelInfo..'<Text|id=523|text=下一页|size=18|x=510|y=130|color='..CSS.NPC_YELLOW..'|link=@function_button#funcid='..
-        CommonDefine.FUNC_ID_SOUL_STONE..'#sid='..SOULSTONE_BUTTONFUNC_ID_7..'>'
+        strPanelInfo = strPanelInfo..'<Text|id=523|text=下一页|size=18|x=510|y=130|color='..CSS.NPC_YELLOW..'|link=@function_button,'..SOULSTONE_BUTTONFUNC_ID_7..'>'
     end
 
-    strPanelInfo = strPanelInfo..'<Button|id=524|x=110|y=190|mimg=private/cc_soulstone/3.png|nimg=private/cc_soulstone/3.png|link=@function_button#funcid='..
-        CommonDefine.FUNC_ID_SOUL_STONE..'#sid='..SOULSTONE_BUTTONFUNC_ID_8..'>'..
-        '<Button|id=525|x=380|y=190|mimg=private/cc_soulstone/4.png|nimg=private/cc_soulstone/4.png|link=@function_button#funcid='..
-        CommonDefine.FUNC_ID_SOUL_STONE..'#sid='..SOULSTONE_BUTTONFUNC_ID_9..'>'    
+    strPanelInfo = strPanelInfo..'<Button|id=524|x=110|y=190|mimg=private/cc_soulstone/3.png|nimg=private/cc_soulstone/3.png|link=@function_button,'..            
+        SOULSTONE_BUTTONFUNC_ID_8..'>'..
+        '<Button|id=525|x=380|y=190|mimg=private/cc_soulstone/4.png|nimg=private/cc_soulstone/4.png|link=@function_button,'..            
+        SOULSTONE_BUTTONFUNC_ID_9..'>'    
 
     return strPanelInfo
 end
@@ -650,12 +636,11 @@ end
 --显示初始面板
 function SoulStoneManager.ShowBasePanel(actor)
     local strPanelInfo = '<Img|id=10|children={11,12,13,14,15,16}|x=20.0|y=16.0|reset=1|img=private/cc_soulstone/9.png|show=0|esc=1|move=0|bg=1|loadDelay=0>'..
-        '<Layout|id=11|x=813.0|y=14.0|width=80|height=80|link=@cc_exit_specialui>'..
-        '<Button|id=12|x=814.0|y=14.0|nimg=public/1900000510.png|pimg=public/1900000511.png|link=@cc_exit_specialui>'..
-        '<Button|id=13|x=72|y=70|mimg=private/cc_soulstone/1.png|nimg=private/cc_soulstone/1.png|link=@function_button#funcid='..
-        CommonDefine.FUNC_ID_SOUL_STONE..'#sid='..SOULSTONE_BUTTONFUNC_ID_1..'>'..
-        '<Button|id=16|x=700.0|y=14.0|esc=0|nimg=private/cc_common/button_help.png|pimg=private/cc_common/button_help.png|link=@show_rule_panel#funcid='..
-        CommonDefine.FUNC_ID_SOUL_STONE..'>'
+        '<Layout|id=11|x=813.0|y=14.0|width=80|height=80|link=@exit>'..
+        '<Button|id=12|x=814.0|y=14.0|nimg=public/1900000510.png|pimg=public/1900000511.png|link=@exit>'..
+        '<Button|id=13|x=72|y=70|mimg=private/cc_soulstone/1.png|nimg=private/cc_soulstone/1.png|link=@function_button,'..            
+        SOULSTONE_BUTTONFUNC_ID_1..'>'..
+        '<Button|id=16|x=700.0|y=14.0|esc=0|nimg=private/cc_common/button_help.png|pimg=private/cc_common/button_help.png|link=@show_rule_panel>'
 
     local infoStr = getplaydef(actor, CommonDefine.VAR_T_SOULSTONE_SLOT_INFO)
     local infoTab = {}
@@ -696,15 +681,15 @@ function SoulStoneManager.ShowBasePanel(actor)
             setplaydef(actor, CommonDefine.VAR_N_LAST_NPC_CHOOSEID, chooseid)
         end        
         if chooseid == value.id then
-            strPanelInfo = strPanelInfo..'<Img|id='..baseid..'|children={'..textid1..','..textid2..'}x=-6.0|y=0.0|img=private/cc_soulstone/7.png|link=@function_button#funcid='..
-                CommonDefine.FUNC_ID_SOUL_STONE..'#sid='..SOULSTONE_BUTTONFUNC_ID_3..'#param1='..value.id..'>'
+            strPanelInfo = strPanelInfo..'<Img|id='..baseid..'|children={'..textid1..','..textid2..'}x=-6.0|y=0.0|img=private/cc_soulstone/7.png|link=@function_button,'..
+                SOULSTONE_BUTTONFUNC_ID_3..','..value.id..'>'
             strPanelInfo = strPanelInfo..'<Text|id='..textid1..'|x=10.0|y=5.0|size=18|color='..CSS.NPC_YELLOW..'|text='..value.name..'>'
                 ..'<Text|id='..textid2..'|x=40.0|y=25.0|size=18|color='..CSS.NPC_YELLOW..'|text=('..stonenum..'/4)>'
             --对应当前选中的装备槽位
             strPanelInfo = strPanelInfo..GetSingleSoulStoneShowInfo(actor, value.id)                
         else
-            strPanelInfo = strPanelInfo..'<Img|id='..baseid..'|children={'..textid1..','..textid2..'}x=-6.0|y=0.0|img=private/cc_soulstone/8.png|link=@function_button#funcid='..
-                CommonDefine.FUNC_ID_SOUL_STONE..'#sid='..SOULSTONE_BUTTONFUNC_ID_3..'#param1='..value.id..'>'
+            strPanelInfo = strPanelInfo..'<Img|id='..baseid..'|children={'..textid1..','..textid2..'}x=-6.0|y=0.0|img=private/cc_soulstone/8.png|link=@function_button,'..
+                SOULSTONE_BUTTONFUNC_ID_3..','..value.id..'>'
             strPanelInfo = strPanelInfo..'<Text|id='..textid1..'|x=10.0|y=5.0|size=18|color='..CSS.NPC_WHITE..'|text='..value.name..'>'
                 ..'<Text|id='..textid2..'|x=40.0|y=25.0|size=18|color='..CSS.NPC_WHITE..'|text=('..stonenum..'/4)>'
         end
@@ -731,10 +716,8 @@ function SoulStoneManager.ShowBasePanel(actor)
         --显示魂石羁绊面板
         local currlv = getplaydef(actor, CommonDefine.VAR_N_SOULSTONE_JBLEVEL)
         strPanelInfo = strPanelInfo..'<Img|id=50|children={51,52,53,54}|x=273.0|y=27.0|img=private/cc_soulstone/11.png|reset=1|bg=1|esc=1|loadDelay=0|move=0|show=0>'..
-            '<Layout|id=51|x=394.0|y=1.0|width=80|height=80|link=@function_button#funcid='..
-            CommonDefine.FUNC_ID_SOUL_STONE..'#sid='..SOULSTONE_BUTTONFUNC_ID_2..'>'..
-            '<Button|id=52|x=395.0|y=2.0|pimg=public/1900000511.png|nimg=public/1900000510.png|link=@function_button#funcid='..
-            CommonDefine.FUNC_ID_SOUL_STONE..'#sid='..SOULSTONE_BUTTONFUNC_ID_2..'>'..            
+            '<Layout|id=51|x=394.0|y=1.0|width=80|height=80|link=@function_button,'..SOULSTONE_BUTTONFUNC_ID_2..'>'..
+            '<Button|id=52|x=395.0|y=2.0|pimg=public/1900000511.png|nimg=public/1900000510.png|link=@function_button,'..SOULSTONE_BUTTONFUNC_ID_2..'>'..            
             '<Text|id=53|x=150.0|y=12.0|size=22|color=215|text=魂石羁绊>'
         local tempCurrX = 0
         local tempCurrY = 0
@@ -776,10 +759,8 @@ function SoulStoneManager.ShowBasePanel(actor)
     elseif tempparam1 == 2 then
         --显示魂石五行面板
         strPanelInfo = strPanelInfo..'<Img|id=50|children={51,52,53,54}|x=273.0|y=27.0|img=private/cc_soulstone/11.png|reset=1|bg=1|esc=1|loadDelay=0|move=0|show=0>'..
-            '<Layout|id=51|x=394.0|y=1.0|width=80|height=80|link=@function_button#funcid='..
-            CommonDefine.FUNC_ID_SOUL_STONE..'#sid='..SOULSTONE_BUTTONFUNC_ID_2..'>'..
-            '<Button|id=52|x=395.0|y=2.0|pimg=public/1900000511.png|nimg=public/1900000510.png|link=@function_button#funcid='..
-            CommonDefine.FUNC_ID_SOUL_STONE..'#sid='..SOULSTONE_BUTTONFUNC_ID_2..'>'..            
+            '<Layout|id=51|x=394.0|y=1.0|width=80|height=80|link=@function_button,'..SOULSTONE_BUTTONFUNC_ID_2..'>'..
+            '<Button|id=52|x=395.0|y=2.0|pimg=public/1900000511.png|nimg=public/1900000510.png|link=@function_button,'..SOULSTONE_BUTTONFUNC_ID_2..'>'..            
             '<Text|id=53|x=150.0|y=12.0|size=22|color=215|text=五行属性>'
         local tempCurrX = 0
         local tempCurrY = 0
@@ -822,10 +803,7 @@ function SoulStoneManager.ShowBasePanel(actor)
         strPanelInfo = strPanelInfo..'<ListView|id=54|children={'..idstr1..'}|x=52.0|y=58.0|width=300|height=320|direction=1|margin=0>'        
 
     end
-
-    
     BF_ShowSpecialUI(actor, strPanelInfo)
-    --say(actor, strPanelInfo)
 end
 
 --镶嵌替换魂石
@@ -849,6 +827,7 @@ local function DoFillHoleStone(actor, sholeseq)
     if slotcfg == nil then
        return 
     end
+
     if getbagblank(actor) < 1 then
         Player.SendSelfMsg(actor, '请整理出至少1个背包空格！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
         return
@@ -858,7 +837,6 @@ local function DoFillHoleStone(actor, sholeseq)
         Player.SendSelfMsg(actor, '请双击选择魂石！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
         return
     end   
-
     --效验是否为背包道具
     local chooseItemObj = Bag.GetItemByMakeindex(actor, chooseItemMakeIdx)
     if BF_IsNullObj(chooseItemObj) then
@@ -964,7 +942,7 @@ function SoulStoneManager.DoOperButton(actor, sid, sparam)
         setplaydef(actor, CommonDefine.VAR_N_NPC_TEMPPARAM1, 0)
     elseif funcid == SOULSTONE_BUTTONFUNC_ID_3 then
         setplaydef(actor, CommonDefine.VAR_N_LAST_NPC_CHOOSEID,  param)
-    elseif funcid == SOULSTONE_BUTTONFUNC_ID_4 then     
+    elseif funcid == SOULSTONE_BUTTONFUNC_ID_4 then
         DoFillHoleStone(actor, param)
     elseif funcid == SOULSTONE_BUTTONFUNC_ID_5 then
         local strSelect = getplaydef(actor, CommonDefine.VAR_S_SELECT_ITEM)

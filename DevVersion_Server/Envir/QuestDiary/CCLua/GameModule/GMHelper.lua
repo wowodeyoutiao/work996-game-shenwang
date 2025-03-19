@@ -79,7 +79,7 @@ function GMHelper.OpenPanel(actor)
         '<Button|x=350|y=210|nimg=public/bg_hhzy_01_3.png|text=增加测试属性组|link=@gmhelper_button,21>'..
         '<Button|x=350|y=240|nimg=public/bg_hhzy_01_3.png|text=删除测试属性组|link=@gmhelper_button,22>'
     ]]--
-    BF_NPCSayExt(actor, sPanelStr, 650, 350)
+    BF_NPCSayExt(actor, sPanelStr, 1, 650, 350)
 end
 
 function GMHelper.DoGmOper(actor, sid)

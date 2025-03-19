@@ -34,7 +34,7 @@ function RecycleManager.ShowRecycleEnterUI(actor)
         '<Button|x=566.0|y=156.0|pimg=public/1900000511.png|nimg=public/1900000510.png|link=@exit>'..
         '<Button|x=239.0|y=250.0|nimg=private/cc_recycle/9.png|pimg=private/cc_recycle/9.png|mimg=private/cc_recycle/9.png|color=255|size=18|link=@recyclemanager_button#sid='..RECYCLEMANAGER_BUTTONFUNC_ID_10..'>'..
         '<Button|x=399.0|y=250.0|nimg=private/cc_recycle/11.png|pimg=private/cc_recycle/11.png|mimg=private/cc_recycle/11.png|color=255|size=18|link=@recyclemanager_button#sid='..RECYCLEMANAGER_BUTTONFUNC_ID_11..'>'
-    BF_ShowSpecialUI(actor, sPanelStr)
+    BF_ShowSpecialUI(actor, sPanelStr, 1)
     ]]--
     --后面就在这个页面上增加两个页签，用来切换装备和其它道具类的
     setplaydef(actor, CommonDefine.VAR_N_CHOOSE_RECYCLE_TYPE, RECYCLE_TYPE_1)
@@ -121,7 +121,7 @@ function RecycleManager.ShowRecyclePanelInfo(actor)
         '<Button|id=211|x=240.0|y=375.0|nimg=private/cc_recycle/14.png|mimg=private/cc_recycle/14.png|color=255|pimg=private/cc_recycle/14.png|size=18|link=@recyclemanager_button#sid='..RECYCLEMANAGER_BUTTONFUNC_ID_2..'>'..
         '<Button|id=212|x=380.0|y=375.0|nimg=private/cc_recycle/15.png|mimg=private/cc_recycle/15.png|color=255|pimg=private/cc_recycle/15.png|size=18|link=@recyclemanager_button#sid='..RECYCLEMANAGER_BUTTONFUNC_ID_3..'>'..
         '<Button|id=213|x=525.0|y=375.0|nimg=private/cc_recycle/16.png|mimg=private/cc_recycle/16.png|color=255|pimg=private/cc_recycle/16.png|size=18|link=@recyclemanager_button#sid='..RECYCLEMANAGER_BUTTONFUNC_ID_4..'>'
-    BF_ShowSpecialUI(actor, msg)
+    BF_ShowSpecialUI(actor, msg, 1)
 end
 
 function RecycleManager.ShowRecyclePriceInfo(actor)
@@ -164,7 +164,7 @@ function RecycleManager.ShowRecyclePriceInfo(actor)
             nStartX = nStartX + 250
         end                
     end    
-    BF_ShowSpecialUI(actor, msg)
+    BF_ShowSpecialUI(actor, msg, 1)
 end
 
 function RecycleManager.ShowActivatedAutoRecyclePanel(actor)
@@ -175,7 +175,7 @@ function RecycleManager.ShowActivatedAutoRecyclePanel(actor)
         '<Button|x=405.0|y=295.0|nimg=private/cc_common/button_1.png|pimg=private/cc_common/button_1.png|color=255|size=18|mimg=private/cc_common/button_1.png|text=前往提升|link=@recyclemanager_button#sid='..RECYCLEMANAGER_BUTTONFUNC_ID_14..'>'..
         '<Text|x=196.0|y=221.0|color=255|size=18|text=角色达到VIP2即可开启自动回收，完成任务>'..
         '<Text|x=223.0|y=249.0|color=255|size=18|text=即可免费激活VIP2，是否立即前往?>'
-    BF_ShowSpecialUI(actor, sPanelStr) 
+    BF_ShowSpecialUI(actor, sPanelStr, 1) 
 end
 
 --处理button回调

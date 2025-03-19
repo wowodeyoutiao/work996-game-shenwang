@@ -301,6 +301,7 @@ CommonDefine = {
     VAR_N_SELECT_COMPOSE_PILE_NUM = 'N74',      --合成可叠加道具时，选择的单个合成数量    
     VAR_N_CHOOSE_OPER_TYPE = 'N75',             --玩家选择的操作类型  通用的临时变量 例如选择技能升级还是技能强化    
     VAR_N_ITEM_COMPOSE_CHOOSE_ITEM1 = 'N76',    --玩家道具合成时，选择的第一件合成物品，每次使用需检测    
+    VAR_N_CURR_FUNCTION_ID = 'N77',             --玩家当前选择的功能ID
 
     --玩家字符型变量，下线不保存 S0 - S99
     VAR_S_SELECT_ITEM = 'S0',

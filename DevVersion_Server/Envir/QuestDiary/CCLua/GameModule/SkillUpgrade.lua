@@ -133,30 +133,33 @@ end
 
 --------------------------------------------------------主面板相关--------------------------------------------------------------------
 function SkillUpgrade.ShowRulePanel(actor)
-    local tempCurrX = CSS.NPC_LEFT_START_X
-    local tempCurrY = CSS.NPC_TOP_START_Y    
-    local msg = '<Text|text=技能升级规则说明：|x='..tempCurrX..'|y='..tempCurrY..'|color='..CSS.NPC_LIGHTGREEN..'>'
-    msg = msg..'<Text|text=返回上一层|x='..(tempCurrX+400)..'|y='..tempCurrY..'|size=15|color='..CSS.NPC_YELLOW..'|link=@newmainuibase_openpanel#sid='..UI_ICON_SKILL..'>'
-    tempCurrY = tempCurrY + 35
-    msg = msg..'<Text|text=1、只有输出类的技能才能进行升级操作。|x='..tempCurrX..'|y='..tempCurrY..'|color='..CSS.NPC_WHITE..'>'    
-    tempCurrY = tempCurrY + 30
-    msg = msg..'<Text|text=2、技能升级消耗书页道具，每次升级均会有角色等级的限制。|x='..tempCurrX..'|y='..tempCurrY..'|color='..CSS.NPC_WHITE..'>'
-    tempCurrY = tempCurrY + 30    
-    msg = msg..'<Text|text=3、技能升级所提升的是释放技能时额外附带的百分比对应攻|x='..tempCurrX..'|y='..tempCurrY..'|color='..CSS.NPC_WHITE..'>'
-    tempCurrY = tempCurrY + 30    
-    msg = msg..'<Text|text=击力的伤害。|x='..(tempCurrX+26)..'|y='..tempCurrY..'|color='..CSS.NPC_WHITE..'>'    
-    tempCurrY = tempCurrY + 40
-    msg = msg..'<Text|text=技能进阶规则说明：|x='..tempCurrX..'|y='..tempCurrY..'|color='..CSS.NPC_LIGHTGREEN..'>'
-    tempCurrY = tempCurrY + 35
-    msg = msg..'<Text|text=1、只有可以升级的技能才能进行进阶操作，且需要对应的技能|x='..tempCurrX..'|y='..tempCurrY..'|color='..CSS.NPC_WHITE..'>'
-    tempCurrY = tempCurrY + 30    
-    msg = msg..'<Text|text=升到指定等级。|x='..(tempCurrX+26)..'|y='..tempCurrY..'|color='..CSS.NPC_WHITE..'>'
-    tempCurrY = tempCurrY + 30        
-    msg = msg..'<Text|text=2、技能进阶需要消耗技能秘籍道具。|x='..tempCurrX..'|y='..tempCurrY..'|color='..CSS.NPC_WHITE..'>'
-    tempCurrY = tempCurrY + 30
-    msg = msg..'<Text|text=3、技能进阶提升的为对应技能最终的输出威力的百分比加成。|x='..tempCurrX..'|y='..tempCurrY..'|color='..CSS.NPC_WHITE..'>'    
+    local strPanelInfo = '<Img|id=10|children={11,12,21,22,23,24,25,26,27,28,29,30}|x=268.0|y=69.0|show=0|esc=1|reset=1|img=private/cc_common/rule_panel.png|bg=1|move=0>'..
+        '<Layout|id=11|x=525.0|y=-1.0|width=80|height=80|link=@show_base_panel>'..
+        '<Button|id=12|x=528.0|y=0.0|nimg=public/1900000510.png|pimg=public/1900000511.png|link=@show_base_panel>'
 
-    BF_ShowSpecialUI(actor, msg)
+    local tempCurrX = 20
+    local tempCurrY = 50
+    strPanelInfo = strPanelInfo..'<Text|id=21|text=技能升级规则说明：|x='..tempCurrX..'|y='..tempCurrY..'|color='..CSS.NPC_LIGHTGREEN..'>'
+    tempCurrY = tempCurrY + 35
+    strPanelInfo = strPanelInfo..'<Text|id=22|text=1、只有输出类的技能才能进行升级操作。|x='..tempCurrX..'|y='..tempCurrY..'|color='..CSS.NPC_WHITE..'>'
+    tempCurrY = tempCurrY + 30
+    strPanelInfo = strPanelInfo..'<Text|id=23|text=2、技能升级消耗书页道具，每次升级均会有角色等级的限制。|x='..tempCurrX..'|y='..tempCurrY..'|color='..CSS.NPC_WHITE..'>'
+    tempCurrY = tempCurrY + 30
+    strPanelInfo = strPanelInfo..'<Text|id=24|text=3、技能升级所提升的是释放技能时额外附带的百分比对应攻|x='..tempCurrX..'|y='..tempCurrY..'|color='..CSS.NPC_WHITE..'>'
+    tempCurrY = tempCurrY + 30
+    strPanelInfo = strPanelInfo..'<Text|id=25|text=击力的伤害。|x='..tempCurrX..'|y='..tempCurrY..'|color='..CSS.NPC_WHITE..'>'
+    tempCurrY = tempCurrY + 30
+    strPanelInfo = strPanelInfo..'<Text|id=26|text=技能进阶规则说明：|x='..tempCurrX..'|y='..tempCurrY..'|color='..CSS.NPC_LIGHTGREEN..'>'		
+    tempCurrY = tempCurrY + 35
+    strPanelInfo = strPanelInfo..'<Text|id=27|text=1、只有可以升级的技能才能进行进阶操作，且需要对应的技能|x='..tempCurrX..'|y='..tempCurrY..'|color='..CSS.NPC_WHITE..'>'			
+    tempCurrY = tempCurrY + 30
+    strPanelInfo = strPanelInfo..'<Text|id=28|text=升到指定等级。|x='..tempCurrX..'|y='..tempCurrY..'|color='..CSS.NPC_WHITE..'>'		
+    tempCurrY = tempCurrY + 30
+    strPanelInfo = strPanelInfo..'<Text|id=29|text=2、技能进阶需要消耗技能秘籍道具。|x='..tempCurrX..'|y='..tempCurrY..'|color='..CSS.NPC_WHITE..'>'	
+    tempCurrY = tempCurrY + 30
+    strPanelInfo = strPanelInfo..'<Text|id=30|text=3、技能进阶提升的为对应技能最终的输出威力的百分比加成。|x='..tempCurrX..'|y='..tempCurrY..'|color='..CSS.NPC_WHITE..'>'	
+
+    BF_ShowSpecialUI(actor, strPanelInfo)    
 end
 
 local function GetSingleShowInfo(actor, targSkillID)    
@@ -254,11 +257,11 @@ local function GetSingleShowInfo(actor, targSkillID)
     --升级按钮
     if upgradeNextInfo ~= nil then
         if choosetype == UPGRADE_TYPE_LEVEL then
-            sPanelStr = sPanelStr..'<Button|id=39|x='..(tempCurrX+240)..'|y='..tempCurrY..'|text=升    级|size=18|color=255|mimg=private/cc_common/button_1.png|nimg=private/cc_common/button_1.png|link=@function_button#funcid='..
-                CommonDefine.FUNC_ID_SKILLUPGRADE..'#sid='..NPCPANEL_BUTTONFUNC_ID_3..'#param1='..targSkillID..'>'
+            sPanelStr = sPanelStr..'<Button|id=39|x='..(tempCurrX+240)..'|y='..tempCurrY..'|text=升    级|size=18|color=255|mimg=private/cc_common/button_1.png|nimg=private/cc_common/button_1.png|link=@function_button,'..
+                NPCPANEL_BUTTONFUNC_ID_3..','..targSkillID..'>'
         else
-            sPanelStr = sPanelStr..'<Button|id=39|x='..(tempCurrX+240)..'|y='..tempCurrY..'|text=进    阶|size=18|color=255|mimg=private/cc_common/button_1.png|nimg=private/cc_common/button_1.png|link=@function_button#funcid='..
-                CommonDefine.FUNC_ID_SKILLUPGRADE..'#sid='..NPCPANEL_BUTTONFUNC_ID_4..'#param1='..targSkillID..'>'
+            sPanelStr = sPanelStr..'<Button|id=39|x='..(tempCurrX+240)..'|y='..tempCurrY..'|text=进    阶|size=18|color=255|mimg=private/cc_common/button_1.png|nimg=private/cc_common/button_1.png|link=@function_button,'..
+                NPCPANEL_BUTTONFUNC_ID_4..','..targSkillID..'>'
         end
     else
         sPanelStr = sPanelStr..'<Text|id=39|text=已达到最高技能'..sLvName..'！|x='..(tempCurrX+240)..'|y='..tempCurrY..'|color='..CSS.NPC_LIGHTGREEN..'>'
@@ -343,9 +346,10 @@ local function IsSkillCanUpgradeOnce(actor, targSkillID, upgradetype)
 end
 
 function SkillUpgrade.ShowBasePanel(actor)    
-    local strPanelInfo = '<Img|id=10|children={11,12,14,13,15,16,17}|x=80.0|y=60.0|height=448|esc=1|move=0|reset=1|img=private/cc_skill/6.png|show=0|loadDelay=0|bg=1>'..
-        '<Layout|id=11|x=812.0|y=12.0|width=80|height=80|link=@cc_exit_specialui>'..
-        '<Button|id=12|x=813.0|y=13.0|pimg=public/1900000511.png|nimg=public/1900000510.png|link=@cc_exit_specialui>'..
+    local strPanelInfo = '<Img|id=10|children={11,12,14,13,15,16,17,18}|x=80.0|y=60.0|height=448|esc=1|move=0|reset=1|img=private/cc_skill/6.png|show=0|loadDelay=0|bg=1>'..
+        '<Layout|id=11|x=812.0|y=12.0|width=80|height=80|link=@exit>'..
+        '<Button|id=12|x=813.0|y=13.0|pimg=public/1900000511.png|nimg=public/1900000510.png|link=@exit>'..
+        '<Button|id=18|x=700.0|y=14.0|esc=0|nimg=private/cc_common/button_help.png|pimg=private/cc_common/button_help.png|link=@show_rule_panel>'..
         '<Text|id=21|x=9.0|y=9.0|color=161|size=20|text=升>'..
         '<Text|id=22|x=9.0|y=45.0|color=161|size=20|text=级>'..
         '<Text|id=23|x=9.0|y=9.0|color=161|size=20|text=进>'..
@@ -354,15 +358,15 @@ function SkillUpgrade.ShowBasePanel(actor)
     local chooseid = getplaydef(actor, CommonDefine.VAR_N_LAST_NPC_CHOOSEID)
     local choosetype = getplaydef(actor, CommonDefine.VAR_N_CHOOSE_OPER_TYPE)
     if choosetype == UPGRADE_TYPE_LEVEL then
-        strPanelInfo = strPanelInfo..'<Button|id=15|children={21,22}|x=16.0|y=114.0|size=18|color=255|mimg=private/cc_skill/1.png|nimg=private/cc_skill/1.png|link=@function_button#funcid='..
-                CommonDefine.FUNC_ID_SKILLUPGRADE..'#sid='..NPCPANEL_BUTTONFUNC_ID_1..'#param1=0>'..
-            '<Button|id=16|children={23,24}|x=16.0|y=212.0|size=18|color=255|mimg=private/cc_skill/2.png|nimg=private/cc_skill/2.png|link=@function_button#funcid='..
-                CommonDefine.FUNC_ID_SKILLUPGRADE..'#sid='..NPCPANEL_BUTTONFUNC_ID_1..'#param1=1>'
+        strPanelInfo = strPanelInfo..'<Button|id=15|children={21,22}|x=16.0|y=114.0|size=18|color=255|mimg=private/cc_skill/1.png|nimg=private/cc_skill/1.png|link=@function_button,'..
+            NPCPANEL_BUTTONFUNC_ID_1..',0>'..
+            '<Button|id=16|children={23,24}|x=16.0|y=212.0|size=18|color=255|mimg=private/cc_skill/2.png|nimg=private/cc_skill/2.png|link=@function_button,'..
+            NPCPANEL_BUTTONFUNC_ID_1..',1>'
     else
-        strPanelInfo = strPanelInfo..'<Button|id=15|children={21,22}|x=16.0|y=114.0|size=18|color=255|mimg=private/cc_skill/2.png|nimg=private/cc_skill/2.png|link=@function_button#funcid='..
-                CommonDefine.FUNC_ID_SKILLUPGRADE..'#sid='..NPCPANEL_BUTTONFUNC_ID_1..'#param1=0>'..
-            '<Button|id=16|children={23,24}|x=16.0|y=212.0|size=18|color=255|mimg=private/cc_skill/1.png|nimg=private/cc_skill/1.png|link=@function_button#funcid='..
-                CommonDefine.FUNC_ID_SKILLUPGRADE..'#sid='..NPCPANEL_BUTTONFUNC_ID_1..'#param1=1>'
+        strPanelInfo = strPanelInfo..'<Button|id=15|children={21,22}|x=16.0|y=114.0|size=18|color=255|mimg=private/cc_skill/2.png|nimg=private/cc_skill/2.png|link=@function_button,'..
+            NPCPANEL_BUTTONFUNC_ID_1..',0>'..
+            '<Button|id=16|children={23,24}|x=16.0|y=212.0|size=18|color=255|mimg=private/cc_skill/1.png|nimg=private/cc_skill/1.png|link=@function_button,'..
+            NPCPANEL_BUTTONFUNC_ID_1..',1>'
     end
 
     local listitemidstr = ''
@@ -388,14 +392,14 @@ function SkillUpgrade.ShowBasePanel(actor)
 
                 if choosetype == UPGRADE_TYPE_LEVEL then
                     local nSkillLv = getskilllevel(actor, skillID)                    
-                    strPanelInfo = strPanelInfo..'<Img|id='..picid..'|children={'..textid1..','..textid2..'}x=0.0|y=0.0|img='..tabpic..'|link=@function_button#funcid='..
-                        CommonDefine.FUNC_ID_SKILLUPGRADE..'#sid='..NPCPANEL_BUTTONFUNC_ID_2..'#param1='..skillID..'>'..
+                    strPanelInfo = strPanelInfo..'<Img|id='..picid..'|children={'..textid1..','..textid2..'}x=0.0|y=0.0|img='..tabpic..'|link=@function_button,'..
+                        NPCPANEL_BUTTONFUNC_ID_2..','..skillID..'>'..
                         '<Text|id='..textid1..'|x=6.0|y=12.0|size=18|color='..CSS.NPC_YELLOW..'|text='..magicInfo.MagName..'>'..
                         '<Text|id='..textid2..'|x=80.0|y=14.0|size=15|color='..CSS.NPC_LIGHTGREEN..'|text=('..nSkillLv..'级)>'
                 else
                     local nSkillUpLv = getskilllevelup(actor, skillID)
-                    strPanelInfo = strPanelInfo..'<Img|id='..picid..'|children={'..textid1..','..textid2..'}x=0.0|y=0.0|img='..tabpic..'|link=@function_button#funcid='..
-                        CommonDefine.FUNC_ID_SKILLUPGRADE..'#sid='..NPCPANEL_BUTTONFUNC_ID_2..'#param1='..skillID..'>'..
+                    strPanelInfo = strPanelInfo..'<Img|id='..picid..'|children={'..textid1..','..textid2..'}x=0.0|y=0.0|img='..tabpic..'|link=@function_button,'..
+                        NPCPANEL_BUTTONFUNC_ID_2..','..skillID..'>'..
                         '<Text|id='..textid1..'|x=6.0|y=12.0|size=18|color='..CSS.NPC_YELLOW..'|text='..magicInfo.MagName..'>'..
                         '<Text|id='..textid2..'|x=80.0|y=14.0|size=15|color='..CSS.NPC_LIGHTGREEN..'|text=('..nSkillUpLv..'阶)>'
                 end
