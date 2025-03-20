@@ -448,6 +448,11 @@ function function_button_fromtxt(actor, sfuncid, sid, sparam)
     end
 end
 
+--灵玉功能相关
+function baozhu_button_function(actor, sid, sparam)
+    BaoZhuManager.DoOperButton(actor, sid, sparam)
+end
+
 ---------------------------------------------------------------------------------------------------------------------------------
 
 --规则说明面板

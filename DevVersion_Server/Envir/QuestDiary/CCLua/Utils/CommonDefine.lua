@@ -431,13 +431,7 @@ CommonDefine = {
     --[[
     VAR_HUM_BITFLAG_USE_XYF = 201,                --祝福是否使用幸运符
     VAR_HUM_BITFLAG_USE_BDF = 202,                --祝福是否使用保底符
-    VAR_HUM_BITFLAG_RECYCLE_BAOZHU_1 = 203,       --白色灵珠是否回收
-    VAR_HUM_BITFLAG_RECYCLE_BAOZHU_2 = 204,       --绿色灵珠是否回收
-    VAR_HUM_BITFLAG_RECYCLE_BAOZHU_3 = 205,       --蓝色灵珠是否回收
-    VAR_HUM_BITFLAG_RECYCLE_BAOZHU_4 = 206,       --紫色灵珠是否回收
-    VAR_HUM_BITFLAG_RECYCLE_BAOZHU_5 = 207,       --粉色灵珠是否回收
-    VAR_HUM_BITFLAG_RECYCLE_BAOZHU_6 = 208,       --橙色灵珠是否回收
-    VAR_HUM_BITFLAG_RECYCLE_BAOZHU_KEEPBETTER = 209,  --灵珠回收时，是否保留比穿戴更好的    
+   
     VAR_HUM_BITFLAG_MFZ_ADDTIME_FLAG1 = 210,         --魔方阵 增加时间标记1 确认后用1次换增加30分钟
     VAR_HUM_BITFLAG_MFZ_ADDTIME_FLAG2 = 211,         --魔方阵 增加时间标记2 确认后时间不足自动用次数换时间
     VAR_HUM_BITFLAG_FREEVIP_TASK_DRAWFLAG1 = 212,    --免费VIP任务1 是否领奖
@@ -466,14 +460,16 @@ CommonDefine = {
     VAR_HUM_BITFLAG_RELIVE_DIALOGUE_FLAG = 301,     --玩家是否当前已有复活框弹出
     ]]--
 
-    --70
-    --71
-    --74
-    --75
-    --76
-    --77
-    --79
 
+
+    VAR_HUM_BITFLAG_RECYCLE_BAOZHU_1 = 70,       --白色灵珠是否回收
+    VAR_HUM_BITFLAG_RECYCLE_BAOZHU_2 = 71,       --绿色灵珠是否回收
+    VAR_HUM_BITFLAG_RECYCLE_BAOZHU_3 = 74,       --蓝色灵珠是否回收
+    VAR_HUM_BITFLAG_RECYCLE_BAOZHU_4 = 75,       --紫色灵珠是否回收
+    VAR_HUM_BITFLAG_RECYCLE_BAOZHU_5 = 76,       --粉色灵珠是否回收
+    VAR_HUM_BITFLAG_RECYCLE_BAOZHU_6 = 77,       --橙色灵珠是否回收
+    VAR_HUM_BITFLAG_RECYCLE_BAOZHU_KEEPBETTER = 79,  --灵珠回收时，是否保留比穿戴更好的  
+    
     VAR_HUM_BITFLAG_RECYCLE_ITEM1_1 = 80,           --白色装备是否回收
     VAR_HUM_BITFLAG_RECYCLE_ITEM1_2 = 81,           --绿色装备是否回收
     VAR_HUM_BITFLAG_RECYCLE_ITEM1_3 = 82,           --蓝色装备是否回收
