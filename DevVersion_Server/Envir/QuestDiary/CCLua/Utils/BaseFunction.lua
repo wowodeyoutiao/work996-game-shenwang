@@ -336,15 +336,17 @@ function BF_NPCSayExt(actor, msg, styleflag, width, height)
     if height then
         finalheight = height
     end
-    local allmsg = "<Img|img=public/bg_npc_01.png|width="..finalwidth.."|height="..finalheight.."|scale9t=10|scale9r=10|scale9b=10|scale9l=10|bg=1|move=0|reset=1>"..
-                    "<Layout|x="..(finalwidth-5).."|y=3|width=80|height=80|link=@cc_exit_npcsayext>"..
-                    "<Button|x="..(finalwidth-5).."|y=2|nimg=public/1900000510.png|pimg=public/1900000511.png|link=@cc_exit_npcsayext>"..msg;    
+    local allmsg = "<Img|img=public/bg_npc_01.png|width="..finalwidth.."|height="..finalheight.."|scale9t=10|scale9r=10|scale9b=10|scale9l=10|bg=1|move=0|reset=1>"
 
     if (styleflag~=nil) and (styleflag==1) then
+        allmsg = allmsg.."<Layout|x="..(finalwidth-5).."|y=3|width=80|height=80|link=@cc_exit_npcsayext>"..
+            "<Button|x="..(finalwidth-5).."|y=2|nimg=public/1900000510.png|pimg=public/1900000511.png|link=@cc_exit_npcsayext>"..msg;    
         delbutton(actor, 1101, CommonDefine.ADD_BUTTON_ID_3)
         addbutton(actor, 1101, CommonDefine.ADD_BUTTON_ID_3, allmsg)
     else
-        say(actor, msg)
+        allmsg = allmsg.."<Layout|x="..(finalwidth-5).."|y=3|width=80|height=80|link=@exit>"..
+            "<Button|x="..(finalwidth-5).."|y=2|nimg=public/1900000510.png|pimg=public/1900000511.png|link=@exit>"..msg;    
+        say(actor, allmsg)
     end     
 end
 
