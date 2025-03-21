@@ -18,6 +18,7 @@ CommonDefine = {
     ITEMID_BINDYB = 4,      --绑定元宝
     ITEMID_JINGANGSHI = 2,  --金刚石
     ITEMID_EXP = 6,         --经验
+
     --ITEMID_MOFANGZHEN_JIFEN = 20,   --魔方阵积分
     --ITEMID_XINYUNFU = 208,  --幸运符
     --ITEMID_BAODIFU = 209,   --保底符
@@ -486,6 +487,8 @@ CommonDefine = {
     VAR_HUM_BITFLAG_ACTIVATED_AUTORECYCLE = 97,     --激活自动回收功能
     VAR_HUM_BITFLAG_AUTORECYCLE_ITEM1 = 98,         --勾选装备自动回收    
     VAR_HUM_BITFLAG_AUTORECYCLE_ITEM2 = 99,         --勾选直升宝石自动回收
+
+    VAR_HUM_BITFLAG_ITEMUSE = 200,                  --道具使用是否成功的标记，返回到txt回调中
 
     --道具的int变量 1-50
     ITEM_INTVAR_ADDLUCK_LV = 1,                 --道具的祝福等级

@@ -29,12 +29,12 @@ end
 --增加当前的宝箱累计数量
 function OpenSuperBoxManager.AddNewBoxNum(actor, addnum)
     if BF_IsNullObj(actor) or (addnum == nil) or (addnum <= 0) then
-        return
+        return false
     end
     local DAY_MAX_ADD_NUM = GetDayMaxAddBoxNum(actor)
     local nDayAddNum = getplaydef(actor, CommonDefine.VAR_J_DAY_SUPERBOX_ADDNUM)
     if nDayAddNum >= DAY_MAX_ADD_NUM then
-        return
+        return false
     end
 
     local nFinalAddNum = addnum
@@ -49,6 +49,7 @@ function OpenSuperBoxManager.AddNewBoxNum(actor, addnum)
     setplaydef(actor, CommonDefine.VAR_U_SUPER_BOX_TOTAL_NUM, nCurrBoxNum)
 
     OpenSuperBoxManager.UpdateSuperBoxInfo(actor)
+    return true
 end
 
 function OpenSuperBoxManager.GMAddNewBoxNum(actor, addnum)
@@ -320,7 +321,7 @@ local function OpenUpgradeBoxLevelPanel(actor)
     if levelConfig then
         sNeedItemStr = BF_GetSimpleItemTableDescStr(levelConfig.upgradeneeditems_tab)
     end
-    local strPanel = '<Img|id=2100|children={2102,2101,2103,2104,2105,2106,2107,2108,2109,2110,2111,2112}|x=40|y=-560|img=private/cc_superbox/panel_level.jpg|move=0|reset=1|bg=1|esc=1|show=0>'..
+    local strPanel = '<Img|id=2100|children={2102,2101,2103,2104,2105,2106,2107,2108,2109,2110,2111,2112}|x=0|y=-600|img=private/cc_superbox/panel_level.jpg|move=0|reset=1|bg=1|esc=1|show=0>'..
         '<Layout|id=2102|x=256.0|y=2.0|width=80|height=80|link=@opensuperboxmanager_button#sid='..
         OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_5..'>'..
         '<Button|id=2101|x=257.0|y=0.0|pimg=public/1900000511.png|nimg=public/1900000510.png|link=@opensuperboxmanager_button#sid='..
@@ -528,16 +529,32 @@ local function OpenAutoOpenBoxPanel(actor)
         currSelectStr = SELECT_CONDITION_QUALITY_LIST[chooseseq].showstr
     end
 
-    local strPanel = '<Img|id=2200|children={2201,2202,2203,2204,2205,2206}|x=-200|y=-560|img=private/cc_superbox/panel_level.jpg|move=0|reset=1|bg=1|esc=1|show=0>'..
-        '<Layout|id=2201|x=256.0|y=2.0|width=80|height=80|link=@opensuperboxmanager_button#sid='..
+    local strPanel = '<Img|id=2200|children={2201,2202,2203,2204,2205,2206}|x=-300.0|y=-600.0|esc=1|move=0|img=private/cc_superbox/panel_auto.jpg|bg=1|reset=1|loadDelay=1|show=0>'..
+        '<Layout|id=2201|x=254.0|y=2.0|width=80|height=80|link=@opensuperboxmanager_button#sid='..
         OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_7..'>'..
-        '<Button|id=2202|x=257.0|y=0.0|pimg=public/1900000511.png|nimg=public/1900000510.png|link=@opensuperboxmanager_button#sid='..
+        '<Button|id=2202|x=255.0|y=1.0|pimg=public/1900000511.png|nimg=public/1900000510.png|link=@opensuperboxmanager_button#sid='..
         OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_7..'>'..
         '<Text|id=2203|x=85.0|y=18.0|color=255|size=20|text=开箱设置>'..
-        '<Text|id=2204|x=30.0|y=75.0|color=255|size=18|text=保留满足以下条件的装备：>'..
-        '<MenuItem|id=2205|menuid=S$chooseitem|x=30|y=150|itemname='..strItemList..'|select='..currSelectStr..
-        '|a=2|direction=0|fontcolor=250|selectcolor=254|fontsize=20|itemhei=30|link=@opensuperboxmanager_button#sid='..
-        OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_11..'>'
+
+        '<Layout|id=2204|children={2241,2242,2243,2244,2245}|x=10.0|y=50.0|width=236|height=100|color=172>'..
+        '<Text|id=2241|x=6.0|y=6.0|color=255|size=16|text=保留满足以下条件的装备:>'..
+        '<CheckBox|id=2242|x=4.0|y=30.0|delay=0|count=1|default=flag|checkboxid=checkvar|pimg=private/cc_common/checkbox_2.png|nimg=private/cc_common/checkbox_1.png|link=@function_button>'..
+        '<MenuItem|id=2243|a=2|x=40.0|y=54.0|height=24|menuid=S$chooseitem|select=currSelectStr|fontsize=16|itemhei=20|fontcolor=250|itemname=strItemList|direction=0|selectcolor=254|link=@opensuperboxmanager_button#sid=OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_11>'..
+        '<CheckBox|id=2244|x=4.0|y=60.0|delay=0|count=1|default=flag|checkboxid=checkvar|pimg=private/cc_common/checkbox_2.png|nimg=private/cc_common/checkbox_1.png|link=@function_button>'..
+        '<MenuItem|id=2245|a=2|x=40.0|y=84.0|height=24|menuid=S$chooseitem|select=currSelectStr|fontsize=16|itemhei=20|fontcolor=250|itemname=strItemList|direction=0|selectcolor=254|link=@opensuperboxmanager_button#sid=OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_11>'..
+
+        '<Layout|id=2205|children={2251,2252,2253,2254,2255,2256,2257}|x=10.0|y=165.0|width=236|height=120|color=172>'..
+        '<Text|id=2251|x=6.0|y=6.0|color=255|size=16|text=满足以下条件时停止自动开箱:>'..
+        '<CheckBox|id=2252|x=4.0|y=30.0|delay=0|count=1|default=flag|checkboxid=checkvar|pimg=private/cc_common/checkbox_2.png|nimg=private/cc_common/checkbox_1.png|link=@function_button>'..
+        '<Text|id=2253|x=40.0|y=30.0|color=255|size=16|text=获得比主角当前穿戴装备战力更高的装备>'..
+        '<CheckBox|id=2254|x=4.0|y=60.0|delay=0|count=1|default=flag|checkboxid=checkvar|pimg=private/cc_common/checkbox_2.png|nimg=private/cc_common/checkbox_1.png|link=@function_button>'..
+        '<Text|id=2255|x=40.0|y=60.0|color=255|size=16|text=获得带有天赋属性的装备>'..
+        '<CheckBox|id=2256|x=4.0|y=90.0|delay=0|count=1|default=flag|checkboxid=checkvar|pimg=private/cc_common/checkbox_2.png|nimg=private/cc_common/checkbox_1.png|link=@function_button>'..
+        '<Text|id=2257|x=40.0|y=90.0|color=255|size=16|text=获得带有极品属性的装备>'..
+
+        '<Layout|id=2206|children={2261,2262}|x=10.0|y=300.0|width=236|height=40|color=172>'..
+        '<CheckBox|id=2261|x=4.0|y=10.0|delay=0|count=1|default=flag|checkboxid=checkvar|pimg=private/cc_common/checkbox_2.png|nimg=private/cc_common/checkbox_1.png|link=@function_button>'..
+        '<Text|id=2262|x=40.0|y=10.0|color=255|size=16|text=不满足上述条件的装备自动回收>'
 
     addbutton(actor, 108, CommonDefine.ADD_BUTTON_ID_5, strPanel)
 end
