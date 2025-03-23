@@ -566,6 +566,15 @@ function equippos_star_auto_upgrade(actor)
     EquipPosStarManager.EquipPosAutoUpgradeStar(actor)
     EquipPosStarManager.ShowBasePanel(actor)    
 end
+
+function superbox_delay_checkrecycle(actor)
+    OpenSuperBoxManager.DelayCheckRecycle(actor)
+end
+
+function superbox_auto_open(actor)
+    OpenSuperBoxManager.AutoOpenSuperBox(actor)
+end
+
 ----------------------------------------------------------------Íæ¼ÒÑÓ³Ù»Øµ÷end--------------------------------------------------------------------------
 
 

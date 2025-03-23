@@ -292,7 +292,7 @@ function RecycleManager.InvertAll(actor)
     RecycleManager.ShowRecyclePanelInfo(actor)
 end
 
-function RecycleManager.IsItemNeedRecycle(actor, singleitem)
+function RecycleManager.IsItemNeedRecycle(actor, singleitem, forceflag)
     local bFlag = false
     local targitems = {}
 
@@ -306,21 +306,18 @@ function RecycleManager.IsItemNeedRecycle(actor, singleitem)
     local stdmode = getstditeminfo(itemidx, CommonDefine.STDITEMINFO_STDMODE) 
     local qualitylv = Item.GetItemQualityLv(actor, singleitem)    
 
-    local recycletype = getplaydef(actor, CommonDefine.VAR_N_CHOOSE_RECYCLE_TYPE)
     for _, value in pairs(cfgRecycleSetting) do
-        if value.recycletype == recycletype then
-            if ((value.checktype == CHECK_TYPE_QUALITYLV) and (value.checkparam == qualitylv)) or
-                (value.checktype == CHECK_TYPE_NONE) then
-                if (table.indexof(value.stdmodelist_tab, stdmode) ~= false) or
-                   (table.indexof(value.itemidlist_tab, itemidx) ~= false) then                              
-                    if getflagstatus(actor, value.flagvar) == 1 then
-                        bFlag = true
-                        targitems = BF_GetItemTabMulti(value.recycleitems_tab, itemnum)
-                        break
-                    end                                        
-                end                
-            end            
-        end
+        if ((value.checktype == CHECK_TYPE_QUALITYLV) and (value.checkparam == qualitylv)) or
+            (value.checktype == CHECK_TYPE_NONE) then
+            if (table.indexof(value.stdmodelist_tab, stdmode) ~= false) or
+                (table.indexof(value.itemidlist_tab, itemidx) ~= false) then                              
+                if (forceflag==true) or (getflagstatus(actor, value.flagvar) == 1) then
+                    bFlag = true
+                    targitems = BF_GetItemTabMulti(value.recycleitems_tab, itemnum)
+                    break
+                end                                        
+            end                
+        end            
     end
     return bFlag, targitems
 end
@@ -367,7 +364,7 @@ function RecycleManager.DoBagItemRecycle(actor)
     if bagitems and type(bagitems)=="table" then
         local finalrecycitems = {}
         for _, singleitem in ipairs(bagitems) do       
-            local bFlag, targitems = RecycleManager.IsItemNeedRecycle(actor, singleitem)
+            local bFlag, targitems = RecycleManager.IsItemNeedRecycle(actor, singleitem, false)
             if bFlag == true then
                local rec = {itemobj = singleitem, recycleitems=targitems} 
                finalrecycitems[#finalrecycitems+1] = rec  
@@ -391,6 +388,10 @@ function RecycleManager.DoAutoRecycleItem(actor, singleitemobj)
     if BF_IsNullObj(actor) or BF_IsNullObj(singleitemobj) then 
         return
     end
+    if getflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_NO_BAG_AUTORECYCLE) == 1 then
+        return
+    end
+
     local finalrecycitems = {}
     local bFlag, targitems = RecycleManager.IsItemNeedAutoRecycle(actor, singleitemobj)
     if bFlag == true then    
@@ -416,7 +417,7 @@ function RecycleManager.SuperBoxForceRecycleItemList(actor, itemobjlist)
     if type(itemobjlist)=="table" then
         local finalrecycitems = {}
         for _, singleitem in ipairs(itemobjlist) do
-            local bFlag, targitems = RecycleManager.IsItemNeedRecycle(actor, singleitem)
+            local bFlag, targitems = RecycleManager.IsItemNeedRecycle(actor, singleitem, true)
             if bFlag == true then
                local rec = {itemobj = singleitem, recycleitems=targitems} 
                finalrecycitems[#finalrecycitems+1] = rec               
@@ -427,7 +428,7 @@ function RecycleManager.SuperBoxForceRecycleItemList(actor, itemobjlist)
                 local makeindex = getiteminfo(actor, value.itemobj, CommonDefine.ITEMINFO_UNIQUEID)
                 local itemcount = getiteminfo(actor, value.itemobj, CommonDefine.ITEMINFO_OVERLAP)
                 itemcount = math.max(1, itemcount)
-                delitembymakeindex(actor, makeindex, itemcount, 'opensuperboxrecycle')
+                delitembymakeindex(actor, makeindex, itemcount, 'opensuperboxrecycle')              
                 Player.GiveItemsToBagOrMail(actor, value.recycleitems, '超级宝箱一键回收')
             end
         end
