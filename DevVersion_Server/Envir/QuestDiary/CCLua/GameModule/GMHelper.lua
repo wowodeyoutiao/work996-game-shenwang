@@ -27,7 +27,7 @@ function GMHelper.OpenPanel(actor)
 
 
 
-        '<Button|x=500|y=240|nimg=public/bg_hhzy_01_3.png|text=临时测试|link=@gmhelper_button,1999>'
+        '<Button|x=500|y=240|nimg=public/bg_hhzy_01_3.png|text=临时测试|link=@gmhelper_button#sid1=1999>'
     --[[                                      
         '<Button|x=40|y=120|nimg=public/bg_hhzy_01_3.png|text=无敌|link=@gmhelper_button,4>'..
         '<Button|x=40|y=150|nimg=public/bg_hhzy_01_3.png|text=各种升级材料加2000|link=@gmhelper_button,5>'..
@@ -89,7 +89,7 @@ function GMHelper.DoGmOper(actor, sid)
     if getgmlevel(actor) == 0 then
         return
     end
-
+release_print(sid)
     if sid == '1' then
         changelevel(actor, '+', 10)
         Player.FullHPMP(actor)    
@@ -324,7 +324,28 @@ function GMHelper.DoGmOper(actor, sid)
 
 
     elseif sid == '1999' then
-        giveitem(actor, '金币', 3000, 0, 'test')       
+release_print(99999)        
+        local RECYCLE_CHECKBOX_INFO = {
+            {seq=1, checkvar=CommonDefine.CHECK_BOX_VAR[10], bitflag=CommonDefine.VAR_HUM_BITFLAG_SUPERBOX_RECYCLE_CHECK1},
+            {seq=2, checkvar=CommonDefine.CHECK_BOX_VAR[11], bitflag=CommonDefine.VAR_HUM_BITFLAG_SUPERBOX_RECYCLE_CHECK2},
+            {seq=3, checkvar=CommonDefine.CHECK_BOX_VAR[12], bitflag=CommonDefine.VAR_HUM_BITFLAG_SUPERBOX_RECYCLE_CHECK3},
+            {seq=4, checkvar=CommonDefine.CHECK_BOX_VAR[13], bitflag=CommonDefine.VAR_HUM_BITFLAG_SUPERBOX_RECYCLE_CHECK4},
+            {seq=5, checkvar=CommonDefine.CHECK_BOX_VAR[14], bitflag=CommonDefine.VAR_HUM_BITFLAG_SUPERBOX_RECYCLE_CHECK5},
+            {seq=6, checkvar=CommonDefine.CHECK_BOX_VAR[15], bitflag=CommonDefine.VAR_HUM_BITFLAG_SUPERBOX_RECYCLE_CHECK6},
+        }
+
+        for i = 1, #RECYCLE_CHECKBOX_INFO, 1 do
+            if getflagstatus(actor, RECYCLE_CHECKBOX_INFO[i].bitflag) == 1 then
+                release_print('flag '..RECYCLE_CHECKBOX_INFO[i].bitflag..':'..1)
+            else
+                release_print('flag '..RECYCLE_CHECKBOX_INFO[i].bitflag..':'..0)
+            end
+        end
+        if getflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_AUTO_OPEN_SUPERBOX) == 1 then
+            release_print('openbox:'..1)
+        else
+            release_print('openbox:'..0)        
+        end
     end   
 end
 

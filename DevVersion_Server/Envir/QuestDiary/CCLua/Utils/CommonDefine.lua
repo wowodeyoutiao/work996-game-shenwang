@@ -429,11 +429,10 @@ CommonDefine = {
     VAR_Z_DAY_EVERYDAYTASK_REWARD_DATA = 'Z2',          --玩家 每日任务 子任务领奖记录
     
 
-    --玩家的位标记，下线保存  索引【1~800】  1-99是支持保存的，其它不保存，但要注意原版本已使用的 check [XX]
+    --玩家的位标记，下线保存  索引【1~800】  
     --[[
     VAR_HUM_BITFLAG_USE_XYF = 201,                --祝福是否使用幸运符
-    VAR_HUM_BITFLAG_USE_BDF = 202,                --祝福是否使用保底符
-   
+    VAR_HUM_BITFLAG_USE_BDF = 202,                --祝福是否使用保底符   
     VAR_HUM_BITFLAG_MFZ_ADDTIME_FLAG1 = 210,         --魔方阵 增加时间标记1 确认后用1次换增加30分钟
     VAR_HUM_BITFLAG_MFZ_ADDTIME_FLAG2 = 211,         --魔方阵 增加时间标记2 确认后时间不足自动用次数换时间
     VAR_HUM_BITFLAG_FREEVIP_TASK_DRAWFLAG1 = 212,    --免费VIP任务1 是否领奖
@@ -445,59 +444,54 @@ CommonDefine = {
     VAR_HUM_BITFLAG_FIRSTRECHARGE_REWARD1 = 218,     --首充奖励领取标记1
     VAR_HUM_BITFLAG_FIRSTRECHARGE_REWARD2 = 219,     --首充奖励领取标记2
     VAR_HUM_BITFLAG_FIRSTRECHARGE_REWARD3 = 220,     --首充奖励领取标记3
-
-    VAR_HUM_BITFLAG_RECYCLE_ITEM2_1 = 228,           --白色直升宝石是否回收
-    VAR_HUM_BITFLAG_RECYCLE_ITEM2_2 = 229,           --绿色直升宝石是否回收
-    VAR_HUM_BITFLAG_RECYCLE_ITEM2_3 = 230,           --蓝色直升宝石是否回收
-    VAR_HUM_BITFLAG_RECYCLE_ITEM2_4 = 231,           --紫色直升宝石是否回收
-    VAR_HUM_BITFLAG_RECYCLE_ITEM2_5 = 232,           --粉色直升宝石是否回收
-    VAR_HUM_BITFLAG_RECYCLE_ITEM2_6 = 233,           --金色直升宝石是否回收
-    VAR_HUM_BITFLAG_RECYCLE_ITEM2_7 = 234,           --红色直升宝石是否回收
     
     VAR_HUM_BITFLAG_IS_FIRST_RANDOMBOSS_REWARD = 238,       --是否是第一个战力boss的奖励
     VAR_HUM_BITFLAG_IS_FIRST_RANDOMBOSS_TRIGGER = 239,      --是否是触发的第一个战力boss
-
 
     VAR_HUM_BITFLAG_NEW_PLAYER_INIT_FLAG = 300,     --玩家是否进行新手初始化
     VAR_HUM_BITFLAG_RELIVE_DIALOGUE_FLAG = 301,     --玩家是否当前已有复活框弹出
     ]]--
 
+    --200-299 作为临时标记，上线后会清0，现在在QManage.txt的login里面处理的
+    VAR_HUM_BITFLAG_NPC_TEMP_CHOOSE_FLAG = 200,      --NPC上的临时操作标记
+    VAR_HUM_BITFLAG_ACTIVATED_AUTORECYCLE = 201,     --激活自动回收功能
+    VAR_HUM_BITFLAG_ITEMUSE = 202,                   --道具使用是否成功的标记，返回到txt回调中
+    VAR_HUM_BITFLAG_NO_BAG_AUTORECYCLE = 203,        --不进行背包的装备自动回收，在开宝箱过程中才使用
+    VAR_HUM_BITFLAG_AUTO_OPEN_SUPERBOX = 204,        --自动开启超级宝箱
 
+    --300-800 都是可以下线保存的
+    VAR_HUM_BITFLAG_AUTORECYCLE_ITEM1 = 300,         --勾选装备自动回收    
+    VAR_HUM_BITFLAG_AUTORECYCLE_ITEM2 = 301,         --勾选直升宝石自动回收
 
-    VAR_HUM_BITFLAG_RECYCLE_BAOZHU_1 = 70,       --白色灵珠是否回收
-    VAR_HUM_BITFLAG_RECYCLE_BAOZHU_2 = 71,       --绿色灵珠是否回收
-    VAR_HUM_BITFLAG_RECYCLE_BAOZHU_3 = 74,       --蓝色灵珠是否回收
-    VAR_HUM_BITFLAG_RECYCLE_BAOZHU_4 = 75,       --紫色灵珠是否回收
-    VAR_HUM_BITFLAG_RECYCLE_BAOZHU_5 = 76,       --粉色灵珠是否回收
-    VAR_HUM_BITFLAG_RECYCLE_BAOZHU_6 = 77,       --橙色灵珠是否回收
-    VAR_HUM_BITFLAG_RECYCLE_BAOZHU_KEEPBETTER = 79,  --灵珠回收时，是否保留比穿戴更好的  
+    VAR_HUM_BITFLAG_SUPERBOX_RECYCLE_CHECK1 = 310,  --超级宝箱自动回收 保留满足品质的条件
+    VAR_HUM_BITFLAG_SUPERBOX_RECYCLE_CHECK2 = 311,  --超级宝箱自动回收 保留满足等级的条件
+    VAR_HUM_BITFLAG_SUPERBOX_RECYCLE_CHECK3 = 312,  --超级宝箱自动回收 停止开箱条件1
+    VAR_HUM_BITFLAG_SUPERBOX_RECYCLE_CHECK4 = 313,  --超级宝箱自动回收 停止开箱条件2
+    VAR_HUM_BITFLAG_SUPERBOX_RECYCLE_CHECK5 = 314,  --超级宝箱自动回收 停止开箱条件3
+    VAR_HUM_BITFLAG_SUPERBOX_RECYCLE_CHECK6 = 315,  --超级宝箱自动回收 自动回收非保留装备        
+
+    VAR_HUM_BITFLAG_RECYCLE_BAOZHU_1 = 320,         --白色灵珠是否回收
+    VAR_HUM_BITFLAG_RECYCLE_BAOZHU_2 = 321,         --绿色灵珠是否回收
+    VAR_HUM_BITFLAG_RECYCLE_BAOZHU_3 = 322,         --蓝色灵珠是否回收
+    VAR_HUM_BITFLAG_RECYCLE_BAOZHU_4 = 323,         --紫色灵珠是否回收
+    VAR_HUM_BITFLAG_RECYCLE_BAOZHU_5 = 324,         --粉色灵珠是否回收
+    VAR_HUM_BITFLAG_RECYCLE_BAOZHU_6 = 325,         --橙色灵珠是否回收
+    VAR_HUM_BITFLAG_RECYCLE_BAOZHU_KEEPBETTER = 326,--灵珠回收时，是否保留比穿戴更好的  
     
-    VAR_HUM_BITFLAG_RECYCLE_ITEM1_1 = 80,           --白色装备是否回收
-    VAR_HUM_BITFLAG_RECYCLE_ITEM1_2 = 81,           --绿色装备是否回收
-    VAR_HUM_BITFLAG_RECYCLE_ITEM1_3 = 82,           --蓝色装备是否回收
-    VAR_HUM_BITFLAG_RECYCLE_ITEM1_4 = 83,           --紫色装备是否回收
-    VAR_HUM_BITFLAG_RECYCLE_ITEM1_5 = 84,           --粉色装备是否回收
-    VAR_HUM_BITFLAG_RECYCLE_ITEM1_6 = 85,           --金色装备是否回收
-    VAR_HUM_BITFLAG_RECYCLE_ITEM1_7 = 86,           --红色装备是否回收 
-    --87
-    --88
-    --89
-    --90
-    
-    VAR_HUM_BITFLAG_NPC_TEMP_CHOOSE_FLAG = 96,      --NPC上的临时操作标记
-    VAR_HUM_BITFLAG_ACTIVATED_AUTORECYCLE = 97,     --激活自动回收功能
-    VAR_HUM_BITFLAG_AUTORECYCLE_ITEM1 = 98,         --勾选装备自动回收    
-    VAR_HUM_BITFLAG_AUTORECYCLE_ITEM2 = 99,         --勾选直升宝石自动回收
+    VAR_HUM_BITFLAG_RECYCLE_ITEM1_1 = 330,           --白色装备是否回收
+    VAR_HUM_BITFLAG_RECYCLE_ITEM1_2 = 331,           --绿色装备是否回收
+    VAR_HUM_BITFLAG_RECYCLE_ITEM1_3 = 332,           --蓝色装备是否回收
+    VAR_HUM_BITFLAG_RECYCLE_ITEM1_4 = 333,           --紫色装备是否回收
+    VAR_HUM_BITFLAG_RECYCLE_ITEM1_5 = 334,           --粉色装备是否回收
+    VAR_HUM_BITFLAG_RECYCLE_ITEM1_6 = 335,           --金色装备是否回收
+    VAR_HUM_BITFLAG_RECYCLE_ITEM1_7 = 336,           --红色装备是否回收 
 
-    VAR_HUM_BITFLAG_ITEMUSE = 200,                  --道具使用是否成功的标记，返回到txt回调中
-    VAR_HUM_BITFLAG_NO_BAG_AUTORECYCLE = 201,       --不进行背包的装备自动回收
-    VAR_HUM_BITFLAG_AUTO_OPEN_SUPERBOX = 202,       --自动开启超级宝箱
-    VAR_HUM_BITFLAG_SUPERBOX_RECYCLE_CHECK1 = 203,  --超级宝箱自动回收 保留满足品质的条件
-    VAR_HUM_BITFLAG_SUPERBOX_RECYCLE_CHECK2 = 204,  --超级宝箱自动回收 保留满足等级的条件
-    VAR_HUM_BITFLAG_SUPERBOX_RECYCLE_CHECK3 = 205,  --超级宝箱自动回收 停止开箱条件1
-    VAR_HUM_BITFLAG_SUPERBOX_RECYCLE_CHECK4 = 206,  --超级宝箱自动回收 停止开箱条件2
-    VAR_HUM_BITFLAG_SUPERBOX_RECYCLE_CHECK5 = 207,  --超级宝箱自动回收 停止开箱条件3
-    VAR_HUM_BITFLAG_SUPERBOX_RECYCLE_CHECK6 = 208,  --超级宝箱自动回收 自动回收    
+    VAR_HUM_BITFLAG_RECYCLE_ITEM2_3 = 340,           --蓝色直升宝石是否回收
+    VAR_HUM_BITFLAG_RECYCLE_ITEM2_4 = 341,           --紫色直升宝石是否回收
+    VAR_HUM_BITFLAG_RECYCLE_ITEM2_5 = 342,           --粉色直升宝石是否回收
+    VAR_HUM_BITFLAG_RECYCLE_ITEM2_6 = 343,           --金色直升宝石是否回收
+    VAR_HUM_BITFLAG_RECYCLE_ITEM2_7 = 344,           --红色直升宝石是否回收
+
 
     --道具的int变量 1-50
     ITEM_INTVAR_ADDLUCK_LV = 1,                 --道具的祝福等级

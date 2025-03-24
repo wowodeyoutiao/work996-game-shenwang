@@ -184,6 +184,11 @@ EQUAL <$GAMEID> 1
 CHANGEPERMISSION 10
 
 ; ============================================
+; 清零200-299的标记变量
+#IF
+#ACT
+RESET [200] 100
+
 ; 调用lua脚本对应的登录回调
 #IF
 #ACT
@@ -290,17 +295,17 @@ ChangeHumNewValue 200 500 65535
 
 
 ; 大极品专用修复
-#IF
-SMALL <$GAMEID> 3269
-#ACT
-DELAYGOTO 100 @更新修复项目
+; #IF
+; SMALL <$GAMEID> 3269
+; #ACT
+; DELAYGOTO 100 @更新修复项目
 
 
 ; 联运专用触发 
-#IF
-LARGE <$GAMEID> 3268
-#ACT
-DELAYGOTO 100 @登陆额外触发内容
+; #IF
+; LARGE <$GAMEID> 3268
+; #ACT
+; DELAYGOTO 100 @登陆额外触发内容
 
 
 ; 加载远程配置 每5分钟登陆同步一次
@@ -1227,8 +1232,8 @@ ADDBUFF 60008
 #ACT
 ; 重置老的首爆标识 110.111.112不动
 SET [6] 0
-RESET [100] 9
-RESET [120] 900
+; RESET [100] 9
+; RESET [120] 900
 ; 清理称号 
 DEPRIVETITLE 二十四桥BUFF
 DEPRIVETITLE 盖世豪侠
