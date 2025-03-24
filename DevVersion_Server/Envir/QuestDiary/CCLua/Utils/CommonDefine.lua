@@ -18,6 +18,7 @@ CommonDefine = {
     ITEMID_BINDYB = 4,      --绑定元宝
     ITEMID_JINGANGSHI = 2,  --金刚石
     ITEMID_EXP = 6,         --经验
+
     --ITEMID_MOFANGZHEN_JIFEN = 20,   --魔方阵积分
     --ITEMID_XINYUNFU = 208,  --幸运符
     --ITEMID_BAODIFU = 209,   --保底符
@@ -342,6 +343,7 @@ CommonDefine = {
     VAR_U_SUPER_BOX_ONCE_OPEN_NUM = 'U132',     --超级宝箱  一次开几个箱子    
     VAR_U_SUPER_BOX_START_UPGRADE_TIME = 'U133',--超级宝箱  开始升级的时间
     VAR_U_SUPER_BOX_CHOOSE_CONDITION_1 = 'U134',--超级宝箱  保留宝箱选择的条件1编号 - 品质
+    VAR_U_SUPER_BOX_CHOOSE_CONDITION_2 = 'U135',--超级宝箱  保留宝箱选择的条件2编号 - 等级
 
     VAR_U_GUANZHI_LEVEL = 'U140',               --玩家的官职等级
     VAR_U_GUANZHI_CURREXP = 'U141',             --玩家的官职当前经验
@@ -486,6 +488,16 @@ CommonDefine = {
     VAR_HUM_BITFLAG_ACTIVATED_AUTORECYCLE = 97,     --激活自动回收功能
     VAR_HUM_BITFLAG_AUTORECYCLE_ITEM1 = 98,         --勾选装备自动回收    
     VAR_HUM_BITFLAG_AUTORECYCLE_ITEM2 = 99,         --勾选直升宝石自动回收
+
+    VAR_HUM_BITFLAG_ITEMUSE = 200,                  --道具使用是否成功的标记，返回到txt回调中
+    VAR_HUM_BITFLAG_NO_BAG_AUTORECYCLE = 201,       --不进行背包的装备自动回收
+    VAR_HUM_BITFLAG_AUTO_OPEN_SUPERBOX = 202,       --自动开启超级宝箱
+    VAR_HUM_BITFLAG_SUPERBOX_RECYCLE_CHECK1 = 203,  --超级宝箱自动回收 保留满足品质的条件
+    VAR_HUM_BITFLAG_SUPERBOX_RECYCLE_CHECK2 = 204,  --超级宝箱自动回收 保留满足等级的条件
+    VAR_HUM_BITFLAG_SUPERBOX_RECYCLE_CHECK3 = 205,  --超级宝箱自动回收 停止开箱条件1
+    VAR_HUM_BITFLAG_SUPERBOX_RECYCLE_CHECK4 = 206,  --超级宝箱自动回收 停止开箱条件2
+    VAR_HUM_BITFLAG_SUPERBOX_RECYCLE_CHECK5 = 207,  --超级宝箱自动回收 停止开箱条件3
+    VAR_HUM_BITFLAG_SUPERBOX_RECYCLE_CHECK6 = 208,  --超级宝箱自动回收 自动回收    
 
     --道具的int变量 1-50
     ITEM_INTVAR_ADDLUCK_LV = 1,                 --道具的祝福等级

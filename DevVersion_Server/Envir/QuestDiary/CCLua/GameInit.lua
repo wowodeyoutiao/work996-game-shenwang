@@ -39,7 +39,7 @@ local function _Includes()
     -- cfgEverydayTask = require("Envir/QuestDiary/CCLua/GameConfig/cfgEverydayTask")
     cfgItemCompose = require("Envir/QuestDiary/CCLua/GameConfig/cfgItemCompose")
     cfgItemValidComposeList = {}
-    -- cfgUnpackItem = require("Envir/QuestDiary/CCLua/GameConfig/cfgUnpackItem")    
+    cfgUnpackItem = require("Envir/QuestDiary/CCLua/GameConfig/cfgUnpackItem")    
     cfgSuperBoxLevel = require("Envir/QuestDiary/CCLua/GameConfig/cfgSuperBoxLevel")
     cfgSuperBoxRewardPool = require("Envir/QuestDiary/CCLua/GameConfig/cfgSuperBoxRewardPool")
 
@@ -75,7 +75,7 @@ local function _Includes()
     require("Envir/QuestDiary/CCLua/GameModule/EquipPosStarManager")    
     require("Envir/QuestDiary/CCLua/GameModule/SkillUpgrade")
     require("Envir/QuestDiary/CCLua/GameModule/ItemComposeManager")
-    -- require("Envir/QuestDiary/CCLua/GameModule/ItemUseManager")
+    require("Envir/QuestDiary/CCLua/GameModule/ItemUseManager")
     require("Envir/QuestDiary/CCLua/GameModule/BaoZhuManager")
     -- require("Envir/QuestDiary/CCLua/GameModule/BaoZhuBossManager")
     require("Envir/QuestDiary/CCLua/GameModule/SoulStoneManager")
@@ -439,20 +439,20 @@ local function _Includes()
     --     end     
     -- end
 
-    -- --UnpackItem
-    -- for _, value in pairs(cfgUnpackItem) do
-    --     if (value.fixedrewards ~= nil) and (value.fixedrewards ~= '') then
-    --         value.fixedrewards_tab = BF_Json2Table(value.fixedrewards)
-    --     else
-    --         value.fixedrewards_tab = {}
-    --     end
+    --UnpackItem
+    for _, value in pairs(cfgUnpackItem) do
+        if (value.fixedrewards ~= nil) and (value.fixedrewards ~= '') then
+            value.fixedrewards_tab = BF_Json2Table(value.fixedrewards)
+        else
+            value.fixedrewards_tab = {}
+        end
 
-    --     if (value.randomrewards ~= nil) and (value.randomrewards ~= '') then
-    --         value.randomrewards_tab = BF_Json2Table(value.randomrewards)
-    --     else
-    --         value.randomrewards_tab = {}
-    --     end        
-    -- end    
+        if (value.randomrewards ~= nil) and (value.randomrewards ~= '') then
+            value.randomrewards_tab = BF_Json2Table(value.randomrewards)
+        else
+            value.randomrewards_tab = {}
+        end        
+    end    
 
     -- --MoFangZhen
     -- for _, value in pairs(cfgMoFangZhen) do

@@ -566,6 +566,15 @@ function equippos_star_auto_upgrade(actor)
     EquipPosStarManager.EquipPosAutoUpgradeStar(actor)
     EquipPosStarManager.ShowBasePanel(actor)    
 end
+
+function superbox_delay_checkrecycle(actor)
+    OpenSuperBoxManager.DelayCheckRecycle(actor)
+end
+
+function superbox_auto_open(actor)
+    OpenSuperBoxManager.AutoOpenSuperBox(actor)
+end
+
 ----------------------------------------------------------------玩家延迟回调end--------------------------------------------------------------------------
 
 
@@ -583,6 +592,7 @@ end
 
 ----------------------------------------------------------------使用道具回调start------------------------------------------------------------------------
 
+--[[
 function stdmodefunc0(actor, itemobj)
     return ItemUseManager.DoUse(actor, itemobj)
 end
@@ -627,6 +637,46 @@ function stdmodefunc205(actor, itemobj)
     return ItemUseManager.DoUse(actor, itemobj)
 end
 
+--使用筛子
+function stdmodefunc206(actor, itemobj)
+    return ItemUseManager.DoUse(actor, itemobj)
+end
+]]--
+
+
+function stdmodefunc0(actor, smakeindex)  
+    return ItemUseManager.DoUse(actor, smakeindex)
+end
+
+--使用藏宝图
+function stdmodefunc201(actor, smakeindex)
+    return ItemUseManager.DoUse(actor, smakeindex)
+end
+
+--使用可拆解兑换的道具
+function stdmodefunc202(actor, smakeindex)
+    return ItemUseManager.DoUse(actor, smakeindex)
+end
+
+--使用槽位直升星石
+function stdmodefunc203(actor, smakeindex)
+    return ItemUseManager.DoUse(actor, smakeindex)
+end
+
+--使用改名卡
+function stdmodefunc204(actor, smakeindex)
+    return ItemUseManager.DoUse(actor, smakeindex)
+end
+
+--使用魔方阵凭证
+function stdmodefunc205(actor, smakeindex)
+    return ItemUseManager.DoUse(actor, smakeindex)
+end
+
+--使用筛子
+function stdmodefunc206(actor, smakeindex)
+    return ItemUseManager.DoUse(actor, smakeindex)
+end
 
 ----------------------------------------------------------------使用道具回调end--------------------------------------------------------------------------
 

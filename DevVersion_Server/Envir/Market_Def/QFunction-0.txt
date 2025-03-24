@@ -5946,6 +5946,70 @@ MAPMOVE kuafu02 294 63 3
 BREAK
 
 
+;==============================================================================新功能  道具使用
+[@StdModeFunc0]
+#IF
+#ACT
+CALLLUA CC_QFunction @stdmodefunc0,<$Param2>
+#IF
+check [200] 0
+#ACT
+STOP
+
+[@StdModeFunc201]
+#IF
+#ACT
+CALLLUA CC_QFunction @stdmodefunc201,<$Param2>
+#IF
+check [200] 0
+#ACT
+STOP
+
+[@StdModeFunc202]
+#IF
+#ACT
+CALLLUA CC_QFunction @stdmodefunc202,<$Param2>
+#IF
+check [200] 0
+#ACT
+STOP
+
+[@StdModeFunc203]
+#IF
+#ACT
+CALLLUA CC_QFunction @stdmodefunc203,<$Param2>
+#IF
+check [200] 0
+#ACT
+STOP
+
+[@StdModeFunc204]
+#IF
+#ACT
+CALLLUA CC_QFunction @stdmodefunc204,<$Param2>
+#IF
+check [200] 0
+#ACT
+STOP
+
+[@StdModeFunc205]
+#IF
+#ACT
+CALLLUA CC_QFunction @stdmodefunc205,<$Param2>
+#IF
+check [200] 0
+#ACT
+STOP
+
+[@StdModeFunc206]
+#IF
+#ACT
+CALLLUA CC_QFunction @stdmodefunc206,<$Param2>
+#IF
+check [200] 0
+#ACT
+STOP
+
 ;==============================================================================新功能回调 cookie========================================================
 [@opensuperboxmanager_button]
 #IF
