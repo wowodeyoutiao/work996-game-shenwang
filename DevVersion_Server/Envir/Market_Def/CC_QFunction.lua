@@ -140,7 +140,7 @@ function addbag(actor, makeindex)
     --if (not BF_IsNullObj(itemobj)) and (not Player.CheckEquipIsOnBody(actor, itemobj)) then
     if not BF_IsNullObj(itemobj) then
         --触发玩家道具进背包的事件监听
-        GameEventManager.DoTriggerEvent(CommonDefine.EVENT_NAME_PLAYER_ADDBAGITEM, actor, itemobj)    
+        GameEventManager.DoTriggerEvent(CommonDefine.EVENT_NAME_PLAYER_ADDBAGITEM, actor, itemobj, makeindex)    
     end
 end
 

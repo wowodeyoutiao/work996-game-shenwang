@@ -37,7 +37,7 @@ local SELECT_CONDITION_LEVEL_LIST = {
     {showstr='90级以上', minlevel=90},
     {showstr='100级以上', minlevel=100},
     {showstr='110级以上', minlevel=110},
-    {showstr='120级以上', minlevel=120},
+    {showstr='120级以上', minleve=120},
 }
 
 local RECYCLE_CHECKBOX_INFO = {
@@ -263,7 +263,7 @@ local function DoOpenBoxOnce(actor, autoflag, openitemlist)
     local strItemUniqueIDs = ''
     setflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_NO_BAG_AUTORECYCLE, 1)
     for _, itemid in ipairs(newItemIDTab) do
-        local sItemName = getstditeminfo(itemid, CommonDefine.STDITEMINFO_NAME)
+        local sItemName = getstditeminfo(itemid, CommonDefine.STDITEMINFO_NAME)        
         local newitemobj = giveitem(actor, sItemName, 1, 0, '超级宝箱')        
         if not BF_IsNullObj(newitemobj) then
             --生成装备的初始洗炼属性
@@ -271,8 +271,10 @@ local function DoOpenBoxOnce(actor, autoflag, openitemlist)
             --装备的天赋属性
             EquipInitGift.InitEquipGiftAB(actor, newitemobj)
             refreshitem(actor, newitemobj)
-            local nNewMakeIndex = getiteminfo(actor, newitemobj, CommonDefine.ITEMINFO_UNIQUEID)
-            if strItemUniqueIDs ~= '' then
+            local nNewMakeIndex = getiteminfo(actor, newitemobj, CommonDefine.ITEMINFO_UNIQUEID)            
+            --屏蔽当前装备的对比提示和自动使用
+            nothintitem(actor, 1, ''..nNewMakeIndex)
+            if strItemUniqueIDs ~= '' then                
                 strItemUniqueIDs = strItemUniqueIDs..','
             end
             strItemUniqueIDs = strItemUniqueIDs..nNewMakeIndex 
@@ -586,6 +588,7 @@ local function OpenAutoOpenBoxPanel(actor)
     local flaglist = {}
     for i = 1, #RECYCLE_CHECKBOX_INFO, 1 do
         local info = {checkvar=RECYCLE_CHECKBOX_INFO[i].checkvar, flag=getflagstatus(actor, RECYCLE_CHECKBOX_INFO[i].bitflag)}
+release_print('show panel flag '..RECYCLE_CHECKBOX_INFO[i].bitflag..':'..info.flag)        
         flaglist[#flaglist+1] = info
     end    
 
@@ -672,8 +675,10 @@ local function SelectRecycleCheckBox(actor, varseq)
     local flag = getplaydef(actor, RECYCLE_CHECKBOX_INFO[varseq].checkvar) 
     if flag == 1 then
         setflagstatus(actor, RECYCLE_CHECKBOX_INFO[varseq].bitflag, 1)
+release_print('set flag '..RECYCLE_CHECKBOX_INFO[varseq].bitflag..':'..1)        
     else
         setflagstatus(actor, RECYCLE_CHECKBOX_INFO[varseq].bitflag, 0)
+release_print('set flag '..RECYCLE_CHECKBOX_INFO[varseq].bitflag..':'..0)                
     end
     OpenAutoOpenBoxPanel(actor)
 end
@@ -754,7 +759,7 @@ function OpenSuperBoxManager.AutoOpenSuperBox(actor)
         if not BF_IsNullObj(value.itemobj) then
             local itemname = getiteminfo(actor, value.itemobj, CommonDefine.ITEMINFO_CHGEDNAME)
             if checkstopflag1 == 1 then
-                if Item.CompareBagItemToEquipment(actor, value.itemobj) then
+                if Item.CompareBagItemToEquipment(actor, value.itemobj) == 1 then
                     bNeedStop = true
                     Player.SendSelfMsg(actor, '请查看装备：'..itemname..' 比身上的评分更高！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
                     break
@@ -814,8 +819,8 @@ function OpenSuperBoxManager.DelayCheckRecycle(actor)
                         if (bNeedRecycle == false) and (checkrecycleflag2 == 1) then
                             local chooseseq = getplaydef(actor, CommonDefine.VAR_U_SUPER_BOX_CHOOSE_CONDITION_2)
                             if (chooseseq >= 1) and (chooseseq <= #SELECT_CONDITION_LEVEL_LIST) then
-                                local itemid = getiteminfo(actor, itemobj, CommonDefine.STDITEMINFO_IDX)
-                                local needlv = getstditeminfo(itemid, CommonDefine.STDITEMINFO_NEEDLV)                            
+                                local itemid = getiteminfo(actor, itemobj, CommonDefine.ITEMINFO_ITEMIDX)
+                                local needlv = getstditeminfo(itemid, CommonDefine.STDITEMINFO_NEEDLV)                 
                                 if needlv >= SELECT_CONDITION_LEVEL_LIST[chooseseq].minlevel then
                                     bNeedRecycle = false
                                 end
@@ -910,8 +915,8 @@ function OpenSuperBoxManager.OnPlayerEnterGame(actor)
         setplaydef(actor, CommonDefine.VAR_U_SUPER_BOX_ONCE_OPEN_NUM, 1)
     end
 
-    setflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_AUTO_OPEN_SUPERBOX, 0)
-    setflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_NO_BAG_AUTORECYCLE, 0)
+    --每次上线都把除保留的都自动回收的这个选项勾选
+    setflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_SUPERBOX_RECYCLE_CHECK6, 1)
     OpenSuperBoxManager.UpdateSuperBoxInfo(actor)
 end
 

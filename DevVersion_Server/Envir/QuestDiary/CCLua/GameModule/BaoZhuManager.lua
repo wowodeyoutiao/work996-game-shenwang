@@ -120,7 +120,7 @@ function BaoZhuManager.SetRecycleQuality(actor, recycleid)
 end
 
 --玩家获得道具时触发，自动回收宝珠
-function BaoZhuManager.DoAutoRecycleBaoZhu(actor, itemobj)
+function BaoZhuManager.DoAutoRecycleBaoZhu(actor, itemobj, makeindex)
     if BF_IsNullObj(actor) or BF_IsNullObj(itemobj) then 
         return
     end

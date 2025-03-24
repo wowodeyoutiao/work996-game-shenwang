@@ -384,7 +384,7 @@ function RecycleManager.DoBagItemRecycle(actor)
 end
 
 --玩家获得道具时触发，自动回收
-function RecycleManager.DoAutoRecycleItem(actor, singleitemobj)
+function RecycleManager.DoAutoRecycleItem(actor, singleitemobj, makeindex)
     if BF_IsNullObj(actor) or BF_IsNullObj(singleitemobj) then 
         return
     end
