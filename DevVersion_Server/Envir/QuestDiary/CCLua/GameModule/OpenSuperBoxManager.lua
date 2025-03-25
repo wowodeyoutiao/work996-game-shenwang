@@ -277,7 +277,9 @@ local function DoOpenBoxOnce(actor, autoflag, openitemlist)
     local strItemUniqueIDs = ''
     setflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_NO_BAG_AUTORECYCLE, 1)
     for _, itemid in ipairs(newItemIDTab) do
-        local sItemName = getstditeminfo(itemid, CommonDefine.STDITEMINFO_NAME)        
+        --屏蔽当前装备的对比提示和自动使用
+        nothintitem(actor, 2, itemid)                
+        local sItemName = getstditeminfo(itemid, CommonDefine.STDITEMINFO_NAME)                
         local newitemobj = giveitem(actor, sItemName, 1, 0, '超级宝箱')        
         if not BF_IsNullObj(newitemobj) then
             local infotab = {itemobj=newitemobj, randabflag=0, giftabflag=0}
@@ -291,9 +293,7 @@ local function DoOpenBoxOnce(actor, autoflag, openitemlist)
             end
             refreshitem(actor, newitemobj)
             local nNewMakeIndex = getiteminfo(actor, newitemobj, CommonDefine.ITEMINFO_UNIQUEID)            
-            --屏蔽当前装备的对比提示和自动使用
-            nothintitem(actor, 1, ''..nNewMakeIndex)
-            if strItemUniqueIDs ~= '' then                
+            if strItemUniqueIDs ~= '' then
                 strItemUniqueIDs = strItemUniqueIDs..','
             end
             strItemUniqueIDs = strItemUniqueIDs..nNewMakeIndex 
@@ -804,9 +804,6 @@ function OpenSuperBoxManager.AutoOpenSuperBox(actor)
     local checkstopflag2 = getflagstatus(actor, RECYCLE_CHECKBOX_INFO[4].bitflag)
     local checkstopflag3 = getflagstatus(actor, RECYCLE_CHECKBOX_INFO[5].bitflag)
 
-release_print('openbox')
-release_print('flags:'..checkstopflag1..','..checkstopflag2..','..checkstopflag3)
-
     for _, value in ipairs(openitemlist) do
         if not BF_IsNullObj(value.itemobj) then
             local itemname = getiteminfo(actor, value.itemobj, CommonDefine.ITEMINFO_CHGEDNAME)
@@ -909,6 +906,10 @@ function OpenSuperBoxManager.DoOperButton(actor, sid, sparam)
 
     local funcid = tonumber(sid)
     if funcid == OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_1 then
+        if getflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_AUTO_OPEN_SUPERBOX) == 1 then
+            Player.SendSelfMsg(actor, '正在自动开箱中！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+            return
+        end
         DoOpenBoxOnce(actor, false, nil) 
     elseif funcid == OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_2 then
         AddOnceOpenBoxNum(actor)
