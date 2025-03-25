@@ -494,11 +494,11 @@ CommonDefine = {
 
 
     --道具的int变量 1-50
-    ITEM_INTVAR_ADDLUCK_LV = 1,                 --道具的祝福等级
-    ITEM_INTVAR_RANDOMAB_NUM = 2,               --装备洗炼属性的条数
-    ITEM_INTVAR_RANDOMAB_CURR_SEQ = 3,          --装备洗炼当前选择的第几条属性  未洗炼状态  作为临时变量
-    ITEM_INTVAR_RANDOMAB_STATS = 4,             --装备洗炼的当前状态 0无洗炼属性待洗炼状态  1已洗炼出属性待处理状态
-    ITEM_INTVAR_ATTACK_SPEEDUP_INITGIFT = 6,    --装备加速属性【由装备天赋给予的】
+    ITEM_INTVAR_ADDLUCK_LV = 1,                     --道具的祝福等级
+    ITEM_INTVAR_RANDOMAB_NUM = 2,                   --装备洗炼属性的条数
+    ITEM_INTVAR_RANDOMAB_CURR_SEQ = 3,              --装备洗炼当前选择的第几条属性  未洗炼状态  作为临时变量
+    ITEM_INTVAR_RANDOMAB_STATS = 4,                 --装备洗炼的当前状态 0无洗炼属性待洗炼状态  1已洗炼出属性待处理状态
+    ITEM_INTVAR_ATTACK_SPEEDUP_INITGIFT = 6,        --装备加速属性【由装备天赋给予的】
 
     --道具的字符串变量 1-20
     --ITEM_STRVAR_RANDOMAB_DATA = 1,                --装备洗炼属性的数据保存

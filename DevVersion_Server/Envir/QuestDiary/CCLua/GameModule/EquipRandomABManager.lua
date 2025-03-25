@@ -166,31 +166,31 @@ local SAVE_POS_START = 3
 --初始化装备的洗炼属性
 function EquipRandomABManager.InitEquipRandomAB(actor, equipitem, testabnum)
     if BF_IsNullObj(actor) or BF_IsNullObj(equipitem) then
-        return
+        return false
     end
     local itemid = getiteminfo(actor, equipitem, CommonDefine.ITEMINFO_ITEMIDX)
     if (itemid == nil) or (cfg_equip[itemid] == nil) then
-        return
+        return false
     end
 
     local randomid = cfg_equip[itemid].RandomID
     if (randomid == nil) or (randomid <= 0) then
-        return
+        return false
     end
     local qualitylv = cfg_equip[itemid].QualityLv
     if qualitylv < CommonDefine.ITEM_QUALITY_PURPLE then
-        return
+        return false
     end
     if (cfgRandomABCreate[randomid] == nil) or (cfgRandomABCreate[randomid].ABNumPool_Tab == nil) or
        (table.isempty(cfgRandomABCreate[randomid].ABNumPool_Tab)) then
-        return
+        return false
     end
  
     local abnum = 0
     if testabnum == nil then
         local numTab = BF_GetRandomTab(cfgRandomABCreate[randomid].ABNumPool_Tab, 10000);         
         if numTab == nil then
-            return
+            return false
         end    
         abnum = numTab.num       
     else
@@ -199,7 +199,7 @@ function EquipRandomABManager.InitEquipRandomAB(actor, equipitem, testabnum)
     
     --生成洗炼属性的随机条数
     if abnum <= 0 then
-        return
+        return false
     end
  
     --生成指定条数不重复的属性
@@ -241,6 +241,7 @@ function EquipRandomABManager.InitEquipRandomAB(actor, equipitem, testabnum)
     --增加极品属性
     BF_SetCustomEquipABGroup(actor, equipitem, createABTab, CommonDefine.ITEM_CUSTOMEAB_GROUP_2, '[极品属性]:', CSS.CUSTOM_AB_GROUP_COLOR)       
     refreshitem(actor, equipitem)
+    return true
 end
 
 
