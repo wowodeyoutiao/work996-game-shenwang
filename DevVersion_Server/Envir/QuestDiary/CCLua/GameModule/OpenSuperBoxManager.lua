@@ -969,6 +969,7 @@ function OpenSuperBoxManager.OnPlayerEnterGame(actor)
     end
 
     --每次上线都把除保留的都自动回收的这个选项勾选
+    setflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_SUPERBOX_RECYCLE_CHECK3, 1)
     setflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_SUPERBOX_RECYCLE_CHECK6, 1)
     OpenSuperBoxManager.UpdateSuperBoxInfo(actor)
 end
