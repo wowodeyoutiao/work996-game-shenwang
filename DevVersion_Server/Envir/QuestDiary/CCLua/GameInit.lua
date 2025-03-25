@@ -246,6 +246,26 @@ local function _Includes()
         end        
     end
 
+    for _, value in pairs(cfg_att_score) do
+        value.score_z = 0
+        value.score_f = 0
+        value.score_d = 0        
+        if (value.nbvalue ~= nil) and (value.nbvalue ~= '') then
+            local strValueList = string.split(value.nbvalue, '#')
+            if strValueList ~= false then
+                if #strValueList >= 1 then
+                    value.score_z = tonumber(strValueList[1])
+                end
+                if #strValueList >= 2 then
+                    value.score_f = tonumber(strValueList[2])
+                end
+                if #strValueList >= 3 then
+                    value.score_d = tonumber(strValueList[3])
+                end                
+            end            
+        end        
+    end  
+
     ---------------------------------------------------------------
     --新道具合成        
     ---------------------------------------------------------------

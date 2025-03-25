@@ -122,17 +122,19 @@ function Item.GetEquipposByStdmode(stdmode)
 end
 
 --返回装备的战斗力
-function Item.CalCombatScore(itemobj)
-    if BF_IsNullObj(itemobj) then
+function Item.CalCombatScore(actor, itemobj, itemid)
+    if BF_IsNullObj(actor) or BF_IsNullObj(itemobj) or (itemid == nil) then
         return 0
     end
 
-    ---------------------------??????针对装备的完整属性，进行战力的计算-----------------------
-    ---------------------------??????针对装备的完整属性，进行战力的计算-----------------------
-    ---------------------------??????针对装备的完整属性，进行战力的计算-----------------------
-    ------------------------------??????针对装备的完整属性，进行战力的计算-----------------------
-    ------------------------------??????针对装备的完整属性，进行战力的计算-----------------------??????????
-
+    local totalscore = 0
+    for abid = 1, 41, 1 do
+        local abvalue = getstditematt(itemid, abid)
+        if cfg_att_score[abid] ~= nil then
+            totalscore = totalscore + abvalue + cfg_att_score[abid].score_z
+        end
+    end
+    return totalscore
 end
 
 local function DoCompareTwoEquipItem(actor, equipitem1, equipitem2)
@@ -144,6 +146,10 @@ local function DoCompareTwoEquipItem(actor, equipitem1, equipitem2)
     end
     local itemid1 = getiteminfo(actor, equipitem1, CommonDefine.ITEMINFO_ITEMIDX)
     local itemid2 = getiteminfo(actor, equipitem2, CommonDefine.ITEMINFO_ITEMIDX)
+    local score1 = Item.CalCombatScore(actor, equipitem1, itemid1)
+    local score2 = Item.CalCombatScore(actor, equipitem2, itemid2)
+
+    --[[
     local cfgEquip1 = cfg_equip[itemid1]
     local cfgEquip2 = cfg_equip[itemid2]
     if (cfgEquip1==nil) or (cfgEquip2==nil) then
@@ -160,6 +166,13 @@ local function DoCompareTwoEquipItem(actor, equipitem1, equipitem2)
             return -1
         end
     end
+    ]]--
+    if score1 > score2 then
+        return 1
+    elseif score1 < score2 then
+        return -1
+    end    
+
     return 0
 end
 
