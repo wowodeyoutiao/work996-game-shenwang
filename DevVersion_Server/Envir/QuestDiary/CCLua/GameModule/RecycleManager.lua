@@ -240,7 +240,15 @@ function RecycleManager.SetAutoRecycleOption(actor)
     ]]--
 
     local recycletype = getplaydef(actor, CommonDefine.VAR_N_CHOOSE_RECYCLE_TYPE)
-    local tempvar = getplaydef(actor, AUTO_RECYCLE_CHECKBOX_TEMPVAR)
+
+    local tempvar = 0
+    if BF_IsLocalTestServer() then
+        tempvar = getplaydef(actor, AUTO_RECYCLE_CHECKBOX_TEMPVAR)
+    else
+        local stemp = getconst(actor, '<$NPCPARAMS(2,'..AUTO_RECYCLE_CHECKBOX_TEMPVAR..')>')
+        tempvar = tonumber(stemp)        
+    end 
+    
     if (tempvar==1) or (tempvar==0) then
         if AUTO_RECYCLE_BITFLAGVAR[recycletype] then
             setflagstatus(actor, AUTO_RECYCLE_BITFLAGVAR[recycletype], tempvar)
@@ -260,7 +268,14 @@ function RecycleManager.SetRecycleOption(actor, sid)
         return
     end
 
-    local tempvar = getplaydef(actor, cfg.tempvar)
+    local tempvar = 0
+    if BF_IsLocalTestServer() then
+        tempvar = getplaydef(actor, cfg.tempvar)
+    else
+        local stemp = getconst(actor, '<$NPCPARAMS(2,'..cfg.tempvar..')>')
+        tempvar = tonumber(stemp)        
+    end 
+
     if (tempvar==1) or (tempvar==0) then
         setflagstatus(actor, cfg.flagvar, tempvar)
         RecycleManager.ShowRecyclePanelInfo(actor)

@@ -1,0 +1,42 @@
+[@MAIN]
+#IF
+; SMALL G0 30
+#SAY
+<Img|x=0|y=-60|reset=1|show=4|bg=1|move=0|img=public/bg_shouchong_00.png|loadDelay=1|esc=1>
+<Text|x=316.0|y=187.0|color=250|size=18|text=尊敬的勇士，你好！\本服开创传奇游戏开箱玩法之先河，\让装备获取不再困难！>                                                            
+<Button|x=371.0|y=291.0|width=168|height=50|color=116|size=22|nimg=public/wz/bt21.png|text=起  飞|link=@传送训练营>
+#ELSESAY
+<Img|x=0|y=-60|reset=1|show=4|bg=1|move=0|img=public/bg_shouchong_00.png|loadDelay=1|esc=1>
+<RText|x=316.0|y=187.0|color=103|size=18|text=<尊敬的勇士，你好！/FCOLOR=250>\开服超30天区建立新角色需要使用邀\请码>
+
+<Img|id=887|x=310|y=300|img=public/bg_bti_07.png>
+<Input|id=441|x=310|y=301|width=225|height=25|size=18|mincount=4|color=161|maxcount=32|inputid=2|type=0|place=请填写邀请码>
+<Button|id=888|x=560|y=300|nimg=public/anniu.png|color=151|submitInput=2|size=18|clickInterval=1268|text=兑换|link=@兑换邀请码>
+
+[@传送训练营]
+#IF
+; SMALL G0 30
+#ACT
+MAPMOVE em000 40 40 5
+KILLMOBAPPOINT em000 <$X> <$Y> 20 鸡|鹿|稻草人|钉耙猫
+BREAK
+#ELSEACT
+SENDMSG 9 此服务器已关闭新角色注册，请使用邀请码激活
+
+
+
+[@兑换邀请码]
+#IF
+EQUAL <$NPCINPUT(2)>
+#ACT
+BREAK
+
+#IF
+#ACT
+SENDMSG 9 <$NPCINPUT(2)>
+
+
+#IF
+#ACT
+MAPMOVE em000 40 40 5
+KILLMOBAPPOINT em000 <$X> <$Y> 20 鸡|鹿|稻草人|钉耙猫

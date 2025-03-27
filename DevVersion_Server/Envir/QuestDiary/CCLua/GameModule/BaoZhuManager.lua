@@ -113,7 +113,14 @@ function BaoZhuManager.SetRecycleQuality(actor, recycleid)
         return
     end
 
-    local tempvar = getplaydef(actor, cfg.tempvar)
+    local tempvar = 0
+    if BF_IsLocalTestServer() then
+        tempvar = getplaydef(actor, cfg.tempvar)
+    else
+        local stemp = getconst(actor, '<$NPCPARAMS(2,'..cfg.tempvar..')>')
+        tempvar = tonumber(stemp)        
+    end    
+
     if (tempvar==1) or (tempvar==0) then
         setflagstatus(actor, cfg.flagvar, tempvar)
     end
@@ -486,7 +493,15 @@ local function DoSetKeepBetter(actor)
     if BF_IsNullObj(actor) then
         return
     end
-    local tempvar = getplaydef(actor, CommonDefine.VAR_N_NPC_CHECKBOX_10)
+
+    local tempvar = 0
+    if BF_IsLocalTestServer() then
+        tempvar = getplaydef(actor, CommonDefine.VAR_N_NPC_CHECKBOX_10)
+    else
+        local stemp = getconst(actor, '<$NPCPARAMS(2,'..CommonDefine.VAR_N_NPC_CHECKBOX_10..')>')
+        tempvar = tonumber(stemp)        
+    end      
+
     if (tempvar==1) or (tempvar==0) then
         setflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_RECYCLE_BAOZHU_KEEPBETTER, tempvar)
     end  

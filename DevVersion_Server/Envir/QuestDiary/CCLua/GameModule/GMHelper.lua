@@ -323,8 +323,7 @@ release_print(sid)
         end  
 
 
-    elseif sid == '1999' then
-release_print(99999)        
+    elseif sid == '1999' then 
         local RECYCLE_CHECKBOX_INFO = {
             {seq=1, checkvar=CommonDefine.CHECK_BOX_VAR[10], bitflag=CommonDefine.VAR_HUM_BITFLAG_SUPERBOX_RECYCLE_CHECK1},
             {seq=2, checkvar=CommonDefine.CHECK_BOX_VAR[11], bitflag=CommonDefine.VAR_HUM_BITFLAG_SUPERBOX_RECYCLE_CHECK2},

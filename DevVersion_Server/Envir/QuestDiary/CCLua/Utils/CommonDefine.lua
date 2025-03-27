@@ -307,7 +307,10 @@ CommonDefine = {
     --玩家字符型变量，下线不保存 S0 - S99
     VAR_S_SELECT_ITEM = 'S0',
     VAR_S_SUPERBOX_ITEMLIST = 'S50',    
-    VAR_S_SELECT_COMPOSE_ITEMS = 'S52',          --选择的所有待合成装备 唯一ID ,分割   
+    VAR_S_SELECT_COMPOSE_ITEMS = 'S52',          --选择的所有待合成装备 唯一ID ,分割 
+    VAR_S_SELECT_MENUITEM_1 = 'S53',             --下拉菜单1
+    VAR_S_SELECT_MENUITEM_2 = 'S54',             --下拉菜单2
+    VAR_S_SELECT_MENUITEM_3 = 'S55',             --下拉菜单3
 
     --玩家数字变量，下线保存   U0 - U254  lua脚本使用从130开始
     --[[

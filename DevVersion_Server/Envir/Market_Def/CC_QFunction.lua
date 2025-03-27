@@ -327,8 +327,8 @@ function treasuremap_button(actor, sid)
     TreasureMap.DoOperButton(actor, sid)
 end
 
-function opensuperboxmanager_button(actor, sid, sparam)
-    OpenSuperBoxManager.DoOperButton(actor, sid, sparam)
+function opensuperboxmanager_button(actor, sid)
+    OpenSuperBoxManager.DoOperButton(actor, sid)
 end
 
 function gmhelper_openpanel(actor)

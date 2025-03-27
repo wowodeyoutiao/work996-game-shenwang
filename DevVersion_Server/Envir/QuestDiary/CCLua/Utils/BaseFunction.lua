@@ -18,6 +18,15 @@ function BF_ExceptionOut(info)
     release_print(sinfo)
 end
 
+--是否为本地测试服  服务器id 1881
+function BF_IsLocalTestServer()
+    local serverid = grobalinfo(11)
+    if serverid == 1881 then
+        return true
+    end
+    return false
+end
+
 --判断参数字符串是否为数字
 function BF_IsNumberStr(value)
     if value == nil then

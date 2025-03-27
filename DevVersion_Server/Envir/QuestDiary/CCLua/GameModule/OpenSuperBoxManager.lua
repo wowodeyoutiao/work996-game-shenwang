@@ -615,7 +615,7 @@ local function OpenAutoOpenBoxPanel(actor)
         flaglist[#flaglist+1] = info
     end    
 
-    local strPanel = '<Img|id=2200|children={2201,2202,2204,2205}|x=-360.0|y=-640.0|width=280|height=400|esc=1|move=0|img=private/cc_superbox_1/bg_basepanel.png|bg=1|reset=1|loadDelay=1|show=0>'..
+    local strPanel = '<Img|id=2200|children={2201,2202,2204,2205}|x=-360.0|y=-640.0|width=280|height=400|esc=1|move=0|img=private/cc_superbox_1/bg_basepanel.png|bg=1|reset=1|loadDelay=0|show=0>'..
         '<Img|id=2201|x=4.0|y=44.0|width=270|height=340|img=private/cc_superbox_1/bg_paper.png>'..
         '<Img|id=2202|children={2103}|x=63.0|y=0.0|width=160|height=50|esc=0|img=private/cc_superbox_1/bg_title.png>'..
         '<Text|id=2103|x=37.0|y=15.0|size=20|color=255|text=开箱设置>'..
@@ -631,14 +631,14 @@ local function OpenAutoOpenBoxPanel(actor)
         '<Img|id=2232|width=220|height=20|img=private/cc_superbox_1/bg_4.png>'..
         '<CheckBox|id=2242|x=10.0|y=0.0|height=20|count=1|default='..flaglist[1].flag..'|checkboxid='..flaglist[1].checkvar..'|nimg=private/cc_superbox_1/checkbox_1.png|pimg=private/cc_superbox_1/checkbox_2.png|link=@opensuperboxmanager_button#sid='..
         OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_21..'>'..
-        '<MenuItem|id=2252|a=2|x=60.0|y=76.0|width=170|height=22|itemname='..strItemList1..'|select='..currSelectStr1..'|fontsize=16|arrowimg=private/cc_superbox_1/btn_1.png|itemhei=20|menuid=S$chooseitem|selectcolor=254|fontcolor=250|direction=0|link=@opensuperboxmanager_button#sid='..
-        OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_22..'>'..  
+        '<MenuItem|id=2252|a=2|x=60.0|y=76.0|width=170|height=22|itemname='..strItemList1..'|select='..currSelectStr1..'|fontsize=16|arrowimg=private/cc_superbox_1/btn_1.png|itemhei=20|menuid='..CommonDefine.VAR_S_SELECT_MENUITEM_1..
+        '|selectcolor=254|fontcolor=250|direction=0|link=@opensuperboxmanager_button#sid='..OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_22..'>'..  
         '<Layout|id=2223|children={2233,2243}|width=220|height=22>'..
         '<Img|id=2233|width=220|height=20|img=private/cc_superbox_1/bg_7.png>'..
         '<CheckBox|id=2243|x=10.0|y=0.0|height=20|count=1|default='..flaglist[2].flag..'|checkboxid='..flaglist[2].checkvar..'|nimg=private/cc_superbox_1/checkbox_1.png|pimg=private/cc_superbox_1/checkbox_2.png|link=@opensuperboxmanager_button#sid='..
         OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_23..'>'..
-        '<MenuItem|id=2253|a=2|x=60.0|y=100.0|width=170|height=22|itemname='..strItemList2..'|select='..currSelectStr2..'|fontsize=16|arrowimg=private/cc_superbox_1/btn_1.png|itemhei=20|menuid=S$chooseitem|selectcolor=254|fontcolor=250|direction=0|link=@opensuperboxmanager_button#sid='..
-        OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_24..'>'.. 
+        '<MenuItem|id=2253|a=2|x=60.0|y=100.0|width=170|height=22|itemname='..strItemList2..'|select='..currSelectStr2..'|fontsize=16|arrowimg=private/cc_superbox_1/btn_1.png|itemhei=20|menuid='..CommonDefine.VAR_S_SELECT_MENUITEM_2..
+        '|selectcolor=254|fontcolor=250|direction=0|link=@opensuperboxmanager_button#sid='..OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_24..'>'.. 
 
         '<ListView|id=2212|children={2224,2225,2226,2227}|x=24.0|y=135.0|width=230|height=88|margin=0|direction=1>'..
         '<Layout|id=2224|children={2234,2244}|width=220|height=22>'..
@@ -672,7 +672,7 @@ local function OpenAutoOpenBoxPanel(actor)
         '<Text|id=2298|x=70|y=6|size=18|color=174|text=高级设置>'..
         '<Img|id=2216|children={2297}|x=28.0|y=220.0|width=200|height=30|esc=0|img=private/cc_superbox_1/bg_3.png>'..
         '<Text|id=2297|x=70|y=6|size=18|color=174|text=回收设置>'        
- 
+
     addbutton(actor, 108, CommonDefine.ADD_BUTTON_ID_5, strPanel)
 end
 
@@ -686,11 +686,17 @@ local function CloseAutoOpenBoxPanel(actor)
 end
 
 --选择回收要保留的装备条件1 品质
-local function SelectRecycleConditionByQuality(actor, sparam)
-    if BF_IsNullObj(actor) or (sparam == nil) then
+local function SelectRecycleConditionByQuality(actor)
+    if BF_IsNullObj(actor) then
         return
     end
 
+    local sparam = ''
+    if BF_IsLocalTestServer() then
+        sparam = getconst(actor, '$STR('..CommonDefine.VAR_S_SELECT_MENUITEM_1..')')
+    else
+        sparam = getconst(actor, '<$NPCPARAMS(4,'..CommonDefine.VAR_S_SELECT_MENUITEM_1..')>')
+    end
     for seq, value in ipairs(SELECT_CONDITION_QUALITY_LIST) do
         if value.showstr == sparam then
             setplaydef(actor, CommonDefine.VAR_U_SUPER_BOX_CHOOSE_CONDITION_1, seq)            
@@ -700,11 +706,17 @@ local function SelectRecycleConditionByQuality(actor, sparam)
 end
 
 --选择回收要保留的装备条件2 等级
-local function SelectRecycleConditionByLevel(actor, sparam)
-    if BF_IsNullObj(actor) or (sparam == nil) then
+local function SelectRecycleConditionByLevel(actor)
+    if BF_IsNullObj(actor) then
         return
     end
 
+    local sparam = ''
+    if BF_IsLocalTestServer() then
+        sparam = getconst(actor, '$STR('..CommonDefine.VAR_S_SELECT_MENUITEM_2..')')
+    else
+        sparam = getconst(actor, '<$NPCPARAMS(4,'..CommonDefine.VAR_S_SELECT_MENUITEM_2..')>')
+    end
     for seq, value in ipairs(SELECT_CONDITION_LEVEL_LIST) do
         if value.showstr == sparam then
             setplaydef(actor, CommonDefine.VAR_U_SUPER_BOX_CHOOSE_CONDITION_2, seq)            
@@ -721,8 +733,15 @@ local function SelectRecycleCheckBox(actor, varseq)
     if (varseq < 1) or (varseq > #RECYCLE_CHECKBOX_INFO) then
         return
     end
-
-    local flag = getplaydef(actor, RECYCLE_CHECKBOX_INFO[varseq].checkvar) 
+    
+    local flag = 0
+    if BF_IsLocalTestServer() then
+        flag = getplaydef(actor, RECYCLE_CHECKBOX_INFO[varseq].checkvar)
+    else
+        local stemp = getconst(actor, '<$NPCPARAMS(2,'..RECYCLE_CHECKBOX_INFO[varseq].checkvar..')>')
+        flag = tonumber(stemp)        
+    end
+    
     if flag == 1 then
         setflagstatus(actor, RECYCLE_CHECKBOX_INFO[varseq].bitflag, 1) 
     else
@@ -899,7 +918,7 @@ function OpenSuperBoxManager.DelayCheckRecycle(actor)
 end
 
 --处理button回调
-function OpenSuperBoxManager.DoOperButton(actor, sid, sparam)
+function OpenSuperBoxManager.DoOperButton(actor, sid)
     if BF_IsNullObj(actor) or not BF_IsNumberStr(sid) then
         return
     end
@@ -939,9 +958,9 @@ function OpenSuperBoxManager.DoOperButton(actor, sid, sparam)
     elseif funcid == OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_12 then
         QuickTakeOnBetterEquip(actor)          
     elseif funcid == OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_22 then
-        SelectRecycleConditionByQuality(actor, sparam)
+        SelectRecycleConditionByQuality(actor)
     elseif funcid == OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_24 then
-        SelectRecycleConditionByLevel(actor, sparam)
+        SelectRecycleConditionByLevel(actor)
     elseif funcid == OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_21 then
         SelectRecycleCheckBox(actor, 1)
     elseif funcid == OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_23 then
@@ -966,7 +985,7 @@ function OpenSuperBoxManager.OnPlayerEnterGame(actor)
         nBoxCurrLv = 1
         setplaydef(actor, CommonDefine.VAR_U_SUPER_BOX_CURR_LV, nBoxCurrLv)
         setplaydef(actor, CommonDefine.VAR_U_SUPER_BOX_ONCE_OPEN_NUM, 1)
-    end
+    end    
 
     --每次上线都把除保留的都自动回收的这个选项勾选
     setflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_SUPERBOX_RECYCLE_CHECK3, 1)
