@@ -324,27 +324,7 @@ release_print(sid)
 
 
     elseif sid == '1999' then 
-        local RECYCLE_CHECKBOX_INFO = {
-            {seq=1, checkvar=CommonDefine.CHECK_BOX_VAR[10], bitflag=CommonDefine.VAR_HUM_BITFLAG_SUPERBOX_RECYCLE_CHECK1},
-            {seq=2, checkvar=CommonDefine.CHECK_BOX_VAR[11], bitflag=CommonDefine.VAR_HUM_BITFLAG_SUPERBOX_RECYCLE_CHECK2},
-            {seq=3, checkvar=CommonDefine.CHECK_BOX_VAR[12], bitflag=CommonDefine.VAR_HUM_BITFLAG_SUPERBOX_RECYCLE_CHECK3},
-            {seq=4, checkvar=CommonDefine.CHECK_BOX_VAR[13], bitflag=CommonDefine.VAR_HUM_BITFLAG_SUPERBOX_RECYCLE_CHECK4},
-            {seq=5, checkvar=CommonDefine.CHECK_BOX_VAR[14], bitflag=CommonDefine.VAR_HUM_BITFLAG_SUPERBOX_RECYCLE_CHECK5},
-            {seq=6, checkvar=CommonDefine.CHECK_BOX_VAR[15], bitflag=CommonDefine.VAR_HUM_BITFLAG_SUPERBOX_RECYCLE_CHECK6},
-        }
-
-        for i = 1, #RECYCLE_CHECKBOX_INFO, 1 do
-            if getflagstatus(actor, RECYCLE_CHECKBOX_INFO[i].bitflag) == 1 then
-                release_print('flag '..RECYCLE_CHECKBOX_INFO[i].bitflag..':'..1)
-            else
-                release_print('flag '..RECYCLE_CHECKBOX_INFO[i].bitflag..':'..0)
-            end
-        end
-        if getflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_AUTO_OPEN_SUPERBOX) == 1 then
-            release_print('openbox:'..1)
-        else
-            release_print('openbox:'..0)        
-        end
+        changeexp(actor, '+', 2000, true)
     end   
 end
 

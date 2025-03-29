@@ -328,7 +328,7 @@ local function GetSingleEquipPosShowInfo(actor, equippos)
         --消耗
         local tempX = 150
         local tempY = 30
-        sPanelStr = sPanelStr..'<Layout|id=160|children={161,162}|x=0|y=200.0|width=580|height=110>'
+        sPanelStr = sPanelStr..'<Layout|id=160|children={161,162}|x=0|y=150.0|width=580|height=110>'
         if not bCurrIsMaxLv then            
             sPanelStr = sPanelStr..'<Text|id=161|text=升星成功概率：'..cfgEquipPosUpgradeStar[cfgCurrKey].successrate ..'%|size=20|x='..tempX..'|y='..tempY..'|color='..CSS.NPC_YELLOW..'>'
             tempY = tempY + 30
@@ -391,7 +391,7 @@ local function GetSingleEquipPosShowInfo(actor, equippos)
             end
 ]]--            
         end
-        sPanelStr = sPanelStr..'<Layout|id=500|children={'..idstr..'}|x=0|y=310.0|width=580|height=110>'
+        sPanelStr = sPanelStr..'<Layout|id=500|children={'..idstr..'}|x=0|y=260.0|width=580|height=110>'
     end
     return sPanelStr
 end
