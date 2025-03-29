@@ -5,10 +5,27 @@ local EQUIPPOS_STAR_BUTTONFUNC_ID_1 = 1           --切换升星的装备位
 local EQUIPPOS_STAR_BUTTONFUNC_ID_2 = 2           --升星一次
 local EQUIPPOS_STAR_BUTTONFUNC_ID_3 = 3           --自动升星
 local EQUIPPOS_STAR_BUTTONFUNC_ID_4 = 4           --停止升星
-local EQUIPPOS_STAR_BUTTONFUNC_ID_5 = 5           --设置自动升星的目标星级
+--local EQUIPPOS_STAR_BUTTONFUNC_ID_5 = 5           --设置自动升星的目标星级
+local EQUIPPOS_STAR_BUTTONFUNC_ID_6 = 6           --设置自动升星的目标星级 menu
 
 EquipPosStarManager.AUTO_UPGRADESTAR_TARG_MIN = 4      --自动升星的最小目标
 EquipPosStarManager.AUTO_UPGRADESTAR_TARG_MAX = 15     --自动升星的最大目标
+
+local SELECT_AUTO_STAR_LIST = {
+    {showstr='4星', targstar=4},
+    {showstr='5星', targstar=5},
+    {showstr='6星', targstar=6},
+    {showstr='7星', targstar=7},
+    {showstr='8星', targstar=8},
+    {showstr='9星', targstar=9},
+    {showstr='10星', targstar=10},
+    {showstr='11星', targstar=11},
+    {showstr='12星', targstar=12},
+    {showstr='13星', targstar=13},
+    {showstr='14星', targstar=14},
+    {showstr='15星', targstar=15},    
+}
+
 
 --是否为有效的升星装备位
 function EquipPosStarManager.IsValidEquipPosForUpgradeStar(pos)
@@ -320,14 +337,14 @@ local function GetSingleEquipPosShowInfo(actor, equippos)
         end
 
         --升星按钮
-        idstr = '501,502'
+        idstr = '501,502,503'
         if bCurrIsMaxLv then
             sPanelStr = sPanelStr..'<Text|id=501|text=已升至满星状态！|x=200|y=30|color='..CSS.NPC_LIGHTGREEN..'>'
         else
             local tempCurrY = 10
             sPanelStr = sPanelStr..'<Button|id=501|x=120|y='..tempCurrY..'|mimg=private/cc_equip_star/1.png|nimg=private/cc_equip_star/1.png|link=@function_button,'..            
                 EQUIPPOS_STAR_BUTTONFUNC_ID_2..'>'
-            if getflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_NPC_TEMP_CHOOSE_FLAG) == 0 then
+            if getflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_AUTO_EQUIPSTAR_FLAG) == 0 then
                 sPanelStr = sPanelStr..'<Button|id=502|x=350|y='..tempCurrY..'|mimg=private/cc_equip_star/2.png|nimg=private/cc_equip_star/2.png|link=@function_button,'..
                     EQUIPPOS_STAR_BUTTONFUNC_ID_3..'>'
             else
@@ -335,6 +352,24 @@ local function GetSingleEquipPosShowInfo(actor, equippos)
                     EQUIPPOS_STAR_BUTTONFUNC_ID_4..'>'
             end
 
+            local strItemList1 = ''
+            for _, value in ipairs(SELECT_AUTO_STAR_LIST) do
+                if strItemList1 ~= '' then
+                    strItemList1 = strItemList1..'#'
+                end
+                strItemList1 = strItemList1..value.showstr
+            end
+        
+            local currSelectStr1 = SELECT_AUTO_STAR_LIST[1].showstr
+            local chooseseq = getplaydef(actor, CommonDefine.VAR_U_EQUIPPOS_AUTO_STAR_CONDITION)
+            if (chooseseq >= 1) and (chooseseq <= #SELECT_AUTO_STAR_LIST) then
+                currSelectStr1 = SELECT_AUTO_STAR_LIST[chooseseq].showstr
+            end
+
+            sPanelStr = sPanelStr..'<MenuItem|id=503|x=480.0|y='..tempCurrY..'|width=100|height=22|itemname='..strItemList1..'|select='..currSelectStr1..'|fontsize=16|itemhei=20|menuid='..CommonDefine.VAR_S_SELECT_MENUITEM_3..
+                '|selectcolor=254|fontcolor=250|direction=0|link=@function_button,'..EQUIPPOS_STAR_BUTTONFUNC_ID_6..'>'
+
+--[[
             local nStartX = 80    
             local nStartY = tempCurrY + 40      
             local startid = 510
@@ -351,9 +386,10 @@ local function GetSingleEquipPosShowInfo(actor, equippos)
                 local flag = getplaydef(actor, checkvar)
                 sPanelStr = sPanelStr..'<CheckBox|id='..boxid..'|x='..nStartX..'|y='..nStartY..'|nimg=private/cc_common/checkbox_1.png|pimg=private/cc_common/checkbox_2.png|checkboxid='..
                     checkvar..'|default='..flag..'|delay=0|count=1|link=@function_button,'..EQUIPPOS_STAR_BUTTONFUNC_ID_5..','..i..'>'..
-                    '<Text|id='..textid..'|text='..i..'星|x='..(nStartX+30)..'|y='..(nStartY+5)..'|color='..CSS.NPC_YELLOW..'>'            
+                    '<Text|id='..textid..'|text='..i..'星|x='..(nStartX+30)..'|y='..(nStartY+5)..'|color='..CSS.NPC_YELLOW..'>'                                
                 nStartX = nStartX + 80
             end
+]]--            
         end
         sPanelStr = sPanelStr..'<Layout|id=500|children={'..idstr..'}|x=0|y=310.0|width=580|height=110>'
     end
@@ -519,6 +555,14 @@ local function EquipPosUpgradeStarOnce(actor)
     ]]--
 end
 
+local function EquipPosStopAutoUpgradeStar(actor)
+    for i = EquipPosStarManager.AUTO_UPGRADESTAR_TARG_MIN, EquipPosStarManager.AUTO_UPGRADESTAR_TARG_MAX, 1 do
+        local checkvar = CommonDefine.CHECK_BOX_VAR[i - EquipPosStarManager.AUTO_UPGRADESTAR_TARG_MIN + 1]
+        setplaydef(actor, checkvar, 0)        
+    end
+    setflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_AUTO_EQUIPSTAR_FLAG, 0)
+end
+
 --装备位 自动升星
 function EquipPosStarManager.EquipPosAutoUpgradeStar(actor, startflag)
     if BF_IsNullObj(actor) then
@@ -526,6 +570,12 @@ function EquipPosStarManager.EquipPosAutoUpgradeStar(actor, startflag)
     end
     if not Player.IsFunctionOpen(actor, CommonDefine.FUNC_ID_EQUIPPOS_STAR, false) then
         return
+    end
+    if startflag==nil or startflag==false then
+        if getflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_AUTO_EQUIPSTAR_FLAG) == 0 then
+            Player.SendSelfMsg(actor, '停止自动升星！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+            return
+        end
     end
 
     local equippos = getplaydef(actor, CommonDefine.VAR_N_LAST_NPC_CHOOSEID) 
@@ -559,6 +609,7 @@ function EquipPosStarManager.EquipPosAutoUpgradeStar(actor, startflag)
     local cfgNextKey = EquipPosStarManager.GetUpgradeStarCfgKey(bJob, equippos, nextPosLevel)
     if cfgEquipPosUpgradeStar[cfgNextKey] == nil then
         Player.SendSelfMsg(actor, '当前升星已达到上限！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+        EquipPosStarManager.ShowBasePanel(actor)
         return
     end
 
@@ -568,13 +619,19 @@ function EquipPosStarManager.EquipPosAutoUpgradeStar(actor, startflag)
     end
 
     local targPosLevel = 0
-    for i = EquipPosStarManager.AUTO_UPGRADESTAR_TARG_MIN, EquipPosStarManager.AUTO_UPGRADESTAR_TARG_MAX, 1 do
-        local checkvar = CommonDefine.CHECK_BOX_VAR[i - EquipPosStarManager.AUTO_UPGRADESTAR_TARG_MIN + 1]
-        if getplaydef(actor, checkvar) == 1 then
-            targPosLevel = i
-            break
-        end
+    local chooseseq = getplaydef(actor, CommonDefine.VAR_U_EQUIPPOS_AUTO_STAR_CONDITION)
+    if (chooseseq >= 1) and (chooseseq <= #SELECT_AUTO_STAR_LIST) then
+        targPosLevel = SELECT_AUTO_STAR_LIST[chooseseq].targstar
     end
+
+    -- local targPosLevel = 0
+    -- for i = EquipPosStarManager.AUTO_UPGRADESTAR_TARG_MIN, EquipPosStarManager.AUTO_UPGRADESTAR_TARG_MAX, 1 do
+    --     local checkvar = CommonDefine.CHECK_BOX_VAR[i - EquipPosStarManager.AUTO_UPGRADESTAR_TARG_MIN + 1]
+    --     if getplaydef(actor, checkvar) == 1 then
+    --         targPosLevel = i
+    --         break
+    --     end
+    -- end
 
     if curPosLevel >= targPosLevel then
         if startflag and startflag==true then
@@ -585,28 +642,24 @@ function EquipPosStarManager.EquipPosAutoUpgradeStar(actor, startflag)
             end
             if targPosLevel < EquipPosStarManager.AUTO_UPGRADESTAR_TARG_MAX then
                 targPosLevel = math.max(curPosLevel + 1, EquipPosStarManager.AUTO_UPGRADESTAR_TARG_MIN)
-                local checkvar = CommonDefine.CHECK_BOX_VAR[targPosLevel - EquipPosStarManager.AUTO_UPGRADESTAR_TARG_MIN + 1]
-                setplaydef(actor, checkvar, 1)
+                -- local checkvar = CommonDefine.CHECK_BOX_VAR[targPosLevel - EquipPosStarManager.AUTO_UPGRADESTAR_TARG_MIN + 1]
+                -- setplaydef(actor, checkvar, 1)
+                setplaydef(actor, CommonDefine.VAR_U_EQUIPPOS_AUTO_STAR_CONDITION, chooseseq+1)
             end
         else
             Player.SendSelfMsg(actor, '当前已达到目标星级！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
-        end
+            EquipPosStopAutoUpgradeStar(actor)
+            EquipPosStarManager.ShowBasePanel(actor)
+        end        
     else
-        setflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_NPC_TEMP_CHOOSE_FLAG, 1)
+        setflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_AUTO_EQUIPSTAR_FLAG, 1)         
         EquipPosUpgradeStarOnce(actor)
         delaygoto(actor, 1000, 'equippos_star_auto_upgrade', 0)
     end
 end
 
-local function EquipPosStopAutoUpgradeStar(actor)
-    for i = EquipPosStarManager.AUTO_UPGRADESTAR_TARG_MIN, EquipPosStarManager.AUTO_UPGRADESTAR_TARG_MAX, 1 do
-        local checkvar = CommonDefine.CHECK_BOX_VAR[i - EquipPosStarManager.AUTO_UPGRADESTAR_TARG_MIN + 1]
-        setplaydef(actor, checkvar, 0)        
-    end
-    setflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_NPC_TEMP_CHOOSE_FLAG, 0)
-end
-
 --设置自动升星的目标
+--[[
 local function SetAutoUpgradeTargStar(actor, varseq)
     if BF_IsNullObj(actor) or not BF_IsNumberStr(varseq) then
         return
@@ -642,7 +695,7 @@ local function SetAutoUpgradeTargStar(actor, varseq)
             local checkvar = CommonDefine.CHECK_BOX_VAR[i - EquipPosStarManager.AUTO_UPGRADESTAR_TARG_MIN + 1]
             setplaydef(actor, checkvar, 0)            
         end
-        setflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_NPC_TEMP_CHOOSE_FLAG, 0)
+        setflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_AUTO_EQUIPSTAR_FLAG, 0)
 
         Player.SendSelfMsg(actor, '目标星级低于当前星级！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
         return
@@ -654,7 +707,28 @@ local function SetAutoUpgradeTargStar(actor, varseq)
             setplaydef(actor, checkvar, 0)            
         end
     end
-    setflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_NPC_TEMP_CHOOSE_FLAG, 0)
+    setflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_AUTO_EQUIPSTAR_FLAG, 0) 
+end
+]]--
+
+--设置自动升星的目标
+local function SetAutoUpgradeTargStarEx(actor)
+    if BF_IsNullObj(actor) then
+        return
+    end
+
+    local sparam = ''
+    if BF_IsLocalTestServer() then
+        sparam = getconst(actor, '$STR('..CommonDefine.VAR_S_SELECT_MENUITEM_3..')')
+    else
+        sparam = getconst(actor, '<$NPCPARAMS(4,'..CommonDefine.VAR_S_SELECT_MENUITEM_3..')>')
+    end  
+    for seq, value in ipairs(SELECT_AUTO_STAR_LIST) do
+        if value.showstr == sparam then
+            setplaydef(actor, CommonDefine.VAR_U_EQUIPPOS_AUTO_STAR_CONDITION, seq)            
+            break
+        end
+    end       
 end
 
 --找到随机一个低于指定星级的装备位，将其升星到指定星级
@@ -723,8 +797,12 @@ function EquipPosStarManager.DoOperButton(actor, sid, sparam)
         EquipPosStarManager.EquipPosAutoUpgradeStar(actor, true)
     elseif funcid == EQUIPPOS_STAR_BUTTONFUNC_ID_4 then
         EquipPosStopAutoUpgradeStar(actor)
+--[[
     elseif funcid == EQUIPPOS_STAR_BUTTONFUNC_ID_5 then
         SetAutoUpgradeTargStar(actor, param)
+]]--
+    elseif funcid == EQUIPPOS_STAR_BUTTONFUNC_ID_6 then
+        SetAutoUpgradeTargStarEx(actor)
     end
     EquipPosStarManager.ShowBasePanel(actor)
 end

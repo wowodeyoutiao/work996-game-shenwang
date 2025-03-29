@@ -348,6 +348,8 @@ CommonDefine = {
     VAR_U_SUPER_BOX_CHOOSE_CONDITION_1 = 'U134',--超级宝箱  保留宝箱选择的条件1编号 - 品质
     VAR_U_SUPER_BOX_CHOOSE_CONDITION_2 = 'U135',--超级宝箱  保留宝箱选择的条件2编号 - 等级
 
+    VAR_U_EQUIPPOS_AUTO_STAR_CONDITION = 'U136',--装备槽位  自动升星选择的条件编号  --目标星级
+
     VAR_U_GUANZHI_LEVEL = 'U140',               --玩家的官职等级
     VAR_U_GUANZHI_CURREXP = 'U141',             --玩家的官职当前经验
     VAR_U_ZCDHW_LEVEL1 = 'U142',                --玩家的紫宸殿护卫1等级
@@ -460,7 +462,8 @@ CommonDefine = {
     VAR_HUM_BITFLAG_ACTIVATED_AUTORECYCLE = 201,     --激活自动回收功能
     VAR_HUM_BITFLAG_ITEMUSE = 202,                   --道具使用是否成功的标记，返回到txt回调中
     VAR_HUM_BITFLAG_NO_BAG_AUTORECYCLE = 203,        --不进行背包的装备自动回收，在开宝箱过程中才使用
-    VAR_HUM_BITFLAG_AUTO_OPEN_SUPERBOX = 204,        --自动开启超级宝箱
+    VAR_HUM_BITFLAG_AUTO_OPEN_SUPERBOX = 204,        --自动开启超级宝箱   
+    VAR_HUM_BITFLAG_AUTO_EQUIPSTAR_FLAG = 205,       --自动升星标记
 
     --300-800 都是可以下线保存的
     VAR_HUM_BITFLAG_AUTORECYCLE_ITEM1 = 300,         --勾选装备自动回收    
