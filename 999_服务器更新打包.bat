@@ -1,6 +1,6 @@
 @echo off
 Echo ============== Clear Old Data =================
-rd "E:\TargetVersion996\DirServer\MirServer\Mir200\" /s /q
+rd /s /q "E:\TargetVersion996\DirServer\MirServer\Mir200\" 
 
 Echo ============== Copy ScriptConfig To Server =================
 xcopy /y .\DevVersion_Server\Envir\Data\*.*  E:\TargetVersion996\DirServer\MirServer\Mir200\Envir\Data\ /I /E
