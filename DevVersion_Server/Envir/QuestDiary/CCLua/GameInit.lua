@@ -84,8 +84,8 @@ local function _Includes()
     -- require("Envir/QuestDiary/CCLua/GameModule/MoFangZhenManager")
     -- require("Envir/QuestDiary/CCLua/GameModule/RandomBossManager")
     -- require("Envir/QuestDiary/CCLua/GameModule/FreeVIPManager")
-    -- require("Envir/QuestDiary/CCLua/GameModule/TaskLineConfig")
-    -- require("Envir/QuestDiary/CCLua/GameModule/TaskManager")    
+    require("Envir/QuestDiary/CCLua/GameModule/TaskLineConfig")
+    require("Envir/QuestDiary/CCLua/GameModule/TaskManager")    
     -- require("Envir/QuestDiary/CCLua/GameModule/FirstRecharge")
     -- require("Envir/QuestDiary/CCLua/GameModule/ActivityNewPlayerRecharge")
     -- require("Envir/QuestDiary/CCLua/GameModule/ActivityOpenServer")
@@ -495,8 +495,8 @@ local function _Includes()
     --     end        
     -- end   
 
-    -- --部分初始化代码
-    -- TaskManager.InitAddListenMon()
+    --部分初始化代码
+    TaskManager.InitAddListenMon()
 end
 
 function UIncludes()

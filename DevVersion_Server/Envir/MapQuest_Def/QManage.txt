@@ -242,19 +242,19 @@ Gmexecute Shutup <$USERNAME> 60000
 #ELSEACT
 Gmexecute ReleaseShutup <$USERNAME>
 
-
-#IF
-Check [28] 0
-#ACT
-HAIRSTYLE 0
-MOV U99 <$UTCNOW8>
-; 上线赠送
-MAILGIVE 充值 58
-MAILGIVE 元宝 100000
-MAILGIVE 狂暴丹 1
-SENDMAIL 77 上线送充值 欢迎来到本游戏，已赠送您58元充值(可直接开通会员)，请在附件中领取。
-; SENDMAIL 78 关注公众号，免费领新人大礼包！ 微信搜索并关注<【变态猫推荐】/FCOLOR=250>公众号，进下方<【福利礼包】/FCOLOR=250>领取大礼包！
-#Call [\登录触发\新手上线.txt] @新手上线
+;原来的新人初始上线
+;#IF
+;Check [28] 0
+;#ACT
+;HAIRSTYLE 0
+;MOV U99 <$UTCNOW8>
+;; 上线赠送
+;MAILGIVE 充值 58
+;MAILGIVE 元宝 100000
+;MAILGIVE 狂暴丹 1
+;SENDMAIL 77 上线送充值 欢迎来到本游戏，已赠送您58元充值(可直接开通会员)，请在附件中领取。
+;; SENDMAIL 78 关注公众号，免费领新人大礼包！ 微信搜索并关注<【变态猫推荐】/FCOLOR=250>公众号，进下方<【福利礼包】/FCOLOR=250>领取大礼包！
+;#Call [\登录触发\新手上线.txt] @新手上线
 
 
 #IF
@@ -286,7 +286,7 @@ ChangeHumNewValue 200 500 65535
 ; 神秘属性检测
 #Call [\04人物属性\人物倍攻.txt] @人物倍攻
 #Call [\04人物属性\称号刷新.txt] @刷新称号
-#CALL [\登录触发\任务触发.txt] @任务领取
+;#CALL [\登录触发\任务触发.txt] @任务领取
 #CALL [\04人物属性\刷新神器等级.txt] @神器等级刷新
 #CALL [\04人物属性\爆率免伤.txt] @属性刷新EX
 #Call [\悬浮按钮\悬浮按钮展开.txt] @悬浮按钮展开

@@ -4,6 +4,7 @@
 ;DELAYGOTO 100 @update_power_callback
 BREAK
 
+;之前回调的就是这个战力计算1
 [@战力计算1]
 {
 #IF

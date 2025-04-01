@@ -57,6 +57,7 @@ end
 -- 玩家升级触发
 function playlevelup(actor) 
     SkillUpgrade.CheckAutoLearnSkill(actor)
+    TaskManager.OnLevelChange(actor)
     --延迟展现战力变化，防止短时间触发多次
     --delaygoto(actor, 100, "update_power_callback", 0)    
 end
@@ -548,6 +549,8 @@ function update_power_callback(actor)
             addbutton(actor, 108, CommonDefine.ADD_BUTTON_ID_7, strPanelInfo)
             delaygoto(actor, 3000, "hide_power_callback", 0)
         end
+        --触发战力任务
+        TaskManager.OnPowerScoreChange(actor)
     end    
 end
 

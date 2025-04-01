@@ -53,6 +53,17 @@ function Player.GetGender(actor)
     return gender
 end
 
+--返回玩家发型
+function Player.GetHair(actor)
+    local hair = getbaseinfo(actor, CommonDefine.INFO_HAIRSTYLE)
+    return hair
+end
+
+--设置玩家发型
+function Player.SetHair(actor, hairstyle)
+    setbaseinfo(actor, CommonDefine.INFO_HAIRSTYLE, hairstyle)
+end
+
 --返回行会名
 function Player.GetGuildName(actor)
     local guildname = getbaseinfo(actor, CommonDefine.INFO_GUILDNAME)
@@ -493,47 +504,60 @@ function Player.InitNewPlayer(actor)
 
         --设置首次登录日期
         local currday = BF_GetDay(os.time())
-        setplaydef(actor, CommonDefine.VAR_U_FIRST_LOGIN_DAY, currday)        
-
-        --穿戴初始装备
+        setplaydef(actor, CommonDefine.VAR_U_FIRST_LOGIN_DAY, currday)   
+        
+        --设置初始等级
+        Player.SetLevel(actor, 1)
+        --开启首饰盒  灵玉系统
+        setsndaitembox(actor, 1)
+        --解锁仓库格子
+        changestorage(actor, 144)
+        --设置发型
+        Player.SetHair(actor, 0)
+        --给初始装备 并穿戴
         local job = Player.GetJob(actor)
         local gender = Player.GetGender(actor)
         if job == CommonDefine.JOB_Z then
-            giveonitem(actor, CommonDefine.EQUIPPOS_WEAPON, '破损的锈铁刀', 1, 1, '出生给与')
+            giveonitem(actor, CommonDefine.EQUIPPOS_WEAPON, '木剑', 1, 1, '出生给与')
             if gender == CommonDefine.GENDER_MAN then
-                giveonitem(actor, CommonDefine.EQUIPPOS_DRESS, '破旧的粗布衣(男)', 1, 1, '出生给与')
+                giveonitem(actor, CommonDefine.EQUIPPOS_DRESS, '布衣', 1, 1, '出生给与')
             else
-                giveonitem(actor, CommonDefine.EQUIPPOS_DRESS, '破旧的粗布衣(女)', 1, 1, '出生给与')
+                giveonitem(actor, CommonDefine.EQUIPPOS_DRESS, '布衣', 1, 1, '出生给与')
             end
         elseif job == CommonDefine.JOB_F then
-            giveonitem(actor, CommonDefine.EQUIPPOS_WEAPON, '破损的木法杖', 1, 1, '出生给与')
+            giveonitem(actor, CommonDefine.EQUIPPOS_WEAPON, '木剑', 1, 1, '出生给与')
             if gender == CommonDefine.GENDER_MAN then
-                giveonitem(actor, CommonDefine.EQUIPPOS_DRESS, '破旧的纱布衣(男)', 1, 1, '出生给与')
+                giveonitem(actor, CommonDefine.EQUIPPOS_DRESS, '布衣', 1, 1, '出生给与')
             else
-                giveonitem(actor, CommonDefine.EQUIPPOS_DRESS, '破旧的纱布衣(女)', 1, 1, '出生给与')
+                giveonitem(actor, CommonDefine.EQUIPPOS_DRESS, '布衣', 1, 1, '出生给与')
             end
         elseif job == CommonDefine.JOB_D then
-            giveonitem(actor, CommonDefine.EQUIPPOS_WEAPON, '破损的木灵剑', 1, 1, '出生给与')
+            giveonitem(actor, CommonDefine.EQUIPPOS_WEAPON, '木剑', 1, 1, '出生给与')
             if gender == CommonDefine.GENDER_MAN then
-                giveonitem(actor, CommonDefine.EQUIPPOS_DRESS, '破旧的兽皮衣(男)', 1, 1, '出生给与')
+                giveonitem(actor, CommonDefine.EQUIPPOS_DRESS, '布衣', 1, 1, '出生给与')
             else
-                giveonitem(actor, CommonDefine.EQUIPPOS_DRESS, '破旧的兽皮衣(女)', 1, 1, '出生给与')
+                giveonitem(actor, CommonDefine.EQUIPPOS_DRESS, '布衣', 1, 1, '出生给与')
             end
         end
-
+        --给初始道具
         giveitem(actor, '随机传送石', 1, 1, '出生给与')
-        giveitem(actor, '比奇传送石', 1, 1, '出生给与')
-        giveitem(actor, '盟重回城石', 1, 1, '出生给与')
+        giveitem(actor, '盟重传送石', 1, 1, '出生给与')
         giveitem(actor, '强化石', 200, 1, '出生给与')
         giveitem(actor, '太阳水', 50, 1, '出生给与')
-        Player.SetLevel(actor, 1)
-        SkillUpgrade.CheckAutoLearnSkill(actor)        
-
+        --学习技能
+        SkillUpgrade.CheckAutoLearnSkill(actor)
+        --回复血量
         Player.FullHPMP(actor)                
         TaskManager.AddNewTask(actor, CommonDefine.TASK_LINE_ID_MAIN, 0)
-
-        --Player.GoMZHome(actor)
-        mapmove(actor, '0', 651, 628, 3)
+        --返回邮件
+        Player.GiveItemsByMail(actor, CommonDefine.NEW_PLAYER_EMAIL_ITEMS, '上线送充值', '欢迎来到本游戏，已赠送您58元充值(可直接开通会员)，请在附件中领取。')
+        --跳到初始点
+        mapmove(actor, 'rxsc1560', 648, 630, 1)
+        --触发点击初始NPC
+        opennpcshowex(actor, 1, 3, 3)
+        --系统消息
+        Player.SendSelfMsg(actor, parsetext('[系统：]欢迎玩家{[<$USERNAME>]|251:249:1}进入{[<$SERVERNAME>]|255:180:1}！', actor), CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+        Player.SendServerMsg(actor, parsetext('[系统：]欢迎玩家[<$USERNAME>]进入[<$SERVERNAME>]！', actor), CommonDefine.MSG_POS_TYPE_TOP_ROLL, CSS.CHAT_YELLOW, CSS.CHAT_BLACK)
     end
 end
 

@@ -1728,11 +1728,11 @@ CHECKCONTAINSTEXT <$OLDMAP> <$USERNAME>
 DELMIRRORMAP <$OLDMAP>
 
 
-#IF
-LARGE U50 14
-SMALL U50 21
-#ACT
-DELAYGOTO 500 @新手传送任务检测
+;#IF
+;LARGE U50 14
+;SMALL U50 21
+;#ACT
+;DELAYGOTO 500 @新手传送任务检测
 
 ; 充值地图显示地图爆率
 #IF
@@ -1761,16 +1761,16 @@ BREAK
 
 
 [@新手传送任务检测]
-#IF
-ISONMAP <$cfg_新手任务配置(<$GetTypeBRow(cfg_新手任务配置,0,<$STR(U50)>)>_2)>
-#ACT
-MAILGIVE 元宝 <$cfg_新手任务配置(<$GetTypeBRow(cfg_新手任务配置,0,<$STR(U50)>)>_3)>
-SENDMAIL 230 任务奖励 <$cfg_新手任务配置(<$GetTypeBRow(cfg_新手任务配置,0,<$STR(U50)>)>_4)>
+;#IF
+;ISONMAP <$cfg_新手任务配置(<$GetTypeBRow(cfg_新手任务配置,0,<$STR(U50)>)>_2)>
+;#ACT
+;MAILGIVE 元宝 <$cfg_新手任务配置(<$GetTypeBRow(cfg_新手任务配置,0,<$STR(U50)>)>_3)>
+;SENDMAIL 230 任务奖励 <$cfg_新手任务配置(<$GetTypeBRow(cfg_新手任务配置,0,<$STR(U50)>)>_4)>
 
-NEWDELETETASK <$STR(U50)>
-MOV U50 <$cfg_新手任务配置(<$GetTypeBRow(cfg_新手任务配置,0,<$STR(U50)>)>_1)>
-NEWPICKTASK <$STR(U50)>
-BREAK
+;NEWDELETETASK <$STR(U50)>
+;MOV U50 <$cfg_新手任务配置(<$GetTypeBRow(cfg_新手任务配置,0,<$STR(U50)>)>_1)>
+;NEWPICKTASK <$STR(U50)>
+;BREAK
 
 
 
@@ -2092,16 +2092,16 @@ THROWITEM <$MAP> <$X> <$Y> 8 平安铃铛  <$STR(N$掉落道具4)>|1 1 0 0
 BREAK
 
 ; 大于100级，还在新手地图
-#IF
-ISONMAP em000
-CHECKLEVELEX ? 100
-#ACT
-NEWDELETETASK 2
-MOV U50 3
-NEWPICKTASK 3
-OPENNPCSHOWEX 15 5 5
-SETNPCEFFECT 15 5056 1 100
-BREAK
+;#IF
+;ISONMAP em000
+;CHECKLEVELEX ? 100
+;#ACT
+;NEWDELETETASK 2
+;MOV U50 3
+;NEWPICKTASK 3
+;OPENNPCSHOWEX 15 5 5
+;SETNPCEFFECT 15 5056 1 100
+;BREAK
 
 ;--------每日杀怪
 #IF
@@ -2333,11 +2333,11 @@ GiveOnItem 14 神石(Lv<$Str(U2)>) 1
 SENDMSG 9 恭喜您，成功升级神石！
 SENDMOVEMSG 0 251 0 460 1 恭喜玩家：【<<$UserName>/FCOLOR=250>】成功升级神石！
 
-#IF
-EQUAL U50 7
-EQUAL N$升级标识 1
-#ACT
-NEWCHANGETASK 7 <$STR(U2)>
+;#IF
+;EQUAL U50 7
+;EQUAL N$升级标识 1
+;#ACT
+;NEWCHANGETASK 7 <$STR(U2)>
 
 
 [@山海奎牛击杀专属奖励]
@@ -2420,11 +2420,11 @@ ADDBUTSHOW 1 升级神石 @开始提升神石
 DELBUTSHOW 1
 
 ;-------任务3获取十点神力值
-#OR
-EQUAL U50 1
-EQUAL U50 3
-#ACT
-NEWCHANGETASK 3 <$MONEY(神力值)>
+;#OR
+;EQUAL U50 1
+;EQUAL U50 3
+;#ACT
+;NEWCHANGETASK 3 <$MONEY(神力值)>
 
 
 ; 货币超限制 提示
@@ -3681,30 +3681,37 @@ BREAK
 
 ;-------↓↓↓↓↓↓↓↓↓-----升级触发-----↓↓↓↓↓↓↓↓↓-----------------------
 [@PlayLevelUp]
+;#IF
+;ISONMAP em000
+;CHECKLEVELEX ? 40
+;#ACT
+;NEWDELETETASK 2
+;MOV U50 3
+;NEWPICKTASK 3
+;OPENNPCSHOWEX 15 5 5
+;SETNPCEFFECT 15 5056 1 100
+
+
+; 新增 回调战力刷新
 #IF
-ISONMAP em000
-CHECKLEVELEX ? 40
 #ACT
-NEWDELETETASK 2
-MOV U50 3
-NEWPICKTASK 3
-OPENNPCSHOWEX 15 5 5
-SETNPCEFFECT 15 5056 1 100
+DELAYGOTO 100 @update_power_callback
+CALLLUA CC_QFunction @playlevelup
 
 
 ; 挂接QQ群，客服QQ
-#IF
-CHECKLEVELEX ? 200
-SMALL <$GAMEID> 3269
-#ACT
-NEWPICKTASK 6
+;#IF
+;CHECKLEVELEX ? 200
+;SMALL <$GAMEID> 3269
+;#ACT
+;NEWPICKTASK 6
 
 ; 进阶任务 武器强化
-#IF
-EQUAL U50 99
-CHECKLEVELEX ? 600
-#ACT
-NEWPICKTASK 22
+;#IF
+;EQUAL U50 99
+;CHECKLEVELEX ? 600
+;#ACT
+;NEWPICKTASK 22
 
 
 ; 等级刷新
@@ -3737,11 +3744,6 @@ CHECKLEVELEX = 500
 Gmexecute ReleaseShutup <$USERNAME>
 BREAK
 
-; 新增 回调战力刷新
-#IF
-#ACT
-DELAYGOTO 100 @update_power_callback
-BREAK
 
 
 [@StdModeFunc120]
@@ -5655,40 +5657,43 @@ MESSAGEBOX 系统：编辑公共需要领取第六档礼包!
 CALLLUA CC_QFunction @addbag,<$NEWBAGITEMID>
 
 [@DeleteTask]
-#IF
-EQUAL U50 99
-EQUAL <$GAMEID> 6015
-#ACT
-NEWPICKTASK 23
+;#IF
+;EQUAL U50 99
+;EQUAL <$GAMEID> 6015
+;#ACT
+;NEWPICKTASK 23
 
 ;-========点击任务点击
 [@ClickNewTask]
-#CALL [\登录触发\任务触发.txt] @任务点击
+;#CALL [\登录触发\任务触发.txt] @任务点击
+#IF
+#ACT
+CALLLUA CC_QFunction @clicknewtask,<$CURRTASKID>
 
 ;-----------------任务刷新 刷新任务触发
 [@ChangeTask]
-#IF
-EQUAL U50 1
-LARGE U51 9
-#ACT
-MOV U50 2
-OPENNPCSHOWEX 15 5 5
-BREAK
+;#IF
+;EQUAL U50 1
+;LARGE U51 9
+;#ACT
+;MOV U50 2
+;OPENNPCSHOWEX 15 5 5
+;BREAK
 
-#IF
-EQUAL U50 3
-CHECKMONEY 神力值 ? 10
-#ACT
-OPENNPCSHOWEX 15 1 1
-BREAK
+;#IF
+;EQUAL U50 3
+;CHECKMONEY 神力值 ? 10
+;#ACT
+;OPENNPCSHOWEX 15 1 1
+;BREAK
 
-#IF
-LARGE U2 9
-EQUAL U50 7
-#ACT
-MOV U50 15
-NEWPICKTASK 15
-NEWDELETETASK 7
+;#IF
+;LARGE U2 9
+;EQUAL U50 7
+;#ACT
+;MOV U50 15
+;NEWPICKTASK 15
+;NEWDELETETASK 7
 
 
 
@@ -5745,7 +5750,6 @@ OPENNPCSHOWEX 15 3 2
 #IF
 #ACT
 DELAYGOTO 100 @update_power_callback
-BREAK
 
 
 ; 地图BOSS刷新提示
@@ -5871,7 +5875,7 @@ VAR Integer HUMAN 杀怪数
 VAR Integer HUMAN 个人捐献
 #Call [\04人物属性\人物倍攻.txt] @人物倍攻
 #Call [\04人物属性\称号刷新.txt] @刷新称号
-#CALL [\登录触发\任务触发.txt] @任务领取
+;#CALL [\登录触发\任务触发.txt] @任务领取
 #CALL [\04人物属性\刷新神器等级.txt] @神器等级刷新
 #CALL [\04人物属性\爆率免伤.txt] @属性刷新EX
 #Call [\悬浮按钮\悬浮按钮展开.txt] @悬浮按钮展开
@@ -5887,7 +5891,7 @@ SETONTIMER 4 1 0 1
 PICKUPITEMS 0 10 500
 #Call [\04人物属性\人物倍攻.txt] @人物倍攻
 #Call [\04人物属性\称号刷新.txt] @刷新称号
-#CALL [\登录触发\任务触发.txt] @任务领取
+;#CALL [\登录触发\任务触发.txt] @任务领取
 #CALL [\04人物属性\刷新神器等级.txt] @神器等级刷新
 #CALL [\04人物属性\爆率免伤.txt] @属性刷新EX
 #Call [\悬浮按钮\悬浮按钮跨服.txt] @跨服按钮展开

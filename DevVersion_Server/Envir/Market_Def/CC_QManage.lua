@@ -25,11 +25,11 @@ function login(actor)
     --界面初始化        
     TopIcon.InitUI(actor)
     GameCurrencyUI.InitUI(actor)
-    MainUIBase.InitUI(actor)
-    --玩家是否进行新手初始化
-    Player.InitNewPlayer(actor)    
+    MainUIBase.InitUI(actor) 
 ]]--
 
+    --玩家是否进行新手初始化
+    Player.InitNewPlayer(actor)   
     --触发玩家上线的事件监听
     GameEventManager.DoTriggerEvent(CommonDefine.EVENT_NAME_PLAYER_ENTERGAME, actor)
     --检测加速状态

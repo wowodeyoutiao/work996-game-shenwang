@@ -106,6 +106,7 @@ CommonDefine = {
     INFO_MAXMP = 12,
     INFO_EXP = 13,
     INFO_LEVELMAXEXP = 14,
+    INFO_HAIRSTYLE = 33,                 --玩家发型
     INFO_HUMBAGITEMNUM = 34,             --玩家背包中的物品数量
     INFO_GUILDNAME = 36,                 --玩家行会名
     INFO_SLAVECOUNT = 38,                --宝宝数量
@@ -252,6 +253,7 @@ CommonDefine = {
     DAY_SUPER_BOX_MAX_ADD_NUM = 100,                                 --每天可以获得的超级宝箱的最大数量
     OPEN_SUPERBOX_SPEEDUP_ONCE_NEEDITEMS = {{name='加速卷轴', num=1}},    --超级宝箱升级加速一次需要的道具
     OPEN_SUPERBOX_SPEEDUP_ONCE_ADDSECONDS = 60,                          --超级宝箱升级加速一次对应的秒数
+    NEW_PLAYER_EMAIL_ITEMS = {{name='元宝', num=5000}},                   --新玩家登录给与的邮件奖励
 
 
     --通用的特殊地图内原地复活的消耗，随次数变化
@@ -323,19 +325,13 @@ CommonDefine = {
     VAR_U_FREEVIPTASK_COUNTER4 = 'U113',        --免费VIP任务计数4
     VAR_U_FREEVIPTASK_COUNTER5 = 'U114',        --免费VIP任务计数5
     VAR_U_FREEVIP_LEVEL = 'U115',               --免费VIP等级
-    VAR_U_ID_TASKLINE1 = 'U116',                --任务1线当前任务ID
-    VAR_U_STATUS_TASKLINE1 = 'U117',            --任务1线当前任务状态
-    VAR_U_ID_TASKLINE2 = 'U116',                --任务2线当前任务ID
-    VAR_U_STATUS_TASKLINE2 = 'U117',            --任务2线当前任务状态
-    VAR_U_ID_TASKLINE3 = 'U116',                --任务3线当前任务ID
-    VAR_U_STATUS_TASKLINE3 = 'U117',            --任务3线当前任务状态     
+
     VAR_U_RECHARGE_TOTAL = 'U118',              --累计充值 RMB
     VAR_U_FIRST_RECHARGE_DAY = 'U119',          --首充的日期记录
-    VAR_U_FIRST_LOGIN_DAY = 'U120',             --首次登录游戏的日期记录
+    
     VAR_U_NEWPLAYER_RECHARGE_SINGLE = 'U121',   --新人充值返利活动，单笔最大充值
     VAR_U_NEWPLAYER_RECHARGE_TOTAL = 'U122',    --新人充值返利活动，累计最大充值
-    VAR_U_LAST_RECORD_WEEK = 'U123',            --玩家跨天时记录的周数
-    VAR_U_LOGINDAYS_IN_WEEK = 'U124',           --玩家一周里的跨天次数
+
     VAR_U_LAST_LOGIN_TIME = 'U125',             --玩家上一次登录时间，跨天重置
     VAR_U_TREASUREMAP_CURRID = 'U126',          --当前对应的藏宝图配置id
     VAR_U_BIAOCHE_CURRID = 'U127',              --当前对应的镖车配置ID
@@ -349,6 +345,9 @@ CommonDefine = {
     VAR_U_SUPER_BOX_CHOOSE_CONDITION_2 = 'U135',--超级宝箱  保留宝箱选择的条件2编号 - 等级
 
     VAR_U_EQUIPPOS_AUTO_STAR_CONDITION = 'U136',--装备槽位  自动升星选择的条件编号  --目标星级
+    VAR_U_FIRST_LOGIN_DAY = 'U137',             --首次登录游戏的日期记录
+    VAR_U_LAST_RECORD_WEEK = 'U138',            --玩家跨天时记录的周数
+    VAR_U_LOGINDAYS_IN_WEEK = 'U139',           --玩家一周里的跨天次数    
 
     VAR_U_GUANZHI_LEVEL = 'U140',               --玩家的官职等级
     VAR_U_GUANZHI_CURREXP = 'U141',             --玩家的官职当前经验
@@ -388,6 +387,18 @@ CommonDefine = {
     VAR_U_ADVANCE_SKILL28_LV = 'U178',
     VAR_U_ADVANCE_SKILL29_LV = 'U179',
     VAR_U_ADVANCE_SKILL30_LV = 'U180',     
+
+    VAR_U_ID_TASKLINE1 = 'U191',                --任务1线当前任务ID
+    VAR_U_STATUS_TASKLINE1 = 'U192',            --任务1线当前任务状态    
+    VAR_U_COUNTER_TASKLINE1 = 'U193',           --任务1线当前任务单个计数
+    VAR_U_ID_TASKLINE2 = 'U194',                --任务2线当前任务ID
+    VAR_U_STATUS_TASKLINE2 = 'U195',            --任务2线当前任务状态
+    VAR_U_COUNTER_TASKLINE2 = 'U196',           --任务2线当前任务单个计数
+    VAR_U_ID_TASKLINE3 = 'U197',                --任务3线当前任务ID
+    VAR_U_STATUS_TASKLINE3 = 'U198',            --任务3线当前任务状态
+    VAR_U_COUNTER_TASKLINE3 = 'U199',           --任务3线当前任务单个计数
+    
+    
     
     
     --玩家字符型变量，下线保存 T0 - T254
@@ -452,8 +463,7 @@ CommonDefine = {
     
     VAR_HUM_BITFLAG_IS_FIRST_RANDOMBOSS_REWARD = 238,       --是否是第一个战力boss的奖励
     VAR_HUM_BITFLAG_IS_FIRST_RANDOMBOSS_TRIGGER = 239,      --是否是触发的第一个战力boss
-
-    VAR_HUM_BITFLAG_NEW_PLAYER_INIT_FLAG = 300,     --玩家是否进行新手初始化
+    
     VAR_HUM_BITFLAG_RELIVE_DIALOGUE_FLAG = 301,     --玩家是否当前已有复活框弹出
     ]]--
 
@@ -468,6 +478,7 @@ CommonDefine = {
     --300-800 都是可以下线保存的
     VAR_HUM_BITFLAG_AUTORECYCLE_ITEM1 = 300,         --勾选装备自动回收    
     VAR_HUM_BITFLAG_AUTORECYCLE_ITEM2 = 301,         --勾选直升宝石自动回收
+    VAR_HUM_BITFLAG_NEW_PLAYER_INIT_FLAG = 302,      --玩家是否进行新手初始化
 
     VAR_HUM_BITFLAG_SUPERBOX_RECYCLE_CHECK1 = 310,  --超级宝箱自动回收 保留满足品质的条件
     VAR_HUM_BITFLAG_SUPERBOX_RECYCLE_CHECK2 = 311,  --超级宝箱自动回收 保留满足等级的条件
@@ -610,6 +621,10 @@ CommonDefine = {
     --任务类型
     TASK_TYPE_KILLMON = 1,                        --杀怪任务
     TASK_TYPE_FREEVIP = 2,                        --免费VIP任务
+    TASK_TYPE_LEVEL = 3,                          --玩家等级
+    TASK_TYPE_POWERSCORE = 4,                     --玩家战力
+    TASK_TYPE_OPENBOXNUM = 5,                     --玩家开箱数量
+
 
     --任务线状态
     TASK_STATUS_NONE = 0,                         --无任务线

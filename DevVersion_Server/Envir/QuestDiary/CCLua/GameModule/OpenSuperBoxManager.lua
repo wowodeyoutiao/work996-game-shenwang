@@ -306,6 +306,9 @@ local function DoOpenBoxOnce(actor, autoflag, openitemlist)
 
     setplaydef(actor, CommonDefine.VAR_S_SUPERBOX_ITEMLIST, strItemUniqueIDs)
     OpenSuperBoxManager.UpdateSuperBoxInfo(actor)
+
+    --触发开箱任务
+    TaskManager.OnAddOpenBoxNum(actor, nOnceOpenNum) 
     return true
 end
 
