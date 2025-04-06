@@ -355,7 +355,7 @@ local config = {
 	},
 	["EXPcoordinate"] = { 
 		k = "EXPcoordinate",
-		value = "10#450|10#300|250#0|2000",
+		value = "10#450|10#300|250#0|500",
 		notice = "经验显示坐标(PC端X坐标#PC端Y坐标|移动端X坐标#移动端Y坐标|前景色#背景色|最低经验显示)",
 	},
 	["StallName"] = { 

@@ -324,7 +324,7 @@ release_print(sid)
 
 
     elseif sid == '1999' then 
-        changeexp(actor, '+', 2000, true)
+        changeexp(actor, '+', 500, true)
     end   
 end
 
