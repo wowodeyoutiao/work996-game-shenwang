@@ -2,7 +2,6 @@
 {
 #IF
 #ACT
-GOTO @切割经验刷新
 GOTO @战力刷新显示
 
 #IF
@@ -141,30 +140,6 @@ MOV S$活动UI <Img|x=240|y=-165|img=public/hd_ui/main_xue04.png>
 ADDBUTTON 103 2024 <$STR(S$活动UI)>
 INC S$活动UI <Img|x=-330|y=-165|img=public/hd_ui/main_xue03.png>
 ADDBUTTON 104 2025 <$STR(S$活动UI)>
-
-
-
-[@切割经验刷新]
-#OR
-EQUAL U2 0
-NOT EQUAL <$CLIENTFLAG> 2
-#ACT
-BREAK
-
-#IF
-LARGE U2 99
-#ACT
-MOV S$神力值展示 <RText|x=-90|y=-25|color=255|outline=1|text=神石<已满级/FCOLOR=250>|size=16>
-ADDBUTTON 108 31 <$STR(S$神力值展示)>
-BREAK
-
-#IF
-#ACT
-ReadCacheConfigFileItem ..\QuestDiary\01配置项\神石配置项.ini 神石配置 <$STR(U2)> N$神石需求
-VAR_CHECK <$MONEY(神力值)> < <$STR(N$神石需求)> 249 250 N$信息COLOR
-
-MOV S$神力值展示 <RText|x=-160|y=-25|color=255|outline=1|size=16|text=神石<<$STR(U2)>/FCOLOR=250>级　升级需要<<$STR(N$神石需求)>/<$MONEY(神力值)>/FCOLOR=<$STR(N$信息COLOR)>>>
-ADDBUTTON 108 31 <$STR(S$神力值展示)>
 
 
 }

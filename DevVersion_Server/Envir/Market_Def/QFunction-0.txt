@@ -2393,40 +2393,6 @@ MAPMOVE <$username>buff 87 69 1
 GuildNoticeMsg 250 11 玩家{[<$username>]|70::0:1}进入了{奇遇场景。|70::0:1}
 BREAK
 
-;----------------神力值变化触发
-[@MoneyChange10]
-; 切割石头低于100级触发
-#IF
-SMALL U2 100
-#ACT
-#CALL [\主界面基础按钮\主界面基础按钮QM.txt] @切割经验刷新
-#ELSEACT
-BREAK
-
-; 跨服地图不给提示
-#IF
-CHECKKUAFU
-#ACT
-BREAK
-
-; 神石升级提示
-#IF
-LARGE U2 0
-SMALL U2 100
-CHECKMONEY 神力值 ? <$STR(N$神石需求)>
-#ACT
-ADDBUTSHOW 1 升级神石 @开始提升神石
-#ELSEACT
-DELBUTSHOW 1
-
-;-------任务3获取十点神力值
-;#OR
-;EQUAL U50 1
-;EQUAL U50 3
-;#ACT
-;NEWCHANGETASK 3 <$MONEY(神力值)>
-
-
 ; 货币超限制 提示
 [@MoneyChange1]
 #IF
@@ -2578,7 +2544,7 @@ EQUAL <$LASTMAILOPTYPEID> 142
 EQUAL <$LASTMAILOPTYPEID> 3214
 #ACT
 LINKITEMBYMAKEINDEX <$NEWBAGITEMID>
-MOV S$BUFF奖池 魔法转换3#80|道术转换3#30|财富3#100|切割3#100|福源3#100|鞭尸3#100|奇遇3#100|迅捷3#10|重伤3#80|破绽3#50|骸骨3#80|点燃3#50|凯旋3#50
+MOV S$BUFF奖池 魔法转换3#80|道术转换3#30|财富3#100|福源3#100|鞭尸3#100|奇遇3#100|迅捷3#10|重伤3#80|破绽3#50|骸骨3#80|点燃3#50|凯旋3#50
 RANSJSTR <$STR(S$BUFF奖池)> 1 3 S$BUFF1 S$BUFF奖池
 RANSJSTR <$STR(S$BUFF奖池)> 1 3 S$BUFF2 S$BUFF奖池
 RANSJSTR <$STR(S$BUFF奖池)> 1 3 S$BUFF3 S$BUFF奖池
@@ -2616,7 +2582,7 @@ EQUAL N$CHECK 7
 MOV N$CHECK 0
 MOV S$BUFF统计
 MOV S$巅峰奖池 巅峰1#20|巅峰2#18|巅峰3#16|巅峰4#13|巅峰5#12|巅峰6#8|巅峰7#7|巅峰8#3|巅峰9#2|巅峰10#1
-MOV S$BUFF奖池 魔法转换#80|道术转换#30|财富#100|切割#100|福源#100|鞭尸#100|奇遇#100|迅捷#10|重伤#80|破绽#50|骸骨#80|点燃#50|凯旋#50
+MOV S$BUFF奖池 魔法转换#80|道术转换#30|财富#100|福源#100|鞭尸#100|奇遇#100|迅捷#10|重伤#80|破绽#50|骸骨#80|点燃#50|凯旋#50
 MOV S$随机等级 1#80|2#50|3#15
 RANSJSTR <$STR(S$BUFF奖池)> 1 3 S$BUFF1 S$BUFF奖池
 RANSJSTR <$STR(S$BUFF奖池)> 1 3 S$BUFF2 S$BUFF奖池
@@ -2797,64 +2763,6 @@ STOPAutoPlayGame
 GOTO @武器强化激活
 BREAK
 
-
-#IF
-#ACT
-MOV N$破绽机会 0
-MUL N$打怪切割 <$STR(N$装备刀魂)> <$MAXDC>
-DIV N$打怪切割 <$STR(N$切割衰减)>
-INC N$打怪切割 2
-
-#IF
-CHECKITEMW 战神の帝 1
-CHECKCURRTARGETRACE = 60
-EQUAL <$CURRRTARGETNAME> 卧龙·风云
-#ACT
-M.HUMANHP - <$STR(N$打怪切割)> 14
-#IF
-CHECKITEMW 精灵の翔 1
-CHECKCURRTARGETRACE = 60
-EQUAL <$CURRRTARGETNAME> 卧龙·新月
-#ACT
-M.HUMANHP - <$STR(N$打怪切割)> 14
-#IF
-CHECKITEMW 守护の神 1
-CHECKCURRTARGETRACE = 60
-EQUAL <$CURRRTARGETNAME> 卧龙·御风
-#ACT
-M.HUMANHP - <$STR(N$打怪切割)> 14
-#IF
-CHECKITEMW 傀儡の隐 1
-CHECKCURRTARGETRACE = 60
-EQUAL <$CURRRTARGETNAME> 卧龙·青城
-#ACT
-M.HUMANHP - <$STR(N$打怪切割)> 14
-#IF
-CHECKITEMW 凤凰の飞 1
-CHECKCURRTARGETRACE = 60
-EQUAL <$CURRRTARGETNAME> 卧龙·飞鸿
-#ACT
-M.HUMANHP - <$STR(N$打怪切割)> 14
-#IF
-CHECKITEMW 诅咒の亡 1
-CHECKCURRTARGETRACE = 60
-EQUAL <$CURRRTARGETNAME> 卧龙·斩浪
-#ACT
-M.HUMANHP - <$STR(N$打怪切割)> 14
-
-#IF
-ISONMAP wlsz
-CHECKCURRTARGETRACE = 60
-CHECKITEMW 「神器」メ卧龙圣物 1
-#ACT
-M.HUMANHP - <$STR(N$打怪切割)> 14
-
-#IF
-ISONMAP ly
-NOT EQUAL <$SNECKLACE>
-CHECKCURRTARGETRACE = 60
-#ACT
-M.HUMANHP - <$STR(N$打怪切割)> 14
 
 ; 船长BUFF，小怪存在，船长无敌 刀刀恢复1%血量
 #IF
@@ -3091,14 +2999,6 @@ LARGE <$GetTypeBRow(cfg_苍月地图免伤,2,<$CURRRTARGETNAME>)> 0
 MOV N$切割衰减 5
 #ELSEACT
 MOV N$切割衰减 2
-
-; 打怪切割
-#IF
-CHECKCURRTARGETRACE = 1
-SMALL <$GetTypeBRow(cfg_禁止切割怪,0,<$CURRRTARGETNAME>)> 0
-#ACT
-FORMULATION <$STR(N$装备刀魂)>*<$MAXDC>/<$STR(N$切割衰减)>+2 N$打怪切割
-M.HUMANHP - <$STR(N$打怪切割)> 14
 
 
 ;渡劫吸血
