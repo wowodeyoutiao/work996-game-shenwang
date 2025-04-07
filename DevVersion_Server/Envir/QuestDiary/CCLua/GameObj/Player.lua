@@ -544,6 +544,8 @@ function Player.InitNewPlayer(actor)
         giveitem(actor, '盟重传送石', 1, 1, '出生给与')
         giveitem(actor, '强化石', 200, 1, '出生给与')
         giveitem(actor, '太阳水', 50, 1, '出生给与')
+        --给与初始开箱次数
+        OpenSuperBoxManager.AddNewBoxNum(actor, 20)
         --学习技能
         SkillUpgrade.CheckAutoLearnSkill(actor)
         --回复血量

@@ -30,7 +30,7 @@ function TaskManager.AddNewTask(actor, tasklineid, newtaskid)
         end
         local singletask = config.taskDataList[taskid]
         if singletask then 
-            newpicktask(actor, taskid)   
+            newpicktask(actor, taskid)         
             setplaydef(actor, config.taskIDVar, taskid)
             setplaydef(actor, config.taskStatusVar, CommonDefine.TASK_STATUS_ADD)
             setplaydef(actor, config.taskCounterVar, '')
