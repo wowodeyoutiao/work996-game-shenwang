@@ -19,7 +19,7 @@ TaskLineConfig = {
                 --一个子任务最多支持三个目标，扩展另开发
                 tasktargparam = 10,
                 tasktargdesc = '等级达到10级',
-                reward_tab = {{name='开箱次数', num=10},{name='金币', num=100000}},
+                reward_tab = {{name='金币', num=100000}},
                 openbox_num = 10,
             },
             [102] = {
@@ -62,8 +62,8 @@ TaskLineConfig = {
                 --一个子任务最多支持三个目标，扩展另开发
                 tasktargparam = 20,
                 tasktargdesc = '等级达到20级',
-                reward_tab = {{name='开箱次数', num=20},{name='金币', num=400000}},
-
+                reward_tab = {{name='金币', num=400000}},
+				openbox_num = 20,
             },
             [105] = {
                 nextid = 106, 
@@ -108,8 +108,8 @@ TaskLineConfig = {
                 --一个子任务最多支持三个目标，扩展另开发
                 tasktargparam = 30,
                 tasktargdesc = '等级达到30级',
-                reward_tab = {{name='开箱次数', num=30},{name='金币', num=700000}},
-
+                reward_tab = {{name='金币', num=700000}},
+				openbox_num = 30,
             },
             [108] = {
                 nextid = 109, 
@@ -154,8 +154,8 @@ TaskLineConfig = {
                 --一个子任务最多支持三个目标，扩展另开发
                 tasktargparam = 40,
                 tasktargdesc = '等级达到40级',
-                reward_tab = {{name='开箱次数', num=40},{name='金币', num=1000000}},
-
+                reward_tab = {{name='金币', num=1000000}},
+				openbox_num = 40,
             },
             [111] = {
                 nextid = 112, 
@@ -200,8 +200,8 @@ TaskLineConfig = {
                 --一个子任务最多支持三个目标，扩展另开发
                 tasktargparam = 50,
                 tasktargdesc = '等级达到50级',
-                reward_tab = {{name='开箱次数', num=50},{name='金币', num=1000000}},
-
+                reward_tab = {{name='金币', num=1000000}},
+				openbox_num = 50,
             },
             [114] = {
                 nextid = 115, 
@@ -246,8 +246,8 @@ TaskLineConfig = {
                 --一个子任务最多支持三个目标，扩展另开发
                 tasktargparam = 60,
                 tasktargdesc = '等级达到60级',
-                reward_tab = {{name='开箱次数', num=60},{name='金币', num=1000000}},
-
+                reward_tab = {{name='金币', num=1000000}},
+				openbox_num = 60,
             },
             [117] = {
                 nextid = 118, 
@@ -292,8 +292,8 @@ TaskLineConfig = {
                 --一个子任务最多支持三个目标，扩展另开发
                 tasktargparam = 70,
                 tasktargdesc = '等级达到70级',
-                reward_tab = {{name='开箱次数', num=70},{name='金币', num=1000000}},
-
+                reward_tab = {{name='金币', num=1000000}},
+				openbox_num = 70,
             },
             [120] = {
                 nextid = 121, 
@@ -338,8 +338,8 @@ TaskLineConfig = {
                 --一个子任务最多支持三个目标，扩展另开发
                 tasktargparam = 80,
                 tasktargdesc = '等级达到80级',
-                reward_tab = {{name='开箱次数', num=80},{name='金币', num=1000000}},
-
+                reward_tab = {{name='金币', num=1000000}},
+				openbox_num = 80,
             },
             [123] = {
                 nextid = 124, 
@@ -384,8 +384,8 @@ TaskLineConfig = {
                 --一个子任务最多支持三个目标，扩展另开发
                 tasktargparam = 85,
                 tasktargdesc = '等级达到85级',
-                reward_tab = {{name='开箱次数', num=90},{name='金币', num=1000000}},
-
+                reward_tab = {{name='金币', num=1000000}},
+				openbox_num = 90,
             },
             [126] = {
                 nextid = 127, 
@@ -430,8 +430,8 @@ TaskLineConfig = {
                 --一个子任务最多支持三个目标，扩展另开发
                 tasktargparam = 90,
                 tasktargdesc = '等级达到90级',
-                reward_tab = {{name='开箱次数', num=100},{name='金币', num=1000000}},
-
+                reward_tab = {{name='金币', num=1000000}},
+				openbox_num = 100,
             },
             [129] = {
                 nextid = 130, 
@@ -476,8 +476,8 @@ TaskLineConfig = {
                 --一个子任务最多支持三个目标，扩展另开发
                 tasktargparam = 95,
                 tasktargdesc = '等级达到95级',
-                reward_tab = {{name='开箱次数', num=110},{name='金币', num=1000000}},
-
+                reward_tab = {{name='金币', num=1000000}},
+				openbox_num = 110,
             },
             [132] = {
                 nextid = 133, 
@@ -522,8 +522,8 @@ TaskLineConfig = {
                 --一个子任务最多支持三个目标，扩展另开发
                 tasktargparam = 100,
                 tasktargdesc = '等级达到100级',
-                reward_tab = {{name='开箱次数', num=120},{name='金币', num=1000000}},
-
+                reward_tab = {{name='金币', num=1000000}},
+				openbox_num = 120,
             },
             [135] = {
                 nextid = 136, 
@@ -568,8 +568,8 @@ TaskLineConfig = {
                 --一个子任务最多支持三个目标，扩展另开发
                 tasktargparam = 105,
                 tasktargdesc = '等级达到105级',
-                reward_tab = {{name='开箱次数', num=120},{name='金币', num=1000000}},
-
+                reward_tab = {{name='金币', num=1000000}},
+				openbox_num = 120,
             },
             [138] = {
                 nextid = 139, 
@@ -614,8 +614,8 @@ TaskLineConfig = {
                 --一个子任务最多支持三个目标，扩展另开发
                 tasktargparam = 110,
                 tasktargdesc = '等级达到110级',
-                reward_tab = {{name='开箱次数', num=130},{name='金币', num=1000000}},
-
+                reward_tab = {{name='金币', num=1000000}},
+				openbox_num = 130,
             },
             [141] = {
                 nextid = 142, 
@@ -660,8 +660,8 @@ TaskLineConfig = {
                 --一个子任务最多支持三个目标，扩展另开发
                 tasktargparam = 115,
                 tasktargdesc = '等级达到115级',
-                reward_tab = {{name='开箱次数', num=140},{name='金币', num=1000000}},
-
+                reward_tab = {{name='金币', num=1000000}},
+				openbox_num = 140,
             },
             [144] = {
                 nextid = 145, 
@@ -706,8 +706,8 @@ TaskLineConfig = {
                 --一个子任务最多支持三个目标，扩展另开发
                 tasktargparam = 120,
                 tasktargdesc = '等级达到120级',
-                reward_tab = {{name='开箱次数', num=150},{name='金币', num=1000000}},
-
+                reward_tab = {{name='金币', num=1000000}},
+				openbox_num = 150,
             },
             [147] = {
                 nextid = 148, 
@@ -752,8 +752,8 @@ TaskLineConfig = {
                 --一个子任务最多支持三个目标，扩展另开发
                 tasktargparam = 125,
                 tasktargdesc = '等级达到125级',
-                reward_tab = {{name='开箱次数', num=160},{name='金币', num=1000000}},
-
+                reward_tab = {{name='金币', num=1000000}},
+				openbox_num = 160,
             },
             [150] = {
                 nextid = 151, 
@@ -798,8 +798,8 @@ TaskLineConfig = {
                 --一个子任务最多支持三个目标，扩展另开发
                 tasktargparam = 130,
                 tasktargdesc = '等级达到130级',
-                reward_tab = {{name='开箱次数', num=170},{name='金币', num=1000000}},
-
+                reward_tab = {{name='金币', num=1000000}},
+				openbox_num = 170,
             },
             [153] = {
                 nextid = 154, 
