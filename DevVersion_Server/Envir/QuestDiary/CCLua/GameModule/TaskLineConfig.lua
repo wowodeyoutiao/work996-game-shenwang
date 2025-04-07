@@ -20,6 +20,7 @@ TaskLineConfig = {
                 tasktargparam = 10,
                 tasktargdesc = '等级达到10级',
                 reward_tab = {{name='开箱次数', num=10},{name='金币', num=100000}},
+                openbox_num = 10,
             },
             [102] = {
                 nextid = 103, 
