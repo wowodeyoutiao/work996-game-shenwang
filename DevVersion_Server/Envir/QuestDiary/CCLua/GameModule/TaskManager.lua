@@ -170,6 +170,9 @@ function TaskManager.EndTask(actor, tasklineid)
                 local finalrewardtab = Player.FilterTable(actor, singletask.reward_tab)                
                 Player.GiveItemsToBagOrMail(actor, finalrewardtab, 'ÈÎÎñ½±Àø£º'..taskid)
             end
+            if singletask.openbox_num and (singletask.openbox_num > 0) then
+                OpenSuperBoxManager.AddNewBoxNum(actor, singletask.openbox_num)
+            end
 
             if singletask.nextid and singletask.nextid > 0 then
                 newdeletetask(actor, taskid)
