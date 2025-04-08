@@ -16,7 +16,7 @@ local config = {
 		successrate = 80,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":203, \"value\":3, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":223, \"value\":3, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[2] = { 
 		ID = 2,
@@ -26,7 +26,7 @@ local config = {
 		successrate = 70,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":203, \"value\":6, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":223, \"value\":6, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[3] = { 
 		ID = 3,
@@ -36,7 +36,7 @@ local config = {
 		successrate = 60,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":203, \"value\":9, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":223, \"value\":9, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[4] = { 
 		ID = 4,
@@ -46,7 +46,7 @@ local config = {
 		successrate = 55,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":203, \"value\":12, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":223, \"value\":12, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[5] = { 
 		ID = 5,
@@ -56,7 +56,7 @@ local config = {
 		successrate = 50,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":203, \"value\":15, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":223, \"value\":15, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[6] = { 
 		ID = 6,
@@ -66,7 +66,7 @@ local config = {
 		successrate = 45,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":203, \"value\":19, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":223, \"value\":19, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[7] = { 
 		ID = 7,
@@ -76,7 +76,7 @@ local config = {
 		successrate = 40,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":203, \"value\":23, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":223, \"value\":23, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[8] = { 
 		ID = 8,
@@ -86,7 +86,7 @@ local config = {
 		successrate = 35,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":203, \"value\":27, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":223, \"value\":27, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[9] = { 
 		ID = 9,
@@ -96,7 +96,7 @@ local config = {
 		successrate = 30,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":203, \"value\":31, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":223, \"value\":31, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[10] = { 
 		ID = 10,
@@ -106,7 +106,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":203, \"value\":35, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":223, \"value\":35, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[11] = { 
 		ID = 11,
@@ -116,7 +116,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":203, \"value\":40, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":223, \"value\":40, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[12] = { 
 		ID = 12,
@@ -126,7 +126,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":203, \"value\":45, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":223, \"value\":45, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[13] = { 
 		ID = 13,
@@ -136,7 +136,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":203, \"value\":50, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":223, \"value\":50, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[14] = { 
 		ID = 14,
@@ -146,7 +146,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":203, \"value\":60, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":223, \"value\":60, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[15] = { 
 		ID = 15,
@@ -155,7 +155,7 @@ local config = {
 		level = 15,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":203, \"value\":70, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":223, \"value\":70, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[1000] = { 
 		ID = 1000,
@@ -174,7 +174,7 @@ local config = {
 		successrate = 80,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":200, \"value\":3, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":220, \"value\":3, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[1002] = { 
 		ID = 1002,
@@ -184,7 +184,7 @@ local config = {
 		successrate = 70,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":200, \"value\":6, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":220, \"value\":6, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[1003] = { 
 		ID = 1003,
@@ -194,7 +194,7 @@ local config = {
 		successrate = 60,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":200, \"value\":9, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":220, \"value\":9, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[1004] = { 
 		ID = 1004,
@@ -204,7 +204,7 @@ local config = {
 		successrate = 55,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":200, \"value\":12, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":220, \"value\":12, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[1005] = { 
 		ID = 1005,
@@ -214,7 +214,7 @@ local config = {
 		successrate = 50,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":200, \"value\":15, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":220, \"value\":15, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[1006] = { 
 		ID = 1006,
@@ -224,7 +224,7 @@ local config = {
 		successrate = 45,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":200, \"value\":19, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":220, \"value\":19, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[1007] = { 
 		ID = 1007,
@@ -234,7 +234,7 @@ local config = {
 		successrate = 40,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":200, \"value\":23, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":220, \"value\":23, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[1008] = { 
 		ID = 1008,
@@ -244,7 +244,7 @@ local config = {
 		successrate = 35,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":200, \"value\":27, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":220, \"value\":27, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[1009] = { 
 		ID = 1009,
@@ -254,7 +254,7 @@ local config = {
 		successrate = 30,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":200, \"value\":31, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":220, \"value\":31, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[1010] = { 
 		ID = 1010,
@@ -264,7 +264,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":200, \"value\":35, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":220, \"value\":35, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[1011] = { 
 		ID = 1011,
@@ -274,7 +274,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":200, \"value\":40, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":220, \"value\":40, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[1012] = { 
 		ID = 1012,
@@ -284,7 +284,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":200, \"value\":45, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":220, \"value\":45, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[1013] = { 
 		ID = 1013,
@@ -294,7 +294,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":200, \"value\":50, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":220, \"value\":50, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[1014] = { 
 		ID = 1014,
@@ -304,7 +304,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":200, \"value\":60, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":220, \"value\":60, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[1015] = { 
 		ID = 1015,
@@ -314,7 +314,7 @@ local config = {
 		successrate = 0,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":200, \"value\":70, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":220, \"value\":70, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[3000] = { 
 		ID = 3000,
@@ -333,7 +333,7 @@ local config = {
 		successrate = 80,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":200, \"value\":3, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":220, \"value\":3, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[3002] = { 
 		ID = 3002,
@@ -343,7 +343,7 @@ local config = {
 		successrate = 70,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":200, \"value\":6, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":220, \"value\":6, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[3003] = { 
 		ID = 3003,
@@ -353,7 +353,7 @@ local config = {
 		successrate = 60,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":200, \"value\":9, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":220, \"value\":9, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[3004] = { 
 		ID = 3004,
@@ -363,7 +363,7 @@ local config = {
 		successrate = 55,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":200, \"value\":12, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":220, \"value\":12, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[3005] = { 
 		ID = 3005,
@@ -373,7 +373,7 @@ local config = {
 		successrate = 50,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":200, \"value\":15, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":220, \"value\":15, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[3006] = { 
 		ID = 3006,
@@ -383,7 +383,7 @@ local config = {
 		successrate = 45,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":200, \"value\":19, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":220, \"value\":19, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[3007] = { 
 		ID = 3007,
@@ -393,7 +393,7 @@ local config = {
 		successrate = 40,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":200, \"value\":23, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":220, \"value\":23, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[3008] = { 
 		ID = 3008,
@@ -403,7 +403,7 @@ local config = {
 		successrate = 35,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":200, \"value\":27, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":220, \"value\":27, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[3009] = { 
 		ID = 3009,
@@ -413,7 +413,7 @@ local config = {
 		successrate = 30,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":200, \"value\":31, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":220, \"value\":31, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[3010] = { 
 		ID = 3010,
@@ -423,7 +423,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":200, \"value\":35, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":220, \"value\":35, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[3011] = { 
 		ID = 3011,
@@ -433,7 +433,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":200, \"value\":40, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":220, \"value\":40, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[3012] = { 
 		ID = 3012,
@@ -443,7 +443,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":200, \"value\":45, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":220, \"value\":45, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[3013] = { 
 		ID = 3013,
@@ -453,7 +453,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":200, \"value\":50, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":220, \"value\":50, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[3014] = { 
 		ID = 3014,
@@ -463,7 +463,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":200, \"value\":60, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":220, \"value\":60, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[3015] = { 
 		ID = 3015,
@@ -473,7 +473,7 @@ local config = {
 		successrate = 0,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":200, \"value\":70, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":220, \"value\":70, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[4000] = { 
 		ID = 4000,
@@ -492,7 +492,7 @@ local config = {
 		successrate = 80,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":204, \"value\":3, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":224, \"value\":3, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[4002] = { 
 		ID = 4002,
@@ -502,7 +502,7 @@ local config = {
 		successrate = 70,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":204, \"value\":6, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":224, \"value\":6, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[4003] = { 
 		ID = 4003,
@@ -512,7 +512,7 @@ local config = {
 		successrate = 60,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":204, \"value\":9, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":224, \"value\":9, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[4004] = { 
 		ID = 4004,
@@ -522,7 +522,7 @@ local config = {
 		successrate = 55,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":204, \"value\":12, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":224, \"value\":12, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[4005] = { 
 		ID = 4005,
@@ -532,7 +532,7 @@ local config = {
 		successrate = 50,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":204, \"value\":15, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":224, \"value\":15, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[4006] = { 
 		ID = 4006,
@@ -542,7 +542,7 @@ local config = {
 		successrate = 45,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":204, \"value\":19, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":224, \"value\":19, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[4007] = { 
 		ID = 4007,
@@ -552,7 +552,7 @@ local config = {
 		successrate = 40,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":204, \"value\":23, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":224, \"value\":23, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[4008] = { 
 		ID = 4008,
@@ -562,7 +562,7 @@ local config = {
 		successrate = 35,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":204, \"value\":27, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":224, \"value\":27, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[4009] = { 
 		ID = 4009,
@@ -572,7 +572,7 @@ local config = {
 		successrate = 30,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":204, \"value\":31, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":224, \"value\":31, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[4010] = { 
 		ID = 4010,
@@ -582,7 +582,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":204, \"value\":35, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":224, \"value\":35, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[4011] = { 
 		ID = 4011,
@@ -592,7 +592,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":204, \"value\":40, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":224, \"value\":40, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[4012] = { 
 		ID = 4012,
@@ -602,7 +602,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":204, \"value\":45, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":224, \"value\":45, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[4013] = { 
 		ID = 4013,
@@ -612,7 +612,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":204, \"value\":50, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":224, \"value\":50, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[4014] = { 
 		ID = 4014,
@@ -622,7 +622,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":204, \"value\":60, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":224, \"value\":60, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[4015] = { 
 		ID = 4015,
@@ -632,7 +632,7 @@ local config = {
 		successrate = 0,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":204, \"value\":70, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":224, \"value\":70, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[5000] = { 
 		ID = 5000,
@@ -651,7 +651,7 @@ local config = {
 		successrate = 80,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":200, \"value\":3, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":220, \"value\":3, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[5002] = { 
 		ID = 5002,
@@ -661,7 +661,7 @@ local config = {
 		successrate = 70,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":200, \"value\":6, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":220, \"value\":6, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[5003] = { 
 		ID = 5003,
@@ -671,7 +671,7 @@ local config = {
 		successrate = 60,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":200, \"value\":9, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":220, \"value\":9, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[5004] = { 
 		ID = 5004,
@@ -681,7 +681,7 @@ local config = {
 		successrate = 55,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":200, \"value\":12, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":220, \"value\":12, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[5005] = { 
 		ID = 5005,
@@ -691,7 +691,7 @@ local config = {
 		successrate = 50,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":200, \"value\":15, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":220, \"value\":15, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[5006] = { 
 		ID = 5006,
@@ -701,7 +701,7 @@ local config = {
 		successrate = 45,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":200, \"value\":19, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":220, \"value\":19, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[5007] = { 
 		ID = 5007,
@@ -711,7 +711,7 @@ local config = {
 		successrate = 40,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":200, \"value\":23, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":220, \"value\":23, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[5008] = { 
 		ID = 5008,
@@ -721,7 +721,7 @@ local config = {
 		successrate = 35,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":200, \"value\":27, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":220, \"value\":27, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[5009] = { 
 		ID = 5009,
@@ -731,7 +731,7 @@ local config = {
 		successrate = 30,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":200, \"value\":31, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":220, \"value\":31, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[5010] = { 
 		ID = 5010,
@@ -741,7 +741,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":200, \"value\":35, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":220, \"value\":35, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[5011] = { 
 		ID = 5011,
@@ -751,7 +751,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":200, \"value\":40, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":220, \"value\":40, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[5012] = { 
 		ID = 5012,
@@ -761,7 +761,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":200, \"value\":45, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":220, \"value\":45, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[5013] = { 
 		ID = 5013,
@@ -771,7 +771,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":200, \"value\":50, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":220, \"value\":50, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[5014] = { 
 		ID = 5014,
@@ -781,7 +781,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":200, \"value\":60, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":220, \"value\":60, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[5015] = { 
 		ID = 5015,
@@ -791,7 +791,7 @@ local config = {
 		successrate = 0,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":200, \"value\":70, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":220, \"value\":70, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[6000] = { 
 		ID = 6000,
@@ -810,7 +810,7 @@ local config = {
 		successrate = 80,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":200, \"value\":3, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":220, \"value\":3, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[6002] = { 
 		ID = 6002,
@@ -820,7 +820,7 @@ local config = {
 		successrate = 70,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":200, \"value\":6, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":220, \"value\":6, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[6003] = { 
 		ID = 6003,
@@ -830,7 +830,7 @@ local config = {
 		successrate = 60,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":200, \"value\":9, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":220, \"value\":9, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[6004] = { 
 		ID = 6004,
@@ -840,7 +840,7 @@ local config = {
 		successrate = 55,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":200, \"value\":12, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":220, \"value\":12, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[6005] = { 
 		ID = 6005,
@@ -850,7 +850,7 @@ local config = {
 		successrate = 50,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":200, \"value\":15, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":220, \"value\":15, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[6006] = { 
 		ID = 6006,
@@ -860,7 +860,7 @@ local config = {
 		successrate = 45,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":200, \"value\":19, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":220, \"value\":19, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[6007] = { 
 		ID = 6007,
@@ -870,7 +870,7 @@ local config = {
 		successrate = 40,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":200, \"value\":23, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":220, \"value\":23, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[6008] = { 
 		ID = 6008,
@@ -880,7 +880,7 @@ local config = {
 		successrate = 35,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":200, \"value\":27, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":220, \"value\":27, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[6009] = { 
 		ID = 6009,
@@ -890,7 +890,7 @@ local config = {
 		successrate = 30,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":200, \"value\":31, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":220, \"value\":31, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[6010] = { 
 		ID = 6010,
@@ -900,7 +900,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":200, \"value\":35, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":220, \"value\":35, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[6011] = { 
 		ID = 6011,
@@ -910,7 +910,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":200, \"value\":40, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":220, \"value\":40, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[6012] = { 
 		ID = 6012,
@@ -920,7 +920,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":200, \"value\":45, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":220, \"value\":45, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[6013] = { 
 		ID = 6013,
@@ -930,7 +930,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":200, \"value\":50, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":220, \"value\":50, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[6014] = { 
 		ID = 6014,
@@ -940,7 +940,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":200, \"value\":60, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":220, \"value\":60, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[6015] = { 
 		ID = 6015,
@@ -950,7 +950,7 @@ local config = {
 		successrate = 0,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":200, \"value\":70, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":220, \"value\":70, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[7000] = { 
 		ID = 7000,
@@ -969,7 +969,7 @@ local config = {
 		successrate = 80,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":200, \"value\":3, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":220, \"value\":3, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[7002] = { 
 		ID = 7002,
@@ -979,7 +979,7 @@ local config = {
 		successrate = 70,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":200, \"value\":6, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":220, \"value\":6, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[7003] = { 
 		ID = 7003,
@@ -989,7 +989,7 @@ local config = {
 		successrate = 60,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":200, \"value\":9, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":220, \"value\":9, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[7004] = { 
 		ID = 7004,
@@ -999,7 +999,7 @@ local config = {
 		successrate = 55,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":200, \"value\":12, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":220, \"value\":12, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[7005] = { 
 		ID = 7005,
@@ -1009,7 +1009,7 @@ local config = {
 		successrate = 50,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":200, \"value\":15, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":220, \"value\":15, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[7006] = { 
 		ID = 7006,
@@ -1019,7 +1019,7 @@ local config = {
 		successrate = 45,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":200, \"value\":19, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":220, \"value\":19, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[7007] = { 
 		ID = 7007,
@@ -1029,7 +1029,7 @@ local config = {
 		successrate = 40,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":200, \"value\":23, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":220, \"value\":23, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[7008] = { 
 		ID = 7008,
@@ -1039,7 +1039,7 @@ local config = {
 		successrate = 35,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":200, \"value\":27, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":220, \"value\":27, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[7009] = { 
 		ID = 7009,
@@ -1049,7 +1049,7 @@ local config = {
 		successrate = 30,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":200, \"value\":31, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":220, \"value\":31, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[7010] = { 
 		ID = 7010,
@@ -1059,7 +1059,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":200, \"value\":35, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":220, \"value\":35, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[7011] = { 
 		ID = 7011,
@@ -1069,7 +1069,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":200, \"value\":40, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":220, \"value\":40, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[7012] = { 
 		ID = 7012,
@@ -1079,7 +1079,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":200, \"value\":45, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":220, \"value\":45, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[7013] = { 
 		ID = 7013,
@@ -1089,7 +1089,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":200, \"value\":50, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":220, \"value\":50, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[7014] = { 
 		ID = 7014,
@@ -1099,7 +1099,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":200, \"value\":60, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":220, \"value\":60, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[7015] = { 
 		ID = 7015,
@@ -1109,7 +1109,7 @@ local config = {
 		successrate = 0,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":200, \"value\":70, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":220, \"value\":70, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[8000] = { 
 		ID = 8000,
@@ -1128,7 +1128,7 @@ local config = {
 		successrate = 80,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":200, \"value\":3, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":220, \"value\":3, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[8002] = { 
 		ID = 8002,
@@ -1138,7 +1138,7 @@ local config = {
 		successrate = 70,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":200, \"value\":6, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":220, \"value\":6, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[8003] = { 
 		ID = 8003,
@@ -1148,7 +1148,7 @@ local config = {
 		successrate = 60,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":200, \"value\":9, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":220, \"value\":9, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[8004] = { 
 		ID = 8004,
@@ -1158,7 +1158,7 @@ local config = {
 		successrate = 55,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":200, \"value\":12, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":220, \"value\":12, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[8005] = { 
 		ID = 8005,
@@ -1168,7 +1168,7 @@ local config = {
 		successrate = 50,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":200, \"value\":15, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":220, \"value\":15, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[8006] = { 
 		ID = 8006,
@@ -1178,7 +1178,7 @@ local config = {
 		successrate = 45,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":200, \"value\":19, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":220, \"value\":19, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[8007] = { 
 		ID = 8007,
@@ -1188,7 +1188,7 @@ local config = {
 		successrate = 40,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":200, \"value\":23, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":220, \"value\":23, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[8008] = { 
 		ID = 8008,
@@ -1198,7 +1198,7 @@ local config = {
 		successrate = 35,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":200, \"value\":27, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":220, \"value\":27, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[8009] = { 
 		ID = 8009,
@@ -1208,7 +1208,7 @@ local config = {
 		successrate = 30,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":200, \"value\":31, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":220, \"value\":31, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[8010] = { 
 		ID = 8010,
@@ -1218,7 +1218,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":200, \"value\":35, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":220, \"value\":35, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[8011] = { 
 		ID = 8011,
@@ -1228,7 +1228,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":200, \"value\":40, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":220, \"value\":40, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[8012] = { 
 		ID = 8012,
@@ -1238,7 +1238,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":200, \"value\":45, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":220, \"value\":45, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[8013] = { 
 		ID = 8013,
@@ -1248,7 +1248,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":200, \"value\":50, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":220, \"value\":50, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[8014] = { 
 		ID = 8014,
@@ -1258,7 +1258,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":200, \"value\":60, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":220, \"value\":60, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[8015] = { 
 		ID = 8015,
@@ -1268,7 +1268,7 @@ local config = {
 		successrate = 0,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":200, \"value\":70, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":220, \"value\":70, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[10000] = { 
 		ID = 10000,
@@ -1287,7 +1287,7 @@ local config = {
 		successrate = 80,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":203, \"value\":3, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":223, \"value\":3, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[10002] = { 
 		ID = 10002,
@@ -1297,7 +1297,7 @@ local config = {
 		successrate = 70,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":203, \"value\":6, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":223, \"value\":6, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[10003] = { 
 		ID = 10003,
@@ -1307,7 +1307,7 @@ local config = {
 		successrate = 60,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":203, \"value\":9, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":223, \"value\":9, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[10004] = { 
 		ID = 10004,
@@ -1317,7 +1317,7 @@ local config = {
 		successrate = 55,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":203, \"value\":12, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":223, \"value\":12, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[10005] = { 
 		ID = 10005,
@@ -1327,7 +1327,7 @@ local config = {
 		successrate = 50,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":203, \"value\":15, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":223, \"value\":15, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[10006] = { 
 		ID = 10006,
@@ -1337,7 +1337,7 @@ local config = {
 		successrate = 45,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":203, \"value\":19, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":223, \"value\":19, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[10007] = { 
 		ID = 10007,
@@ -1347,7 +1347,7 @@ local config = {
 		successrate = 40,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":203, \"value\":23, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":223, \"value\":23, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[10008] = { 
 		ID = 10008,
@@ -1357,7 +1357,7 @@ local config = {
 		successrate = 35,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":203, \"value\":27, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":223, \"value\":27, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[10009] = { 
 		ID = 10009,
@@ -1367,7 +1367,7 @@ local config = {
 		successrate = 30,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":203, \"value\":31, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":223, \"value\":31, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[10010] = { 
 		ID = 10010,
@@ -1377,7 +1377,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":203, \"value\":35, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":223, \"value\":35, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[10011] = { 
 		ID = 10011,
@@ -1387,7 +1387,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":203, \"value\":40, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":223, \"value\":40, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[10012] = { 
 		ID = 10012,
@@ -1397,7 +1397,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":203, \"value\":45, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":223, \"value\":45, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[10013] = { 
 		ID = 10013,
@@ -1407,7 +1407,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":203, \"value\":50, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":223, \"value\":50, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[10014] = { 
 		ID = 10014,
@@ -1417,7 +1417,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":203, \"value\":60, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":223, \"value\":60, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[10015] = { 
 		ID = 10015,
@@ -1427,7 +1427,7 @@ local config = {
 		successrate = 0,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":203, \"value\":70, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":223, \"value\":70, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[11000] = { 
 		ID = 11000,
@@ -1446,7 +1446,7 @@ local config = {
 		successrate = 80,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":204, \"value\":3, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":224, \"value\":3, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[11002] = { 
 		ID = 11002,
@@ -1456,7 +1456,7 @@ local config = {
 		successrate = 70,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":204, \"value\":6, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":224, \"value\":6, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[11003] = { 
 		ID = 11003,
@@ -1466,7 +1466,7 @@ local config = {
 		successrate = 60,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":204, \"value\":9, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":224, \"value\":9, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[11004] = { 
 		ID = 11004,
@@ -1476,7 +1476,7 @@ local config = {
 		successrate = 55,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":204, \"value\":12, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":224, \"value\":12, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[11005] = { 
 		ID = 11005,
@@ -1486,7 +1486,7 @@ local config = {
 		successrate = 50,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":204, \"value\":15, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":224, \"value\":15, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[11006] = { 
 		ID = 11006,
@@ -1496,7 +1496,7 @@ local config = {
 		successrate = 45,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":204, \"value\":19, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":224, \"value\":19, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[11007] = { 
 		ID = 11007,
@@ -1506,7 +1506,7 @@ local config = {
 		successrate = 40,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":204, \"value\":23, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":224, \"value\":23, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[11008] = { 
 		ID = 11008,
@@ -1516,7 +1516,7 @@ local config = {
 		successrate = 35,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":204, \"value\":27, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":224, \"value\":27, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[11009] = { 
 		ID = 11009,
@@ -1526,7 +1526,7 @@ local config = {
 		successrate = 30,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":204, \"value\":31, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":224, \"value\":31, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[11010] = { 
 		ID = 11010,
@@ -1536,7 +1536,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":204, \"value\":35, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":224, \"value\":35, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[11011] = { 
 		ID = 11011,
@@ -1546,7 +1546,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":204, \"value\":40, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":224, \"value\":40, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[11012] = { 
 		ID = 11012,
@@ -1556,7 +1556,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":204, \"value\":45, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":224, \"value\":45, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[11013] = { 
 		ID = 11013,
@@ -1566,7 +1566,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":204, \"value\":50, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":224, \"value\":50, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[11014] = { 
 		ID = 11014,
@@ -1576,7 +1576,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":204, \"value\":60, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":224, \"value\":60, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[11015] = { 
 		ID = 11015,
@@ -1586,7 +1586,7 @@ local config = {
 		successrate = 0,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":204, \"value\":70, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":224, \"value\":70, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[100000] = { 
 		ID = 100000,
@@ -1605,7 +1605,7 @@ local config = {
 		successrate = 80,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":203, \"value\":3, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":223, \"value\":3, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[100002] = { 
 		ID = 100002,
@@ -1615,7 +1615,7 @@ local config = {
 		successrate = 70,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":203, \"value\":6, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":223, \"value\":6, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[100003] = { 
 		ID = 100003,
@@ -1625,7 +1625,7 @@ local config = {
 		successrate = 60,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":203, \"value\":9, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":223, \"value\":9, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[100004] = { 
 		ID = 100004,
@@ -1635,7 +1635,7 @@ local config = {
 		successrate = 55,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":203, \"value\":12, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":223, \"value\":12, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[100005] = { 
 		ID = 100005,
@@ -1645,7 +1645,7 @@ local config = {
 		successrate = 50,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":203, \"value\":15, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":223, \"value\":15, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[100006] = { 
 		ID = 100006,
@@ -1655,7 +1655,7 @@ local config = {
 		successrate = 45,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":203, \"value\":19, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":223, \"value\":19, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[100007] = { 
 		ID = 100007,
@@ -1665,7 +1665,7 @@ local config = {
 		successrate = 40,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":203, \"value\":23, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":223, \"value\":23, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[100008] = { 
 		ID = 100008,
@@ -1675,7 +1675,7 @@ local config = {
 		successrate = 35,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":203, \"value\":27, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":223, \"value\":27, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[100009] = { 
 		ID = 100009,
@@ -1685,7 +1685,7 @@ local config = {
 		successrate = 30,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":203, \"value\":31, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":223, \"value\":31, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[100010] = { 
 		ID = 100010,
@@ -1695,7 +1695,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":203, \"value\":35, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":223, \"value\":35, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[100011] = { 
 		ID = 100011,
@@ -1705,7 +1705,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":203, \"value\":40, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":223, \"value\":40, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[100012] = { 
 		ID = 100012,
@@ -1715,7 +1715,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":203, \"value\":45, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":223, \"value\":45, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[100013] = { 
 		ID = 100013,
@@ -1725,7 +1725,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":203, \"value\":50, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":223, \"value\":50, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[100014] = { 
 		ID = 100014,
@@ -1735,7 +1735,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":203, \"value\":60, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":223, \"value\":60, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[100015] = { 
 		ID = 100015,
@@ -1745,7 +1745,7 @@ local config = {
 		successrate = 0,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":203, \"value\":70, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":223, \"value\":70, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[101000] = { 
 		ID = 101000,
@@ -1764,7 +1764,7 @@ local config = {
 		successrate = 80,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":201, \"value\":3, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":221, \"value\":3, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[101002] = { 
 		ID = 101002,
@@ -1774,7 +1774,7 @@ local config = {
 		successrate = 70,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":201, \"value\":6, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":221, \"value\":6, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[101003] = { 
 		ID = 101003,
@@ -1784,7 +1784,7 @@ local config = {
 		successrate = 60,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":201, \"value\":9, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":221, \"value\":9, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[101004] = { 
 		ID = 101004,
@@ -1794,7 +1794,7 @@ local config = {
 		successrate = 55,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":201, \"value\":12, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":221, \"value\":12, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[101005] = { 
 		ID = 101005,
@@ -1804,7 +1804,7 @@ local config = {
 		successrate = 50,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":201, \"value\":15, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":221, \"value\":15, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[101006] = { 
 		ID = 101006,
@@ -1814,7 +1814,7 @@ local config = {
 		successrate = 45,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":201, \"value\":19, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":221, \"value\":19, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[101007] = { 
 		ID = 101007,
@@ -1824,7 +1824,7 @@ local config = {
 		successrate = 40,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":201, \"value\":23, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":221, \"value\":23, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[101008] = { 
 		ID = 101008,
@@ -1834,7 +1834,7 @@ local config = {
 		successrate = 35,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":201, \"value\":27, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":221, \"value\":27, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[101009] = { 
 		ID = 101009,
@@ -1844,7 +1844,7 @@ local config = {
 		successrate = 30,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":201, \"value\":31, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":221, \"value\":31, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[101010] = { 
 		ID = 101010,
@@ -1854,7 +1854,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":201, \"value\":35, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":221, \"value\":35, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[101011] = { 
 		ID = 101011,
@@ -1864,7 +1864,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":201, \"value\":40, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":221, \"value\":40, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[101012] = { 
 		ID = 101012,
@@ -1874,7 +1874,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":201, \"value\":45, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":221, \"value\":45, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[101013] = { 
 		ID = 101013,
@@ -1884,7 +1884,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":201, \"value\":50, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":221, \"value\":50, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[101014] = { 
 		ID = 101014,
@@ -1894,7 +1894,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":201, \"value\":60, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":221, \"value\":60, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[101015] = { 
 		ID = 101015,
@@ -1904,7 +1904,7 @@ local config = {
 		successrate = 0,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":201, \"value\":70, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":221, \"value\":70, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[103000] = { 
 		ID = 103000,
@@ -1923,7 +1923,7 @@ local config = {
 		successrate = 80,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":201, \"value\":3, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":221, \"value\":3, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[103002] = { 
 		ID = 103002,
@@ -1933,7 +1933,7 @@ local config = {
 		successrate = 70,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":201, \"value\":6, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":221, \"value\":6, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[103003] = { 
 		ID = 103003,
@@ -1943,7 +1943,7 @@ local config = {
 		successrate = 60,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":201, \"value\":9, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":221, \"value\":9, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[103004] = { 
 		ID = 103004,
@@ -1953,7 +1953,7 @@ local config = {
 		successrate = 55,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":201, \"value\":12, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":221, \"value\":12, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[103005] = { 
 		ID = 103005,
@@ -1963,7 +1963,7 @@ local config = {
 		successrate = 50,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":201, \"value\":15, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":221, \"value\":15, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[103006] = { 
 		ID = 103006,
@@ -1973,7 +1973,7 @@ local config = {
 		successrate = 45,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":201, \"value\":19, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":221, \"value\":19, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[103007] = { 
 		ID = 103007,
@@ -1983,7 +1983,7 @@ local config = {
 		successrate = 40,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":201, \"value\":23, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":221, \"value\":23, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[103008] = { 
 		ID = 103008,
@@ -1993,7 +1993,7 @@ local config = {
 		successrate = 35,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":201, \"value\":27, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":221, \"value\":27, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[103009] = { 
 		ID = 103009,
@@ -2003,7 +2003,7 @@ local config = {
 		successrate = 30,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":201, \"value\":31, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":221, \"value\":31, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[103010] = { 
 		ID = 103010,
@@ -2013,7 +2013,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":201, \"value\":35, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":221, \"value\":35, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[103011] = { 
 		ID = 103011,
@@ -2023,7 +2023,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":201, \"value\":40, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":221, \"value\":40, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[103012] = { 
 		ID = 103012,
@@ -2033,7 +2033,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":201, \"value\":45, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":221, \"value\":45, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[103013] = { 
 		ID = 103013,
@@ -2043,7 +2043,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":201, \"value\":50, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":221, \"value\":50, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[103014] = { 
 		ID = 103014,
@@ -2053,7 +2053,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":201, \"value\":60, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":221, \"value\":60, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[103015] = { 
 		ID = 103015,
@@ -2063,7 +2063,7 @@ local config = {
 		successrate = 0,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":201, \"value\":70, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":221, \"value\":70, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[104000] = { 
 		ID = 104000,
@@ -2082,7 +2082,7 @@ local config = {
 		successrate = 80,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":204, \"value\":3, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":224, \"value\":3, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[104002] = { 
 		ID = 104002,
@@ -2092,7 +2092,7 @@ local config = {
 		successrate = 70,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":204, \"value\":6, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":224, \"value\":6, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[104003] = { 
 		ID = 104003,
@@ -2102,7 +2102,7 @@ local config = {
 		successrate = 60,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":204, \"value\":9, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":224, \"value\":9, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[104004] = { 
 		ID = 104004,
@@ -2112,7 +2112,7 @@ local config = {
 		successrate = 55,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":204, \"value\":12, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":224, \"value\":12, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[104005] = { 
 		ID = 104005,
@@ -2122,7 +2122,7 @@ local config = {
 		successrate = 50,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":204, \"value\":15, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":224, \"value\":15, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[104006] = { 
 		ID = 104006,
@@ -2132,7 +2132,7 @@ local config = {
 		successrate = 45,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":204, \"value\":19, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":224, \"value\":19, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[104007] = { 
 		ID = 104007,
@@ -2142,7 +2142,7 @@ local config = {
 		successrate = 40,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":204, \"value\":23, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":224, \"value\":23, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[104008] = { 
 		ID = 104008,
@@ -2152,7 +2152,7 @@ local config = {
 		successrate = 35,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":204, \"value\":27, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":224, \"value\":27, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[104009] = { 
 		ID = 104009,
@@ -2162,7 +2162,7 @@ local config = {
 		successrate = 30,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":204, \"value\":31, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":224, \"value\":31, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[104010] = { 
 		ID = 104010,
@@ -2172,7 +2172,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":204, \"value\":35, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":224, \"value\":35, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[104011] = { 
 		ID = 104011,
@@ -2182,7 +2182,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":204, \"value\":40, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":224, \"value\":40, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[104012] = { 
 		ID = 104012,
@@ -2192,7 +2192,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":204, \"value\":45, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":224, \"value\":45, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[104013] = { 
 		ID = 104013,
@@ -2202,7 +2202,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":204, \"value\":50, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":224, \"value\":50, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[104014] = { 
 		ID = 104014,
@@ -2212,7 +2212,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":204, \"value\":60, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":224, \"value\":60, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[104015] = { 
 		ID = 104015,
@@ -2222,7 +2222,7 @@ local config = {
 		successrate = 0,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":204, \"value\":70, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":224, \"value\":70, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[105000] = { 
 		ID = 105000,
@@ -2241,7 +2241,7 @@ local config = {
 		successrate = 80,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":201, \"value\":3, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":221, \"value\":3, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[105002] = { 
 		ID = 105002,
@@ -2251,7 +2251,7 @@ local config = {
 		successrate = 70,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":201, \"value\":6, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":221, \"value\":6, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[105003] = { 
 		ID = 105003,
@@ -2261,7 +2261,7 @@ local config = {
 		successrate = 60,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":201, \"value\":9, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":221, \"value\":9, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[105004] = { 
 		ID = 105004,
@@ -2271,7 +2271,7 @@ local config = {
 		successrate = 55,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":201, \"value\":12, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":221, \"value\":12, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[105005] = { 
 		ID = 105005,
@@ -2281,7 +2281,7 @@ local config = {
 		successrate = 50,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":201, \"value\":15, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":221, \"value\":15, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[105006] = { 
 		ID = 105006,
@@ -2291,7 +2291,7 @@ local config = {
 		successrate = 45,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":201, \"value\":19, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":221, \"value\":19, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[105007] = { 
 		ID = 105007,
@@ -2301,7 +2301,7 @@ local config = {
 		successrate = 40,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":201, \"value\":23, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":221, \"value\":23, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[105008] = { 
 		ID = 105008,
@@ -2311,7 +2311,7 @@ local config = {
 		successrate = 35,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":201, \"value\":27, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":221, \"value\":27, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[105009] = { 
 		ID = 105009,
@@ -2321,7 +2321,7 @@ local config = {
 		successrate = 30,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":201, \"value\":31, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":221, \"value\":31, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[105010] = { 
 		ID = 105010,
@@ -2331,7 +2331,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":201, \"value\":35, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":221, \"value\":35, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[105011] = { 
 		ID = 105011,
@@ -2341,7 +2341,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":201, \"value\":40, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":221, \"value\":40, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[105012] = { 
 		ID = 105012,
@@ -2351,7 +2351,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":201, \"value\":45, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":221, \"value\":45, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[105013] = { 
 		ID = 105013,
@@ -2361,7 +2361,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":201, \"value\":50, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":221, \"value\":50, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[105014] = { 
 		ID = 105014,
@@ -2371,7 +2371,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":201, \"value\":60, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":221, \"value\":60, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[105015] = { 
 		ID = 105015,
@@ -2381,7 +2381,7 @@ local config = {
 		successrate = 0,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":201, \"value\":70, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":221, \"value\":70, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[106000] = { 
 		ID = 106000,
@@ -2400,7 +2400,7 @@ local config = {
 		successrate = 80,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":201, \"value\":3, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":221, \"value\":3, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[106002] = { 
 		ID = 106002,
@@ -2410,7 +2410,7 @@ local config = {
 		successrate = 70,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":201, \"value\":6, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":221, \"value\":6, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[106003] = { 
 		ID = 106003,
@@ -2420,7 +2420,7 @@ local config = {
 		successrate = 60,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":201, \"value\":9, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":221, \"value\":9, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[106004] = { 
 		ID = 106004,
@@ -2430,7 +2430,7 @@ local config = {
 		successrate = 55,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":201, \"value\":12, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":221, \"value\":12, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[106005] = { 
 		ID = 106005,
@@ -2440,7 +2440,7 @@ local config = {
 		successrate = 50,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":201, \"value\":15, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":221, \"value\":15, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[106006] = { 
 		ID = 106006,
@@ -2450,7 +2450,7 @@ local config = {
 		successrate = 45,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":201, \"value\":19, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":221, \"value\":19, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[106007] = { 
 		ID = 106007,
@@ -2460,7 +2460,7 @@ local config = {
 		successrate = 40,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":201, \"value\":23, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":221, \"value\":23, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[106008] = { 
 		ID = 106008,
@@ -2470,7 +2470,7 @@ local config = {
 		successrate = 35,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":201, \"value\":27, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":221, \"value\":27, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[106009] = { 
 		ID = 106009,
@@ -2480,7 +2480,7 @@ local config = {
 		successrate = 30,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":201, \"value\":31, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":221, \"value\":31, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[106010] = { 
 		ID = 106010,
@@ -2490,7 +2490,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":201, \"value\":35, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":221, \"value\":35, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[106011] = { 
 		ID = 106011,
@@ -2500,7 +2500,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":201, \"value\":40, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":221, \"value\":40, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[106012] = { 
 		ID = 106012,
@@ -2510,7 +2510,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":201, \"value\":45, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":221, \"value\":45, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[106013] = { 
 		ID = 106013,
@@ -2520,7 +2520,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":201, \"value\":50, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":221, \"value\":50, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[106014] = { 
 		ID = 106014,
@@ -2530,7 +2530,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":201, \"value\":60, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":221, \"value\":60, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[106015] = { 
 		ID = 106015,
@@ -2540,7 +2540,7 @@ local config = {
 		successrate = 0,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":201, \"value\":70, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":221, \"value\":70, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[107000] = { 
 		ID = 107000,
@@ -2559,7 +2559,7 @@ local config = {
 		successrate = 80,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":201, \"value\":3, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":221, \"value\":3, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[107002] = { 
 		ID = 107002,
@@ -2569,7 +2569,7 @@ local config = {
 		successrate = 70,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":201, \"value\":6, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":221, \"value\":6, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[107003] = { 
 		ID = 107003,
@@ -2579,7 +2579,7 @@ local config = {
 		successrate = 60,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":201, \"value\":9, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":221, \"value\":9, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[107004] = { 
 		ID = 107004,
@@ -2589,7 +2589,7 @@ local config = {
 		successrate = 55,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":201, \"value\":12, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":221, \"value\":12, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[107005] = { 
 		ID = 107005,
@@ -2599,7 +2599,7 @@ local config = {
 		successrate = 50,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":201, \"value\":15, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":221, \"value\":15, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[107006] = { 
 		ID = 107006,
@@ -2609,7 +2609,7 @@ local config = {
 		successrate = 45,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":201, \"value\":19, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":221, \"value\":19, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[107007] = { 
 		ID = 107007,
@@ -2619,7 +2619,7 @@ local config = {
 		successrate = 40,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":201, \"value\":23, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":221, \"value\":23, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[107008] = { 
 		ID = 107008,
@@ -2629,7 +2629,7 @@ local config = {
 		successrate = 35,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":201, \"value\":27, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":221, \"value\":27, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[107009] = { 
 		ID = 107009,
@@ -2639,7 +2639,7 @@ local config = {
 		successrate = 30,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":201, \"value\":31, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":221, \"value\":31, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[107010] = { 
 		ID = 107010,
@@ -2649,7 +2649,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":201, \"value\":35, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":221, \"value\":35, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[107011] = { 
 		ID = 107011,
@@ -2659,7 +2659,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":201, \"value\":40, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":221, \"value\":40, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[107012] = { 
 		ID = 107012,
@@ -2669,7 +2669,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":201, \"value\":45, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":221, \"value\":45, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[107013] = { 
 		ID = 107013,
@@ -2679,7 +2679,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":201, \"value\":50, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":221, \"value\":50, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[107014] = { 
 		ID = 107014,
@@ -2689,7 +2689,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":201, \"value\":60, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":221, \"value\":60, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[107015] = { 
 		ID = 107015,
@@ -2699,7 +2699,7 @@ local config = {
 		successrate = 0,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":201, \"value\":70, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":221, \"value\":70, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[108000] = { 
 		ID = 108000,
@@ -2718,7 +2718,7 @@ local config = {
 		successrate = 80,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":201, \"value\":3, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":221, \"value\":3, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[108002] = { 
 		ID = 108002,
@@ -2728,7 +2728,7 @@ local config = {
 		successrate = 70,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":201, \"value\":6, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":221, \"value\":6, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[108003] = { 
 		ID = 108003,
@@ -2738,7 +2738,7 @@ local config = {
 		successrate = 60,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":201, \"value\":9, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":221, \"value\":9, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[108004] = { 
 		ID = 108004,
@@ -2748,7 +2748,7 @@ local config = {
 		successrate = 55,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":201, \"value\":12, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":221, \"value\":12, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[108005] = { 
 		ID = 108005,
@@ -2758,7 +2758,7 @@ local config = {
 		successrate = 50,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":201, \"value\":15, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":221, \"value\":15, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[108006] = { 
 		ID = 108006,
@@ -2768,7 +2768,7 @@ local config = {
 		successrate = 45,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":201, \"value\":19, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":221, \"value\":19, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[108007] = { 
 		ID = 108007,
@@ -2778,7 +2778,7 @@ local config = {
 		successrate = 40,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":201, \"value\":23, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":221, \"value\":23, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[108008] = { 
 		ID = 108008,
@@ -2788,7 +2788,7 @@ local config = {
 		successrate = 35,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":201, \"value\":27, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":221, \"value\":27, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[108009] = { 
 		ID = 108009,
@@ -2798,7 +2798,7 @@ local config = {
 		successrate = 30,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":201, \"value\":31, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":221, \"value\":31, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[108010] = { 
 		ID = 108010,
@@ -2808,7 +2808,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":201, \"value\":35, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":221, \"value\":35, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[108011] = { 
 		ID = 108011,
@@ -2818,7 +2818,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":201, \"value\":40, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":221, \"value\":40, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[108012] = { 
 		ID = 108012,
@@ -2828,7 +2828,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":201, \"value\":45, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":221, \"value\":45, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[108013] = { 
 		ID = 108013,
@@ -2838,7 +2838,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":201, \"value\":50, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":221, \"value\":50, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[108014] = { 
 		ID = 108014,
@@ -2848,7 +2848,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":201, \"value\":60, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":221, \"value\":60, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[108015] = { 
 		ID = 108015,
@@ -2858,7 +2858,7 @@ local config = {
 		successrate = 0,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":201, \"value\":70, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":221, \"value\":70, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[110000] = { 
 		ID = 110000,
@@ -2877,7 +2877,7 @@ local config = {
 		successrate = 80,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":203, \"value\":3, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":223, \"value\":3, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[110002] = { 
 		ID = 110002,
@@ -2887,7 +2887,7 @@ local config = {
 		successrate = 70,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":203, \"value\":6, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":223, \"value\":6, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[110003] = { 
 		ID = 110003,
@@ -2897,7 +2897,7 @@ local config = {
 		successrate = 60,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":203, \"value\":9, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":223, \"value\":9, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[110004] = { 
 		ID = 110004,
@@ -2907,7 +2907,7 @@ local config = {
 		successrate = 55,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":203, \"value\":12, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":223, \"value\":12, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[110005] = { 
 		ID = 110005,
@@ -2917,7 +2917,7 @@ local config = {
 		successrate = 50,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":203, \"value\":15, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":223, \"value\":15, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[110006] = { 
 		ID = 110006,
@@ -2927,7 +2927,7 @@ local config = {
 		successrate = 45,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":203, \"value\":19, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":223, \"value\":19, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[110007] = { 
 		ID = 110007,
@@ -2937,7 +2937,7 @@ local config = {
 		successrate = 40,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":203, \"value\":23, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":223, \"value\":23, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[110008] = { 
 		ID = 110008,
@@ -2947,7 +2947,7 @@ local config = {
 		successrate = 35,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":203, \"value\":27, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":223, \"value\":27, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[110009] = { 
 		ID = 110009,
@@ -2957,7 +2957,7 @@ local config = {
 		successrate = 30,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":203, \"value\":31, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":223, \"value\":31, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[110010] = { 
 		ID = 110010,
@@ -2967,7 +2967,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":203, \"value\":35, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":223, \"value\":35, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[110011] = { 
 		ID = 110011,
@@ -2977,7 +2977,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":203, \"value\":40, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":223, \"value\":40, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[110012] = { 
 		ID = 110012,
@@ -2987,7 +2987,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":203, \"value\":45, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":223, \"value\":45, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[110013] = { 
 		ID = 110013,
@@ -2997,7 +2997,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":203, \"value\":50, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":223, \"value\":50, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[110014] = { 
 		ID = 110014,
@@ -3007,7 +3007,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":203, \"value\":60, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":223, \"value\":60, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[110015] = { 
 		ID = 110015,
@@ -3017,7 +3017,7 @@ local config = {
 		successrate = 0,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":203, \"value\":70, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":223, \"value\":70, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[111000] = { 
 		ID = 111000,
@@ -3036,7 +3036,7 @@ local config = {
 		successrate = 80,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":204, \"value\":3, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":224, \"value\":3, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[111002] = { 
 		ID = 111002,
@@ -3046,7 +3046,7 @@ local config = {
 		successrate = 70,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":204, \"value\":6, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":224, \"value\":6, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[111003] = { 
 		ID = 111003,
@@ -3056,7 +3056,7 @@ local config = {
 		successrate = 60,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":204, \"value\":9, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":224, \"value\":9, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[111004] = { 
 		ID = 111004,
@@ -3066,7 +3066,7 @@ local config = {
 		successrate = 55,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":204, \"value\":12, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":224, \"value\":12, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[111005] = { 
 		ID = 111005,
@@ -3076,7 +3076,7 @@ local config = {
 		successrate = 50,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":204, \"value\":15, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":224, \"value\":15, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[111006] = { 
 		ID = 111006,
@@ -3086,7 +3086,7 @@ local config = {
 		successrate = 45,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":204, \"value\":19, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":224, \"value\":19, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[111007] = { 
 		ID = 111007,
@@ -3096,7 +3096,7 @@ local config = {
 		successrate = 40,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":204, \"value\":23, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":224, \"value\":23, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[111008] = { 
 		ID = 111008,
@@ -3106,7 +3106,7 @@ local config = {
 		successrate = 35,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":204, \"value\":27, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":224, \"value\":27, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[111009] = { 
 		ID = 111009,
@@ -3116,7 +3116,7 @@ local config = {
 		successrate = 30,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":204, \"value\":31, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":224, \"value\":31, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[111010] = { 
 		ID = 111010,
@@ -3126,7 +3126,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":204, \"value\":35, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":224, \"value\":35, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[111011] = { 
 		ID = 111011,
@@ -3136,7 +3136,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":204, \"value\":40, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":224, \"value\":40, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[111012] = { 
 		ID = 111012,
@@ -3146,7 +3146,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":204, \"value\":45, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":224, \"value\":45, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[111013] = { 
 		ID = 111013,
@@ -3156,7 +3156,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":204, \"value\":50, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":224, \"value\":50, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[111014] = { 
 		ID = 111014,
@@ -3166,7 +3166,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":204, \"value\":60, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":224, \"value\":60, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[111015] = { 
 		ID = 111015,
@@ -3176,7 +3176,7 @@ local config = {
 		successrate = 0,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":204, \"value\":70, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":224, \"value\":70, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[200000] = { 
 		ID = 200000,
@@ -3195,7 +3195,7 @@ local config = {
 		successrate = 80,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":203, \"value\":3, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":223, \"value\":3, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[200002] = { 
 		ID = 200002,
@@ -3205,7 +3205,7 @@ local config = {
 		successrate = 70,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":203, \"value\":6, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":223, \"value\":6, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[200003] = { 
 		ID = 200003,
@@ -3215,7 +3215,7 @@ local config = {
 		successrate = 60,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":203, \"value\":9, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":223, \"value\":9, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[200004] = { 
 		ID = 200004,
@@ -3225,7 +3225,7 @@ local config = {
 		successrate = 55,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":203, \"value\":12, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":223, \"value\":12, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[200005] = { 
 		ID = 200005,
@@ -3235,7 +3235,7 @@ local config = {
 		successrate = 50,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":203, \"value\":15, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":223, \"value\":15, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[200006] = { 
 		ID = 200006,
@@ -3245,7 +3245,7 @@ local config = {
 		successrate = 45,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":203, \"value\":19, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":223, \"value\":19, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[200007] = { 
 		ID = 200007,
@@ -3255,7 +3255,7 @@ local config = {
 		successrate = 40,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":203, \"value\":23, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":223, \"value\":23, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[200008] = { 
 		ID = 200008,
@@ -3265,7 +3265,7 @@ local config = {
 		successrate = 35,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":203, \"value\":27, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":223, \"value\":27, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[200009] = { 
 		ID = 200009,
@@ -3275,7 +3275,7 @@ local config = {
 		successrate = 30,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":203, \"value\":31, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":223, \"value\":31, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[200010] = { 
 		ID = 200010,
@@ -3285,7 +3285,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":203, \"value\":35, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":223, \"value\":35, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[200011] = { 
 		ID = 200011,
@@ -3295,7 +3295,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":203, \"value\":40, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":223, \"value\":40, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[200012] = { 
 		ID = 200012,
@@ -3305,7 +3305,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":203, \"value\":45, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":223, \"value\":45, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[200013] = { 
 		ID = 200013,
@@ -3315,7 +3315,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":203, \"value\":50, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":223, \"value\":50, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[200014] = { 
 		ID = 200014,
@@ -3325,7 +3325,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":203, \"value\":60, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":223, \"value\":60, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[200015] = { 
 		ID = 200015,
@@ -3335,7 +3335,7 @@ local config = {
 		successrate = 0,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":203, \"value\":70, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":223, \"value\":70, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[201000] = { 
 		ID = 201000,
@@ -3354,7 +3354,7 @@ local config = {
 		successrate = 80,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":202, \"value\":3, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":222, \"value\":3, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[201002] = { 
 		ID = 201002,
@@ -3364,7 +3364,7 @@ local config = {
 		successrate = 70,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":202, \"value\":6, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":222, \"value\":6, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[201003] = { 
 		ID = 201003,
@@ -3374,7 +3374,7 @@ local config = {
 		successrate = 60,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":202, \"value\":9, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":222, \"value\":9, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[201004] = { 
 		ID = 201004,
@@ -3384,7 +3384,7 @@ local config = {
 		successrate = 55,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":202, \"value\":12, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":222, \"value\":12, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[201005] = { 
 		ID = 201005,
@@ -3394,7 +3394,7 @@ local config = {
 		successrate = 50,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":202, \"value\":15, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":222, \"value\":15, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[201006] = { 
 		ID = 201006,
@@ -3404,7 +3404,7 @@ local config = {
 		successrate = 45,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":202, \"value\":19, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":222, \"value\":19, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[201007] = { 
 		ID = 201007,
@@ -3414,7 +3414,7 @@ local config = {
 		successrate = 40,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":202, \"value\":23, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":222, \"value\":23, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[201008] = { 
 		ID = 201008,
@@ -3424,7 +3424,7 @@ local config = {
 		successrate = 35,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":202, \"value\":27, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":222, \"value\":27, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[201009] = { 
 		ID = 201009,
@@ -3434,7 +3434,7 @@ local config = {
 		successrate = 30,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":202, \"value\":31, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":222, \"value\":31, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[201010] = { 
 		ID = 201010,
@@ -3444,7 +3444,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":202, \"value\":35, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":222, \"value\":35, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[201011] = { 
 		ID = 201011,
@@ -3454,7 +3454,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":202, \"value\":40, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":222, \"value\":40, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[201012] = { 
 		ID = 201012,
@@ -3464,7 +3464,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":202, \"value\":45, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":222, \"value\":45, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[201013] = { 
 		ID = 201013,
@@ -3474,7 +3474,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":202, \"value\":50, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":222, \"value\":50, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[201014] = { 
 		ID = 201014,
@@ -3484,7 +3484,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":202, \"value\":60, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":222, \"value\":60, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[201015] = { 
 		ID = 201015,
@@ -3494,7 +3494,7 @@ local config = {
 		successrate = 0,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":202, \"value\":70, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":222, \"value\":70, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[203000] = { 
 		ID = 203000,
@@ -3513,7 +3513,7 @@ local config = {
 		successrate = 80,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":202, \"value\":3, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":222, \"value\":3, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[203002] = { 
 		ID = 203002,
@@ -3523,7 +3523,7 @@ local config = {
 		successrate = 70,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":202, \"value\":6, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":222, \"value\":6, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[203003] = { 
 		ID = 203003,
@@ -3533,7 +3533,7 @@ local config = {
 		successrate = 60,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":202, \"value\":9, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":222, \"value\":9, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[203004] = { 
 		ID = 203004,
@@ -3543,7 +3543,7 @@ local config = {
 		successrate = 55,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":202, \"value\":12, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":222, \"value\":12, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[203005] = { 
 		ID = 203005,
@@ -3553,7 +3553,7 @@ local config = {
 		successrate = 50,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":202, \"value\":15, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":222, \"value\":15, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[203006] = { 
 		ID = 203006,
@@ -3563,7 +3563,7 @@ local config = {
 		successrate = 45,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":202, \"value\":19, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":222, \"value\":19, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[203007] = { 
 		ID = 203007,
@@ -3573,7 +3573,7 @@ local config = {
 		successrate = 40,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":202, \"value\":23, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":222, \"value\":23, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[203008] = { 
 		ID = 203008,
@@ -3583,7 +3583,7 @@ local config = {
 		successrate = 35,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":202, \"value\":27, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":222, \"value\":27, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[203009] = { 
 		ID = 203009,
@@ -3593,7 +3593,7 @@ local config = {
 		successrate = 30,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":202, \"value\":31, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":222, \"value\":31, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[203010] = { 
 		ID = 203010,
@@ -3603,7 +3603,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":202, \"value\":35, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":222, \"value\":35, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[203011] = { 
 		ID = 203011,
@@ -3613,7 +3613,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":202, \"value\":40, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":222, \"value\":40, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[203012] = { 
 		ID = 203012,
@@ -3623,7 +3623,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":202, \"value\":45, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":222, \"value\":45, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[203013] = { 
 		ID = 203013,
@@ -3633,7 +3633,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":202, \"value\":50, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":222, \"value\":50, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[203014] = { 
 		ID = 203014,
@@ -3643,7 +3643,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":202, \"value\":60, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":222, \"value\":60, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[203015] = { 
 		ID = 203015,
@@ -3653,7 +3653,7 @@ local config = {
 		successrate = 0,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":202, \"value\":70, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":222, \"value\":70, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[204000] = { 
 		ID = 204000,
@@ -3672,7 +3672,7 @@ local config = {
 		successrate = 80,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":204, \"value\":3, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":224, \"value\":3, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[204002] = { 
 		ID = 204002,
@@ -3682,7 +3682,7 @@ local config = {
 		successrate = 70,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":204, \"value\":6, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":224, \"value\":6, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[204003] = { 
 		ID = 204003,
@@ -3692,7 +3692,7 @@ local config = {
 		successrate = 60,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":204, \"value\":9, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":224, \"value\":9, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[204004] = { 
 		ID = 204004,
@@ -3702,7 +3702,7 @@ local config = {
 		successrate = 55,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":204, \"value\":12, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":224, \"value\":12, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[204005] = { 
 		ID = 204005,
@@ -3712,7 +3712,7 @@ local config = {
 		successrate = 50,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":204, \"value\":15, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":224, \"value\":15, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[204006] = { 
 		ID = 204006,
@@ -3722,7 +3722,7 @@ local config = {
 		successrate = 45,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":204, \"value\":19, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":224, \"value\":19, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[204007] = { 
 		ID = 204007,
@@ -3732,7 +3732,7 @@ local config = {
 		successrate = 40,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":204, \"value\":23, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":224, \"value\":23, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[204008] = { 
 		ID = 204008,
@@ -3742,7 +3742,7 @@ local config = {
 		successrate = 35,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":204, \"value\":27, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":224, \"value\":27, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[204009] = { 
 		ID = 204009,
@@ -3752,7 +3752,7 @@ local config = {
 		successrate = 30,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":204, \"value\":31, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":224, \"value\":31, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[204010] = { 
 		ID = 204010,
@@ -3762,7 +3762,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":204, \"value\":35, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":224, \"value\":35, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[204011] = { 
 		ID = 204011,
@@ -3772,7 +3772,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":204, \"value\":40, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":224, \"value\":40, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[204012] = { 
 		ID = 204012,
@@ -3782,7 +3782,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":204, \"value\":45, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":224, \"value\":45, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[204013] = { 
 		ID = 204013,
@@ -3792,7 +3792,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":204, \"value\":50, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":224, \"value\":50, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[204014] = { 
 		ID = 204014,
@@ -3802,7 +3802,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":204, \"value\":60, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":224, \"value\":60, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[204015] = { 
 		ID = 204015,
@@ -3812,7 +3812,7 @@ local config = {
 		successrate = 0,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":204, \"value\":70, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":224, \"value\":70, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[205000] = { 
 		ID = 205000,
@@ -3831,7 +3831,7 @@ local config = {
 		successrate = 80,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":202, \"value\":3, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":222, \"value\":3, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[205002] = { 
 		ID = 205002,
@@ -3841,7 +3841,7 @@ local config = {
 		successrate = 70,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":202, \"value\":6, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":222, \"value\":6, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[205003] = { 
 		ID = 205003,
@@ -3851,7 +3851,7 @@ local config = {
 		successrate = 60,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":202, \"value\":9, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":222, \"value\":9, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[205004] = { 
 		ID = 205004,
@@ -3861,7 +3861,7 @@ local config = {
 		successrate = 55,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":202, \"value\":12, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":222, \"value\":12, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[205005] = { 
 		ID = 205005,
@@ -3871,7 +3871,7 @@ local config = {
 		successrate = 50,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":202, \"value\":15, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":222, \"value\":15, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[205006] = { 
 		ID = 205006,
@@ -3881,7 +3881,7 @@ local config = {
 		successrate = 45,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":202, \"value\":19, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":222, \"value\":19, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[205007] = { 
 		ID = 205007,
@@ -3891,7 +3891,7 @@ local config = {
 		successrate = 40,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":202, \"value\":23, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":222, \"value\":23, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[205008] = { 
 		ID = 205008,
@@ -3901,7 +3901,7 @@ local config = {
 		successrate = 35,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":202, \"value\":27, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":222, \"value\":27, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[205009] = { 
 		ID = 205009,
@@ -3911,7 +3911,7 @@ local config = {
 		successrate = 30,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":202, \"value\":31, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":222, \"value\":31, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[205010] = { 
 		ID = 205010,
@@ -3921,7 +3921,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":202, \"value\":35, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":222, \"value\":35, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[205011] = { 
 		ID = 205011,
@@ -3931,7 +3931,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":202, \"value\":40, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":222, \"value\":40, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[205012] = { 
 		ID = 205012,
@@ -3941,7 +3941,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":202, \"value\":45, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":222, \"value\":45, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[205013] = { 
 		ID = 205013,
@@ -3951,7 +3951,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":202, \"value\":50, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":222, \"value\":50, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[205014] = { 
 		ID = 205014,
@@ -3961,7 +3961,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":202, \"value\":60, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":222, \"value\":60, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[205015] = { 
 		ID = 205015,
@@ -3971,7 +3971,7 @@ local config = {
 		successrate = 0,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":202, \"value\":70, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":222, \"value\":70, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[206000] = { 
 		ID = 206000,
@@ -3990,7 +3990,7 @@ local config = {
 		successrate = 80,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":202, \"value\":3, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":222, \"value\":3, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[206002] = { 
 		ID = 206002,
@@ -4000,7 +4000,7 @@ local config = {
 		successrate = 70,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":202, \"value\":6, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":222, \"value\":6, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[206003] = { 
 		ID = 206003,
@@ -4010,7 +4010,7 @@ local config = {
 		successrate = 60,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":202, \"value\":9, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":222, \"value\":9, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[206004] = { 
 		ID = 206004,
@@ -4020,7 +4020,7 @@ local config = {
 		successrate = 55,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":202, \"value\":12, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":222, \"value\":12, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[206005] = { 
 		ID = 206005,
@@ -4030,7 +4030,7 @@ local config = {
 		successrate = 50,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":202, \"value\":15, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":222, \"value\":15, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[206006] = { 
 		ID = 206006,
@@ -4040,7 +4040,7 @@ local config = {
 		successrate = 45,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":202, \"value\":19, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":222, \"value\":19, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[206007] = { 
 		ID = 206007,
@@ -4050,7 +4050,7 @@ local config = {
 		successrate = 40,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":202, \"value\":23, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":222, \"value\":23, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[206008] = { 
 		ID = 206008,
@@ -4060,7 +4060,7 @@ local config = {
 		successrate = 35,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":202, \"value\":27, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":222, \"value\":27, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[206009] = { 
 		ID = 206009,
@@ -4070,7 +4070,7 @@ local config = {
 		successrate = 30,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":202, \"value\":31, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":222, \"value\":31, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[206010] = { 
 		ID = 206010,
@@ -4080,7 +4080,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":202, \"value\":35, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":222, \"value\":35, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[206011] = { 
 		ID = 206011,
@@ -4090,7 +4090,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":202, \"value\":40, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":222, \"value\":40, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[206012] = { 
 		ID = 206012,
@@ -4100,7 +4100,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":202, \"value\":45, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":222, \"value\":45, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[206013] = { 
 		ID = 206013,
@@ -4110,7 +4110,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":202, \"value\":50, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":222, \"value\":50, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[206014] = { 
 		ID = 206014,
@@ -4120,7 +4120,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":202, \"value\":60, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":222, \"value\":60, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[206015] = { 
 		ID = 206015,
@@ -4130,7 +4130,7 @@ local config = {
 		successrate = 0,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":202, \"value\":70, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":222, \"value\":70, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[207000] = { 
 		ID = 207000,
@@ -4149,7 +4149,7 @@ local config = {
 		successrate = 80,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":202, \"value\":3, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":222, \"value\":3, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[207002] = { 
 		ID = 207002,
@@ -4159,7 +4159,7 @@ local config = {
 		successrate = 70,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":202, \"value\":6, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":222, \"value\":6, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[207003] = { 
 		ID = 207003,
@@ -4169,7 +4169,7 @@ local config = {
 		successrate = 60,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":202, \"value\":9, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":222, \"value\":9, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[207004] = { 
 		ID = 207004,
@@ -4179,7 +4179,7 @@ local config = {
 		successrate = 55,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":202, \"value\":12, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":222, \"value\":12, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[207005] = { 
 		ID = 207005,
@@ -4189,7 +4189,7 @@ local config = {
 		successrate = 50,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":202, \"value\":15, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":222, \"value\":15, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[207006] = { 
 		ID = 207006,
@@ -4199,7 +4199,7 @@ local config = {
 		successrate = 45,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":202, \"value\":19, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":222, \"value\":19, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[207007] = { 
 		ID = 207007,
@@ -4209,7 +4209,7 @@ local config = {
 		successrate = 40,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":202, \"value\":23, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":222, \"value\":23, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[207008] = { 
 		ID = 207008,
@@ -4219,7 +4219,7 @@ local config = {
 		successrate = 35,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":202, \"value\":27, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":222, \"value\":27, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[207009] = { 
 		ID = 207009,
@@ -4229,7 +4229,7 @@ local config = {
 		successrate = 30,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":202, \"value\":31, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":222, \"value\":31, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[207010] = { 
 		ID = 207010,
@@ -4239,7 +4239,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":202, \"value\":35, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":222, \"value\":35, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[207011] = { 
 		ID = 207011,
@@ -4249,7 +4249,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":202, \"value\":40, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":222, \"value\":40, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[207012] = { 
 		ID = 207012,
@@ -4259,7 +4259,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":202, \"value\":45, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":222, \"value\":45, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[207013] = { 
 		ID = 207013,
@@ -4269,7 +4269,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":202, \"value\":50, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":222, \"value\":50, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[207014] = { 
 		ID = 207014,
@@ -4279,7 +4279,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":202, \"value\":60, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":222, \"value\":60, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[207015] = { 
 		ID = 207015,
@@ -4289,7 +4289,7 @@ local config = {
 		successrate = 0,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":202, \"value\":70, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":222, \"value\":70, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[208000] = { 
 		ID = 208000,
@@ -4308,7 +4308,7 @@ local config = {
 		successrate = 80,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":202, \"value\":3, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":222, \"value\":3, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[208002] = { 
 		ID = 208002,
@@ -4318,7 +4318,7 @@ local config = {
 		successrate = 70,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":202, \"value\":6, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":222, \"value\":6, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[208003] = { 
 		ID = 208003,
@@ -4328,7 +4328,7 @@ local config = {
 		successrate = 60,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":202, \"value\":9, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":222, \"value\":9, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[208004] = { 
 		ID = 208004,
@@ -4338,7 +4338,7 @@ local config = {
 		successrate = 55,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":202, \"value\":12, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":222, \"value\":12, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[208005] = { 
 		ID = 208005,
@@ -4348,7 +4348,7 @@ local config = {
 		successrate = 50,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":202, \"value\":15, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":222, \"value\":15, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[208006] = { 
 		ID = 208006,
@@ -4358,7 +4358,7 @@ local config = {
 		successrate = 45,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":202, \"value\":19, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":222, \"value\":19, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[208007] = { 
 		ID = 208007,
@@ -4368,7 +4368,7 @@ local config = {
 		successrate = 40,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":202, \"value\":23, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":222, \"value\":23, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[208008] = { 
 		ID = 208008,
@@ -4378,7 +4378,7 @@ local config = {
 		successrate = 35,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":202, \"value\":27, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":222, \"value\":27, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[208009] = { 
 		ID = 208009,
@@ -4388,7 +4388,7 @@ local config = {
 		successrate = 30,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":202, \"value\":31, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":222, \"value\":31, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[208010] = { 
 		ID = 208010,
@@ -4398,7 +4398,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":202, \"value\":35, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":222, \"value\":35, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[208011] = { 
 		ID = 208011,
@@ -4408,7 +4408,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":202, \"value\":40, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":222, \"value\":40, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[208012] = { 
 		ID = 208012,
@@ -4418,7 +4418,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":202, \"value\":45, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":222, \"value\":45, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[208013] = { 
 		ID = 208013,
@@ -4428,7 +4428,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":202, \"value\":50, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":222, \"value\":50, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[208014] = { 
 		ID = 208014,
@@ -4438,7 +4438,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":202, \"value\":60, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":222, \"value\":60, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[208015] = { 
 		ID = 208015,
@@ -4448,7 +4448,7 @@ local config = {
 		successrate = 0,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":202, \"value\":70, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":222, \"value\":70, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[210000] = { 
 		ID = 210000,
@@ -4467,7 +4467,7 @@ local config = {
 		successrate = 80,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":203, \"value\":3, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":223, \"value\":3, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[210002] = { 
 		ID = 210002,
@@ -4477,7 +4477,7 @@ local config = {
 		successrate = 70,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":203, \"value\":6, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":223, \"value\":6, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[210003] = { 
 		ID = 210003,
@@ -4487,7 +4487,7 @@ local config = {
 		successrate = 60,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":203, \"value\":9, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":223, \"value\":9, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[210004] = { 
 		ID = 210004,
@@ -4497,7 +4497,7 @@ local config = {
 		successrate = 55,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":203, \"value\":12, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":223, \"value\":12, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[210005] = { 
 		ID = 210005,
@@ -4507,7 +4507,7 @@ local config = {
 		successrate = 50,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":203, \"value\":15, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":223, \"value\":15, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[210006] = { 
 		ID = 210006,
@@ -4517,7 +4517,7 @@ local config = {
 		successrate = 45,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":203, \"value\":19, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":223, \"value\":19, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[210007] = { 
 		ID = 210007,
@@ -4527,7 +4527,7 @@ local config = {
 		successrate = 40,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":203, \"value\":23, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":223, \"value\":23, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[210008] = { 
 		ID = 210008,
@@ -4537,7 +4537,7 @@ local config = {
 		successrate = 35,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":203, \"value\":27, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":223, \"value\":27, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[210009] = { 
 		ID = 210009,
@@ -4547,7 +4547,7 @@ local config = {
 		successrate = 30,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":203, \"value\":31, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":223, \"value\":31, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[210010] = { 
 		ID = 210010,
@@ -4557,7 +4557,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":203, \"value\":35, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":223, \"value\":35, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[210011] = { 
 		ID = 210011,
@@ -4567,7 +4567,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":203, \"value\":40, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":223, \"value\":40, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[210012] = { 
 		ID = 210012,
@@ -4577,7 +4577,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":203, \"value\":45, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":223, \"value\":45, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[210013] = { 
 		ID = 210013,
@@ -4587,7 +4587,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":203, \"value\":50, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":223, \"value\":50, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[210014] = { 
 		ID = 210014,
@@ -4597,7 +4597,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":203, \"value\":60, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":223, \"value\":60, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[210015] = { 
 		ID = 210015,
@@ -4607,7 +4607,7 @@ local config = {
 		successrate = 0,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":203, \"value\":70, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":223, \"value\":70, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[211000] = { 
 		ID = 211000,
@@ -4626,7 +4626,7 @@ local config = {
 		successrate = 80,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":204, \"value\":3, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":224, \"value\":3, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[211002] = { 
 		ID = 211002,
@@ -4636,7 +4636,7 @@ local config = {
 		successrate = 70,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":204, \"value\":6, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":224, \"value\":6, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[211003] = { 
 		ID = 211003,
@@ -4646,7 +4646,7 @@ local config = {
 		successrate = 60,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":204, \"value\":9, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":224, \"value\":9, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[211004] = { 
 		ID = 211004,
@@ -4656,7 +4656,7 @@ local config = {
 		successrate = 55,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":204, \"value\":12, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":224, \"value\":12, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[211005] = { 
 		ID = 211005,
@@ -4666,7 +4666,7 @@ local config = {
 		successrate = 50,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":204, \"value\":15, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":224, \"value\":15, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[211006] = { 
 		ID = 211006,
@@ -4676,7 +4676,7 @@ local config = {
 		successrate = 45,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":204, \"value\":19, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":224, \"value\":19, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[211007] = { 
 		ID = 211007,
@@ -4686,7 +4686,7 @@ local config = {
 		successrate = 40,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":204, \"value\":23, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":224, \"value\":23, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[211008] = { 
 		ID = 211008,
@@ -4696,7 +4696,7 @@ local config = {
 		successrate = 35,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":204, \"value\":27, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":224, \"value\":27, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[211009] = { 
 		ID = 211009,
@@ -4706,7 +4706,7 @@ local config = {
 		successrate = 30,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":204, \"value\":31, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":224, \"value\":31, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[211010] = { 
 		ID = 211010,
@@ -4716,7 +4716,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":204, \"value\":35, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":224, \"value\":35, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[211011] = { 
 		ID = 211011,
@@ -4726,7 +4726,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":204, \"value\":40, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":224, \"value\":40, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[211012] = { 
 		ID = 211012,
@@ -4736,7 +4736,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":204, \"value\":45, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":224, \"value\":45, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[211013] = { 
 		ID = 211013,
@@ -4746,7 +4746,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":204, \"value\":50, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":224, \"value\":50, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[211014] = { 
 		ID = 211014,
@@ -4756,7 +4756,7 @@ local config = {
 		successrate = 25,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":204, \"value\":60, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":224, \"value\":60, \"savepos\":2,\"ispercentage\":1}]",
 	},
 	[211015] = { 
 		ID = 211015,
@@ -4766,7 +4766,7 @@ local config = {
 		successrate = 0,
 		faildeclv = 1,
 		needitems = "[{\"name\":\"金币\", \"num\":20000},{\"name\":\"升星石\", \"num\":10}]",
-		addprop = "[{\"id\":204, \"value\":70, \"savepos\":2,\"ispercentage\":1}]",
+		addprop = "[{\"id\":224, \"value\":70, \"savepos\":2,\"ispercentage\":1}]",
 	},
 }
 return config
