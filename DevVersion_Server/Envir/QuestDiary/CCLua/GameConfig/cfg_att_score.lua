@@ -1001,8 +1001,8 @@ local config = {
 		scolor = 255,
 		sort = 999,
 	},
-	[200] = { 
-		Idx = 200,
+	[220] = { 
+		Idx = 220,
 		name = "装备位攻击加成",
 		nbvalue = "100#100#100",
 		type = 3,
@@ -1010,8 +1010,8 @@ local config = {
 		isshow = 0,
 		sort = 999,
 	},
-	[201] = { 
-		Idx = 201,
+	[221] = { 
+		Idx = 221,
 		name = "装备位魔法加成",
 		nbvalue = "100#100#100",
 		type = 3,
@@ -1019,8 +1019,8 @@ local config = {
 		isshow = 0,
 		sort = 999,
 	},
-	[202] = { 
-		Idx = 202,
+	[222] = { 
+		Idx = 222,
 		name = "装备位道术加成",
 		nbvalue = "100#100#100",
 		type = 3,
@@ -1028,8 +1028,8 @@ local config = {
 		isshow = 0,
 		sort = 999,
 	},
-	[203] = { 
-		Idx = 203,
+	[223] = { 
+		Idx = 223,
 		name = "装备位物防加成",
 		nbvalue = "100#100#100",
 		type = 3,
@@ -1037,8 +1037,8 @@ local config = {
 		isshow = 0,
 		sort = 999,
 	},
-	[204] = { 
-		Idx = 204,
+	[224] = { 
+		Idx = 224,
 		name = "装备位魔防加成",
 		nbvalue = "100#100#100",
 		type = 3,
