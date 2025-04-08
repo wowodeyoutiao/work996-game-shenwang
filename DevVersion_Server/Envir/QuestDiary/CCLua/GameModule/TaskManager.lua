@@ -36,22 +36,24 @@ function TaskManager.AddNewTask(actor, tasklineid, newtaskid)
             setplaydef(actor, config.taskCounterVar, '')
             setplaydef(actor, config.taskSingleCounterVar, 0)
             if singletask.autoaccept and (singletask.autoaccept == 1) then
-                if singletask.tasktype == CommonDefine.TASK_TYPE_FREEVIP then
-                    local currlv = getplaydef(actor, CommonDefine.VAR_U_FREEVIP_LEVEL)
-                    newchangetask(actor, taskid, currlv..'')             
-                elseif singletask.tasktype == CommonDefine.TASK_TYPE_LEVEL then
-                    local currlv = Player.GetLevel(actor)
-                    newchangetask(actor, taskid, currlv..'')     
-                elseif singletask.tasktype == CommonDefine.TASK_TYPE_POWERSCORE then
-                    local currlv = Player.GetPlayerPower(actor)
-                    newchangetask(actor, taskid, currlv..'') 
-                elseif singletask.tasktype == CommonDefine.TASK_TYPE_OPENBOXNUM then
-                    local currlv = getplaydef(actor, config.taskSingleCounterVar)
-                    newchangetask(actor, taskid, currlv..'')                                     
-                else
-                    newchangetask(actor, taskid, '0', '0', '0')                
-                end  
-                setplaydef(actor, config.taskStatusVar, CommonDefine.TASK_STATUS_ACCEPT)                 
+                -- if singletask.tasktype == CommonDefine.TASK_TYPE_FREEVIP then
+                --     local currlv = getplaydef(actor, CommonDefine.VAR_U_FREEVIP_LEVEL)
+                --     newchangetask(actor, taskid, currlv..'')             
+                -- elseif singletask.tasktype == CommonDefine.TASK_TYPE_LEVEL then
+                --     local currlv = Player.GetLevel(actor)
+                --     newchangetask(actor, taskid, currlv..'')     
+                -- elseif singletask.tasktype == CommonDefine.TASK_TYPE_POWERSCORE then
+                --     local currlv = Player.GetPlayerPower(actor)
+                --     newchangetask(actor, taskid, currlv..'') 
+                -- elseif singletask.tasktype == CommonDefine.TASK_TYPE_OPENBOXNUM then
+                --     local currlv = getplaydef(actor, config.taskSingleCounterVar)
+                --     newchangetask(actor, taskid, currlv..'')                                     
+                -- else
+                --     newchangetask(actor, taskid, '0', '0', '0')                
+                -- end  
+                -- setplaydef(actor, config.taskStatusVar, CommonDefine.TASK_STATUS_ACCEPT) 
+                
+                TaskManager.AcceptTask(actor, tasklineid)
             end
         end
     end
@@ -162,7 +164,7 @@ function TaskManager.EndTask(actor, tasklineid)
     end
 
     local config = TaskLineConfig[tasklineid]
-    if config then
+    if config then    
         local taskid = id
         local singletask = config.taskDataList[taskid]
         if singletask then             
@@ -178,7 +180,7 @@ function TaskManager.EndTask(actor, tasklineid)
                 newdeletetask(actor, taskid)
                 setplaydef(actor, config.taskIDVar, 0)
                 TaskManager.AddNewTask(actor, tasklineid, singletask.nextid)            
-                TaskManager.OnPlayerClickTask(actor, singletask.nextid)
+                --TaskManager.OnPlayerClickTask(actor, singletask.nextid)
             else
                 newdeletetask(actor, taskid)
                 setplaydef(actor, config.taskStatusVar, CommonDefine.TASK_STATUS_END)
@@ -573,13 +575,18 @@ function TaskManager.OnPlayerEnterGame(actor)
 end
 
 --玩家点击任务
-function TaskManager.OnPlayerClickTask(actor, clicktaskid)
+function TaskManager.OnPlayerClickTask(actor, clicktaskidstr)
+    if BF_IsNullObj(actor) or (not BF_IsNumberStr(clicktaskidstr)) then
+        return
+    end
+
+    local clicktaskid = tonumber(clicktaskidstr)
     for tasklineid, lineconfig in pairs(TaskLineConfig) do      
         local taskid, status = TaskManager.GetCurrTaskLineInfo(actor, tasklineid) 
         if taskid == clicktaskid then
             if taskid > 0 and lineconfig then    
                 local singletask = lineconfig.taskDataList[taskid]
-                if singletask then
+                if singletask then               
                     if status == CommonDefine.TASK_STATUS_ADD then
                         if singletask.acceptnpcid then
                             opennpcshowex(actor, singletask.acceptnpcid, 3, 3)
@@ -606,8 +613,10 @@ function TaskManager.OnPlayerClickTask(actor, clicktaskid)
                             end
                         end
                     elseif status == CommonDefine.TASK_STATUS_FINISH then
-                        if singletask.submitnpcid then
+                        if singletask.submitnpcid and (singletask.submitnpcid > 0) then
                             opennpcshowex(actor, singletask.submitnpcid, 3, 3)
+                        elseif singletask.autosubmit == 0 then                      
+                            TaskManager.EndTask(actor, tasklineid)
                         end
                     end
                 end

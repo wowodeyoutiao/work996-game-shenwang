@@ -131,8 +131,8 @@ function clicknpc(actor, npcid)
 end
 
 -- 点击任务
-function clicknewtask(actor, taskid)
-    GameEventManager.DoTriggerEvent(CommonDefine.EVENT_NAME_CLICK_TASK, actor, taskid)
+function clicknewtask(actor, taskidstr)
+    GameEventManager.DoTriggerEvent(CommonDefine.EVENT_NAME_CLICK_TASK, actor, taskidstr)
 end
 
 --道具进背包 这里是异步的
@@ -381,7 +381,6 @@ end
 -------------------------------------------------------新逻辑还是从原来的NPC脚本走--------------------------------------------
 --规则说明面板
 function show_rule_panel_fromtxt(actor, sfuncid)  
-    release_print(1111)  
     if BF_IsNullObj(actor) or not BF_IsNumberStr(sfuncid) then
         return
     end

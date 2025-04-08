@@ -89,7 +89,6 @@ function GMHelper.DoGmOper(actor, sid)
     if getgmlevel(actor) == 0 then
         return
     end
-release_print(sid)
     if sid == '1' then
         changelevel(actor, '+', 10)
         Player.FullHPMP(actor)    
