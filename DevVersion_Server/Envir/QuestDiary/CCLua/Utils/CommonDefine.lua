@@ -190,11 +190,11 @@ CommonDefine = {
     ABILITYID_MIN_MAC = 11,              --最小魔防
     ABILITYID_MAX_MAC = 12,              --最大魔防  doto...后续再加
 
-    ABILITYID_CUS_EQUIPPOS_DC_ADDPERCENT = 200,    --装备位的攻击加成百分比
-    ABILITYID_CUS_EQUIPPOS_MC_ADDPERCENT = 201,    --装备位的魔法加成百分比
-    ABILITYID_CUS_EQUIPPOS_SC_ADDPERCENT = 202,    --装备位的道术加成百分比
-    ABILITYID_CUS_EQUIPPOS_AC_ADDPERCENT = 203,    --装备位的物防加成百分比
-    ABILITYID_CUS_EQUIPPOS_MAC_ADDPERCENT = 204,   --装备位的魔防加成百分比
+    ABILITYID_CUS_EQUIPPOS_DC_ADDPERCENT = 220,    --装备位的攻击加成百分比
+    ABILITYID_CUS_EQUIPPOS_MC_ADDPERCENT = 221,    --装备位的魔法加成百分比
+    ABILITYID_CUS_EQUIPPOS_SC_ADDPERCENT = 222,    --装备位的道术加成百分比
+    ABILITYID_CUS_EQUIPPOS_AC_ADDPERCENT = 223,    --装备位的物防加成百分比
+    ABILITYID_CUS_EQUIPPOS_MAC_ADDPERCENT = 224,   --装备位的魔防加成百分比
 
     --自定义的百分比加成属性 对应的基础属性ID
     ADD_PERCENT_ABILITY_PAIR = {},

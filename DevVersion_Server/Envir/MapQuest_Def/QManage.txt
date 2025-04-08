@@ -282,7 +282,7 @@ VAR Integer HuMan 个人捐献
 DELAYGOTO 10 @花魁属性刷新
 
 ; 默认增加神秘技能触发概率
-ChangeHumNewValue 200 500 65535
+; ChangeHumNewValue 200 500 65535
 ; 神秘属性检测
 #Call [\04人物属性\人物倍攻.txt] @人物倍攻
 #Call [\04人物属性\称号刷新.txt] @刷新称号
