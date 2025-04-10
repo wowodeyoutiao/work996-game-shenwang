@@ -125,7 +125,7 @@ function takeonbefore12(actor, makeindx)
     return false
 end
 
--- 点击NPC
+-- 点击NPC  暂时未接入回调触发
 function clicknpc(actor, npcid)    
     GameEventManager.DoTriggerEvent(CommonDefine.EVENT_NAME_CLICK_NPC, actor, npcid)
 end
@@ -145,20 +145,38 @@ function addbag(actor, makeindex)
     end
 end
 
+local function IsMapHaveLeaveButton(mapidstr)
+    for _, value in ipairs(CommonDefine.UPGRADE_LEVEL_BASE_MAPS) do
+        if value.mapidstr == mapidstr then
+            return true
+        end
+    end
+    return false
+end
+
 --进入地图触发
-function entermap(actor, mapid, x, y)
-    GameEventManager.DoTriggerEvent(CommonDefine.EVENT_NAME_PLAYER_ENTERMAP, actor, mapid, x, y)
+function entermap(actor, mapid)
+    if IsMapHaveLeaveButton(mapid) then 
+        local buttonstr = '<Button|text=离开地图|x=-300|y=150|color='..CSS.NPC_WHITE..'|pimg=public/1900000662.png|nimg=public/1900000663.png|link=@base_leavemap_button>'
+        addbutton(actor, 102, CommonDefine.ADD_BUTTON_ID_8, buttonstr)
+    end
+    GameEventManager.DoTriggerEvent(CommonDefine.EVENT_NAME_PLAYER_ENTERMAP, actor, mapid)
 end
 
 --离开地图触发
-function leavemap(actor, mapid, x, y)
-    GameEventManager.DoTriggerEvent(CommonDefine.EVENT_NAME_PLAYER_LEAVEMAP, actor, mapid, x, y)
+function leavemap(actor, mapid)
+    if IsMapHaveLeaveButton(mapid) then
+        delbutton(actor, 102, CommonDefine.ADD_BUTTON_ID_8)
+    end
+    GameEventManager.DoTriggerEvent(CommonDefine.EVENT_NAME_PLAYER_LEAVEMAP, actor, mapid)
 end
 
 --人物死亡触发
-function playdie(actor, killer)
-    setflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_RELIVE_DIALOGUE_FLAG, 0)
-    GameEventManager.DoTriggerEvent(CommonDefine.EVENT_NAME_PLAYER_DIE, actor, killer)
+function playdie(actor, killername)
+    GameEventManager.DoTriggerEvent(CommonDefine.EVENT_NAME_PLAYER_DIE, actor, killername)
+
+    --[[
+    setflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_RELIVE_DIALOGUE_FLAG, 0)    
     if getflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_RELIVE_DIALOGUE_FLAG) == 0 then
         local killername = ''
         if not BF_IsNullObj(killer) then
@@ -171,6 +189,7 @@ function playdie(actor, killer)
         '<Button|id=3|x=110|y=90|pimg=public/1900000652.png|nimg=public/1900000653.png|color='..CSS.NPC_WHITE..'|size=17|text=回城复活|link=@common_relive_button>'
         Player.ShowReliveDialogue(actor, msg)
     end
+    ]]--
 end
 
 --怪物被击杀触发  mapinfo对应地图要配置onkillmon才可以哦
@@ -377,6 +396,12 @@ function changename_button(actor, sparam)
     end
 end
 
+function base_leavemap_button(actor)
+    if BF_IsNullObj(actor) then
+        return
+    end
+    Player.GoMZHome(actor)
+end
 
 -------------------------------------------------------新逻辑还是从原来的NPC脚本走--------------------------------------------
 --规则说明面板

@@ -582,7 +582,6 @@ local function DoCompose(actor)
         Player.SendSelfMsg(actor, '选择的合成道具的数量不足'..CommonDefine.ITEM_COMPOSE_NEED_NUM..'个！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
         return
     end
-release_print(1111)	
     local itemMakeidxList = {}
     if strSelectTable ~= false then
         for _, value in ipairs(strSelectTable) do
@@ -592,12 +591,10 @@ release_print(1111)
             itemMakeidxList[#itemMakeidxList+1] = tonumber(value)
         end        
     end
-release_print(22222)		
     if BF_HasDuplicates(itemMakeidxList) then
         --外挂
         return
     end
-release_print(3333)		
     local chooseItemObjList = {}
     for _, value in ipairs(itemMakeidxList) do
         local itemobj = Bag.GetItemByMakeindex(actor, value)
@@ -608,7 +605,6 @@ release_print(3333)
             chooseItemObjList[#chooseItemObjList+1] = itemobj
         end
     end
-release_print(4444)		
     local cfgCurrComposeTab = GetCfgComposeTab(actor, chooseItemObjList)
     if cfgCurrComposeTab == nil then
         Player.SendSelfMsg(actor, '未找到有效的合成配置！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
@@ -625,7 +621,6 @@ release_print(4444)
     for _, value in ipairs(itemMakeidxList) do
         delitembymakeindex(actor, value)
     end
-release_print(55555)	
     --最终合成
     local bComposeFlag, newItemMakeIdx = DoFinalEquipCompose(actor, cfgCurrComposeTab)
     if bComposeFlag then

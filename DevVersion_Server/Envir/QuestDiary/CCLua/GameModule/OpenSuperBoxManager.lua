@@ -207,7 +207,7 @@ local function CloseOpenBoxItemListPanel(actor)
 end
 
 --进行一次宝箱开启
-local function DoOpenBoxOnce(actor, autoflag, openitemlist)
+function OpenSuperBoxManager.DoOpenBoxOnce(actor, autoflag, openitemlist)
     if BF_IsNullObj(actor) then
         return false
     end
@@ -816,7 +816,7 @@ function OpenSuperBoxManager.AutoOpenSuperBox(actor)
 
     --自动开宝箱
     local openitemlist = {}
-    if not DoOpenBoxOnce(actor, true, openitemlist) then        
+    if not OpenSuperBoxManager.DoOpenBoxOnce(actor, true, openitemlist) then        
         return
     end
 
@@ -932,7 +932,7 @@ function OpenSuperBoxManager.DoOperButton(actor, sid)
             Player.SendSelfMsg(actor, '正在自动开箱中！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
             return
         end
-        DoOpenBoxOnce(actor, false, nil) 
+        OpenSuperBoxManager.DoOpenBoxOnce(actor, false, nil) 
     elseif funcid == OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_2 then
         AddOnceOpenBoxNum(actor)
     elseif funcid == OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_3 then

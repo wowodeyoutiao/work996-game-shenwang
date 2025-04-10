@@ -3,7 +3,7 @@ GMHelper = {}
 function GMHelper.InitUI(actor)
     --gm ²âÊÔÄ£Ê½
     if getgmlevel(actor) > 0 then
-        addbutton(actor, 104, CommonDefine.ADD_BUTTON_ID_2, '<Button|x=-280|y=-460|nimg=official/top/1900012530.png|link=@gmhelper_openpanel>')
+        addbutton(actor, 104, CommonDefine.ADD_BUTTON_ID_2, '<Button|x=-280|y=-380|nimg=official/top/1900012530.png|link=@gmhelper_openpanel>')
     end
 end
 

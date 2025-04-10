@@ -1657,10 +1657,19 @@ BREAK
 ; 地图事件触发
 [@MapEventRun]
 
+; 离开地图触发
+[@LeaveMap]
+#IF
+#ACT
+CALLLUA CC_QFunction @leavemap,<$oldmap>
 
-
-;地图切换触发
+; 进入地图触发
 [@EnterMap]
+#IF
+#ACT
+CALLLUA CC_QFunction @entermap,<$MAP>
+
+
 #IF
 EQUAL <$GetTypeBRow(cfg_禁止自动拾取地图,1,<$MAP>)> -1
 #ACT
@@ -3497,6 +3506,10 @@ SendMail 1 死亡提示： 你在<[<$MapTitle>-<$X>.<$Y>]/FCOLOR=222>被<<$CURRRTARGETNA
 <COUNTDOWN|id=5|x=129.0|y=70.0|time=10|count=1|size=16|color=249|link=@复活1>
 <Button|id=6|x=100.0|y=100.0|pimg=public/1900000652.png|nimg=public/1900000653.png|color=255|size=17|text=回城复活|link=@复活1>
 
+; 调用lua的死亡回调
+#IF
+#ACT
+CALLLUA CC_QFunction @playdie,<$CURRRTARGETNAME>
 
 [@击杀者触发获得奖励]
 #IF
@@ -6020,4 +6033,10 @@ BREAK
 #IF
 #ACT
 CALLLUA CC_QFunction @hide_power_callback
+BREAK
+
+[@base_leavemap_button]
+#IF
+#ACT
+CALLLUA CC_QFunction @base_leavemap_button
 BREAK

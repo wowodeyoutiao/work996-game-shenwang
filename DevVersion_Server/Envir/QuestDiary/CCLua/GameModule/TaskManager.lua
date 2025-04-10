@@ -179,7 +179,7 @@ function TaskManager.EndTask(actor, tasklineid)
             if singletask.nextid and singletask.nextid > 0 then
                 newdeletetask(actor, taskid)
                 setplaydef(actor, config.taskIDVar, 0)
-                TaskManager.AddNewTask(actor, tasklineid, singletask.nextid)            
+                TaskManager.AddNewTask(actor, tasklineid, singletask.nextid)
                 --TaskManager.OnPlayerClickTask(actor, singletask.nextid)
             else
                 newdeletetask(actor, taskid)
@@ -597,11 +597,12 @@ function TaskManager.OnPlayerClickTask(actor, clicktaskidstr)
                                 opennpcshowex(actor, singletask.acceptnpcid, 3, 3)
                             end
                         elseif singletask.tasktype == CommonDefine.TASK_TYPE_LEVEL then
-                            Player.SendSelfMsg(actor, '请尽快达到升级目标！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+                            Player.QuickGoTo(actor, CommonDefine.QUICK_GOTO_UPGRADE_LEVEL)
                         elseif singletask.tasktype == CommonDefine.TASK_TYPE_POWERSCORE then
-                            Player.SendSelfMsg(actor, '请尽快达到战力目标！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+                            Player.QuickGoTo(actor, CommonDefine.QUICK_GOTO_INCREASE_POWER)
                         elseif singletask.tasktype == CommonDefine.TASK_TYPE_OPENBOXNUM then
-                            Player.SendSelfMsg(actor, '请尽快达到开箱目标！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+                            --触发开一次宝箱
+                            OpenSuperBoxManager.DoOpenBoxOnce(actor, false, nil)
                         else
                             if singletask.targpos then                
                                 if BF_GetDistanceFromMapPoint(actor, singletask.targpos.mapid, singletask.targpos.x, singletask.targpos.y) < 5 then

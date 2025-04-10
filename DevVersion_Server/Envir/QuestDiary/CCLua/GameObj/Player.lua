@@ -90,13 +90,15 @@ end
 
 --返回比奇安全区 满血满蓝
 function Player.GoBQHome(actor)
-    mapmove(actor, '0', 326, 272, 3)
+    --mapmove(actor, '0', 326, 272, 3)
+    mapmove(actor, 'rxsc1560', 326, 272, 3)    
     Player.FullHPMP(actor)
 end
 
 --返回盟重安全区 满血满蓝
 function Player.GoMZHome(actor)
-    mapmove(actor, '3', 330, 330, 3)
+    --mapmove(actor, '3', 330, 330, 3)
+    mapmove(actor, 'rxsc042', 330, 335, 2)
     Player.FullHPMP(actor)
 end
 
@@ -622,26 +624,25 @@ function Player.QuickGoTo(actor, gotoid)
 
     local currlv = Player.GetLevel(actor)
     if gotoid == CommonDefine.QUICK_GOTO_UPGRADE_LEVEL then
-        --升级
-        opennpcshowex(actor, 211, 3, 3)
+        --升级 跳地图
+        for _, info in ipairs(CommonDefine.UPGRADE_LEVEL_BASE_MAPS) do
+            if (currlv >= info.minlv) and (currlv <= info.maxlv) then
+                map(actor, info.mapidstr)
+                break
+            end
+        end
     elseif gotoid == CommonDefine.QUICK_GOTO_INCREASE_POWER then
-        --涨战力
         if currlv <= 40 then
-            --强化大师
-            opennpcshowex(actor, 200, 3, 3)
-        elseif currlv <= 55 then
-            --升星大师
-            opennpcshowex(actor, 201, 3, 3)
+            NewMainUIBase.OpenPanel(actor, NewMainUIBase.UI_ICON_POSSTRENGTH)
         elseif currlv <= 60 then
-            --洗炼大师
-            opennpcshowex(actor, 203, 3, 3)
-        elseif currlv <= 70 then
-            --魂石大师
-            opennpcshowex(actor, 208, 3, 3)
+            NewMainUIBase.OpenPanel(actor, NewMainUIBase.UI_ICON_POSSTAR)
+        elseif currlv <= 80 then
+            NewMainUIBase.OpenPanel(actor, NewMainUIBase.UI_ICON_SOULSTONE)
+        elseif currlv <= 100 then
+            NewMainUIBase.OpenPanel(actor, NewMainUIBase.UI_ICON_BAOZHU)
         else
-            --灵玉尊者
-            opennpcshowex(actor, 206, 3, 3)
-        end        
+            NewMainUIBase.OpenPanel(actor, NewMainUIBase.UI_ICON_HUWEI)            
+        end   
     elseif gotoid == CommonDefine.QUICK_GOTO_KILL_RANDOMBOSS then
         --击杀战力boss
         opennpcshowex(actor, 212, 3, 3)

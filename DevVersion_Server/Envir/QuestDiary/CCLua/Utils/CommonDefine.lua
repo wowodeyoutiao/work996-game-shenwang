@@ -255,6 +255,14 @@ CommonDefine = {
     OPEN_SUPERBOX_SPEEDUP_ONCE_ADDSECONDS = 60,                          --超级宝箱升级加速一次对应的秒数
     NEW_PLAYER_EMAIL_ITEMS = {{name='元宝', num=5000}},                   --新玩家登录给与的邮件奖励
 
+    --等级升级对应的地图，快捷前往的
+    UPGRADE_LEVEL_BASE_MAPS = {
+        {minlv=1, maxlv=10, mapidstr='em000'},
+        {minlv=11, maxlv=20, mapidstr='fmg'},
+        {minlv=21, maxlv=50, mapidstr='hero1'},
+        {minlv=51, maxlv=100, mapidstr='rxsc1891'},
+        {minlv=101, maxlv=150, mapidstr='rxsc014'},
+    },
 
     --通用的特殊地图内原地复活的消耗，随次数变化
     COMMON_LOCAL_RELIVE_NEED_ITEMS = {{{name='金币', num=10000}}, {{name='金币', num=20000}}, {{name='金币', num=30000}}, {{name='金币', num=40000}}, {{name='金币', num=50000}},
@@ -533,17 +541,20 @@ CommonDefine = {
     --监听事件类型名
     EVENT_NAME_PLAYER_ENTERGAME = 'player_entergame',   --玩家进入游戏
     EVENT_NAME_PLAYER_LEAVEGAME = 'player_leavegame',   --玩家退出游戏
-    EVENT_NAME_PLAYER_ADDBAGITEM = 'player_addbag',     --玩家道具进背包
-    EVENT_NAME_PLAYER_ENTERMAP = 'player_entermap',     --玩家进入地图
-    EVENT_NAME_PLAYER_LEAVEMAP = 'player_leavemap',     --玩家离开地图
-    EVENT_NAME_PLAYER_DIE = 'player_die',               --玩家死亡
-    EVENT_NAME_MON_KILLED = 'mon_killed',               --怪物被击杀
-    EVENT_NAME_KILL_PLAYER = 'kill_player',             --击杀玩家
+    EVENT_NAME_CLICK_TASK = 'click_task',               --点击任务
     EVENT_NAME_PLAYER_RESETDAY = 'player_resetday',     --玩家跨天
     EVENT_NAME_PLAYER_RESETWEEK = 'player_resetweek',   --玩家跨周
+    EVENT_NAME_PLAYER_DIE = 'player_die',               --玩家死亡    
+    EVENT_NAME_PLAYER_ADDBAGITEM = 'player_addbag',     --玩家道具进背包
+
+    EVENT_NAME_PLAYER_ENTERMAP = 'player_entermap',     --玩家进入地图
+    EVENT_NAME_PLAYER_LEAVEMAP = 'player_leavemap',     --玩家离开地图    
+
+
+    EVENT_NAME_MON_KILLED = 'mon_killed',               --怪物被击杀
+    EVENT_NAME_KILL_PLAYER = 'kill_player',             --击杀玩家
     EVENT_NAME_KILL_MON = 'kill_mon',                   --击杀怪物
-    EVENT_NAME_CLICK_NPC = 'click_npc',                 --点击NPC
-    EVENT_NAME_CLICK_TASK = 'click_task',               --点击任务
+    EVENT_NAME_CLICK_NPC = 'click_npc',                 --点击NPC    
     EVENT_NAME_DO_RECHARGE = 'do_recharge',             --充值
 
     --玩家定时器ID
@@ -641,6 +652,7 @@ CommonDefine = {
     ADD_BUTTON_ID_5 = 9005,                       --超级宝箱的弹出界面 升级和自动设置 共用
     ADD_BUTTON_ID_6 = 9006,                       --战力显示
     ADD_BUTTON_ID_7 = 9007,                       --战力变化显示
+    ADD_BUTTON_ID_8 = 9008,                       --退出地图的按钮
 }
 
 --装备位对应的名称
