@@ -90,8 +90,8 @@ TaskLineConfig = {
                 submitdialogue = '你现在真的强的可怕！',
                 tasktype = CommonDefine.TASK_TYPE_POWERSCORE,
                 --一个子任务最多支持三个目标，扩展另开发
-                tasktargparam = 40000,
-                tasktargdesc = '战力达到4万',
+                tasktargparam = 60000,
+                tasktargdesc = '战力达到6万',
                 reward_tab = {{name='强化石', num=200},{name='金币', num=600000}},
 
             },         
@@ -136,8 +136,8 @@ TaskLineConfig = {
                 submitdialogue = '你现在真的强的可怕！',
                 tasktype = CommonDefine.TASK_TYPE_POWERSCORE,
                 --一个子任务最多支持三个目标，扩展另开发
-                tasktargparam = 50000,
-                tasktargdesc = '战力达到5万',
+                tasktargparam = 100000,
+                tasktargdesc = '战力达到10万',
                 reward_tab = {{name='强化石', num=200},{name='金币', num=900000}},
 
             },            
@@ -182,8 +182,8 @@ TaskLineConfig = {
                 submitdialogue = '你现在真的强的可怕！',
                 tasktype = CommonDefine.TASK_TYPE_POWERSCORE,
                 --一个子任务最多支持三个目标，扩展另开发
-                tasktargparam = 70000,
-                tasktargdesc = '战力达到7万',
+                tasktargparam = 150000,
+                tasktargdesc = '战力达到15万',
                 reward_tab = {{name='强化石', num=200},{name='金币', num=1000000}},
 
             },            
@@ -228,8 +228,8 @@ TaskLineConfig = {
                 submitdialogue = '你现在真的强的可怕！',
                 tasktype = CommonDefine.TASK_TYPE_POWERSCORE,
                 --一个子任务最多支持三个目标，扩展另开发
-                tasktargparam = 100000,
-                tasktargdesc = '战力达到10万',
+                tasktargparam = 200000,
+                tasktargdesc = '战力达到20万',
                 reward_tab = {{name='强化石', num=200},{name='金币', num=1000000}},
 
             },            
@@ -274,8 +274,8 @@ TaskLineConfig = {
                 submitdialogue = '你现在真的强的可怕！',
                 tasktype = CommonDefine.TASK_TYPE_POWERSCORE,
                 --一个子任务最多支持三个目标，扩展另开发
-                tasktargparam = 150000,
-                tasktargdesc = '战力达到15万',
+                tasktargparam = 300000,
+                tasktargdesc = '战力达到30万',
                 reward_tab = {{name='强化石', num=200},{name='金币', num=1000000}},
 
             },            
@@ -320,8 +320,8 @@ TaskLineConfig = {
                 submitdialogue = '你现在真的强的可怕！',
                 tasktype = CommonDefine.TASK_TYPE_POWERSCORE,
                 --一个子任务最多支持三个目标，扩展另开发
-                tasktargparam = 200000,
-                tasktargdesc = '战力达到20万',
+                tasktargparam = 500000,
+                tasktargdesc = '战力达到50万',
                 reward_tab = {{name='强化石', num=200},{name='金币', num=1000000}},
 
             },            
@@ -366,8 +366,8 @@ TaskLineConfig = {
                 submitdialogue = '你现在真的强的可怕！',
                 tasktype = CommonDefine.TASK_TYPE_POWERSCORE,
                 --一个子任务最多支持三个目标，扩展另开发
-                tasktargparam = 300000,
-                tasktargdesc = '战力达到30万',
+                tasktargparam = 800000,
+                tasktargdesc = '战力达到80万',
                 reward_tab = {{name='强化石', num=200},{name='金币', num=1000000}},
 
             },            
@@ -412,8 +412,8 @@ TaskLineConfig = {
                 submitdialogue = '你现在真的强的可怕！',
                 tasktype = CommonDefine.TASK_TYPE_POWERSCORE,
                 --一个子任务最多支持三个目标，扩展另开发
-                tasktargparam = 500000,
-                tasktargdesc = '战力达到50万',
+                tasktargparam = 1200000,
+                tasktargdesc = '战力达到120万',
                 reward_tab = {{name='强化石', num=200},{name='金币', num=1000000}},
 
             },            
@@ -458,8 +458,8 @@ TaskLineConfig = {
                 submitdialogue = '你现在真的强的可怕！',
                 tasktype = CommonDefine.TASK_TYPE_POWERSCORE,
                 --一个子任务最多支持三个目标，扩展另开发
-                tasktargparam = 1000000,
-                tasktargdesc = '战力达到100万',
+                tasktargparam = 2000000,
+                tasktargdesc = '战力达到200万',
                 reward_tab = {{name='强化石', num=200},{name='金币', num=1000000}},
 
             },            
@@ -504,8 +504,8 @@ TaskLineConfig = {
                 submitdialogue = '你现在真的强的可怕！',
                 tasktype = CommonDefine.TASK_TYPE_POWERSCORE,
                 --一个子任务最多支持三个目标，扩展另开发
-                tasktargparam = 2000000,
-                tasktargdesc = '战力达到200万',
+                tasktargparam = 4000000,
+                tasktargdesc = '战力达到400万',
                 reward_tab = {{name='强化石', num=200},{name='金币', num=1000000}},
 
             },            
@@ -550,8 +550,8 @@ TaskLineConfig = {
                 submitdialogue = '你现在真的强的可怕！',
                 tasktype = CommonDefine.TASK_TYPE_POWERSCORE,
                 --一个子任务最多支持三个目标，扩展另开发
-                tasktargparam = 3000000,
-                tasktargdesc = '战力达到300万',
+                tasktargparam = 6000000,
+                tasktargdesc = '战力达到600万',
                 reward_tab = {{name='强化石', num=200},{name='金币', num=1000000}},
 
             },            
@@ -596,8 +596,8 @@ TaskLineConfig = {
                 submitdialogue = '你现在真的强的可怕！',
                 tasktype = CommonDefine.TASK_TYPE_POWERSCORE,
                 --一个子任务最多支持三个目标，扩展另开发
-                tasktargparam = 4000000,
-                tasktargdesc = '战力达到400万',
+                tasktargparam = 10000000,
+                tasktargdesc = '战力达到1000万',
                 reward_tab = {{name='强化石', num=200},{name='金币', num=1000000}},
 
             },            
@@ -642,8 +642,8 @@ TaskLineConfig = {
                 submitdialogue = '你现在真的强的可怕！',
                 tasktype = CommonDefine.TASK_TYPE_POWERSCORE,
                 --一个子任务最多支持三个目标，扩展另开发
-                tasktargparam = 5000000,
-                tasktargdesc = '战力达到500万',
+                tasktargparam = 15000000,
+                tasktargdesc = '战力达到1500万',
                 reward_tab = {{name='强化石', num=200},{name='金币', num=1000000}},
 
             },            
@@ -688,8 +688,8 @@ TaskLineConfig = {
                 submitdialogue = '你现在真的强的可怕！',
                 tasktype = CommonDefine.TASK_TYPE_POWERSCORE,
                 --一个子任务最多支持三个目标，扩展另开发
-                tasktargparam = 6000000,
-                tasktargdesc = '战力达到600万',
+                tasktargparam = 20000000,
+                tasktargdesc = '战力达到2000万',
                 reward_tab = {{name='强化石', num=200},{name='金币', num=1000000}},
 
             },            
@@ -734,8 +734,8 @@ TaskLineConfig = {
                 submitdialogue = '你现在真的强的可怕！',
                 tasktype = CommonDefine.TASK_TYPE_POWERSCORE,
                 --一个子任务最多支持三个目标，扩展另开发
-                tasktargparam = 7000000,
-                tasktargdesc = '战力达到700万',
+                tasktargparam = 25000000,
+                tasktargdesc = '战力达到2500万',
                 reward_tab = {{name='强化石', num=200},{name='金币', num=1000000}},
 
             },            
@@ -780,8 +780,8 @@ TaskLineConfig = {
                 submitdialogue = '你现在真的强的可怕！',
                 tasktype = CommonDefine.TASK_TYPE_POWERSCORE,
                 --一个子任务最多支持三个目标，扩展另开发
-                tasktargparam = 9000000,
-                tasktargdesc = '战力达到900万',
+                tasktargparam = 30000000,
+                tasktargdesc = '战力达到3000万',
                 reward_tab = {{name='强化石', num=200},{name='金币', num=1000000}},
 
             },            
@@ -826,8 +826,8 @@ TaskLineConfig = {
                 submitdialogue = '你现在真的强的可怕！',
                 tasktype = CommonDefine.TASK_TYPE_POWERSCORE,
                 --一个子任务最多支持三个目标，扩展另开发
-                tasktargparam = 12000000,
-                tasktargdesc = '战力达到1200万',
+                tasktargparam = 50000000,
+                tasktargdesc = '战力达到5000万',
                 reward_tab = {{name='强化石', num=200},{name='金币', num=1000000}},
 
             },            
