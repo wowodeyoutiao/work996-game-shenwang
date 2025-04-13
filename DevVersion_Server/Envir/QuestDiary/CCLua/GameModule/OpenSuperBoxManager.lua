@@ -49,16 +49,6 @@ local RECYCLE_CHECKBOX_INFO = {
     {seq=6, checkvar=CommonDefine.CHECK_BOX_VAR[15], bitflag=CommonDefine.VAR_HUM_BITFLAG_SUPERBOX_RECYCLE_CHECK6},
 }
 
-local QUALITY_PIC = {
-    'private/cc_superbox_1/img_huangse.png',
-    'private/cc_superbox_1/img_lvse.png',
-    'private/cc_superbox_1/img_lanse.png',
-    'private/cc_superbox_1/img_zise.png',
-    'private/cc_superbox_1/img_fense.png',
-    'private/cc_superbox_1/img_chengse.png',
-    'private/cc_superbox_1/img_hongse.png',
-    'private/cc_superbox_1/img_caise.png',
-}
 
 --返回每天最大可以获得的宝箱数量
 local function GetDayMaxAddBoxNum(actor)
@@ -117,17 +107,17 @@ function OpenSuperBoxManager.UpdateSuperBoxInfo(actor)
     local nBoxCurrLv = getplaydef(actor, CommonDefine.VAR_U_SUPER_BOX_CURR_LV)
 
     local strPanel = '<Layout|id=2000|children={2001,2004,2005,2006,2007,2008,2010}|x=-130|y=-300|bg=1|move=0|show=0|loadDelay=1>'.. 
-        '<Button|id=2001|children={2009}|x=66.0|y=0.0|width=72|height=63|nimg=private/cc_superbox_1/btn_baoxiang.png|mimg=private/cc_superbox_1/btn_baoxiang.png|link=@opensuperboxmanager_button#sid='..
+        '<Button|id=2001|children={2009}|x=66.0|y=0.0|width=72|height=63|clickInterval=500|nimg=private/cc_superbox_1/btn_baoxiang.png|mimg=private/cc_superbox_1/btn_baoxiang.png|link=@opensuperboxmanager_button#sid='..
         OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_1..'>'..
         '<Img|id=2009|children={2003}|x=-12.0|y=40.0|width=100|height=24|esc=0|img=private/cc_superbox_1/bg_baoxiangshuliang.png>'..
         '<Text|id=2003|x=32.0|y=2.0|color=255|size=20|text='..nCurrBoxNum..'>'..
-        '<Button|id=2004|x=140.0|y=70.0|size=18|color=255|nimg=private/cc_superbox_1/btn_7.png|mimg=private/cc_superbox_1/btn_7.png|link=@opensuperboxmanager_button#sid='..
+        '<Button|id=2004|x=140.0|y=70.0|clickInterval=500|size=18|color=255|nimg=private/cc_superbox_1/btn_7.png|mimg=private/cc_superbox_1/btn_7.png|link=@opensuperboxmanager_button#sid='..
         OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_2..'>'..
-        '<Button|id=2005|x=30.0|y=70.0|size=18|mimg=private/cc_superbox_1/btn_8.png|color=255|nimg=private/cc_superbox_1/btn_8.png|link=@opensuperboxmanager_button#sid='..
+        '<Button|id=2005|x=30.0|y=70.0|clickInterval=500|size=18|mimg=private/cc_superbox_1/btn_8.png|color=255|nimg=private/cc_superbox_1/btn_8.png|link=@opensuperboxmanager_button#sid='..
         OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_3..'>'..
-        '<Button|id=2006|x=175.0|y=60.0|size=20|mimg=private/cc_superbox_1/bg_dengji_baoxiang.png|color=255|nimg=private/cc_superbox_1/bg_dengji_baoxiang.png|link=@opensuperboxmanager_button#sid='..
+        '<Button|id=2006|x=175.0|y=60.0|clickInterval=500|size=20|mimg=private/cc_superbox_1/bg_dengji_baoxiang.png|color=255|nimg=private/cc_superbox_1/bg_dengji_baoxiang.png|link=@opensuperboxmanager_button#sid='..
         OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_4..'|text=LV.'..nBoxCurrLv..'>'..        
-        '<Button|id=2007|x=-45.0|y=60.0|size=20|mimg=private/cc_superbox_1/bg_dengji_baoxiang.png|color=255|nimg=private/cc_superbox_1/bg_dengji_baoxiang.png|link=@opensuperboxmanager_button#sid='..
+        '<Button|id=2007|x=-45.0|y=60.0|clickInterval=500|size=20|mimg=private/cc_superbox_1/bg_dengji_baoxiang.png|color=255|nimg=private/cc_superbox_1/bg_dengji_baoxiang.png|link=@opensuperboxmanager_button#sid='..
         OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_6..'|text='..sText1..'>'..
         '<Img|id=2008|children={2002}|x=58.0|y=71.0|width=86|esc=0|img=private/cc_superbox_1/bg_baoxiangbeishu.png>'..
         '<Text|id=2002|x=30.0|y=5.0|color=255|size=20|text='..nOnceOpenNum..'>'
@@ -187,12 +177,12 @@ function OpenSuperBoxManager.UpdateSuperBoxInfo(actor)
             strIDs = strIDs..','..buttonid1..','..buttonid2..','..buttonid3
             local tempy = 30 + 100 * nLine + 30            
             strPanel = strPanel..'<Img|id=2010|children={'..strIDs..'}|x=-120|y=-200|width=450|height='..(tempy+50)..'|bg=1|move=0|scale9r=10|scale9l=10|scale9b=10|scale9t=10|img=private/cc_superbox_1/panel_itemlist.png>'..
-                '<Button|id='..buttonid1..'|x=180|y='..tempy..'|mimg=private/cc_common/button_1.png|nimg=private/cc_superbox_1/button_yjhs.png|size=18|color=255|text=一键回收|link=@opensuperboxmanager_button#sid='..
+                '<Button|id='..buttonid1..'|x=180|y='..tempy..'|clickInterval=500|mimg=private/cc_common/button_1.png|nimg=private/cc_superbox_1/button_yjhs.png|size=18|color=255|text=一键回收|link=@opensuperboxmanager_button#sid='..
                 OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_10..'>'..
-                '<Button|id='..buttonid2..'|x=310|y='..tempy..'|mimg=private/cc_common/button_1.png|nimg=private/cc_superbox_1/button_tc.png|size=18|color=255|text=退    出|link=@opensuperboxmanager_button#sid='..
+                '<Button|id='..buttonid2..'|x=310|y='..tempy..'|clickInterval=500|mimg=private/cc_common/button_1.png|nimg=private/cc_superbox_1/button_tc.png|size=18|color=255|text=退    出|link=@opensuperboxmanager_button#sid='..
                 OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_11..'>'
             if bHaveBetterFlag == true then
-                strPanel = strPanel..'<Button|id='..buttonid3..'|x=50|y='..tempy..'|mimg=private/cc_common/button_1.png|nimg=private/cc_superbox_1/button_yjcd.png|size=18|color=255|text=一键穿戴|link=@opensuperboxmanager_button#sid='..
+                strPanel = strPanel..'<Button|id='..buttonid3..'|x=50|y='..tempy..'|clickInterval=500|mimg=private/cc_common/button_1.png|nimg=private/cc_superbox_1/button_yjcd.png|size=18|color=255|text=一键穿戴|link=@opensuperboxmanager_button#sid='..
                 OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_12..'>'
             end
         end

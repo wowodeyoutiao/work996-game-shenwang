@@ -627,7 +627,7 @@ function Player.QuickGoTo(actor, gotoid)
         --Éý¼¶ ÌøµØÍ¼
         for _, info in ipairs(CommonDefine.UPGRADE_LEVEL_BASE_MAPS) do
             if (currlv >= info.minlv) and (currlv <= info.maxlv) then
-                map(actor, info.mapidstr)
+                mapmove(actor, info.mapidstr, info.x, info.y, 3)
                 break
             end
         end

@@ -255,13 +255,20 @@ CommonDefine = {
     OPEN_SUPERBOX_SPEEDUP_ONCE_ADDSECONDS = 60,                          --超级宝箱升级加速一次对应的秒数
     NEW_PLAYER_EMAIL_ITEMS = {{name='元宝', num=5000}},                   --新玩家登录给与的邮件奖励
 
+    --需要离开按钮的地图
+    NEED_LEAVEBUTTON_MAPS = {
+        'em000', 'fmg', 'hero1', 'rxsc1891', 'rxsc014', 'rxsc001', 'slzs', 'jxd', 'lhzd', 'dyhj', 
+        'zwd', 'xbsd', 'sszj', 'sczs', 'e404', 'zzzd'
+    },
+
     --等级升级对应的地图，快捷前往的
     UPGRADE_LEVEL_BASE_MAPS = {
-        {minlv=1, maxlv=10, mapidstr='em000'},
-        {minlv=11, maxlv=20, mapidstr='fmg'},
-        {minlv=21, maxlv=50, mapidstr='hero1'},
-        {minlv=51, maxlv=100, mapidstr='rxsc1891'},
-        {minlv=101, maxlv=150, mapidstr='rxsc014'},
+        {minlv=1, maxlv=9, mapidstr='em000', x=35, y=45},
+        {minlv=10, maxlv=19, mapidstr='fmg', x=245, y=100},
+        {minlv=20, maxlv=49, mapidstr='hero1', x=218, y=36},
+        {minlv=50, maxlv=99, mapidstr='rxsc1891', x=100, y=131},
+        {minlv=100, maxlv=149, mapidstr='rxsc014', x=87, y=64},
+        {minlv=150, maxlv=199, mapidstr='rxsc001', x=47, y=102},
     },
 
     --通用的特殊地图内原地复活的消耗，随次数变化

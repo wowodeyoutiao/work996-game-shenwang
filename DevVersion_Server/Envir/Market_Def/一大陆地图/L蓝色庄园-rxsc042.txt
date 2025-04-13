@@ -1,0 +1,410 @@
+(@@CheckNo @@InPutInteger @@InPutString)
+[@main]
+#IF
+CHECKUNDERWAR 沙巴克
+EQUAL <$HOUR> 21
+#ACT
+SENDMSG 9 沙巴克攻城期间，禁止入图
+BREAK
+
+#IF
+LARGE <$HFCOUNT> 0
+NOT CHECKTITLE 超级狂暴
+#ACT
+SENDMSG 9 合区后需要开启【超级狂暴】才能进入
+BREAK
+
+#IF
+#ACT
+MOV N$验证冷却 <$UTCNOW8>
+DEC N$验证冷却 <$STR(U65)>
+
+; 周期内未弹出验证则清空次数
+#IF
+CHECK [7] 0
+LARGE N$验证冷却 1800
+#ACT
+MOV U66 0
+MOV U65 <$UTCNOW8>
+
+; 第4天开始
+; 周期内累积3次传送 则弹验证
+#IF
+LARGE U66 3
+NOT SMALL G0 3
+#ACT
+SET [7] 1
+
+#IF
+CHECK [7] 1
+#ACT
+MOVR N$图片角度 -3 3
+MOVR N$X111 5 10
+MOVR N$X112 8 15
+MOVR N$X113 13 23
+MOV N1 1
+MOV S$主ID
+MOV S$干扰线
+MOVR N$1 10 20
+while N1 < <$STR(N$1)>
+MOV N2 <$STR(N1)>
+INC N2 100
+MOVR N$干扰角度 -60 60
+MOVR N$干扰XXXX -10 100
+MOVR N$干扰YYYY -5 15
+MOVR N$随机图像 1 4
+MOVR N$随机宽度 5 20
+MOVR N$随机颜色 0 255
+MOVR N$随机描边 0 3
+INC S$主ID <$STR(N2)>,
+INC S$干扰线 <Text|id=<$STR(N2)>|outline=1|outlinecolor=<$STR(N$随机描边)>|rotate=<$STR(N$干扰角度)>|x=<$STR(N$干扰XXXX)>|y=<$STR(N$干扰YYYY)>|color=<$STR(N$随机颜色)>|size=16|text=—>
+INC N1 1
+endwhile
+
+SetRandomNo
+BREAK
+#SAY
+<Img|show=4|bg=1|move=1|loadDelay=0|esc=1|img=public/wz/92233812_286330.png|reset=1>
+<Layout|x=770.0|y=15.0|width=80|height=80|link=@exit>
+<Button|x=775.0|y=19.0|color=255|size=18|pimg=public/1900000510_2.png|nimg=public/1900000510_1.png|link=@exit>
+<Img|x=150|y=35|children={30,31,32,33,34,35,36,37}|img=public/wz/92233812_186334.png>
+<Text|id=30|x=210|y=130|outline=1|color=116|size=18|text=需要验证>
+<TextAtlas|id=31|children={<$STR(S$主ID)>}|rotate=<$STR(N$图片角度)>|x=195|y=165|text=<$RANDOMNO>>
+<Img|id=32|x=144|y=207|img=public/bg_bti_07.png>
+<Input|id=33|x=143|y=208.0|width=225|height=26|size=18|place=请输入上方验证码|errortips=1|mincount=6|color=255|maxcount=12|inputid=1|type=1>
+; <Button|id=34|x=200|y=255|nimg=public/anniu.png|link=@main>
+<$STR(S$干扰线)>
+<Button|id=34|x=200|y=255|nimg=public/anniu.png|submitInput=1|link=@提交验证>
+
+
+; 正常玩家进入游戏
+#IF
+#ACT
+MOV N77 <$STR(G24)>
+#SAY
+<Img|show=4|bg=1|move=1|loadDelay=1|esc=1|img=public/wz/92233812_286330.png|reset=1>
+<Layout|x=770.0|y=15.0|width=80|height=80|link=@exit>
+<Button|x=775.0|y=19.0|color=255|size=18|pimg=public/1900000510_2.png|nimg=public/1900000510_1.png|link=@exit>
+<Img|x=25.0|y=59.0|img=public/wz/b9851223_54590.jpg>
+<Button|x=25|y=60|children={227}|width=227|height=80|nimg=public/wz/92233812_186331.png|text=◆大陆传送|size=22|color=116>
+<Img|id=227|x=0|y=0|img=public/1900000678_1.png|width=227|height=80|scale9r=10|scale9l=10|scale9b=10|scale9t=10>
+
+<RText|x=368.0|y=26.0|color=116|size=18|outline=2|text=世界传送>
+<RText|x=263.0|y=70.00|outline=1|color=116|size=18|text=◆世界石>
+<RText|x=263.0|y=231.0|outline=1|color=250|size=18|text=◆选择要进入的地图<(等级100级进入)>>
+
+<Text|x=278|y=105.0|color=7|size=18|text=本游戏所有怪物掉落大量元宝、金刚石\回收所有装备可获得大量元宝、金刚石>
+<Text|x=50|y=360|color=7|size=18|text=怪物血量越高爆率越好\地图等级越高爆率越好>
+
+<Button|x=280|y=280.0|nimg=public/wz/bt11.png|color=116|size=18|text=蓝色庄园|link=@后续传送<$STR(N77)>#<$username>#地图ID=jyt01#落点X=71#落点Y=71>
+
+
+#IF
+LARGE U1 2
+#SAY
+<Button|x=430|y=280.0|nimg=public/wz/bt11.png|color=116|size=18|text=沉默山谷|link=@后续传送<$STR(N77)>#地图ID=jyt02#落点X=52#落点Y=49>
+#IF
+LARGE U1 5
+#SAY
+<Button|x=580|y=280.0|nimg=public/wz/bt11.png|color=116|size=18|text=寂静神庙|link=@后续传送<$STR(N77)>#地图ID=jyt03#落点X=20#落点Y=22>
+#IF
+LARGE U1 8
+#SAY
+<Button|x=280|y=340.0|nimg=public/wz/bt11.png|color=116|size=18|text=米尔皇宫|link=@后续传送<$STR(N77)>#地图ID=jyt04#落点X=15#落点Y=19>
+#IF
+LARGE U1 11
+#SAY
+<Button|x=430|y=340.0|nimg=public/wz/bt11.png|color=116|size=18|text=幽冥帝都|link=@后续传送<$STR(N77)>#地图ID=jyt05#落点X=26#落点Y=26>
+#IF
+LARGE U1 14
+#SAY
+<Button|x=580|y=340.0|nimg=public/wz/bt11.png|color=116|size=18|text=命运之门|link=@后续传送<$STR(N77)>#地图ID=jyt06#落点X=79#落点Y=48>
+
+#IF
+LARGE U1 17
+NOT SMALL U120 300000
+#SAY
+<Button|x=650|y=450|nimg=public/wz/bt25.png|color=116|size=18|text=远古比奇省|link=@后续传送<$STR(N77)>#地图ID=jyt07#落点X=330#落点Y=268>
+#IF
+NOT SMALL U120 1000000
+#SAY
+<Button|x=530|y=450|nimg=public/wz/bt25.png|color=250|size=18|text=远古封魔谷|link=@后续传送<$STR(N77)>#地图ID=jyt08#落点X=240#落点Y=200>
+#IF
+NOT SMALL U120 1650000
+#SAY
+<Button|x=410|y=450|nimg=public/wz/bt25.png|color=116|size=18|text=远古白日门|link=@后续传送<$STR(N77)>#地图ID=jyt09#落点X=180#落点Y=325>
+#IF
+NOT SMALL U120 2200000
+#SAY
+<Button|x=290|y=450|nimg=public/wz/bt25.png|color=250|size=18|text=远古魔龙城|link=@后续传送<$STR(N77)>#地图ID=jyt10#落点X=125#落点Y=155>
+#IF
+NOT SMALL U120 2800000
+#SAY
+<Button|x=170|y=450|nimg=public/wz/bt25.png|color=116|size=18|text=蛮荒之城|link=@后续传送<$STR(N77)>#地图ID=mhzc#落点X=137#落点Y=187>
+#IF
+NOT SMALL U120 3500000
+#SAY
+<Button|x=50|y=450|nimg=public/wz/bt25.png|color=116|size=18|text=无尽之海|link=@后续传送<$STR(N77)>#地图ID=haidi6#落点X=67#落点Y=83>
+
+
+[@提交验证]
+#IF
+EQUAL <$NPCINPUT(1)> <$RANDOMNO>
+#ACT
+SET [7] 0
+MOV U66 0
+MOV U65 <$UTCNOW8>
+GOTO @MAIN
+SENDMSG 9 验证通过
+#ELSEACT
+GOTO @MAIN
+SENDMSG 9 验证错误
+
+
+[@后续传送0]
+#IF
+NOT EQUAL G24 0
+EQUAL N$错误次数 0
+#ACT
+INC N$错误次数 1
+GOTO @MAIN
+BREAK
+#IF
+NOT EQUAL G24 0
+LARGE N$错误次数 0
+#ACT
+KICK
+BREAK
+
+
+
+#IF
+CHECK [7] 1
+#ACT
+GOTO @MAIN
+SENDMSG 9 请先通过验证后再使用
+BREAK
+
+#IF
+CHECKLEVELEX < 100
+#ACT
+SENDMSG 9 未达到100级，无法进入。
+BREAK
+
+#IF
+NOT EQUAL S$地图ID
+#ACT
+INC U66 1
+MAPMOVE <$STR(S$地图ID)> <$STR(S$落点X)> <$STR(S$落点Y)> 3
+#ELSEACT
+SENDMSG 9 传送失败。
+BREAK
+
+
+[@后续传送1]
+#IF
+NOT EQUAL G24 1
+EQUAL N$错误次数 0
+#ACT
+INC N$错误次数 1
+GOTO @MAIN
+BREAK
+#IF
+NOT EQUAL G24 1
+LARGE N$错误次数 0
+#ACT
+KICK
+BREAK
+
+
+
+#IF
+CHECK [7] 1
+#ACT
+GOTO @MAIN
+SENDMSG 9 请先通过验证后再使用
+BREAK
+
+#IF
+CHECKLEVELEX < 100
+#ACT
+SENDMSG 9 未达到100级，无法进入。
+BREAK
+
+#IF
+NOT EQUAL S$地图ID
+#ACT
+INC U66 1
+MAPMOVE <$STR(S$地图ID)> <$STR(S$落点X)> <$STR(S$落点Y)> 3
+BREAK
+#ELSEACT
+SENDMSG 9 传送失败。
+BREAK
+
+
+
+[@后续传送2]
+#IF
+NOT EQUAL G24 2
+EQUAL N$错误次数 0
+#ACT
+INC N$错误次数 1
+GOTO @main
+BREAK
+#IF
+NOT EQUAL G24 2
+LARGE N$错误次数 0
+#ACT
+KICK
+BREAK
+
+
+
+#IF
+CHECK [7] 1
+#ACT
+GOTO @main
+SENDMSG 9 请先通过验证后再使用
+BREAK
+
+#IF
+CHECKLEVELEX < 100
+#ACT
+SENDMSG 9 未达到100级，无法进入。
+BREAK
+
+#IF
+NOT EQUAL S$地图ID
+#ACT
+INC U66 1
+MAPMOVE <$STR(S$地图ID)> <$STR(S$落点X)> <$STR(S$落点Y)> 3
+BREAK
+#ELSEACT
+SENDMSG 9 传送失败。
+BREAK
+
+
+
+[@后续传送3]
+#IF
+NOT EQUAL G24 3
+EQUAL N$错误次数 0
+#ACT
+INC N$错误次数 1
+GOTO @main
+BREAK
+#IF
+NOT EQUAL G24 3
+LARGE N$错误次数 0
+#ACT
+KICK
+BREAK
+
+
+
+#IF
+CHECK [7] 1
+#ACT
+GOTO @main
+SENDMSG 9 请先通过验证后再使用
+BREAK
+
+#IF
+CHECKLEVELEX < 100
+#ACT
+SENDMSG 9 未达到100级，无法进入。
+BREAK
+
+#IF
+NOT EQUAL S$地图ID
+#ACT
+INC U66 1
+MAPMOVE <$STR(S$地图ID)> <$STR(S$落点X)> <$STR(S$落点Y)> 3
+BREAK
+#ELSEACT
+SENDMSG 9 传送失败。
+BREAK
+
+
+
+[@后续传送4]
+#IF
+NOT EQUAL G24 4
+EQUAL N$错误次数 0
+#ACT
+INC N$错误次数 1
+GOTO @main
+BREAK
+#IF
+NOT EQUAL G24 4
+LARGE N$错误次数 0
+#ACT
+KICK
+BREAK
+
+
+
+#IF
+CHECK [7] 1
+#ACT
+GOTO @main
+SENDMSG 9 请先通过验证后再使用
+BREAK
+
+#IF
+CHECKLEVELEX < 100
+#ACT
+SENDMSG 9 未达到100级，无法进入。
+BREAK
+
+#IF
+NOT EQUAL S$地图ID
+#ACT
+INC U66 1
+MAPMOVE <$STR(S$地图ID)> <$STR(S$落点X)> <$STR(S$落点Y)> 3
+BREAK
+#ELSEACT
+SENDMSG 9 传送失败。
+BREAK
+
+
+
+[@后续传送5]
+#IF
+NOT EQUAL G24 5
+EQUAL N$错误次数 0
+#ACT
+INC N$错误次数 1
+GOTO @main
+BREAK
+#IF
+NOT EQUAL G24 5
+LARGE N$错误次数 0
+#ACT
+KICK
+BREAK
+
+
+
+#IF
+CHECK [7] 1
+#ACT
+GOTO @main
+SENDMSG 9 请先通过验证后再使用
+BREAK
+
+#IF
+CHECKLEVELEX < 100
+#ACT
+SENDMSG 9 未达到100级，无法进入。
+BREAK
+
+#IF
+NOT EQUAL S$地图ID
+#ACT
+INC U66 1
+MAPMOVE <$STR(S$地图ID)> <$STR(S$落点X)> <$STR(S$落点Y)> 3
+BREAK
+#ELSEACT
+SENDMSG 9 传送失败。
+BREAK
