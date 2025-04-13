@@ -117,17 +117,17 @@ function OpenSuperBoxManager.UpdateSuperBoxInfo(actor)
     local nBoxCurrLv = getplaydef(actor, CommonDefine.VAR_U_SUPER_BOX_CURR_LV)
 
     local strPanel = '<Layout|id=2000|children={2001,2004,2005,2006,2007,2008,2010}|x=-130|y=-300|bg=1|move=0|show=0|loadDelay=1>'.. 
-        '<Button|id=2001|children={2009}|x=60.0|y=0.0|width=72|height=63|nimg=private/cc_superbox_1/btn_baoxiang.png|mimg=private/cc_superbox_1/btn_baoxiang.png|link=@opensuperboxmanager_button#sid='..
+        '<Button|id=2001|children={2009}|x=66.0|y=0.0|width=72|height=63|nimg=private/cc_superbox_1/btn_baoxiang.png|mimg=private/cc_superbox_1/btn_baoxiang.png|link=@opensuperboxmanager_button#sid='..
         OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_1..'>'..
         '<Img|id=2009|children={2003}|x=-12.0|y=40.0|width=100|height=24|esc=0|img=private/cc_superbox_1/bg_baoxiangshuliang.png>'..
-        '<Text|id=2003|x=29.0|y=2.0|color=255|size=20|text='..nCurrBoxNum..'>'..
+        '<Text|id=2003|x=32.0|y=2.0|color=255|size=20|text='..nCurrBoxNum..'>'..
         '<Button|id=2004|x=140.0|y=70.0|size=18|color=255|nimg=private/cc_superbox_1/btn_7.png|mimg=private/cc_superbox_1/btn_7.png|link=@opensuperboxmanager_button#sid='..
         OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_2..'>'..
         '<Button|id=2005|x=30.0|y=70.0|size=18|mimg=private/cc_superbox_1/btn_8.png|color=255|nimg=private/cc_superbox_1/btn_8.png|link=@opensuperboxmanager_button#sid='..
         OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_3..'>'..
-        '<Button|id=2006|x=175.0|y=64.0|size=20|mimg=private/cc_superbox_1/bg_dengji_baoxiang.png|color=255|nimg=private/cc_superbox_1/bg_dengji_baoxiang.png|link=@opensuperboxmanager_button#sid='..
+        '<Button|id=2006|x=175.0|y=60.0|size=20|mimg=private/cc_superbox_1/bg_dengji_baoxiang.png|color=255|nimg=private/cc_superbox_1/bg_dengji_baoxiang.png|link=@opensuperboxmanager_button#sid='..
         OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_4..'|text=LV.'..nBoxCurrLv..'>'..        
-        '<Button|id=2007|x=-45.0|y=64.0|size=20|mimg=private/cc_superbox_1/bg_dengji_baoxiang.png|color=255|nimg=private/cc_superbox_1/bg_dengji_baoxiang.png|link=@opensuperboxmanager_button#sid='..
+        '<Button|id=2007|x=-45.0|y=60.0|size=20|mimg=private/cc_superbox_1/bg_dengji_baoxiang.png|color=255|nimg=private/cc_superbox_1/bg_dengji_baoxiang.png|link=@opensuperboxmanager_button#sid='..
         OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_6..'|text='..sText1..'>'..
         '<Img|id=2008|children={2002}|x=58.0|y=71.0|width=86|esc=0|img=private/cc_superbox_1/bg_baoxiangbeishu.png>'..
         '<Text|id=2002|x=30.0|y=5.0|color=255|size=20|text='..nOnceOpenNum..'>'
@@ -173,10 +173,10 @@ function OpenSuperBoxManager.UpdateSuperBoxInfo(actor)
                         value..'|showtips=0|bgtype=1|link=@cc_showitemex#makeindex='..value..'>'                        
                     ]]--
                     if flag == 1 then
-                        strPanel = strPanel..'<Img|id='..picid..'|x=50|y=10|move=0|img=private/cc_superbox/cmp_up.png>'
+                        strPanel = strPanel..'<Img|id='..picid..'|x=50|y=10|move=0|img=private/cc_superbox_1/cmp_up.png>'
                         bHaveBetterFlag = true
                     elseif flag == -1 then
-                        strPanel = strPanel..'<Img|id='..picid..'|x=50|y=10|move=0|img=private/cc_superbox/cmp_down.png>'
+                        strPanel = strPanel..'<Img|id='..picid..'|x=50|y=10|move=0|img=private/cc_superbox_1/cmp_down.png>'
                     end
                 end
             end
@@ -186,13 +186,13 @@ function OpenSuperBoxManager.UpdateSuperBoxInfo(actor)
             local buttonid3 = 2097
             strIDs = strIDs..','..buttonid1..','..buttonid2..','..buttonid3
             local tempy = 30 + 100 * nLine + 30            
-            strPanel = strPanel..'<Img|id=2010|children={'..strIDs..'}|x=-120|y=-200|width=450|height='..(tempy+50)..'|bg=1|move=0|scale9r=10|scale9l=10|scale9b=10|scale9t=10|img=private/cc_superbox/panel_itemlist.png>'..
-                '<Button|id='..buttonid1..'|x=180|y='..tempy..'|mimg=private/cc_common/button_1.png|nimg=private/cc_common/button_1.png|size=18|color=255|text=一键回收|link=@opensuperboxmanager_button#sid='..
+            strPanel = strPanel..'<Img|id=2010|children={'..strIDs..'}|x=-120|y=-200|width=450|height='..(tempy+50)..'|bg=1|move=0|scale9r=10|scale9l=10|scale9b=10|scale9t=10|img=private/cc_superbox_1/panel_itemlist.png>'..
+                '<Button|id='..buttonid1..'|x=180|y='..tempy..'|mimg=private/cc_common/button_1.png|nimg=private/cc_superbox_1/button_yjhs.png|size=18|color=255|text=一键回收|link=@opensuperboxmanager_button#sid='..
                 OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_10..'>'..
-                '<Button|id='..buttonid2..'|x=310|y='..tempy..'|mimg=private/cc_common/button_1.png|nimg=private/cc_common/button_1.png|size=18|color=255|text=退    出|link=@opensuperboxmanager_button#sid='..
+                '<Button|id='..buttonid2..'|x=310|y='..tempy..'|mimg=private/cc_common/button_1.png|nimg=private/cc_superbox_1/button_tc.png|size=18|color=255|text=退    出|link=@opensuperboxmanager_button#sid='..
                 OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_11..'>'
             if bHaveBetterFlag == true then
-                strPanel = strPanel..'<Button|id='..buttonid3..'|x=50|y='..tempy..'|mimg=private/cc_common/button_1.png|nimg=private/cc_common/button_1.png|size=18|color=255|text=一键穿戴|link=@opensuperboxmanager_button#sid='..
+                strPanel = strPanel..'<Button|id='..buttonid3..'|x=50|y='..tempy..'|mimg=private/cc_common/button_1.png|nimg=private/cc_superbox_1/button_yjcd.png|size=18|color=255|text=一键穿戴|link=@opensuperboxmanager_button#sid='..
                 OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_12..'>'
             end
         end
@@ -384,16 +384,10 @@ local function OpenUpgradeBoxLevelPanel(actor)
         sNeedItemStr = BF_GetSimpleItemTableDescStr(levelConfig.upgradeneeditems_tab)
     end
 
-    local strPanel = '<Img|id=2100|children={2101,2102,2104,2110,2112,2113,2114}|x=0|y=-640|width=280|height=400|img=private/cc_superbox_1/bg_basepanel.png|move=0|reset=1|bg=1|esc=1|show=0>'..
-        '<Img|id=2101|x=4.0|y=44.0|width=270|height=340|img=private/cc_superbox_1/bg_paper.png>'..
-        '<Img|id=2102|children={2103}|x=63.0|y=0.0|width=160|height=50|esc=0|img=private/cc_superbox_1/bg_title.png>'..
-        '<Text|id=2103|x=37.0|y=15.0|color=255|size=20|text=宝箱升级>'..
-        '<Text|id=2104|x=40.0|y=80.0|color=107|size=16|text=当前等级:'..nBoxCurrLv..'>'                
-    if nextLevelConfig ~= nil then
-        strPanel = strPanel..'<Text|id=2110|x=150.0|y=80.0|color=108|size=16|text=下一等级:'..(nBoxCurrLv+1)..'>'
-    else
-        strPanel = strPanel..'<Text|id=2110|x=150.0|y=80.0|color=108|size=16|text=[达到最大等级])>'
-    end
+    local strPanel = '<Img|id=2100|children={2112,2113,2114,2115}|x=-300|y=-660|img=private/cc_superbox_1/bg_frame_upgrade.png|move=0|reset=1|bg=1|esc=1|show=0>'..
+        '<Button|id=2113|x=524.0|y=56.0|nimg=private/cc_superbox_1/btn_fanhui.png|color=255|size=18|mimg=private/cc_superbox_1/btn_fanhui.png|link=@opensuperboxmanager_button#sid='..
+        OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_5..'>'..
+        '<Layout|id=2115|x=524.0|y=56.0|width=80|height=80|link=@opensuperboxmanager_button#sid='..OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_5..'>'
 
     local strItems = ''
     local nStartID = 2120
@@ -409,12 +403,12 @@ local function OpenUpgradeBoxLevelPanel(actor)
         local nTextID3 = nStartID + 30 + seq
         local nImgID1 = nStartID + 40 + seq
         local strTextIDs = nImgID1..','..nTextID1..','..nTextID2..','..nTextID3
-        strPanel = strPanel..'<Layout|id='..nLayoutID..'|children={'..strTextIDs..'}|width=220|height=20>'..
-            '<Img|id='..nImgID1..'|width=220|height=20|img='..QUALITY_PIC[seq]..'>'..
-            '<Text|id='..nTextID1..'|x=10|y=0|color='..CSS.QUALITY_COLOR[seq]..'|size=16|text='..value..'品质:>'..
+        strPanel = strPanel..'<Layout|id='..nLayoutID..'|children={'..strTextIDs..'}|width=320|height=40>'..
+            --'<Img|id='..nImgID1..'|width=220|height=20|img='..QUALITY_PIC[seq]..'>'..
+            --'<Text|id='..nTextID1..'|x=10|y=0|color='..CSS.QUALITY_COLOR[seq]..'|size=16|text='..value..'品质:>'..
             '<Text|id='..nTextID2..'|x=90|y=0|color=255|size=16|text=15%>'
         if nextLevelConfig ~= nil then
-            strPanel = strPanel..'<Text|id='..nTextID3..'|x=180|y=0|color=255|size=16|text=25%>'
+            strPanel = strPanel..'<Text|id='..nTextID3..'|x=260|y=0|color=255|size=16|text=25%>'
         end
     end
 
@@ -429,27 +423,25 @@ local function OpenUpgradeBoxLevelPanel(actor)
         local nTextID3 = nStartID + 30
         local nImgID1 = nStartID + 40
         local strTextIDs = nImgID1..','..nTextID1..','..nTextID2..','..nTextID3
-        strPanel = strPanel..'<Layout|id='..nLayoutID..'|children={'..strTextIDs..'}|width=220|height=20>'..
-            '<Img|id='..nImgID1..'|width=220|height=20|img=private/cc_superbox_1/img_kaixiangshagnxian.png>'..
-            '<Text|id='..nTextID1..'|x=10|y=0|color=255|size=16|text=开箱上限:>'..
+        strPanel = strPanel..'<Layout|id='..nLayoutID..'|children={'..strTextIDs..'}|width=320|height=40>'..
+            --'<Img|id='..nImgID1..'|width=220|height=20|img=private/cc_superbox_1/img_kaixiangshagnxian.png>'..
+            --'<Text|id='..nTextID1..'|x=10|y=0|color=255|size=16|text=开箱上限:>'..
             '<Text|id='..nTextID2..'|x=90|y=0|color=255|size=16|text='..levelConfig.maxopennum..'>'        
         if nextLevelConfig ~= nil then
-            strPanel = strPanel..'<Text|id='..nTextID3..'|x=180|y=0|color=255|size=16|text='..nextLevelConfig.maxopennum..'>'
+            strPanel = strPanel..'<Text|id='..nTextID3..'|x=260|y=0|color=255|size=16|text='..nextLevelConfig.maxopennum..'>'
         end
     end
 
-    strPanel = strPanel..'<ListView|id=2112|children={'..strItems..'}|x=24.0|y=100.0|width=230|height=180|margin=0|direction=1>'
-    strPanel = strPanel..'<Layout|id=2114|children={2105,2106,2107,2108,2109}|x=25.0|y=283.0|width=220|height=90>'..
-    '<Button|id=2113|x=180.0|y=380.0|width=100|height=50|nimg=private/cc_superbox_1/btn_fanhui.png|color=255|size=18|mimg=private/cc_superbox_1/btn_fanhui.png|link=@opensuperboxmanager_button#sid='..
-    OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_5..'>'
+    strPanel = strPanel..'<ListView|id=2112|children={'..strItems..'}|x=188.0|y=126.0|width=320|height=360|margin=0|direction=1>'
+    strPanel = strPanel..'<Layout|id=2114|children={2105,2106,2107,2108,2109}|x=180.0|y=480.0|width=220|height=90>'
 
     if nextLevelConfig ~= nil then
         local nStartUpgradeTime = getplaydef(actor, CommonDefine.VAR_U_SUPER_BOX_START_UPGRADE_TIME)
         if nStartUpgradeTime <= 0 then
             local timestr = BF_ConvertSecondsToTimeStr(levelConfig.upgradeneedseconds)
-            strPanel = strPanel..'<Text|id=2105|x=24.0|y=0.0|color=8|size=18|text=升级耗时：'..timestr..'>'..
-                '<Text|id=2106|x=54.0|y=70.0|color=8|size=18|text='..sNeedItemStr..'>'..
-                '<Button|id=2107|x=54.0|y=24.0|mimg=private/cc_common/button_1.png|nimg=private/cc_superbox_1/button_1.png|color=255|size=18|text=升级|link=@opensuperboxmanager_button#sid='..
+            strPanel = strPanel..'<Text|id=2105|x=24.0|y=0.0|color=255|size=18|text=升级耗时：'..timestr..'>'..
+                '<Text|id=2106|x=54.0|y=70.0|color=255|size=18|text='..sNeedItemStr..'>'..
+                '<Button|id=2107|x=54.0|y=24.0|mimg=private/cc_common/button_1.png|nimg=private/cc_superbox_1/button_1.png|color=255|size=18|text=升  级|link=@opensuperboxmanager_button#sid='..
                 OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_8..'>'
         else
             local leftseconds = 0
@@ -468,10 +460,10 @@ local function OpenUpgradeBoxLevelPanel(actor)
                 if not Player.CheckItemsEnough(actor, totalneeditems, '') then
                     tempcolor = CSS.NPC_RED
                 end                
-                strPanel = strPanel..'<Text|id=2108|x=24.0|y=0.0|color=8|size=18|text=升级耗时：>'..
+                strPanel = strPanel..'<Text|id=2108|x=24.0|y=0.0|color=255|size=18|text=升级耗时：>'..
                     '<COUNTDOWN|id=2105|x=120.0|y=0.0|color=255|size=18|showWay=1|time='..leftseconds..'|link=@opensuperboxmanager_button#sid='..
                     OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_4..'>'..
-                    '<Text|id=2106|x=24.0|y=70.0|color=8|size=18|text=加速消耗：>'..
+                    '<Text|id=2106|x=24.0|y=70.0|color=255|size=18|text=加速消耗：>'..
                     '<Text|id=2109|x=120.0|y=70.0|color='..tempcolor..'|size=18|text='..sNeedItemStr..'>'..
                     '<Button|id=2107|x=54.0|y=24.0|mimg=private/cc_common/button_1.png|nimg=private/cc_superbox_1/button_1.png|color=255|size=18|text=加速|link=@opensuperboxmanager_button#sid='..
                     OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_9..'>'
@@ -618,63 +610,33 @@ local function OpenAutoOpenBoxPanel(actor)
         flaglist[#flaglist+1] = info
     end    
 
-    local strPanel = '<Img|id=2200|children={2201,2202,2204,2205}|x=-360.0|y=-640.0|width=280|height=400|esc=1|move=0|img=private/cc_superbox_1/bg_basepanel.png|bg=1|reset=1|loadDelay=0|show=0>'..
-        '<Img|id=2201|x=4.0|y=44.0|width=270|height=340|img=private/cc_superbox_1/bg_paper.png>'..
-        '<Img|id=2202|children={2103}|x=63.0|y=0.0|width=160|height=50|esc=0|img=private/cc_superbox_1/bg_title.png>'..
-        '<Text|id=2103|x=37.0|y=15.0|size=20|color=255|text=开箱设置>'..
-        '<Button|id=2204|x=180.0|y=380.0|width=100|height=50|color=255|mimg=private/cc_superbox_1/btn_fanhui.png|nimg=private/cc_superbox_1/btn_fanhui.png|size=18|link=@opensuperboxmanager_button#sid='..
-        OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_7..'>'    
+    local strPanel = '<Img|id=2200|children={2203,2204,2205}|x=-300|y=-660|img=private/cc_superbox_1/bg_frame_autosetting.png|esc=1|move=0|bg=1|reset=1|loadDelay=0|show=0>'..        
+        '<Button|id=2204|x=525.0|y=55.0|color=255|mimg=private/cc_superbox_1/btn_fanhui.png|nimg=private/cc_superbox_1/btn_fanhui.png|size=18|link=@opensuperboxmanager_button#sid='..
+        OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_7..'>'..
+        '<Layout|id=2203|x=524.0|y=56.0|width=80|height=80|link=@opensuperboxmanager_button#sid='..OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_7..'>'
 
-    strPanel = strPanel..'<Layout|id=2205|children={2211,2212,2213,2214,2215,2216,2253,2252}|x=4.0|y=70.0|width=270|height=300>'..
-        '<ListView|id=2211|children={2221,2222,2223}|x=24.0|y=35.0|width=230|height=66|margin=0|direction=1>'..
-        '<Layout|id=2221|children={2231,2241}|width=220|height=22>'..
-        '<Img|id=2231|width=220|height=20|img=private/cc_superbox_1/bg_.png>'..
-        '<Text|id=2241|x=10|y=0|size=15|color=63|text=保留满足以下条件的装备:>'..
-        '<Layout|id=2222|children={2232,2242}|width=220|height=22>'..
-        '<Img|id=2232|width=220|height=20|img=private/cc_superbox_1/bg_4.png>'..
-        '<CheckBox|id=2242|x=10.0|y=0.0|height=20|count=1|default='..flaglist[1].flag..'|checkboxid='..flaglist[1].checkvar..'|nimg=private/cc_superbox_1/checkbox_1.png|pimg=private/cc_superbox_1/checkbox_2.png|link=@opensuperboxmanager_button#sid='..
+    strPanel = strPanel..'<Layout|id=2205|children={2211,2212,2213,2214,2215,2216,2253,2252}|x=70.0|y=110.0|width=270|height=440>'..
+
+        '<CheckBox|id=2211|x=4.0|y=20.0|count=1|default='..flaglist[1].flag..'|checkboxid='..flaglist[1].checkvar..'|nimg=private/cc_superbox_1/checkbox_1.png|pimg=private/cc_superbox_1/checkbox_2.png|link=@opensuperboxmanager_button#sid='..
         OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_21..'>'..
-        '<MenuItem|id=2252|a=2|x=60.0|y=76.0|width=170|height=22|itemname='..strItemList1..'|select='..currSelectStr1..'|fontsize=16|arrowimg=private/cc_superbox_1/btn_1.png|itemhei=20|menuid='..CommonDefine.VAR_S_SELECT_MENUITEM_1..
-        '|selectcolor=254|fontcolor=250|direction=0|link=@opensuperboxmanager_button#sid='..OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_22..'>'..  
-        '<Layout|id=2223|children={2233,2243}|width=220|height=22>'..
-        '<Img|id=2233|width=220|height=20|img=private/cc_superbox_1/bg_7.png>'..
-        '<CheckBox|id=2243|x=10.0|y=0.0|height=20|count=1|default='..flaglist[2].flag..'|checkboxid='..flaglist[2].checkvar..'|nimg=private/cc_superbox_1/checkbox_1.png|pimg=private/cc_superbox_1/checkbox_2.png|link=@opensuperboxmanager_button#sid='..
+        '<CheckBox|id=2212|x=4.0|y=60.0|count=1|default='..flaglist[2].flag..'|checkboxid='..flaglist[2].checkvar..'|nimg=private/cc_superbox_1/checkbox_1.png|pimg=private/cc_superbox_1/checkbox_2.png|link=@opensuperboxmanager_button#sid='..
         OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_23..'>'..
-        '<MenuItem|id=2253|a=2|x=60.0|y=100.0|width=170|height=22|itemname='..strItemList2..'|select='..currSelectStr2..'|fontsize=16|arrowimg=private/cc_superbox_1/btn_1.png|itemhei=20|menuid='..CommonDefine.VAR_S_SELECT_MENUITEM_2..
-        '|selectcolor=254|fontcolor=250|direction=0|link=@opensuperboxmanager_button#sid='..OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_24..'>'.. 
-
-        '<ListView|id=2212|children={2224,2225,2226,2227}|x=24.0|y=135.0|width=230|height=88|margin=0|direction=1>'..
-        '<Layout|id=2224|children={2234,2244}|width=220|height=22>'..
-        '<Img|id=2234|width=220|height=20|img=private/cc_superbox_1/bg_.png>'..
-        '<Text|id=2244|x=10|y=0|size=15|color=63|text=满足以下条件时停止自动开箱:>'..
-        '<Layout|id=2225|children={2235,2245,2255}|width=220|height=22>'..
-        '<Img|id=2235|width=220|height=20|img=private/cc_superbox_1/bg_4.png>'..
-        '<CheckBox|id=2245|x=10.0|y=0.0|height=20|count=1|default='..flaglist[3].flag..'|checkboxid='..flaglist[3].checkvar..'|nimg=private/cc_superbox_1/checkbox_1.png|pimg=private/cc_superbox_1/checkbox_2.png|link=@opensuperboxmanager_button#sid='..
-        OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_25..'>'..
-        '<Text|id=2255|x=40|y=0|size=15|color=63|text=获得比穿戴战力更高的装备>'..
-        '<Layout|id=2226|children={2236,2246,2256}|width=220|height=22>'..
-        '<Img|id=2236|width=220|height=20|img=private/cc_superbox_1/bg_7.png>'..
-        '<CheckBox|id=2246|x=10.0|y=0.0|height=20|count=1|default='..flaglist[4].flag..'|checkboxid='..flaglist[4].checkvar..'|nimg=private/cc_superbox_1/checkbox_1.png|pimg=private/cc_superbox_1/checkbox_2.png|link=@opensuperboxmanager_button#sid='..
+        '<CheckBox|id=2213|x=4.0|y=204.0|count=1|default='..flaglist[3].flag..'|checkboxid='..flaglist[3].checkvar..'|nimg=private/cc_superbox_1/checkbox_1.png|pimg=private/cc_superbox_1/checkbox_2.png|link=@opensuperboxmanager_button#sid='..
+        OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_25..'>'..    
+        '<CheckBox|id=2214|x=4.0|y=237.0|count=1|default='..flaglist[4].flag..'|checkboxid='..flaglist[4].checkvar..'|nimg=private/cc_superbox_1/checkbox_1.png|pimg=private/cc_superbox_1/checkbox_2.png|link=@opensuperboxmanager_button#sid='..
         OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_26..'>'..
-        '<Text|id=2256|x=40|y=0|size=15|color=63|text=获得带有极品属性的装备>'..
-        '<Layout|id=2227|children={2237,2247,2257}|width=220|height=22>'..
-        '<Img|id=2237|width=220|height=20|img=private/cc_superbox_1/bg_4.png>'..
-        '<CheckBox|id=2247|x=10.0|y=0.0|height=20|count=1|default='..flaglist[5].flag..'|checkboxid='..flaglist[5].checkvar..'|nimg=private/cc_superbox_1/checkbox_1.png|pimg=private/cc_superbox_1/checkbox_2.png|link=@opensuperboxmanager_button#sid='..
+        '<CheckBox|id=2215|x=4.0|y=273.0|count=1|default='..flaglist[5].flag..'|checkboxid='..flaglist[5].checkvar..'|nimg=private/cc_superbox_1/checkbox_1.png|pimg=private/cc_superbox_1/checkbox_2.png|link=@opensuperboxmanager_button#sid='..
         OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_27..'>'..
-        '<Text|id=2257|x=40|y=0|size=15|color=63|text=获得带有天赋属性的装备>'..
-
-        '<ListView|id=2213|children={2228}|x=24.0|y=250.0|width=230|height=22|margin=0|direction=1>'..
-        '<Layout|id=2228|children={2238,2248,2258}|width=220|height=22>'..
-        '<Img|id=2238|width=220|height=20|img=private/cc_superbox_1/bg_4.png>'..
-        '<CheckBox|id=2248|x=10.0|y=0.0|height=20|count=1|default='..flaglist[6].flag..'|checkboxid='..flaglist[6].checkvar..'|nimg=private/cc_superbox_1/checkbox_1.png|pimg=private/cc_superbox_1/checkbox_2.png|link=@opensuperboxmanager_button#sid='..
+        '<CheckBox|id=2216|x=4.0|y=378.0|count=1|default='..flaglist[6].flag..'|checkboxid='..flaglist[6].checkvar..'|nimg=private/cc_superbox_1/checkbox_1.png|pimg=private/cc_superbox_1/checkbox_2.png|link=@opensuperboxmanager_button#sid='..
         OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_28..'>'..
-        '<Text|id=2258|x=40|y=0|size=15|color=63|text=不满足条件的装备自动回收>'..
-        '<Img|id=2214|children={2299}|x=28.0|y=5.0|width=200|height=30|esc=0|img=private/cc_superbox_1/bg_3.png>'..
-        '<Text|id=2299|x=70|y=6|size=18|color=174|text=基础设置>'..
-        '<Img|id=2215|children={2298}|x=28.0|y=105.0|width=200|height=30|esc=0|img=private/cc_superbox_1/bg_3.png>'..
-        '<Text|id=2298|x=70|y=6|size=18|color=174|text=高级设置>'..
-        '<Img|id=2216|children={2297}|x=28.0|y=220.0|width=200|height=30|esc=0|img=private/cc_superbox_1/bg_3.png>'..
-        '<Text|id=2297|x=70|y=6|size=18|color=174|text=回收设置>'        
+
+        '<MenuItem|id=2252|a=2|x=63.0|y=50.0|width=170|height=22|itemname='..strItemList1..'|select='..currSelectStr1..
+        '|fontsize=16|arrowimg=private/cc_superbox_1/btn_1.png|itemhei=20|menuid='..CommonDefine.VAR_S_SELECT_MENUITEM_1..
+        '|selectcolor=254|fontcolor=250|direction=0|link=@opensuperboxmanager_button#sid='..OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_22..'>'..  
+
+        '<MenuItem|id=2253|a=2|x=63.0|y=90.0|width=170|height=22|itemname='..strItemList2..'|select='..currSelectStr2..
+        '|fontsize=16|arrowimg=private/cc_superbox_1/btn_1.png|itemhei=20|menuid='..CommonDefine.VAR_S_SELECT_MENUITEM_2..
+        '|selectcolor=254|fontcolor=250|direction=0|link=@opensuperboxmanager_button#sid='..OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_24..'>'
 
     addbutton(actor, 108, CommonDefine.ADD_BUTTON_ID_5, strPanel)
 end
