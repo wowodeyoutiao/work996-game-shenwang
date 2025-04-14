@@ -5976,6 +5976,11 @@ BREAK
 DELBUTTON 1101 9004
 BREAK
 
+[@cc_exit_specialui_ex]
+#IF
+#ACT
+DELBUTTON <$STR(S$winid)> <$STR(S$buttonid)>
+BREAK
 
 [@newmainuibase_openpanel]
 #IF

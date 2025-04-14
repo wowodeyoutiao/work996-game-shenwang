@@ -157,8 +157,8 @@ end
 --进入地图触发
 function entermap(actor, mapid)
     if IsMapHaveLeaveButton(mapid) then 
-        local buttonstr = '<Button|text=离开地图|x=-300|y=150|color='..CSS.NPC_WHITE..'|pimg=public/1900000662.png|nimg=public/1900000663.png|link=@base_leavemap_button>'
-        addbutton(actor, 102, CommonDefine.ADD_BUTTON_ID_8, buttonstr)
+        local buttonstr = '<Button|text=离开地图|x=260|y=36|color='..CSS.NPC_WHITE..'|pimg=public/1900000662.png|nimg=public/1900000663.png|link=@base_leavemap_button>'
+        addbutton(actor, 101, CommonDefine.ADD_BUTTON_ID_8, buttonstr)
     end
     GameEventManager.DoTriggerEvent(CommonDefine.EVENT_NAME_PLAYER_ENTERMAP, actor, mapid)
 end
@@ -166,7 +166,7 @@ end
 --离开地图触发
 function leavemap(actor, mapid)
     if IsMapHaveLeaveButton(mapid) then
-        delbutton(actor, 102, CommonDefine.ADD_BUTTON_ID_8)
+        delbutton(actor, 101, CommonDefine.ADD_BUTTON_ID_8)
     end
     GameEventManager.DoTriggerEvent(CommonDefine.EVENT_NAME_PLAYER_LEAVEMAP, actor, mapid)
 end

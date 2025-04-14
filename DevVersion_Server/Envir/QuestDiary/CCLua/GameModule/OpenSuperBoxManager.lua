@@ -55,6 +55,11 @@ local function GetDayMaxAddBoxNum(actor)
     return CommonDefine.DAY_SUPER_BOX_MAX_ADD_NUM
 end
 
+--返回每天最大可以开箱的数量
+local function GetDayMaxOpenBoxNum(actor)
+    return CommonDefine.DAY_SUPER_BOX_MAX_OPEN_NUM
+end
+
 --增加当前的宝箱累计数量
 function OpenSuperBoxManager.AddNewBoxNum(actor, addnum)
     if BF_IsNullObj(actor) or (addnum == nil) or (addnum <= 0) then
@@ -99,30 +104,34 @@ function OpenSuperBoxManager.UpdateSuperBoxInfo(actor)
 
     local sText1 = '开启'
     if getflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_AUTO_OPEN_SUPERBOX) == 1 then
-        sText1 = '停止' 
+        sText1 = '停止'
     end
 
     local nCurrBoxNum = getplaydef(actor, CommonDefine.VAR_U_SUPER_BOX_TOTAL_NUM)
     local nOnceOpenNum = getplaydef(actor, CommonDefine.VAR_U_SUPER_BOX_ONCE_OPEN_NUM)
     local nBoxCurrLv = getplaydef(actor, CommonDefine.VAR_U_SUPER_BOX_CURR_LV)
+    local strItemUniqueIDs = getplaydef(actor, CommonDefine.VAR_S_SUPERBOX_ITEMLIST)
+    local boxpic = 'private/cc_superbox_1/btn_baoxiang.png'
+    if strItemUniqueIDs ~= '' then
+        boxpic = 'private/cc_superbox_1/btn_baoxiang_1.png'
+    end
 
     local strPanel = '<Layout|id=2000|children={2001,2004,2005,2006,2007,2008,2010}|x=-130|y=-300|bg=1|move=0|show=0|loadDelay=1>'.. 
-        '<Button|id=2001|children={2009}|x=66.0|y=0.0|width=72|height=63|clickInterval=500|nimg=private/cc_superbox_1/btn_baoxiang.png|mimg=private/cc_superbox_1/btn_baoxiang.png|link=@opensuperboxmanager_button#sid='..
+        '<Button|id=2001|children={2009}|x=68.0|y=0.0|width=72|height=63|clickInterval=500|nimg='..boxpic..'|mimg='..boxpic..'|link=@opensuperboxmanager_button#sid='..
         OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_1..'>'..
         '<Img|id=2009|children={2003}|x=-12.0|y=40.0|width=100|height=24|esc=0|img=private/cc_superbox_1/bg_baoxiangshuliang.png>'..
         '<Text|id=2003|x=32.0|y=2.0|color=255|size=20|text='..nCurrBoxNum..'>'..
-        '<Button|id=2004|x=140.0|y=70.0|clickInterval=500|size=18|color=255|nimg=private/cc_superbox_1/btn_7.png|mimg=private/cc_superbox_1/btn_7.png|link=@opensuperboxmanager_button#sid='..
+        '<Button|id=2004|x=142.0|y=68.0|clickInterval=500|size=18|color=255|nimg=private/cc_superbox_1/btn_7.png|mimg=private/cc_superbox_1/btn_7.png|link=@opensuperboxmanager_button#sid='..
         OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_2..'>'..
-        '<Button|id=2005|x=30.0|y=70.0|clickInterval=500|size=18|mimg=private/cc_superbox_1/btn_8.png|color=255|nimg=private/cc_superbox_1/btn_8.png|link=@opensuperboxmanager_button#sid='..
+        '<Button|id=2005|x=33.0|y=68.0|clickInterval=500|size=18|mimg=private/cc_superbox_1/btn_8.png|color=255|nimg=private/cc_superbox_1/btn_8.png|link=@opensuperboxmanager_button#sid='..
         OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_3..'>'..
-        '<Button|id=2006|x=175.0|y=60.0|clickInterval=500|size=20|mimg=private/cc_superbox_1/bg_dengji_baoxiang.png|color=255|nimg=private/cc_superbox_1/bg_dengji_baoxiang.png|link=@opensuperboxmanager_button#sid='..
+        '<Button|id=2006|x=175.0|y=52.0|clickInterval=500|size=20|mimg=private/cc_superbox_1/bg_dengji_baoxiang.png|color=255|nimg=private/cc_superbox_1/bg_dengji_baoxiang.png|link=@opensuperboxmanager_button#sid='..
         OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_4..'|text=LV.'..nBoxCurrLv..'>'..        
-        '<Button|id=2007|x=-45.0|y=60.0|clickInterval=500|size=20|mimg=private/cc_superbox_1/bg_dengji_baoxiang.png|color=255|nimg=private/cc_superbox_1/bg_dengji_baoxiang.png|link=@opensuperboxmanager_button#sid='..
+        '<Button|id=2007|x=-45.0|y=52.0|clickInterval=500|size=20|mimg=private/cc_superbox_1/bg_dengji_baoxiang.png|color=255|nimg=private/cc_superbox_1/bg_dengji_baoxiang.png|link=@opensuperboxmanager_button#sid='..
         OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_6..'|text='..sText1..'>'..
-        '<Img|id=2008|children={2002}|x=58.0|y=71.0|width=86|esc=0|img=private/cc_superbox_1/bg_baoxiangbeishu.png>'..
+        '<Img|id=2008|children={2002}|x=58.0|y=70.0|width=86|esc=0|img=private/cc_superbox_1/bg_baoxiangbeishu.png>'..
         '<Text|id=2002|x=30.0|y=5.0|color=255|size=20|text='..nOnceOpenNum..'>'
-
-    local strItemUniqueIDs = getplaydef(actor, CommonDefine.VAR_S_SUPERBOX_ITEMLIST)
+    
     if strItemUniqueIDs ~= '' then
         local tabUniqueIDs = string.split(strItemUniqueIDs, ',')      
         if tabUniqueIDs ~= false then
@@ -207,6 +216,15 @@ function OpenSuperBoxManager.DoOpenBoxOnce(actor, autoflag, openitemlist)
         return false
     end    
 
+    local DAY_MAX_OPEN_NUM = GetDayMaxOpenBoxNum(actor)
+    local nDayOpenNum = getplaydef(actor, CommonDefine.VAR_J_DAY_SUPERBOX_OPENNUM)
+release_print('DAY_MAX_OPEN_NUM:'..DAY_MAX_OPEN_NUM)    
+release_print('nDayOpenNum：'..nDayOpenNum)
+    if nDayOpenNum >= DAY_MAX_OPEN_NUM then
+        Player.SendSelfMsg(actor, '已达到今日开箱上限！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+        return false
+    end
+
     local nBoxCurrLv = getplaydef(actor, CommonDefine.VAR_U_SUPER_BOX_CURR_LV)
     local levelConfig = cfgSuperBoxLevel[nBoxCurrLv]
     if levelConfig == nil then
@@ -217,12 +235,18 @@ function OpenSuperBoxManager.DoOpenBoxOnce(actor, autoflag, openitemlist)
         nOnceOpenNum = 1
     elseif (nOnceOpenNum > levelConfig.maxopennum) then
         nOnceOpenNum = levelConfig.maxopennum
-    end
+    end 
 
     nOnceOpenNum = math.min(nOnceOpenNum, nCurrBoxNum)
     if nOnceOpenNum <= 0 then
         return false
     end
+
+    if nDayOpenNum + nOnceOpenNum > DAY_MAX_OPEN_NUM then
+        nOnceOpenNum = DAY_MAX_OPEN_NUM - nDayOpenNum
+    end
+    nDayOpenNum = nDayOpenNum + nOnceOpenNum           
+
     if nOnceOpenNum > getbagblank(actor) then
         Player.SendSelfMsg(actor, '空间不足，清先整理背包！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
         return false
@@ -235,6 +259,8 @@ function OpenSuperBoxManager.DoOpenBoxOnce(actor, autoflag, openitemlist)
         release_print('DoOpenBoxOnce error 1111 level:'..nPlayerLv)
         return false
     end
+
+    setplaydef(actor, CommonDefine.VAR_J_DAY_SUPERBOX_OPENNUM, nDayOpenNum)
 
     --随机出要开箱子生成的道具id
     local newItemIDTab = {}
@@ -601,31 +627,31 @@ local function OpenAutoOpenBoxPanel(actor)
     end    
 
     local strPanel = '<Img|id=2200|children={2203,2204,2205}|x=-300|y=-660|img=private/cc_superbox_1/bg_frame_autosetting.png|esc=1|move=0|bg=1|reset=1|loadDelay=0|show=0>'..        
-        '<Button|id=2204|x=525.0|y=55.0|color=255|mimg=private/cc_superbox_1/btn_fanhui.png|nimg=private/cc_superbox_1/btn_fanhui.png|size=18|link=@opensuperboxmanager_button#sid='..
+        '<Button|id=2204|x=523.0|y=57.0|color=255|mimg=private/cc_superbox_1/btn_fanhui.png|nimg=private/cc_superbox_1/btn_fanhui.png|size=18|link=@opensuperboxmanager_button#sid='..
         OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_7..'>'..
         '<Layout|id=2203|x=524.0|y=56.0|width=80|height=80|link=@opensuperboxmanager_button#sid='..OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_7..'>'
 
     strPanel = strPanel..'<Layout|id=2205|children={2211,2212,2213,2214,2215,2216,2253,2252}|x=70.0|y=110.0|width=270|height=440>'..
 
-        '<CheckBox|id=2211|x=4.0|y=20.0|count=1|default='..flaglist[1].flag..'|checkboxid='..flaglist[1].checkvar..'|nimg=private/cc_superbox_1/checkbox_1.png|pimg=private/cc_superbox_1/checkbox_2.png|link=@opensuperboxmanager_button#sid='..
+        '<CheckBox|id=2211|x=18.0|y=46.0|count=1|default='..flaglist[1].flag..'|checkboxid='..flaglist[1].checkvar..'|nimg=private/cc_superbox_1/checkbox_1.png|pimg=private/cc_superbox_1/checkbox_2.png|link=@opensuperboxmanager_button#sid='..
         OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_21..'>'..
-        '<CheckBox|id=2212|x=4.0|y=60.0|count=1|default='..flaglist[2].flag..'|checkboxid='..flaglist[2].checkvar..'|nimg=private/cc_superbox_1/checkbox_1.png|pimg=private/cc_superbox_1/checkbox_2.png|link=@opensuperboxmanager_button#sid='..
+        '<CheckBox|id=2212|x=18.0|y=110.0|count=1|default='..flaglist[2].flag..'|checkboxid='..flaglist[2].checkvar..'|nimg=private/cc_superbox_1/checkbox_1.png|pimg=private/cc_superbox_1/checkbox_2.png|link=@opensuperboxmanager_button#sid='..
         OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_23..'>'..
-        '<CheckBox|id=2213|x=4.0|y=204.0|count=1|default='..flaglist[3].flag..'|checkboxid='..flaglist[3].checkvar..'|nimg=private/cc_superbox_1/checkbox_1.png|pimg=private/cc_superbox_1/checkbox_2.png|link=@opensuperboxmanager_button#sid='..
+        '<CheckBox|id=2213|x=18.0|y=220.0|count=1|default='..flaglist[3].flag..'|checkboxid='..flaglist[3].checkvar..'|nimg=private/cc_superbox_1/checkbox_1.png|pimg=private/cc_superbox_1/checkbox_2.png|link=@opensuperboxmanager_button#sid='..
         OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_25..'>'..    
-        '<CheckBox|id=2214|x=4.0|y=237.0|count=1|default='..flaglist[4].flag..'|checkboxid='..flaglist[4].checkvar..'|nimg=private/cc_superbox_1/checkbox_1.png|pimg=private/cc_superbox_1/checkbox_2.png|link=@opensuperboxmanager_button#sid='..
+        '<CheckBox|id=2214|x=18.0|y=264.0|count=1|default='..flaglist[4].flag..'|checkboxid='..flaglist[4].checkvar..'|nimg=private/cc_superbox_1/checkbox_1.png|pimg=private/cc_superbox_1/checkbox_2.png|link=@opensuperboxmanager_button#sid='..
         OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_26..'>'..
-        '<CheckBox|id=2215|x=4.0|y=273.0|count=1|default='..flaglist[5].flag..'|checkboxid='..flaglist[5].checkvar..'|nimg=private/cc_superbox_1/checkbox_1.png|pimg=private/cc_superbox_1/checkbox_2.png|link=@opensuperboxmanager_button#sid='..
+        '<CheckBox|id=2215|x=18.0|y=304.0|count=1|default='..flaglist[5].flag..'|checkboxid='..flaglist[5].checkvar..'|nimg=private/cc_superbox_1/checkbox_1.png|pimg=private/cc_superbox_1/checkbox_2.png|link=@opensuperboxmanager_button#sid='..
         OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_27..'>'..
-        '<CheckBox|id=2216|x=4.0|y=378.0|count=1|default='..flaglist[6].flag..'|checkboxid='..flaglist[6].checkvar..'|nimg=private/cc_superbox_1/checkbox_1.png|pimg=private/cc_superbox_1/checkbox_2.png|link=@opensuperboxmanager_button#sid='..
+        '<CheckBox|id=2216|x=18.0|y=386.0|count=1|default='..flaglist[6].flag..'|checkboxid='..flaglist[6].checkvar..'|nimg=private/cc_superbox_1/checkbox_1.png|pimg=private/cc_superbox_1/checkbox_2.png|link=@opensuperboxmanager_button#sid='..
         OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_28..'>'..
 
-        '<MenuItem|id=2252|a=2|x=63.0|y=50.0|width=170|height=22|itemname='..strItemList1..'|select='..currSelectStr1..
-        '|fontsize=16|arrowimg=private/cc_superbox_1/btn_1.png|itemhei=20|menuid='..CommonDefine.VAR_S_SELECT_MENUITEM_1..
+        '<MenuItem|id=2252|a=2|x=60.0|y=73.0|itemname='..strItemList1..'|select='..currSelectStr1..
+        '|fontsize=18|img=private/cc_superbox_1/xlk_1.png|arrowimg=private/cc_superbox_1/btn_1.png|itemhei=20|menuid='..CommonDefine.VAR_S_SELECT_MENUITEM_1..
         '|selectcolor=254|fontcolor=250|direction=0|link=@opensuperboxmanager_button#sid='..OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_22..'>'..  
 
-        '<MenuItem|id=2253|a=2|x=63.0|y=90.0|width=170|height=22|itemname='..strItemList2..'|select='..currSelectStr2..
-        '|fontsize=16|arrowimg=private/cc_superbox_1/btn_1.png|itemhei=20|menuid='..CommonDefine.VAR_S_SELECT_MENUITEM_2..
+        '<MenuItem|id=2253|a=2|x=60.0|y=136.0|itemname='..strItemList2..'|select='..currSelectStr2..
+        '|fontsize=18|img=private/cc_superbox_1/xlk_1.png|arrowimg=private/cc_superbox_1/btn_1.png|itemhei=20|menuid='..CommonDefine.VAR_S_SELECT_MENUITEM_2..
         '|selectcolor=254|fontcolor=250|direction=0|link=@opensuperboxmanager_button#sid='..OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_24..'>'
 
     addbutton(actor, 108, CommonDefine.ADD_BUTTON_ID_5, strPanel)

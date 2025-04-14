@@ -360,14 +360,19 @@ function BF_NPCSayExt(actor, msg, styleflag, width, height)
 end
 
 --专用的UI显示
-function BF_ShowSpecialUI(actor, msg, styleflag)
+function BF_ShowSpecialUI(actor, msg, styleflag, winid)
     if (actor == nil) or (msg == nil) then
         return
     end    
 
     if (styleflag~=nil) and (styleflag==1) then
-        delbutton(actor, 1101, CommonDefine.ADD_BUTTON_ID_4)
-        addbutton(actor, 1101, CommonDefine.ADD_BUTTON_ID_4, msg)
+        local basewinid = 1101
+        if winid ~= nil then
+            basewinid = winid
+        end
+
+        delbutton(actor, basewinid, CommonDefine.ADD_BUTTON_ID_4)
+        addbutton(actor, basewinid, CommonDefine.ADD_BUTTON_ID_4, msg)
     else
         say(actor, msg)
     end
