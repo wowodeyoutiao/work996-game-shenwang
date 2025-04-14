@@ -79,9 +79,9 @@ function RecycleManager.ShowRecyclePanelInfo(actor)
         backpic = 'private/cc_recycle/20.png'
     end
 
-    local msg = '<Img|id=200|children={'..childidstr..'}|x=22.0|y=51.0|move=1|loadDelay=0|show=0|bg=1|img='..backpic..'|esc=1|reset=1>'..
-        '<Layout|id=201|x=688.0|y=20.0|width=80|height=80|link=@cc_exit_specialui>'..
-        '<Button|id=202|x=688.0|y=20.0|pimg=public/1900000511.png|nimg=public/1900000510.png|link=@cc_exit_specialui>'    
+    local msg = '<Img|id=200|children={'..childidstr..'}|x=22.0|y=51.0|move=1|loadDelay=0|show=1|bg=0|img='..backpic..'|esc=1|reset=1>'..
+        '<Layout|id=201|x=688.0|y=20.0|width=80|height=80|link=@cc_exit_specialui_ex#winid='..CommonDefine.WINDOWS_ID_BAG..'#buttonid='..CommonDefine.ADD_BUTTON_ID_4..'>'..
+        '<Button|id=202|x=688.0|y=20.0|pimg=public/1900000511.png|nimg=public/1900000510.png|link=@cc_exit_specialui_ex#winid='..CommonDefine.WINDOWS_ID_BAG..'#buttonid='..CommonDefine.ADD_BUTTON_ID_4..'>'
 
     local nStartX = 100
     local nStartY = 100   
@@ -121,7 +121,7 @@ function RecycleManager.ShowRecyclePanelInfo(actor)
         '<Button|id=211|x=240.0|y=375.0|nimg=private/cc_recycle/14.png|mimg=private/cc_recycle/14.png|color=255|pimg=private/cc_recycle/14.png|size=18|link=@recyclemanager_button#sid='..RECYCLEMANAGER_BUTTONFUNC_ID_2..'>'..
         '<Button|id=212|x=380.0|y=375.0|nimg=private/cc_recycle/15.png|mimg=private/cc_recycle/15.png|color=255|pimg=private/cc_recycle/15.png|size=18|link=@recyclemanager_button#sid='..RECYCLEMANAGER_BUTTONFUNC_ID_3..'>'..
         '<Button|id=213|x=525.0|y=375.0|nimg=private/cc_recycle/16.png|mimg=private/cc_recycle/16.png|color=255|pimg=private/cc_recycle/16.png|size=18|link=@recyclemanager_button#sid='..RECYCLEMANAGER_BUTTONFUNC_ID_4..'>'
-    BF_ShowSpecialUI(actor, msg, 1)
+    BF_ShowSpecialUI(actor, msg, 1, CommonDefine.WINDOWS_ID_BAG)
 end
 
 function RecycleManager.ShowRecyclePriceInfo(actor)
@@ -164,18 +164,18 @@ function RecycleManager.ShowRecyclePriceInfo(actor)
             nStartX = nStartX + 250
         end                
     end    
-    BF_ShowSpecialUI(actor, msg, 1)
+    BF_ShowSpecialUI(actor, msg, 1, CommonDefine.WINDOWS_ID_BAG)
 end
 
 function RecycleManager.ShowActivatedAutoRecyclePanel(actor)
     local sPanelStr = '<Img|x=173.0|y=154.0|reset=1|loadDelay=1|img=private/cc_recycle/24.png|esc=1|show=0|move=0|bg=1>'..
-        '<Button|x=566.0|y=156.0|pimg=public/1900000511.png|nimg=public/1900000510.png|link=@cc_exit_specialui>'..        
-        '<Button|x=566.0|y=156.0|pimg=public/1900000511.png|nimg=public/1900000510.png|link=@cc_exit_specialui>'..
+        '<Button|x=566.0|y=156.0|pimg=public/1900000511.png|nimg=public/1900000510.png|link=@cc_exit_specialui_ex#winid='..CommonDefine.WINDOWS_ID_BAG..'#buttonid='..CommonDefine.ADD_BUTTON_ID_4..'>'..        
+        '<Button|x=566.0|y=156.0|pimg=public/1900000511.png|nimg=public/1900000510.png|link=@cc_exit_specialui_ex#winid='..CommonDefine.WINDOWS_ID_BAG..'#buttonid='..CommonDefine.ADD_BUTTON_ID_4..'>'..
         '<Button|x=235.0|y=295.0|nimg=private/cc_common/button_1.png|pimg=private/cc_common/button_1.png|color=255|size=18|mimg=private/cc_common/button_1.png|text=100元宝购买|link=@recyclemanager_button#sid='..RECYCLEMANAGER_BUTTONFUNC_ID_15..'>'..
         '<Button|x=405.0|y=295.0|nimg=private/cc_common/button_1.png|pimg=private/cc_common/button_1.png|color=255|size=18|mimg=private/cc_common/button_1.png|text=前往提升|link=@recyclemanager_button#sid='..RECYCLEMANAGER_BUTTONFUNC_ID_14..'>'..
         '<Text|x=196.0|y=221.0|color=255|size=18|text=角色达到VIP2即可开启自动回收，完成任务>'..
         '<Text|x=223.0|y=249.0|color=255|size=18|text=即可免费激活VIP2，是否立即前往?>'
-    BF_ShowSpecialUI(actor, sPanelStr, 1) 
+    BF_ShowSpecialUI(actor, sPanelStr, 1, CommonDefine.WINDOWS_ID_BAG) 
 end
 
 --处理button回调

@@ -250,7 +250,8 @@ CommonDefine = {
     EXTEND_STORAGE_ONCE_ADDNUM = 8,                                  --扩展一次仓库增加的格子数量
     EXTEND_STORAGE_ONCE_NEEDITEMS = {{name='绑定元宝', num=800}},     --扩展一次仓库所需的道具消耗
     SHOW_QUICK_TIP_MIN_LEVEL = 20,                                   --显示快捷提示的最小等级
-    DAY_SUPER_BOX_MAX_ADD_NUM = 100,                                 --每天可以获得的超级宝箱的最大数量
+    DAY_SUPER_BOX_MAX_ADD_NUM = 1000000,                                 --每天可以获得的超级宝箱的基础最大数量
+    DAY_SUPER_BOX_MAX_OPEN_NUM = 100,                                    --每天可以开启的超级宝箱的基础最大数量
     OPEN_SUPERBOX_SPEEDUP_ONCE_NEEDITEMS = {{name='加速卷轴', num=1}},    --超级宝箱升级加速一次需要的道具
     OPEN_SUPERBOX_SPEEDUP_ONCE_ADDSECONDS = 60,                          --超级宝箱升级加速一次对应的秒数
     NEW_PLAYER_EMAIL_ITEMS = {{name='元宝', num=5000}},                   --新玩家登录给与的邮件奖励
@@ -454,6 +455,7 @@ CommonDefine = {
     VAR_J_DAY_BIAOCHE_ACCEPT_TIMES = 'J18',             --玩家 今日接镖次数
     ]]--
     VAR_J_DAY_SUPERBOX_ADDNUM = 'J101',                 --玩家 今日获得超级宝箱次数
+    VAR_J_DAY_SUPERBOX_OPENNUM = 'J102',                --玩家 今日开启超级宝箱次数
     
     --玩家字符变量，下线保存，0点重置 Z0 - Z499
     VAR_Z_DAY_EVERYDAYTASK_COUNTER_DATA = 'Z1',         --玩家 每日任务 子任务计数
@@ -649,7 +651,10 @@ CommonDefine = {
     TASK_STATUS_ADD = 1,                          --已添加，未接受
     TASK_STATUS_ACCEPT = 2,                       --已接受，未完成
     TASK_STATUS_FINISH = 3,                       --已完成，未领奖
-    TASK_STATUS_END = 4,                          --已领奖，结束    
+    TASK_STATUS_END = 4,                          --已领奖，结束  
+    
+    --窗口ID
+    WINDOWS_ID_BAG = 7,                           --背包的窗口ID
 
     --addbutton 里面对应的buttonid
     ADD_BUTTON_ID_1 = 9001,                       --超级宝箱界面对应的buttonid
