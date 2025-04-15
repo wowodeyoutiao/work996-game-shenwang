@@ -218,8 +218,6 @@ function OpenSuperBoxManager.DoOpenBoxOnce(actor, autoflag, openitemlist)
 
     local DAY_MAX_OPEN_NUM = GetDayMaxOpenBoxNum(actor)
     local nDayOpenNum = getplaydef(actor, CommonDefine.VAR_J_DAY_SUPERBOX_OPENNUM)
-release_print('DAY_MAX_OPEN_NUM:'..DAY_MAX_OPEN_NUM)    
-release_print('nDayOpenNum：'..nDayOpenNum)
     if nDayOpenNum >= DAY_MAX_OPEN_NUM then
         Player.SendSelfMsg(actor, '已达到今日开箱上限！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
         return false

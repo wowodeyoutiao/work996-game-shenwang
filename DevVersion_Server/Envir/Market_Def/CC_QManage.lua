@@ -31,7 +31,7 @@ function login(actor)
     --玩家是否进行新手初始化
     Player.InitNewPlayer(actor)   
     --触发玩家上线的事件监听
-    GameEventManager.DoTriggerEvent(CommonDefine.EVENT_NAME_PLAYER_ENTERGAME, actor)
+    GameEventManager.DoTriggerEvent(CommonDefine.EVENT_NAME_PLAYER_ENTERGAME, actor)    
     --检测加速状态
     Player.CheckSpeedUpStatus(actor)        
     recalcabilitys(actor)

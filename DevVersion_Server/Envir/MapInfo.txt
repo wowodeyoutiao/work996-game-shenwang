@@ -48,7 +48,7 @@ b341 26 30  -> jyt08 219 198
 
 [ddyz|yehongwei32 等待验证] safe saylevel(65535) noshop nodeal noreconnect(ddyz) nodrug quiz nopositionmove norecall nodearrecall noguildrecall nomasterrecall norandommove mission notallowusemagic(瞬息移动) notallowuseitems(回城卷|行会回城卷|地牢逃脱卷|随机传送卷|盟重回城石|随机传送石|风雷召唤令)
 [rxsc1560|0          比起省] safe saylevel(65535) noshop  nodeal nodrug quiz nopositionmove norecall nodearrecall noguildrecall nomasterrecall norandommove mission notallowusemagic(瞬息移动) notallowuseitems(回城卷|行会回城卷|地牢逃脱卷|随机传送卷|盟重回城石|随机传送石|风雷召唤令) NOMANNOMON(120)
-[em000|g003           新手训练营] safe noreconnect(em000) runmon(1) noallowuseitems(盟重传送石|随机传送石|风雷召唤令)
+[em000|g003           新手训练营] safe noreconnect(tjp) runmon(1) noallowuseitems(盟重传送石|随机传送石|风雷召唤令)
 
 ;攻城区域-----
 [rxsc806|3 沙巴克·攻城区]  fight3(1)   noreconnect(tjp)  runmon(1) nodeal

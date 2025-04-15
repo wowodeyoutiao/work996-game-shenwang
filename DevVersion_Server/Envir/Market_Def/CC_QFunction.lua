@@ -4,9 +4,9 @@ UIncludes()
 ----------------------------------------------------------------系统触发回调函数start--------------------------------------------------------------------------
 
 -- 玩家小退触发
-function playreconnection(actor)
+function playreconnection(actor)    
     --触发玩家退出游戏的事件监听
-    GameEventManager.DoTriggerEvent(CommonDefine.EVENT_NAME_PLAYER_LEAVEGAME, actor) 
+    GameEventManager.DoTriggerEvent(CommonDefine.EVENT_NAME_PLAYER_LEAVEGAME, actor)   
 end
 
 -- 玩家大退与关闭客户端触发
@@ -145,18 +145,9 @@ function addbag(actor, makeindex)
     end
 end
 
-local function IsMapHaveLeaveButton(mapidstr)
-    for _, value in ipairs(CommonDefine.NEED_LEAVEBUTTON_MAPS) do
-        if value == mapidstr then
-            return true
-        end
-    end
-    return false
-end
-
 --进入地图触发
 function entermap(actor, mapid)
-    if IsMapHaveLeaveButton(mapid) then 
+    if Player.IsCurrMapHaveLeaveButton(actor) then     
         local buttonstr = '<Button|text=离开地图|x=260|y=36|color='..CSS.NPC_WHITE..'|pimg=public/1900000662.png|nimg=public/1900000663.png|link=@base_leavemap_button>'
         addbutton(actor, 101, CommonDefine.ADD_BUTTON_ID_8, buttonstr)
     end
@@ -165,7 +156,7 @@ end
 
 --离开地图触发
 function leavemap(actor, mapid)
-    if IsMapHaveLeaveButton(mapid) then
+    if Player.IsCurrMapHaveLeaveButton(actor) then
         delbutton(actor, 101, CommonDefine.ADD_BUTTON_ID_8)
     end
     GameEventManager.DoTriggerEvent(CommonDefine.EVENT_NAME_PLAYER_LEAVEMAP, actor, mapid)

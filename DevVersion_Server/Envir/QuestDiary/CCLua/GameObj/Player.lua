@@ -747,6 +747,19 @@ function Player.ShowItemEx(actor, makeindex)
     say(actor, tempstr)
 end
 
+--玩家当前所在地图是否有离开按钮
+function Player.IsCurrMapHaveLeaveButton(actor)
+    if not BF_IsNullObj(actor) then
+        local mapidstr = Player.GetMapIDStr(actor)
+        for _, value in ipairs(CommonDefine.NEED_LEAVEBUTTON_MAPS) do
+            if value == mapidstr then
+                return true
+            end
+        end
+    end
+    return false
+end
+
 --[[
 --获取创建角色天数
 function Player.getCreateActorDay(actor)
