@@ -146,8 +146,8 @@ function addbag(actor, makeindex)
 end
 
 local function IsMapHaveLeaveButton(mapidstr)
-    for _, value in ipairs(CommonDefine.UPGRADE_LEVEL_BASE_MAPS) do
-        if value.mapidstr == mapidstr then
+    for _, value in ipairs(CommonDefine.NEED_LEAVEBUTTON_MAPS) do
+        if value == mapidstr then
             return true
         end
     end
