@@ -239,7 +239,7 @@ function Player.CheckMoneyNum(actor, moneytype, num)
 end
 
 --返回玩家背包中的物品或者虚拟货币数量
-function Player.GetItemNumInBag(actor, nameOrIdx)
+function Player.GetItemNumInBag(actor, nameOrIdx, bindybFlag)
     if (actor == nil) or (nameOrIdx == nil) then
         return 0, ''
     end
@@ -252,7 +252,11 @@ function Player.GetItemNumInBag(actor, nameOrIdx)
 
     if Item.isCurrency(itemidx) then     
         --虚拟货币   
-        return querymoney(actor, itemidx), itemname
+        if (itemidx == CommonDefine.ITEMID_BINDYB) and (bindybFlag ~= nil) and (bindybFlag == true) then
+            return getbindmoney(actor, itemname), itemname
+        else            
+            return querymoney(actor, itemidx), itemname
+        end
     else  
         --道具和装备
         return getbagitemcount(actor, itemname), itemname
@@ -279,7 +283,8 @@ function Player.CheckItemsEnough(actor, checkitems, notifyreason, multiple)
             itemnum = itemnum * multiple
         end
 
-        local bagItemNum, needitemname = Player.GetItemNumInBag(actor, nameOrIdx);
+        --这里的元宝是可以抵扣绑元的
+        local bagItemNum, needitemname = Player.GetItemNumInBag(actor, nameOrIdx, true);
         if bagItemNum < itemnum then
             if notifyreason and (notifyreason~='') and (needitemname~=nil) then
                 Player.SendSelfMsg(actor, notifyreason..'所需的'..needitemname..'不足！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
@@ -319,7 +324,11 @@ function Player.TakeItems(actor, needitems, desc, multiple)
 
         if Item.isCurrency(itemidx) then       
             --虚拟货币 
-            changemoney(actor, itemidx, "-", itemnum, desc, true)
+            if itemidx == CommonDefine.ITEMID_BINDYB then
+                consumebindmoney(actor, itemname, itemnum, desc)
+            else
+                changemoney(actor, itemidx, "-", itemnum, desc, true)
+            end            
         else
             --物品 装备
             takeitem(actor, itemname, itemnum)
@@ -520,25 +529,25 @@ function Player.InitNewPlayer(actor)
         local job = Player.GetJob(actor)
         local gender = Player.GetGender(actor)
         if job == CommonDefine.JOB_Z then
-            giveonitem(actor, CommonDefine.EQUIPPOS_WEAPON, '木剑', 1, 1, '出生给与')
+            giveonitem(actor, CommonDefine.EQUIPPOS_WEAPON, '良·木剑', 1, 1, '出生给与')
             if gender == CommonDefine.GENDER_MAN then
-                giveonitem(actor, CommonDefine.EQUIPPOS_DRESS, '布衣', 1, 1, '出生给与')
+                giveonitem(actor, CommonDefine.EQUIPPOS_DRESS, '良·布衣', 1, 1, '出生给与')
             else
-                giveonitem(actor, CommonDefine.EQUIPPOS_DRESS, '布衣', 1, 1, '出生给与')
+                giveonitem(actor, CommonDefine.EQUIPPOS_DRESS, '良·布衣', 1, 1, '出生给与')
             end
         elseif job == CommonDefine.JOB_F then
-            giveonitem(actor, CommonDefine.EQUIPPOS_WEAPON, '木剑', 1, 1, '出生给与')
+            giveonitem(actor, CommonDefine.EQUIPPOS_WEAPON, '良·木剑', 1, 1, '出生给与')
             if gender == CommonDefine.GENDER_MAN then
-                giveonitem(actor, CommonDefine.EQUIPPOS_DRESS, '布衣', 1, 1, '出生给与')
+                giveonitem(actor, CommonDefine.EQUIPPOS_DRESS, '良·布衣', 1, 1, '出生给与')
             else
-                giveonitem(actor, CommonDefine.EQUIPPOS_DRESS, '布衣', 1, 1, '出生给与')
+                giveonitem(actor, CommonDefine.EQUIPPOS_DRESS, '良·布衣', 1, 1, '出生给与')
             end
         elseif job == CommonDefine.JOB_D then
-            giveonitem(actor, CommonDefine.EQUIPPOS_WEAPON, '木剑', 1, 1, '出生给与')
+            giveonitem(actor, CommonDefine.EQUIPPOS_WEAPON, '良·木剑', 1, 1, '出生给与')
             if gender == CommonDefine.GENDER_MAN then
-                giveonitem(actor, CommonDefine.EQUIPPOS_DRESS, '布衣', 1, 1, '出生给与')
+                giveonitem(actor, CommonDefine.EQUIPPOS_DRESS, '良·布衣', 1, 1, '出生给与')
             else
-                giveonitem(actor, CommonDefine.EQUIPPOS_DRESS, '布衣', 1, 1, '出生给与')
+                giveonitem(actor, CommonDefine.EQUIPPOS_DRESS, '良·布衣', 1, 1, '出生给与')
             end
         end
         --给初始道具
