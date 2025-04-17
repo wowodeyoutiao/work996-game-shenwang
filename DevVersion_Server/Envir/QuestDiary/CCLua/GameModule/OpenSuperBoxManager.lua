@@ -624,9 +624,11 @@ local function OpenAutoOpenBoxPanel(actor)
         flaglist[#flaglist+1] = info
     end    
 
-    local strPanel = '<Img|id=2200|children={2203,2204,2205}|x=-300|y=-660|img=private/cc_superbox_1/bg_frame_autosetting.png|esc=1|move=0|bg=1|reset=1|loadDelay=0|show=0>'..        
+    local strPanel = '<Img|id=2200|children={2203,2204,2205,2206}|x=-300|y=-660|img=private/cc_superbox_1/bg_frame_autosetting.png|esc=1|move=0|bg=1|reset=1|loadDelay=0|show=0>'..        
         '<Button|id=2204|x=523.0|y=57.0|color=255|mimg=private/cc_superbox_1/btn_fanhui.png|nimg=private/cc_superbox_1/btn_fanhui.png|size=18|link=@opensuperboxmanager_button#sid='..
         OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_7..'>'..
+        '<Button|id=2206|x=240.0|y=540.0|color=255|text=¿ªÆô×Ô¶¯|mimg=private/cc_common/button_1.png|nimg=private/cc_common/button_1.png|size=18|link=@opensuperboxmanager_button#sid='..
+        OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_7..'>'..        
         '<Layout|id=2203|x=524.0|y=56.0|width=80|height=80|link=@opensuperboxmanager_button#sid='..OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_7..'>'
 
     strPanel = strPanel..'<Layout|id=2205|children={2211,2212,2213,2214,2215,2216,2253,2252}|x=70.0|y=110.0|width=270|height=440>'..

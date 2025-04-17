@@ -264,12 +264,12 @@ CommonDefine = {
 
     --等级升级对应的地图，快捷前往的
     UPGRADE_LEVEL_BASE_MAPS = {
-        {minlv=1, maxlv=9, mapidstr='em000', x=35, y=45},
-        {minlv=10, maxlv=19, mapidstr='fmg', x=245, y=100},
-        {minlv=20, maxlv=49, mapidstr='hero1', x=218, y=36},
-        {minlv=50, maxlv=99, mapidstr='rxsc1891', x=100, y=131},
-        {minlv=100, maxlv=149, mapidstr='rxsc014', x=87, y=64},
-        {minlv=150, maxlv=199, mapidstr='rxsc001', x=47, y=102},
+        {minlv=1, maxlv=39, mapidstr='em000', x=35, y=45},
+        {minlv=40, maxlv=59, mapidstr='fmg', x=245, y=100},
+        {minlv=60, maxlv=79, mapidstr='hero1', x=218, y=36},
+        {minlv=80, maxlv=99, mapidstr='rxsc1891', x=100, y=131},
+        {minlv=100, maxlv=119, mapidstr='rxsc014', x=87, y=64},
+        {minlv=120, maxlv=149, mapidstr='rxsc001', x=47, y=102},
     },
 
     --通用的特殊地图内原地复活的消耗，随次数变化

@@ -7,6 +7,7 @@ UIncludes()
 function playreconnection(actor)    
     --触发玩家退出游戏的事件监听
     GameEventManager.DoTriggerEvent(CommonDefine.EVENT_NAME_PLAYER_LEAVEGAME, actor)   
+    delbutton(actor, 1101, CommonDefine.ADD_BUTTON_ID_4)
 end
 
 -- 玩家大退与关闭客户端触发
