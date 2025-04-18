@@ -195,6 +195,13 @@ function OpenSuperBoxManager.UpdateSuperBoxInfo(actor)
                 OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_12..'>'
             end
         end
+    else
+        if getflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_AUTO_OPEN_SUPERBOX) == 1 then
+            if getflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_AUTO_OPEN_SUPERBOX_PAUSE) == 1 then
+                setflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_AUTO_OPEN_SUPERBOX_PAUSE, 0)
+                delaygoto(actor, 2000, 'superbox_delay_checkrecycle', 0)
+            end
+        end        
     end
 
     addbutton(actor, 108, CommonDefine.ADD_BUTTON_ID_1, strPanel)   
@@ -624,9 +631,11 @@ local function OpenAutoOpenBoxPanel(actor)
         flaglist[#flaglist+1] = info
     end    
 
-    local strPanel = '<Img|id=2200|children={2203,2204,2205}|x=-300|y=-660|img=private/cc_superbox_1/bg_frame_autosetting.png|esc=1|move=0|bg=1|reset=1|loadDelay=0|show=0>'..        
+    local strPanel = '<Img|id=2200|children={2203,2204,2205,2206}|x=-300|y=-660|img=private/cc_superbox_1/bg_frame_autosetting.png|esc=1|move=0|bg=1|reset=1|loadDelay=0|show=0>'..        
         '<Button|id=2204|x=523.0|y=57.0|color=255|mimg=private/cc_superbox_1/btn_fanhui.png|nimg=private/cc_superbox_1/btn_fanhui.png|size=18|link=@opensuperboxmanager_button#sid='..
         OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_7..'>'..
+        '<Button|id=2206|x=240.0|y=540.0|color=255|text=开启自动|mimg=private/cc_common/button_1.png|nimg=private/cc_common/button_1.png|size=18|link=@opensuperboxmanager_button#sid='..
+        OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_7..'>'..        
         '<Layout|id=2203|x=524.0|y=56.0|width=80|height=80|link=@opensuperboxmanager_button#sid='..OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_7..'>'
 
     strPanel = strPanel..'<Layout|id=2205|children={2211,2212,2213,2214,2215,2216,2253,2252}|x=70.0|y=110.0|width=270|height=440>'..
@@ -660,6 +669,7 @@ local function CloseAutoOpenBoxPanel(actor)
     delbutton(actor, 108, CommonDefine.ADD_BUTTON_ID_5)
     if getflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_AUTO_OPEN_SUPERBOX) == 0 then
         setflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_AUTO_OPEN_SUPERBOX, 1)
+        setflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_AUTO_OPEN_SUPERBOX_PAUSE, 0)
         OpenSuperBoxManager.AutoOpenSuperBox(actor)  
     end
 end
@@ -790,48 +800,51 @@ function OpenSuperBoxManager.AutoOpenSuperBox(actor)
         return
     end
 
-    --自动开宝箱
-    local openitemlist = {}
-    if not OpenSuperBoxManager.DoOpenBoxOnce(actor, true, openitemlist) then        
-        return
-    end
+    if getflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_AUTO_OPEN_SUPERBOX_PAUSE) == 0 then
+        --自动开宝箱
+        local openitemlist = {}
+        if not OpenSuperBoxManager.DoOpenBoxOnce(actor, true, openitemlist) then        
+            setflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_AUTO_OPEN_SUPERBOX, 0)
+            return
+        end
+        
+        --根据结果判断是否停止    
+        local bNeedPause = false
+        local checkstopflag1 = getflagstatus(actor, RECYCLE_CHECKBOX_INFO[3].bitflag)
+        local checkstopflag2 = getflagstatus(actor, RECYCLE_CHECKBOX_INFO[4].bitflag)
+        local checkstopflag3 = getflagstatus(actor, RECYCLE_CHECKBOX_INFO[5].bitflag)
 
-    --根据结果判断是否停止    
-    local bNeedStop = false
-    local checkstopflag1 = getflagstatus(actor, RECYCLE_CHECKBOX_INFO[3].bitflag)
-    local checkstopflag2 = getflagstatus(actor, RECYCLE_CHECKBOX_INFO[4].bitflag)
-    local checkstopflag3 = getflagstatus(actor, RECYCLE_CHECKBOX_INFO[5].bitflag)
-
-    for _, value in ipairs(openitemlist) do
-        if not BF_IsNullObj(value.itemobj) then
-            local itemname = getiteminfo(actor, value.itemobj, CommonDefine.ITEMINFO_CHGEDNAME)
-            if checkstopflag1 == 1 then
-                if Item.CompareBagItemToEquipment(actor, value.itemobj) == 1 then
-                    bNeedStop = true
-                    Player.SendSelfMsg(actor, '请查看装备：'..itemname..' 比身上的评分更高！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
-                    break
+        for _, value in ipairs(openitemlist) do
+            if not BF_IsNullObj(value.itemobj) then
+                local itemname = getiteminfo(actor, value.itemobj, CommonDefine.ITEMINFO_CHGEDNAME)
+                if checkstopflag1 == 1 then
+                    if Item.CompareBagItemToEquipment(actor, value.itemobj) == 1 then
+                        bNeedPause = true
+                        Player.SendSelfMsg(actor, '请查看装备：'..itemname..' 比身上的评分更高！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+                        break
+                    end
+                end        
+                if checkstopflag2 == 1 then
+                    if value.randabflag == 1 then
+                        bNeedPause = true
+                        Player.SendSelfMsg(actor, '请查看装备：'..itemname..' 有极品属性！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+                        break                    
+                    end
                 end
-            end        
-            if checkstopflag2 == 1 then
-                if value.randabflag == 1 then
-                    bNeedStop = true
-                    Player.SendSelfMsg(actor, '请查看装备：'..itemname..' 有极品属性！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
-                    break                    
-                end
-            end
-            if checkstopflag3 == 1 then
-                if value.giftabflag == 1 then
-                    bNeedStop = true
-                    Player.SendSelfMsg(actor, '请查看装备：'..itemname..' 有天赋属性！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
-                    break
+                if checkstopflag3 == 1 then
+                    if value.giftabflag == 1 then
+                        bNeedPause = true
+                        Player.SendSelfMsg(actor, '请查看装备：'..itemname..' 有天赋属性！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+                        break
+                    end
                 end
             end
         end
-    end
-    if bNeedStop == true then
-        setflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_AUTO_OPEN_SUPERBOX, 0)
-        OpenSuperBoxManager.UpdateSuperBoxInfo(actor)
-        return 
+        if bNeedPause == true then
+            setflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_AUTO_OPEN_SUPERBOX_PAUSE, 1)
+            OpenSuperBoxManager.UpdateSuperBoxInfo(actor)
+            return
+        end     
     end
 
     delaygoto(actor, 2000, 'superbox_delay_checkrecycle', 0)

@@ -338,34 +338,34 @@ SET [183] 0
 MOV U59 <$MONTH>
 
 
-; 特殊节日登陆奖励道具
-#IF
-CHECK [181] 0
-EQUAL <$DAY> 11
-EQUAL <$MONTH> 11
-#ACT
-SET [181] 1
-MAILGIVE 单身卡 1
-SENDMAIL 11 光棍节礼遇 尊敬的玩家\在这个特别的日子里，我们祝您节日快乐！
+;; 特殊节日登陆奖励道具
+;#IF
+;CHECK [181] 0
+;EQUAL <$DAY> 11
+;EQUAL <$MONTH> 11
+;#ACT
+;SET [181] 1
+;MAILGIVE 单身卡 1
+;SENDMAIL 11 光棍节礼遇 尊敬的玩家\在这个特别的日子里，我们祝您节日快乐！
 
 
-#IF
-CHECK [182] 0
-EQUAL <$DAY> 1
-EQUAL <$MONTH> 1
-#ACT
-SET [182] 1
-MAILGIVE 跨年金蛋 10
-SENDMAIL 88 辞旧迎新 尊敬的玩家\在这个特别的日子里，我们祝您节日快乐！
+;#IF
+;CHECK [182] 0
+;EQUAL <$DAY> 1
+;EQUAL <$MONTH> 1
+;#ACT
+;SET [182] 1
+;MAILGIVE 跨年金蛋 10
+;SENDMAIL 88 辞旧迎新 尊敬的玩家\在这个特别的日子里，我们祝您节日快乐！
 
-#IF
-CHECK [183] 0
-EQUAL <$DAY> 21
-EQUAL <$MONTH> 1
-#ACT
-SET [183] 1
-MAILGIVE 贺岁礼盒 23
-SENDMAIL 88 辞旧迎新 尊敬的玩家\日月春晖渐，华光万物新，2022年感谢您的支持与厚爱；2023兔年来临之际，全体运营团队在此祝您及家人<前兔似锦宏兔展，玉兔呈祥福满堂。/FCOLOR=151>
+;#IF
+;CHECK [183] 0
+;EQUAL <$DAY> 21
+;EQUAL <$MONTH> 1
+;#ACT
+;SET [183] 1
+;MAILGIVE 贺岁礼盒 23
+;SENDMAIL 88 辞旧迎新 尊敬的玩家\日月春晖渐，华光万物新，2022年感谢您的支持与厚爱；2023兔年来临之际，全体运营团队在此祝您及家人<前兔似锦宏兔展，玉兔呈祥福满堂。/FCOLOR=151>
 
 
 #IF
@@ -382,48 +382,49 @@ LARGE G1 0
 ;--------------------泡点经验------------------------------------------------------------------
 ;--------------------泡点经验------------------------------------------------------------------
 ;--------------------泡点经验------------------------------------------------------------------
-#IF
-CHECKLEVELEX ? 200
-#ACT
-BREAK
 
-#IF
-#ACT
-SETAUTOGETEXP 1 500 0 * 0 65535 400
-#IF
-EQUAL U3 1
-#ACT
-SETAUTOGETEXP 1 1000 0 * 0 65535 400
-#IF
-EQUAL U3 2
-#ACT
-CONFERTITLE 青铜会员
-SETAUTOGETEXP 1 2000 0 * 0 65535 400
-#IF
-EQUAL U3 3
-#ACT
-CONFERTITLE 白银会员
-SETAUTOGETEXP 1 3000 0 * 0 65535 400
-#IF
-EQUAL U3 4
-#ACT
-CONFERTITLE 黄金会员
-SETAUTOGETEXP 1 4000 0 * 0 65535 400
-#IF
-EQUAL U3 5
-#ACT
-CONFERTITLE 至尊会员
-SETAUTOGETEXP 1 5000 0 * 0 65535 400
-#IF
-EQUAL U3 6
-#ACT
-CONFERTITLE 星辰会员
-SETAUTOGETEXP 1 7500 0 * 0 65535 400
-#IF
-EQUAL U3 7
-#ACT
-CONFERTITLE 超凡会员
-SETAUTOGETEXP 1 10000 0 * 0 65535 400
+;#IF
+;CHECKLEVELEX ? 200
+;#ACT
+;BREAK
+
+;#IF
+;#ACT
+;SETAUTOGETEXP 1 500 0 * 0 65535 400
+;#IF
+;EQUAL U3 1
+;#ACT
+;SETAUTOGETEXP 1 1000 0 * 0 65535 400
+;#IF
+;EQUAL U3 2
+;#ACT
+;CONFERTITLE 青铜会员
+;SETAUTOGETEXP 1 2000 0 * 0 65535 400
+;#IF
+;EQUAL U3 3
+;#ACT
+;CONFERTITLE 白银会员
+;SETAUTOGETEXP 1 3000 0 * 0 65535 400
+;#IF
+;EQUAL U3 4
+;#ACT
+;CONFERTITLE 黄金会员
+;SETAUTOGETEXP 1 4000 0 * 0 65535 400
+;#IF
+;EQUAL U3 5
+;#ACT
+;CONFERTITLE 至尊会员
+;SETAUTOGETEXP 1 5000 0 * 0 65535 400
+;#IF
+;EQUAL U3 6
+;#ACT
+;CONFERTITLE 星辰会员
+;SETAUTOGETEXP 1 7500 0 * 0 65535 400
+;#IF
+;EQUAL U3 7
+;#ACT
+;CONFERTITLE 超凡会员
+;SETAUTOGETEXP 1 10000 0 * 0 65535 400
 
 
 
@@ -1304,20 +1305,20 @@ BREAK
 
 
 [@登陆额外触发内容]
-#IF
-EQUAL G0 2
-LARGE <$GETSTRVALUE(T29,返还数量)> 0
-EQUAL <$GETSTRVALUE(T29,返还状态)> 待返还积分
-#ACT
-MOV N$返还数量 <$GETSTRVALUE(T29,返还数量)>
-ADDSTRVALUE T29 返还数量 0
-ADDSTRVALUE T29 返还状态 已返还
-MAILGIVE 积分 <$STR(N$返还数量)>
-SENDMAIL 203 阵法积分返还 你好，返还您激活阵法积分，请在附件中领取。
+;#IF
+;EQUAL G0 2
+;LARGE <$GETSTRVALUE(T29,返还数量)> 0
+;EQUAL <$GETSTRVALUE(T29,返还状态)> 待返还积分
+;#ACT
+;MOV N$返还数量 <$GETSTRVALUE(T29,返还数量)>
+;ADDSTRVALUE T29 返还数量 0
+;ADDSTRVALUE T29 返还状态 已返还
+;MAILGIVE 积分 <$STR(N$返还数量)>
+;SENDMAIL 203 阵法积分返还 你好，返还您激活阵法积分，请在附件中领取。
 
-GET_POST_DATA S$上报数据 {"gevent":"阵法积分返还","gvalue":"<$STR(N$返还数量)>","desc":"<$STR(T29)>"}
-HTTPPOST http://211.149.241.27:4473/api/api996/get_log 0 <$STR(S$上报数据)>
-BREAK
+;GET_POST_DATA S$上报数据 {"gevent":"阵法积分返还","gvalue":"<$STR(N$返还数量)>","desc":"<$STR(T29)>"}
+;HTTPPOST http://211.149.241.27:4473/api/api996/get_log 0 <$STR(S$上报数据)>
+;BREAK
 
 
 [@刷新神秘属性]

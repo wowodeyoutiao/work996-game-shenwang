@@ -7,6 +7,7 @@ UIncludes()
 function playreconnection(actor)    
     --触发玩家退出游戏的事件监听
     GameEventManager.DoTriggerEvent(CommonDefine.EVENT_NAME_PLAYER_LEAVEGAME, actor)   
+    delbutton(actor, 1101, CommonDefine.ADD_BUTTON_ID_4)
 end
 
 -- 玩家大退与关闭客户端触发
@@ -56,8 +57,11 @@ end
 
 -- 玩家升级触发
 function playlevelup(actor) 
+    --触发经验泡点状态更新
+    Player.UpdateAutoAddExp(actor)
+    
     SkillUpgrade.CheckAutoLearnSkill(actor)
-    TaskManager.OnLevelChange(actor)
+    TaskManager.OnLevelChange(actor)    
     --延迟展现战力变化，防止短时间触发多次
     --delaygoto(actor, 100, "update_power_callback", 0)    
 end
