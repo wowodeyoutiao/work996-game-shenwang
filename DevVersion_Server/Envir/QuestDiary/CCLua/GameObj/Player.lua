@@ -769,6 +769,75 @@ function Player.IsCurrMapHaveLeaveButton(actor)
     return false
 end
 
+--更新玩家上线的称号激活
+function Player.InitOnlineTitle(actor)
+    local titleitemname = ''
+    local oldVersionVipLv = getplaydef(actor, CommonDefine.VAR_U_OLD_VIP_LEVEL)
+    if oldVersionVipLv == 2 then
+        titleitemname = '青铜会员'
+    elseif oldVersionVipLv == 3 then
+        titleitemname = '白银会员'
+    elseif oldVersionVipLv == 4 then
+        titleitemname = '黄金会员'
+    elseif oldVersionVipLv == 5 then
+        titleitemname = '至尊会员'
+    elseif oldVersionVipLv == 6 then
+        titleitemname = '星辰会员'
+    elseif oldVersionVipLv == 7 then
+        titleitemname = '超凡会员'
+    end
+
+    if titleitemname ~= '' then
+        confertitle(actor, titleitemname, 1)
+    end    
+end
+
+--更新玩家当前的经验泡点
+function Player.UpdateAutoAddExp(actor)
+    local curlv = Player.GetLevel(actor)
+    if curlv >= CommonDefine.AUTO_ADDEXP_MAX_LEVEL then
+        return
+    end
+
+    local autoaddexp = 500
+    --基础等级加成
+    if curlv < 40 then
+        autoaddexp = autoaddexp
+    elseif curlv < 60 then
+        autoaddexp = autoaddexp + 100
+    elseif curlv < 80 then
+        autoaddexp = autoaddexp + 300
+    elseif curlv < 100 then
+        autoaddexp = autoaddexp + 600
+    elseif curlv < 120 then
+        autoaddexp = autoaddexp + 1000
+    elseif curlv < 150 then
+        autoaddexp = autoaddexp + 1500
+    else
+        autoaddexp = autoaddexp + 4500
+    end
+
+    --老的会员VIP等级加成
+    local oldVersionVipLv = getplaydef(actor, CommonDefine.VAR_U_OLD_VIP_LEVEL)
+    if oldVersionVipLv == 1 then
+        autoaddexp = autoaddexp + 500
+    elseif oldVersionVipLv == 2 then
+        autoaddexp = autoaddexp + 1500
+    elseif oldVersionVipLv == 2 then
+        autoaddexp = autoaddexp + 2500
+    elseif oldVersionVipLv == 2 then
+        autoaddexp = autoaddexp + 3500
+    elseif oldVersionVipLv == 2 then
+        autoaddexp = autoaddexp + 4500
+    elseif oldVersionVipLv == 2 then
+        autoaddexp = autoaddexp + 7000
+    elseif oldVersionVipLv == 2 then
+        autoaddexp = autoaddexp + 9500        
+    end
+
+    setautogetexp(actor, 1, autoaddexp, 0, '*', 0, 65535, CommonDefine.AUTO_ADDEXP_MAX_LEVEL)
+end
+
 --[[
 --获取创建角色天数
 function Player.getCreateActorDay(actor)

@@ -32,6 +32,10 @@ function login(actor)
     Player.InitNewPlayer(actor)   
     --触发玩家上线的事件监听
     GameEventManager.DoTriggerEvent(CommonDefine.EVENT_NAME_PLAYER_ENTERGAME, actor)    
+    --激活玩家的上线称号
+    Player.InitOnlineTitle(actor)
+    --触发经验泡点状态更新
+    Player.UpdateAutoAddExp(actor)
     --检测加速状态
     Player.CheckSpeedUpStatus(actor)        
     recalcabilitys(actor)

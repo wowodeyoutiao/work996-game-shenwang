@@ -255,6 +255,7 @@ CommonDefine = {
     OPEN_SUPERBOX_SPEEDUP_ONCE_NEEDITEMS = {{name='加速卷轴', num=1}},    --超级宝箱升级加速一次需要的道具
     OPEN_SUPERBOX_SPEEDUP_ONCE_ADDSECONDS = 60,                          --超级宝箱升级加速一次对应的秒数
     NEW_PLAYER_EMAIL_ITEMS = {{name='元宝', num=5000}},                   --新玩家登录给与的邮件奖励
+    AUTO_ADDEXP_MAX_LEVEL = 200,                                          --泡点自动得经验的最大等级
 
     --需要离开按钮的地图
     NEED_LEAVEBUTTON_MAPS = {
@@ -331,6 +332,8 @@ CommonDefine = {
     VAR_S_SELECT_MENUITEM_3 = 'S55',             --下拉菜单3
 
     --玩家数字变量，下线保存   U0 - U254  lua脚本使用从130开始
+
+    VAR_U_OLD_VIP_LEVEL = 'U3',                 --原来版本的会员VIP等级
     --[[
     VAR_U_MOFANG_CURR_LAYER = 'U107',           --玩家当前进入的魔方阵的层数
     VAR_U_MOFANG_LEFT_BUYTIMES = 'U108',        --玩家当前剩余购买的进入魔方地图的次数
@@ -353,6 +356,7 @@ CommonDefine = {
     VAR_U_BIAOCHE_CURRID = 'U127',              --当前对应的镖车配置ID
     VAR_U_BIAOCHE_REFRESH_TIMES = 'U128',       --镖车刷新次数，接受镖车后清0
     ]]--
+
     VAR_U_SUPER_BOX_TOTAL_NUM = 'U130',         --超级宝箱  保有总数量
     VAR_U_SUPER_BOX_CURR_LV = 'U131',           --超级宝箱  当前等级
     VAR_U_SUPER_BOX_ONCE_OPEN_NUM = 'U132',     --超级宝箱  一次开几个箱子    
@@ -491,6 +495,7 @@ CommonDefine = {
     VAR_HUM_BITFLAG_NO_BAG_AUTORECYCLE = 203,        --不进行背包的装备自动回收，在开宝箱过程中才使用
     VAR_HUM_BITFLAG_AUTO_OPEN_SUPERBOX = 204,        --自动开启超级宝箱   
     VAR_HUM_BITFLAG_AUTO_EQUIPSTAR_FLAG = 205,       --自动升星标记
+    VAR_HUM_BITFLAG_AUTO_OPEN_SUPERBOX_PAUSE = 206,  --暂停自动开启超级宝箱   
 
     --300-800 都是可以下线保存的
     VAR_HUM_BITFLAG_AUTORECYCLE_ITEM1 = 300,         --勾选装备自动回收    
