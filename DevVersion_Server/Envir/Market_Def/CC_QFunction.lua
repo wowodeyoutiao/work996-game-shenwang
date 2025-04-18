@@ -77,6 +77,8 @@ function takeonex(actor, spos, smakeindex)
     EquipPosStrengthManager.UpdateEquipStrengthLvInPos(actor, pos)    
     --根据装备位的星级 更新当前穿戴装备星级及属性 注意：强化在升星前
     EquipPosStarManager.UpdateEquipStarLvInPos(actor, pos)
+    --检测装备天赋带来的装备槽位外显变化
+    EquipInitGift.UpdateEquipposInitGiftIcon(actor, pos)
     --检测加速状态
     Player.CheckSpeedUpStatus(actor)
 end
@@ -94,6 +96,8 @@ function takeoffex(actor, spos, smakeindex)
     EquipPosStrengthManager.ClearEquipStrengthLv(actor, equipitem, pos)    
     --清空脱掉装备的星级属性
     EquipPosStarManager.ClearEquipStarLv(actor, equipitem, pos)    
+    --检测装备天赋带来的装备槽位外显变化
+    EquipInitGift.UpdateEquipposInitGiftIcon(actor, pos)
     --检测加速状态
     Player.CheckSpeedUpStatus(actor)    
 end

@@ -538,6 +538,7 @@ CommonDefine = {
     ITEM_INTVAR_RANDOMAB_CURR_SEQ = 3,              --装备洗炼当前选择的第几条属性  未洗炼状态  作为临时变量
     ITEM_INTVAR_RANDOMAB_STATS = 4,                 --装备洗炼的当前状态 0无洗炼属性待洗炼状态  1已洗炼出属性待处理状态
     ITEM_INTVAR_ATTACK_SPEEDUP_INITGIFT = 6,        --装备加速属性【由装备天赋给予的】
+    ITEM_INTVAR_INITGIFT_TYPE = 7,                  --装备的天赋类型 风雨雷电
 
     --道具的字符串变量 1-20
     --ITEM_STRVAR_RANDOMAB_DATA = 1,                --装备洗炼属性的数据保存
@@ -659,6 +660,7 @@ CommonDefine = {
     TASK_STATUS_END = 4,                          --已领奖，结束  
     
     --窗口ID
+    WINDOWS_ID_EQUIPMENT = 3,                     --装备的窗口ID
     WINDOWS_ID_BAG = 7,                           --背包的窗口ID
 
     --addbutton 里面对应的buttonid
@@ -670,6 +672,14 @@ CommonDefine = {
     ADD_BUTTON_ID_6 = 9006,                       --战力显示
     ADD_BUTTON_ID_7 = 9007,                       --战力变化显示
     ADD_BUTTON_ID_8 = 9008,                       --退出地图的按钮
+
+    ADD_BUTTON_ID_10 = 9010,                      --装备面板 项链槽位 天赋属性图标
+    ADD_BUTTON_ID_11 = 9011,                      --装备面板 左护腕槽位 天赋属性图标
+    ADD_BUTTON_ID_12 = 9012,                      --装备面板 右护腕槽位 天赋属性图标
+    ADD_BUTTON_ID_13 = 9013,                      --装备面板 左戒指槽位 天赋属性图标
+    ADD_BUTTON_ID_14 = 9014,                      --装备面板 右戒指槽位 天赋属性图标
+    ADD_BUTTON_ID_15 = 9015,                      --装备面板 腰带槽位 天赋属性图标
+    ADD_BUTTON_ID_16 = 9016,                      --装备面板 鞋子槽位 天赋属性图标
 }
 
 --装备位对应的名称

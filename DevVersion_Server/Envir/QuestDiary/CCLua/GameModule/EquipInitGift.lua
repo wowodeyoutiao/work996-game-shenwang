@@ -37,8 +37,9 @@ function EquipInitGift.InitEquipGiftAB(actor, equipitem)
         randValue = math.random(abTab.min, abTab.max)
     end
     local singleAB = {id=abTab.id, value=randValue, savepos=saveCurrPos, color=cfgInitInfo.extnamecolor, ispercentage=abTab.ispercentage}       
-    createABTab[#createABTab+1] = singleAB
-    BF_SetCustomEquipABGroup(actor, equipitem, createABTab, CommonDefine.ITEM_CUSTOMEAB_GROUP_3, '[天赋属性]:'..cfgInitInfo.extname, cfgInitInfo.extnamecolor)    
+    createABTab[#createABTab+1] = singleAB    
+    local showtext = '[天赋属性]:'..cfgInitInfo.extname  --'<IMG:res/private/cc_common/nature_icon_'..cfgInitInfo.ID..'.png>'
+    BF_SetCustomEquipABGroup(actor, equipitem, createABTab, CommonDefine.ITEM_CUSTOMEAB_GROUP_3, showtext, cfgInitInfo.extnamecolor)    
     local srcitemname = getiteminfo(actor, equipitem, CommonDefine.ITEMINFO_SRCNAME)
     if srcitemname ~= '' then
         changeitemname(actor, -2, cfgInitInfo.extname..srcitemname, equipitem)
@@ -49,8 +50,77 @@ function EquipInitGift.InitEquipGiftAB(actor, equipitem)
     if cfgInitInfo.ID == 1 then
         setitemintparam(actor, -2, CommonDefine.ITEM_INTVAR_ATTACK_SPEEDUP_INITGIFT, randValue, equipitem)    
     end
+
+    --保存装备的天赋类型
+    if cfgInitInfo.ID > 0 then
+        setitemintparam(actor, -2, CommonDefine.ITEM_INTVAR_INITGIFT_TYPE, cfgInitInfo.ID, equipitem)        
+    end
     
     return true
+end
+
+function EquipInitGift.GetInitGiftPic(gifttype, pictype)
+    if (gifttype >= 1) and (gifttype <= 4) then
+        return 'private/cc_common/nature_icon_'..gifttype..'.png'
+    end
+    return ''
+end
+
+function EquipInitGift.UpdateEquipposInitGiftIcon(actor, equippos)
+    if BF_IsNullObj(actor) then
+        return
+    end
+    if (equippos ~= CommonDefine.EQUIPPOS_NECKLACE) and (equippos ~= CommonDefine.EQUIPPOS_ARMRING_L) and
+       (equippos ~= CommonDefine.EQUIPPOS_ARMRING_R) and (equippos ~= CommonDefine.EQUIPPOS_RING_L) and
+       (equippos ~= CommonDefine.EQUIPPOS_RING_R) and (equippos ~= CommonDefine.EQUIPPOS_BELT) and
+       (equippos ~= CommonDefine.EQUIPPOS_BOOTS) then
+        return
+    end
+
+    local buttonid = 0    
+    local gifttype = 0
+    local picx = 0
+    local picy = 0
+    local equipitem = linkbodyitem(actor, equippos)
+    if not BF_IsNullObj(equipitem) then
+        gifttype = getitemintparam(actor, -2, CommonDefine.ITEM_INTVAR_INITGIFT_TYPE, equipitem)
+    end
+    if equippos == CommonDefine.EQUIPPOS_NECKLACE then        
+        picx = 280
+        picy = 204
+        buttonid = CommonDefine.ADD_BUTTON_ID_10
+    elseif equippos == CommonDefine.EQUIPPOS_ARMRING_L then
+        picx = 0
+        picy = 324
+        buttonid = CommonDefine.ADD_BUTTON_ID_11
+    elseif equippos == CommonDefine.EQUIPPOS_ARMRING_R then
+        picx = 280
+        picy = 324
+        buttonid = CommonDefine.ADD_BUTTON_ID_12
+    elseif equippos == CommonDefine.EQUIPPOS_RING_L then
+        picx = 0
+        picy = 384
+        buttonid = CommonDefine.ADD_BUTTON_ID_13
+    elseif equippos == CommonDefine.EQUIPPOS_RING_R then
+        picx = 280
+        picy = 384
+        buttonid = CommonDefine.ADD_BUTTON_ID_14
+    elseif equippos == CommonDefine.EQUIPPOS_BELT then
+        picx = 112
+        picy = 444
+        buttonid = CommonDefine.ADD_BUTTON_ID_15
+    elseif equippos == CommonDefine.EQUIPPOS_BOOTS then
+        picx = 172
+        picy = 444
+        buttonid = CommonDefine.ADD_BUTTON_ID_16
+    end
+
+    delbutton(actor, CommonDefine.WINDOWS_ID_EQUIPMENT, buttonid)
+    
+    if gifttype > 0 then
+        local buttonstr = '<Img|x='..picx..'|y='..picy..'|height=25|width=25|img=private/cc_common/nature_icon_'..gifttype..'.png>'
+        addbutton(actor, CommonDefine.WINDOWS_ID_EQUIPMENT, buttonid, buttonstr)
+    end
 end
 
 return EquipInitGift

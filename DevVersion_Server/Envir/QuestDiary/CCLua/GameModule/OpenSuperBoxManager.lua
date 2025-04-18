@@ -139,6 +139,7 @@ function OpenSuperBoxManager.UpdateSuperBoxInfo(actor)
             local startid = 2020   
             local startid1 = 2040
             local startid2 = 2060
+            local startid3 = 2080
             local nLine = 0
             local nColumn = 0
             local bHaveBetterFlag = false
@@ -148,10 +149,12 @@ function OpenSuperBoxManager.UpdateSuperBoxInfo(actor)
                 if not BF_IsNullObj(itemobj) then
                     local itemshowname = getiteminfo(actor, itemobj, CommonDefine.ITEMINFO_CHGEDNAME)                 
                     local itemid = getiteminfo(actor, itemobj, CommonDefine.ITEMINFO_ITEMIDX)
-                    local itemcolor = getstditeminfo(itemid, CommonDefine.STDITEMINFO_NAMECOLOR)
+                    local itemcolor = getstditeminfo(itemid, CommonDefine.STDITEMINFO_NAMECOLOR)                    
+                    local initgifttype = getitemintparam(actor, -2, CommonDefine.ITEM_INTVAR_INITGIFT_TYPE, itemobj)
                     local itemshowid = startid + seq
                     local textid = startid1 + seq
                     local picid = startid2 + seq
+                    local picid2 = startid3 + seq
                     if strIDs ~= '' then
                         strIDs = strIDs..','
                     end
@@ -166,7 +169,7 @@ function OpenSuperBoxManager.UpdateSuperBoxInfo(actor)
                     local curry = 30 + 100 * (nLine - 1)
                     local flag = Item.CompareBagItemToEquipment(actor, itemobj)
                     strPanel = strPanel..'<Text|id='..textid..'|x='..currx..'|y='..curry..'|width=70|color='..itemcolor..'|size=12|text='..itemshowname..'>'
-                    strPanel = strPanel..'<MKItemShow|id='..itemshowid..'|children={'..picid..'}|x='..(currx+4)..'|y='..(curry+20)..'|width=70|height=70|makeindex='..value..'|showtips=1|bgtype=1>'                        
+                    strPanel = strPanel..'<MKItemShow|id='..itemshowid..'|children={'..picid..','..picid2..'}|x='..(currx+4)..'|y='..(curry+20)..'|width=70|height=70|makeindex='..value..'|showtips=1|bgtype=1>'                        
                     --[[
                     strPanel = strPanel..'<MKItemShow|id='..itemshowid..'|children={'..picid..'}|x='..(currx+4)..'|y='..(curry+20)..'|width=70|height=70|makeindex='..
                         value..'|showtips=0|bgtype=1|link=@cc_showitemex#makeindex='..value..'>'                        
@@ -176,6 +179,10 @@ function OpenSuperBoxManager.UpdateSuperBoxInfo(actor)
                         bHaveBetterFlag = true
                     elseif flag == -1 then
                         strPanel = strPanel..'<Img|id='..picid..'|x=50|y=10|move=0|img=private/cc_superbox_1/cmp_down.png>'
+                    end
+                    if initgifttype > 0 then     
+                        local giftpic = EquipInitGift.GetInitGiftPic(initgifttype)                   
+                        strPanel = strPanel..'<Img|id='..picid2..'|x=0|y=45|height=25|width=25|move=0|img='..giftpic..'>'
                     end
                 end
             end
