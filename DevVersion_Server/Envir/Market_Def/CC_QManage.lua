@@ -40,6 +40,11 @@ function login(actor)
     Player.CheckSpeedUpStatus(actor)        
     recalcabilitys(actor)
     
+    if Player.IsReconnectLogin(actor) then
+        delbutton(actor, 1101, CommonDefine.ADD_BUTTON_ID_4)    
+        delbutton(actor, 108, CommonDefine.ADD_BUTTON_ID_5) 
+    end
+
     --更新战力信息
     -- local currpower = Player.GetPlayerPower(actor);
     -- setplaydef(actor, CommonDefine.VAR_N_LAST_PLAYERPOWER, currpower);    

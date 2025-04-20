@@ -133,6 +133,12 @@ function Player.IsPCClient(actor)
     return sFlag == '1'
 end
 
+--判断玩家是否重连
+function Player.IsReconnectLogin(actor)
+    local sFlag = parsetext("<$LoginState>", actor);
+    return sFlag == '1'
+end
+
 --返回玩家战力
 function Player.GetPlayerPower(actor)
     return tonumber(parsetext("<$PLAYERPOWER>", actor));

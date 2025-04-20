@@ -323,7 +323,8 @@ function GMHelper.DoGmOper(actor, sid)
 
 
     elseif sid == '1999' then 
-        changeexp(actor, '+', 500, true)
+        --changeexp(actor, '+', 500, true)
+        delbutton(actor, 108, CommonDefine.ADD_BUTTON_ID_5)
     end   
 end
 

@@ -211,6 +211,7 @@ function OpenSuperBoxManager.UpdateSuperBoxInfo(actor)
         end        
     end
 
+    delbutton(actor, 108, CommonDefine.ADD_BUTTON_ID_1)
     addbutton(actor, 108, CommonDefine.ADD_BUTTON_ID_1, strPanel)   
 end
 
@@ -499,6 +500,7 @@ local function OpenUpgradeBoxLevelPanel(actor)
         end
     end
 
+    delbutton(actor, 108, CommonDefine.ADD_BUTTON_ID_5)
     addbutton(actor, 108, CommonDefine.ADD_BUTTON_ID_5, strPanel)   
 end
 
@@ -668,6 +670,7 @@ local function OpenAutoOpenBoxPanel(actor)
         '|fontsize=18|img=private/cc_superbox_1/xlk_1.png|arrowimg=private/cc_superbox_1/btn_1.png|itemhei=20|menuid='..CommonDefine.VAR_S_SELECT_MENUITEM_2..
         '|selectcolor=254|fontcolor=250|direction=0|link=@opensuperboxmanager_button#sid='..OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_24..'>'
 
+    delbutton(actor, 108, CommonDefine.ADD_BUTTON_ID_5)
     addbutton(actor, 108, CommonDefine.ADD_BUTTON_ID_5, strPanel)
 end
 
