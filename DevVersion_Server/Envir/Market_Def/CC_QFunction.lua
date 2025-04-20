@@ -108,6 +108,8 @@ function checkdropuseitems(actor, pos, itemidx)
     EquipPosStrengthManager.ClearEquipStrengthLvInPos(actor, pos)
     --清空脱掉装备的星级属性
     EquipPosStarManager.ClearEquipStarLvInPos(actor, pos)
+    --检测装备天赋带来的装备槽位外显变化
+    EquipInitGift.UpdateEquipposInitGiftIcon(actor, pos)    
     --检测加速状态
     Player.CheckSpeedUpStatus(actor)
 
@@ -395,7 +397,7 @@ function changename_button(actor, sparam)
     end
 end
 
-function base_leavemap_button(actor)
+function base_leavemap_button(actor) 
     if BF_IsNullObj(actor) then
         return
     end
@@ -574,7 +576,7 @@ function update_power_callback(actor)
         end
         --触发战力任务
         TaskManager.OnPowerScoreChange(actor)
-    end    
+    end
 end
 
 function hide_power_callback(actor)

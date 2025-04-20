@@ -115,12 +115,13 @@ function EquipInitGift.UpdateEquipposInitGiftIcon(actor, equippos)
         buttonid = CommonDefine.ADD_BUTTON_ID_16
     end
 
-    delbutton(actor, CommonDefine.WINDOWS_ID_EQUIPMENT, buttonid)
-    
-    if gifttype > 0 then
-        local buttonstr = '<Img|x='..picx..'|y='..picy..'|height=25|width=25|img=private/cc_common/nature_icon_'..gifttype..'.png>'
-        addbutton(actor, CommonDefine.WINDOWS_ID_EQUIPMENT, buttonid, buttonstr)
-    end
+    if buttonid > 0 then
+        delbutton(actor, CommonDefine.WINDOWS_ID_EQUIPMENT, buttonid)
+        if gifttype > 0 then
+            local buttonstr = '<Img|x='..picx..'|y='..picy..'|height=25|width=25|img=private/cc_common/nature_icon_'..gifttype..'.png>'
+            addbutton(actor, CommonDefine.WINDOWS_ID_EQUIPMENT, buttonid, buttonstr)
+        end
+    end 
 end
 
 return EquipInitGift
