@@ -324,7 +324,8 @@ function GMHelper.DoGmOper(actor, sid)
 
     elseif sid == '1999' then 
         --changeexp(actor, '+', 500, true)
-        delbutton(actor, 108, CommonDefine.ADD_BUTTON_ID_5)
+        --delbutton(actor, 108, CommonDefine.ADD_BUTTON_ID_5)
+        setplaydef(actor, CommonDefine.VAR_J_DAY_SUPERBOX_OPENNUM, 0)
     end   
 end
 

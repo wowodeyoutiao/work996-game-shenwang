@@ -815,6 +815,7 @@ function OpenSuperBoxManager.AutoOpenSuperBox(actor)
         local openitemlist = {}
         if not OpenSuperBoxManager.DoOpenBoxOnce(actor, true, openitemlist) then        
             setflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_AUTO_OPEN_SUPERBOX, 0)
+            OpenSuperBoxManager.UpdateSuperBoxInfo(actor)
             return
         end
         
