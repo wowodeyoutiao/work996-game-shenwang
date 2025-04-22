@@ -1,0 +1,119 @@
+[@悬浮按钮展开]
+{
+#IF
+#ACT
+DELBUTTON 102 115
+DELBUTTON 102 116
+
+#IF
+EQUAL <$CLIENTFLAG> 2
+#ACT
+GOTO @创建移动端按钮
+BREAK
+
+
+[@创建移动端按钮]
+#IF
+#ACT
+GOTO @创建移动端按钮3268
+
+
+[@创建移动端按钮3268]
+#IF
+#ACT
+MOV N$X1 -225
+MOV N$X2 -268
+MOV S$悬浮图标 <Button|x=<$STR(N$X1)>|y=12|nimg=custom/30002.png|link=@悬浮按钮隐藏>
+ADDBUTTON 102 104 <$STR(S$悬浮图标)>
+
+DEC N$X1 62
+MOV  S$盒子礼包按钮 <Layout|children=2110|x=<$STR(N$X1)>|y=6|width=55|height=55|color=X|link=@开启盒子>
+INC S$盒子礼包按钮 <Effect|id=2110|x=20|y=57|effectid=5109|effecttype=0|scale=0.85>
+ADDBUTTON 102 100 <$STR(S$盒子礼包按钮)>
+
+#IF
+EQUAL G1 0
+#ACT
+DEC N$X1 85
+MOV S$悬浮图标 <Button|id=5999|x=<$STR(N$X1)>|y=6|nimg=custom/a00003.png|width=70|height=70|link=@打开账号交易>
+ADDBUTTON 102 101 <$STR(S$悬浮图标)>
+
+#IF
+#ACT
+DEC N$X1 80
+MOV S$悬浮图标 <Button|id=6001|x=<$STR(N$X1)>|y=6|nimg=custom/a00004.png|width=70|height=70|link=@游戏攻略>
+ADDBUTTON 102 103 <$STR(S$悬浮图标)>
+
+DEC N$X1 80
+MOV S$悬浮图标 <Button|id=6002|x=<$STR(N$X1)>|y=6|nimg=custom/a00010.png|width=70|height=70|link=@查看帝王令>
+ADDBUTTON 102 109 <$STR(S$悬浮图标)>
+
+
+#IF
+CHECKLEVELEX < 40
+#ACT
+BREAK
+#IF
+#ACT
+; 下面是第二排
+MOV S$悬浮图标 <Button|id=10555|x=<$STR(N$X2)>|y=75|nimg=custom/a00015.png|width=70|height=70|link=@畅玩礼包>
+ADDBUTTON 102 105 <$STR(S$悬浮图标)>
+
+DEC N$X2 80
+MOV S$悬浮图标 <Button|id=6003||x=<$STR(N$X2)>|y=75|nimg=custom/a00016.png|width=70|height=70|link=@唯一会员>
+ADDBUTTON 102 106 <$STR(S$悬浮图标)>
+
+DEC N$X2 80
+MOV S$悬浮图标 <Button|id=6004||x=<$STR(N$X2)>|y=75|nimg=custom/a00002.png|width=70|height=70|link=@元宝充值>
+ADDBUTTON 102 107 <$STR(S$悬浮图标)>
+
+DEC N$X2 80
+MOV S$悬浮图标 <Button|id=6113||x=<$STR(N$X2)>|y=75|nimg=custom/a00022.png|width=70|height=70|link=@每日398礼包>
+ADDBUTTON 102 113 <$STR(S$悬浮图标)>
+
+
+; 合服活动 限时48小时
+#IF
+LARGE <$HFCOUNT> 0
+SMALL <$UTCNOW8> A65
+#ACT
+DEC N$X2 75
+FORMULATION <$STR(A65)>-<$UTCNOW8> N$活动倒计时
+MOV S$悬浮图标 <Button|id=6115|x=<$STR(N$X2)>|children={61150}|y=75|nimg=custom/a00025.png|width=70|height=70|link=@合服限时礼包>
+INC S$悬浮图标 <TIMETIPS|a=4|id=61150|x=36|y=74|time=<$STR(N$活动倒计时)>|count=1|size=15|color=250|outline=1|link=@悬浮按钮展开>
+ADDBUTTON 102 115 <$STR(S$悬浮图标)>
+
+
+
+[@悬浮按钮隐藏]
+#IF
+NOT EQUAL <$GAMEID> 1
+NOT EQUAL <$GAMEID> 3268
+#ACT
+DELBUTTON 102 100
+DELBUTTON 102 101
+
+#IF
+#ACT
+MOV N1 102
+WHILE N1 < 121
+DELBUTTON 102 <$STR(N1)>
+INC N1 1
+ENDWHILE
+
+
+#IF
+EQUAL <$CLIENTFLAG> 1
+#ACT
+MOV S$悬浮图标 <Button|x=-200.0|y=20|nimg=custom/30001.png|link=@悬浮按钮展开>
+ADDBUTTON 102 108 <$STR(S$悬浮图标)>
+BREAK
+
+#IF
+EQUAL <$CLIENTFLAG> 2
+#ACT
+MOV S$悬浮图标 <Button|x=-225.0|y=12|size=18|nimg=custom/30001.png|link=@悬浮按钮展开>
+ADDBUTTON 102 108 <$STR(S$悬浮图标)>
+BREAK
+
+}

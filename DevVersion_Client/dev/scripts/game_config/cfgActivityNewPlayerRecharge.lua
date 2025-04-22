@@ -1,0 +1,111 @@
+local config = { 
+	[1] = { 
+		id = 1,
+		checktype = 1,
+		checknum = 6,
+		rewards = "[{\"name\":\"绑定元宝\", \"num\":600}, {\"name\":\"强化石\", \"num\":100}, {\"name\":\"金币\", \"num\":600000}]",
+	},
+	[2] = { 
+		id = 2,
+		checktype = 1,
+		checknum = 30,
+		rewards = "[{\"name\":\"绑定元宝\", \"num\":3000}, {\"name\":\"书页\", \"num\":150}, {\"name\":\"金币\", \"num\":3000000}]",
+	},
+	[3] = { 
+		id = 3,
+		checktype = 1,
+		checknum = 68,
+		rewards = "[{\"name\":\"绑定元宝\", \"num\":6800}, {\"name\":\"升星石\", \"num\":300}, {\"name\":\"金币\", \"num\":6800000}]",
+	},
+	[4] = { 
+		id = 4,
+		checktype = 1,
+		checknum = 128,
+		rewards = "[{\"name\":\"绑定元宝\", \"num\":12800}, {\"name\":\"8星直升宝石\", \"num\":1}, {\"name\":\"金币\", \"num\":12800000}]",
+	},
+	[5] = { 
+		id = 5,
+		checktype = 1,
+		checknum = 328,
+		rewards = "[{\"name\":\"绑定元宝\", \"num\":32800}, {\"name\":\"6级黄魂石\", \"num\":2}, {\"name\":\"金币\", \"num\":32800000}]",
+	},
+	[6] = { 
+		id = 6,
+		checktype = 1,
+		checknum = 648,
+		rewards = "[{\"name\":\"绑定元宝\", \"num\":64800}, {\"name\":\"6级蓝魂石\", \"num\":2}, {\"name\":\"金币\", \"num\":64800000}]",
+	},
+	[7] = { 
+		id = 7,
+		checktype = 1,
+		checknum = 2000,
+		rewards = "[{\"name\":\"绑定元宝\", \"num\":20000}, {\"name\":\"6级红魂石\", \"num\":2},{\"name\":\"6级绿魂石\", \"num\":2}, {\"name\":\"金币\", \"num\":20000000}]",
+	},
+	[101] = { 
+		id = 101,
+		checktype = 2,
+		checknum = 10,
+		rewards = "[{\"name\":\"元宝\", \"num\":600}, {\"name\":\"强化石\", \"num\":100}, {\"name\":\"金币\", \"num\":600000}]",
+	},
+	[102] = { 
+		id = 102,
+		checktype = 2,
+		checknum = 50,
+		rewards = "[{\"name\":\"元宝\", \"num\":600}, {\"name\":\"强化石\", \"num\":100}, {\"name\":\"金币\", \"num\":600000}]",
+	},
+	[103] = { 
+		id = 103,
+		checktype = 2,
+		checknum = 100,
+		rewards = "[{\"name\":\"元宝\", \"num\":600}, {\"name\":\"强化石\", \"num\":100}, {\"name\":\"金币\", \"num\":600000}]",
+	},
+	[104] = { 
+		id = 104,
+		checktype = 2,
+		checknum = 300,
+		rewards = "[{\"name\":\"元宝\", \"num\":600}, {\"name\":\"强化石\", \"num\":100}, {\"name\":\"金币\", \"num\":600000}]",
+	},
+	[105] = { 
+		id = 105,
+		checktype = 2,
+		checknum = 500,
+		rewards = "[{\"name\":\"元宝\", \"num\":600}, {\"name\":\"强化石\", \"num\":100}, {\"name\":\"金币\", \"num\":600000}]",
+	},
+	[106] = { 
+		id = 106,
+		checktype = 2,
+		checknum = 1000,
+		rewards = "[{\"name\":\"元宝\", \"num\":600}, {\"name\":\"强化石\", \"num\":100}, {\"name\":\"金币\", \"num\":600000}]",
+	},
+	[107] = { 
+		id = 107,
+		checktype = 2,
+		checknum = 3000,
+		rewards = "[{\"name\":\"元宝\", \"num\":600}, {\"name\":\"强化石\", \"num\":100}, {\"name\":\"金币\", \"num\":600000}]",
+	},
+	[108] = { 
+		id = 108,
+		checktype = 2,
+		checknum = 5000,
+		rewards = "[{\"name\":\"元宝\", \"num\":600}, {\"name\":\"强化石\", \"num\":100}, {\"name\":\"金币\", \"num\":600000}]",
+	},
+	[109] = { 
+		id = 109,
+		checktype = 2,
+		checknum = 10000,
+		rewards = "[{\"name\":\"元宝\", \"num\":600}, {\"name\":\"强化石\", \"num\":100}, {\"name\":\"金币\", \"num\":600000}]",
+	},
+	[110] = { 
+		id = 110,
+		checktype = 2,
+		checknum = 20000,
+		rewards = "[{\"name\":\"元宝\", \"num\":600}, {\"name\":\"强化石\", \"num\":100}, {\"name\":\"金币\", \"num\":600000}]",
+	},
+	[111] = { 
+		id = 111,
+		checktype = 2,
+		checknum = 50000,
+		rewards = "[{\"name\":\"元宝\", \"num\":600}, {\"name\":\"强化石\", \"num\":100}, {\"name\":\"金币\", \"num\":600000}]",
+	},
+}
+return config

@@ -122,7 +122,7 @@ DELBUTTON 40 88
 #IF
 EQUAL <$GAMEID> 1
 #ACT
-#Call [\悬浮按钮\悬浮按钮展开.txt] @悬浮按钮展开
+;#Call [\悬浮按钮\悬浮按钮展开.txt] @悬浮按钮展开
 #Call [\主界面基础按钮\主界面基础按钮QM.txt] @基础按钮QM
 #Call [\04人物属性\称号刷新.txt] @刷新称号
 SENDMSG 9 重新载入UI
@@ -807,7 +807,7 @@ EQUAL A71 开启
 #IF
 EQUAL <$GAMEID> 1
 #ACT
-#Call [\悬浮按钮\悬浮按钮展开.txt] @悬浮按钮展开
+;#Call [\悬浮按钮\悬浮按钮展开.txt] @悬浮按钮展开
 #Call [\主界面基础按钮\主界面基础按钮QM.txt] @基础按钮QM
 #Call [\04人物属性\称号刷新.txt] @刷新称号
 SENDMSG 9 重新载入UI

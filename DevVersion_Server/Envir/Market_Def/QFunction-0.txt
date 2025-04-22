@@ -926,6 +926,21 @@ MOV U77 0
  
 ; =============================充值触发
 [@ReCharge]
+; 删档测试 记录充值数据
+#IF
+LARGE G41 0
+#ACT
+GET_POST_DATA S$上报数据 {"type":"setmoney","money":<$Str(M0)>}
+HTTPPOST http://211.149.241.27:4473/api/api996/play_pay 0 <$STR(S$上报数据)>
+
+#IF
+#ACT
+CALLLUA CC_QFunction @recharge
+BREAK
+
+
+
+[@ReCharge_backup]
 ; 劳动节给勋章
 #IF
 LARGE <$UTCNOW8> $劳动开始
@@ -5801,7 +5816,7 @@ VAR Integer HUMAN 个人捐献
 ;#CALL [\登录触发\任务触发.txt] @任务领取
 #CALL [\04人物属性\刷新神器等级.txt] @神器等级刷新
 #CALL [\04人物属性\爆率免伤.txt] @属性刷新EX
-#Call [\悬浮按钮\悬浮按钮展开.txt] @悬浮按钮展开
+;#Call [\悬浮按钮\悬浮按钮展开.txt] @悬浮按钮展开
 #Call [\主界面基础按钮\主界面基础按钮QM.txt] @基础按钮QM
 #Call [\03自定义按钮\战斗力计算.txt] @战力计算
 
@@ -5998,6 +6013,11 @@ BREAK
 CALLLUA CC_QFunction @newmainuibase_openpanel,<$STR(S$sid)>
 BREAK
 
+[@topicon_openpanel]
+#IF
+#ACT
+CALLLUA CC_QFunction @topicon_openpanel,<$STR(S$sid)>,<$STR(S$sparam)>
+BREAK
 
 [@show_rule_panel]
 #IF

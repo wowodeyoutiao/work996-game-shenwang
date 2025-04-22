@@ -37,8 +37,9 @@ function resetday(actor)
 end
 
 --充值触发
-function recharge(actor, gold, productid, moneyid, isreal, ordertime, rechargeamount, giftamount, refundamount)
-    RechargeManager.DoRecharge(actor, gold, productid, moneyid, isreal, ordertime, rechargeamount, giftamount, refundamount)
+--function recharge(actor, gold, productid, moneyid, isreal, ordertime, rechargeamount, giftamount, refundamount)
+function recharge(actor)
+    RechargeManager.DoRecharge(actor)
 end
 
 --接收客户端消息触发
@@ -370,6 +371,10 @@ end
 
 function newmainuibase_openpanel(actor, sid)
     NewMainUIBase.OpenPanel(actor, sid)
+end
+
+function topicon_openpanel(actor, sid, sparam)
+    TopIcon.OpenPanel(actor, sid, sparam)
 end
 
 function changename_button(actor, sparam)

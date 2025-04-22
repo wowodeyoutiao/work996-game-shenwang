@@ -25,6 +25,10 @@ function GMHelper.OpenPanel(actor)
         '<Button|x=200|y=60|nimg=public/bg_hhzy_01_3.png|text=清空装备位星级|link=@gmhelper_button#sid1=1009>'..
         '<Button|x=200|y=90|nimg=public/bg_hhzy_01_3.png|text=给五星魂石|link=@gmhelper_button#sid1=3>'..
 
+        '<Button|x=500|y=30|nimg=public/bg_hhzy_01_3.png|text=清空首充|link=@gmhelper_button#sid1=154>'..
+        '<Button|x=500|y=60|nimg=public/bg_hhzy_01_3.png|text=模拟充值1元|link=@gmhelper_button#sid1=155>'..
+        '<Button|x=500|y=90|nimg=public/bg_hhzy_01_3.png|text=模拟充值10元|link=@gmhelper_button#sid1=156>'..
+        '<Button|x=500|y=120|nimg=public/bg_hhzy_01_3.png|text=模拟充值100元|link=@gmhelper_button#sid1=157>'..       
 
 
         '<Button|x=500|y=240|nimg=public/bg_hhzy_01_3.png|text=临时测试|link=@gmhelper_button#sid1=1999>'
@@ -58,10 +62,7 @@ function GMHelper.OpenPanel(actor)
         '<Button|x=500|y=60|nimg=public/bg_hhzy_01_3.png|text=设置首充第二天|link=@gmhelper_button,151>'..
         '<Button|x=500|y=90|nimg=public/bg_hhzy_01_3.png|text=设置首充第三天|link=@gmhelper_button,152>'..
         '<Button|x=500|y=120|nimg=public/bg_hhzy_01_3.png|text=设置首充第四天|link=@gmhelper_button,153>'..
-        '<Button|x=500|y=150|nimg=public/bg_hhzy_01_3.png|text=清空首充|link=@gmhelper_button,154>'..
-        '<Button|x=500|y=180|nimg=public/bg_hhzy_01_3.png|text=模拟充值1元|link=@gmhelper_button,155>'..
-        '<Button|x=500|y=210|nimg=public/bg_hhzy_01_3.png|text=模拟充值10元|link=@gmhelper_button,156>'..
-        '<Button|x=500|y=240|nimg=public/bg_hhzy_01_3.png|text=模拟充值100元|link=@gmhelper_button,157>'
+
     ]]--
 
     --[[                      
@@ -285,11 +286,17 @@ function GMHelper.DoGmOper(actor, sid)
         setflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_FIRSTRECHARGE_REWARD2, 0)
         setflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_FIRSTRECHARGE_REWARD3, 0)
     elseif sid == '155' then
-        RechargeManager.DoRecharge(actor, 1, 1)
+        setplaydef(actor, CommonDefine.VAR_M_ID_0, 1)
+        RechargeManager.DoRecharge(actor)
+        setplaydef(actor, CommonDefine.VAR_M_ID_0, 0)
     elseif sid == '156' then
-        RechargeManager.DoRecharge(actor, 10, 1)
+        setplaydef(actor, CommonDefine.VAR_M_ID_0, 10)
+        RechargeManager.DoRecharge(actor)
+        setplaydef(actor, CommonDefine.VAR_M_ID_0, 0)
     elseif sid == '157' then
-        RechargeManager.DoRecharge(actor, 100, 1)
+        setplaydef(actor, CommonDefine.VAR_M_ID_0, 100)
+        RechargeManager.DoRecharge(actor)
+        setplaydef(actor, CommonDefine.VAR_M_ID_0, 0)
     elseif sid == '999' then
         Player.TestSuperInitPlayer(actor)
     elseif sid == '1001' then

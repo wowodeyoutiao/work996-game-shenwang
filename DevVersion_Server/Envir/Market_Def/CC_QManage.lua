@@ -22,12 +22,10 @@ function login(actor)
     --iniplayvar(actor, "string", "HUMAN", "玩家变量_2")    
 
 --[[
-    --界面初始化        
-    TopIcon.InitUI(actor)
+    --界面初始化            
     GameCurrencyUI.InitUI(actor)
     MainUIBase.InitUI(actor) 
 ]]--
-
     --玩家是否进行新手初始化
     Player.InitNewPlayer(actor)   
     --触发玩家上线的事件监听

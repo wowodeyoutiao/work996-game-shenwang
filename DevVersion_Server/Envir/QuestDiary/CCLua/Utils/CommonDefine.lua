@@ -323,6 +323,10 @@ CommonDefine = {
     VAR_N_ITEM_COMPOSE_CHOOSE_ITEM1 = 'N76',    --玩家道具合成时，选择的第一件合成物品，每次使用需检测    
     VAR_N_CURR_FUNCTION_ID = 'N77',             --玩家当前选择的功能ID
 
+        
+    --玩家数字型变量，切地图不保存 M0-M99
+    VAR_M_ID_0 = 'M0',                          
+
     --玩家字符型变量，下线不保存 S0 - S99
     VAR_S_SELECT_ITEM = 'S0',
     VAR_S_SUPERBOX_ITEMLIST = 'S50',    
@@ -345,13 +349,6 @@ CommonDefine = {
     VAR_U_FREEVIPTASK_COUNTER5 = 'U114',        --免费VIP任务计数5
     VAR_U_FREEVIP_LEVEL = 'U115',               --免费VIP等级
 
-    VAR_U_RECHARGE_TOTAL = 'U118',              --累计充值 RMB
-    VAR_U_FIRST_RECHARGE_DAY = 'U119',          --首充的日期记录
-    
-    VAR_U_NEWPLAYER_RECHARGE_SINGLE = 'U121',   --新人充值返利活动，单笔最大充值
-    VAR_U_NEWPLAYER_RECHARGE_TOTAL = 'U122',    --新人充值返利活动，累计最大充值
-
-    VAR_U_LAST_LOGIN_TIME = 'U125',             --玩家上一次登录时间，跨天重置
     VAR_U_TREASUREMAP_CURRID = 'U126',          --当前对应的藏宝图配置id
     VAR_U_BIAOCHE_CURRID = 'U127',              --当前对应的镖车配置ID
     VAR_U_BIAOCHE_REFRESH_TIMES = 'U128',       --镖车刷新次数，接受镖车后清0
@@ -417,8 +414,12 @@ CommonDefine = {
     VAR_U_ID_TASKLINE3 = 'U197',                --任务3线当前任务ID
     VAR_U_STATUS_TASKLINE3 = 'U198',            --任务3线当前任务状态
     VAR_U_COUNTER_TASKLINE3 = 'U199',           --任务3线当前任务单个计数
-    
-    
+
+    VAR_U_RECHARGE_TOTAL = 'U200',              --累计充值 RMB
+    VAR_U_FIRST_RECHARGE_DAY = 'U201',          --首充的日期记录    
+    VAR_U_NEWPLAYER_RECHARGE_SINGLE = 'U202',   --新人充值返利活动，单笔最大充值
+    VAR_U_NEWPLAYER_RECHARGE_TOTAL = 'U203',    --新人充值返利活动，累计最大充值
+    VAR_U_LAST_LOGIN_TIME = 'U204',             --玩家上一次登录时间，跨天重置    
     
     
     --玩家字符型变量，下线保存 T0 - T254
@@ -477,10 +478,6 @@ CommonDefine = {
     VAR_HUM_BITFLAG_FREEVIP_TASK_DRAWFLAG3 = 214,    --免费VIP任务3 是否领奖
     VAR_HUM_BITFLAG_FREEVIP_TASK_DRAWFLAG4 = 215,    --免费VIP任务4 是否领奖
     VAR_HUM_BITFLAG_FREEVIP_TASK_DRAWFLAG5 = 216,    --免费VIP任务5 是否领奖
-
-    VAR_HUM_BITFLAG_FIRSTRECHARGE_REWARD1 = 218,     --首充奖励领取标记1
-    VAR_HUM_BITFLAG_FIRSTRECHARGE_REWARD2 = 219,     --首充奖励领取标记2
-    VAR_HUM_BITFLAG_FIRSTRECHARGE_REWARD3 = 220,     --首充奖励领取标记3
     
     VAR_HUM_BITFLAG_IS_FIRST_RANDOMBOSS_REWARD = 238,       --是否是第一个战力boss的奖励
     VAR_HUM_BITFLAG_IS_FIRST_RANDOMBOSS_TRIGGER = 239,      --是否是触发的第一个战力boss
@@ -531,6 +528,10 @@ CommonDefine = {
     VAR_HUM_BITFLAG_RECYCLE_ITEM2_6 = 343,           --金色直升宝石是否回收
     VAR_HUM_BITFLAG_RECYCLE_ITEM2_7 = 344,           --红色直升宝石是否回收
 
+    VAR_HUM_BITFLAG_FIRSTRECHARGE_REWARD1 = 350,     --首充奖励领取标记1
+    VAR_HUM_BITFLAG_FIRSTRECHARGE_REWARD2 = 351,     --首充奖励领取标记2
+    VAR_HUM_BITFLAG_FIRSTRECHARGE_REWARD3 = 352,     --首充奖励领取标记3    
+
 
     --道具的int变量 1-50
     ITEM_INTVAR_ADDLUCK_LV = 1,                     --道具的祝福等级
@@ -573,9 +574,9 @@ CommonDefine = {
     EVENT_NAME_DO_RECHARGE = 'do_recharge',             --充值
 
     --玩家定时器ID
-    TIMER_ID_MOFANGZHEN = 11,                   --魔方阵地图的定时器
-    TIMER_ID_CHECK_TOPICON_REDPOINT = 12,       --检测topicon功能入口的小红点
-    TIMER_ID_CHECK_QUICK_GOTO_TIP = 13,         --检测npc功能的快捷前往提示
+    --TIMER_ID_MOFANGZHEN = 11,                   --魔方阵地图的定时器
+    TIMER_ID_CHECK_TOPICON_REDPOINT = 101,       --检测topicon功能入口的小红点
+    TIMER_ID_CHECK_QUICK_GOTO_TIP = 102,         --检测npc功能的快捷前往提示
 
     --功能模块编号
     FUNC_ID_EQUIPPOS_STRENGTH = 1,              --装备位强化
@@ -672,6 +673,7 @@ CommonDefine = {
     ADD_BUTTON_ID_6 = 9006,                       --战力显示
     ADD_BUTTON_ID_7 = 9007,                       --战力变化显示
     ADD_BUTTON_ID_8 = 9008,                       --退出地图的按钮
+    
 
     ADD_BUTTON_ID_10 = 9010,                      --装备面板 项链槽位 天赋属性图标
     ADD_BUTTON_ID_11 = 9011,                      --装备面板 左护腕槽位 天赋属性图标
@@ -680,6 +682,12 @@ CommonDefine = {
     ADD_BUTTON_ID_14 = 9014,                      --装备面板 右戒指槽位 天赋属性图标
     ADD_BUTTON_ID_15 = 9015,                      --装备面板 腰带槽位 天赋属性图标
     ADD_BUTTON_ID_16 = 9016,                      --装备面板 鞋子槽位 天赋属性图标
+
+    ADD_BUTTON_ID_31 = 9031,                      --成长快捷提示 展开界面
+    ADD_BUTTON_ID_32 = 9032,                      --成长快捷提示 接触界面
+    ADD_BUTTON_ID_33 = 9033,                      --topicon 第一列
+    ADD_BUTTON_ID_34 = 9034,                      --topicon 第二列
+    
 }
 
 --装备位对应的名称

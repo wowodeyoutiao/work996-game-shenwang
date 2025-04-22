@@ -29,8 +29,8 @@ local function _Includes()
     -- cfgFreeVIP = require("Envir/QuestDiary/CCLua/GameConfig/cfgFreeVIP")
     -- cfgFreeVIPTask = require("Envir/QuestDiary/CCLua/GameConfig/cfgFreeVIPTask")
     cfgFunctionCtrl = require("Envir/QuestDiary/CCLua/GameConfig/cfgFunctionCtrl")
-    -- cfgFirstRecharge = require("Envir/QuestDiary/CCLua/GameConfig/cfgFirstRecharge")
-    -- cfgActivityNewPlayerRecharge = require("Envir/QuestDiary/CCLua/GameConfig/cfgActivityNewPlayerRecharge")
+    cfgFirstRecharge = require("Envir/QuestDiary/CCLua/GameConfig/cfgFirstRecharge")
+    cfgActivityNewPlayerRecharge = require("Envir/QuestDiary/CCLua/GameConfig/cfgActivityNewPlayerRecharge")
     -- cfgActivityOpenServer = require("Envir/QuestDiary/CCLua/GameConfig/cfgActivityOpenServer")
     -- cfgActivityExtendGift = require("Envir/QuestDiary/CCLua/GameConfig/cfgActivityExtendGift")
     cfgRecycleSetting = require("Envir/QuestDiary/CCLua/GameConfig/cfgRecycleSetting")
@@ -59,7 +59,7 @@ local function _Includes()
 
     -- --UI
     require("Envir/QuestDiary/CCLua/UI/NewMainUIBase")
-    -- require("Envir/QuestDiary/CCLua/UI/TopIcon")
+    require("Envir/QuestDiary/CCLua/UI/TopIcon")
     -- require("Envir/QuestDiary/CCLua/UI/GameCurrencyUI")
 
     --GameObj
@@ -70,7 +70,7 @@ local function _Includes()
 
     -- --GameModule
     -- require("Envir/QuestDiary/CCLua/GameModule/ClientMsgProcess")
-    -- require("Envir/QuestDiary/CCLua/GameModule/RechargeManager")
+    require("Envir/QuestDiary/CCLua/GameModule/RechargeManager")
     require("Envir/QuestDiary/CCLua/GameModule/EquipPosStrengthManager")
     require("Envir/QuestDiary/CCLua/GameModule/EquipPosStarManager")    
     require("Envir/QuestDiary/CCLua/GameModule/SkillUpgrade")
@@ -86,8 +86,8 @@ local function _Includes()
     -- require("Envir/QuestDiary/CCLua/GameModule/FreeVIPManager")
     require("Envir/QuestDiary/CCLua/GameModule/TaskLineConfig")
     require("Envir/QuestDiary/CCLua/GameModule/TaskManager")    
-    -- require("Envir/QuestDiary/CCLua/GameModule/FirstRecharge")
-    -- require("Envir/QuestDiary/CCLua/GameModule/ActivityNewPlayerRecharge")
+    require("Envir/QuestDiary/CCLua/GameModule/FirstRecharge")
+    require("Envir/QuestDiary/CCLua/GameModule/ActivityNewPlayerRecharge")
     -- require("Envir/QuestDiary/CCLua/GameModule/ActivityOpenServer")
     -- require("Envir/QuestDiary/CCLua/GameModule/ActivityExtendGift")
     -- require("Envir/QuestDiary/CCLua/GameModule/PublicBossManager")
@@ -404,28 +404,28 @@ local function _Includes()
     --     end
     -- end 
 
-    -- --FirstRecharge
-    -- for _, value in pairs(cfgFirstRecharge) do
-    --     if (value.freerewards ~= nil) and (value.freerewards ~= '') then
-    --         value.freerewards_tab = BF_Json2Table(value.freerewards)
-    --     else
-    --         value.freerewards_tab = {}
-    --     end
-    --     if (value.doublerewards ~= nil) and (value.doublerewards ~= '') then
-    --         value.doublerewards_tab = BF_Json2Table(value.doublerewards)
-    --     else
-    --         value.doublerewards_tab = {}
-    --     end        
-    -- end    
+    --FirstRecharge
+    for _, value in pairs(cfgFirstRecharge) do
+        if (value.freerewards ~= nil) and (value.freerewards ~= '') then
+            value.freerewards_tab = BF_Json2Table(value.freerewards)
+        else
+            value.freerewards_tab = {}
+        end
+        if (value.doublerewards ~= nil) and (value.doublerewards ~= '') then
+            value.doublerewards_tab = BF_Json2Table(value.doublerewards)
+        else
+            value.doublerewards_tab = {}
+        end        
+    end    
 
-    -- --ActivityNewPlayerRecharge
-    -- for _, value in pairs(cfgActivityNewPlayerRecharge) do
-    --     if (value.rewards ~= nil) and (value.rewards ~= '') then
-    --         value.rewards_tab = BF_Json2Table(value.rewards)
-    --     else
-    --         value.rewards_tab = {}
-    --     end
-    -- end  
+    --ActivityNewPlayerRecharge
+    for _, value in pairs(cfgActivityNewPlayerRecharge) do
+        if (value.rewards ~= nil) and (value.rewards ~= '') then
+            value.rewards_tab = BF_Json2Table(value.rewards)
+        else
+            value.rewards_tab = {}
+        end
+    end  
 
     -- --ActivityOpenServer
     -- for _, value in pairs(cfgActivityOpenServer) do
