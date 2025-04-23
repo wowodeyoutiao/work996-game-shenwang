@@ -31,8 +31,8 @@ local function _Includes()
     cfgFunctionCtrl = require("Envir/QuestDiary/CCLua/GameConfig/cfgFunctionCtrl")
     cfgFirstRecharge = require("Envir/QuestDiary/CCLua/GameConfig/cfgFirstRecharge")
     cfgActivityNewPlayerRecharge = require("Envir/QuestDiary/CCLua/GameConfig/cfgActivityNewPlayerRecharge")
-    -- cfgActivityOpenServer = require("Envir/QuestDiary/CCLua/GameConfig/cfgActivityOpenServer")
-    -- cfgActivityExtendGift = require("Envir/QuestDiary/CCLua/GameConfig/cfgActivityExtendGift")
+    cfgActivityOpenServer = require("Envir/QuestDiary/CCLua/GameConfig/cfgActivityOpenServer")
+    cfgActivityExtendGift = require("Envir/QuestDiary/CCLua/GameConfig/cfgActivityExtendGift")
     cfgRecycleSetting = require("Envir/QuestDiary/CCLua/GameConfig/cfgRecycleSetting")
     -- cfgPublicBossInfo = require("Envir/QuestDiary/CCLua/GameConfig/cfgPublicBossInfo")
     -- cfgSingleBossInfo = require("Envir/QuestDiary/CCLua/GameConfig/cfgSingleBossInfo")
@@ -88,8 +88,8 @@ local function _Includes()
     require("Envir/QuestDiary/CCLua/GameModule/TaskManager")    
     require("Envir/QuestDiary/CCLua/GameModule/FirstRecharge")
     require("Envir/QuestDiary/CCLua/GameModule/ActivityNewPlayerRecharge")
-    -- require("Envir/QuestDiary/CCLua/GameModule/ActivityOpenServer")
-    -- require("Envir/QuestDiary/CCLua/GameModule/ActivityExtendGift")
+    require("Envir/QuestDiary/CCLua/GameModule/ActivityOpenServer")
+    require("Envir/QuestDiary/CCLua/GameModule/ActivityExtendGift")
     -- require("Envir/QuestDiary/CCLua/GameModule/PublicBossManager")
     -- require("Envir/QuestDiary/CCLua/GameModule/SingleBossManager")
     -- require("Envir/QuestDiary/CCLua/GameModule/EverydayTask")
@@ -427,28 +427,28 @@ local function _Includes()
         end
     end  
 
-    -- --ActivityOpenServer
-    -- for _, value in pairs(cfgActivityOpenServer) do
-    --     if (value.rewards ~= nil) and (value.rewards ~= '') then
-    --         value.rewards_tab = BF_Json2Table(value.rewards)
-    --     else
-    --         value.rewards_tab = {}
-    --     end
-    -- end      
+    --ActivityOpenServer
+    for _, value in pairs(cfgActivityOpenServer) do
+        if (value.rewards ~= nil) and (value.rewards ~= '') then
+            value.rewards_tab = BF_Json2Table(value.rewards)
+        else
+            value.rewards_tab = {}
+        end
+    end      
 
-    -- --ActivityExtendGift
-    -- for _, value in pairs(cfgActivityExtendGift) do
-    --     if (value.rewards ~= nil) and (value.rewards ~= '') then
-    --         value.rewards_tab = BF_Json2Table(value.rewards)
-    --     else
-    --         value.rewards_tab = {}
-    --     end
-    --     if (value.needitems ~= nil) and (value.needitems ~= '') then
-    --         value.needitems_tab = BF_Json2Table(value.needitems)
-    --     else
-    --         value.needitems_tab = {}
-    --     end        
-    -- end    
+    --ActivityExtendGift
+    for _, value in pairs(cfgActivityExtendGift) do
+        if (value.rewards ~= nil) and (value.rewards ~= '') then
+            value.rewards_tab = BF_Json2Table(value.rewards)
+        else
+            value.rewards_tab = {}
+        end
+        if (value.needitems ~= nil) and (value.needitems ~= '') then
+            value.needitems_tab = BF_Json2Table(value.needitems)
+        else
+            value.needitems_tab = {}
+        end        
+    end    
 
     -- --EverydayTask
     -- for _, value in pairs(cfgEverydayTask) do

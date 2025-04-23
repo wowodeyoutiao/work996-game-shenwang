@@ -440,9 +440,8 @@ CommonDefine = {
 
     --玩家数字变量，下线保存，0点重置 J0 - J499
     --[[
-    VAR_J_DAY_BAOZHU_BOSS_TIMES = 'J1',         --玩家今日进入宝珠BOSS地图的次数
-    VAR_J_DAY_GUAZHI_ADDEXP = 'J2',             --玩家今日获得的官职经验
-    VAR_J_DAY_GUAZHI_GETREWARD = 'J3',          --玩家今日是否已领取官职奖励
+    VAR_J_DAY_BAOZHU_BOSS_TIMES = 'J1',         --玩家今日进入宝珠BOSS地图的次数    
+    
     VAR_J_DAY_MOFANG_LEFT_FREETIMES = 'J4',     --玩家今日剩余可免费进入魔方地图的次数
     VAR_J_DAY_MOFANG_BUYTIMES = 'J5',           --玩家今日魔方阵购买次数
     VAR_J_DAY_MOFANG_ENTER_TIME = 'J6',         --玩家今日魔方阵进入时间
@@ -450,8 +449,6 @@ CommonDefine = {
     VAR_J_DAY_RANDOMBOSS_REWARDTIMES = 'J8',    --玩家今日随机BOSS领奖次数
     VAR_J_DAY_RANDOMBOSS_TRIGGERTIMES = 'J9',   --玩家今日随机BOSS触发次数
     VAR_J_DAY_FREEVIP_REWARDTIMES = 'J10',      --玩家今日领取每日VIP奖励次数
-    VAR_J_DAY_RECHARGE_TOTAL = 'J11',           --玩家今日的总充值
-    VAR_J_DAY_ONLINE_TIME = 'J12',              --玩家今日的在线时长
     VAR_J_DAY_SINGLEBOSS_KILLTIMES = 'J13',     --玩家今日击杀单人首领的次数
     VAR_J_DAY_SINGLEBOSS_BUYTIMES = 'J14',      --玩家今日购买单人首领的次数
     VAR_J_DAY_EVERYDAYTASK_FINALREWARD_IDX = 'J15',     --玩家 每日任务累计领奖编号     
@@ -461,6 +458,11 @@ CommonDefine = {
     ]]--
     VAR_J_DAY_SUPERBOX_ADDNUM = 'J101',                 --玩家 今日获得超级宝箱次数
     VAR_J_DAY_SUPERBOX_OPENNUM = 'J102',                --玩家 今日开启超级宝箱次数
+    VAR_J_DAY_GUAZHI_ADDEXP = 'J103',                   --玩家今日获得的官职经验
+    VAR_J_DAY_GUAZHI_GETREWARD = 'J104',                --玩家今日是否已领取官职奖励
+    VAR_J_DAY_RECHARGE_TOTAL = 'J105',                  --玩家今日的总充值
+    VAR_J_DAY_ONLINE_TIME = 'J106',                     --玩家今日的在线时长
+
     
     --玩家字符变量，下线保存，0点重置 Z0 - Z499
     VAR_Z_DAY_EVERYDAYTASK_COUNTER_DATA = 'Z1',         --玩家 每日任务 子任务计数
