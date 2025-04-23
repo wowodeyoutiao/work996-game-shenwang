@@ -8,6 +8,7 @@ local ICON_FIRSTRECHARGE = '5'                  --首充
 local ICON_NEWPLAYER_RECHARGEACTIVITY = '6'     --新人充值返利
 local ICON_OPENSERVERACTIVITY = '7'             --开服活动
 local ICON_EXTENDGIFT = '8'                     --进阶礼包
+local ICON_FREEVIP = '9'                        --免费VIP
 
 local ICON_EVERYDAY_TASK = '11'                 --每日必做
 
@@ -24,6 +25,7 @@ local MAINICON_ID_2 = 'mainicon_2'              --开服活动 iconid
 local MAINICON_ID_3 = 'mainicon_3'              --新人充值返利 iconid
 local MAINICON_ID_4 = 'mainicon_4'              --首充 iconid
 local MAINICON_ID_5 = 'mainicon_5'              --每日必做 iconid
+local MAINICON_ID_6 = 'mainicon_6'              --免费VIP iconid
 
 
 function TopIcon.InitUI(actor)
@@ -65,6 +67,14 @@ function TopIcon.OpenPanel(actor, sid, sparam)
     elseif sid == ICON_EVERYDAY_TASK then
         --每日必做
         EverydayTask.OpenPanel(actor)
+    elseif sid == ICON_FREEVIP then
+        --免费VIP
+        if not Player.IsFunctionOpen(actor, CommonDefine.FUNC_ID_FREEVIP, true) then
+            return
+        end
+        setplaydef(actor, CommonDefine.VAR_N_CURR_FUNCTION_ID, CommonDefine.FUNC_ID_FREEVIP)
+        setplaydef(actor, CommonDefine.VAR_N_LAST_NPC_CHOOSEID, -1)
+        FreeVIPManager.ShowBasePanel(actor)
     elseif sid == ICON_EXTEND_STORAGE_MAKESURE then
         --扩容仓库 确定
         TopIcon.DoExtendStorage(actor)
@@ -104,7 +114,9 @@ function TopIcon.InnerExtendPanel(actor)
     if ActivityOpenServer.CanShowIcon(actor) then
         currIconX = currIconX - 80
         buttonstr = buttonstr..'<Button|id='..MAINICON_ID_2..'|x='..currIconX..'|y=10|width=70|height=70|nimg=private/cc_func_icon/1.png|link=@topicon_openpanel#sid='..ICON_OPENSERVERACTIVITY..'>'
-    end       
+    end
+    currIconX = currIconX - 80
+    buttonstr = buttonstr..'<Button|id='..MAINICON_ID_6..'|x='..currIconX..'|y=10|width=70|height=70|text=免费VIP|color=255|nimg=custom/a00016.png|link=@topicon_openpanel#sid='..ICON_FREEVIP..'>'
 --[[
     if EverydayTask.CanShowIcon(actor) then
         currIconX = currIconX - 80
@@ -138,7 +150,7 @@ function TopIcon.CheckRedPoint(actor)
     else
         Player.DelRedPoint(actor, 102, MAINICON_ID_1)    
     end
-    
+
     if ActivityOpenServer.IsTopIconHaveRedPoint(actor) then
         Player.AddRedPoint(actor, 102, MAINICON_ID_2, 10, 10)    
     else
@@ -197,9 +209,9 @@ local function FillRedPointFunctionInfoList(actor, infolist)
     if GuanZhiManager.IsHaveQuickTip(actor) then
         infolist[#infolist+1] = {id=CommonDefine.QUICK_GOTO_GUANZHI, name='提升官职'}
     end
-    -- if FreeVIPManager.IsHaveQuickTip(actor) then
-    --     infolist[#infolist+1] = {id=CommonDefine.QUICK_GOTO_FREEVIP, name='VIP奖励'}
-    -- end
+    if FreeVIPManager.IsHaveQuickTip(actor) then
+        infolist[#infolist+1] = {id=CommonDefine.QUICK_GOTO_FREEVIP, name='VIP奖励'}
+    end
     if OfflineHuWeiManager.IsHaveQuickTipUpgrade(actor) then
         infolist[#infolist+1] = {id=CommonDefine.QUICK_GOTO_ZCD, name='护卫升级'}
     end
@@ -253,7 +265,7 @@ function TopIcon.CheckQuickInfoTip(actor)
         -- RandomBossManager.IsHaveQuickTip(actor) or
         -- MoFangZhenManager.IsHaveQuickTip(actor) or
         GuanZhiManager.IsHaveQuickTip(actor) or
-        -- FreeVIPManager.IsHaveQuickTip(actor) or
+        FreeVIPManager.IsHaveQuickTip(actor) or
         OfflineHuWeiManager.IsHaveQuickTipUpgrade(actor) or
         OfflineHuWeiManager.IsHaveQuickTipReward(actor) then
 

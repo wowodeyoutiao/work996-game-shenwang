@@ -26,8 +26,8 @@ local function _Includes()
     cfgOfflineHuWei = require("Envir/QuestDiary/CCLua/GameConfig/cfgOfflineHuWei")
     -- cfgMoFangZhen = require("Envir/QuestDiary/CCLua/GameConfig/cfgMoFangZhen")
     -- cfgRandomBossTriggerPool = require("Envir/QuestDiary/CCLua/GameConfig/cfgRandomBossTriggerPool")
-    -- cfgFreeVIP = require("Envir/QuestDiary/CCLua/GameConfig/cfgFreeVIP")
-    -- cfgFreeVIPTask = require("Envir/QuestDiary/CCLua/GameConfig/cfgFreeVIPTask")
+    cfgFreeVIP = require("Envir/QuestDiary/CCLua/GameConfig/cfgFreeVIP")
+    cfgFreeVIPTask = require("Envir/QuestDiary/CCLua/GameConfig/cfgFreeVIPTask")
     cfgFunctionCtrl = require("Envir/QuestDiary/CCLua/GameConfig/cfgFunctionCtrl")
     cfgFirstRecharge = require("Envir/QuestDiary/CCLua/GameConfig/cfgFirstRecharge")
     cfgActivityNewPlayerRecharge = require("Envir/QuestDiary/CCLua/GameConfig/cfgActivityNewPlayerRecharge")
@@ -83,7 +83,7 @@ local function _Includes()
     require("Envir/QuestDiary/CCLua/GameModule/OfflineHuWeiManager")
     -- require("Envir/QuestDiary/CCLua/GameModule/MoFangZhenManager")
     -- require("Envir/QuestDiary/CCLua/GameModule/RandomBossManager")
-    -- require("Envir/QuestDiary/CCLua/GameModule/FreeVIPManager")
+    require("Envir/QuestDiary/CCLua/GameModule/FreeVIPManager")
     require("Envir/QuestDiary/CCLua/GameModule/TaskLineConfig")
     require("Envir/QuestDiary/CCLua/GameModule/TaskManager")    
     require("Envir/QuestDiary/CCLua/GameModule/FirstRecharge")
@@ -376,33 +376,33 @@ local function _Includes()
     --     end
     -- end  
 
-    -- --FreeVIP
-    -- for _, value in pairs(cfgFreeVIP) do
-    --     if (value.addprop ~= nil) and (value.addprop ~= '') then
-    --         value.addprop_tab = BF_Json2Table(value.addprop)
-    --         value.addprop_desctab = BF_GetPropDescTableByJson(value.addprop)
-    --         value.addprop_abstr = BF_GetAbilityStrByABTab(value.addprop_tab)
-    --     else
-    --         value.addprop_tab = {}
-    --         value.addprop_desctab = {}
-    --         value.addprop_abstr = ''
-    --     end
+    --FreeVIP
+    for _, value in pairs(cfgFreeVIP) do
+        if (value.addprop ~= nil) and (value.addprop ~= '') then
+            value.addprop_tab = BF_Json2Table(value.addprop)
+            value.addprop_desctab = BF_GetPropDescTableByJson(value.addprop)
+            value.addprop_abstr = BF_GetAbilityStrByABTab(value.addprop_tab)
+        else
+            value.addprop_tab = {}
+            value.addprop_desctab = {}
+            value.addprop_abstr = ''
+        end
 
-    --     if (value.dayrewards ~= nil) and (value.dayrewards ~= '') then
-    --         value.dayrewards_tab = BF_Json2Table(value.dayrewards)
-    --     else
-    --         value.dayrewards_tab = {}
-    --     end
-    -- end
+        if (value.dayrewards ~= nil) and (value.dayrewards ~= '') then
+            value.dayrewards_tab = BF_Json2Table(value.dayrewards)
+        else
+            value.dayrewards_tab = {}
+        end
+    end
     
-    -- --FreeVIPTask
-    -- for _, value in pairs(cfgFreeVIPTask) do
-    --     if (value.finishrewards ~= nil) and (value.finishrewards ~= '') then
-    --         value.finishrewards_tab = BF_Json2Table(value.finishrewards)
-    --     else
-    --         value.finishrewards_tab = {}
-    --     end
-    -- end 
+    --FreeVIPTask
+    for _, value in pairs(cfgFreeVIPTask) do
+        if (value.finishrewards ~= nil) and (value.finishrewards ~= '') then
+            value.finishrewards_tab = BF_Json2Table(value.finishrewards)
+        else
+            value.finishrewards_tab = {}
+        end
+    end
 
     --FirstRecharge
     for _, value in pairs(cfgFirstRecharge) do
@@ -415,8 +415,8 @@ local function _Includes()
             value.doublerewards_tab = BF_Json2Table(value.doublerewards)
         else
             value.doublerewards_tab = {}
-        end        
-    end    
+        end
+    end
 
     --ActivityNewPlayerRecharge
     for _, value in pairs(cfgActivityNewPlayerRecharge) do
@@ -425,7 +425,7 @@ local function _Includes()
         else
             value.rewards_tab = {}
         end
-    end  
+    end
 
     --ActivityOpenServer
     for _, value in pairs(cfgActivityOpenServer) do
@@ -434,7 +434,7 @@ local function _Includes()
         else
             value.rewards_tab = {}
         end
-    end      
+    end
 
     --ActivityExtendGift
     for _, value in pairs(cfgActivityExtendGift) do

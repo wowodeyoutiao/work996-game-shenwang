@@ -410,81 +410,10 @@ function base_leavemap_button(actor)
 end
 
 -------------------------------------------------------新逻辑还是从原来的NPC脚本走--------------------------------------------
---规则说明面板
-function show_rule_panel_fromtxt(actor, sfuncid)  
-    if BF_IsNullObj(actor) or not BF_IsNumberStr(sfuncid) then
-        return
-    end
-    local funcid = tonumber(sfuncid)
-    if funcid == CommonDefine.FUNC_ID_EQUIPPOS_STRENGTH then
-        EquipPosStrengthManager.ShowRulePanel(actor)
-    elseif funcid == CommonDefine.FUNC_ID_EQUIPPOS_STAR then
-        EquipPosStarManager.ShowRulePanel(actor)
-    elseif funcid == CommonDefine.FUNC_ID_SOUL_STONE then
-        SoulStoneManager.ShowRulePanel(actor)      
-    elseif funcid == CommonDefine.FUNC_ID_GUANZHI then
-        GuanZhiManager.ShowRulePanel(actor)
-    elseif funcid == CommonDefine.FUNC_ID_SKILLUPGRADE then
-        SkillUpgrade.ShowRulePanel(actor)   
-    elseif funcid == CommonDefine.FUNC_ID_COMPOSE then
-        ItemComposeManager.ShowRulePanel(actor)
-    elseif funcid == CommonDefine.FUNC_ID_OFFLINE then
-        OfflineHuWeiManager.ShowRulePanel(actor)
-    end
-end
-
---显示基础面板
-function show_base_panel_fromtxt(actor, sfuncid, sparam)
-    if BF_IsNullObj(actor) or not BF_IsNumberStr(sfuncid) then
-        return
-    end
-    local funcid = tonumber(sfuncid)
-    if funcid == CommonDefine.FUNC_ID_EQUIPPOS_STRENGTH then
-        EquipPosStrengthManager.ShowBasePanel(actor)
-    elseif funcid == CommonDefine.FUNC_ID_EQUIPPOS_STAR then
-        EquipPosStarManager.ShowBasePanel(actor)        
-    elseif funcid == CommonDefine.FUNC_ID_SOUL_STONE then
-        SoulStoneManager.ShowBasePanel(actor)         
-    elseif funcid == CommonDefine.FUNC_ID_GUANZHI then
-        GuanZhiManager.ShowBasePanel(actor)
-    elseif funcid == CommonDefine.FUNC_ID_SKILLUPGRADE then
-        SkillUpgrade.ShowBasePanel(actor)
-    elseif funcid == CommonDefine.FUNC_ID_COMPOSE then
-        ItemComposeManager.ShowBasePanel(actor)
-    elseif funcid == CommonDefine.FUNC_ID_OFFLINE then
-        OfflineHuWeiManager.ShowBasePanel(actor, sparam)
-    end
-end
-
---对应的功能操作
-function function_button_fromtxt(actor, sfuncid, sid, sparam)
-    if BF_IsNullObj(actor) or not BF_IsNumberStr(sfuncid) then
-        return
-    end
-    local funcid = tonumber(sfuncid)    
-    if funcid == CommonDefine.FUNC_ID_EQUIPPOS_STRENGTH then
-        EquipPosStrengthManager.DoOperButton(actor, sid, sparam)
-    elseif funcid == CommonDefine.FUNC_ID_EQUIPPOS_STAR then
-        EquipPosStarManager.DoOperButton(actor, sid, sparam)        
-    elseif funcid == CommonDefine.FUNC_ID_SOUL_STONE then
-        SoulStoneManager.DoOperButton(actor, sid, sparam)   
-    elseif funcid == CommonDefine.FUNC_ID_GUANZHI then
-        GuanZhiManager.DoOperButton(actor, sid, sparam)
-    elseif funcid == CommonDefine.FUNC_ID_SKILLUPGRADE then
-        SkillUpgrade.DoOperButton(actor, sid, sparam)
-    elseif funcid == CommonDefine.FUNC_ID_COMPOSE then
-        ItemComposeManager.DoOperButton(actor, sid, sparam)
-    elseif funcid == CommonDefine.FUNC_ID_OFFLINE then
-        OfflineHuWeiManager.DoOperButton(actor, sid, sparam)
-    end
-end
-
 --灵玉功能相关
 function baozhu_button_function(actor, sid, sparam)
     BaoZhuManager.DoOperButton(actor, sid, sparam)
 end
-
----------------------------------------------------------------------------------------------------------------------------------
 
 --规则说明面板
 function show_rule_panel(actor)    
@@ -503,6 +432,8 @@ function show_rule_panel(actor)
         ItemComposeManager.ShowRulePanel(actor)
     elseif currfuncid == CommonDefine.FUNC_ID_OFFLINE then
         OfflineHuWeiManager.ShowRulePanel(actor)
+    elseif currfuncid == CommonDefine.FUNC_ID_FREEVIP then
+        FreeVIPManager.ShowRulePanel(actor)
     end    
 end
 
@@ -523,11 +454,13 @@ function show_base_panel(actor, sparam)
         ItemComposeManager.ShowBasePanel(actor)
     elseif currfuncid == CommonDefine.FUNC_ID_OFFLINE then
         OfflineHuWeiManager.ShowBasePanel(actor, sparam)
+    elseif currfuncid == CommonDefine.FUNC_ID_FREEVIP then
+        FreeVIPManager.ShowBasePanel(actor)
     end    
 end
 
 --对应的功能操作
-function function_button(actor, sid, sparam)
+function function_button(actor, sid, sparam)    
     local currfuncid = getplaydef(actor, CommonDefine.VAR_N_CURR_FUNCTION_ID)
     if currfuncid == CommonDefine.FUNC_ID_EQUIPPOS_STRENGTH then
         EquipPosStrengthManager.DoOperButton(actor, sid, sparam)
@@ -543,6 +476,8 @@ function function_button(actor, sid, sparam)
         ItemComposeManager.DoOperButton(actor, sid, sparam)
     elseif currfuncid == CommonDefine.FUNC_ID_OFFLINE then
         OfflineHuWeiManager.DoOperButton(actor, sid, sparam)
+    elseif currfuncid == CommonDefine.FUNC_ID_FREEVIP then
+        FreeVIPManager.DoOperButton(actor, sid, sparam)
     end    
 end
 

@@ -291,7 +291,7 @@ CommonDefine = {
     VAR_N_CURR_RANDOMBOSS_FIGHTING_ID = 'N18',  --玩家当前触发的随机BOSS的挑战ID
     VAR_N_LAST_OPER_TIME1 = 'N19',              --玩家上一次操作的时间记录1   用于处理一些需要操作短时间冷却的  几秒钟的CD
     VAR_N_LAST_OPER_TIME2 = 'N20',              --玩家上一次操作的时间记录2   用于处理一些需要操作短时间冷却的  几秒钟的CD    
-    VAR_U_CURR_TASKLINEID = 'N22',              --当前打开的任务对话对应的tasklineid  
+    
     VAR_N_COMMON_LOCAL_RELIVE_TIMES = 'N28',    --通用原地复活次数
 ]]--    
 
@@ -321,7 +321,7 @@ CommonDefine = {
     VAR_N_SELECT_COMPOSE_PILE_NUM = 'N74',      --合成可叠加道具时，选择的单个合成数量    
     VAR_N_CHOOSE_OPER_TYPE = 'N75',             --玩家选择的操作类型  通用的临时变量 例如选择技能升级还是技能强化    
     VAR_N_ITEM_COMPOSE_CHOOSE_ITEM1 = 'N76',    --玩家道具合成时，选择的第一件合成物品，每次使用需检测    
-    VAR_N_CURR_FUNCTION_ID = 'N77',             --玩家当前选择的功能ID
+    VAR_N_CURR_FUNCTION_ID = 'N77',             --玩家当前选择的功能ID     
 
         
     --玩家数字型变量，切地图不保存 M0-M99
@@ -342,12 +342,7 @@ CommonDefine = {
     VAR_U_MOFANG_CURR_LAYER = 'U107',           --玩家当前进入的魔方阵的层数
     VAR_U_MOFANG_LEFT_BUYTIMES = 'U108',        --玩家当前剩余购买的进入魔方地图的次数
     VAR_U_MOFANGZHEN_ID = 'U109',               --玩家魔方阵当前进入的ID
-    VAR_U_FREEVIPTASK_COUNTER1 = 'U110',        --免费VIP任务计数1
-    VAR_U_FREEVIPTASK_COUNTER2 = 'U111',        --免费VIP任务计数2
-    VAR_U_FREEVIPTASK_COUNTER3 = 'U112',        --免费VIP任务计数3
-    VAR_U_FREEVIPTASK_COUNTER4 = 'U113',        --免费VIP任务计数4
-    VAR_U_FREEVIPTASK_COUNTER5 = 'U114',        --免费VIP任务计数5
-    VAR_U_FREEVIP_LEVEL = 'U115',               --免费VIP等级
+
 
     VAR_U_TREASUREMAP_CURRID = 'U126',          --当前对应的藏宝图配置id
     VAR_U_BIAOCHE_CURRID = 'U127',              --当前对应的镖车配置ID
@@ -420,7 +415,13 @@ CommonDefine = {
     VAR_U_NEWPLAYER_RECHARGE_SINGLE = 'U202',   --新人充值返利活动，单笔最大充值
     VAR_U_NEWPLAYER_RECHARGE_TOTAL = 'U203',    --新人充值返利活动，累计最大充值
     VAR_U_LAST_LOGIN_TIME = 'U204',             --玩家上一次登录时间，跨天重置    
-    
+    VAR_U_CURR_TASKLINEID = 'N205',             --当前打开的任务对话对应的tasklineid 
+    VAR_U_FREEVIPTASK_COUNTER1 = 'U206',        --免费VIP任务计数1
+    VAR_U_FREEVIPTASK_COUNTER2 = 'U207',        --免费VIP任务计数2
+    VAR_U_FREEVIPTASK_COUNTER3 = 'U208',        --免费VIP任务计数3
+    VAR_U_FREEVIPTASK_COUNTER4 = 'U209',        --免费VIP任务计数4
+    VAR_U_FREEVIPTASK_COUNTER5 = 'U210',        --免费VIP任务计数5
+    VAR_U_FREEVIP_LEVEL = 'U211',               --免费VIP等级    
     
     --玩家字符型变量，下线保存 T0 - T254
     VAR_T_EQUIPPOS_STRENGTH_INFO = 'T41',        --玩家的装备位强化信息
@@ -448,7 +449,7 @@ CommonDefine = {
     VAR_J_DAY_MOFANG_STAY_SECONDS = 'J7',       --玩家今日魔方阵可待时间（秒）
     VAR_J_DAY_RANDOMBOSS_REWARDTIMES = 'J8',    --玩家今日随机BOSS领奖次数
     VAR_J_DAY_RANDOMBOSS_TRIGGERTIMES = 'J9',   --玩家今日随机BOSS触发次数
-    VAR_J_DAY_FREEVIP_REWARDTIMES = 'J10',      --玩家今日领取每日VIP奖励次数
+    
     VAR_J_DAY_SINGLEBOSS_KILLTIMES = 'J13',     --玩家今日击杀单人首领的次数
     VAR_J_DAY_SINGLEBOSS_BUYTIMES = 'J14',      --玩家今日购买单人首领的次数
     VAR_J_DAY_EVERYDAYTASK_FINALREWARD_IDX = 'J15',     --玩家 每日任务累计领奖编号     
@@ -462,6 +463,7 @@ CommonDefine = {
     VAR_J_DAY_GUAZHI_GETREWARD = 'J104',                --玩家今日是否已领取官职奖励
     VAR_J_DAY_RECHARGE_TOTAL = 'J105',                  --玩家今日的总充值
     VAR_J_DAY_ONLINE_TIME = 'J106',                     --玩家今日的在线时长
+    VAR_J_DAY_FREEVIP_REWARDTIMES = 'J107',             --玩家今日领取每日VIP奖励次数
 
     
     --玩家字符变量，下线保存，0点重置 Z0 - Z499
@@ -475,11 +477,6 @@ CommonDefine = {
     VAR_HUM_BITFLAG_USE_BDF = 202,                --祝福是否使用保底符   
     VAR_HUM_BITFLAG_MFZ_ADDTIME_FLAG1 = 210,         --魔方阵 增加时间标记1 确认后用1次换增加30分钟
     VAR_HUM_BITFLAG_MFZ_ADDTIME_FLAG2 = 211,         --魔方阵 增加时间标记2 确认后时间不足自动用次数换时间
-    VAR_HUM_BITFLAG_FREEVIP_TASK_DRAWFLAG1 = 212,    --免费VIP任务1 是否领奖
-    VAR_HUM_BITFLAG_FREEVIP_TASK_DRAWFLAG2 = 213,    --免费VIP任务2 是否领奖
-    VAR_HUM_BITFLAG_FREEVIP_TASK_DRAWFLAG3 = 214,    --免费VIP任务3 是否领奖
-    VAR_HUM_BITFLAG_FREEVIP_TASK_DRAWFLAG4 = 215,    --免费VIP任务4 是否领奖
-    VAR_HUM_BITFLAG_FREEVIP_TASK_DRAWFLAG5 = 216,    --免费VIP任务5 是否领奖
     
     VAR_HUM_BITFLAG_IS_FIRST_RANDOMBOSS_REWARD = 238,       --是否是第一个战力boss的奖励
     VAR_HUM_BITFLAG_IS_FIRST_RANDOMBOSS_TRIGGER = 239,      --是否是触发的第一个战力boss
@@ -533,6 +530,12 @@ CommonDefine = {
     VAR_HUM_BITFLAG_FIRSTRECHARGE_REWARD1 = 350,     --首充奖励领取标记1
     VAR_HUM_BITFLAG_FIRSTRECHARGE_REWARD2 = 351,     --首充奖励领取标记2
     VAR_HUM_BITFLAG_FIRSTRECHARGE_REWARD3 = 352,     --首充奖励领取标记3    
+
+    VAR_HUM_BITFLAG_FREEVIP_TASK_DRAWFLAG1 = 355,    --免费VIP任务1 是否领奖
+    VAR_HUM_BITFLAG_FREEVIP_TASK_DRAWFLAG2 = 356,    --免费VIP任务2 是否领奖
+    VAR_HUM_BITFLAG_FREEVIP_TASK_DRAWFLAG3 = 357,    --免费VIP任务3 是否领奖
+    VAR_HUM_BITFLAG_FREEVIP_TASK_DRAWFLAG4 = 358,    --免费VIP任务4 是否领奖
+    VAR_HUM_BITFLAG_FREEVIP_TASK_DRAWFLAG5 = 359,    --免费VIP任务5 是否领奖    
 
 
     --道具的int变量 1-50
