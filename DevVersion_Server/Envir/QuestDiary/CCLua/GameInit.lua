@@ -21,11 +21,11 @@ local function _Includes()
     cfgSkillUpgrade = require("Envir/QuestDiary/CCLua/GameConfig/cfgSkillUpgrade")
     cfgSkillAdvanceUpgrade = require("Envir/QuestDiary/CCLua/GameConfig/cfgSkillAdvanceUpgrade")
     cfgEquipInitGift = require("Envir/QuestDiary/CCLua/GameConfig/cfgEquipInitGift")
-    -- cfgBaoZhuBossInfo = require("Envir/QuestDiary/CCLua/GameConfig/cfgBaoZhuBossInfo")
+    cfgBaoZhuBossInfo = require("Envir/QuestDiary/CCLua/GameConfig/cfgBaoZhuBossInfo")
     cfgGuanZhi = require("Envir/QuestDiary/CCLua/GameConfig/cfgGuanZhi")
     cfgOfflineHuWei = require("Envir/QuestDiary/CCLua/GameConfig/cfgOfflineHuWei")
     -- cfgMoFangZhen = require("Envir/QuestDiary/CCLua/GameConfig/cfgMoFangZhen")
-    -- cfgRandomBossTriggerPool = require("Envir/QuestDiary/CCLua/GameConfig/cfgRandomBossTriggerPool")
+    cfgRandomBossTriggerPool = require("Envir/QuestDiary/CCLua/GameConfig/cfgRandomBossTriggerPool")
     cfgFreeVIP = require("Envir/QuestDiary/CCLua/GameConfig/cfgFreeVIP")
     cfgFreeVIPTask = require("Envir/QuestDiary/CCLua/GameConfig/cfgFreeVIPTask")
     cfgFunctionCtrl = require("Envir/QuestDiary/CCLua/GameConfig/cfgFunctionCtrl")
@@ -34,8 +34,8 @@ local function _Includes()
     cfgActivityOpenServer = require("Envir/QuestDiary/CCLua/GameConfig/cfgActivityOpenServer")
     cfgActivityExtendGift = require("Envir/QuestDiary/CCLua/GameConfig/cfgActivityExtendGift")
     cfgRecycleSetting = require("Envir/QuestDiary/CCLua/GameConfig/cfgRecycleSetting")
-    -- cfgPublicBossInfo = require("Envir/QuestDiary/CCLua/GameConfig/cfgPublicBossInfo")
-    -- cfgSingleBossInfo = require("Envir/QuestDiary/CCLua/GameConfig/cfgSingleBossInfo")
+    cfgPublicBossInfo = require("Envir/QuestDiary/CCLua/GameConfig/cfgPublicBossInfo")
+    cfgSingleBossInfo = require("Envir/QuestDiary/CCLua/GameConfig/cfgSingleBossInfo")
     -- cfgEverydayTask = require("Envir/QuestDiary/CCLua/GameConfig/cfgEverydayTask")
     cfgItemCompose = require("Envir/QuestDiary/CCLua/GameConfig/cfgItemCompose")
     cfgItemValidComposeList = {}
@@ -77,12 +77,12 @@ local function _Includes()
     require("Envir/QuestDiary/CCLua/GameModule/ItemComposeManager")
     require("Envir/QuestDiary/CCLua/GameModule/ItemUseManager")
     require("Envir/QuestDiary/CCLua/GameModule/BaoZhuManager")
-    -- require("Envir/QuestDiary/CCLua/GameModule/BaoZhuBossManager")
+    require("Envir/QuestDiary/CCLua/GameModule/BaoZhuBossManager")
     require("Envir/QuestDiary/CCLua/GameModule/SoulStoneManager")
     require("Envir/QuestDiary/CCLua/GameModule/GuanZhiManager")
     require("Envir/QuestDiary/CCLua/GameModule/OfflineHuWeiManager")
     -- require("Envir/QuestDiary/CCLua/GameModule/MoFangZhenManager")
-    -- require("Envir/QuestDiary/CCLua/GameModule/RandomBossManager")
+    require("Envir/QuestDiary/CCLua/GameModule/RandomBossManager")
     require("Envir/QuestDiary/CCLua/GameModule/FreeVIPManager")
     require("Envir/QuestDiary/CCLua/GameModule/TaskLineConfig")
     require("Envir/QuestDiary/CCLua/GameModule/TaskManager")    
@@ -90,11 +90,11 @@ local function _Includes()
     require("Envir/QuestDiary/CCLua/GameModule/ActivityNewPlayerRecharge")
     require("Envir/QuestDiary/CCLua/GameModule/ActivityOpenServer")
     require("Envir/QuestDiary/CCLua/GameModule/ActivityExtendGift")
-    -- require("Envir/QuestDiary/CCLua/GameModule/PublicBossManager")
-    -- require("Envir/QuestDiary/CCLua/GameModule/SingleBossManager")
+    require("Envir/QuestDiary/CCLua/GameModule/PublicBossManager")
+    require("Envir/QuestDiary/CCLua/GameModule/SingleBossManager")
     -- require("Envir/QuestDiary/CCLua/GameModule/EverydayTask")
     -- require("Envir/QuestDiary/CCLua/GameModule/TreasureMap")
-    -- require("Envir/QuestDiary/CCLua/GameModule/YunBiaoManager")    
+    require("Envir/QuestDiary/CCLua/GameModule/YunBiaoManager")    
     require("Envir/QuestDiary/CCLua/GameModule/OpenSuperBoxManager")
     require("Envir/QuestDiary/CCLua/GameModule/GMHelper")
     require("Envir/QuestDiary/CCLua/GameModule/EquipInitGift")
@@ -299,14 +299,14 @@ local function _Includes()
         end
     end    
     
-    -- --¡È÷ÈBOSS
-    -- for _, value in pairs(cfgBaoZhuBossInfo) do
-    --     if (value.rewarditems ~= nil) and (value.rewarditems ~= '') then
-    --         value.rewarditems_tab = BF_Json2Table(value.rewarditems)
-    --     else
-    --         value.rewarditems_tab = {}
-    --     end      
-    -- end
+    --¡È÷ÈBOSS
+    for _, value in pairs(cfgBaoZhuBossInfo) do
+        if (value.rewarditems ~= nil) and (value.rewarditems ~= '') then
+            value.rewarditems_tab = BF_Json2Table(value.rewarditems)
+        else
+            value.rewarditems_tab = {}
+        end      
+    end
 
     --ªÍ ØÓø∞Ì
     for _, value in pairs(SoulStoneManager.JI_BAN_CFG_INFO) do
@@ -361,20 +361,20 @@ local function _Includes()
         end        
     end   
 
-    -- --ÀÊª˙BOSSS¥•∑¢≥ÿ
-    -- for _, value in pairs(cfgRandomBossTriggerPool) do
-    --     if (value.bosslist ~= nil) and (value.bosslist ~= '') then
-    --         value.bosslist_tab = BF_Json2Table(value.bosslist)
-    --     else
-    --         value.bosslist_tab = {}
-    --     end
+    --ÀÊª˙BOSSS¥•∑¢≥ÿ
+    for _, value in pairs(cfgRandomBossTriggerPool) do
+        if (value.bosslist ~= nil) and (value.bosslist ~= '') then
+            value.bosslist_tab = BF_Json2Table(value.bosslist)
+        else
+            value.bosslist_tab = {}
+        end
 
-    --     if (value.rewardlist ~= nil) and (value.rewardlist ~= '') then
-    --         value.rewardlist_tab = BF_Json2Table(value.rewardlist)
-    --     else
-    --         value.rewardlist_tab = {}
-    --     end
-    -- end  
+        if (value.rewardlist ~= nil) and (value.rewardlist ~= '') then
+            value.rewardlist_tab = BF_Json2Table(value.rewardlist)
+        else
+            value.rewardlist_tab = {}
+        end
+    end  
 
     --FreeVIP
     for _, value in pairs(cfgFreeVIP) do

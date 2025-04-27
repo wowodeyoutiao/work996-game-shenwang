@@ -195,7 +195,8 @@ function playdie(actor, killername)
 end
 
 --怪物被击杀触发  mapinfo对应地图要配置onkillmon才可以哦
-function onkillmob(hitter, mon)
+function onkillmob(hitter, mapidstr, monuserid)
+    local mon = getmonbyuserid(mapidstr, monuserid)
     GameEventManager.DoTriggerEvent(CommonDefine.EVENT_NAME_MON_KILLED, hitter, mon)    
 end
 
@@ -206,8 +207,9 @@ function killplay(killer, deathername)
 end
 
 --任意地图击杀怪物触发
-function killmon(actor, mon, killtype, monobjidstr, monname, mapidstr)
-    GameEventManager.DoTriggerEvent(CommonDefine.EVENT_NAME_KILL_MON, actor, mon, killtype, monobjidstr, monname, mapidstr)    
+function killmon(actor, monobjidstr, killtype, mapidstr)
+    local mon = getmonbyuserid(mapidstr, monobjidstr)
+    GameEventManager.DoTriggerEvent(CommonDefine.EVENT_NAME_KILL_MON, actor, mon, killtype, mapidstr)    
 end
 
 

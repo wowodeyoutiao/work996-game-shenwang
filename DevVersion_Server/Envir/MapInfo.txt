@@ -821,3 +821,75 @@ h010 155,156 -> h009 151,105
 [bge    新人战场] 小
 [xycld   新人战场] 小
 [xdtc 新人战场] 主城
+
+
+
+
+[testmap1|b101 宝珠副本1] onkillmon FIGHT3(0) dark noreconnect(rxsc042) nodearrecall
+[testmap2|b101 宝珠副本2] onkillmon FIGHT3(0) dark noreconnect(rxsc042) nodearrecall
+[testmap3|b101 宝珠副本3] onkillmon FIGHT3(0) dark noreconnect(rxsc042) nodearrecall
+[testmap4|b101 宝珠副本4] onkillmon FIGHT3(0) dark noreconnect(rxsc042) nodearrecall
+[testmap5|b101 宝珠副本5] onkillmon FIGHT3(0) dark noreconnect(rxsc042) nodearrecall
+[testmap6|b101 宝珠副本6] onkillmon FIGHT3(0) dark noreconnect(rxsc042) nodearrecall
+[testmap7|b101 宝珠副本7] onkillmon FIGHT3(0) dark noreconnect(rxsc042) nodearrecall
+[testmap8|b101 宝珠副本8] onkillmon FIGHT3(0) dark noreconnect(rxsc042) nodearrecall
+[testmap9|b101 宝珠副本9] onkillmon FIGHT3(0) dark noreconnect(rxsc042) nodearrecall
+[testmap10|b101 宝珠副本10] onkillmon FIGHT3(0) dark noreconnect(rxsc042) nodearrecall
+[testmap11|b101 宝珠副本11] onkillmon FIGHT3(0) dark noreconnect(rxsc042) nodearrecall
+[testmap12|b101 宝珠副本12] onkillmon FIGHT3(0) dark noreconnect(rxsc042) nodearrecall
+[testmap13|b101 宝珠副本13] onkillmon FIGHT3(0) dark noreconnect(rxsc042) nodearrecall
+[testmap14|b101 宝珠副本14] onkillmon FIGHT3(0) dark noreconnect(rxsc042) nodearrecall
+[testmap15|b101 宝珠副本15] onkillmon FIGHT3(0) dark noreconnect(rxsc042) nodearrecall
+[testmap16|b101 宝珠副本16] onkillmon FIGHT3(0) dark noreconnect(rxsc042) nodearrecall
+[testmap17|b101 宝珠副本17] onkillmon FIGHT3(0) dark noreconnect(rxsc042) nodearrecall
+[testmap18|b101 宝珠副本18] onkillmon FIGHT3(0) dark noreconnect(rxsc042) nodearrecall
+[testmap19|b101 宝珠副本19] onkillmon FIGHT3(0) dark noreconnect(rxsc042) nodearrecall
+[testmap20|b101 宝珠副本20] onkillmon FIGHT3(0) dark noreconnect(rxsc042) nodearrecall
+[testmap21|b101 宝珠副本21] onkillmon FIGHT3(0) dark noreconnect(rxsc042) nodearrecall
+
+
+[randboss_1|b101 首领boss] onkillmon FIGHT5 dark noreconnect(rxsc042) nodearrecall
+[randboss_2|b101 首领boss] onkillmon FIGHT5 dark noreconnect(rxsc042) nodearrecall
+[randboss_3|b101 首领boss] onkillmon FIGHT5 dark noreconnect(rxsc042) nodearrecall
+[randboss_4|b101 首领boss] onkillmon FIGHT5 dark noreconnect(rxsc042) nodearrecall
+[randboss_5|b101 首领boss] onkillmon FIGHT5 dark noreconnect(rxsc042) nodearrecall
+[randboss_6|b101 首领boss] onkillmon FIGHT5 dark noreconnect(rxsc042) nodearrecall
+[randboss_7|b101 首领boss] onkillmon FIGHT5 dark noreconnect(rxsc042) nodearrecall
+[randboss_8|b101 首领boss] onkillmon FIGHT5 dark noreconnect(rxsc042) nodearrecall
+[randboss_9|b101 首领boss] onkillmon FIGHT5 dark noreconnect(rxsc042) nodearrecall
+[randboss_10|b101 首领boss] onkillmon FIGHT5 dark noreconnect(rxsc042) nodearrecall
+[randboss_11|b101 首领boss] onkillmon FIGHT5 dark noreconnect(rxsc042) nodearrecall
+[randboss_12|b101 首领boss] onkillmon FIGHT5 dark noreconnect(rxsc042) nodearrecall
+[randboss_13|b101 首领boss] onkillmon FIGHT5 dark noreconnect(rxsc042) nodearrecall
+[randboss_14|b101 首领boss] onkillmon FIGHT5 dark noreconnect(rxsc042) nodearrecall
+[randboss_15|b101 首领boss] onkillmon FIGHT5 dark noreconnect(rxsc042) nodearrecall
+
+[publicboss1|b101 野外首领] onkillmon FIGHT5 dark noreconnect(rxsc042) nodearrecall
+[publicboss2|b101 野外首领] onkillmon FIGHT5 dark noreconnect(rxsc042) nodearrecall
+[publicboss3|b101 野外首领] onkillmon FIGHT5 dark noreconnect(rxsc042) nodearrecall
+[publicboss4|b101 野外首领] onkillmon FIGHT5 dark noreconnect(rxsc042) nodearrecall
+[publicboss5|b101 野外首领] onkillmon FIGHT5 dark noreconnect(rxsc042) nodearrecall
+[publicboss6|b101 野外首领] onkillmon FIGHT5 dark noreconnect(rxsc042) nodearrecall
+[publicboss7|b101 野外首领] onkillmon FIGHT5 dark noreconnect(rxsc042) nodearrecall
+[publicboss8|b101 野外首领] onkillmon FIGHT5 dark noreconnect(rxsc042) nodearrecall
+[publicboss9|b101 野外首领] onkillmon FIGHT5 dark noreconnect(rxsc042) nodearrecall
+[publicboss10|b101 野外首领] onkillmon FIGHT5 dark noreconnect(rxsc042) nodearrecall
+[publicboss11|b101 野外首领] onkillmon FIGHT5 dark noreconnect(rxsc042) nodearrecall
+[publicboss12|b101 野外首领] onkillmon FIGHT5 dark noreconnect(rxsc042) nodearrecall
+[publicboss13|b101 野外首领] onkillmon FIGHT5 dark noreconnect(rxsc042) nodearrecall
+
+[singleboss1|b101 个人首领] onkillmon SAFE dark noreconnect(rxsc042) nodearrecall
+[singleboss2|b101 个人首领] onkillmon SAFE dark noreconnect(rxsc042) nodearrecall
+[singleboss3|b101 个人首领] onkillmon SAFE dark noreconnect(rxsc042) nodearrecall
+[singleboss4|b101 个人首领] onkillmon SAFE dark noreconnect(rxsc042) nodearrecall
+[singleboss5|b101 个人首领] onkillmon SAFE dark noreconnect(rxsc042) nodearrecall
+[singleboss6|b101 个人首领] onkillmon SAFE dark noreconnect(rxsc042) nodearrecall
+[singleboss7|b101 个人首领] onkillmon SAFE dark noreconnect(rxsc042) nodearrecall
+[singleboss8|b101 个人首领] onkillmon SAFE dark noreconnect(rxsc042) nodearrecall
+[singleboss9|b101 个人首领] onkillmon SAFE dark noreconnect(rxsc042) nodearrecall
+[singleboss10|b101 个人首领] onkillmon SAFE dark noreconnect(rxsc042) nodearrecall
+[singleboss11|b101 个人首领] onkillmon SAFE dark noreconnect(rxsc042) nodearrecall
+[singleboss12|b101 个人首领] onkillmon SAFE dark noreconnect(rxsc042) nodearrecall
+[singleboss13|b101 个人首领] onkillmon SAFE dark noreconnect(rxsc042) nodearrecall
+[singleboss14|b101 个人首领] onkillmon SAFE dark noreconnect(rxsc042) nodearrecall
+[singleboss15|b101 个人首领] onkillmon SAFE dark noreconnect(rxsc042) nodearrecall

@@ -660,10 +660,10 @@ function Player.QuickGoTo(actor, gotoid)
         end   
     elseif gotoid == CommonDefine.QUICK_GOTO_KILL_RANDOMBOSS then
         --击杀战力boss
-        opennpcshowex(actor, 212, 3, 3)
+        opennpcshowex(actor, CommonDefine.NPC_ID_RANDOM_BOSS, 3, 3)
     elseif gotoid == CommonDefine.QUICK_GOTO_KILL_BAOZHUBOSS then
         --击杀宝珠【灵玉】boss
-        opennpcshowex(actor, 207, 3, 3)
+        opennpcshowex(actor, CommonDefine.NPC_ID_BAOZHU_BOSS, 3, 3)
     elseif gotoid == CommonDefine.QUICK_GOTO_ENTER_MOFANGZHEN then
         --进入魔方阵
         opennpcshowex(actor, 211, 3, 3)
@@ -696,13 +696,13 @@ function Player.QuickGoTo(actor, gotoid)
         openhyperlink(actor, 26)
     elseif gotoid == CommonDefine.QUICK_GOTO_SINGLEBOSS then
         --个人首领
-        opennpcshowex(actor, 223, 3, 3)
+        opennpcshowex(actor, CommonDefine.NPC_ID_SINGLE_BOSS, 3, 3)
     elseif gotoid == CommonDefine.QUICK_GOTO_PUBLICBOSS then
         --野外首领
-        opennpcshowex(actor, 224, 3, 3)
+        opennpcshowex(actor, CommonDefine.NPC_ID_PUBLIC_BOSS, 3, 3)
     elseif gotoid == CommonDefine.QUICK_GOTO_YUNBIAO then
         --运镖
-        opennpcshowex(actor, 225, 3, 3)
+        opennpcshowex(actor, CommonDefine.NPC_ID_BIAOCHE_START, 3, 3)
     elseif gotoid == CommonDefine.QUICK_GOTO_TREASUREMAP then
         --藏宝图
         --????

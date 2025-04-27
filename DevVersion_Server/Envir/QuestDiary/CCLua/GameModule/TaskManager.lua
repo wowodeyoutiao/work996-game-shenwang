@@ -378,14 +378,15 @@ local function UpdateTaskProgress(actor, taskid, tasktype, counterlist, counterv
 end
 
 --任意地图击杀怪物触发
-function TaskManager.OnKillMon(actor, mon, killtype, monobjidstr, monname, mapidstr)
-	if BF_IsNullObj(actor) or BF_IsNullObj(mon) then
+function TaskManager.OnKillMon(actor, mon, killtype, mapidstr)
+	if BF_IsNullObj(actor) then
 		return
 	end	
 	--不是玩家击杀的不触发
     --后面再考虑宝宝的问题！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
     --后面再考虑宝宝的问题！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
-	if killtype ~= 2 then
+
+	if killtype ~= '2' then
 		return
 	end
     local monshowname = Player.GetName(mon)

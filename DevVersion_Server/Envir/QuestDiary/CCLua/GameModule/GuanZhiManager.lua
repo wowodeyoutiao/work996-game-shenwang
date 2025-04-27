@@ -70,11 +70,15 @@ function GuanZhiManager.OnPlayerEnterGame(actor)
 end
 
 --»÷É±Íæ¼ÒÊ±´¥·¢
-function GuanZhiManager.OnKillPlayer(killer, deather)
-    if BF_IsNullObj(killer) or BF_IsNullObj(deather) then
+function GuanZhiManager.OnKillPlayer(killer, deathername)
+    if BF_IsNullObj(killer) or (deathername == '') then
         return
     end
-    if (not Player.IsPlayer(killer)) or (not Player.IsPlayer(deather)) then
+    if not Player.IsPlayer(killer) then
+        return
+    end
+    local deatherplayer = getplayerbyname(deathername)
+    if not Player.IsPlayer(deatherplayer) then
         return
     end
 

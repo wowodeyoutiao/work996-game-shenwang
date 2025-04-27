@@ -287,12 +287,9 @@ CommonDefine = {
 
     --玩家数字变量，下线不保存 N0 - N99
 --[[
-    VAR_N_CURR_DYNNPC_GROUPID = 'N17',          --玩家当前的动态NPC的组ID
-    VAR_N_CURR_RANDOMBOSS_FIGHTING_ID = 'N18',  --玩家当前触发的随机BOSS的挑战ID
+    VAR_N_CURR_DYNNPC_GROUPID = 'N17',          --玩家当前的动态NPC的组ID    
     VAR_N_LAST_OPER_TIME1 = 'N19',              --玩家上一次操作的时间记录1   用于处理一些需要操作短时间冷却的  几秒钟的CD
-    VAR_N_LAST_OPER_TIME2 = 'N20',              --玩家上一次操作的时间记录2   用于处理一些需要操作短时间冷却的  几秒钟的CD    
-    
-    VAR_N_COMMON_LOCAL_RELIVE_TIMES = 'N28',    --通用原地复活次数
+    VAR_N_LAST_OPER_TIME2 = 'N20',              --玩家上一次操作的时间记录2   用于处理一些需要操作短时间冷却的  几秒钟的CD        
 ]]--    
 
     VAR_N_NPC_CHECKBOX_1 = 'N51',                --玩家NPC对话框中的第一个CheckBox选项
@@ -321,7 +318,9 @@ CommonDefine = {
     VAR_N_SELECT_COMPOSE_PILE_NUM = 'N74',      --合成可叠加道具时，选择的单个合成数量    
     VAR_N_CHOOSE_OPER_TYPE = 'N75',             --玩家选择的操作类型  通用的临时变量 例如选择技能升级还是技能强化    
     VAR_N_ITEM_COMPOSE_CHOOSE_ITEM1 = 'N76',    --玩家道具合成时，选择的第一件合成物品，每次使用需检测    
-    VAR_N_CURR_FUNCTION_ID = 'N77',             --玩家当前选择的功能ID     
+    VAR_N_CURR_FUNCTION_ID = 'N77',             --玩家当前选择的功能ID  
+    VAR_N_CURR_RANDOMBOSS_FIGHTING_ID = 'N78',  --玩家当前触发的随机BOSS的挑战ID
+    VAR_N_COMMON_LOCAL_RELIVE_TIMES = 'N79',    --通用原地复活次数    
 
         
     --玩家数字型变量，切地图不保存 M0-M99
@@ -342,11 +341,7 @@ CommonDefine = {
     VAR_U_MOFANG_CURR_LAYER = 'U107',           --玩家当前进入的魔方阵的层数
     VAR_U_MOFANG_LEFT_BUYTIMES = 'U108',        --玩家当前剩余购买的进入魔方地图的次数
     VAR_U_MOFANGZHEN_ID = 'U109',               --玩家魔方阵当前进入的ID
-
-
     VAR_U_TREASUREMAP_CURRID = 'U126',          --当前对应的藏宝图配置id
-    VAR_U_BIAOCHE_CURRID = 'U127',              --当前对应的镖车配置ID
-    VAR_U_BIAOCHE_REFRESH_TIMES = 'U128',       --镖车刷新次数，接受镖车后清0
     ]]--
 
     VAR_U_SUPER_BOX_TOTAL_NUM = 'U130',         --超级宝箱  保有总数量
@@ -421,7 +416,9 @@ CommonDefine = {
     VAR_U_FREEVIPTASK_COUNTER3 = 'U208',        --免费VIP任务计数3
     VAR_U_FREEVIPTASK_COUNTER4 = 'U209',        --免费VIP任务计数4
     VAR_U_FREEVIPTASK_COUNTER5 = 'U210',        --免费VIP任务计数5
-    VAR_U_FREEVIP_LEVEL = 'U211',               --免费VIP等级    
+    VAR_U_FREEVIP_LEVEL = 'U211',               --免费VIP等级   
+    VAR_U_BIAOCHE_CURRID = 'U212',              --当前对应的镖车配置ID
+    VAR_U_BIAOCHE_REFRESH_TIMES = 'U213',       --镖车刷新次数，接受镖车后清0    
     
     --玩家字符型变量，下线保存 T0 - T254
     VAR_T_EQUIPPOS_STRENGTH_INFO = 'T41',        --玩家的装备位强化信息
@@ -440,22 +437,16 @@ CommonDefine = {
     VAR_T_EXTENDGIFT_REWARDDATA = 'T54',                 --进阶礼包领奖信息
 
     --玩家数字变量，下线保存，0点重置 J0 - J499
-    --[[
-    VAR_J_DAY_BAOZHU_BOSS_TIMES = 'J1',         --玩家今日进入宝珠BOSS地图的次数    
-    
+    --[[        
     VAR_J_DAY_MOFANG_LEFT_FREETIMES = 'J4',     --玩家今日剩余可免费进入魔方地图的次数
     VAR_J_DAY_MOFANG_BUYTIMES = 'J5',           --玩家今日魔方阵购买次数
     VAR_J_DAY_MOFANG_ENTER_TIME = 'J6',         --玩家今日魔方阵进入时间
     VAR_J_DAY_MOFANG_STAY_SECONDS = 'J7',       --玩家今日魔方阵可待时间（秒）
-    VAR_J_DAY_RANDOMBOSS_REWARDTIMES = 'J8',    --玩家今日随机BOSS领奖次数
-    VAR_J_DAY_RANDOMBOSS_TRIGGERTIMES = 'J9',   --玩家今日随机BOSS触发次数
     
-    VAR_J_DAY_SINGLEBOSS_KILLTIMES = 'J13',     --玩家今日击杀单人首领的次数
-    VAR_J_DAY_SINGLEBOSS_BUYTIMES = 'J14',      --玩家今日购买单人首领的次数
+
     VAR_J_DAY_EVERYDAYTASK_FINALREWARD_IDX = 'J15',     --玩家 每日任务累计领奖编号     
     VAR_J_DAY_TREASUREMAP_USETIMES = 'J16',             --玩家 今日使用藏宝图次数
     VAR_J_DAY_TREASUREMAP_NO_PANELTIP_FLAG = 'J17',     --玩家 今日不再显示藏宝图的提示面板
-    VAR_J_DAY_BIAOCHE_ACCEPT_TIMES = 'J18',             --玩家 今日接镖次数
     ]]--
     VAR_J_DAY_SUPERBOX_ADDNUM = 'J101',                 --玩家 今日获得超级宝箱次数
     VAR_J_DAY_SUPERBOX_OPENNUM = 'J102',                --玩家 今日开启超级宝箱次数
@@ -464,6 +455,12 @@ CommonDefine = {
     VAR_J_DAY_RECHARGE_TOTAL = 'J105',                  --玩家今日的总充值
     VAR_J_DAY_ONLINE_TIME = 'J106',                     --玩家今日的在线时长
     VAR_J_DAY_FREEVIP_REWARDTIMES = 'J107',             --玩家今日领取每日VIP奖励次数
+    VAR_J_DAY_BAOZHU_BOSS_TIMES = 'J108',               --玩家今日进入宝珠BOSS地图的次数   
+    VAR_J_DAY_RANDOMBOSS_REWARDTIMES = 'J109',          --玩家今日随机BOSS领奖次数
+    VAR_J_DAY_RANDOMBOSS_TRIGGERTIMES = 'J110',         --玩家今日随机BOSS触发次数    
+    VAR_J_DAY_SINGLEBOSS_KILLTIMES = 'J111',            --玩家今日击杀单人首领的次数
+    VAR_J_DAY_SINGLEBOSS_BUYTIMES = 'J112',             --玩家今日购买单人首领的次数    
+    VAR_J_DAY_BIAOCHE_ACCEPT_TIMES = 'J113',            --玩家 今日接镖次数    
 
     
     --玩家字符变量，下线保存，0点重置 Z0 - Z499
@@ -477,9 +474,6 @@ CommonDefine = {
     VAR_HUM_BITFLAG_USE_BDF = 202,                --祝福是否使用保底符   
     VAR_HUM_BITFLAG_MFZ_ADDTIME_FLAG1 = 210,         --魔方阵 增加时间标记1 确认后用1次换增加30分钟
     VAR_HUM_BITFLAG_MFZ_ADDTIME_FLAG2 = 211,         --魔方阵 增加时间标记2 确认后时间不足自动用次数换时间
-    
-    VAR_HUM_BITFLAG_IS_FIRST_RANDOMBOSS_REWARD = 238,       --是否是第一个战力boss的奖励
-    VAR_HUM_BITFLAG_IS_FIRST_RANDOMBOSS_TRIGGER = 239,      --是否是触发的第一个战力boss
     
     VAR_HUM_BITFLAG_RELIVE_DIALOGUE_FLAG = 301,     --玩家是否当前已有复活框弹出
     ]]--
@@ -536,6 +530,9 @@ CommonDefine = {
     VAR_HUM_BITFLAG_FREEVIP_TASK_DRAWFLAG3 = 357,    --免费VIP任务3 是否领奖
     VAR_HUM_BITFLAG_FREEVIP_TASK_DRAWFLAG4 = 358,    --免费VIP任务4 是否领奖
     VAR_HUM_BITFLAG_FREEVIP_TASK_DRAWFLAG5 = 359,    --免费VIP任务5 是否领奖    
+
+    VAR_HUM_BITFLAG_IS_FIRST_RANDOMBOSS_REWARD = 360,       --是否是第一个战力boss的奖励
+    VAR_HUM_BITFLAG_IS_FIRST_RANDOMBOSS_TRIGGER = 361,      --是否是触发的第一个战力boss    
 
 
     --道具的int变量 1-50
@@ -646,6 +643,17 @@ CommonDefine = {
     DYN_NPC_ZCD_HUWEI5 = 105,                     --紫宸殿护卫5
     ]]--
 
+    --NPCID
+    NPC_ID_NEWPLAYER_ACCEPTER = 1,                --新手接待员
+    --NPC_ID_EQUIP_COMPOSE = 203,                   --装备合成
+    NPC_ID_BAOZHU_BOSS = 500,                     --灵玉boss
+    NPC_ID_RANDOM_BOSS = 501,                     --战力boss
+    NPC_ID_SINGLE_BOSS = 502,                     --个人BOSS
+    NPC_ID_PUBLIC_BOSS = 503,                     --野外BOSS
+    NPC_ID_BIAOCHE_START = 504,                   --运镖NPC
+    NPC_ID_BIAOCHE_FINISH = 505,                  --接镖NPC
+
+
     --任务线ID
     TASK_LINE_ID_MAIN = 100,                      --任务线，主线任务
     TASK_LINE_ID_BRANCH = 201,                    --任务线，支线任务1
@@ -692,6 +700,9 @@ CommonDefine = {
     ADD_BUTTON_ID_32 = 9032,                      --成长快捷提示 接触界面
     ADD_BUTTON_ID_33 = 9033,                      --topicon 第一列
     ADD_BUTTON_ID_34 = 9034,                      --topicon 第二列
+
+    ADD_BUTTON_ID_35 = 9035,                      --地图内功能按钮1
+    ADD_BUTTON_ID_36 = 9036,                      --地图内功能按钮2
     
 }
 

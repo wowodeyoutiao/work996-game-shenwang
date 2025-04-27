@@ -1943,181 +1943,93 @@ BREAK
 ;--------------------------------------------------------------------------------------------------------
 [@KillMon]
 #IF
-ISONMAP YYBF
-EQUAL <$HOUR> 18
 #ACT
-CALCVAR HUMAN 杀怪数 + 10
-SAVEVAR HUMAN 杀怪数
-DELAYGOTO 10 @检测怪物数量
-BREAK
-
-#IF
-RANDOM 10
-ISONMAP dgfx
-EQUAL <$HOUR> 12
-#ACT
-DELAYGOTO 10 @检测怪物沙漠废墟
-BREAK
-
-; 击杀塔主记录
-#IF
-CHECKCONTAINSTEXT <$KILLMONNAME> 塔主
-CHECKCONTAINSTEXT <$KILLMONNAME> 永恒塔
-#ACT
-INC T7 <$KILLMONNAME>|
-
-; 击杀隐藏BOSS
-#IF
-CHECKCONTAINSTEXT [幽灵船长][真·暗之牛魔王][真·暗之虹魔教主][卧龙之魂·镇天神龙][◇◇◇远古赤月·山海恶魔◇◇◇] [<$KILLMONNAME>]
-#ACT
-ADDSTRVALUE T13 <$KILLMONNAME> 1
-SETHUMVAR <$TEAM0> S$每周BOSS地图 <$MAP>
-SETHUMVAR <$TEAM0> S$每周BOSS击杀 <$KILLMONNAME>
-
-MOV S$组队成员 <$TEAM0>|<$TEAM1>|<$TEAM2>|<$TEAM3>|<$TEAM4>|<$TEAM5>|<$TEAM6>|<$TEAM7>|<$TEAM8>|<$TEAM9>
-get_post_data S$上报数据 {"gevent":"隐藏BOSS[<$KILLMONNAME>]","gvalue":"1","desc":"<$STR(S$组队成员)>"}
-HTTPPOST http://211.149.241.27:4473/api/api996/get_log 0 <$STR(S$上报数据)>
-GOTOLABELEX 0 @击杀隐藏BOSS队伍触发
+CALLLUA CC_QFunction @killmon,<$TEMPMONUSERID>,<$param1>,<$param4>
 
 
-#IF
-CheckMirrorMap <$MAP>
-LARGE <$GetTypeBRow(cfg_怪物功勋配置,1,<$KILLMONNAMEEX>)> -1
-#ACT
-SETHUMVAR <$TEAM0> S$帝国副本击杀 <$KILLMONNAMEEX>
-GOTOLABELEX 2 @帝国副本击杀触发
+;#IF
+;ISONMAP YYBF
+;EQUAL <$HOUR> 18
+;#ACT
+;CALCVAR HUMAN 杀怪数 + 10
+;SAVEVAR HUMAN 杀怪数
+;DELAYGOTO 10 @检测怪物数量
+;BREAK
 
+;#IF
+;RANDOM 10
+;ISONMAP dgfx
+;EQUAL <$HOUR> 12
+;#ACT
+;DELAYGOTO 10 @检测怪物沙漠废墟
+;BREAK
 
-#IF
-LARGE <$UTCNOW8> $双蛋开始
-SMALL <$UTCNOW8> $双蛋结束
-LARGE <$GetTypeBRow(cfg_掉落圣诞节,0,<$KILLMONNAME>)> -1
-RANDOMEX <$cfg_掉落圣诞节(<$GetTypeBRow(cfg_掉落圣诞节,0,<$KILLMONNAME>)>_1)> 10000
-#ACT
-AddMonDrop 雪花
+;; 击杀塔主记录
+;#IF
+;CHECKCONTAINSTEXT <$KILLMONNAME> 塔主
+;CHECKCONTAINSTEXT <$KILLMONNAME> 永恒塔
+;#ACT
+;INC T7 <$KILLMONNAME>|
 
+;; 击杀隐藏BOSS
+;#IF
+;CHECKCONTAINSTEXT [幽灵船长][真·暗之牛魔王][真·暗之虹魔教主][卧龙之魂·镇天神龙][◇◇◇远古赤月·山海恶魔◇◇◇] [<$KILLMONNAME>]
+;#ACT
+;ADDSTRVALUE T13 <$KILLMONNAME> 1
+;SETHUMVAR <$TEAM0> S$每周BOSS地图 <$MAP>
+;SETHUMVAR <$TEAM0> S$每周BOSS击杀 <$KILLMONNAME>
 
-; 春节掉落概率偏低
-#IF
-NOT SMALL <$UTCNOW8> $春节开始
-NOT LARGE <$UTCNOW8> $春节结束
-LARGE <$GetTypeBRow(cfg_掉落春节,0,<$KILLMONNAME>)> -1
-RANDOMEX <$cfg_掉落春节(<$GetTypeBRow(cfg_掉落春节,0,<$KILLMONNAME>)>_1)> 15000
-#ACT
-AddMonDrop 新年烟花
+;MOV S$组队成员 <$TEAM0>|<$TEAM1>|<$TEAM2>|<$TEAM3>|<$TEAM4>|<$TEAM5>|<$TEAM6>|<$TEAM7>|<$TEAM8>|<$TEAM9>
+;get_post_data S$上报数据 {"gevent":"隐藏BOSS[<$KILLMONNAME>]","gvalue":"1","desc":"<$STR(S$组队成员)>"}
+;HTTPPOST http://211.149.241.27:4473/api/api996/get_log 0 <$STR(S$上报数据)>
+;GOTOLABELEX 0 @击杀隐藏BOSS队伍触发
 
 
 
-; 春季 集字道具掉落 3 - 4 月
-#IF
-NOT SMALL <$UTCNOW8> $春季开始
-NOT LARGE <$UTCNOW8> $春季结束
-LARGE <$GetTypeBRow(cfg_掉落春季,0,<$KILLMONNAME>)> -1
-#ACT
-MOV S$集字掉落 
-MOV S$集字奖池 <$cfg_掉落春季(<$GetTypeBRow(cfg_掉落春季,0,<$KILLMONNAME>)>_1)>
-RANSJSTR <$STR(S$集字奖池)> 1 3 S$集字掉落 S$奖池剩余
-AddMonDrop <$STR(S$集字掉落)>
+;#IF
+;CHECKITEMW 绝版山海夔牛 1
+;EQUAL <$KILLMONNAME> ◇◇◇上古异兽·山海奎牛◇◇◇
+;#ACT
+;MOV N15 1
+;DELAYGOTO 100 @山海奎牛击杀专属奖励
 
 
-; 劳动节掉落概率偏低 5月-6月
-#IF
-NOT SMALL <$UTCNOW8> $劳动开始
-NOT LARGE <$UTCNOW8> $劳动结束
-LARGE <$GetTypeBRow(cfg_掉落春节,0,<$KILLMONNAME>)> -1
-RANDOMEX <$cfg_掉落春节(<$GetTypeBRow(cfg_掉落春节,0,<$KILLMONNAME>)>_1)> 10000
-#ACT
-AddMonDrop 劳动者勋章
+;#IF
+;ISONMAP dgfx
+;RANDOMEX 500 10000
+;#ACT
+;MOV N$CHECK 1
+;MESSAGEBOX 废墟遗迹开启，是否立即进入？\*废墟遗迹随机召唤BOSS @进入废墟遗迹 @不进去
+;BREAK
 
-; 劳动节掉落概率偏低 6月-7月
-#IF
-NOT SMALL <$UTCNOW8> $端午开始
-NOT LARGE <$UTCNOW8> $端午结束
-LARGE <$GetTypeBRow(cfg_掉落春节,0,<$KILLMONNAME>)> -1
-RANDOMEX <$cfg_掉落春节(<$GetTypeBRow(cfg_掉落春节,0,<$KILLMONNAME>)>_1)> 15000
-#ACT
-AddMonDrop 糯米粽子
-
-
-; BOSS挑战计数 69块那个
-#IF
-LARGE <$GetTypeBRow(cfg_BOSS挑战配置,1,<$KILLMONNAME>)> -1
-#ACT
-GETSTRVALUE T17 <$cfg_BOSS挑战配置(<$GetTypeBRow(cfg_BOSS挑战配置,1,<$KILLMONNAME>)>_0)>_击杀 N$击杀数量
-FORMULATION <$STR(N$击杀数量)>+1 N$击杀数量
-VAR_CHECK <$STR(N$击杀数量)> > 5 5 <$STR(N$击杀数量)> N$击杀数量
-ADDSTRVALUE T17 <$cfg_BOSS挑战配置(<$GetTypeBRow(cfg_BOSS挑战配置,1,<$KILLMONNAME>)>_0)>_击杀 <$STR(N$击杀数量)>
+;#IF
+;ISONMAP dgfx
+;RANDOMEX 200 10000
+;#ACT
+;MOV S$BOSS奖池 废墟魔王·[福利]#25|山海圣兽※白虎#6|山海圣兽※朱雀#6|
+;INC S$BOSS奖池 山海圣兽※玄武#6|山海圣兽※青龙#7|◇◇◇上古异兽·山海奎牛◇◇◇#15|
+;INC S$BOSS奖池 ◇◇◇上古异兽·山海朱厌◇◇◇#15|◇◇◇蛮荒兽界·狂暴巨魔◇◇◇#10|◇◇◇蛮荒兽界·邪恶怨灵◇◇◇#10
+;RANSJSTR <$STR(S$BOSS奖池)> 1 3 S$刷新BOSS S$NULL
+;MonGenEx <$MAP> <$X> <$Y> <$STR(S$刷新BOSS)> 3 1 0 250
+;GuildNoticeMsg 250 11 玩家{<$USERNAME>在<$MAPTITLE>[<$X>.<$Y>]|70:0:1}召唤出BOSS{[<$STR(S$刷新BOSS)>]|253:0:1}
+;BREAK
 
 
+;#IF
+;EQUAL <$KILLMONNAME> 真·暗之虹魔教主
+;#ACT
+;MOV G40 0
+;GUILDNOTICEMSG 250 11 {真·暗之虹魔教主|151:1:0}已被击败，8小时候将再次刷新……
 
-#IF
-CHECKITEMW 绝版山海夔牛 1
-EQUAL <$KILLMONNAME> ◇◇◇上古异兽·山海奎牛◇◇◇
-#ACT
-MOV N15 1
-DELAYGOTO 100 @山海奎牛击杀专属奖励
+;#IF
+;RANDOMEX 1 50
+;SMALL J13 <$STR(N$奇遇次数)>
+;LARGE <$GetTypeBRow(cfg_禁止切割怪,1,<$KILLMONNAME>)> -1
+;#ACT
+;MOV N$CHECK 1
+;MESSAGEBOX 触发奇遇场景，是否现在进入？\　\*进入奇遇场景使用回城石将回到原来的地图。 @确定进入奇遇 @不进奇遇
+;BREAK
 
-
-#IF
-ISONMAP dgfx
-RANDOMEX 500 10000
-#ACT
-MOV N$CHECK 1
-MESSAGEBOX 废墟遗迹开启，是否立即进入？\*废墟遗迹随机召唤BOSS @进入废墟遗迹 @不进去
-BREAK
-
-#IF
-ISONMAP dgfx
-RANDOMEX 200 10000
-#ACT
-MOV S$BOSS奖池 废墟魔王·[福利]#25|山海圣兽※白虎#6|山海圣兽※朱雀#6|
-INC S$BOSS奖池 山海圣兽※玄武#6|山海圣兽※青龙#7|◇◇◇上古异兽·山海奎牛◇◇◇#15|
-INC S$BOSS奖池 ◇◇◇上古异兽·山海朱厌◇◇◇#15|◇◇◇蛮荒兽界·狂暴巨魔◇◇◇#10|◇◇◇蛮荒兽界·邪恶怨灵◇◇◇#10
-RANSJSTR <$STR(S$BOSS奖池)> 1 3 S$刷新BOSS S$NULL
-MonGenEx <$MAP> <$X> <$Y> <$STR(S$刷新BOSS)> 3 1 0 250
-GuildNoticeMsg 250 11 玩家{<$USERNAME>在<$MAPTITLE>[<$X>.<$Y>]|70:0:1}召唤出BOSS{[<$STR(S$刷新BOSS)>]|253:0:1}
-BREAK
-
-
-#IF
-EQUAL <$KILLMONNAME> 真·暗之虹魔教主
-#ACT
-MOV G40 0
-GUILDNOTICEMSG 250 11 {真·暗之虹魔教主|151:1:0}已被击败，8小时候将再次刷新……
-
-#IF
-RANDOMEX 1 50
-SMALL J13 <$STR(N$奇遇次数)>
-LARGE <$GetTypeBRow(cfg_禁止切割怪,1,<$KILLMONNAME>)> -1
-#ACT
-MOV N$CHECK 1
-MESSAGEBOX 触发奇遇场景，是否现在进入？\　\*进入奇遇场景使用回城石将回到原来的地图。 @确定进入奇遇 @不进奇遇
-BREAK
-
-; 跨服怪物死亡掉落
-#IF
-EQUAL <$KILLMONNAME> 发财树
-#ACT
-THROWITEM <$MAP> <$X> <$Y> 15 100000元宝   10|60 1 0 0
-THROWITEM <$MAP> <$X> <$Y> 15 100万元宝    2|60  1 0 0
-THROWITEM <$MAP> <$X> <$Y> 15 100000金刚石 5|60 1 0 0
-THROWITEM <$MAP> <$X> <$Y> 15 200000金刚石 2|60  1 0 0
-THROWITEM <$MAP> <$X> <$Y> 15 魔法娃娃     10|60 1 0 0
-BREAK
-
-; 活动怪物掉落
-#IF
-Equal <$KILLMONNAME> 圣诞雪人
-#ACT
-MOVR N$掉落道具1 5 21
-MOVR N$掉落道具2 10 31
-MOVR N$掉落道具3 5 10
-MOVR N$掉落道具4 1 5
-THROWITEM <$MAP> <$X> <$Y> 8 圣诞礼物 <$STR(N$掉落道具1)>|1 1 0 0
-THROWITEM <$MAP> <$X> <$Y> 8 雪花     <$STR(N$掉落道具2)>|1 1 0 0
-THROWITEM <$MAP> <$X> <$Y> 8 魔法娃娃  <$STR(N$掉落道具3)>|1 1 0 0
-THROWITEM <$MAP> <$X> <$Y> 8 平安铃铛  <$STR(N$掉落道具4)>|1 1 0 0
-BREAK
 
 ; 大于100级，还在新手地图
 ;#IF
@@ -2132,240 +2044,90 @@ BREAK
 ;BREAK
 
 ;--------每日杀怪
-#IF
-#ACT
-INC J5 1
+;#IF
+;#ACT
+;INC J5 1
 
-;--------------------年兽
-#IF
-EQUAL <$KILLMONNAME> 恭喜发财·年兽
-#ACT
-ADDBUFF 61000
-THROWITEM <$MAP> <$X> <$Y> 10 红包(小) 		20|0 1 0 0
-THROWITEM <$MAP> <$X> <$Y> 10 红包(中) 		10|0 1 0 0
-THROWITEM <$MAP> <$X> <$Y> 10 红包(大) 		5|0 1 0 0
-THROWITEM <$MAP> <$X> <$Y> 10 新年烟花	  	30|0 1 0 0
-THROWITEM <$MAP> <$X> <$Y> 10 庆典蛋糕   	10|0 1 0 0
-THROWITEM <$MAP> <$X> <$Y> 10 100000元宝  	30|0 1 0 0
-THROWITEM <$MAP> <$X> <$Y> 10 10000金刚石 	10|0 1 0 0
-THROWITEM <$MAP> <$X> <$Y> 10 1元充值  		20|0 1 0 0
-THROWITEM <$MAP> <$X> <$Y> 10 2元充值  		10|0 1 0 0
-THROWITEM <$MAP> <$X> <$Y> 10 5元充值  		3|0 1 0 0
-THROWITEM <$MAP> <$X> <$Y> 10 10元充值  	2|0 1 0 0
-THROWITEM <$MAP> <$X> <$Y> 10 20元充值  	1|0 1 0 0
-GOTOLABELEX 3 @驱赶年兽判断BUFF 10
+;;--------------------年兽
+;#IF
+;EQUAL <$KILLMONNAME> 恭喜发财·年兽
+;#ACT
+;ADDBUFF 61000
+;THROWITEM <$MAP> <$X> <$Y> 10 红包(小) 		20|0 1 0 0
+;THROWITEM <$MAP> <$X> <$Y> 10 红包(中) 		10|0 1 0 0
+;THROWITEM <$MAP> <$X> <$Y> 10 红包(大) 		5|0 1 0 0
+;THROWITEM <$MAP> <$X> <$Y> 10 新年烟花	  	30|0 1 0 0
+;THROWITEM <$MAP> <$X> <$Y> 10 庆典蛋糕   	10|0 1 0 0
+;THROWITEM <$MAP> <$X> <$Y> 10 100000元宝  	30|0 1 0 0
+;THROWITEM <$MAP> <$X> <$Y> 10 10000金刚石 	10|0 1 0 0
+;THROWITEM <$MAP> <$X> <$Y> 10 1元充值  		20|0 1 0 0
+;THROWITEM <$MAP> <$X> <$Y> 10 2元充值  		10|0 1 0 0
+;THROWITEM <$MAP> <$X> <$Y> 10 5元充值  		3|0 1 0 0
+;THROWITEM <$MAP> <$X> <$Y> 10 10元充值  	2|0 1 0 0
+;THROWITEM <$MAP> <$X> <$Y> 10 20元充值  	1|0 1 0 0
+;GOTOLABELEX 3 @驱赶年兽判断BUFF 10
 
-
-#IF
-EQUAL <$KILLMONNAME> 百倍爆率·【BOSS】
-#ACT
-ADDBUFF 61000
-THROWITEM <$MAP> <$X> <$Y> 7 10000元宝     10|30 1 0 0
-THROWITEM <$MAP> <$X> <$Y> 7 50000元宝     5|30 1 0 0
-THROWITEM <$MAP> <$X> <$Y> 7 100000元宝    1|30 1 0 0
-THROWITEM <$MAP> <$X> <$Y> 7 10000金刚石   10|30 1 0 0
-THROWITEM <$MAP> <$X> <$Y> 7 50000金刚石   5|30 1 0 0
-THROWITEM <$MAP> <$X> <$Y> 7 100000金刚石  1|30 1 0 0
-THROWITEM <$MAP> <$X> <$Y> 7 仙灵珠        5|30 1 0 0
-THROWITEM <$MAP> <$X> <$Y> 7 沉默水晶      10|30 1 0 0
-THROWITEM <$MAP> <$X> <$Y> 7 项链保护卷    3|30 1 0 0
-THROWITEM <$MAP> <$X> <$Y> 7 黑铁矿        5|30 1 0 0
-THROWITEM <$MAP> <$X> <$Y> 7 青铜挑战者勋章  3|30 1 0 0
-THROWITEM <$MAP> <$X> <$Y> 7 白银挑战者勋章  2|30 1 0 0
-THROWITEM <$MAP> <$X> <$Y> 7 黄金挑战者勋章  1|30 1 0 0
-GOTOLABELEX 3 @驱赶年兽判断BUFF 10
-
-;--------------------世界BOSS
-#IF
-EQUAL <$KILLMONNAME> ●●●●蚀九阴●●●●
-#ACT
-MOVR N$碎片数 5 21
-MOVR N$水晶数 1 3
-MOVR N$石头数 10 21
-THROWITEM <$MAP> <$X> <$Y> 10 书页 <$STR(N$碎片数)>|60 1 0 0
-THROWITEM <$MAP> <$X> <$Y> 10 沉默水晶 <$STR(N$水晶数)>|60 1 0 0
-THROWITEM <$MAP> <$X> <$Y> 10 修炼石 <$STR(N$石头数)>|60 1 0 0
-THROWITEM <$MAP> <$X> <$Y> 10 觉醒石 <$STR(N$石头数)>|60 1 0 0
-THROWITEM <$MAP> <$X> <$Y> 10 橡树果 <$STR(N$石头数)>|60 1 0 0
-THROWITEM <$MAP> <$X> <$Y> 10 1000金刚石 20|60 1 0 0
-THROWITEM <$MAP> <$X> <$Y> 10 5000金刚石 10|60 1 0 0
-THROWITEM <$MAP> <$X> <$Y> 10 10000金刚石 5|60 1 0 0
-THROWITEM <$MAP> <$X> <$Y> 10 仙灵珠  1|60 1 0 0
-THROWITEM <$MAP> <$X> <$Y> 10 天宫之锤  50|60 1 0 0
-THROWITEM <$MAP> <$X> <$Y> 10 命运水晶  20|60 1 0 0
-THROWITEM <$MAP> <$X> <$Y> 10 项链保护卷  2|60 1 0 0
-THROWITEM <$MAP> <$X> <$Y> 10 龙珠 10|60 1 0 0
-
-#IF
-EQUAL <$KILLMONNAME> ●●●●蚀九阴●●●●
-NOT SMALL <$UTCNOW8> $劳动开始
-NOT LARGE <$UTCNOW8> $劳动结束
-#ACT
-THROWITEM <$MAP> <$X> <$Y> 10 劳动者勋章 10|60 1 0 0
-
-#IF
-RANDOMEX 500 1000
-EQUAL <$KILLMONNAME> ●●●●蚀九阴●●●●
-#ACT
-THROWITEM <$MAP> <$X> <$Y> 10 黑铁矿 2|60 1 0 0
-
-
-#IF
-RANDOMEX 50 1000
-EQUAL <$KILLMONNAME> ●●●●蚀九阴●●●●
-#ACT
-THROWITEM <$MAP> <$X> <$Y> 10 白银矿 1|60 1 0 0
-
-; 暗降鞭尸概率
-#IF
-LARGE N$鞭尸概率 1
-#ACT
-DIV N$鞭尸概率1 <$STR(N$鞭尸概率)> 2
-
-;---------------------鞭尸几率
-#IF
-LARGE N$鞭尸概率 0
-RANDOMEX <$STR(N$鞭尸概率1)> 120
-EQUAL <$GetTypeBRow(cfg_禁止鞭尸怪物,1,<$MAP>)> -1
-EQUAL <$GetTypeBRow(cfg_禁止鞭尸怪物,0,<$KILLMONNAME>)> -1
-#ACT
-MONITEMSEX <$KILLMONNAME> 1 1000
-SENDMSG 9 成功触发鞭尸！[<$KILLMONNAME>]再爆一次。
-
-
-; 新手地图不给神力
-#IF
-ISONMAP EM000
-#ACT
-BREAK
-
-
-#IF
-#ACT
-MOV N$神力值数 1
-
-#IF
-CheckContainsText <$KILLMONNAME> 变异
-#ACT
-MOV N$神力值数 2
-#IF
-CheckContainsText <$KILLMONNAME> 魔化
-#ACT
-MOV N$神力值数 3
-#IF
-CheckContainsText <$KILLMONNAME> 潘夜
-#ACT
-MOV N$神力值数 4
-#IF
-CheckContainsText <$KILLMONNAME> 迷失
-#ACT
-MOV N$神力值数 5
-#IF
-CheckContainsText <$KILLMONNAME> 沉默
-#ACT
-MOV N$神力值数 7
-#IF
-CheckContainsText <$KILLMONNAME> 封印
-#ACT
-MOV N$神力值数 10
-#IF
-CheckContainsText <$KILLMONNAME> 黑暗
-#ACT
-MOV N$神力值数 15
-#IF
-CheckContainsText <$KILLMONNAME> 铁血
-#ACT
-MOV N$神力值数 20
-#IF
-CheckContainsText <$KILLMONNAME> [王]
-#ACT
-MOV N$神力值数 30
-#IF
-CheckContainsText <$KILLMONNAME> [帝]
-#ACT
-MOV N$神力值数 40
-#IF
-CheckContainsText <$KILLMONNAME> 封天大魔王
-#ACT
-MOV N$神力值数 50 
-
-#IF
-#ACT
-MOV N$上古数 <$STR(N$神力值数)>
-
-#IF
-LARGE U3 1
-SMALL U3 4
-#ACT
-MUL N$上古数 2
-#IF
-EQUAL U3 4
-#ACT
-MUL N$上古数 3
-#IF
-LARGE U3 4
-#ACT
-MUL N$上古数 5
-
-; 神力值上限999万
-#IF
-CHECKMONEY 神力值 < 9999999
-#ACT
-MONEY 神力值 + <$STR(N$上古数)>
-
-
-; 神石满级下面的都不要执行了
-#IF
-LARGE U2 99
-#ACT
-BREAK
-
-; 背包空间不足 禁止升级
-#IF
-NOT CHECKBAGSIZE 10
-#ACT
-BREAK
-
-#IF
-LARGE U2 0
-#ACT
-MOV N$升级标识 0
-ReadCacheConfigFileItem ..\QuestDiary\01配置项\神石配置项.ini 神石配置 <$STR(U2)> N$神石需求
-
-
-; 自动升级神石   满级神石升级
-#IF
-LARGE U3 6
-EQUAL U2 99
-#ACT
-Money 神力值 - <$STR(N$神石需求)>
-Inc U2 1
-Takew <$DRUM> 1
-MOV T4 源石
-GiveOnItem 14 源石 1
-SENDMSG 9 恭喜您，成功升级源石！
-SENDMOVEMSG 0 251 0 460 1 恭喜玩家：【<<$UserName>/FCOLOR=250>】成功升级源石！
-
-;自动升级神石
-#IF
-LARGE U3 6
-LARGE u2 0
-CheckMoney 神力值 ? <$STR(N$神石需求)>
-#ACT
-MOV N$升级标识 1
-Money 神力值 - <$STR(N$神石需求)>
-Inc U2 1
-Takew <$DRUM> 1
-MOV T4 神石(Lv<$Str(U2)>)
-GiveOnItem 14 神石(Lv<$Str(U2)>) 1
-SENDMSG 9 恭喜您，成功升级神石！
-SENDMOVEMSG 0 251 0 460 1 恭喜玩家：【<<$UserName>/FCOLOR=250>】成功升级神石！
 
 ;#IF
-;EQUAL U50 7
-;EQUAL N$升级标识 1
+;EQUAL <$KILLMONNAME> 百倍爆率·【BOSS】
 ;#ACT
-;NEWCHANGETASK 7 <$STR(U2)>
+;ADDBUFF 61000
+;THROWITEM <$MAP> <$X> <$Y> 7 10000元宝     10|30 1 0 0
+;THROWITEM <$MAP> <$X> <$Y> 7 50000元宝     5|30 1 0 0
+;THROWITEM <$MAP> <$X> <$Y> 7 100000元宝    1|30 1 0 0
+;THROWITEM <$MAP> <$X> <$Y> 7 10000金刚石   10|30 1 0 0
+;THROWITEM <$MAP> <$X> <$Y> 7 50000金刚石   5|30 1 0 0
+;THROWITEM <$MAP> <$X> <$Y> 7 100000金刚石  1|30 1 0 0
+;THROWITEM <$MAP> <$X> <$Y> 7 仙灵珠        5|30 1 0 0
+;THROWITEM <$MAP> <$X> <$Y> 7 沉默水晶      10|30 1 0 0
+;THROWITEM <$MAP> <$X> <$Y> 7 项链保护卷    3|30 1 0 0
+;THROWITEM <$MAP> <$X> <$Y> 7 黑铁矿        5|30 1 0 0
+;THROWITEM <$MAP> <$X> <$Y> 7 青铜挑战者勋章  3|30 1 0 0
+;THROWITEM <$MAP> <$X> <$Y> 7 白银挑战者勋章  2|30 1 0 0
+;THROWITEM <$MAP> <$X> <$Y> 7 黄金挑战者勋章  1|30 1 0 0
+;GOTOLABELEX 3 @驱赶年兽判断BUFF 10
+
+;--------------------世界BOSS
+;#IF
+;EQUAL <$KILLMONNAME> ●●●●蚀九阴●●●●
+;#ACT
+;MOVR N$碎片数 5 21
+;MOVR N$水晶数 1 3
+;MOVR N$石头数 10 21
+;THROWITEM <$MAP> <$X> <$Y> 10 书页 <$STR(N$碎片数)>|60 1 0 0
+;THROWITEM <$MAP> <$X> <$Y> 10 沉默水晶 <$STR(N$水晶数)>|60 1 0 0
+;THROWITEM <$MAP> <$X> <$Y> 10 修炼石 <$STR(N$石头数)>|60 1 0 0
+;THROWITEM <$MAP> <$X> <$Y> 10 觉醒石 <$STR(N$石头数)>|60 1 0 0
+;THROWITEM <$MAP> <$X> <$Y> 10 橡树果 <$STR(N$石头数)>|60 1 0 0
+;THROWITEM <$MAP> <$X> <$Y> 10 1000金刚石 20|60 1 0 0
+;THROWITEM <$MAP> <$X> <$Y> 10 5000金刚石 10|60 1 0 0
+;THROWITEM <$MAP> <$X> <$Y> 10 10000金刚石 5|60 1 0 0
+;THROWITEM <$MAP> <$X> <$Y> 10 仙灵珠  1|60 1 0 0
+;THROWITEM <$MAP> <$X> <$Y> 10 天宫之锤  50|60 1 0 0
+;THROWITEM <$MAP> <$X> <$Y> 10 命运水晶  20|60 1 0 0
+;THROWITEM <$MAP> <$X> <$Y> 10 项链保护卷  2|60 1 0 0
+;THROWITEM <$MAP> <$X> <$Y> 10 龙珠 10|60 1 0 0
+
+;#IF
+;EQUAL <$KILLMONNAME> ●●●●蚀九阴●●●●
+;NOT SMALL <$UTCNOW8> $劳动开始
+;NOT LARGE <$UTCNOW8> $劳动结束
+;#ACT
+;THROWITEM <$MAP> <$X> <$Y> 10 劳动者勋章 10|60 1 0 0
+
+;#IF
+;RANDOMEX 500 1000
+;EQUAL <$KILLMONNAME> ●●●●蚀九阴●●●●
+;#ACT
+;THROWITEM <$MAP> <$X> <$Y> 10 黑铁矿 2|60 1 0 0
+
+
+;#IF
+;RANDOMEX 50 1000
+;EQUAL <$KILLMONNAME> ●●●●蚀九阴●●●●
+;#ACT
+;THROWITEM <$MAP> <$X> <$Y> 10 白银矿 1|60 1 0 0
+
 
 
 [@山海奎牛击杀专属奖励]
@@ -5887,6 +5649,13 @@ CHECKLEVELEX ? 999999
 MAPMOVE kuafu02 294 63 3
 BREAK
 
+;==============================================================================
+[@OnKillMob]
+#IF
+#ACT
+sendmsg 
+CALLLUA CC_QFunction @onkillmob,<$MAP>,<$TEMPMONUSERID>
+BREAK
 
 ;==============================================================================新功能  道具使用
 [@StdModeFunc0]
@@ -6019,6 +5788,23 @@ BREAK
 CALLLUA CC_QFunction @topicon_openpanel,<$STR(S$sid)>,<$STR(S$sparam)>
 BREAK
 
+[@baozhuboss_button]
+#IF
+#ACT
+CALLLUA CC_QFunction @baozhuboss_button,<$STR(S$sid)>
+BREAK
+
+[@publicboss_button]
+#IF
+#ACT
+CALLLUA CC_QFunction @publicboss_button,<$STR(S$sid)>
+BREAK
+
+[@singleboss_button]
+#IF
+#ACT
+CALLLUA CC_QFunction @singleboss_button,<$STR(S$sid)>
+BREAK
 
 ;回调类的
 [@equippos_star_auto_upgrade]
