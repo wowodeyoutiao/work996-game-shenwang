@@ -60,6 +60,14 @@ local function GetDayMaxOpenBoxNum(actor)
     return CommonDefine.DAY_SUPER_BOX_MAX_OPEN_NUM
 end
 
+--隐藏宝箱界面
+function OpenSuperBoxManager.HideUI(actor)
+    if BF_IsNullObj(actor) then
+        return
+    end
+    delbutton(actor, 108, CommonDefine.ADD_BUTTON_ID_1)
+end
+
 --增加当前的宝箱累计数量
 function OpenSuperBoxManager.AddNewBoxNum(actor, addnum)
     if BF_IsNullObj(actor) or (addnum == nil) or (addnum <= 0) then

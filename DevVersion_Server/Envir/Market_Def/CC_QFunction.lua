@@ -7,13 +7,32 @@ UIncludes()
 function playreconnection(actor)    
     --触发玩家退出游戏的事件监听
     GameEventManager.DoTriggerEvent(CommonDefine.EVENT_NAME_PLAYER_LEAVEGAME, actor)   
-
 end
 
 -- 玩家大退与关闭客户端触发
 function playoffline(actor)
     --触发玩家退出游戏的事件监听
     GameEventManager.DoTriggerEvent(CommonDefine.EVENT_NAME_PLAYER_LEAVEGAME, actor) 
+end
+
+--进入跨服触发
+function kflogin(actor)
+    --折叠任务栏
+    openhyperlink(actor, 110, 2)
+    --隐藏上面topicon
+    TopIcon.HideUI(actor)
+    --隐藏开宝箱界面
+    OpenSuperBoxManager.HideUI(actor)
+end
+
+--离开跨服触发
+function kuafuend(actor)
+    --打开任务栏
+    openhyperlink(actor, 110, 1)
+    --显示上面的topicon
+    TopIcon.InitUI(actor)
+    --更新开宝箱界面
+    OpenSuperBoxManager.UpdateSuperBoxInfo(actor)  
 end
 
 --跨周
@@ -263,6 +282,7 @@ function losercar(actor, biaoche)
 end
 --------------------------------------------伤害计算相关----------------------
 --人物攻击前触发
+--[[
 function attackdamage(actor, target, hitter, magicid, damage, model)  
     --BF_DebugOut('damage:'..damage)    
     
@@ -280,6 +300,22 @@ function attackdamage(actor, target, hitter, magicid, damage, model)
     end
     return damage
 end
+]]--
+
+function attackdamage(actor, damagevalue)
+    if BF_IsNullObj(actor) then
+        return
+    end
+    local currtarg = Player.GetCurrTargetObj(actor)
+    if currtarg == nil then
+        return
+    end
+    damagevalue = GuanZhiManager.DoAttackDamage(actor, currtarg, damagevalue)
+    damagevalue = JumpAreaBossDamageRank.DoAttackDamage(actor, currtarg, damagevalue)
+    callscriptex(actor, "ChangeDamageValue", 0, "=", damagevalue)
+end
+
+
 
 ----------------------------------------------------------------系统触发回调函数end--------------------------------------------------------------------------
 
@@ -411,6 +447,10 @@ function base_leavemap_button(actor)
     Player.GoMZHome(actor)
 end
 
+function jumparea_button(actor, sid)
+    JumpAreaManager.DoJumpAreaButton(actor, sid)
+end
+
 -------------------------------------------------------新逻辑还是从原来的NPC脚本走--------------------------------------------
 --灵玉功能相关
 function baozhu_button_function(actor, sid, sparam)
@@ -436,7 +476,9 @@ function show_rule_panel(actor)
         OfflineHuWeiManager.ShowRulePanel(actor)
     elseif currfuncid == CommonDefine.FUNC_ID_FREEVIP then
         FreeVIPManager.ShowRulePanel(actor)
-    end    
+    elseif currfuncid == CommonDefine.FUNC_ID_JUMPAREA_BASE then
+        JumpAreaManager.ShowRulePanel(actor)
+    end
 end
 
 --显示基础面板
@@ -458,6 +500,8 @@ function show_base_panel(actor, sparam)
         OfflineHuWeiManager.ShowBasePanel(actor, sparam)
     elseif currfuncid == CommonDefine.FUNC_ID_FREEVIP then
         FreeVIPManager.ShowBasePanel(actor)
+    elseif currfuncid == CommonDefine.FUNC_ID_JUMPAREA_BASE then
+        JumpAreaManager.ShowBasePanel(actor)
     end    
 end
 
@@ -480,7 +524,9 @@ function function_button(actor, sid, sparam)
         OfflineHuWeiManager.DoOperButton(actor, sid, sparam)
     elseif currfuncid == CommonDefine.FUNC_ID_FREEVIP then
         FreeVIPManager.DoOperButton(actor, sid, sparam)
-    end    
+    elseif currfuncid == CommonDefine.FUNC_ID_JUMPAREA_BASE then
+        JumpAreaManager.DoOperButton(actor, sid, sparam)
+    end
 end
 
 ----------------------------------------------------------------按钮回调函数end--------------------------------------------------------------------------
@@ -558,7 +604,16 @@ function g_delay_SingleBossManager_ClearFightingMap(sysobj, mapidstr)
 end
 ----------------------------------------------------------------系统延迟回调end---------------------------------------------------------------------------
 
+----------------------------------------------------------------跨服相关回调start--------------------------------------------------------------------
+function kfsyscall101(sysobj)
+    local str = parsetext('<$PARAM1>', sysobj)
+    setsysvar(CommonDefine.VAR_A_JUMPAREA_DAMAGE_RANK_DATA, str)
+end
 
+function kfsyscall102(actor)
+    Player.GoMZHome(actor)
+end
+----------------------------------------------------------------跨服相关回调end--------------------------------------------------------------------
 
 ----------------------------------------------------------------使用道具回调start------------------------------------------------------------------------
 
@@ -615,6 +670,11 @@ end
 
 
 function stdmodefunc0(actor, smakeindex)  
+    return ItemUseManager.DoUse(actor, smakeindex)
+end
+
+--盟重回城石
+function stdmodefunc12(actor, smakeindex)
     return ItemUseManager.DoUse(actor, smakeindex)
 end
 

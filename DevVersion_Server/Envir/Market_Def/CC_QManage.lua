@@ -4,7 +4,7 @@ UIncludes()
 
 ----------------------------------------------------------------触发回调函数start--------------------------------------------------------------------------
 -- 引擎启动触发
-function startup(sysobj)  
+function startup()  
     --自定义系统变量，暂时不考虑这个方案
     --inisysvar("integer","系统变量_1",0)  --声明合区时 保留主区
     --inisysvar("integer","系统变量_2",1)  --声明合区时 保留副区
@@ -12,7 +12,8 @@ function startup(sysobj)
     --inisysvar("integer","系统变量_4",3)  --声明合区时 取小
     --inisysvar("integer","系统变量_5",4)  --声明合区时 相加
     --inisysvar("string","系统变量_6",5)   --声明合区时 相连
-    --inisysvar("string","系统变量_7",6)   --声明合区时 删除    
+    --inisysvar("string","系统变量_7",6)   --声明合区时 删除   
+    
 end
 
 -- 角色登陆触发
@@ -20,12 +21,12 @@ function login(actor)
     --自定义玩家变量初始化，这个的管理不是太方便，暂时不使用
     --iniplayvar(actor, "integer", "HUMAN", "玩家变量_1")
     --iniplayvar(actor, "string", "HUMAN", "玩家变量_2")    
-
 --[[
     --界面初始化            
     GameCurrencyUI.InitUI(actor)
     MainUIBase.InitUI(actor) 
 ]]--
+
     --玩家是否进行新手初始化
     Player.InitNewPlayer(actor)   
     --触发玩家上线的事件监听
@@ -49,6 +50,7 @@ function login(actor)
     -- local str = '<Effect|x=-550|y=-40|effectid=15001|effecttype=0|scale=0.8>'..
     --     '<TextAtlas|x=-460|y=-20|img=public/zhnli_num.png|schar=0|iheight=20|iwidth=13|text='..currpower..'>'
     -- addbutton(actor, 108, CommonDefine.ADD_BUTTON_ID_6, str)    
+    JumpAreaManager.OnInit()
 end
 
 ----------------------------------------------------------------触发回调函数end--------------------------------------------------------------------------
@@ -84,19 +86,24 @@ function ontimer5(actor)
 end
 ]]--
 
---魔方阵
-function ontimer11(actor)
-    MoFangZhenManager.OnTimerCheck(actor)
-end
 
 --topicon的小红点
-function ontimer12(actor)
+function ontimer101(actor)
     TopIcon.CheckRedPoint(actor)
 end
 
 --快捷前往的提示
-function ontimer13(actor)
+function ontimer102(actor)
     TopIcon.CheckQuickInfoTip(actor)
 end
 
 ----------------------------------------------------------------ontimer个人定时器end--------------------------------------------------------------------------
+
+
+
+----------------------------------------------------------------ontimerex全局定时器start----------------------------------------------------------------------
+function ontimerex101()
+    JumpAreaBossDamageRank.OnLocalServerTimer()
+end
+
+----------------------------------------------------------------ontimerex全局定时器end----------------------------------------------------------------------

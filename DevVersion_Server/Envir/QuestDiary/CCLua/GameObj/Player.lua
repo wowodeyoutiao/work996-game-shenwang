@@ -76,6 +76,12 @@ function Player.GetMapIDStr(actor)
     return mapstr
 end
 
+--返回当前的攻击对象
+function Player.GetCurrTargetObj(actor)
+    local targobj = getbaseinfo(actor, CommonDefine.INFO_CURRTARG)
+    return targobj
+end
+
 --设置对象满血满蓝
 function Player.FullHPMP(actor)
     addhpper(actor, '=', 100)
@@ -99,7 +105,8 @@ end
 function Player.GoMZHome(actor)
     --mapmove(actor, '3', 330, 330, 3)
     mapmove(actor, 'rxsc042', 330, 335, 2)
-    Player.FullHPMP(actor)
+    release_print('mapmove')
+    Player.FullHPMP(actor)    
 end
 
 --返回所在地图的坐标
@@ -399,6 +406,27 @@ function Player.GiveItemsByMail(actor, rewarditems, mailtitle, maildesc)
     local playerid = Player.GetPlayerID(actor)
     sendmail(playerid, CommonDefine.MAIL_ID_BAGFULL, mailtitle, maildesc, itemstr)    
     Player.SendSelfMsg(actor, '请查收邮件:'..mailtitle, CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+end
+
+--按照playerid给玩家发奖励邮件
+function Player.OfflineGiveItems(playerid, rewarditems, mailtitle, maildesc)
+    if (rewarditems == nil) or (type(rewarditems) ~= 'table') or (#rewarditems == 0) then
+        return
+    end
+
+    local itemstr = '';
+    for _, value in ipairs(rewarditems) do
+        if itemstr ~= '' then
+            itemstr = itemstr..'&'
+        end
+        --这里处理绑定状态！！！！！
+        --这里处理绑定状态！！！！！
+        --这里处理绑定状态！！！！！
+        --这里处理绑定状态！！！！！
+        --这里处理绑定状态！！！！！
+        itemstr = itemstr..value.name..'#'..value.num
+    end 
+    sendmail(playerid, CommonDefine.MAIL_ID_OFFLINE, mailtitle, maildesc, itemstr)       
 end
 
 --返回玩家身上装备最低品质

@@ -893,3 +893,5 @@ h010 155,156 -> h009 151,105
 [singleboss13|b101 个人首领] onkillmon SAFE dark noreconnect(rxsc042) nodearrecall
 [singleboss14|b101 个人首领] onkillmon SAFE dark noreconnect(rxsc042) nodearrecall
 [singleboss15|b101 个人首领] onkillmon SAFE dark noreconnect(rxsc042) nodearrecall
+
+[kuafuboss|b101 跨服BOSS] FIGHT5 dark kuafu noreconnect(rxsc042)

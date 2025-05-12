@@ -9,7 +9,7 @@ local ICON_NEWPLAYER_RECHARGEACTIVITY = '6'     --新人充值返利
 local ICON_OPENSERVERACTIVITY = '7'             --开服活动
 local ICON_EXTENDGIFT = '8'                     --进阶礼包
 local ICON_FREEVIP = '9'                        --免费VIP
-
+local ICON_JUMPAREA = '10'                      --跨服玩法
 local ICON_EVERYDAY_TASK = '11'                 --每日必做
 
 local ICON_EXTEND_STORAGE_MAKESURE = '13'       --仓库扩容，确认
@@ -26,6 +26,7 @@ local MAINICON_ID_3 = 'mainicon_3'              --新人充值返利 iconid
 local MAINICON_ID_4 = 'mainicon_4'              --首充 iconid
 local MAINICON_ID_5 = 'mainicon_5'              --每日必做 iconid
 local MAINICON_ID_6 = 'mainicon_6'              --免费VIP iconid
+local MAINICON_ID_7 = 'mainicon_7'              --跨服玩法 iconid
 
 
 function TopIcon.InitUI(actor)
@@ -34,6 +35,11 @@ function TopIcon.InitUI(actor)
 
     setontimer(actor, CommonDefine.TIMER_ID_CHECK_TOPICON_REDPOINT, 10, 0, 0)
     setontimer(actor, CommonDefine.TIMER_ID_CHECK_QUICK_GOTO_TIP, 30, 0, 0)
+end
+
+function TopIcon.HideUI(actor)
+    delbutton(actor, 102, CommonDefine.ADD_BUTTON_ID_33)
+    delbutton(actor, 102, CommonDefine.ADD_BUTTON_ID_34) 
 end
 
 function TopIcon.OpenPanel(actor, sid, sparam)
@@ -66,7 +72,7 @@ function TopIcon.OpenPanel(actor, sid, sparam)
         ActivityExtendGift.OpenPanel(actor)
     elseif sid == ICON_EVERYDAY_TASK then
         --每日必做
-        EverydayTask.OpenPanel(actor)
+        --EverydayTask.OpenPanel(actor)
     elseif sid == ICON_FREEVIP then
         --免费VIP
         if not Player.IsFunctionOpen(actor, CommonDefine.FUNC_ID_FREEVIP, true) then
@@ -75,6 +81,11 @@ function TopIcon.OpenPanel(actor, sid, sparam)
         setplaydef(actor, CommonDefine.VAR_N_CURR_FUNCTION_ID, CommonDefine.FUNC_ID_FREEVIP)
         setplaydef(actor, CommonDefine.VAR_N_LAST_NPC_CHOOSEID, -1)
         FreeVIPManager.ShowBasePanel(actor)
+    elseif sid == ICON_JUMPAREA then
+        --跨服活动
+        setplaydef(actor, CommonDefine.VAR_N_CURR_FUNCTION_ID, CommonDefine.FUNC_ID_JUMPAREA_BASE)        
+        setplaydef(actor, CommonDefine.VAR_N_LAST_NPC_CHOOSEID, -1)
+        JumpAreaManager.ShowBasePanel(actor)
     elseif sid == ICON_EXTEND_STORAGE_MAKESURE then
         --扩容仓库 确定
         TopIcon.DoExtendStorage(actor)
@@ -114,6 +125,10 @@ function TopIcon.InnerExtendPanel(actor)
     if ActivityOpenServer.CanShowIcon(actor) then
         currIconX = currIconX - 80
         buttonstr = buttonstr..'<Button|id='..MAINICON_ID_2..'|x='..currIconX..'|y=10|width=70|height=70|nimg=private/cc_func_icon/1.png|link=@topicon_openpanel#sid='..ICON_OPENSERVERACTIVITY..'>'
+    end
+    if JumpAreaManager.CanShowIcon(actor) then
+        currIconX = currIconX - 80
+        buttonstr = buttonstr..'<Button|id='..MAINICON_ID_7..'|x='..currIconX..'|y=10|width=70|height=70|nimg=private/cc_func_icon/6.png|link=@topicon_openpanel#sid='..ICON_JUMPAREA..'>'
     end
     currIconX = currIconX - 80
     buttonstr = buttonstr..'<Button|id='..MAINICON_ID_6..'|x='..currIconX..'|y=10|width=70|height=70|text=免费VIP|color=255|nimg=custom/a00016.png|link=@topicon_openpanel#sid='..ICON_FREEVIP..'>'

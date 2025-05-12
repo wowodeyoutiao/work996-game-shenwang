@@ -114,6 +114,16 @@ function BF_ConvertSecondsToTimeStr(seconds)
     return string.format("%02d:%02d:%02d", hours, minutes, secs)
 end
 
+function BF_IsDelayedByMinutes(setTime, delayMinutes)
+    local now = os.date("*t")  -- 返回 {hour, min, sec, ...}
+    local currentHour, currentMin = now.hour, now.min
+
+    local setTotal = setTime.hour * 60 + setTime.min
+    local currentTotal = currentHour * 60 + currentMin
+
+    return (currentTotal - setTotal) >= delayMinutes
+end
+
 --根据装备名字返回装备位
 function BF_GetEquipPosByNameOrID(nameorid)    
     local stdmode = getstditeminfo(nameorid, CommonDefine.STDITEMINFO_STDMODE)

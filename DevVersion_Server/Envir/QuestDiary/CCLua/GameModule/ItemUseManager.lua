@@ -27,10 +27,10 @@ function ItemUseManager.DoUse(actor, smakeindex)
     --     --比奇传送石
     --     Player.GoBQHome(actor)
     --     return true       
-    -- elseif anicount == 12 then
-    --     --盟重回城石
-    --     Player.GoMZHome(actor)
-    --     return true
+    elseif anicount == 12 then
+        --盟重回城石
+        Player.GoMZHome(actor)
+        return true
     -- elseif anicount == 201 then
     --     --使用藏宝图
     --     return TreasureMap.DoUseItem(actor)

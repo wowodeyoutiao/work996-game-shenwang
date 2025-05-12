@@ -31,6 +31,7 @@ function GMHelper.OpenPanel(actor)
         '<Button|x=500|y=120|nimg=public/bg_hhzy_01_3.png|text=模拟充值100元|link=@gmhelper_button#sid1=157>'..       
 
 
+        '<Button|x=500|y=210|nimg=public/bg_hhzy_01_3.png|text=跨服地图|link=@gmhelper_button#sid1=1998>'..
         '<Button|x=500|y=240|nimg=public/bg_hhzy_01_3.png|text=临时测试|link=@gmhelper_button#sid1=1999>'
     --[[                                      
         '<Button|x=40|y=120|nimg=public/bg_hhzy_01_3.png|text=无敌|link=@gmhelper_button,4>'..
@@ -327,8 +328,11 @@ function GMHelper.DoGmOper(actor, sid)
         for i = 1, #CommonDefine.BASE_EQUIPMENT_POS, 1 do
             EquipPosStarManager.ClearEquipStarLvInPos(actor, CommonDefine.BASE_EQUIPMENT_POS[i])
         end  
-
-
+    elseif sid == '1998' then
+        --map(actor, 'kuafumap1')
+        local strCurrServerName = parsetext('<$SERVERNAME>')
+        release_print(strCurrServerName)
+        sendmsg(actor, 6, strCurrServerName)
     elseif sid == '1999' then 
         --changeexp(actor, '+', 500, true)
         --delbutton(actor, 108, CommonDefine.ADD_BUTTON_ID_5)

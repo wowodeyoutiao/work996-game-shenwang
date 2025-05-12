@@ -100,6 +100,9 @@ local function _Includes()
     require("Envir/QuestDiary/CCLua/GameModule/EquipInitGift")
     require("Envir/QuestDiary/CCLua/GameModule/EquipRandomABManager")
     require("Envir/QuestDiary/CCLua/GameModule/RecycleManager")
+    require("Envir/QuestDiary/CCLua/GameModule/JumpAreaManager")
+    require("Envir/QuestDiary/CCLua/GameModule/JumpAreaBossDamageRank")
+    require("Envir/QuestDiary/CCLua/GameModule/JumpAreaScoreShop")
 
 
     -- --µ˜ ‘»’÷æ

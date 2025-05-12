@@ -57,6 +57,28 @@ function GuanZhiManager.AddExp(actor, addexp, daylimit)
     setplaydef(actor, CommonDefine.VAR_U_GUANZHI_CURREXP, currexp)
 end
 
+--玩家攻击时触发  官职压制伤害加成
+function GuanZhiManager.DoAttackDamage(actor, target, damage)
+    if BF_IsNullObj(actor) or BF_IsNullObj(target) then
+        return damage
+    end
+
+    local bTargIsPlayer = false
+    if not BF_IsNullObj(target) then
+        bTargIsPlayer = Player.IsPlayer(target)
+    end
+
+    if bTargIsPlayer then
+        local selfLevel = getplaydef(actor, CommonDefine.VAR_U_GUANZHI_LEVEL) 
+        local targLevel = getplaydef(target, CommonDefine.VAR_U_GUANZHI_LEVEL) 
+        if selfLevel > targLevel then
+            damage = math.floor(damage * 1.1)
+        end
+    end    
+
+    return damage
+end
+
 --玩家登录时触发
 function GuanZhiManager.OnPlayerEnterGame(actor)	  
     local currlv = getplaydef(actor, CommonDefine.VAR_U_GUANZHI_LEVEL)

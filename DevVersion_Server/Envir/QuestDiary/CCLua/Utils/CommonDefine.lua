@@ -113,6 +113,7 @@ CommonDefine = {
     INFO_MONIDX = 55,                    --怪物的Idx
     INFO_NAMECOLOR = 56,                 --名字颜色
     INFO_BAGCOUNT = 63,                  --背包大小
+    INFO_CURRTARG = 67,                  --当前攻击对象
 
     --标准物品信息
     STDITEMINFO_IDX = 0,                 --物品ID
@@ -175,6 +176,7 @@ CommonDefine = {
 
     --邮件ID
     MAIL_ID_BAGFULL = 100,               --背包已满，道具发放到邮件中
+    MAIL_ID_OFFLINE = 101,               --离线，道具发放到邮件中
 
     --游戏成长属性
     ABILITYID_MAX_HP = 1,                --最大生命值
@@ -282,8 +284,14 @@ CommonDefine = {
     CHECK_BOX_VAR = {},                         --CheckBox选项框
 
 
-    --系统数字变量，重启不保存 I0 - I99
+    --系统全局数字变量，重启不保存 I0 - I99
     VAR_I_CURR_DYNNPC_GROUPID = 'I1',            --当前系统对应的动态NPC的组编号,玩家登录时+1赋值
+
+    --系统全局数字变量，重启保存 G0 - G499
+    VAR_G_JUMPAREA_DAMAGERANK_REWARD_STATUS = 'G101',   --跨服boss伤害 活动状态 1活动未发奖 2活动已发奖
+
+    --系统全局字符型变量，重启保存 A0-A499
+    VAR_A_JUMPAREA_DAMAGE_RANK_DATA = 'A100',    --跨服boss伤害排行数据
 
     --玩家数字变量，下线不保存 N0 - N99
 --[[
@@ -321,6 +329,8 @@ CommonDefine = {
     VAR_N_CURR_FUNCTION_ID = 'N77',             --玩家当前选择的功能ID  
     VAR_N_CURR_RANDOMBOSS_FIGHTING_ID = 'N78',  --玩家当前触发的随机BOSS的挑战ID
     VAR_N_COMMON_LOCAL_RELIVE_TIMES = 'N79',    --通用原地复活次数    
+    VAR_N_NPC_TEMPPARAM2 = 'N80',               --玩家NPC操作的参数2
+    VAR_N_NPC_TEMPPARAM3 = 'N81',               --玩家NPC操作的参数3
 
         
     --玩家数字型变量，切地图不保存 M0-M99
@@ -418,7 +428,9 @@ CommonDefine = {
     VAR_U_FREEVIPTASK_COUNTER5 = 'U210',        --免费VIP任务计数5
     VAR_U_FREEVIP_LEVEL = 'U211',               --免费VIP等级   
     VAR_U_BIAOCHE_CURRID = 'U212',              --当前对应的镖车配置ID
-    VAR_U_BIAOCHE_REFRESH_TIMES = 'U213',       --镖车刷新次数，接受镖车后清0    
+    VAR_U_BIAOCHE_REFRESH_TIMES = 'U213',       --镖车刷新次数，接受镖车后清0   
+    VAR_U_JUMPAREA_BOSS_DAMAGE_HIGH = 'U214',   --玩家今日    对跨服boss造成伤害 万位以上
+    VAR_U_JUMPAREA_BOSS_DAMAGE_LOW = 'U215',    --玩家今日    对跨服boss造成伤害 万位以下    
     
     --玩家字符型变量，下线保存 T0 - T254
     VAR_T_EQUIPPOS_STRENGTH_INFO = 'T41',        --玩家的装备位强化信息
@@ -461,6 +473,8 @@ CommonDefine = {
     VAR_J_DAY_SINGLEBOSS_KILLTIMES = 'J111',            --玩家今日击杀单人首领的次数
     VAR_J_DAY_SINGLEBOSS_BUYTIMES = 'J112',             --玩家今日购买单人首领的次数    
     VAR_J_DAY_BIAOCHE_ACCEPT_TIMES = 'J113',            --玩家 今日接镖次数    
+    VAR_J_DAY_JUMPAREA_BOSS_LAST_ENTERTIME = 'J114',    --玩家今日上次进入跨服boss的时间
+
 
     
     --玩家字符变量，下线保存，0点重置 Z0 - Z499
@@ -576,9 +590,17 @@ CommonDefine = {
     EVENT_NAME_DO_RECHARGE = 'do_recharge',             --充值
 
     --玩家定时器ID
-    --TIMER_ID_MOFANGZHEN = 11,                   --魔方阵地图的定时器
-    TIMER_ID_CHECK_TOPICON_REDPOINT = 101,       --检测topicon功能入口的小红点
-    TIMER_ID_CHECK_QUICK_GOTO_TIP = 102,         --检测npc功能的快捷前往提示
+    --TIMER_ID_MOFANGZHEN = 11,                         --魔方阵地图的定时器
+    TIMER_ID_CHECK_TOPICON_REDPOINT = 101,              --检测topicon功能入口的小红点
+    TIMER_ID_CHECK_QUICK_GOTO_TIP = 102,                --检测npc功能的快捷前往提示
+
+    --全局定时器ID
+    --G_TIMER_ID_STARTUP_ONCE = 99,                       --用于触发startup
+    G_TIMER_ID_CHECK_JUMPAREA_BOSS = 101,               --跨服BOSS伤害排行  本服的执行
+
+    --跨服传递到本服的消息
+    KFBCMSG_UPDATE_JUMPAREA_DAMAGE_RANK = 101,            --更新跨服BOSS伤害排行信息
+    KFBCMSG_GOBACK_MZMAP = 102,                           --玩家返回本服盟重安全区
 
     --功能模块编号
     FUNC_ID_EQUIPPOS_STRENGTH = 1,              --装备位强化
@@ -610,6 +632,12 @@ CommonDefine = {
     FUNC_ID_GMHELPER = 27,                      --GM辅助系统
     FUNC_ID_NEWMAINUI = 28,                     --新主界面
     FUNC_ID_SKILLUPGRADE = 29,                  --技能进阶
+    FUNC_ID_JUMPAREA_BASE = 30,                 --跨服活动  基础
+    FUNC_ID_JUMPAREA_1 = 31,                    --跨服活动  单人PK
+    FUNC_ID_JUMPAREA_2 = 32,                    --跨服活动  大乱斗
+    FUNC_ID_JUMPAREA_3 = 33,                    --跨服活动  跨服BOSS
+    FUNC_ID_JUMPAREA_4 = 34,                    --跨服活动  跨服夺宝
+    FUNC_ID_JUMPAREA_5 = 35,                    --跨服活动  跨服商店
     
 
     --快捷前往
@@ -686,7 +714,7 @@ CommonDefine = {
     ADD_BUTTON_ID_6 = 9006,                       --战力显示
     ADD_BUTTON_ID_7 = 9007,                       --战力变化显示
     ADD_BUTTON_ID_8 = 9008,                       --退出地图的按钮
-    
+    ADD_BUTTON_ID_9 = 9009,                       --退出地图的倒计时
 
     ADD_BUTTON_ID_10 = 9010,                      --装备面板 项链槽位 天赋属性图标
     ADD_BUTTON_ID_11 = 9011,                      --装备面板 左护腕槽位 天赋属性图标
@@ -703,7 +731,7 @@ CommonDefine = {
 
     ADD_BUTTON_ID_35 = 9035,                      --地图内功能按钮1
     ADD_BUTTON_ID_36 = 9036,                      --地图内功能按钮2
-    
+    ADD_BUTTON_ID_37 = 9037,                      --快捷物品栏上中央提示    
 }
 
 --装备位对应的名称

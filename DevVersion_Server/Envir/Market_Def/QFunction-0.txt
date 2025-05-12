@@ -2550,6 +2550,7 @@ SENDMSG 9 强化失败，武器破碎
 get_post_data S$上报数据 {"gevent":"强化失败","gvalue":"<$STR(N$当前等级)>","desc":"<$STR(S$WQ)>"}
 HTTPPOST http://211.149.241.27:4473/api/api996/get_log 0 <$STR(S$上报数据)>
 BREAK
+
 ; 攻击前触发
 [@AttackDamage]
 #IF
@@ -2559,6 +2560,10 @@ STOPAutoPlayGame
 GOTO @武器强化激活
 BREAK
 
+#IF
+#ACT
+CALLLUA CC_QFunction @attackdamage,<$DAMAGEVALUE>
+BREAK
 
 ; 船长BUFF，小怪存在，船长无敌 刀刀恢复1%血量
 #IF
@@ -3234,15 +3239,15 @@ BREAK
 <Button|id=6|x=100.0|y=100.0|pimg=public/1900000652.png|nimg=public/1900000653.png|color=255|size=17|text=回城复活|link=@复活1>
 
 ; 跨服地图不掉狂暴
-#IF
-CHECKKUAFU
-#ACT
-BREAK
-#SAY
-<Img|show=4|children={2,3,4,5,6}|bg=1|loadDelay=1|move=0|esc=1|img=private/revive/bg_swfh_1.png|reset=1>
-<RText|id=3|x=40.0|y=30.0|size=16|color=250|text=你被<<$CURRRTARGETNAME>>杀死了！>
-<COUNTDOWN|id=5|x=129.0|y=70.0|time=10|count=1|size=16|color=249|link=@跨服复活>
-<Button|id=6|x=100|y=100|color=255|nimg=public/1900000653.png|size=16|text=跨服复活|link=@跨服复活>
+;#IF
+;CHECKKUAFU
+;#ACT
+;BREAK
+;#SAY
+;<Img|show=4|children={2,3,4,5,6}|bg=1|loadDelay=1|move=0|esc=1|img=private/revive/bg_swfh_1.png|reset=1>
+;<RText|id=3|x=40.0|y=30.0|size=16|color=250|text=你被<<$CURRRTARGETNAME>>杀死了！>
+;<COUNTDOWN|id=5|x=129.0|y=70.0|time=10|count=1|size=16|color=249|link=@跨服复活>
+;<Button|id=6|x=100|y=100|color=255|nimg=public/1900000653.png|size=16|text=跨服复活|link=@跨服复活>
 
 
 
@@ -5565,77 +5570,80 @@ ALLOWDROP 0
 #IF
 #ACT
 SENDMSG 9 [退出跨服]服务器
-SetOnTimer 2 2 0 1
-; 跨服定时器
-VAR Integer HUMAN 战斗力
-VAR Integer HUMAN 等级数
-VAR Integer HUMAN 爆率数
-VAR Integer HUMAN 刀魂数
-VAR Integer HUMAN 杀怪数
-VAR Integer HUMAN 个人捐献
-#Call [\04人物属性\人物倍攻.txt] @人物倍攻
-#Call [\04人物属性\称号刷新.txt] @刷新称号
-;#CALL [\登录触发\任务触发.txt] @任务领取
-#CALL [\04人物属性\刷新神器等级.txt] @神器等级刷新
-#CALL [\04人物属性\爆率免伤.txt] @属性刷新EX
-;#Call [\悬浮按钮\悬浮按钮展开.txt] @悬浮按钮展开
-#Call [\主界面基础按钮\主界面基础按钮QM.txt] @基础按钮QM
-#Call [\03自定义按钮\战斗力计算.txt] @战力计算
+CALLLUA CC_QFunction @kuafuend
+
+;SetOnTimer 2 2 0 1
+;; 跨服定时器
+;VAR Integer HUMAN 战斗力
+;VAR Integer HUMAN 等级数
+;VAR Integer HUMAN 爆率数
+;VAR Integer HUMAN 刀魂数
+;VAR Integer HUMAN 杀怪数
+;VAR Integer HUMAN 个人捐献
+;#Call [\04人物属性\人物倍攻.txt] @人物倍攻
+;#Call [\04人物属性\称号刷新.txt] @刷新称号
+;;#CALL [\登录触发\任务触发.txt] @任务领取
+;#CALL [\04人物属性\刷新神器等级.txt] @神器等级刷新
+;#CALL [\04人物属性\爆率免伤.txt] @属性刷新EX
+;;#Call [\悬浮按钮\悬浮按钮展开.txt] @悬浮按钮展开
+;#Call [\主界面基础按钮\主界面基础按钮QM.txt] @基础按钮QM
+;#Call [\03自定义按钮\战斗力计算.txt] @战力计算
 
 
 ; 进入跨服  跨服触发
 [@KFLOGIN]
 #IF
 #ACT
-SETONTIMER 4 1 0 1
-PICKUPITEMS 0 10 500
-#Call [\04人物属性\人物倍攻.txt] @人物倍攻
-#Call [\04人物属性\称号刷新.txt] @刷新称号
-;#CALL [\登录触发\任务触发.txt] @任务领取
-#CALL [\04人物属性\刷新神器等级.txt] @神器等级刷新
-#CALL [\04人物属性\爆率免伤.txt] @属性刷新EX
-#Call [\悬浮按钮\悬浮按钮跨服.txt] @跨服按钮展开
-#Call [\03自定义按钮\战斗力计算.txt] @战力计算
+;SETONTIMER 4 1 0 1
+;PICKUPITEMS 0 10 500
+;#Call [\04人物属性\人物倍攻.txt] @人物倍攻
+;#Call [\04人物属性\称号刷新.txt] @刷新称号
+;;#CALL [\登录触发\任务触发.txt] @任务领取
+;#CALL [\04人物属性\刷新神器等级.txt] @神器等级刷新
+;#CALL [\04人物属性\爆率免伤.txt] @属性刷新EX
+;#Call [\悬浮按钮\悬浮按钮跨服.txt] @跨服按钮展开
+;#Call [\03自定义按钮\战斗力计算.txt] @战力计算
 SENDMSG 9 [进入跨服]服务器
+CALLLUA CC_QFunction @kflogin
 
 
-; 跨服刷怪
-#IF
-NOT EQUAL G13 <$YEAR><$MONTH><$DAY>
-#ACT
-CLEARMAPMON kuafu02
-MOV G13 <$YEAR><$MONTH><$DAY>
-MonGenEx kuafu02 146 138  世界之最·叱咤神魔   1 1 0 116 世界之最·叱咤神魔\[跨服] 0
-MonGenEx kuafu02 244 91   世界之最·大鼋★★★ 1 1 0 116 世界之最·大鼋★★★\[跨服] 0
-MonGenEx kuafu02 108 247  世界之最·魔刀霸王   1 1 0 116 世界之最·魔刀霸王\[跨服] 0
-MonGenEx kuafu02 218 206  世界之最·太极玄天   1 1 0 116 世界之最·太极玄天\[跨服] 0
-MonGenEx kuafu02 80  367  世界之最·大梵般若   1 1 0 116 世界之最·大梵般若\[跨服] 0
-MonGenEx kuafu02 236 297  世界之最·大道妖尊   1 1 0 116 世界之最·大道妖尊\[跨服] 0
-MonGenEx kuafu02 167 424  世界之最·天地之主   1 1 0 116 世界之最·天地之主\[跨服] 0
-MonGenEx kuafu02 293 389  世界之最·万兽之王   1 1 0 116 世界之最·万兽之王\[跨服] 0
-MonGenEx kuafu02 202 544  世界之最·人皇始祖   1 1 0 116 世界之最·人皇始祖\[跨服] 0
-MonGenEx kuafu02 300 534  世界之最·太玄圣虎   1 1 0 116 世界之最·太玄圣虎\[跨服] 0
-MonGenEx kuafu02 318 242  世界之最·深海巨兽   1 1 0 116 世界之最·深海巨兽\[跨服] 0
-MonGenEx kuafu02 401 122  世界之最·熔岩恶魔   1 1 0 116 世界之最·熔岩恶魔\[跨服] 0
-MonGenEx kuafu02 414 194  世界之最·冰天猿魔   1 1 0 116 世界之最·冰天猿魔\[跨服] 0
-MonGenEx kuafu02 438 264  世界之最·碧睛狂狮   1 1 0 116 世界之最·碧睛狂狮\[跨服] 0
-MonGenEx kuafu02 479 346  世界之最·魔獠暴猪   1 1 0 116 世界之最·魔獠暴猪\[跨服] 0
-MonGenEx kuafu02 453 439  世界之最·洪荒猛犸   1 1 0 116 世界之最·洪荒猛犸\[跨服] 0
-MonGenEx kuafu02 452 554  世界之最·魑魅魍魉   1 1 0 116 世界之最·魑魅魍魉\[跨服] 0
-MonGenEx kuafu02 556 244  世界之最·离火麒麟   1 1 0 116 世界之最·离火麒麟\[跨服] 0
-MonGenEx kuafu02 546 100  世界之最·荒漠屠夫   1 1 0 116 世界之最·荒漠屠夫\[跨服] 0
-MonGenEx kuafu02 422 43   世界之最·黑石离龟   1 1 0 116 世界之最·黑石离龟\[跨服] 0
-MonGenEx kuafu02 300 300  跨服·勇士 300 2000 0 251 跨服·勇士 0
-; 乱斗BOSS
-MonGenEx kuafu03 47 40  发财树 1 1 0 249 跨服·发财树 0
+;; 跨服刷怪
+;#IF
+;NOT EQUAL G13 <$YEAR><$MONTH><$DAY>
+;#ACT
+;CLEARMAPMON kuafu02
+;MOV G13 <$YEAR><$MONTH><$DAY>
+;MonGenEx kuafu02 146 138  世界之最·叱咤神魔   1 1 0 116 世界之最·叱咤神魔\[跨服] 0
+;MonGenEx kuafu02 244 91   世界之最·大鼋★★★ 1 1 0 116 世界之最·大鼋★★★\[跨服] 0
+;MonGenEx kuafu02 108 247  世界之最·魔刀霸王   1 1 0 116 世界之最·魔刀霸王\[跨服] 0
+;MonGenEx kuafu02 218 206  世界之最·太极玄天   1 1 0 116 世界之最·太极玄天\[跨服] 0
+;MonGenEx kuafu02 80  367  世界之最·大梵般若   1 1 0 116 世界之最·大梵般若\[跨服] 0
+;MonGenEx kuafu02 236 297  世界之最·大道妖尊   1 1 0 116 世界之最·大道妖尊\[跨服] 0
+;MonGenEx kuafu02 167 424  世界之最·天地之主   1 1 0 116 世界之最·天地之主\[跨服] 0
+;MonGenEx kuafu02 293 389  世界之最·万兽之王   1 1 0 116 世界之最·万兽之王\[跨服] 0
+;MonGenEx kuafu02 202 544  世界之最·人皇始祖   1 1 0 116 世界之最·人皇始祖\[跨服] 0
+;MonGenEx kuafu02 300 534  世界之最·太玄圣虎   1 1 0 116 世界之最·太玄圣虎\[跨服] 0
+;MonGenEx kuafu02 318 242  世界之最·深海巨兽   1 1 0 116 世界之最·深海巨兽\[跨服] 0
+;MonGenEx kuafu02 401 122  世界之最·熔岩恶魔   1 1 0 116 世界之最·熔岩恶魔\[跨服] 0
+;MonGenEx kuafu02 414 194  世界之最·冰天猿魔   1 1 0 116 世界之最·冰天猿魔\[跨服] 0
+;MonGenEx kuafu02 438 264  世界之最·碧睛狂狮   1 1 0 116 世界之最·碧睛狂狮\[跨服] 0
+;MonGenEx kuafu02 479 346  世界之最·魔獠暴猪   1 1 0 116 世界之最·魔獠暴猪\[跨服] 0
+;MonGenEx kuafu02 453 439  世界之最·洪荒猛犸   1 1 0 116 世界之最·洪荒猛犸\[跨服] 0
+;MonGenEx kuafu02 452 554  世界之最·魑魅魍魉   1 1 0 116 世界之最·魑魅魍魉\[跨服] 0
+;MonGenEx kuafu02 556 244  世界之最·离火麒麟   1 1 0 116 世界之最·离火麒麟\[跨服] 0
+;MonGenEx kuafu02 546 100  世界之最·荒漠屠夫   1 1 0 116 世界之最·荒漠屠夫\[跨服] 0
+;MonGenEx kuafu02 422 43   世界之最·黑石离龟   1 1 0 116 世界之最·黑石离龟\[跨服] 0
+;MonGenEx kuafu02 300 300  跨服·勇士 300 2000 0 251 跨服·勇士 0
+;; 乱斗BOSS
+;MonGenEx kuafu03 47 40  发财树 1 1 0 249 跨服·发财树 0
 
 
-; 这段只是引入到跨服脚本中，不会直接触发
-; 所有跨服要用的触发 都一起调用了
-#IF
-CHECKLEVELEX ? 999999
-#ACT
-#CALL [\悬浮按钮\铁匠功能2.txt] @拾取鉴定EX
+;; 这段只是引入到跨服脚本中，不会直接触发
+;; 所有跨服要用的触发 都一起调用了
+;#IF
+;CHECKLEVELEX ? 999999
+;#ACT
+;#CALL [\悬浮按钮\铁匠功能2.txt] @拾取鉴定EX
 
 
 
@@ -5662,6 +5670,15 @@ BREAK
 #IF
 #ACT
 CALLLUA CC_QFunction @stdmodefunc0,<$Param2>
+#IF
+check [202] 0
+#ACT
+STOP
+
+[@StdModeFunc12]
+#IF
+#ACT
+CALLLUA CC_QFunction @stdmodefunc12,<$Param2>
 #IF
 check [202] 0
 #ACT
@@ -5843,4 +5860,24 @@ BREAK
 #IF
 #ACT
 CALLLUA CC_QFunction @base_leavemap_button
+BREAK
+
+[@jumparea_button]
+#IF
+#ACT
+CALLLUA CC_QFunction @jumparea_button,<$STR(S$sid)>
+BREAK
+
+
+;===========================================跨服相关回调=======================================
+[@KFSYSCALL101]
+#IF
+#ACT
+CALLLUA CC_QFunction @kfsyscall101
+BREAK
+
+[@KFSYSCALL102]
+#IF
+#ACT
+CALLLUA CC_QFunction @kfsyscall102
 BREAK
