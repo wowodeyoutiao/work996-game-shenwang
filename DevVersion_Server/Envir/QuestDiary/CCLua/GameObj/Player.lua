@@ -105,7 +105,6 @@ end
 function Player.GoMZHome(actor)
     --mapmove(actor, '3', 330, 330, 3)
     mapmove(actor, 'rxsc042', 330, 335, 2)
-    release_print('mapmove')
     Player.FullHPMP(actor)    
 end
 

@@ -7,12 +7,13 @@ local DAMAGE_LOW_MAX = 10000
 local ACTIVITY_BASE_CONFIG = {
     bossmap = 'kuafuboss',
     bossmonid = 7101,
-    validweekday = {1, 3},    
+    validweekday = {'1', '3'},    
     starttime = {hour=20, min=30},
     endtime = {hour=20, min=45},
     enterintervalseconds = 120,        
     --enterintervalseconds = 10,        
     mapstayseconds = 90,
+    giverewarddelaymin = 10,        --活动结束后，延迟几分钟发奖励
     showreward = {{name='元宝', num=100}, {name='元宝', num=101}, {name='元宝', num=102}, {name='元宝', num=103}},
     rankrewardlist = {
         --单独一列奖励不要超过7个
@@ -23,6 +24,20 @@ local ACTIVITY_BASE_CONFIG = {
         {rankhigh=11, ranklow=50, showrank='11-50', rewardlist={{name='元宝', num=104}, {name='金币', num=10000},{name='元宝', num=100}, {name='金币', num=10000}}},
     },
 }
+
+function JumpAreaBossDamageRank.GMResetCfg(actor)
+    ACTIVITY_BASE_CONFIG.validweekday = {'1', '2', '3', '4', '5', '6', '0', '7'}
+    local now = os.date("*t")
+    local currhour = tonumber(now.hour)
+    local currmin = tonumber(now.min)
+    ACTIVITY_BASE_CONFIG.starttime.hour = currhour
+    ACTIVITY_BASE_CONFIG.starttime.min = currmin
+    ACTIVITY_BASE_CONFIG.starttime.hour = currhour
+    ACTIVITY_BASE_CONFIG.starttime.min = math.min(currmin, currmin+5)
+    ACTIVITY_BASE_CONFIG.enterintervalseconds = 20
+    ActivityOpenServer.giverewarddelaymin = 3
+    Player.SendSelfMsg(actor, '跨服boss设置成当前开启，5分钟后结束，进入间隔20秒，结束3分钟后发奖（本服）！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+end
 
 --显示规则面板
 function JumpAreaBossDamageRank.ShowRulePanel(actor)
@@ -212,6 +227,7 @@ function JumpAreaBossDamageRank.EnterBossMap(actor)
     local currmin = BF_GetMinute(currtime)
 
     local weekday = os.date("%w")
+    release_print('weekday:'..weekday..' type:'..type(weekday))
     if not table.indexof(ACTIVITY_BASE_CONFIG.validweekday, weekday) then
         Player.SendSelfMsg(actor, '不在活动日，无法进入！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
         return
@@ -261,7 +277,7 @@ function JumpAreaBossDamageRank.OnLocalServerTimer()
 
     --游戏结束 10分钟后发奖
     rewardstatus = getsysvar(CommonDefine.VAR_G_JUMPAREA_DAMAGERANK_REWARD_STATUS)  
-    if (rewardstatus == 0) and BF_IsDelayedByMinutes(ACTIVITY_BASE_CONFIG.endtime, 10) then
+    if (rewardstatus == 0) and BF_IsDelayedByMinutes(ACTIVITY_BASE_CONFIG.endtime, ACTIVITY_BASE_CONFIG.giverewarddelaymin) then
         local strBossDamageRank = getsysvar(CommonDefine.VAR_A_JUMPAREA_DAMAGE_RANK_DATA)
         if strBossDamageRank~=nil and strBossDamageRank~='' then
             local localserverid = grobalinfo(11)

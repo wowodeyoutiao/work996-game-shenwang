@@ -601,6 +601,7 @@ CommonDefine = {
     --G_TIMER_ID_STARTUP_ONCE = 99,                       --用于触发startup
     G_TIMER_ID_CHECK_JUMPAREA_BOSS = 101,               --跨服BOSS伤害排行  本服的执行
 
+
     --跨服传递到本服的消息
     KFBCMSG_UPDATE_JUMPAREA_DAMAGE_RANK = 101,            --更新跨服BOSS伤害排行信息
     KFBCMSG_GOBACK_MZMAP = 102,                           --玩家返回本服盟重安全区

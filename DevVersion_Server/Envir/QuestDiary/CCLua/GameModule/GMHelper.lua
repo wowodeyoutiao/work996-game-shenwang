@@ -31,6 +31,7 @@ function GMHelper.OpenPanel(actor)
         '<Button|x=500|y=90|nimg=public/bg_hhzy_01_3.png|text=模拟充值10元|link=@gmhelper_button#sid1=156>'..
         '<Button|x=500|y=120|nimg=public/bg_hhzy_01_3.png|text=模拟充值100元|link=@gmhelper_button#sid1=157>'..        
 
+        '<Button|x=500|y=180|nimg=public/bg_hhzy_01_3.png|text=临时设置跨服boss|link=@gmhelper_button#sid1=1997>'..
         '<Button|x=500|y=210|nimg=public/bg_hhzy_01_3.png|text=跨服地图|link=@gmhelper_button#sid1=1998>'..
         '<Button|x=500|y=240|nimg=public/bg_hhzy_01_3.png|text=临时测试|link=@gmhelper_button#sid1=1999>'
     --[[                                      
@@ -330,6 +331,8 @@ function GMHelper.DoGmOper(actor, sid)
         end  
     elseif sid == '1010' then
         changemoney(actor, CommonDefine.ITEMID_KUAFU_SCORE, '+', 100, 'DoGmOper', true)
+    elseif sid == '1997' then
+        JumpAreaBossDamageRank.GMResetCfg(actor)
     elseif sid == '1998' then
         --map(actor, 'kuafumap1')
         local strCurrServerName = parsetext('<$SERVERNAME>')
