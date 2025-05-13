@@ -293,7 +293,8 @@ CommonDefine = {
     VAR_G_JUMPAREA_DAMAGERANK_REWARD_STATUS = 'G101',   --跨服boss伤害 活动状态 1活动未发奖 2活动已发奖
 
     --系统全局字符型变量，重启保存 A0-A499
-    VAR_A_JUMPAREA_DAMAGE_RANK_DATA = 'A100',    --跨服boss伤害排行数据
+    VAR_A_JUMPAREA_DAMAGE_RANK_DATA = 'A100',           --跨服boss伤害排行数据
+    VAR_A_JUMPAREA_DAMAGE_TEST_CFG_DATA = 'A101',       --跨服boss伤害排行测试配置
 
     --玩家数字变量，下线不保存 N0 - N99
 --[[

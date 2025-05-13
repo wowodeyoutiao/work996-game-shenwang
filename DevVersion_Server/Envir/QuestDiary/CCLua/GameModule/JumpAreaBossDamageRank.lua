@@ -32,10 +32,12 @@ function JumpAreaBossDamageRank.GMResetCfg(actor)
     local currmin = tonumber(now.min)
     ACTIVITY_BASE_CONFIG.starttime.hour = currhour
     ACTIVITY_BASE_CONFIG.starttime.min = currmin
-    ACTIVITY_BASE_CONFIG.starttime.hour = currhour
-    ACTIVITY_BASE_CONFIG.starttime.min = math.min(currmin, currmin+5)
+    ACTIVITY_BASE_CONFIG.endtime.hour = currhour
+    ACTIVITY_BASE_CONFIG.endtime.min = math.min(59, currmin+5)
     ACTIVITY_BASE_CONFIG.enterintervalseconds = 20
-    ActivityOpenServer.giverewarddelaymin = 3
+    ACTIVITY_BASE_CONFIG.giverewarddelaymin = 3
+    local tempstr = tbl2json(ACTIVITY_BASE_CONFIG)
+    setsysvar(CommonDefine.VAR_A_JUMPAREA_DAMAGE_TEST_CFG_DATA, tempstr)
     Player.SendSelfMsg(actor, '跨服boss设置成当前开启，5分钟后结束，进入间隔20秒，结束3分钟后发奖（本服）！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
 end
 
@@ -84,6 +86,11 @@ function JumpAreaBossDamageRank.GetShowInfo(actor)
 
     local itemshowidstr = ''
     local itemshowid = 110
+    local sJsonStr = getsysvar(CommonDefine.VAR_A_JUMPAREA_DAMAGE_TEST_CFG_DATA)
+    if sJsonStr~=nil and sJsonStr~='' then
+        ACTIVITY_BASE_CONFIG = json2tbl(sJsonStr)
+    end
+
     for idx, reward in ipairs(ACTIVITY_BASE_CONFIG.showreward) do  
         local itemidx = getstditeminfo(reward.name, CommonDefine.STDITEMINFO_IDX)        
         sPanelStr = sPanelStr..'<ItemShow|id='..(itemshowid+idx)..'|x='..tempX..'|y='..tempY..'|width=70|height=70|itemid='..itemidx..'|itemcount='..reward.num..'|bgtype=1|showtips=1>'        
@@ -222,6 +229,11 @@ end
 
 --进入BOSS地图
 function JumpAreaBossDamageRank.EnterBossMap(actor)
+    local sJsonStr = getsysvar(CommonDefine.VAR_A_JUMPAREA_DAMAGE_TEST_CFG_DATA)
+    if sJsonStr~=nil and sJsonStr~='' then
+        ACTIVITY_BASE_CONFIG = json2tbl(sJsonStr)
+    end
+
     local currtime = os.time()
     local currhour = BF_GetHour(currtime)
     local currmin = BF_GetMinute(currtime)
@@ -261,11 +273,23 @@ end
 
 --本服的执行逻辑
 function JumpAreaBossDamageRank.OnLocalServerTimer() 
+    local sJsonStr = getsysvar(CommonDefine.VAR_A_JUMPAREA_DAMAGE_TEST_CFG_DATA)
+    if sJsonStr~=nil and sJsonStr~='' then
+        ACTIVITY_BASE_CONFIG = json2tbl(sJsonStr)
+    end
+
     local weekday = os.date("%w")    
-    if not table.indexof(ACTIVITY_BASE_CONFIG.validweekday, tonumber(weekday)) then
+release_print('OnLocalServerTimer weekday:'..weekday..' type:'..type(weekday))    
+local str = tbl2json(ACTIVITY_BASE_CONFIG.validweekday)
+release_print('valid:'..str)
+
+    if table.indexof(ACTIVITY_BASE_CONFIG.validweekday, weekday) == false then
         --非活动日不处理相关逻辑        
         return
     end
+
+local s1 = tbl2json(ACTIVITY_BASE_CONFIG)    
+release_print('s1:'..s1)        
 
     local currtime = os.time()
     local currhour = BF_GetHour(currtime)
@@ -277,6 +301,7 @@ function JumpAreaBossDamageRank.OnLocalServerTimer()
 
     --游戏结束 10分钟后发奖
     rewardstatus = getsysvar(CommonDefine.VAR_G_JUMPAREA_DAMAGERANK_REWARD_STATUS)  
+release_print('rewardstatus:'..rewardstatus)
     if (rewardstatus == 0) and BF_IsDelayedByMinutes(ACTIVITY_BASE_CONFIG.endtime, ACTIVITY_BASE_CONFIG.giverewarddelaymin) then
         local strBossDamageRank = getsysvar(CommonDefine.VAR_A_JUMPAREA_DAMAGE_RANK_DATA)
         if strBossDamageRank~=nil and strBossDamageRank~='' then
