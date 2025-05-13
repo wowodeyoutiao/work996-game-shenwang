@@ -42,6 +42,7 @@ local function _Includes()
     cfgUnpackItem = require("Envir/QuestDiary/CCLua/GameConfig/cfgUnpackItem")    
     cfgSuperBoxLevel = require("Envir/QuestDiary/CCLua/GameConfig/cfgSuperBoxLevel")
     cfgSuperBoxRewardPool = require("Envir/QuestDiary/CCLua/GameConfig/cfgSuperBoxRewardPool")
+    cfgJumpAreaShop = require("Envir/QuestDiary/CCLua/GameConfig/cfgJumpAreaShop")
 
 
     --通用定义
@@ -450,8 +451,22 @@ local function _Includes()
             value.needitems_tab = BF_Json2Table(value.needitems)
         else
             value.needitems_tab = {}
-        end        
-    end    
+        end
+    end
+
+    --JumpAreaScoreShop
+    for _, value in pairs(cfgJumpAreaShop) do
+        if (value.exchangeitems ~= nil) and (value.exchangeitems ~= '') then
+            value.exchangeitems_tab = BF_Json2Table(value.exchangeitems)
+        else
+            value.exchangeitems_tab = {}
+        end
+        if (value.needitems ~= nil) and (value.needitems ~= '') then
+            value.needitems_tab = BF_Json2Table(value.needitems)
+        else
+            value.needitems_tab = {}
+        end
+    end
 
     -- --EverydayTask
     -- for _, value in pairs(cfgEverydayTask) do

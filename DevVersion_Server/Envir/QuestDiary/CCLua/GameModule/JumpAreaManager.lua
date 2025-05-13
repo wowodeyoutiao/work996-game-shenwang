@@ -5,6 +5,7 @@ JumpAreaManager.BUTTONFUNC_ID_2 = 2                  --进入跨服BOSS
 JumpAreaManager.BUTTONFUNC_ID_3 = 3                  --显示跨服BOSS实时榜单
 JumpAreaManager.BUTTONFUNC_ID_4 = 4                  --显示跨服BOSS奖励预览
 JumpAreaManager.BUTTONFUNC_ID_5 = 5                  --显示跨服BOSS基础
+JumpAreaManager.BUTTONFUNC_ID_6 = 6                  --兑换当前指定的跨服商店道具
 
 JumpAreaManager.JUMPAREA_BUTTONFUNC_ID_1 = '1'       --addbutton对应的特殊按钮1 返回本服
 
@@ -141,6 +142,8 @@ function JumpAreaManager.DoOperButton(actor, sid, sparam)
     elseif funcid == JumpAreaManager.BUTTONFUNC_ID_5 then
         setplaydef(actor, CommonDefine.VAR_N_NPC_TEMPPARAM2, 0)
         JumpAreaManager.ShowBasePanel(actor)
+    elseif funcid == JumpAreaManager.BUTTONFUNC_ID_6 then
+        JumpAreaScoreShop.ExchangeShopItem(actor, id)
     end
 end
 

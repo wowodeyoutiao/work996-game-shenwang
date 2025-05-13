@@ -23,6 +23,7 @@ CSS = {
     NPC_BLUE_LINE = 154,
     NPC_DARKRED = 42,
     NPC_GRAY = 82,
+    NPC_BLACK = 0,
 
     --адлЛ©Ряуи╚
     CHAT_WHITE = 255,

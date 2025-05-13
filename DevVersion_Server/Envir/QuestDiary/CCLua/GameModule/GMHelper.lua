@@ -24,12 +24,12 @@ function GMHelper.OpenPanel(actor)
         '<Button|x=200|y=30|nimg=public/bg_hhzy_01_3.png|text=清空装备位强化|link=@gmhelper_button#sid1=1008>'..
         '<Button|x=200|y=60|nimg=public/bg_hhzy_01_3.png|text=清空装备位星级|link=@gmhelper_button#sid1=1009>'..
         '<Button|x=200|y=90|nimg=public/bg_hhzy_01_3.png|text=给五星魂石|link=@gmhelper_button#sid1=3>'..
+        '<Button|x=200|y=120|nimg=public/bg_hhzy_01_3.png|text=100点跨服积分|link=@gmhelper_button#sid1=1010>'..
 
         '<Button|x=500|y=30|nimg=public/bg_hhzy_01_3.png|text=清空首充|link=@gmhelper_button#sid1=154>'..
         '<Button|x=500|y=60|nimg=public/bg_hhzy_01_3.png|text=模拟充值1元|link=@gmhelper_button#sid1=155>'..
         '<Button|x=500|y=90|nimg=public/bg_hhzy_01_3.png|text=模拟充值10元|link=@gmhelper_button#sid1=156>'..
-        '<Button|x=500|y=120|nimg=public/bg_hhzy_01_3.png|text=模拟充值100元|link=@gmhelper_button#sid1=157>'..       
-
+        '<Button|x=500|y=120|nimg=public/bg_hhzy_01_3.png|text=模拟充值100元|link=@gmhelper_button#sid1=157>'..        
 
         '<Button|x=500|y=210|nimg=public/bg_hhzy_01_3.png|text=跨服地图|link=@gmhelper_button#sid1=1998>'..
         '<Button|x=500|y=240|nimg=public/bg_hhzy_01_3.png|text=临时测试|link=@gmhelper_button#sid1=1999>'
@@ -45,7 +45,7 @@ function GMHelper.OpenPanel(actor)
         '<Button|x=200|y=60|nimg=public/bg_hhzy_01_3.png|text=初始主线任务|link=@gmhelper_button,101>'..                      
         '<Button|x=200|y=90|nimg=public/bg_hhzy_01_3.png|text=接受主线任务|link=@gmhelper_button,103>'..
         '<Button|x=200|y=120|nimg=public/bg_hhzy_01_3.png|text=完成主线任务|link=@gmhelper_button,104>'..
-        '<Button|x=200|y=150|nimg=public/bg_hhzy_01_3.png|text=领奖主线任务|link=@gmhelper_button,105>'..
+        
         '<Button|x=200|y=180|nimg=public/bg_hhzy_01_3.png|text=刷新任务怪|link=@gmhelper_button,106>'..
         '<Button|x=200|y=210|nimg=public/bg_hhzy_01_3.png|text=增加100官职经验|link=@gmhelper_button,107>'..
         
@@ -328,6 +328,8 @@ function GMHelper.DoGmOper(actor, sid)
         for i = 1, #CommonDefine.BASE_EQUIPMENT_POS, 1 do
             EquipPosStarManager.ClearEquipStarLvInPos(actor, CommonDefine.BASE_EQUIPMENT_POS[i])
         end  
+    elseif sid == '1010' then
+        changemoney(actor, CommonDefine.ITEMID_KUAFU_SCORE, '+', 100, 'DoGmOper', true)
     elseif sid == '1998' then
         --map(actor, 'kuafumap1')
         local strCurrServerName = parsetext('<$SERVERNAME>')

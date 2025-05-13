@@ -13,15 +13,17 @@ CommonDefine = {
     GENDER_WOMAN = 1,
 
     --基础道具ID
-    ITEMID_GOLD = 28,        --金币
-    ITEMID_YB = 1,          --元宝
-    ITEMID_BINDYB = 4,      --绑定元宝
-    ITEMID_JINGANGSHI = 2,  --金刚石
-    ITEMID_EXP = 6,         --经验
+    ITEMID_GOLD = 28,                   --金币
+    ITEMID_YB = 1,                      --元宝
+    ITEMID_BINDYB = 4,                  --绑定元宝
+    ITEMID_JINGANGSHI = 2,              --金刚石
+    ITEMID_EXP = 6,                     --经验    
 
-    --ITEMID_MOFANGZHEN_JIFEN = 20,   --魔方阵积分
-    --ITEMID_XINYUNFU = 208,  --幸运符
-    --ITEMID_BAODIFU = 209,   --保底符
+    --ITEMID_MOFANGZHEN_JIFEN = 20,     --魔方阵积分
+
+    ITEMID_KUAFU_SCORE = 32,            --跨服积分
+    --ITEMID_XINYUNFU = 208,            --幸运符
+    --ITEMID_BAODIFU = 209,             --保底符
 
     --道具的Stdmode
     ITEM_STDMODE_WEAPON = 5,        --武器
@@ -447,6 +449,7 @@ CommonDefine = {
     VAR_T_OPENSERVER_REWARDDATA3 = 'T52',                --开服活动领奖信息--等级达标
     VAR_T_OPENSERVER_REWARDDATA4 = 'T53',                --开服活动领奖信息--战力达标
     VAR_T_EXTENDGIFT_REWARDDATA = 'T54',                 --进阶礼包领奖信息
+    VAR_T_JUMPAREA_SHOP_BUYDATA = 'T55',                 --跨服商店兑换信息
 
     --玩家数字变量，下线保存，0点重置 J0 - J499
     --[[        
