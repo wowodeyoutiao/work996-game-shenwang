@@ -6,8 +6,13 @@ JumpAreaManager.BUTTONFUNC_ID_3 = 3                  --显示跨服BOSS实时榜单
 JumpAreaManager.BUTTONFUNC_ID_4 = 4                  --显示跨服BOSS奖励预览
 JumpAreaManager.BUTTONFUNC_ID_5 = 5                  --显示跨服BOSS基础
 JumpAreaManager.BUTTONFUNC_ID_6 = 6                  --兑换当前指定的跨服商店道具
+JumpAreaManager.BUTTONFUNC_ID_7 = 7                  --进入跨服大乱斗
+JumpAreaManager.BUTTONFUNC_ID_8 = 8                  --显示跨服大乱斗奖励预览
+JumpAreaManager.BUTTONFUNC_ID_9 = 9                  --显示跨服大乱斗基础
+JumpAreaManager.BUTTONFUNC_ID_10 = 10                --显示跨服大乱斗排行--本服中
 
 JumpAreaManager.JUMPAREA_BUTTONFUNC_ID_1 = '1'       --addbutton对应的特殊按钮1 返回本服
+JumpAreaManager.JUMPAREA_BUTTONFUNC_ID_2 = '2'       --addbutton对应的特殊按钮2 显示跨服大乱斗的实时排行
 
 JumpAreaManager.ACTIVITY_TYPE_SINGLEPK = 1           --跨服个人战
 JumpAreaManager.ACTIVITY_TYPE_MULTIPK = 2            --跨服大乱斗
@@ -28,12 +33,17 @@ function JumpAreaManager.OnInit()
     --release_print('JumpAreaManager.OnInit')
     local isKuafuSever = checkkuafuserver()
     if isKuafuSever == false then
-        if not hastimerex(CommonDefine.G_TIMER_ID_CHECK_JUMPAREA_BOSS) then 
-            setontimerex(CommonDefine.G_TIMER_ID_CHECK_JUMPAREA_BOSS, 30)               
+        if not hastimerex(CommonDefine.G_TIMER_ID_CHECK_JUMPAREA_LOCALTIMER) then 
+            setontimerex(CommonDefine.G_TIMER_ID_CHECK_JUMPAREA_LOCALTIMER, 30)               
         end
     else
 
     end
+end
+
+function JumpAreaManager.OnLocalServerTimer()
+    JumpAreaBossDamageRank.OnLocalServerTimer()
+    JumpAreaRandomFighting.OnLocalServerTimer()
 end
 
 function JumpAreaManager.CanShowIcon(actor)
@@ -57,7 +67,7 @@ function JumpAreaManager.ShowRulePanel(actor)
     if chooseid == JumpAreaManager.ACTIVITY_TYPE_SINGLEPK then   
 
     elseif chooseid == JumpAreaManager.ACTIVITY_TYPE_MULTIPK then        
-
+        strPanelInfo = strPanelInfo..JumpAreaRandomFighting.ShowRulePanel(actor)
     elseif chooseid == JumpAreaManager.ACTIVITY_TYPE_BOSS then
         strPanelInfo = strPanelInfo..JumpAreaBossDamageRank.ShowRulePanel(actor)
     elseif chooseid == JumpAreaManager.ACTIVITY_TYPE_DUOBAO then
@@ -76,6 +86,8 @@ local function GetJumpAreaActivityShowInfo(actor, id)
             sPanelStr = sPanelStr..JumpAreaBossDamageRank.GetShowInfo(actor)
         elseif id == JumpAreaManager.ACTIVITY_TYPE_SHOP then
             sPanelStr = sPanelStr..JumpAreaScoreShop.GetShowInfo(actor)
+        elseif id == JumpAreaManager.ACTIVITY_TYPE_MULTIPK then
+            sPanelStr = sPanelStr..JumpAreaRandomFighting.GetShowInfo(actor)
         end
     end
     return sPanelStr
@@ -146,6 +158,17 @@ function JumpAreaManager.DoOperButton(actor, sid, sparam)
         JumpAreaManager.ShowBasePanel(actor)
     elseif funcid == JumpAreaManager.BUTTONFUNC_ID_6 then
         JumpAreaScoreShop.ExchangeShopItem(actor, id)
+    elseif funcid == JumpAreaManager.BUTTONFUNC_ID_7 then
+        JumpAreaRandomFighting.EnterBossMap(actor)
+    elseif funcid == JumpAreaManager.BUTTONFUNC_ID_8 then
+        setplaydef(actor, CommonDefine.VAR_N_NPC_TEMPPARAM2, 2)
+        JumpAreaManager.ShowBasePanel(actor)
+    elseif funcid == JumpAreaManager.BUTTONFUNC_ID_10 then
+        setplaydef(actor, CommonDefine.VAR_N_NPC_TEMPPARAM2, 1)
+        JumpAreaManager.ShowBasePanel(actor)        
+    elseif funcid == JumpAreaManager.BUTTONFUNC_ID_9 then
+        setplaydef(actor, CommonDefine.VAR_N_NPC_TEMPPARAM2, 0)
+        JumpAreaManager.ShowBasePanel(actor)        
     end
 end
 
@@ -158,6 +181,8 @@ function JumpAreaManager.DoJumpAreaButton(actor, sid)
     local playerid = Player.GetPlayerID(actor)
     if sid == JumpAreaManager.JUMPAREA_BUTTONFUNC_ID_1 then
         kfbackcall(CommonDefine.KFBCMSG_GOBACK_MZMAP, playerid, '', '') 
+    elseif sid == JumpAreaManager.JUMPAREA_BUTTONFUNC_ID_2 then
+        JumpAreaRandomFighting.ShowCurrRankData(actor)
     end
 end
 

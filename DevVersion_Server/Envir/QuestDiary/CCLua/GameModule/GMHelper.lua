@@ -26,13 +26,14 @@ function GMHelper.OpenPanel(actor)
         '<Button|x=200|y=90|nimg=public/bg_hhzy_01_3.png|text=给五星魂石|link=@gmhelper_button#sid1=3>'..
         '<Button|x=200|y=120|nimg=public/bg_hhzy_01_3.png|text=100点跨服积分|link=@gmhelper_button#sid1=1010>'..
 
+        '<Button|x=350|y=30|nimg=public/bg_hhzy_01_3.png|text=重置跨服活动配置|link=@gmhelper_button#sid1=1996>'..
+        '<Button|x=350|y=60|nimg=public/bg_hhzy_01_3.png|text=设置跨服boss配置|link=@gmhelper_button#sid1=1997>'..
+        '<Button|x=350|y=90|nimg=public/bg_hhzy_01_3.png|text=设置跨服大乱斗配置|link=@gmhelper_button#sid1=1998>'..        
+
         '<Button|x=500|y=30|nimg=public/bg_hhzy_01_3.png|text=清空首充|link=@gmhelper_button#sid1=154>'..
         '<Button|x=500|y=60|nimg=public/bg_hhzy_01_3.png|text=模拟充值1元|link=@gmhelper_button#sid1=155>'..
         '<Button|x=500|y=90|nimg=public/bg_hhzy_01_3.png|text=模拟充值10元|link=@gmhelper_button#sid1=156>'..
         '<Button|x=500|y=120|nimg=public/bg_hhzy_01_3.png|text=模拟充值100元|link=@gmhelper_button#sid1=157>'..        
-        '<Button|x=500|y=150|nimg=public/bg_hhzy_01_3.png|text=清空跨服boss配置|link=@gmhelper_button#sid1=1996>'..
-        '<Button|x=500|y=180|nimg=public/bg_hhzy_01_3.png|text=设置跨服boss配置|link=@gmhelper_button#sid1=1997>'..
-        '<Button|x=500|y=210|nimg=public/bg_hhzy_01_3.png|text=跨服地图|link=@gmhelper_button#sid1=1998>'..
         '<Button|x=500|y=240|nimg=public/bg_hhzy_01_3.png|text=临时测试|link=@gmhelper_button#sid1=1999>'
     --[[                                      
         '<Button|x=40|y=120|nimg=public/bg_hhzy_01_3.png|text=无敌|link=@gmhelper_button,4>'..
@@ -333,13 +334,11 @@ function GMHelper.DoGmOper(actor, sid)
         changemoney(actor, CommonDefine.ITEMID_KUAFU_SCORE, '+', 100, 'DoGmOper', true)
     elseif sid == '1996' then
         setsysvar(CommonDefine.VAR_A_JUMPAREA_DAMAGE_TEST_CFG_DATA, '')
+        setsysvar(CommonDefine.VAR_A_JUMPAREA_RANDFIGHTING_TEST_CFG_DATA, '')
     elseif sid == '1997' then
         JumpAreaBossDamageRank.GMResetCfg(actor)
     elseif sid == '1998' then
-        --map(actor, 'kuafumap1')
-        local strCurrServerName = parsetext('<$SERVERNAME>')
-        release_print(strCurrServerName)
-        sendmsg(actor, 6, strCurrServerName)
+        JumpAreaRandomFighting.GMResetCfg(actor)
     elseif sid == '1999' then 
         --changeexp(actor, '+', 500, true)
         --delbutton(actor, 108, CommonDefine.ADD_BUTTON_ID_5)

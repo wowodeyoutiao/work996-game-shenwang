@@ -5881,3 +5881,9 @@ BREAK
 #ACT
 CALLLUA CC_QFunction @kfsyscall102
 BREAK
+
+[@KFSYSCALL103]
+#IF
+#ACT
+CALLLUA CC_QFunction @kfsyscall103
+BREAK

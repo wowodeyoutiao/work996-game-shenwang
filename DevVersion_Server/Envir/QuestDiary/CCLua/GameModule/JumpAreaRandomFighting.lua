@@ -1,18 +1,18 @@
-JumpAreaBossDamageRank = {}
+JumpAreaRandomFighting = {}
 
-JumpAreaBossDamageRank.CurrRankData = {}
-
-local DAMAGE_LOW_MAX = 10000
+JumpAreaRandomFighting.CurrRankData = {}
 
 local ACTIVITY_BASE_CONFIG = {
-    bossmap = 'kuafuboss',
-    bossmonid = 7101,
-    validweekday = {'1', '3'},    
+    bossmap = 'kuafurandfighting',
+    monscorelist = {
+        {monid=7102, score=10},
+        {monid=7103, score=50},
+        {monid=7104, score=100},
+    },
+    validweekday = {'2', '4'},
     starttime = {hour=20, min=30},
-    endtime = {hour=20, min=45},
-    enterintervalseconds = 120,        
-    --enterintervalseconds = 10,        
-    mapstayseconds = 90,
+    endtime = {hour=21, min=0},
+    enterintervalseconds = 10,        
     giverewarddelaymin = 10,        --活动结束后，延迟几分钟发奖励
     showreward = {{name='元宝', num=100}, {name='元宝', num=101}, {name='元宝', num=102}, {name='元宝', num=103}},
     rankrewardlist = {
@@ -25,32 +25,31 @@ local ACTIVITY_BASE_CONFIG = {
     },
 }
 
-function JumpAreaBossDamageRank.GMResetCfg(actor)
+function JumpAreaRandomFighting.GMResetCfg(actor)
     local now = os.date("*t")
     local currhour = tonumber(now.hour)
-    local currmin = tonumber(now.min)    
+    local currmin = tonumber(now.min)
     ACTIVITY_BASE_CONFIG.validweekday = {'1', '2', '3', '4', '5', '6', '0', '7'}
     ACTIVITY_BASE_CONFIG.starttime.hour = currhour
     ACTIVITY_BASE_CONFIG.starttime.min = currmin
     ACTIVITY_BASE_CONFIG.endtime.hour = currhour
     ACTIVITY_BASE_CONFIG.endtime.min = math.min(59, currmin+5)
-    ACTIVITY_BASE_CONFIG.enterintervalseconds = 20
     ACTIVITY_BASE_CONFIG.giverewarddelaymin = 3
     local tempstr = tbl2json(ACTIVITY_BASE_CONFIG)
-    setsysvar(CommonDefine.VAR_A_JUMPAREA_DAMAGE_TEST_CFG_DATA, tempstr)
-    setsysvar(CommonDefine.VAR_G_JUMPAREA_DAMAGERANK_REWARD_STATUS, 0) 
-    Player.SendSelfMsg(actor, '跨服boss设置成当前开启，5分钟后结束，进入间隔20秒，结束3分钟后发奖（本服）！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+    setsysvar(CommonDefine.VAR_A_JUMPAREA_RANDFIGHTING_TEST_CFG_DATA, tempstr)
+    setsysvar(CommonDefine.VAR_G_JUMPAREA_RANDFIGHTING_REWARD_STATUS, 0) 
+    Player.SendSelfMsg(actor, '跨服大乱斗设置成当前开启，5分钟后结束，结束3分钟后发奖（本服）！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
 end
 
 --显示规则面板
-function JumpAreaBossDamageRank.ShowRulePanel(actor)
+function JumpAreaRandomFighting.ShowRulePanel(actor)
     local strPanelInfo = '<Img|id=10|children={11,12,21,22,23,24,25,26,27,28,29,30}|x=268.0|y=69.0|show=0|esc=1|reset=1|img=private/cc_common/rule_panel.png|bg=1|move=0>'..
         '<Layout|id=11|x=525.0|y=-1.0|width=80|height=80|link=@show_base_panel>'..
         '<Button|id=12|x=528.0|y=0.0|nimg=public/1900000510.png|pimg=public/1900000511.png|link=@show_base_panel>'
 
     local tempCurrX = 20
     local tempCurrY = 50
-    strPanelInfo = strPanelInfo..'<Text|id=21|text=跨服BOSS规则说明:|size=20|x='..tempCurrX..'|y='..tempCurrY..'|color='..CSS.NPC_LIGHTGREEN..'>'
+    strPanelInfo = strPanelInfo..'<Text|id=21|text=跨服大乱斗规则说明:|size=20|x='..tempCurrX..'|y='..tempCurrY..'|color='..CSS.NPC_LIGHTGREEN..'>'
     tempCurrY = tempCurrY + 35
     strPanelInfo = strPanelInfo..'<Text|id=22|text=1、......|x='..tempCurrX..'|y='..tempCurrY..'|color='..CSS.NPC_WHITE..'>'
     tempCurrY = tempCurrY + 30
@@ -67,27 +66,31 @@ function JumpAreaBossDamageRank.ShowRulePanel(actor)
     return strPanelInfo
 end
 
-function JumpAreaBossDamageRank.GetShowInfo(actor)
+function JumpAreaRandomFighting.GetShowInfo(actor)
     local sPanelStr = ''
     local tempX = 20
     local tempY = 20
     sPanelStr = sPanelStr..'<Text|id=101|text=时间设定：|size=22|x='..tempX..'|y='..tempY..'|color='..CSS.NPC_YELLOW..'>'
     tempY = tempY + 35
     sPanelStr = sPanelStr..'<Text|id=102|text=玩法说明：|size=22|x='..tempX..'|y='..tempY..'|color='..CSS.NPC_YELLOW..'>'
-    tempY = tempY + 70
+    tempY = tempY + 140
     sPanelStr = sPanelStr..'<Text|id=103|text=奖励内容：|size=22|x='..tempX..'|y='..tempY..'|color='..CSS.NPC_YELLOW..'>'        
     tempX = 130
     tempY = 25
-    sPanelStr = sPanelStr..'<Text|id=104|text=每周一和周三晚上8点30~8点45为开放挑战时间|size=18|x='..tempX..'|y='..tempY..'|color='..CSS.NPC_WHITE..'>'
+    sPanelStr = sPanelStr..'<Text|id=104|text=每周二和周四晚上8点30~9点为开放挑战时间|size=18|x='..tempX..'|y='..tempY..'|color='..CSS.NPC_WHITE..'>'
     tempY = tempY + 30
-    sPanelStr = sPanelStr..'<Text|id=105|text=开放时间地图内会刷新BOSS，每次进入可攻击90秒，|size=18|x='..tempX..'|y='..tempY..'|color='..CSS.NPC_WHITE..'>'
+    sPanelStr = sPanelStr..'<Text|id=105|text=开放时间地图内，玩家可以进入副本战斗。副本内随机|size=18|x='..tempX..'|y='..tempY..'|color='..CSS.NPC_WHITE..'>'
     tempY = tempY + 30
-    sPanelStr = sPanelStr..'<Text|id=106|text=间隔2分钟可再次进入，按照对BOSS造成伤害进行排行！|size=18|x='..tempX..'|y='..tempY..'|color='..CSS.NPC_WHITE..'>'
+    sPanelStr = sPanelStr..'<Text|id=106|text=多种不同品质的怪物，击杀怪物后获得抗魔值，抗魔值|size=18|x='..tempX..'|y='..tempY..'|color='..CSS.NPC_WHITE..'>'
+    tempY = tempY + 30    
+    sPanelStr = sPanelStr..'<Text|id=107|text=越高，最终获得奖励最大。在战场内击杀其它玩家后，|size=18|x='..tempX..'|y='..tempY..'|color='..CSS.NPC_WHITE..'>'
+    tempY = tempY + 30        
+    sPanelStr = sPanelStr..'<Text|id=108|text=可获得其1/10抗魔值！|size=18|x='..tempX..'|y='..tempY..'|color='..CSS.NPC_WHITE..'>'
     tempY = tempY + 30
 
     local itemshowidstr = ''
     local itemshowid = 110
-    local sJsonStr = getsysvar(CommonDefine.VAR_A_JUMPAREA_DAMAGE_TEST_CFG_DATA)
+    local sJsonStr = getsysvar(CommonDefine.VAR_A_JUMPAREA_RANDFIGHTING_TEST_CFG_DATA)
     if sJsonStr~=nil and sJsonStr~='' then
         ACTIVITY_BASE_CONFIG = json2tbl(sJsonStr)
     end
@@ -101,31 +104,20 @@ function JumpAreaBossDamageRank.GetShowInfo(actor)
         end
         itemshowidstr = itemshowidstr..(itemshowid+idx)
     end
-    sPanelStr = sPanelStr..'<Layout|id=15|children={50,51,52,53,54,101,102,103,104,105,106,'..itemshowidstr..',60}|x=200.0|y=65.0|width=580|height=420>'
+    sPanelStr = sPanelStr..'<Layout|id=15|children={50,51,52,53,54,101,102,103,104,105,106,107,108,'..itemshowidstr..',60}|x=200.0|y=65.0|width=580|height=420>'
     sPanelStr = sPanelStr..'<Button|id=50|x=220|y=360|pimg=private/cc_jumparea/4.png|nimg=private/cc_jumparea/4.png|color='..CSS.NPC_WHITE..
-        '|size=18|text=进    入|link=@function_button,'..JumpAreaManager.BUTTONFUNC_ID_2..'>'
-
+        '|size=18|text=进    入|link=@function_button,'..JumpAreaManager.BUTTONFUNC_ID_7..'>'
     sPanelStr = sPanelStr..'<Button|id=51|x=20|y=270|pimg=private/cc_jumparea/4.png|nimg=private/cc_jumparea/4.png|color='..CSS.NPC_WHITE..
-        '|size=18|text=实时榜单|link=@function_button,'..JumpAreaManager.BUTTONFUNC_ID_3..'>'..
+        '|size=18|text=实时榜单|link=@function_button,'..JumpAreaManager.BUTTONFUNC_ID_10..'>'..
         '<Button|id=52|x=450|y=270|pimg=private/cc_jumparea/4.png|nimg=private/cc_jumparea/4.png|color='..CSS.NPC_WHITE..
-        '|size=18|text=奖励预览|link=@function_button,'..JumpAreaManager.BUTTONFUNC_ID_4..'>'
-
-    local currtime = os.time()
-    local lastentertime = getplaydef(actor, CommonDefine.VAR_J_DAY_JUMPAREA_BOSS_LAST_ENTERTIME)
-    local passtime = math.abs(currtime - lastentertime)
-    if passtime < ACTIVITY_BASE_CONFIG.enterintervalseconds then
-        local leftseconds = ACTIVITY_BASE_CONFIG.enterintervalseconds - passtime
-        sPanelStr = sPanelStr..'<COUNTDOWN|id=53|x=220|y=330|time='..leftseconds..'|count=1|size=16|color='..CSS.NPC_LIGHTGREEN..'|link=@function_button,'..
-        JumpAreaManager.BUTTONFUNC_ID_1..','..JumpAreaManager.ACTIVITY_TYPE_BOSS..'>'..
-        '<Text|id=54|text=后可进入|size=16|x=270|y=330|color='..CSS.NPC_WHITE..'>'
-    end
+        '|size=18|text=奖励预览|link=@function_button,'..JumpAreaManager.BUTTONFUNC_ID_8..'>'
 
     local showflag = getplaydef(actor, CommonDefine.VAR_N_NPC_TEMPPARAM2) 
     if showflag == 1 then
         --实时排名
         sPanelStr = sPanelStr..'<Img|id=60|children={61,62,63,64,65}|x=50.0|y=30.0|img=private/cc_common/rule_panel.png|reset=1|esc=1|loadDelay=0|move=0|show=0>'..
-        '<Layout|id=61|x=530.0|y=1.0|width=80|height=80|link=@function_button,'..JumpAreaManager.BUTTONFUNC_ID_5..'>'..
-        '<Button|id=62|x=530.0|y=2.0|pimg=public/1900000511.png|nimg=public/1900000510.png|link=@function_button,'..JumpAreaManager.BUTTONFUNC_ID_5..'>'
+        '<Layout|id=61|x=530.0|y=1.0|width=80|height=80|link=@function_button,'..JumpAreaManager.BUTTONFUNC_ID_9..'>'..
+        '<Button|id=62|x=530.0|y=2.0|pimg=public/1900000511.png|nimg=public/1900000510.png|link=@function_button,'..JumpAreaManager.BUTTONFUNC_ID_9..'>'
 
         local strItems = ''
         local nStartID = 300
@@ -142,16 +134,16 @@ function JumpAreaBossDamageRank.GetShowInfo(actor)
             sPanelStr = sPanelStr..'<Layout|id='..nLayoutID..'|children={'..strTextIDs..'}|width=480|height=40>'..
                 '<Text|id='..nTextID1..'|x=50|y=10|color=255|size=20|text=排名>'..
                 '<Text|id='..nTextID2..'|x=200|y=10|color=255|size=20|text=角色名>'..
-                '<Text|id='..nTextID3..'|x=380|y=10|color=255|size=20|text=伤害总量>'
+                '<Text|id='..nTextID3..'|x=380|y=10|color=255|size=20|text=抗魔值>'
         end
         
-        local tabBossDamageRank = {}
-        local strBossDamageRank = getsysvar(CommonDefine.VAR_A_JUMPAREA_DAMAGE_RANK_DATA)
-        if strBossDamageRank~=nil and strBossDamageRank~='' then
-            tabBossDamageRank = json2tbl(strBossDamageRank)
-            if tabBossDamageRank ~= nil then
+        local tabDataRank = {}
+        local strDataRank = getsysvar(CommonDefine.VAR_A_JUMPAREA_RANDFIGHTING_RANK_DATA)
+        if strDataRank~=nil and strDataRank~='' then
+            tabDataRank = json2tbl(strDataRank)
+            if tabDataRank ~= nil then
                 nStartID = nStartID + 10        
-                for seq, value in ipairs(tabBossDamageRank) do        
+                for seq, value in ipairs(tabDataRank) do        
                     local nLayoutID = nStartID + seq * 10 + 1
                     if strItems ~= '' then
                         strItems = strItems..','
@@ -165,23 +157,22 @@ function JumpAreaBossDamageRank.GetShowInfo(actor)
                     sPanelStr = sPanelStr..'<Layout|id='..nLayoutID..'|children={'..strTextIDs..'}|width=480|height=50>'..
                         '<Text|id='..nTextID1..'|x=50|y=10|color=255|size=20|text='..seq..'>'..
                         '<Text|id='..nTextID2..'|x=150|y=10|color=255|size=20|text='..value.showname..'>'..
-                        '<Text|id='..nTextID3..'|x=380|y=10|color=255|size=20|text='..value.currscore..'万>'
-                end                 
-            end           
+                        '<Text|id='..nTextID3..'|x=380|y=10|color=255|size=20|text='..value.currscore..'>'
+                end
+            end
         end
         
-        local damagehigh = getplaydef(actor, CommonDefine.VAR_U_JUMPAREA_BOSS_DAMAGE_HIGH)     
-        local strShowScoreInfo = '当前伤害总量:'..damagehigh..'万'
+        local currscore = getplaydef(actor, CommonDefine.VAR_U_JUMPAREA_FIGHTING_KMVALUE)     
+        local strShowScoreInfo = '当前抗魔值:'..currscore
 
         sPanelStr = sPanelStr..'<ListView|id=63|children={'..strItems..'}|x=20.0|y=40|width=480|height=250|margin=0|direction=1>'..
             '<Text|id=64|x=180|y=300|color='..CSS.NPC_LIGHTGREEN..'|size=18|text='..strShowScoreInfo..'>'..
-            '<Text|id=65|x=180|y=320|color=255|size=16|text=(结束10分钟后邮件发送奖励)>'
-        
+            '<Text|id=65|x=180|y=320|color=255|size=16|text=(结束10分钟后邮件发送奖励)>'    
     elseif showflag == 2 then
         --预览奖励
         sPanelStr = sPanelStr..'<Img|id=60|children={61,62,63}|x=50.0|y=30.0|img=private/cc_common/rule_panel.png|reset=1|esc=1|loadDelay=0|move=0|show=0>'..
-        '<Layout|id=61|x=530.0|y=1.0|width=80|height=80|link=@function_button,'..JumpAreaManager.BUTTONFUNC_ID_5..'>'..
-        '<Button|id=62|x=530.0|y=2.0|pimg=public/1900000511.png|nimg=public/1900000510.png|link=@function_button,'..JumpAreaManager.BUTTONFUNC_ID_5..'>'
+        '<Layout|id=61|x=530.0|y=1.0|width=80|height=80|link=@function_button,'..JumpAreaManager.BUTTONFUNC_ID_9..'>'..
+        '<Button|id=62|x=530.0|y=2.0|pimg=public/1900000511.png|nimg=public/1900000510.png|link=@function_button,'..JumpAreaManager.BUTTONFUNC_ID_9..'>'
         
         local strItems = ''
         local nStartID = 300
@@ -229,8 +220,8 @@ function JumpAreaBossDamageRank.GetShowInfo(actor)
 end
 
 --进入BOSS地图
-function JumpAreaBossDamageRank.EnterBossMap(actor)
-    local sJsonStr = getsysvar(CommonDefine.VAR_A_JUMPAREA_DAMAGE_TEST_CFG_DATA)
+function JumpAreaRandomFighting.EnterBossMap(actor)
+    local sJsonStr = getsysvar(CommonDefine.VAR_A_JUMPAREA_RANDFIGHTING_TEST_CFG_DATA)
     if sJsonStr~=nil and sJsonStr~='' then
         ACTIVITY_BASE_CONFIG = json2tbl(sJsonStr)
     end
@@ -260,6 +251,15 @@ function JumpAreaBossDamageRank.EnterBossMap(actor)
     map(actor, ACTIVITY_BASE_CONFIG.bossmap)
 end
 
+local function UpdateKMScoreShow(actor)
+    if not BF_IsNullObj(actor) then
+        delbutton(actor, 108, CommonDefine.ADD_BUTTON_ID_37)
+        local score = getplaydef(actor, CommonDefine.VAR_U_JUMPAREA_FIGHTING_KMVALUE)
+        addbutton(actor, 108, CommonDefine.ADD_BUTTON_ID_37, '<Text|x=-100|y=-210|color='..CSS.NPC_LIGHTGREEN..
+            '|size=20|text=当前抗魔值:'..score..'>')         
+    end
+end
+
 local function GetRewardByRank(rank)
     local rewarditems = nil
     for _, value in ipairs(ACTIVITY_BASE_CONFIG.rankrewardlist) do
@@ -272,8 +272,8 @@ local function GetRewardByRank(rank)
 end
 
 --本服的执行逻辑
-function JumpAreaBossDamageRank.OnLocalServerTimer() 
-    local sJsonStr = getsysvar(CommonDefine.VAR_A_JUMPAREA_DAMAGE_TEST_CFG_DATA)
+function JumpAreaRandomFighting.OnLocalServerTimer() 
+    local sJsonStr = getsysvar(CommonDefine.VAR_A_JUMPAREA_RANDFIGHTING_TEST_CFG_DATA)
     if sJsonStr~=nil and sJsonStr~='' then
         ACTIVITY_BASE_CONFIG = json2tbl(sJsonStr)
     end
@@ -287,15 +287,15 @@ function JumpAreaBossDamageRank.OnLocalServerTimer()
     local currtime = os.time()
     local currhour = BF_GetHour(currtime)
     local currmin = BF_GetMinute(currtime)    
-    local rewardstatus = getsysvar(CommonDefine.VAR_G_JUMPAREA_DAMAGERANK_REWARD_STATUS)
+    local rewardstatus = getsysvar(CommonDefine.VAR_G_JUMPAREA_RANDFIGHTING_REWARD_STATUS)
     if (rewardstatus == 1) and ((currhour<ACTIVITY_BASE_CONFIG.starttime.hour) or (currhour==ACTIVITY_BASE_CONFIG.starttime.hour and currmin<ACTIVITY_BASE_CONFIG.starttime.min)) then
-        setsysvar(CommonDefine.VAR_G_JUMPAREA_DAMAGERANK_REWARD_STATUS, 0)        
+        setsysvar(CommonDefine.VAR_G_JUMPAREA_RANDFIGHTING_REWARD_STATUS, 0)        
     end
 
     --游戏结束 10分钟后发奖
-    rewardstatus = getsysvar(CommonDefine.VAR_G_JUMPAREA_DAMAGERANK_REWARD_STATUS)  
+    rewardstatus = getsysvar(CommonDefine.VAR_G_JUMPAREA_RANDFIGHTING_REWARD_STATUS)  
     if (rewardstatus == 0) and BF_IsDelayedByMinutes(ACTIVITY_BASE_CONFIG.endtime, ACTIVITY_BASE_CONFIG.giverewarddelaymin) then
-        local strBossDamageRank = getsysvar(CommonDefine.VAR_A_JUMPAREA_DAMAGE_RANK_DATA)
+        local strBossDamageRank = getsysvar(CommonDefine.VAR_A_JUMPAREA_RANDFIGHTING_RANK_DATA)
         if strBossDamageRank~=nil and strBossDamageRank~='' then
             local localserverid = grobalinfo(11)
             local prename = 'k'..localserverid
@@ -308,16 +308,16 @@ function JumpAreaBossDamageRank.OnLocalServerTimer()
                         if prename == strParamList[1] then
                             local rewarditems = GetRewardByRank(seq)
                             if rewarditems ~= nil then
-                                Player.OfflineGiveItems(value.playerid, rewarditems, '跨服BOSS伤害排行奖励', '恭喜你获得跨服BOSS伤害排行第'..seq..'名！')
+                                Player.OfflineGiveItems(value.playerid, rewarditems, '跨服大乱斗排行奖励', '恭喜你获得跨服大乱斗排行第'..seq..'名！')
                             end
                         end                        
                     end
                 end
             end
-            setsysvar(CommonDefine.VAR_A_JUMPAREA_DAMAGE_RANK_DATA, '')
+            setsysvar(CommonDefine.VAR_A_JUMPAREA_RANDFIGHTING_RANK_DATA, '')
         end
 
-        setsysvar(CommonDefine.VAR_G_JUMPAREA_DAMAGERANK_REWARD_STATUS, 1) 
+        setsysvar(CommonDefine.VAR_G_JUMPAREA_RANDFIGHTING_REWARD_STATUS, 1) 
     end
 end
 
@@ -329,7 +329,7 @@ local function UpdateRankData(actor, score)
 
     local bFind = false
     local currplayerid = Player.GetPlayerID(actor)
-    for _, value in ipairs(JumpAreaBossDamageRank.CurrRankData) do
+    for _, value in ipairs(JumpAreaRandomFighting.CurrRankData) do
         if value.playerid ==  currplayerid then
             value.currscore = score
             bFind = true
@@ -338,80 +338,109 @@ local function UpdateRankData(actor, score)
     end
     if bFind == false then
         local rec = {playerid = Player.GetPlayerID(actor), currscore = score, showname = Player.GetName(actor)}
-        JumpAreaBossDamageRank.CurrRankData[#JumpAreaBossDamageRank.CurrRankData+1] = rec
+        JumpAreaRandomFighting.CurrRankData[#JumpAreaRandomFighting.CurrRankData+1] = rec
     end
 
-    table.sort(JumpAreaBossDamageRank.CurrRankData, function(a, b)
+    table.sort(JumpAreaRandomFighting.CurrRankData, function(a, b)
         return a.score > b.score
     end)
 
-    local sRankData = tbl2json(JumpAreaBossDamageRank.CurrRankData)
-    kfbackcall(CommonDefine.KFBCMSG_UPDATE_JUMPAREA_DAMAGE_RANK, '0', sRankData, '')
-end
-
---玩家攻击时触发 
-function JumpAreaBossDamageRank.DoAttackDamage(actor, target, damage)
-    if BF_IsNullObj(actor) or BF_IsNullObj(target) then
-        return damage
-    end
-
-    local monid = Player.GetMonIdx(target)
-    if monid == ACTIVITY_BASE_CONFIG.bossmonid then       
-        local mapidstr = Player.GetMapIDStr(actor)
-        if mapidstr == ACTIVITY_BASE_CONFIG.bossmap then
-            --记录玩家的伤害累计数据
-            local damagehigh = getplaydef(actor, CommonDefine.VAR_U_JUMPAREA_BOSS_DAMAGE_HIGH)
-            local damagelow = getplaydef(actor, CommonDefine.VAR_U_JUMPAREA_BOSS_DAMAGE_LOW)           
-            damagelow = damagelow + damage                        
-            local bCheckRank = false
-            if damagelow >= DAMAGE_LOW_MAX then
-                local addpoint = math.floor(damagelow / DAMAGE_LOW_MAX)
-                damagehigh = damagehigh + addpoint
-                damagelow = damagelow % DAMAGE_LOW_MAX
-                bCheckRank = true
-
-                delbutton(actor, 108, CommonDefine.ADD_BUTTON_ID_37)
-                local damagehigh = getplaydef(actor, CommonDefine.VAR_U_JUMPAREA_BOSS_DAMAGE_HIGH)
-                addbutton(actor, 108, CommonDefine.ADD_BUTTON_ID_37, '<Text|x=-100|y=-210|color='..CSS.NPC_LIGHTGREEN..
-                    '|size=20|text=当前伤害总量:'..damagehigh..'万>')
-            end        
-            setplaydef(actor, CommonDefine.VAR_U_JUMPAREA_BOSS_DAMAGE_HIGH, damagehigh)
-            setplaydef(actor, CommonDefine.VAR_U_JUMPAREA_BOSS_DAMAGE_LOW, damagelow)
-            --检测排行榜数据更新
-            if bCheckRank == true then
-                UpdateRankData(actor, damagehigh)
-            end
-        end
-    end
-
-    return damage
+    local sRankData = tbl2json(JumpAreaRandomFighting.CurrRankData)
+    kfbackcall(CommonDefine.KFBCMSG_UPDATE_JUMPAREA_RANDFIGHTING_RANK, '0', sRankData, '')
 end
 
 local function InitMapUI(actor)
+    local sJsonStr = getsysvar(CommonDefine.VAR_A_JUMPAREA_RANDFIGHTING_TEST_CFG_DATA)
+    if sJsonStr~=nil and sJsonStr~='' then
+        ACTIVITY_BASE_CONFIG = json2tbl(sJsonStr)
+    end
+
+    local now = os.date("*t")
+    local nEndTotal = ACTIVITY_BASE_CONFIG.endtime.hour * 60 + ACTIVITY_BASE_CONFIG.endtime.min
+    local nCurrentTotal = now.hour * 60 + now.min
+    local nStaySeconds = math.max(0, nEndTotal-nCurrentTotal) * 60
+    if nStaySeconds == 0 then
+        nStaySeconds = 5
+    end
+
     addbutton(actor, 101, CommonDefine.ADD_BUTTON_ID_8, '<Button|text=离开地图|x=850|y=36|color='..CSS.NPC_WHITE..
         '|pimg=public/1900000662.png|nimg=public/1900000663.png|link=@jumparea_button#sid='..JumpAreaManager.JUMPAREA_BUTTONFUNC_ID_1..'>')
-    addbutton(actor, 101, CommonDefine.ADD_BUTTON_ID_9, '<COUNTDOWN|x=870|y=76|time='..ACTIVITY_BASE_CONFIG.mapstayseconds..
+    addbutton(actor, 101, CommonDefine.ADD_BUTTON_ID_9, '<COUNTDOWN|x=870|y=76|time='..nStaySeconds..
         '|count=1|size=16|color='..CSS.NPC_LIGHTGREEN..'|link=@jumparea_button#sid='..JumpAreaManager.JUMPAREA_BUTTONFUNC_ID_1..'>')        
+    addbutton(actor, 101, CommonDefine.ADD_BUTTON_ID_35, '<Button|text=实时排名|x=850|y=116|color='..CSS.NPC_WHITE..
+        '|pimg=public/1900000662.png|nimg=public/1900000663.png|link=@jumparea_button#sid='..JumpAreaManager.JUMPAREA_BUTTONFUNC_ID_2..'>')        
+    UpdateKMScoreShow(actor)
+end
 
-    local damagehigh = getplaydef(actor, CommonDefine.VAR_U_JUMPAREA_BOSS_DAMAGE_HIGH)
-    addbutton(actor, 108, CommonDefine.ADD_BUTTON_ID_37, '<Text|x=-100|y=-210|color='..CSS.NPC_LIGHTGREEN..
-        '|size=20|text=当前伤害总量:'..damagehigh..'万>')
+function JumpAreaRandomFighting.ShowCurrRankData(actor)
+    --实时排名
+    local sPanelStr = '<Img|id=60|children={61,62,63,64,65}|x=150.0|y=60.0|img=private/cc_common/rule_panel.png|reset=1|esc=1|loadDelay=0|move=0|show=0>'..
+    '<Layout|id=61|x=530.0|y=1.0|width=80|height=80|link=@cc_exit_specialui>'..
+    '<Button|id=62|x=530.0|y=2.0|pimg=public/1900000511.png|nimg=public/1900000510.png|link=@cc_exit_specialui>'
+
+    local strItems = ''
+    local nStartID = 300
+    if true then
+        local nLayoutID = nStartID
+        if strItems ~= '' then
+            strItems = strItems..','
+        end
+        strItems = strItems..nLayoutID
+        local nTextID1 = nStartID + 1
+        local nTextID2 = nStartID + 2
+        local nTextID3 = nStartID + 3
+        local strTextIDs = nTextID1..','..nTextID2..','..nTextID3
+        sPanelStr = sPanelStr..'<Layout|id='..nLayoutID..'|children={'..strTextIDs..'}|width=480|height=40>'..
+            '<Text|id='..nTextID1..'|x=50|y=10|color=255|size=20|text=排名>'..
+            '<Text|id='..nTextID2..'|x=200|y=10|color=255|size=20|text=角色名>'..
+            '<Text|id='..nTextID3..'|x=380|y=10|color=255|size=20|text=抗魔值>'
+    end
+    
+    local tabDataRank = JumpAreaRandomFighting.CurrRankData
+    if tabDataRank ~= nil then
+        nStartID = nStartID + 10        
+        for seq, value in ipairs(tabDataRank) do        
+            local nLayoutID = nStartID + seq * 10 + 1
+            if strItems ~= '' then
+                strItems = strItems..','
+            end
+            strItems = strItems..nLayoutID
+    
+            local nTextID1 = nStartID + seq * 10 + 2
+            local nTextID2 = nStartID + seq * 10 + 3
+            local nTextID3 = nStartID + seq * 10 + 4
+            local strTextIDs = nTextID1..','..nTextID2..','..nTextID3
+            sPanelStr = sPanelStr..'<Layout|id='..nLayoutID..'|children={'..strTextIDs..'}|width=480|height=50>'..
+                '<Text|id='..nTextID1..'|x=50|y=10|color=255|size=20|text='..seq..'>'..
+                '<Text|id='..nTextID2..'|x=150|y=10|color=255|size=20|text='..value.showname..'>'..
+                '<Text|id='..nTextID3..'|x=380|y=10|color=255|size=20|text='..value.currscore..'>'
+        end
+    end
+    
+    local currscore = getplaydef(actor, CommonDefine.VAR_U_JUMPAREA_FIGHTING_KMVALUE)     
+    local strShowScoreInfo = '当前抗魔值:'..currscore
+
+    sPanelStr = sPanelStr..'<ListView|id=63|children={'..strItems..'}|x=20.0|y=40|width=480|height=250|margin=0|direction=1>'..
+        '<Text|id=64|x=180|y=300|color='..CSS.NPC_LIGHTGREEN..'|size=18|text='..strShowScoreInfo..'>'..
+        '<Text|id=65|x=180|y=320|color=255|size=16|text=(结束10分钟后邮件发送奖励)>'
+
+    BF_ShowSpecialUI(actor, sPanelStr, 1)
 end
 
 local function ClearMapUI(actor)
     delbutton(actor, 101, CommonDefine.ADD_BUTTON_ID_8)
     delbutton(actor, 101, CommonDefine.ADD_BUTTON_ID_9)
+    delbutton(actor, 101, CommonDefine.ADD_BUTTON_ID_35)
     delbutton(actor, 108, CommonDefine.ADD_BUTTON_ID_37)
 end
 
 --玩家跨天回调
-function JumpAreaBossDamageRank.OnResetDay(actor)    
-    setplaydef(actor, CommonDefine.VAR_U_JUMPAREA_BOSS_DAMAGE_HIGH, 0)
-    setplaydef(actor, CommonDefine.VAR_U_JUMPAREA_BOSS_DAMAGE_LOW, 0)
+function JumpAreaRandomFighting.OnResetDay(actor)    
+    setplaydef(actor, CommonDefine.VAR_U_JUMPAREA_FIGHTING_KMVALUE, 0)
 end
 
 --进地图的回调
-function JumpAreaBossDamageRank.OnEnterMap(actor, mapidstr, x, y)
+function JumpAreaRandomFighting.OnEnterMap(actor, mapidstr, x, y)
     if BF_IsNullObj(actor) or (mapidstr ~= ACTIVITY_BASE_CONFIG.bossmap) then
         return
     end
@@ -419,7 +448,7 @@ function JumpAreaBossDamageRank.OnEnterMap(actor, mapidstr, x, y)
 end
 
 --离开地图的回调
-function JumpAreaBossDamageRank.OnLeaveMap(actor, mapidstr, x, y)
+function JumpAreaRandomFighting.OnLeaveMap(actor, mapidstr, x, y)
     if BF_IsNullObj(actor) or (mapidstr ~= ACTIVITY_BASE_CONFIG.bossmap) then
         return
     end    
@@ -427,7 +456,7 @@ function JumpAreaBossDamageRank.OnLeaveMap(actor, mapidstr, x, y)
 end
 
 --玩家死亡回调
-function JumpAreaBossDamageRank.OnPlayerDie(actor, killername)
+function JumpAreaRandomFighting.OnPlayerDie(actor, killername)
     if BF_IsNullObj(actor) then
         return
     end
@@ -439,13 +468,60 @@ function JumpAreaBossDamageRank.OnPlayerDie(actor, killername)
         return
     end
 
-    --死亡返回原服盟重主城
-    Player.GoMZHome(actor)
+    local killer = getplayerbyname(killername)
+    if Player.IsPlayer(killer) then
+        local currscore = getplaydef(actor, CommonDefine.VAR_U_JUMPAREA_FIGHTING_KMVALUE)
+        local chgscore = math.floor(currscore * 0.1)
+        if chgscore > 0 then
+            local killerscore = getplaydef(killer, CommonDefine.VAR_U_JUMPAREA_FIGHTING_KMVALUE)
+            setplaydef(actor, CommonDefine.VAR_U_JUMPAREA_FIGHTING_KMVALUE, currscore - chgscore)
+            setplaydef(killer, CommonDefine.VAR_U_JUMPAREA_FIGHTING_KMVALUE, killerscore + chgscore)
+            UpdateKMScoreShow(actor)
+            UpdateRankData(actor, currscore - chgscore)
+            UpdateKMScoreShow(killer)
+            UpdateRankData(actor, killerscore + chgscore)
+        end
+    end
+
+    --死亡后原地图复活 随机
+    realive(actor)
+    Player.FullHPMP(actor)
+    map(actor, ACTIVITY_BASE_CONFIG.bossmap)
+    Player.SendSelfMsg(actor, '你被'..killername..'击杀，已复活请再接再厉！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
 end
 
-GameEventManager.AddListener(CommonDefine.EVENT_NAME_PLAYER_RESETDAY, JumpAreaBossDamageRank.OnResetDay, CommonDefine.FUNC_ID_JUMPAREA_3)
-GameEventManager.AddListener(CommonDefine.EVENT_NAME_PLAYER_ENTERMAP, JumpAreaBossDamageRank.OnEnterMap, CommonDefine.FUNC_ID_JUMPAREA_3)
-GameEventManager.AddListener(CommonDefine.EVENT_NAME_PLAYER_LEAVEMAP, JumpAreaBossDamageRank.OnLeaveMap, CommonDefine.FUNC_ID_JUMPAREA_3)
-GameEventManager.AddListener(CommonDefine.EVENT_NAME_PLAYER_DIE, JumpAreaBossDamageRank.OnPlayerDie, CommonDefine.FUNC_ID_JUMPAREA_3)
+--击杀怪物触发
+function JumpAreaRandomFighting.OnKillMon(actor, mon, killtype, mapidstr)
+    if BF_IsNullObj(actor) or BF_IsNullObj(mon) then
+        return
+    end
+    if mapidstr ~= ACTIVITY_BASE_CONFIG.bossmap then
+        return
+    end
+    if not checkkuafu(actor) then
+        return
+    end
+    if killtype ~= '2' then
+        return
+    end
 
-return JumpAreaBossDamageRank
+    local monid = Player.GetMonIdx(mon) 
+    for _, value in ipairs(ACTIVITY_BASE_CONFIG.monscorelist) do
+        if value.monid == monid then
+            local currscore = getplaydef(actor, CommonDefine.VAR_U_JUMPAREA_FIGHTING_KMVALUE) + value.score            
+            setplaydef(actor, CommonDefine.VAR_U_JUMPAREA_FIGHTING_KMVALUE, currscore)           
+            UpdateKMScoreShow(actor)
+            UpdateRankData(actor, currscore)
+            break
+        end
+    end
+end
+
+GameEventManager.AddListener(CommonDefine.EVENT_NAME_PLAYER_RESETDAY, JumpAreaRandomFighting.OnResetDay, CommonDefine.FUNC_ID_JUMPAREA_2)
+GameEventManager.AddListener(CommonDefine.EVENT_NAME_PLAYER_ENTERMAP, JumpAreaRandomFighting.OnEnterMap, CommonDefine.FUNC_ID_JUMPAREA_2)
+GameEventManager.AddListener(CommonDefine.EVENT_NAME_PLAYER_LEAVEMAP, JumpAreaRandomFighting.OnLeaveMap, CommonDefine.FUNC_ID_JUMPAREA_2)
+GameEventManager.AddListener(CommonDefine.EVENT_NAME_PLAYER_DIE, JumpAreaRandomFighting.OnPlayerDie, CommonDefine.FUNC_ID_JUMPAREA_2)
+GameEventManager.AddListener(CommonDefine.EVENT_NAME_KILL_MON, JumpAreaRandomFighting.OnKillMon, CommonDefine.FUNC_ID_JUMPAREA_2)
+
+
+return JumpAreaRandomFighting

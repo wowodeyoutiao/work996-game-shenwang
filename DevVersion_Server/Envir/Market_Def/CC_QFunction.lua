@@ -613,6 +613,11 @@ end
 function kfsyscall102(actor)
     Player.GoMZHome(actor)
 end
+
+function kfsyscall103(sysobj)
+    local str = parsetext('<$PARAM1>', sysobj)
+    setsysvar(CommonDefine.VAR_A_JUMPAREA_RANDFIGHTING_RANK_DATA, str)
+end
 ----------------------------------------------------------------跨服相关回调end--------------------------------------------------------------------
 
 ----------------------------------------------------------------使用道具回调start------------------------------------------------------------------------
