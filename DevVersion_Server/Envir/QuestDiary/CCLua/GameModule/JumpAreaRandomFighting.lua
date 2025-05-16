@@ -271,7 +271,7 @@ local function GetRewardByRank(rank)
     return rewarditems
 end
 
---本服的执行逻辑
+--本服的定时执行逻辑
 function JumpAreaRandomFighting.OnLocalServerTimer() 
     local sJsonStr = getsysvar(CommonDefine.VAR_A_JUMPAREA_RANDFIGHTING_TEST_CFG_DATA)
     if sJsonStr~=nil and sJsonStr~='' then
@@ -319,6 +319,11 @@ function JumpAreaRandomFighting.OnLocalServerTimer()
 
         setsysvar(CommonDefine.VAR_G_JUMPAREA_RANDFIGHTING_REWARD_STATUS, 1) 
     end
+end
+
+--跨服的跨天处理
+function JumpAreaRandomFighting.OnDayChange()
+    JumpAreaRandomFighting.CurrRankData = {}
 end
 
 --跨服服务器更新实时的排行榜数据

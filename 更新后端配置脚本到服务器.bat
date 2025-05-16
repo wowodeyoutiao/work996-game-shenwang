@@ -4,6 +4,7 @@ xcopy /y .\DevVersion_Server\Envir\Data\*.*  E:\Game996_ShenWang\MirServer\Mir20
 xcopy /y .\DevVersion_Server\Envir\MapQuest_Def\*.*  E:\Game996_ShenWang\MirServer\Mir200\Envir\MapQuest_Def\ /I /E
 xcopy /y .\DevVersion_Server\Envir\Market_Def\*.*  E:\Game996_ShenWang\MirServer\Mir200\Envir\Market_Def\ /I /E
 xcopy /y .\DevVersion_Server\Envir\QuestDiary\*.*  E:\Game996_ShenWang\MirServer\Mir200\Envir\QuestDiary\ /I /E
+xcopy /y .\DevVersion_Server\Envir\Robot_def\*.*  E:\Game996_ShenWang\MirServer\Mir200\Envir\Robot_def\ /I /E
 xcopy /y .\DevVersion_Server\Envir\MapInfo.txt  E:\Game996_ShenWang\MirServer\Mir200\Envir\ /I /E
 
 Echo ====== Finish=======

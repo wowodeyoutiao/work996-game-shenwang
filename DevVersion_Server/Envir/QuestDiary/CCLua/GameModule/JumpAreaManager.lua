@@ -30,20 +30,23 @@ local JUMPAREA_ACTIVITY_CFG = {
 
 --跨服活动初始化
 function JumpAreaManager.OnInit()
-    --release_print('JumpAreaManager.OnInit')
     local isKuafuSever = checkkuafuserver()
     if isKuafuSever == false then
         if not hastimerex(CommonDefine.G_TIMER_ID_CHECK_JUMPAREA_LOCALTIMER) then 
             setontimerex(CommonDefine.G_TIMER_ID_CHECK_JUMPAREA_LOCALTIMER, 30)               
-        end
-    else
-
+        end  
     end
 end
 
 function JumpAreaManager.OnLocalServerTimer()
     JumpAreaBossDamageRank.OnLocalServerTimer()
     JumpAreaRandomFighting.OnLocalServerTimer()
+end
+
+function JumpAreaManager.OnDayChange()
+    release_print('JumpAreaManager.OnDayChange')
+    JumpAreaBossDamageRank.OnDayChange()
+    JumpAreaRandomFighting.OnDayChange()    
 end
 
 function JumpAreaManager.CanShowIcon(actor)

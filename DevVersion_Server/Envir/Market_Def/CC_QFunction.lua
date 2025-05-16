@@ -23,6 +23,13 @@ function kflogin(actor)
     TopIcon.HideUI(actor)
     --隐藏开宝箱界面
     OpenSuperBoxManager.HideUI(actor)
+
+    local lastday = getsysvar(CommonDefine.VAR_I_LAST_KFLOGIN_DAY)
+    local currday = BF_GetDay(os.time())
+    if currday ~= lastday then
+        JumpAreaManager.OnDayChange()    
+        setsysvar(CommonDefine.VAR_I_LAST_KFLOGIN_DAY, currday)        
+    end
 end
 
 --离开跨服触发
@@ -32,7 +39,7 @@ function kuafuend(actor)
     --显示上面的topicon
     TopIcon.InitUI(actor)
     --更新开宝箱界面
-    OpenSuperBoxManager.UpdateSuperBoxInfo(actor)  
+    OpenSuperBoxManager.UpdateSuperBoxInfo(actor)
 end
 
 --跨周
@@ -618,6 +625,7 @@ function kfsyscall103(sysobj)
     local str = parsetext('<$PARAM1>', sysobj)
     setsysvar(CommonDefine.VAR_A_JUMPAREA_RANDFIGHTING_RANK_DATA, str)
 end
+
 ----------------------------------------------------------------跨服相关回调end--------------------------------------------------------------------
 
 ----------------------------------------------------------------使用道具回调start------------------------------------------------------------------------

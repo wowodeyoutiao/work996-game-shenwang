@@ -288,6 +288,7 @@ CommonDefine = {
 
     --系统全局数字变量，重启不保存 I0 - I99
     VAR_I_CURR_DYNNPC_GROUPID = 'I1',            --当前系统对应的动态NPC的组编号,玩家登录时+1赋值
+    VAR_I_LAST_KFLOGIN_DAY = 'I2',               --记录跨服登录对应天数，用于触发跨服跨天的问题
 
     --系统全局数字变量，重启保存 G0 - G499
     VAR_G_JUMPAREA_DAMAGERANK_REWARD_STATUS = 'G101',   --跨服boss伤害 活动状态 1活动未发奖 2活动已发奖
@@ -606,12 +607,16 @@ CommonDefine = {
     --全局定时器ID
     --G_TIMER_ID_STARTUP_ONCE = 99,                       --用于触发startup
     G_TIMER_ID_CHECK_JUMPAREA_LOCALTIMER = 101,           --跨服活动对应的本服定时器
+    --G_TIMER_ID_CHECK_JUMPAREA_KFTIMER = 102,              --跨服活动对应的跨服定时器   无效
 
 
     --跨服传递到本服的消息
     KFBCMSG_UPDATE_JUMPAREA_DAMAGE_RANK = 101,            --更新跨服BOSS伤害排行信息
     KFBCMSG_GOBACK_MZMAP = 102,                           --玩家返回本服盟重安全区
     KFBCMSG_UPDATE_JUMPAREA_RANDFIGHTING_RANK = 103,      --更新跨服大乱斗排行信息
+
+    --本服传递到跨服的消息  现阶段有bug 使用自定义变量来处理消息
+    --BCKFMSG_INIT_TIMER = 1,                             --本服触发跨服初始化公用定时器
 
     --功能模块编号
     FUNC_ID_EQUIPPOS_STRENGTH = 1,              --装备位强化

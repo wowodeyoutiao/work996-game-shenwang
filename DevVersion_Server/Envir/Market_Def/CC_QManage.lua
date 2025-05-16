@@ -12,8 +12,7 @@ function startup()
     --inisysvar("integer","系统变量_4",3)  --声明合区时 取小
     --inisysvar("integer","系统变量_5",4)  --声明合区时 相加
     --inisysvar("string","系统变量_6",5)   --声明合区时 相连
-    --inisysvar("string","系统变量_7",6)   --声明合区时 删除   
-    
+    --inisysvar("string","系统变量_7",6)   --声明合区时 删除       
 end
 
 -- 角色登陆触发
@@ -105,5 +104,4 @@ end
 function ontimerex101()
     JumpAreaManager.OnLocalServerTimer()
 end
-
 ----------------------------------------------------------------ontimerex全局定时器end----------------------------------------------------------------------

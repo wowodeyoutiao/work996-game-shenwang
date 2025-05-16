@@ -1,0 +1,769 @@
+#INCLUDE 版本常量.ini
+
+[@每日闲时处理]
+#IF
+DAYOFWEEK MON
+#ACT
+MOV G58 <$YEAR><$MONTH><$DAY>
+BREAK
+
+[@沙漠废墟开启]
+#IF
+LARGE <$HFCOUNT> 0
+#ACT
+MonGenEx rxsc042 285 342 废墟尸王 0 1 0 250
+MonGenEx dgfx 200 190 沙虫 			500 150 0 255
+MonGenEx dgfx 200 190 威思儿小虫 	500 150 0 255
+MonGenEx dgfx 200 190 鹰 			500 150 0 255
+GMEXECUTE StartQuest @沙漠废墟开启通知
+
+[@沙漠废墟关闭]
+#IF
+LARGE <$HFCOUNT> 0
+#ACT
+CLEARMAPMON dgfx
+CLEARMAPMON fxyj
+MoveMapPlay dgfx rxsc042 330 330 
+MoveMapPlay fxyj rxsc042 330 330 
+GuildNoticeMsg 250 11 [沙漠废墟]活动已结束
+BREAK
+
+
+
+
+; 12点
+[@新年活动年兽]
+#IF
+LARGE G0 0
+NOT SMALL <$UTCNOW8> $春节开始
+NOT LARGE <$UTCNOW8> $春节结束
+#ACT
+MonGenEx rxsc042 368 345 恭喜发财·年兽 1 1 0 249
+GMEXECUTE StartQuest @新年活动年兽通知
+BREAK
+
+; 17点
+[@新年活动财神]
+#IF
+LARGE G0 0
+NOT SMALL <$UTCNOW8> $春节开始
+NOT LARGE <$UTCNOW8> $春节结束
+#ACT
+GMEXECUTE STARTQUEST @新年活动财神通知
+BREAK
+
+
+; 30分钟执行1次
+; [@战力刷新]
+; #IF
+; EQUAL G43 0
+; #ACT
+; SortHumVar 战斗力 S$战力第 N$战力数 0 1 100
+; SortHumVar 等级数 S$等级第 N$等级数 0 1 100
+; SortHumVar 爆率数 S$爆率第 N$爆率数 0 1 100
+; SortHumVar 刀魂数 S$刀魂第 N$刀魂数 0 1 100
+
+; MOV A21 1=<$STR(S$战力第1)>:<$STR(N$战力数1)>,2=<$STR(S$战力第2)>:<$STR(N$战力数2)>,3=<$STR(S$战力第3)>:<$STR(N$战力数3)>,4=<$STR(S$战力第4)>:<$STR(N$战力数4)>,5=<$STR(S$战力第5)>:<$STR(N$战力数5)>,6=<$STR(S$战力第6)>:<$STR(N$战力数6)>,7=<$STR(S$战力第7)>:<$STR(N$战力数7)>,8=<$STR(S$战力第8)>:<$STR(N$战力数8)>,9=<$STR(S$战力第9)>:<$STR(N$战力数9)>,10=<$STR(S$战力第10)>:<$STR(N$战力数10)>,11=<$STR(S$战力第11)>:<$STR(N$战力数11)>,12=<$STR(S$战力第12)>:<$STR(N$战力数12)>,13=<$STR(S$战力第13)>:<$STR(N$战力数13)>,14=<$STR(S$战力第14)>:<$STR(N$战力数14)>,15=<$STR(S$战力第15)>:<$STR(N$战力数15)>,16=<$STR(S$战力第16)>:<$STR(N$战力数16)>,17=<$STR(S$战力第17)>:<$STR(N$战力数17)>,18=<$STR(S$战力第18)>:<$STR(N$战力数18)>,19=<$STR(S$战力第19)>:<$STR(N$战力数19)>,20=<$STR(S$战力第20)>:<$STR(N$战力数20)>,21=<$STR(S$战力第21)>:<$STR(N$战力数21)>,22=<$STR(S$战力第22)>:<$STR(N$战力数22)>,23=<$STR(S$战力第23)>:<$STR(N$战力数23)>,24=<$STR(S$战力第24)>:<$STR(N$战力数24)>,25=<$STR(S$战力第25)>:<$STR(N$战力数25)>,26=<$STR(S$战力第26)>:<$STR(N$战力数26)>,27=<$STR(S$战力第27)>:<$STR(N$战力数27)>,28=<$STR(S$战力第28)>:<$STR(N$战力数28)>,29=<$STR(S$战力第29)>:<$STR(N$战力数29)>,30=<$STR(S$战力第30)>:<$STR(N$战力数30)>,31=<$STR(S$战力第31)>:<$STR(N$战力数31)>,32=<$STR(S$战力第32)>:<$STR(N$战力数32)>,33=<$STR(S$战力第33)>:<$STR(N$战力数33)>,34=<$STR(S$战力第34)>:<$STR(N$战力数34)>,35=<$STR(S$战力第35)>:<$STR(N$战力数35)>,36=<$STR(S$战力第36)>:<$STR(N$战力数36)>,37=<$STR(S$战力第37)>:<$STR(N$战力数37)>,38=<$STR(S$战力第38)>:<$STR(N$战力数38)>,39=<$STR(S$战力第39)>:<$STR(N$战力数39)>,40=<$STR(S$战力第40)>:<$STR(N$战力数40)>,41=<$STR(S$战力第41)>:<$STR(N$战力数41)>,42=<$STR(S$战力第42)>:<$STR(N$战力数42)>,43=<$STR(S$战力第43)>:<$STR(N$战力数43)>,44=<$STR(S$战力第44)>:<$STR(N$战力数44)>,45=<$STR(S$战力第45)>:<$STR(N$战力数45)>,46=<$STR(S$战力第46)>:<$STR(N$战力数46)>,47=<$STR(S$战力第47)>:<$STR(N$战力数47)>,48=<$STR(S$战力第48)>:<$STR(N$战力数48)>,49=<$STR(S$战力第49)>:<$STR(N$战力数49)>,50=<$STR(S$战力第50)>:<$STR(N$战力数50)>,51=<$STR(S$战力第51)>:<$STR(N$战力数51)>,52=<$STR(S$战力第52)>:<$STR(N$战力数52)>,53=<$STR(S$战力第53)>:<$STR(N$战力数53)>,54=<$STR(S$战力第54)>:<$STR(N$战力数54)>,55=<$STR(S$战力第55)>:<$STR(N$战力数55)>,56=<$STR(S$战力第56)>:<$STR(N$战力数56)>,57=<$STR(S$战力第57)>:<$STR(N$战力数57)>,58=<$STR(S$战力第58)>:<$STR(N$战力数58)>,59=<$STR(S$战力第59)>:<$STR(N$战力数59)>,60=<$STR(S$战力第60)>:<$STR(N$战力数60)>,61=<$STR(S$战力第61)>:<$STR(N$战力数61)>,62=<$STR(S$战力第62)>:<$STR(N$战力数62)>,63=<$STR(S$战力第63)>:<$STR(N$战力数63)>,64=<$STR(S$战力第64)>:<$STR(N$战力数64)>,65=<$STR(S$战力第65)>:<$STR(N$战力数65)>,66=<$STR(S$战力第66)>:<$STR(N$战力数66)>,67=<$STR(S$战力第67)>:<$STR(N$战力数67)>,68=<$STR(S$战力第68)>:<$STR(N$战力数68)>,69=<$STR(S$战力第69)>:<$STR(N$战力数69)>,70=<$STR(S$战力第70)>:<$STR(N$战力数70)>,71=<$STR(S$战力第71)>:<$STR(N$战力数71)>,72=<$STR(S$战力第72)>:<$STR(N$战力数72)>,73=<$STR(S$战力第73)>:<$STR(N$战力数73)>,74=<$STR(S$战力第74)>:<$STR(N$战力数74)>,75=<$STR(S$战力第75)>:<$STR(N$战力数75)>,76=<$STR(S$战力第76)>:<$STR(N$战力数76)>,77=<$STR(S$战力第77)>:<$STR(N$战力数77)>,78=<$STR(S$战力第78)>:<$STR(N$战力数78)>,79=<$STR(S$战力第79)>:<$STR(N$战力数79)>,80=<$STR(S$战力第80)>:<$STR(N$战力数80)>,81=<$STR(S$战力第81)>:<$STR(N$战力数81)>,82=<$STR(S$战力第82)>:<$STR(N$战力数82)>,83=<$STR(S$战力第83)>:<$STR(N$战力数83)>,84=<$STR(S$战力第84)>:<$STR(N$战力数84)>,85=<$STR(S$战力第85)>:<$STR(N$战力数85)>,86=<$STR(S$战力第86)>:<$STR(N$战力数86)>,87=<$STR(S$战力第87)>:<$STR(N$战力数87)>,88=<$STR(S$战力第88)>:<$STR(N$战力数88)>,89=<$STR(S$战力第89)>:<$STR(N$战力数89)>,90=<$STR(S$战力第90)>:<$STR(N$战力数90)>,91=<$STR(S$战力第91)>:<$STR(N$战力数91)>,92=<$STR(S$战力第92)>:<$STR(N$战力数92)>,93=<$STR(S$战力第93)>:<$STR(N$战力数93)>,94=<$STR(S$战力第94)>:<$STR(N$战力数94)>,95=<$STR(S$战力第95)>:<$STR(N$战力数95)>,96=<$STR(S$战力第96)>:<$STR(N$战力数96)>,97=<$STR(S$战力第97)>:<$STR(N$战力数97)>,98=<$STR(S$战力第98)>:<$STR(N$战力数98)>,99=<$STR(S$战力第99)>:<$STR(N$战力数99)>,100=<$STR(S$战力第100)>:<$STR(N$战力数100)>
+; MOV A22 1=<$STR(S$等级第1)>:<$STR(N$等级数1)>,2=<$STR(S$等级第2)>:<$STR(N$等级数2)>,3=<$STR(S$等级第3)>:<$STR(N$等级数3)>,4=<$STR(S$等级第4)>:<$STR(N$等级数4)>,5=<$STR(S$等级第5)>:<$STR(N$等级数5)>,6=<$STR(S$等级第6)>:<$STR(N$等级数6)>,7=<$STR(S$等级第7)>:<$STR(N$等级数7)>,8=<$STR(S$等级第8)>:<$STR(N$等级数8)>,9=<$STR(S$等级第9)>:<$STR(N$等级数9)>,10=<$STR(S$等级第10)>:<$STR(N$等级数10)>,11=<$STR(S$等级第11)>:<$STR(N$等级数11)>,12=<$STR(S$等级第12)>:<$STR(N$等级数12)>,13=<$STR(S$等级第13)>:<$STR(N$等级数13)>,14=<$STR(S$等级第14)>:<$STR(N$等级数14)>,15=<$STR(S$等级第15)>:<$STR(N$等级数15)>,16=<$STR(S$等级第16)>:<$STR(N$等级数16)>,17=<$STR(S$等级第17)>:<$STR(N$等级数17)>,18=<$STR(S$等级第18)>:<$STR(N$等级数18)>,19=<$STR(S$等级第19)>:<$STR(N$等级数19)>,20=<$STR(S$等级第20)>:<$STR(N$等级数20)>,21=<$STR(S$等级第21)>:<$STR(N$等级数21)>,22=<$STR(S$等级第22)>:<$STR(N$等级数22)>,23=<$STR(S$等级第23)>:<$STR(N$等级数23)>,24=<$STR(S$等级第24)>:<$STR(N$等级数24)>,25=<$STR(S$等级第25)>:<$STR(N$等级数25)>,26=<$STR(S$等级第26)>:<$STR(N$等级数26)>,27=<$STR(S$等级第27)>:<$STR(N$等级数27)>,28=<$STR(S$等级第28)>:<$STR(N$等级数28)>,29=<$STR(S$等级第29)>:<$STR(N$等级数29)>,30=<$STR(S$等级第30)>:<$STR(N$等级数30)>,31=<$STR(S$等级第31)>:<$STR(N$等级数31)>,32=<$STR(S$等级第32)>:<$STR(N$等级数32)>,33=<$STR(S$等级第33)>:<$STR(N$等级数33)>,34=<$STR(S$等级第34)>:<$STR(N$等级数34)>,35=<$STR(S$等级第35)>:<$STR(N$等级数35)>,36=<$STR(S$等级第36)>:<$STR(N$等级数36)>,37=<$STR(S$等级第37)>:<$STR(N$等级数37)>,38=<$STR(S$等级第38)>:<$STR(N$等级数38)>,39=<$STR(S$等级第39)>:<$STR(N$等级数39)>,40=<$STR(S$等级第40)>:<$STR(N$等级数40)>,41=<$STR(S$等级第41)>:<$STR(N$等级数41)>,42=<$STR(S$等级第42)>:<$STR(N$等级数42)>,43=<$STR(S$等级第43)>:<$STR(N$等级数43)>,44=<$STR(S$等级第44)>:<$STR(N$等级数44)>,45=<$STR(S$等级第45)>:<$STR(N$等级数45)>,46=<$STR(S$等级第46)>:<$STR(N$等级数46)>,47=<$STR(S$等级第47)>:<$STR(N$等级数47)>,48=<$STR(S$等级第48)>:<$STR(N$等级数48)>,49=<$STR(S$等级第49)>:<$STR(N$等级数49)>,50=<$STR(S$等级第50)>:<$STR(N$等级数50)>,51=<$STR(S$等级第51)>:<$STR(N$等级数51)>,52=<$STR(S$等级第52)>:<$STR(N$等级数52)>,53=<$STR(S$等级第53)>:<$STR(N$等级数53)>,54=<$STR(S$等级第54)>:<$STR(N$等级数54)>,55=<$STR(S$等级第55)>:<$STR(N$等级数55)>,56=<$STR(S$等级第56)>:<$STR(N$等级数56)>,57=<$STR(S$等级第57)>:<$STR(N$等级数57)>,58=<$STR(S$等级第58)>:<$STR(N$等级数58)>,59=<$STR(S$等级第59)>:<$STR(N$等级数59)>,60=<$STR(S$等级第60)>:<$STR(N$等级数60)>,61=<$STR(S$等级第61)>:<$STR(N$等级数61)>,62=<$STR(S$等级第62)>:<$STR(N$等级数62)>,63=<$STR(S$等级第63)>:<$STR(N$等级数63)>,64=<$STR(S$等级第64)>:<$STR(N$等级数64)>,65=<$STR(S$等级第65)>:<$STR(N$等级数65)>,66=<$STR(S$等级第66)>:<$STR(N$等级数66)>,67=<$STR(S$等级第67)>:<$STR(N$等级数67)>,68=<$STR(S$等级第68)>:<$STR(N$等级数68)>,69=<$STR(S$等级第69)>:<$STR(N$等级数69)>,70=<$STR(S$等级第70)>:<$STR(N$等级数70)>,71=<$STR(S$等级第71)>:<$STR(N$等级数71)>,72=<$STR(S$等级第72)>:<$STR(N$等级数72)>,73=<$STR(S$等级第73)>:<$STR(N$等级数73)>,74=<$STR(S$等级第74)>:<$STR(N$等级数74)>,75=<$STR(S$等级第75)>:<$STR(N$等级数75)>,76=<$STR(S$等级第76)>:<$STR(N$等级数76)>,77=<$STR(S$等级第77)>:<$STR(N$等级数77)>,78=<$STR(S$等级第78)>:<$STR(N$等级数78)>,79=<$STR(S$等级第79)>:<$STR(N$等级数79)>,80=<$STR(S$等级第80)>:<$STR(N$等级数80)>,81=<$STR(S$等级第81)>:<$STR(N$等级数81)>,82=<$STR(S$等级第82)>:<$STR(N$等级数82)>,83=<$STR(S$等级第83)>:<$STR(N$等级数83)>,84=<$STR(S$等级第84)>:<$STR(N$等级数84)>,85=<$STR(S$等级第85)>:<$STR(N$等级数85)>,86=<$STR(S$等级第86)>:<$STR(N$等级数86)>,87=<$STR(S$等级第87)>:<$STR(N$等级数87)>,88=<$STR(S$等级第88)>:<$STR(N$等级数88)>,89=<$STR(S$等级第89)>:<$STR(N$等级数89)>,90=<$STR(S$等级第90)>:<$STR(N$等级数90)>,91=<$STR(S$等级第91)>:<$STR(N$等级数91)>,92=<$STR(S$等级第92)>:<$STR(N$等级数92)>,93=<$STR(S$等级第93)>:<$STR(N$等级数93)>,94=<$STR(S$等级第94)>:<$STR(N$等级数94)>,95=<$STR(S$等级第95)>:<$STR(N$等级数95)>,96=<$STR(S$等级第96)>:<$STR(N$等级数96)>,97=<$STR(S$等级第97)>:<$STR(N$等级数97)>,98=<$STR(S$等级第98)>:<$STR(N$等级数98)>,99=<$STR(S$等级第99)>:<$STR(N$等级数99)>,100=<$STR(S$等级第100)>:<$STR(N$等级数100)>
+; MOV A23 1=<$STR(S$爆率第1)>:<$STR(N$爆率数1)>,2=<$STR(S$爆率第2)>:<$STR(N$爆率数2)>,3=<$STR(S$爆率第3)>:<$STR(N$爆率数3)>,4=<$STR(S$爆率第4)>:<$STR(N$爆率数4)>,5=<$STR(S$爆率第5)>:<$STR(N$爆率数5)>,6=<$STR(S$爆率第6)>:<$STR(N$爆率数6)>,7=<$STR(S$爆率第7)>:<$STR(N$爆率数7)>,8=<$STR(S$爆率第8)>:<$STR(N$爆率数8)>,9=<$STR(S$爆率第9)>:<$STR(N$爆率数9)>,10=<$STR(S$爆率第10)>:<$STR(N$爆率数10)>,11=<$STR(S$爆率第11)>:<$STR(N$爆率数11)>,12=<$STR(S$爆率第12)>:<$STR(N$爆率数12)>,13=<$STR(S$爆率第13)>:<$STR(N$爆率数13)>,14=<$STR(S$爆率第14)>:<$STR(N$爆率数14)>,15=<$STR(S$爆率第15)>:<$STR(N$爆率数15)>,16=<$STR(S$爆率第16)>:<$STR(N$爆率数16)>,17=<$STR(S$爆率第17)>:<$STR(N$爆率数17)>,18=<$STR(S$爆率第18)>:<$STR(N$爆率数18)>,19=<$STR(S$爆率第19)>:<$STR(N$爆率数19)>,20=<$STR(S$爆率第20)>:<$STR(N$爆率数20)>,21=<$STR(S$爆率第21)>:<$STR(N$爆率数21)>,22=<$STR(S$爆率第22)>:<$STR(N$爆率数22)>,23=<$STR(S$爆率第23)>:<$STR(N$爆率数23)>,24=<$STR(S$爆率第24)>:<$STR(N$爆率数24)>,25=<$STR(S$爆率第25)>:<$STR(N$爆率数25)>,26=<$STR(S$爆率第26)>:<$STR(N$爆率数26)>,27=<$STR(S$爆率第27)>:<$STR(N$爆率数27)>,28=<$STR(S$爆率第28)>:<$STR(N$爆率数28)>,29=<$STR(S$爆率第29)>:<$STR(N$爆率数29)>,30=<$STR(S$爆率第30)>:<$STR(N$爆率数30)>,31=<$STR(S$爆率第31)>:<$STR(N$爆率数31)>,32=<$STR(S$爆率第32)>:<$STR(N$爆率数32)>,33=<$STR(S$爆率第33)>:<$STR(N$爆率数33)>,34=<$STR(S$爆率第34)>:<$STR(N$爆率数34)>,35=<$STR(S$爆率第35)>:<$STR(N$爆率数35)>,36=<$STR(S$爆率第36)>:<$STR(N$爆率数36)>,37=<$STR(S$爆率第37)>:<$STR(N$爆率数37)>,38=<$STR(S$爆率第38)>:<$STR(N$爆率数38)>,39=<$STR(S$爆率第39)>:<$STR(N$爆率数39)>,40=<$STR(S$爆率第40)>:<$STR(N$爆率数40)>,41=<$STR(S$爆率第41)>:<$STR(N$爆率数41)>,42=<$STR(S$爆率第42)>:<$STR(N$爆率数42)>,43=<$STR(S$爆率第43)>:<$STR(N$爆率数43)>,44=<$STR(S$爆率第44)>:<$STR(N$爆率数44)>,45=<$STR(S$爆率第45)>:<$STR(N$爆率数45)>,46=<$STR(S$爆率第46)>:<$STR(N$爆率数46)>,47=<$STR(S$爆率第47)>:<$STR(N$爆率数47)>,48=<$STR(S$爆率第48)>:<$STR(N$爆率数48)>,49=<$STR(S$爆率第49)>:<$STR(N$爆率数49)>,50=<$STR(S$爆率第50)>:<$STR(N$爆率数50)>,51=<$STR(S$爆率第51)>:<$STR(N$爆率数51)>,52=<$STR(S$爆率第52)>:<$STR(N$爆率数52)>,53=<$STR(S$爆率第53)>:<$STR(N$爆率数53)>,54=<$STR(S$爆率第54)>:<$STR(N$爆率数54)>,55=<$STR(S$爆率第55)>:<$STR(N$爆率数55)>,56=<$STR(S$爆率第56)>:<$STR(N$爆率数56)>,57=<$STR(S$爆率第57)>:<$STR(N$爆率数57)>,58=<$STR(S$爆率第58)>:<$STR(N$爆率数58)>,59=<$STR(S$爆率第59)>:<$STR(N$爆率数59)>,60=<$STR(S$爆率第60)>:<$STR(N$爆率数60)>,61=<$STR(S$爆率第61)>:<$STR(N$爆率数61)>,62=<$STR(S$爆率第62)>:<$STR(N$爆率数62)>,63=<$STR(S$爆率第63)>:<$STR(N$爆率数63)>,64=<$STR(S$爆率第64)>:<$STR(N$爆率数64)>,65=<$STR(S$爆率第65)>:<$STR(N$爆率数65)>,66=<$STR(S$爆率第66)>:<$STR(N$爆率数66)>,67=<$STR(S$爆率第67)>:<$STR(N$爆率数67)>,68=<$STR(S$爆率第68)>:<$STR(N$爆率数68)>,69=<$STR(S$爆率第69)>:<$STR(N$爆率数69)>,70=<$STR(S$爆率第70)>:<$STR(N$爆率数70)>,71=<$STR(S$爆率第71)>:<$STR(N$爆率数71)>,72=<$STR(S$爆率第72)>:<$STR(N$爆率数72)>,73=<$STR(S$爆率第73)>:<$STR(N$爆率数73)>,74=<$STR(S$爆率第74)>:<$STR(N$爆率数74)>,75=<$STR(S$爆率第75)>:<$STR(N$爆率数75)>,76=<$STR(S$爆率第76)>:<$STR(N$爆率数76)>,77=<$STR(S$爆率第77)>:<$STR(N$爆率数77)>,78=<$STR(S$爆率第78)>:<$STR(N$爆率数78)>,79=<$STR(S$爆率第79)>:<$STR(N$爆率数79)>,80=<$STR(S$爆率第80)>:<$STR(N$爆率数80)>,81=<$STR(S$爆率第81)>:<$STR(N$爆率数81)>,82=<$STR(S$爆率第82)>:<$STR(N$爆率数82)>,83=<$STR(S$爆率第83)>:<$STR(N$爆率数83)>,84=<$STR(S$爆率第84)>:<$STR(N$爆率数84)>,85=<$STR(S$爆率第85)>:<$STR(N$爆率数85)>,86=<$STR(S$爆率第86)>:<$STR(N$爆率数86)>,87=<$STR(S$爆率第87)>:<$STR(N$爆率数87)>,88=<$STR(S$爆率第88)>:<$STR(N$爆率数88)>,89=<$STR(S$爆率第89)>:<$STR(N$爆率数89)>,90=<$STR(S$爆率第90)>:<$STR(N$爆率数90)>,91=<$STR(S$爆率第91)>:<$STR(N$爆率数91)>,92=<$STR(S$爆率第92)>:<$STR(N$爆率数92)>,93=<$STR(S$爆率第93)>:<$STR(N$爆率数93)>,94=<$STR(S$爆率第94)>:<$STR(N$爆率数94)>,95=<$STR(S$爆率第95)>:<$STR(N$爆率数95)>,96=<$STR(S$爆率第96)>:<$STR(N$爆率数96)>,97=<$STR(S$爆率第97)>:<$STR(N$爆率数97)>,98=<$STR(S$爆率第98)>:<$STR(N$爆率数98)>,99=<$STR(S$爆率第99)>:<$STR(N$爆率数99)>,100=<$STR(S$爆率第100)>:<$STR(N$爆率数100)>
+; MOV A24 1=<$STR(S$刀魂第1)>:<$STR(N$刀魂数1)>,2=<$STR(S$刀魂第2)>:<$STR(N$刀魂数2)>,3=<$STR(S$刀魂第3)>:<$STR(N$刀魂数3)>,4=<$STR(S$刀魂第4)>:<$STR(N$刀魂数4)>,5=<$STR(S$刀魂第5)>:<$STR(N$刀魂数5)>,6=<$STR(S$刀魂第6)>:<$STR(N$刀魂数6)>,7=<$STR(S$刀魂第7)>:<$STR(N$刀魂数7)>,8=<$STR(S$刀魂第8)>:<$STR(N$刀魂数8)>,9=<$STR(S$刀魂第9)>:<$STR(N$刀魂数9)>,10=<$STR(S$刀魂第10)>:<$STR(N$刀魂数10)>,11=<$STR(S$刀魂第11)>:<$STR(N$刀魂数11)>,12=<$STR(S$刀魂第12)>:<$STR(N$刀魂数12)>,13=<$STR(S$刀魂第13)>:<$STR(N$刀魂数13)>,14=<$STR(S$刀魂第14)>:<$STR(N$刀魂数14)>,15=<$STR(S$刀魂第15)>:<$STR(N$刀魂数15)>,16=<$STR(S$刀魂第16)>:<$STR(N$刀魂数16)>,17=<$STR(S$刀魂第17)>:<$STR(N$刀魂数17)>,18=<$STR(S$刀魂第18)>:<$STR(N$刀魂数18)>,19=<$STR(S$刀魂第19)>:<$STR(N$刀魂数19)>,20=<$STR(S$刀魂第20)>:<$STR(N$刀魂数20)>,21=<$STR(S$刀魂第21)>:<$STR(N$刀魂数21)>,22=<$STR(S$刀魂第22)>:<$STR(N$刀魂数22)>,23=<$STR(S$刀魂第23)>:<$STR(N$刀魂数23)>,24=<$STR(S$刀魂第24)>:<$STR(N$刀魂数24)>,25=<$STR(S$刀魂第25)>:<$STR(N$刀魂数25)>,26=<$STR(S$刀魂第26)>:<$STR(N$刀魂数26)>,27=<$STR(S$刀魂第27)>:<$STR(N$刀魂数27)>,28=<$STR(S$刀魂第28)>:<$STR(N$刀魂数28)>,29=<$STR(S$刀魂第29)>:<$STR(N$刀魂数29)>,30=<$STR(S$刀魂第30)>:<$STR(N$刀魂数30)>,31=<$STR(S$刀魂第31)>:<$STR(N$刀魂数31)>,32=<$STR(S$刀魂第32)>:<$STR(N$刀魂数32)>,33=<$STR(S$刀魂第33)>:<$STR(N$刀魂数33)>,34=<$STR(S$刀魂第34)>:<$STR(N$刀魂数34)>,35=<$STR(S$刀魂第35)>:<$STR(N$刀魂数35)>,36=<$STR(S$刀魂第36)>:<$STR(N$刀魂数36)>,37=<$STR(S$刀魂第37)>:<$STR(N$刀魂数37)>,38=<$STR(S$刀魂第38)>:<$STR(N$刀魂数38)>,39=<$STR(S$刀魂第39)>:<$STR(N$刀魂数39)>,40=<$STR(S$刀魂第40)>:<$STR(N$刀魂数40)>,41=<$STR(S$刀魂第41)>:<$STR(N$刀魂数41)>,42=<$STR(S$刀魂第42)>:<$STR(N$刀魂数42)>,43=<$STR(S$刀魂第43)>:<$STR(N$刀魂数43)>,44=<$STR(S$刀魂第44)>:<$STR(N$刀魂数44)>,45=<$STR(S$刀魂第45)>:<$STR(N$刀魂数45)>,46=<$STR(S$刀魂第46)>:<$STR(N$刀魂数46)>,47=<$STR(S$刀魂第47)>:<$STR(N$刀魂数47)>,48=<$STR(S$刀魂第48)>:<$STR(N$刀魂数48)>,49=<$STR(S$刀魂第49)>:<$STR(N$刀魂数49)>,50=<$STR(S$刀魂第50)>:<$STR(N$刀魂数50)>,51=<$STR(S$刀魂第51)>:<$STR(N$刀魂数51)>,52=<$STR(S$刀魂第52)>:<$STR(N$刀魂数52)>,53=<$STR(S$刀魂第53)>:<$STR(N$刀魂数53)>,54=<$STR(S$刀魂第54)>:<$STR(N$刀魂数54)>,55=<$STR(S$刀魂第55)>:<$STR(N$刀魂数55)>,56=<$STR(S$刀魂第56)>:<$STR(N$刀魂数56)>,57=<$STR(S$刀魂第57)>:<$STR(N$刀魂数57)>,58=<$STR(S$刀魂第58)>:<$STR(N$刀魂数58)>,59=<$STR(S$刀魂第59)>:<$STR(N$刀魂数59)>,60=<$STR(S$刀魂第60)>:<$STR(N$刀魂数60)>,61=<$STR(S$刀魂第61)>:<$STR(N$刀魂数61)>,62=<$STR(S$刀魂第62)>:<$STR(N$刀魂数62)>,63=<$STR(S$刀魂第63)>:<$STR(N$刀魂数63)>,64=<$STR(S$刀魂第64)>:<$STR(N$刀魂数64)>,65=<$STR(S$刀魂第65)>:<$STR(N$刀魂数65)>,66=<$STR(S$刀魂第66)>:<$STR(N$刀魂数66)>,67=<$STR(S$刀魂第67)>:<$STR(N$刀魂数67)>,68=<$STR(S$刀魂第68)>:<$STR(N$刀魂数68)>,69=<$STR(S$刀魂第69)>:<$STR(N$刀魂数69)>,70=<$STR(S$刀魂第70)>:<$STR(N$刀魂数70)>,71=<$STR(S$刀魂第71)>:<$STR(N$刀魂数71)>,72=<$STR(S$刀魂第72)>:<$STR(N$刀魂数72)>,73=<$STR(S$刀魂第73)>:<$STR(N$刀魂数73)>,74=<$STR(S$刀魂第74)>:<$STR(N$刀魂数74)>,75=<$STR(S$刀魂第75)>:<$STR(N$刀魂数75)>,76=<$STR(S$刀魂第76)>:<$STR(N$刀魂数76)>,77=<$STR(S$刀魂第77)>:<$STR(N$刀魂数77)>,78=<$STR(S$刀魂第78)>:<$STR(N$刀魂数78)>,79=<$STR(S$刀魂第79)>:<$STR(N$刀魂数79)>,80=<$STR(S$刀魂第80)>:<$STR(N$刀魂数80)>,81=<$STR(S$刀魂第81)>:<$STR(N$刀魂数81)>,82=<$STR(S$刀魂第82)>:<$STR(N$刀魂数82)>,83=<$STR(S$刀魂第83)>:<$STR(N$刀魂数83)>,84=<$STR(S$刀魂第84)>:<$STR(N$刀魂数84)>,85=<$STR(S$刀魂第85)>:<$STR(N$刀魂数85)>,86=<$STR(S$刀魂第86)>:<$STR(N$刀魂数86)>,87=<$STR(S$刀魂第87)>:<$STR(N$刀魂数87)>,88=<$STR(S$刀魂第88)>:<$STR(N$刀魂数88)>,89=<$STR(S$刀魂第89)>:<$STR(N$刀魂数89)>,90=<$STR(S$刀魂第90)>:<$STR(N$刀魂数90)>,91=<$STR(S$刀魂第91)>:<$STR(N$刀魂数91)>,92=<$STR(S$刀魂第92)>:<$STR(N$刀魂数92)>,93=<$STR(S$刀魂第93)>:<$STR(N$刀魂数93)>,94=<$STR(S$刀魂第94)>:<$STR(N$刀魂数94)>,95=<$STR(S$刀魂第95)>:<$STR(N$刀魂数95)>,96=<$STR(S$刀魂第96)>:<$STR(N$刀魂数96)>,97=<$STR(S$刀魂第97)>:<$STR(N$刀魂数97)>,98=<$STR(S$刀魂第98)>:<$STR(N$刀魂数98)>,99=<$STR(S$刀魂第99)>:<$STR(N$刀魂数99)>,100=<$STR(S$刀魂第100)>:<$STR(N$刀魂数100)>
+
+
+; MOV N1 1
+; WHILE N1 < 101
+; ADDSTRVALUE A21 <$STR(N1)> <$STR(S$战力第<$STR(N1)>)>:<$STR(N$战力数<$STR(N1)>)>
+; ADDSTRVALUE A22 <$STR(N1)> <$STR(S$等级第<$STR(N1)>)>:<$STR(N$等级数<$STR(N1)>)>
+; ADDSTRVALUE A23 <$STR(N1)> <$STR(S$爆率第<$STR(N1)>)>:<$STR(N$爆率数<$STR(N1)>)>
+; ADDSTRVALUE A24 <$STR(N1)> <$STR(S$刀魂第<$STR(N1)>)>:<$STR(N$刀魂数<$STR(N1)>)>
+; INC N1 1
+; ENDWHILE
+
+; 3分钟
+[@更新传送标签]
+#IF
+#ACT
+MOVR G24 0 6
+
+
+#IF
+CHECKRANGEMONCOUNTEX rxsc042 废墟尸王 285 342 10 = 0
+EQUAL <$HOUR> 12
+SMALL <$MINUTE> 56
+LARGE <$HFCOUNT> 0
+#ACT
+MonGenEx rxsc042 285 342 废墟尸王 0 1 0 250
+
+
+;开区每分钟计时 （服务器没有角色不计时）
+[@开区分计时]
+#IF
+EQUAL <$USERCOUNT> 0
+#ACT
+BREAK
+
+#IF
+LARGE <$USERCOUNT> 0
+#ACT
+INC G387 1
+
+#IF
+NOT LARGE G40 480
+#ACT
+INC G40 1
+
+; 2022.11.05后可删除
+#IF
+EQUAL A40 
+#ACT
+MOV A40 fmd
+
+#IF
+LARGE G40 480
+CHECKRANGEMONCOUNTEX <$STR(A40)> 真·暗之虹魔教主 40 40 100 = 0
+#ACT
+MOV G40 0
+MOV S$权重奖池 lyd#25|jfd#25|mhd#25|fmd#25
+RANSJSTR <$STR(S$权重奖池)> 1 3 S$刷新地图 S$奖池剩余
+MOV A40 <$STR(S$刷新地图)>
+MonGenEx <$STR(S$刷新地图)> 45 42 真·暗之虹魔教主 2 1 0 249
+SENDMOVEMSG 0 253 0 200 1 <真·暗之虹魔教主/FCOLOR=70>已刷新在<四大神殿/FCOLOR=250>
+
+
+; 开区24小时后开启统计副本数量
+#IF
+LARGE G387 1440
+#ACT
+MOV G4 0
+GmexecuTe StartQuest @副本数量统计
+
+; 老区不开放下面的活动
+#IF
+NOT SMALL <$KFDAY> 3
+#ACT
+BREAK
+
+#IF
+Equal G387 15
+#Act
+SendMoveMsg 0 251 0 270 1 土城跑酷活动将在5分钟后开启，请所有玩家做好准备哦，只需要在安全区跑动，即可获得高额奖励~
+SendMoveMsg 0 251 0 300 1 土城跑酷活动将在5分钟后开启，请所有玩家做好准备哦，只需要在安全区跑动，即可获得高额奖励~
+SendMoveMsg 0 251 0 330 1 土城跑酷活动将在5分钟后开启，请所有玩家做好准备哦，只需要在安全区跑动，即可获得高额奖励~
+Break
+
+
+#IF
+Equal G387 20
+#Act
+Mov A10 已开启
+GmexecuTe StartQuest @土城跑酷提示
+SendMoveMsg 0 251 0 270 1 土城跑酷活动已经开始，请所有玩家速度回城，只需要在安全区跑动，即可获得高额材料货币奖励和大量神级装备！！！！
+SendMoveMsg 0 251 0 300 1 土城跑酷活动已经开始，请所有玩家速度回城，只需要在安全区跑动，即可获得高额材料货币奖励和大量神级装备！！！！
+SendMoveMsg 0 251 0 330 1 土城跑酷活动已经开始，请所有玩家速度回城，只需要在安全区跑动，即可获得高额材料货币奖励和大量神级装备！！！！
+Break
+
+#IF
+Equal G387 23
+#Act
+Mov A10
+SendMoveMsg 0 251 0 270 1 土城跑酷活动已经关闭，请所有玩家等待下次新区再次开启，感谢您的参与！！！！
+SendMoveMsg 0 251 0 300 1 土城跑酷活动已经关闭，请所有玩家等待下次新区再次开启，感谢您的参与！！！！
+SendMoveMsg 0 251 0 330 1 土城跑酷活动已经关闭，请所有玩家等待下次新区再次开启，感谢您的参与！！！！
+
+
+#IF
+Equal G387 40
+#Act
+Mov A12 已开启
+GmexecuTe StartQuest @黄金矿工提示
+Break
+
+#IF
+Equal G387 45
+#Act
+; 关闭黄金矿工
+Mov A12 
+SendMoveMsg 0 251 0 270 1 黄金矿工活动已结束~
+Break
+
+#IF
+EQUAL A12 已开启
+#ACT
+GuildNoticeMsg 250 11 {黄金矿工|70:0:1}活动进行中，前往{活动NPC领取矿镐|253:0:1}即可在盟重挖矿区激情挖矿，最高{可获得66元充值。|70:0:1}
+
+
+#IF
+Equal G387 95
+#Act
+SendMoveMsg 0 251 0 270 1 天降福利活动将在5分钟后开启，请所有玩家做好准备，只需要在地图飞动随机，即可获得高额材料货币奖励！！！！
+SendMoveMsg 0 251 0 300 1 天降福利活动将在5分钟后开启，请所有玩家做好准备，只需要在地图飞动随机，即可获得高额材料货币奖励！！！！
+SendMoveMsg 0 251 0 330 1 天降福利活动将在5分钟后开启，请所有玩家做好准备，只需要在地图飞动随机，即可获得高额材料货币奖励！！！！
+Break
+
+#IF
+Equal G387 100
+#Act
+Mov A11 已开启
+THROWITEM rxsc051 30 28 30 5000元宝 40|1 1 0 0
+THROWITEM rxsc051 30 28 30 10000元宝 10|1 1 0 0
+THROWITEM rxsc051 30 28 30 100000元宝 2|1 1 0 0
+THROWITEM rxsc051 30 28 30 500金刚石 40|1 1 0 0
+THROWITEM rxsc051 30 28 30 1000金刚石 10|1 1 0 0
+THROWITEM rxsc051 30 28 30 5000金刚石 10|1 1 0 0
+THROWITEM rxsc051 30 28 30 10000金刚石 2|1 1 0 0
+THROWITEM rxsc051 30 28 30 仙灵珠 10|1 1 0 0
+THROWITEM rxsc051 30 28 30 天宫之锤 50|1 1 0 0
+THROWITEM rxsc051 30 28 30 命运水晶 30|1 1 0 0
+THROWITEM rxsc051 30 28 30 修炼石 10|1 1 0 0
+THROWITEM rxsc051 30 28 30 橡树果 10|1 1 0 0
+THROWITEM rxsc051 30 28 30 觉醒石 10|1 1 0 0
+THROWITEM rxsc051 30 28 30 书页  10|1 1 0 0
+THROWITEM rxsc051 30 28 30 1元充值 20|1 1 0 0
+THROWITEM rxsc051 30 28 30 2元充值 20|1 1 0 0
+THROWITEM rxsc051 30 28 30 5元充值 10|1 1 0 0
+THROWITEM rxsc051 30 28 30 10元充值 2|1 1 0 0
+GmexecuTe StartQuest @步步惊心提示
+SendMoveMsg 0 251 0 270 1 天降福利活动已经开始，请所有玩家速度进入，只需要在地图飞动随机，即可获得高额材料货币奖励和大量神级装备！！！！
+SendMoveMsg 0 251 0 300 1 天降福利活动已经开始，请所有玩家速度进入，只需要在地图飞动随机，即可获得高额材料货币奖励和大量神级装备！！！！
+SendMoveMsg 0 251 0 330 1 天降福利活动已经开始，请所有玩家速度进入，只需要在地图飞动随机，即可获得高额材料货币奖励和大量神级装备！！！！
+Break
+
+#IF
+Equal G387 105
+#Act
+Mov A11 
+CLEARITEMMAP rxsc051 41 55 200
+Movr N$7 94 116
+Movr N$8 110 131
+MoveMapPlay rxsc051 Rxsc042 <$Str(N$7)> <$Str(N$8)>
+SendMoveMsg 0 251 0 270 1 天降福利活动已经关闭，请所有玩家等待下次新区再次开启，感谢您的参与！！！！
+SendMoveMsg 0 251 0 300 1 天降福利活动已经关闭，请所有玩家等待下次新区再次开启，感谢您的参与！！！！
+SendMoveMsg 0 251 0 330 1 天降福利活动已经关闭，请所有玩家等待下次新区再次开启，感谢您的参与！！！！
+
+#IF
+Equal G387 60
+#Act
+SendMoveMsg 0 251 0 270 1 新区狂欢活动将在10分钟后开启，请所有玩家做好准备，刷新大量BOSS，每只必爆1~20元充值金额！！！！
+SendMoveMsg 0 251 0 300 1 新区狂欢活动将在10分钟后开启，请所有玩家做好准备，刷新大量BOSS，每只必爆1~20元充值金额！！！！
+SendMoveMsg 0 251 0 330 1 新区狂欢活动将在10分钟后开启，请所有玩家做好准备，刷新大量BOSS，每只必爆1~20元充值金额！！！！
+
+#IF
+Equal G387 65
+#Act
+SendMoveMsg 0 251 0 270 1 新区狂欢活动将在5分钟后开启，请所有玩家做好准备，刷新大量BOSS，每只必爆1~20元充值金额！！！！
+SendMoveMsg 0 251 0 300 1 新区狂欢活动将在5分钟后开启，请所有玩家做好准备，刷新大量BOSS，每只必爆1~20元充值金额！！！！
+SendMoveMsg 0 251 0 330 1 新区狂欢活动将在5分钟后开启，请所有玩家做好准备，刷新大量BOSS，每只必爆1~20元充值金额！！！！
+
+#IF
+Equal G387 70
+#Act
+MonGenEx cfzl 146 217 充值福利BOSS 0 1 0 249
+MonGenEx cfzl 156 207 充值福利BOSS 0 1 0 249
+MonGenEx cfzl 166 197 充值福利BOSS 0 1 0 249
+MonGenEx cfzl 176 189 充值福利BOSS 0 1 0 249
+MonGenEx cfzl 185 179 充值福利BOSS 0 1 0 249
+MonGenEx cfzl 196 168 充值福利BOSS 0 1 0 249
+MonGenEx cfzl 207 157 充值福利BOSS 0 1 0 249
+MonGenEx cfzl 219 147 充值福利BOSS 0 1 0 249
+MonGenEx cfzl 228 134 充值福利BOSS 0 1 0 249
+MonGenEx cfzl 221 120 充值福利BOSS 0 1 0 249
+MonGenEx cfzl 211 110 充值福利BOSS 0 1 0 249
+MonGenEx cfzl 200 99 充值福利BOSS 0 1 0 249
+MonGenEx cfzl 189 89 充值福利BOSS 0 1 0 249
+MonGenEx cfzl 177 77 充值福利BOSS 0 1 0 249
+MonGenEx cfzl 165 65 充值福利BOSS 0 1 0 249
+MonGenEx cfzl 155 55 充值福利BOSS 0 1 0 249
+MonGenEx cfzl 145 46 充值福利BOSS 0 1 0 249
+MonGenEx cfzl 133 36 充值福利BOSS 0 1 0 249
+MonGenEx cfzl 118 38 充值福利BOSS 0 1 0 249
+MonGenEx cfzl 107 49 充值福利BOSS 0 1 0 249
+MonGenEx cfzl 96 59 充值福利BOSS 0 1 0 249
+MonGenEx cfzl 86 71 充值福利BOSS 0 1 0 249
+MonGenEx cfzl 72 84 充值福利BOSS 0 1 0 249
+MonGenEx cfzl 60 96 充值福利BOSS 0 1 0 249
+MonGenEx cfzl 47 109 充值福利BOSS 0 1 0 249
+MonGenEx cfzl 34 128 充值福利BOSS 0 1 0 249
+MonGenEx cfzl 47 141 充值福利BOSS 0 1 0 249
+MonGenEx cfzl 56 152 充值福利BOSS 0 1 0 249
+MonGenEx cfzl 68 162 充值福利BOSS 0 1 0 249
+MonGenEx cfzl 80 177 充值福利BOSS 0 1 0 249
+MonGenEx cfzl 111 193 充值福利BOSS 0 1 0 249
+MonGenEx cfzl 126 183 充值福利BOSS 0 1 0 249
+MonGenEx cfzl 140 170 充值福利BOSS 0 1 0 249
+MonGenEx cfzl 152 158 充值福利BOSS 0 1 0 249
+MonGenEx cfzl 166 144 充值福利BOSS 0 1 0 249
+MonGenEx cfzl 171 126 充值福利BOSS 0 1 0 249
+MonGenEx cfzl 161 114 充值福利BOSS 0 1 0 249
+MonGenEx cfzl 129 85 充值福利BOSS 0 1 0 249
+MonGenEx cfzl 115 94 充值福利BOSS 0 1 0 249
+MonGenEx cfzl 102 107 充值福利BOSS 0 1 0 249
+MonGenEx cfzl 91 121 充值福利BOSS 0 1 0 249
+MonGenEx cfzl 96 137 充值福利BOSS 0 1 0 249
+MonGenEx cfzl 112 147 充值福利BOSS 0 1 0 249
+MonGenEx cfzl 125 136 充值福利BOSS 0 1 0 249
+GmexecuTe StartQuest @财富之路提示
+SendMoveMsg 0 251 0 270 1 新区狂欢活动已经开始，请所有玩家速度进入，刷新大量BOSS，每只必爆1~20元充值金额！！！！
+SendMoveMsg 0 251 0 300 1 新区狂欢活动已经开始，请所有玩家速度进入，刷新大量BOSS，每只必爆1~20元充值金额！！！！
+SendMoveMsg 0 251 0 330 1 新区狂欢活动已经开始，请所有玩家速度进入，刷新大量BOSS，每只必爆1~20元充值金额！！！！
+Break
+
+
+[@世界BOSS活动]
+#IF
+LARGE <$HFCOUNT> 0
+#ACT
+MonGenEx rxsc042 355 338 ●●●●蚀九阴●●●● 5 1 0 249
+GmexecuTe StartQuest @世界BOSS提示
+SendMoveMsg 0 251 0 270 1 世界BOSS【蚀九阴】已刷新，在土城309,185附近。请所有玩家速度将其消灭！！！！
+SendMoveMsg 0 251 0 300 1 世界BOSS【蚀九阴】已刷新，在土城309,185附近。请所有玩家速度将其消灭！！！！
+SendMoveMsg 0 251 0 330 1 世界BOSS【蚀九阴】已刷新，在土城309,185附近。请所有玩家速度将其消灭！！！！
+
+
+
+[@18点活动触发]
+#IF
+EQUAL G0 1
+#ACT
+ClearHumCustVar 杀怪数 0
+CLEARNAMELIST ..\QuestDiary\05数据文件\排名_暴富.txt
+CLEARNAMELIST ..\QuestDiary\05数据文件\排行_暴富.txt
+MonGenEx yybf 165 238 暴富·钉耙猫 250 800 0 251	
+MonGenEx yybf 237 219 暴富·钉耙猫 250 800 0 251	
+GmexecuTe StartQuest @一夜暴富提示
+BREAK
+
+
+[@每周BOSS1]
+; 清理一夜暴富活动怪物
+#IF
+EQUAL G0 1
+#ACT
+MONCLEAR YYBF
+MoveMapPlay yybf rxsc042 333 333
+SendMoveMsg 0 251 0 270 1 [提示]:一夜暴富活动已结束，请前往活动NPC处领取奖励
+SENDMSG 0 [提示]:一夜暴富活动已结束，请前往活动NPC处领取奖励
+
+#IF
+SMALL <$HFCOUNT> 1
+#ACT
+BREAK
+
+#IF
+NOT DAYOFWEEK TUE
+NOT DAYOFWEEK FRI
+#Act
+BREAK
+
+#IF
+#ACT
+MonGenEx  bosscx	100  100	尸王								100   20  0  255
+MonGenEx  bosscx	100  100	铁血·震天魔神						100   10  0   253
+MonGenEx  bosscx	100  100	铁血·埋没之主                       100   10  0   253
+MonGenEx  bosscx	100  100	铁血·兽人巨魔                       100   10  0   253
+MonGenEx  bosscx	100  100	铁血·罪恶修罗                       100   10  0   253
+MonGenEx  bosscx	100  100	蚁后[王]							100   5   0   249
+MonGenEx  bosscx	100  100	麒麟[王]                            100   5   0   249
+MonGenEx  bosscx	100  100	龙王[王]                            100   5   0   249
+MonGenEx  bosscx	100  100	蚩尤[王]                            100   5   0   249
+MonGenEx  bosscx	100  100	米尔皇帝[帝]						100   3   0   251
+MonGenEx  bosscx	100  100	蓝宫教主[圣]						100   3   0   251
+MonGenEx  bosscx	100  100	爆不爆谁知道						100   3   0   70
+MonGenEx  bosscx	100  100	山海圣兽※白虎                      100   1   0   249
+MonGenEx  bosscx	100  100	山海圣兽※朱雀                      100   1   0   249
+MonGenEx  bosscx	100  100	山海圣兽※玄武                      100   1   0   249
+MonGenEx  bosscx	100  100	山海圣兽※青龙                      100   1   0   249
+MonGenEx  bosscx	100  100	暗之双头金刚                        100   1   0   249
+MonGenEx  bosscx	100  100	暗之双头血魔                        100   1   0   249
+MonGenEx  bosscx	100  100	暗之沃玛教主                        100   1   0   249
+MonGenEx  bosscx	100  100	暗之骷髅精灵                        100   1   0   249
+MonGenEx  bosscx	100  100	暗之黄泉教主                        100   1   0   249
+MonGenEx  bosscx	100  100	暗之虹魔教主						100   1   0   249
+MonGenEx  bosscx	107	 107	北冥之地●寒冰尸龙					1   1  0   249
+MonGenEx  bosscx	100  100	◇◇◇上古异兽·山海奎牛◇◇◇		100   1  0   249
+MonGenEx  bosscx	100  100	◇◇◇上古异兽·山海朱厌◇◇◇		100   1  0   249
+SendMoveMsg 0 251 0 270 1 [提示]:活动[BOSS巢穴]已开启,第一波BOSS已刷新,请所有玩家速度将其消灭！！第二波BOSS将于30分钟后刷新，并且刷新<巢穴之主/FCOLOR=249>！！！
+SendMoveMsg 0 251 0 270 1 [提示]:活动[BOSS巢穴]已开启,第一波BOSS已刷新,请所有玩家速度将其消灭！！第二波BOSS将于30分钟后刷新，并且刷新<巢穴之主/FCOLOR=249>！！！
+SendMoveMsg 0 251 0 270 1 [提示]:活动[BOSS巢穴]已开启,第一波BOSS已刷新,请所有玩家速度将其消灭！！第二波BOSS将于30分钟后刷新，并且刷新<巢穴之主/FCOLOR=249>！！！
+GmexecuTe StartQuest @BOSS巢穴提示
+
+
+
+[@每周BOSS2]
+#IF
+SMALL <$HFCOUNT> 1
+#ACT
+BREAK
+
+
+#IF
+NOT DAYOFWEEK TUE
+NOT DAYOFWEEK FRI
+#ACT
+BREAK
+
+
+#IF
+#ACT
+MonGenEx  bosscx	100  100	尸王								100   20  0   255
+MonGenEx  bosscx	100  100	铁血·震天魔神						100   10  0   253
+MonGenEx  bosscx	100  100	铁血·埋没之主                       100   10  0   253
+MonGenEx  bosscx	100  100	铁血·兽人巨魔                       100   10  0   253
+MonGenEx  bosscx	100  100	铁血·罪恶修罗                       100   10  0   253
+MonGenEx  bosscx	100  100	蚁后[王]							100   5  0   249
+MonGenEx  bosscx	100  100	麒麟[王]                            100   5  0   249
+MonGenEx  bosscx	100  100	龙王[王]                            100   5  0   249
+MonGenEx  bosscx	100  100	蚩尤[王]                            100   5  0   249
+MonGenEx  bosscx	100  100	米尔皇帝[帝]						100   3  0   251
+MonGenEx  bosscx	100  100	蓝宫教主[圣]						100   3  0   251
+MonGenEx  bosscx	100  100	爆不爆谁知道						100   3  0   70
+MonGenEx  bosscx	100  100	山海圣兽※白虎                      100   1  0   249
+MonGenEx  bosscx	100  100	山海圣兽※朱雀                      100   1  0   249
+MonGenEx  bosscx	100  100	山海圣兽※玄武                      100   1  0   249
+MonGenEx  bosscx	100  100	山海圣兽※青龙                      100   1  0   249
+MonGenEx  bosscx	100  100	暗之双头金刚                        100   1  0   249
+MonGenEx  bosscx	100  100	暗之双头血魔                        100   1  0   249
+MonGenEx  bosscx	100  100	暗之沃玛教主                        100   1  0   249
+MonGenEx  bosscx	100  100	暗之骷髅精灵                        100   1  0   249
+MonGenEx  bosscx	100  100	暗之黄泉教主                        100   1  0   249
+MonGenEx  bosscx	100  100	暗之虹魔教主						100   1  0   249
+MonGenEx  bosscx	95   93		重装使者							1   1  0   249
+MonGenEx  bosscx	100  100	◇◇◇上古异兽·山海奎牛◇◇◇		100   1  0   249
+MonGenEx  bosscx	100  100	◇◇◇上古异兽·山海朱厌◇◇◇		100   1  0   249
+MonGenEx  bosscx	100  100	◇◇◇蛮荒兽界·狂暴巨魔◇◇◇		100   1  0   249
+MonGenEx  bosscx	99   102	◇◇◇血腥魔蛇·兽域之皇◇◇◇		1	  1  0   249 ◇◇◇血腥魔蛇·兽域之皇◇◇◇\[巢穴之主]
+SendMoveMsg 0 251 0 270 1 [提示]:活动[BOSS巢穴]已开启,<巢穴之主/FCOLOR=249>已经刷新，请所有玩家速度将其消灭！！！
+SendMoveMsg 0 251 0 270 1 [提示]:活动[BOSS巢穴]已开启,<巢穴之主/FCOLOR=249>已经刷新，请所有玩家速度将其消灭！！！
+SendMoveMsg 0 251 0 270 1 [提示]:活动[BOSS巢穴]已开启,<巢穴之主/FCOLOR=249>已经刷新，请所有玩家速度将其消灭！！！
+GmexecuTe StartQuest @BOSS巢穴提示
+
+
+[@23点活动触发]
+#IF
+LARGE <$HFCOUNT> 0
+#ACT
+MOV N1 1
+while N1 < 6
+MOV A5<$STR(N1)> -
+MOV G5<$STR(N1)> 0
+INC N1 1
+endwhile
+GmexecuTe StartQuest @天下第一提示
+
+; 20:30
+[@合服BOSS刷新]
+; 合服48小时内开启，QM更改A65
+#IF
+SMALL <$UTCNOW8> A65
+#ACT
+MonGenEx rxsc806 652 300 百倍爆率·【BOSS】 1 1 0 249
+SENDMOVEMSG 1 253 0 200 1 【合服活动】沙巴克BOSS<百倍爆率·【BOSS】/FCOLOR=250>已刷新在沙城复活点... 
+SENDMOVEMSG 1 254 0 230 1 【合服活动】沙巴克BOSS<百倍爆率·【BOSS】/FCOLOR=250>已刷新在沙城复活点... 
+SENDMOVEMSG 1 125 0 260 1 【合服活动】沙巴克BOSS<百倍爆率·【BOSS】/FCOLOR=250>已刷新在沙城复活点... 
+
+
+; 19:59
+[@攻沙设置]
+#IF
+CHECK_TODAY_WAR
+#ACT
+REPAIRCASTLE 0
+AddAttackSabukAll 0
+SendMoveMsg 0 251 0 270 1 沙巴克攻城战已开启！所有行会已自动申请攻城！
+SendMoveMsg 0 251 0 300 1 沙巴克攻城战已开启！所有行会已自动申请攻城！
+SendMoveMsg 0 251 0 330 1 沙巴克攻城战已开启！所有行会已自动申请攻城！
+Break
+
+; 19:00
+[@攻沙喊话1]
+#IF
+CHECK_TODAY_WAR
+#ACT
+SendMoveMsg 0 251 0 270 1 [系统]：沙巴克攻城战将在20:00准时开启!请各位大佬提前建立好行会!!
+SendMoveMsg 0 251 0 300 1 [系统]：沙巴克攻城战将在20:00准时开启!请各位大佬提前建立好行会!!
+SendMoveMsg 0 251 0 330 1 [系统]：沙巴克攻城战将在20:00准时开启!请各位大佬提前建立好行会!!
+Break
+
+; 19:30
+[@攻沙喊话2]
+#IF
+CHECK_TODAY_WAR
+#ACT
+SendMoveMsg 0 251 0 270 1 [系统]：沙巴克攻城战将在20:00准时开启!请各位大佬提前建立好行会!!
+SendMoveMsg 0 251 0 300 1 [系统]：沙巴克攻城战将在20:00准时开启!请各位大佬提前建立好行会!!
+SendMoveMsg 0 251 0 330 1 [系统]：沙巴克攻城战将在20:00准时开启!请各位大佬提前建立好行会!!
+Break
+
+; 22:00
+[@清除沙巴克变量]
+#IF
+CHECK_TODAY_WAR
+#ACT
+MOV A34 
+GMEXECUTE StartQuest @沙巴克变量清除
+
+
+;开区7天后每次沙巴克结束活动
+#IF
+NOT SMALL G0 7
+CHECK_TODAY_WAR
+#ACT
+; (清理有延迟，会导致下面的刷怪也被清理)
+; CLEARMAPMON sbkslfg
+; CLEARMAPMON sbksbf
+MonGenEx sbkslf 66 66 沙巴克◇胜利之魂 1 1 0 70
+MonGenEx sbksbf 66 66 沙巴克◇热血之魂 1 1 0 70
+MonGenEx sbkslf 66 66 沙巴克福利怪 	   50 20 0 250
+MonGenEx sbksbf 66 66 沙巴克福利怪 	   50 10 0 250
+GUILDNOTICEMSG 251 15 {沙巴克宝藏殿已开启|254:1:0}请前往盟重活动NPC进入
+SENDMOVEMSG 0 146 0 300 1 沙巴克藏宝殿已开启！参与活动可获得大量元宝、金刚石；可通过盟重活动NPC进入
+BREAK
+
+
+[@每日清理变量]
+; 防止通宵区开区时间误差导致开区天数增加
+#IF
+LARGE <$USERCOUNT> 0
+#ACT
+INC G0 1
+
+
+; 如果合区后12天未合区，则开启合区活动
+#IF
+LARGE <$HFCOUNT> 0
+#ACT
+FORMULATION <$UTCNOW8>-<$STR(A65)> N$合区间隔
+#IF
+LARGE <$HFCOUNT> 0
+LARGE N$合区间隔 1036800
+#ACT
+FORMULATION <$UTCNOW8>+172800 A65
+
+
+
+; 首次攻沙后开始 按天计时()
+#IF
+LARGE G9 0
+#ACT
+INC G9 1
+
+#IF
+#ACT
+; 国庆礼盒每天限制5个66元抽奖
+MOV G14 0
+
+;花魁排名清空
+MOV A6 空
+MOV A7 空
+MOV A8 空
+MOV G6 0 
+MOV G7 0 
+MOV G8 0 
+
+; 每日清理的全局G变量 （预留的）做活动可以用
+MOV G36 0
+MOV G37 0
+MOV G38 0
+MOV G39 0
+MOV G56 0
+MOV G57 0
+
+; 中秋礼包每日开启数量
+MOV G22 0
+MOV G23 0
+
+; 每日夺宝领取的奖励次数
+MOV G25 0
+MOV G26 0
+MOV G27 0
+MOV G28 0
+MOV G29 0
+MOV G30 0
+MOV G31 0
+MOV G32 0
+MOV G33 0
+MOV G34 0
+MOV G35 0
+
+; 手动控制攻沙每日清理
+MOV A57 
+MOV A56 0
+; 清理文件
+CLEARNAMELIST ..\QuestDiary\05数据文件\夺宝记录.txt
+; 清理个人自定义变量
+ClearHumCustVar 个人捐献 0
+
+; 清理个人自定义变量（旧官方调用，2024年可以删除脚本）
+ClearHumCustVar 礼包申请状态|礼包领取状态|礼包码申请状态|礼包码领取状态|礼包领取日期|首次开通称号|十元券标记|盒子礼包标记 0
+
+
+[@开区秒计时]
+#IF
+EQUAL <$USERCOUNT> 0
+#ACT
+BREAK
+
+#IF
+#ACT
+INC G200 1
+
+; 苍月岛地图传送计时
+#IF
+LARGE G11 0
+#ACT
+DEC G11 1
+BREAK
+
+#IF
+EQUAL A9 
+EQUAL G11 0
+#ACT
+MOV A9 开启
+MOV G11 300
+GUILDNOTICEMSG 251 15 {苍月岛传送阵已开启，|254:1:0}{限时5分钟，|250:1:0}请前往[封魔谷123,404]进入。
+SENDMOVEMSG 0 146 0 300 1 苍月岛传送阵已开启，稳定运行5分钟，想前往苍月岛探险的玩家可送<[封魔谷123,404]/FCOLOR=249>进入… 
+BREAK
+
+#IF
+EQUAL A9 开启
+EQUAL G11 0
+#ACT
+MOV A9 
+MOV G11 5400
+SENDMSG 0 苍月岛传送阵已关闭
+GUILDNOTICEMSG 254 15 苍月岛传送阵已关闭。
+BREAK
+
+
+
+[@人员移出]
+#IF
+SMALL <$HFCOUNT> 1
+#ACT
+BREAK
+
+#OR
+EQUAL G0 1
+DAYOFWEEK MON
+DAYOFWEEK WED
+DAYOFWEEK SAT
+#ACT
+gmexecute StartQuest @沙巴克禁止下图
+BREAK
+
+
+[@跨服开启通知1]
+#IF
+NOT DAYOFWEEK SUN
+NOT DAYOFWEEK THU
+#ACT
+BREAK
+
+#IF
+CHECKKUAFUCONNECT
+#ACT
+SENDMOVEMSG 0 250 0 300 1 跨服战场将在5分钟后已开启，可在<[盟重347,317]/FCOLOR=253>处跨服NPC进入……
+BREAK
+
+
+[@跨服开启通知2]
+#IF
+NOT DAYOFWEEK SUN
+NOT DAYOFWEEK THU
+#ACT
+BREAK
+
+#IF
+CHECKKUAFUCONNECT
+#ACT
+SENDMOVEMSG 0 250 0 300 1 跨服战场已开启，可在<[盟重347,317]/FCOLOR=253>处跨服NPC进入……
+BREAK
+
+[@跨服乱斗通知1]
+#IF
+NOT DAYOFWEEK SUN
+NOT DAYOFWEEK THU
+#ACT
+BREAK
+#IF
+CHECKKUAFUCONNECT
+#ACT
+SENDMOVEMSG 0 250 0 300 1 跨服乱斗将在5分钟后开启
+BREAK
+
+[@跨服乱斗通知2]
+#IF
+NOT DAYOFWEEK SUN
+NOT DAYOFWEEK THU
+#ACT
+BREAK
+
+#IF
+CHECKKUAFUCONNECT
+#ACT
+gmexecute StartQuest @跨服乱斗个人通知
+
+[@跨服乱斗刷怪1]
+#IF
+NOT DAYOFWEEK SUN
+NOT DAYOFWEEK THU
+#ACT
+BREAK
+
+#IF
+CHECKKUAFUCONNECT
+#ACT
+MonGenEx kuafu03 47 40  战斗鸡 1 2 0 249 战斗鸡 0
+
+[@跨服乱斗刷怪2]
+#IF
+NOT DAYOFWEEK SUN
+NOT DAYOFWEEK THU
+#ACT
+BREAK
+
+#IF
+CHECKKUAFUCONNECT
+#ACT
+MonGenEx kuafu03 47 40  战斗鸡 1 2 0 249 战斗鸡 0
+
+
+
+[@跨服关闭通知]
+#IF
+NOT DAYOFWEEK SUN
+NOT DAYOFWEEK THU
+#ACT
+BREAK
+
+#IF
+CHECKKUAFUCONNECT
+#ACT
+KUAFUUSERGOHOME
+SENDMOVEMSG 0 250 0 300 1 跨服战场已结束！！！
+BREAK
+
+
+
+[@随机刷新虹魔教主]
+#IF
+random 4
+#ACT
+MOV A40 lyd
+MonGenEx lyd 40 40 真·暗之虹魔教主 2 1 0 249
+BREAK
+#IF
+random 4
+#ACT
+MOV A40 jfd
+MonGenEx jfd 45 45 真·暗之虹魔教主 2 1 0 249
+BREAK
+#IF
+random 4
+#ACT
+MOV A40 mhd
+MonGenEx mhd 45 42 真·暗之虹魔教主 2 1 0 249
+BREAK
+#IF
+#ACT
+MOV A40 fmd
+MonGenEx fmd 45 45 真·暗之虹魔教主 2 1 0 249
+BREAK

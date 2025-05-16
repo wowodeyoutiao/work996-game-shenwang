@@ -271,7 +271,7 @@ local function GetRewardByRank(rank)
     return rewarditems
 end
 
---本服的执行逻辑
+--本服的定时执行逻辑
 function JumpAreaBossDamageRank.OnLocalServerTimer() 
     local sJsonStr = getsysvar(CommonDefine.VAR_A_JUMPAREA_DAMAGE_TEST_CFG_DATA)
     if sJsonStr~=nil and sJsonStr~='' then
@@ -321,6 +321,11 @@ function JumpAreaBossDamageRank.OnLocalServerTimer()
     end
 end
 
+--跨服的跨天
+function JumpAreaBossDamageRank.OnDayChange() 
+    JumpAreaBossDamageRank.CurrRankData = {}
+end
+
 --跨服服务器更新实时的排行榜数据
 local function UpdateRankData(actor, score)
     if BF_IsNullObj(actor) then
@@ -330,7 +335,7 @@ local function UpdateRankData(actor, score)
     local bFind = false
     local currplayerid = Player.GetPlayerID(actor)
     for _, value in ipairs(JumpAreaBossDamageRank.CurrRankData) do
-        if value.playerid ==  currplayerid then
+        if value.playerid == currplayerid then
             value.currscore = score
             bFind = true
             break
