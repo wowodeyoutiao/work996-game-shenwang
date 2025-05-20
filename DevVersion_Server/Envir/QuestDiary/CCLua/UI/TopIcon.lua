@@ -145,8 +145,6 @@ function TopIcon.InnerExtendPanel(actor)
         buttonstr = ''
         currIconX = -280
         buttonstr = buttonstr..'<Button|x='..currIconX..'|y=75|nimg=custom/a00002.png|width=70|height=70|link=@元宝充值>'
-        currIconX = currIconX - 80
-        buttonstr = buttonstr..'<Button|x='..currIconX..'|y=75|nimg=custom/a00016.png|width=70|height=70|link=@唯一会员>'
         if ActivityExtendGift.CanShowIcon(actor) then
             currIconX = currIconX - 80
             buttonstr = buttonstr..'<Button|id='..MAINICON_ID_1..'|x='..currIconX..'|y=75|width=70|height=70|nimg=private/cc_func_icon/2.png|link=@topicon_openpanel#sid='..ICON_EXTENDGIFT..'>'        

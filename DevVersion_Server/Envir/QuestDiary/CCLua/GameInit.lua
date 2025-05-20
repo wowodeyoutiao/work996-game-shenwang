@@ -70,7 +70,7 @@ local function _Includes()
     require("Envir/QuestDiary/CCLua/GameObj/Map")
 
     -- --GameModule
-    -- require("Envir/QuestDiary/CCLua/GameModule/ClientMsgProcess")
+    require("Envir/QuestDiary/CCLua/GameModule/ClientMsgProcess")
     require("Envir/QuestDiary/CCLua/GameModule/RechargeManager")
     require("Envir/QuestDiary/CCLua/GameModule/EquipPosStrengthManager")
     require("Envir/QuestDiary/CCLua/GameModule/EquipPosStarManager")    

@@ -167,21 +167,6 @@ SENDMSG 6 A60:<$STR(A60)>
 SENDMSG 6 A61:<$STR(A61)>
 BREAK
 
-[@Message_1110]
-#IF
-#ACT
-SENDMSG 9 <$CUSTMSGPARAM>,<$PARAM1>,<$PARAM2>,<$PARAM3>
-BREAK
-
-
-; 外部GM操作接口——消息：9999——<$CUSTMSGPARAM>：校验key——<$PARAM1>：操作代码——<$PARAM2>：操作参数——<$PARAM3>：附加参数
-[@Message_9999]
-#IF
-#ACT
-BREAK
-
-
-
 
 [@OpenLayer9527]
 #IF
@@ -5661,8 +5646,13 @@ BREAK
 [@OnKillMob]
 #IF
 #ACT
-sendmsg 
 CALLLUA CC_QFunction @onkillmob,<$MAP>,<$TEMPMONUSERID>
+BREAK
+
+[@CarPathEnd]
+#IF
+#ACT
+CALLLUA CC_QFunction @carpathend
 BREAK
 
 ;==============================================================================新功能  道具使用
@@ -5886,4 +5876,18 @@ BREAK
 #IF
 #ACT
 CALLLUA CC_QFunction @kfsyscall103
+BREAK
+
+
+;===========================================客户端消息=======================================
+[@Message_1000]
+#IF
+#ACT
+CALLLUA CC_QFunction @handlerequest,<$CUSTMSGPARAM>,<$PARAM1>,<$PARAM2>,<$PARAM3>
+BREAK
+
+[@Message_1001]
+#IF
+#ACT
+CALLLUA CC_QFunction @handlerequest,<$CUSTMSGPARAM>,<$PARAM1>,<$PARAM2>,<$PARAM3>
 BREAK

@@ -198,6 +198,7 @@ local function DoFinalPiledItemCompose(actor, cfgComposeTab)
     if cfgComposeTab.successrate >= math.random(1, 10000) then
 		local targInfo = BF_GetRandomTab(cfgComposeTab.composetarginfo_tab, -1)
 		if (targInfo ~= nil) and (targInfo.id ~= nil) and (cfg_item[targInfo.id] ~= nil) then
+			nothintitem(actor, 2, targInfo.id)
 			giveitem(actor, cfg_item[targInfo.id].Name, 1, 0, '道具合成')
 			bSuccessFlag = true	
 			newitemid = targInfo.id

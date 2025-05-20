@@ -56,18 +56,18 @@ MOV S$Í¼±ê2 <Button|x=0|y=0|width=60|height=37|nimg=custom/cs002.png|link=@²é¿´Ï
 INC S$Í¼±ê2 <Img|x=50|y=0|width=173|height=37|img=custom/cs001.png>
 INC S$Í¼±ê2 <Img|x=214|y=0|width=173|height=37|img=custom/cs001.png>
 INC S$Í¼±ê2 <Img|x=66|y=0|width=37|height=33|img=custom/000124.png>
-INC S$Í¼±ê2 <Text|outlinecolor=0|outline=1|text=$STM(MONEY_Ôª±¦)|x=107|y=1|size=20>
-INC S$Í¼±ê2 <Img|x=220|y=0|width=37|height=33|img=custom/000283.png>
-INC S$Í¼±ê2 <Text|outlinecolor=0|outline=1|text=$STM(MONEY_½ð¸ÕÊ¯)|x=265|y=1|size=20>
+INC S$Í¼±ê2 <Text|outlinecolor=0|outline=1|text=$STM(MONEY_Ôª±¦)|x=107|y=4|size=20>
+INC S$Í¼±ê2 <Img|x=220|y=0|width=37|height=33|img=custom/000125.png>
+INC S$Í¼±ê2 <Text|outlinecolor=0|outline=1|text=$STM(MONEY_°ó¶¨Ôª±¦)|x=265|y=4|size=20>
 ADDBUTTON 101 99 <$STR(S$Í¼±ê2)>
 
 ; ±³°ü°´Å¥ÐÅÏ¢
 MOV S$±³°ü»õ±Ò <Img|x=35|y=345|width=30|height=30|img=custom/000124.png>
-INC S$±³°ü»õ±Ò <Text|x=65|y=348|text=$STM(MONEY_Ôª±¦)|size=17>
-INC S$±³°ü»õ±Ò <Img|x=35|y=376|width=30|height=30|img=custom/000283.png>
-INC S$±³°ü»õ±Ò <Text|x=65|y=379||text=$STM(MONEY_½ð¸ÕÊ¯)|size=17>
-INC S$±³°ü»õ±Ò <Img|x=35|y=408|width=30|height=30|img=custom/000284.png>
-INC S$±³°ü»õ±Ò <Text|x=65|y=409|color=250|size=17|text=$STM(MONEY_ÉñÁ¦Öµ)¡¡[ÉñÁ¦]>
+INC S$±³°ü»õ±Ò <Text|x=70|y=352|text=$STM(MONEY_Ôª±¦)|size=17>
+INC S$±³°ü»õ±Ò <Img|x=35|y=375|width=30|height=30|img=custom/000125.png>
+INC S$±³°ü»õ±Ò <Text|x=70|y=382|text=$STM(MONEY_°ó¶¨Ôª±¦)|size=17>
+INC S$±³°ü»õ±Ò <Img|x=35|y=405|width=30|height=30|img=custom/000123.png>
+INC S$±³°ü»õ±Ò <Text|x=70|y=412|size=17|text=$STM(MONEY_½ð±Ò)>
 ADDBUTTON 7 99 <$STR(S$±³°ü»õ±Ò)>
 
 MOV S$±³°ü°´Å¥2 <Button|id=101|x=300|y=395|nimg=public/bbal/20000.png|width=100|height=36|link=@newrecycle_openpanel>

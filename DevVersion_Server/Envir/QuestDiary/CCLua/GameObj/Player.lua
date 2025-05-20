@@ -596,7 +596,7 @@ function Player.InitNewPlayer(actor)
         Player.FullHPMP(actor)                
         TaskManager.AddNewTask(actor, CommonDefine.TASK_LINE_ID_MAIN, 0)
         --返回邮件
-        Player.GiveItemsByMail(actor, CommonDefine.NEW_PLAYER_EMAIL_ITEMS, '上线送充值', '欢迎来到本游戏，已赠送您58元充值(可直接开通会员)，请在附件中领取。')
+        --Player.GiveItemsByMail(actor, CommonDefine.NEW_PLAYER_EMAIL_ITEMS, '上线送充值', '欢迎来到本游戏，已赠送您58元充值(可直接开通会员)，请在附件中领取。')
         --跳到初始点
         mapmove(actor, 'rxsc1560', 648, 630, 1)
         --触发点击初始NPC
@@ -693,31 +693,31 @@ function Player.QuickGoTo(actor, gotoid)
         opennpcshowex(actor, CommonDefine.NPC_ID_BAOZHU_BOSS, 3, 3)
     elseif gotoid == CommonDefine.QUICK_GOTO_ENTER_MOFANGZHEN then
         --进入魔方阵
-        opennpcshowex(actor, 211, 3, 3)
+        --opennpcshowex(actor, 211, 3, 3)
     elseif gotoid == CommonDefine.QUICK_GOTO_UPGRADE_EQUIPSTAR then
         --装备升星
-        opennpcshowex(actor, 201, 3, 3)             
+        NewMainUIBase.OpenPanel(actor, NewMainUIBase.UI_ICON_POSSTAR)
     elseif gotoid == CommonDefine.QUICK_GOTO_EQUIP_STRENGTH then
         --装备强化
-        opennpcshowex(actor, 200, 3, 3)
+        NewMainUIBase.OpenPanel(actor, NewMainUIBase.UI_ICON_POSSTRENGTH)
     elseif gotoid == CommonDefine.QUICK_GOTO_EQUIP_QUALITY then
-        --装备品质
-        opennpcshowex(actor, 211, 3, 3)
+        --装备品质        
     elseif gotoid == CommonDefine.QUICK_GOTO_EQUIP_RANDOMAB then
-        --装备洗炼
-        opennpcshowex(actor, 203, 3, 3)
+        --装备洗炼        
     elseif gotoid == CommonDefine.QUICK_GOTO_EQUIP_COMPOSE then
         --装备合成
-        opennpcshowex(actor, 205, 3, 3)           
+        NewMainUIBase.OpenPanel(actor, NewMainUIBase.UI_ICON_COMPOSE)
     elseif gotoid == CommonDefine.QUICK_GOTO_SOULSTONE then
         --魂石系统
-        opennpcshowex(actor, 208, 3, 3)
+        NewMainUIBase.OpenPanel(actor, NewMainUIBase.UI_ICON_SOULSTONE)
     elseif gotoid == CommonDefine.QUICK_GOTO_BAOZHU then
         --宝珠【灵玉】系统
-        opennpcshowex(actor, 206, 3, 3)  
+        NewMainUIBase.OpenPanel(actor, NewMainUIBase.UI_ICON_BAOZHU)
     elseif gotoid == CommonDefine.QUICK_GOTO_FREEVIP then
         --免费VIP系统
-        opennpcshowex(actor, 213, 3, 3)
+        local currVIPLv = getplaydef(actor, CommonDefine.VAR_U_FREEVIP_LEVEL)
+        setplaydef(actor, CommonDefine.VAR_N_LAST_NPC_CHOOSEID,  currVIPLv)
+        FreeVIPManager.ShowBasePanel(actor)
     elseif gotoid == CommonDefine.QUICK_GOTO_RECHARGE then
         --充值系统
         openhyperlink(actor, 26)
@@ -735,10 +735,16 @@ function Player.QuickGoTo(actor, gotoid)
         --????
     elseif gotoid == CommonDefine.QUICK_GOTO_GUANZHI then
         --官职
-        opennpcshowex(actor, 209, 3, 3)
+        NewMainUIBase.OpenPanel(actor, NewMainUIBase.UI_ICON_GUANZHI)
     elseif gotoid == CommonDefine.QUICK_GOTO_ZCD then
         --紫宸殿 离线护卫
-        opennpcshowex(actor, 210, 3, 3)
+        NewMainUIBase.OpenPanel(actor, NewMainUIBase.UI_ICON_HUWEI)
+    elseif gotoid == CommonDefine.QUICK_GOTO_AUTO_OPENBOX then
+        --自动开宝箱
+        close(actor)
+        setflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_AUTO_OPEN_SUPERBOX, 1)
+        setflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_AUTO_OPEN_SUPERBOX_PAUSE, 0)
+        OpenSuperBoxManager.AutoOpenSuperBox(actor)
     end          
 end
 
@@ -850,22 +856,11 @@ function Player.UpdateAutoAddExp(actor)
         autoaddexp = autoaddexp + 4500
     end
 
-    --老的会员VIP等级加成
-    local oldVersionVipLv = getplaydef(actor, CommonDefine.VAR_U_OLD_VIP_LEVEL)
-    if oldVersionVipLv == 1 then
-        autoaddexp = autoaddexp + 500
-    elseif oldVersionVipLv == 2 then
-        autoaddexp = autoaddexp + 1500
-    elseif oldVersionVipLv == 2 then
-        autoaddexp = autoaddexp + 2500
-    elseif oldVersionVipLv == 2 then
-        autoaddexp = autoaddexp + 3500
-    elseif oldVersionVipLv == 2 then
-        autoaddexp = autoaddexp + 4500
-    elseif oldVersionVipLv == 2 then
-        autoaddexp = autoaddexp + 7000
-    elseif oldVersionVipLv == 2 then
-        autoaddexp = autoaddexp + 9500        
+    --免费VIP等级 倍率加成
+    local freeviplv = getplaydef(actor, CommonDefine.VAR_U_FREEVIP_LEVEL)
+    if freeviplv > 0 then
+        local addrate = cfgFreeVIP[freeviplv].autoexpaddrate
+        autoaddexp = math.floor(autoaddexp * (1 + addrate))
     end
 
     setautogetexp(actor, 1, autoaddexp, 0, '*', 0, 65535, CommonDefine.AUTO_ADDEXP_MAX_LEVEL)

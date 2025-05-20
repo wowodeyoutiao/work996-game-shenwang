@@ -27,9 +27,9 @@ local TOP_BIAOCHE_NEED_MAX_REFRESH_TIMES = 10
 --镖车持续时间，秒
 local BIAOCHE_LAST_SECONDS = 20 * 60
 --镖车初始坐标
-local BIAOCHE_INIT_POS = {mapid='3', x=322, y=342}
+local BIAOCHE_INIT_POS = {mapid='rxsc042', x=322, y=342}
 --镖车交镖的坐标
-local BIAOCHE_TARG_MAPID = '3'
+local BIAOCHE_TARG_MAPID = 'rxsc042'
 --镖车的寻路点
 local BIAOCHE_TARG_POS = {x=409, y=329}
 --镖车需要人的距离
@@ -210,6 +210,7 @@ function YunBiaoManager.AcceptBiaoChe(actor)
         Player.SendSelfMsg(actor, '系统繁忙，请稍后再试！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
         return
     end
+    
     mapmove(biaochemon, BIAOCHE_INIT_POS.mapid, BIAOCHE_INIT_POS.x, BIAOCHE_INIT_POS.y)
     --镖车时间到了才消失，人物下线不消失
     darttime(actor, BIAOCHE_LAST_SECONDS, 1)
@@ -220,8 +221,9 @@ function YunBiaoManager.AcceptBiaoChe(actor)
     Player.SendSelfMsg(actor, '镖车已刷出！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
     close(actor)
 
+    
     --每日必做计数        
-    EverydayTask.AddTaskCounter(actor, CommonDefine.FUNC_ID_YUNBIAO, 1)       
+    --EverydayTask.AddTaskCounter(actor, CommonDefine.FUNC_ID_YUNBIAO, 1)       
 end
 
 function YunBiaoManager.RefreshBiaoChe(actor)
@@ -290,7 +292,7 @@ function YunBiaoManager.OnArriveTargetPos(actor)
 end
 
 --玩家丢失镖车触发
-function YunBiaoManager.LostBiaoChe(actor, biaoche)
+function YunBiaoManager.LostBiaoChe(actor)
     Player.SendSelfMsg(actor, '很遗憾，你的镖车已丢失！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
     setplaydef(actor, CommonDefine.VAR_U_BIAOCHE_CURRID, 0)
 end
@@ -313,5 +315,21 @@ function YunBiaoManager.IsHaveQuickTip(actor)
 
     return true
 end
+
+--玩家检测当前镖车怪是否存在
+function YunBiaoManager.OnCheckBiaoCheMon(actor)	
+    if not Player.IsFunctionOpen(actor, CommonDefine.FUNC_ID_YUNBIAO, false) then
+        return
+    end
+    local currid = getplaydef(actor, CommonDefine.VAR_U_BIAOCHE_CURRID)
+    if currid > 0 then
+        local biaochemon = GetCurrBiaoCheMon(actor, currid)
+        if biaochemon == nil then
+            YunBiaoManager.LostBiaoChe(actor)
+        end
+    end
+end
+
+GameEventManager.AddListener(CommonDefine.EVENT_NAME_PLAYER_ENTERGAME, YunBiaoManager.OnCheckBiaoCheMon, CommonDefine.FUNC_ID_YUNBIAO)
 
 return YunBiaoManager

@@ -22,6 +22,7 @@ FreeVIPManager.TASK_TYPE_COMPOSE_EQUIP_SUCCESSTIMES = 10        --装备合成成功次
 FreeVIPManager.TASK_TYPE_COMPOSE_SOULSTONE_SUCCESSTIMES = 11    --魂石合成成功次数
 FreeVIPManager.TASK_TYPE_COMPOSE_BAOZHU_SUCCESSTIMES = 12       --宝珠(灵玉)合成成功次数
 FreeVIPManager.TASK_TYPE_ALL_EQUIPPOS_MINSTRENGTHLV = 13        --全身装备位的最小强化等级
+FreeVIPManager.TASK_TYPE_OPEN_SUPERBOX_TIMES = 14               --累计开箱次数
 
 
 FreeVIPManager.TASK_COUNTER_VARLIST = {
@@ -73,6 +74,8 @@ function FreeVIPManager.QuickGoTo(actor, tasktype)
         Player.QuickGoTo(actor, CommonDefine.QUICK_GOTO_BAOZHU)
     elseif tasktype == FreeVIPManager.TASK_TYPE_ALL_EQUIPPOS_MINSTRENGTHLV then   
         Player.QuickGoTo(actor, CommonDefine.QUICK_GOTO_EQUIP_STRENGTH)
+    elseif tasktype == FreeVIPManager.TASK_TYPE_OPEN_SUPERBOX_TIMES then
+        Player.QuickGoTo(actor, CommonDefine.QUICK_GOTO_AUTO_OPENBOX)
     end
 end
 
@@ -120,7 +123,7 @@ function FreeVIPManager.TriggerChgTaskCounter(actor, tasktype, oper, num)
                (tasktype == FreeVIPManager.TASK_TYPE_MOFANGZHEN_ENTERTIMES) or (tasktype == FreeVIPManager.TASK_TYPE_UPGRADE_EQUIPSTAR) or
                (tasktype == FreeVIPManager.TASK_TYPE_EQUIPRANDOMAB_GOLDTIMES) or (tasktype == FreeVIPManager.TASK_TYPE_EQUIPRANDOMAB_YBTIMES) or
                (tasktype == FreeVIPManager.TASK_TYPE_COMPOSE_EQUIP_SUCCESSTIMES) or (tasktype == FreeVIPManager.TASK_TYPE_COMPOSE_SOULSTONE_SUCCESSTIMES) or
-               (tasktype == FreeVIPManager.TASK_TYPE_COMPOSE_BAOZHU_SUCCESSTIMES) then
+               (tasktype == FreeVIPManager.TASK_TYPE_COMPOSE_BAOZHU_SUCCESSTIMES) or (tasktype == FreeVIPManager.TASK_TYPE_OPEN_SUPERBOX_TIMES) then
                 local currcounter = getplaydef(actor, FreeVIPManager.TASK_COUNTER_VARLIST[i])
                 if oper == '+' then
                     currcounter = currcounter + num
@@ -367,13 +370,20 @@ local function GetSingleShowInfo(actor, viplevel)
         if #currLvConfig.addprop_desctab == 0 then
             strPanelInfo = strPanelInfo..'<Text|id=311|text=无|size=15|x='..tempLeftX..'|y='..tempLeftY..'|color=w'..CSS.NPC_WHITE..'>'
             tempLeftY = tempLeftY + 25
-        else            
+        else    
+            local textid = 320        
             for seq, descItem in ipairs(currLvConfig.addprop_desctab) do
-                local textid = 320 + seq
+                textid = textid + 1
                 idstr = idstr..','..textid
                 strPanelInfo = strPanelInfo..'<Text|id='..textid..'|text='..descItem.desc..'|size=15|x='..tempLeftX..'|y='..tempLeftY..'|color='..CSS.NPC_WHITE..'>'
                 tempLeftY = tempLeftY + 25
             end
+            textid = textid + 1
+            idstr = idstr..','..textid
+            local totalrate = math.floor(100 * currLvConfig.autoexpaddrate)
+            local showexpaddstr = '自动泡点加成:'..totalrate..'%'
+            strPanelInfo = strPanelInfo..'<Text|id='..textid..'|text='..showexpaddstr..'|size=15|x='..tempLeftX..'|y='..tempLeftY..'|color='..CSS.NPC_WHITE..'>'            
+            tempLeftY = tempLeftY + 25
         end
     end  
     strPanelInfo = strPanelInfo..'<Layout|id=14|children={'..idstr..'}|x=560.0|y=60.0|width=220|height=180>'
@@ -481,7 +491,6 @@ function FreeVIPManager.DoOperButton(actor, sid, sparam)
         nparam = tonumber(sparam)
     end
 
-release_print('funcid:'..funcid)    
 
     local currVIPLv = getplaydef(actor, CommonDefine.VAR_U_FREEVIP_LEVEL)
     if funcid == NPCPANEL_BUTTONFUNC_ID_1 then

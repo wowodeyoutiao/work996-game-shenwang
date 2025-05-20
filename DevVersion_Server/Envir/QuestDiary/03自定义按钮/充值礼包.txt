@@ -1,0 +1,618 @@
+[@充值礼包]
+{
+#IF
+;CHECKKUAFU
+#ACT
+BREAK
+
+; 加载领取红点
+#IF
+SMALL U3 1
+CHECKMONEY 充值 ? 18
+NOT EQUAL S$会员服务 1
+#ACT
+REDDOT 0 16 100 5
+NAVIGATION 0 16 领取会员
+
+#IF
+SMALL U3 2
+CHECKMONEY 充值 ? 28
+NOT EQUAL S$会员服务 1
+#ACT
+REDDOT 0 26 100 5
+#IF
+SMALL U3 3
+CHECKMONEY 充值 ? 58
+NOT EQUAL S$会员服务 1
+#ACT
+REDDOT 0 36 100 5
+#IF
+SMALL U3 4
+CHECKMONEY 充值 ? 98
+NOT EQUAL S$会员服务 1
+#ACT
+REDDOT 0 46 100 5
+#IF
+SMALL U3 5
+CHECKMONEY 充值 ? 138
+NOT EQUAL S$会员服务 1
+#ACT
+REDDOT 0 56 100 5
+#IF
+SMALL U3 6
+CHECKMONEY 充值 ? 268
+NOT EQUAL S$会员服务 1
+#ACT
+REDDOT 0 66 100 5
+#IF
+SMALL U3 7
+CHECKMONEY 充值 ? 398
+NOT EQUAL S$会员服务 1
+#ACT
+REDDOT 0 76 100 5
+
+#IF
+EQUAL U16 0
+NOT SMALL U3 4
+EQUAL S$会员服务 0
+#ACT
+REDDOT 0 46432 97 5
+
+
+#IF
+#SAY
+<Img|x=0.0|y=0.0|width=725|rotate=0|esc=1|reset=1|bg=1|move=0|loadDelay=0|img=public/wz/92233812_186329.png|show=4>
+<Layout|x=670.0|y=44.0|width=80|height=80|link=@exit>
+<Button|x=672.0|y=51.0|color=255|size=18|pimg=public/1900000510_2.png|nimg=public/1900000510_1.png|link=@exit>
+<Img|x=60.0|y=94.0|img=public/wz/9848a216_177466.jpg|esc=0>
+<RText|x=335|y=57|outline=2|color=116|size=18|text=唯一会员>
+<RText|x=100|y=100|outline=1|color=103|size=16|text=提示：本服<唯一会员，>增加<大量爆率和切割，>新区起飞必备！累计充值达到\指定额度即可领取，<不扣除任何货币。>每个角色只能领取一次！>
+<RText|x=410.0|y=152.0|outline=1|color=250|size=18|text=当前充值金额：<$MONEY(充值)>元>
+
+#IF
+#SAY
+<Button|id=46432|x=100|y=150|nimg=public/anniu.png|color=151|size=18|text=会员服务|link=@充值礼包#会员服务=1>
+
+
+; 展示会员服务UI
+#IF
+EQUAL S$会员服务 1
+#ACT
+MOV S$Param_1
+MOV S$Param_2
+GETVALIDSTRSUPER <$STR(T16)> # S$Param_
+VAR_CHECK <$STR(S$Param_1)> = 0 <$STR(S$Param_1)> 未设置 S$Param_1
+
+#SAY
+<Button|id=46432|x=100|y=150|nimg=public/anniu.png|color=151|size=18|text=返 回|link=@充值礼包#会员服务=0>
+; U16		挂机保护血量
+; U39		保护动作回城还是随机 0=回城  1=随机
+; [16]		保护开关
+<Img|id=10|children={11,12,13,14,15,16,17,18,19,191,192,193,194,195}|x=65|y=195|img=public/wz/70857f2f_17307.png|scale9r=20|scale9l=20|scale9b=20|scale9t=50|width=198|height=340>
+<Button|id=12|x=90|y=17|nimg=public/alpha_1px.png|color=116|size=18|text=挂机保护设置>
+<RText|id=13|x=12|y=45|outline=1|color=250|size=18|text=挂机保护血量>
+<RText|id=14|x=12|y=70|outline=1|color=103|size=18|text=血量低于　　　保护>
+<Button|id=15|x=86|y=73|nimg=public/bg_hhdb_01.jpg|scale9r=12|scale9l=12|scale9b=12|scale9t=12|width=55|height=22|color=249|size=16|text=<$STR(U16)>%>
+<RText|id=16|x=12|y=110|outline=1|color=250|size=18|text=触发保护动作>
+<Button|id=17|x=12||y=140|nimg=public/1900000551.png|link=@设置保护动作#保护动作=0><Text|id=18||x=42||y=142|color=249|outline=1|size=16|text=回城>
+<Button|id=19|x=120|y=140|nimg=public/1900000550.png|link=@设置保护动作#保护动作=1><Text|id=191|x=150|y=142|color=249|outline=1|size=16|text=随机>
+<RText|id=192|x=13|y=180|color=7|size=16|text=*挂机保护仅在角色挂机\时生效，PK时无法使用、\非打怪地图无法使用。>
+<Button|id=193|x=15|y=300|nimg=public/1900000652.png|color=151|size=18|text=输入|link=@@inputinteger40(请输入血量百分比（1%-99%）)>
+<Button|id=194|x=118|y=300|nimg=public/1900000550.png|link=@开启挂机保护><Text|id=195|x=146|y=302|color=250|size=16|outline=1|text=开启>
+
+; [17] 		自动挂机下图开关
+; T16		自动挂机地图编号（编号#地图名字#条件）
+<Img|id=20|children={21,22,23,24,25,26,27,28,29}|x=265|y=195|img=public/wz/70857f2f_17307.png|scale9r=20|scale9l=20|scale9b=20|scale9t=50|width=198|height=340>
+<Button|id=21|x=90|y=17|nimg=public/alpha_1px.png|color=116|size=18|text=挂机地图设置>
+<RText|id=22|x=12|y=45|outline=1|color=250|size=18|text=会员自动挂机>
+<RText|id=23|x=10|y=240|color=249|size=18||outline=1|text=当自动挂机地图\<[<$STR(S$Param_1)>]/FCOLOR=151>>
+<RText|id=24|x=15|y=80||color=7|size=16|outline=1|text=开启会员挂机后，角色\60秒未移动、未攻击，\则自动开启地图挂机。>
+<RText|id=25|x=15|y=160|color=250|size=16|outline=1|text=1.记录后可以开始挂机。\2.PK或手动打怪不开启。\3.部分地图无法记录。>
+<Button|id=26|x=15|y=300|nimg=public/1900000652.png|color=151|size=18|text=记录|link=@记录挂机地图>
+<Button|id=27|x=123|y=300|nimg=public/1900000550.png|link=@开启挂机地图><Text|id=28|x=153|y=302|color=250|size=16|text=开启>
+
+; 特别提示
+<RText|x=480|y=465|color=250|size=16|outline=1|text=沙巴克期间挂机保护<无效>\沙巴克期间自动挂机<无效>\苍月岛地图自动挂机<无效>>
+
+#IF
+check [16] 1
+EQUAL S$会员服务 1
+#SAY
+<Button|id=194|x=118|y=300|nimg=public/1900000551.png|link=@开启挂机保护>
+#IF
+check [17] 1
+EQUAL S$会员服务 1
+#SAY
+<Button|id=27|x=123|y=300|nimg=public/1900000551.png|link=@开启挂机地图>
+#IF
+EQUAL U39 1
+EQUAL S$会员服务 1
+#SAY
+<Button|id=17|x=12||y=140|nimg=public/1900000550.png|link=@设置保护动作#保护动作=0><Text|id=18||x=42||y=142|color=249|outline=1|size=16|text=回城>
+<Button|id=19|x=120|y=140|nimg=public/1900000551.png|link=@设置保护动作#保护动作=1><Text|id=191|x=150|y=142|color=249|outline=1|size=16|text=随机>
+
+#IF
+EQUAL S$会员服务 1
+#ACT
+BREAK
+
+
+
+; 默认展示会员领取UI
+#IF
+#SAY
+<ListView|children={10,2,3,4,5,6,7,8,9}|x=65|y=195|width=600|height=350|direction=2|bounce=1|margin=1|reload=0>
+<Layout|id=10|children={11,12,13,14,15,16,17,18,19}|x=0|y=0|width=190|height=340>
+<Img|id=11|x=0|y=0|img=public/wz/70857f2f_17307.png|scale9r=20|scale9l=20|scale9b=20|scale9t=50|width=190|height=340>
+<Text|id=12|x=60|y=5|color=116|size=18|outline=1|text=普通会员>
+<Text|id=13|x=12|y=45|outline=1|color=253|size=18|text=会员权益>
+<RText|id=14|x=12|y=75|outline=1|color=7|size=16|text=1.个人爆率+10%\2.赠送2万元宝\3.人物泡点2倍>
+<RText|id=15|x=12|y=210|outline=1|color=250|size=18|text=累积充值<18>元开启>
+<Button|id=16|x=50|y=280|nimg=public/anniu.png|color=151|size=18|text=领取会员|link=@免费会员>
+<RText|id=17|x=12|y=235|color=250|size=16|outline=1|text=<上线即送  邮件免费领>>
+
+<Layout|id=2|children={21,22,23,24,25,26,27,28,29}|x=0|y=0|width=190|height=340>
+<Img|id=21|x=0|y=0|img=public/wz/70857f2f_17307.png|scale9r=20|scale9l=20|scale9b=20|scale9t=50|width=190|height=340>
+<Effect|id=22|x=60|y=5|effectid=15106|effecttype=0|scale=1>
+<Text|id=23|x=12|y=45|outline=1|color=253|size=18|text=会员权益>
+<RText|id=24|x=12|y=75|outline=1|color=7|size=16|text=1.个人爆率+20%\2.赠送20万元宝\3.人物泡点4倍\4.打怪神力值×2\5.自动回收>
+<RText|id=25|x=12|y=210|outline=1|color=250|size=18|text=累积充值<28元>开启>
+<Button|id=26|x=50|y=280|nimg=public/anniu.png|color=151|size=18|text=领取会员|link=@青铜使者>
+<RText|id=27|x=12|y=235|color=250|size=16|outline=1|text=<上线即送  邮件免费领>>
+
+<Layout|id=3|children={31,32,33,34,35,36,37,38,39}|x=0|y=0|width=190|height=340>
+<Img|id=31|x=0|y=0|img=public/wz/70857f2f_17307.png|scale9r=20|scale9l=20|scale9b=20|scale9t=50|width=190|height=340>
+<Effect|id=32|x=60|y=5|effectid=15107|effecttype=0|scale=1>
+<Text|id=33|x=12|y=45|outline=1|color=253|size=18|text=会员权益>
+<RText|id=34|x=12|y=75|outline=1|color=7|size=16|text=1.个人爆率+30%\2.赠送50万元宝\3.人物泡点6倍\4.赠送:沉默盾牌lv3>
+<RText|id=35|x=12|y=210|outline=1|color=250|size=18|text=累积充值<58元>开启>
+<Button|id=36|x=50|y=280|nimg=public/anniu.png|color=151|size=18|text=领取会员|link=@白银使者>
+<RText|id=37|x=12|y=235|color=250|size=16|outline=1|text=<上线即送  邮件免费领>>
+
+<Layout|id=4|children={41,42,43,44,45,46,47,48,49}|x=0|y=0|width=190|height=340>
+<Img|id=41|x=0|y=0|img=public/wz/70857f2f_17307.png|scale9r=20|scale9l=20|scale9b=20|scale9t=50|width=190|height=340>
+<Effect|id=42|x=60|y=5|effectid=15108|effecttype=0|scale=1>
+<Text|id=43|x=12|y=45|outline=1|color=253|size=18|text=会员权益>
+<RText|id=44|x=12|y=75|outline=1|color=7|size=16|text=1.个人爆率+50%\2.赠送100万元宝\3.人物泡点8倍\4.赠送:沉默水晶*50\5.激活挂机保护>
+<RText|id=45|x=12|y=210|outline=1|color=250|size=18|text=累积充值<98元>开启>
+<Button|id=46|x=50|y=280|nimg=public/anniu.png|color=151|size=18|text=领取会员|link=@黄金使者>
+
+<Layout|id=5|children={51,52,53,54,55,56,57,58,59}|x=0|y=0|width=190|height=340>
+<Img|id=51|x=0|y=0|img=public/wz/70857f2f_17307.png|scale9r=20|scale9l=20|scale9b=20|scale9t=50|width=190|height=340>
+<Effect|id=52|x=45|y=-35|effectid=15113|effecttype=0|scale=1>
+<Text|id=53|x=12|y=45|outline=1|color=253|size=18|text=会员权益>
+<RText|id=54|x=12|y=75|outline=1|color=7|size=16|text=1.个人爆率+100%\2.赠送150万元宝\3.人物泡点10倍\4.赠送:沉默水晶*100>
+<RText|id=55|x=12|y=210|outline=1|color=250|size=18|text=累积充值<138元>开启>
+<Button|id=56|x=50|y=280|nimg=public/anniu.png|color=151|size=18|text=领取会员|link=@至尊使者>
+
+<Layout|id=6|children={61,62,63,64,65,66,67,68,69}|x=0|y=0|width=190|height=340>
+<Img|id=61|x=0|y=0|img=public/wz/70857f2f_17307.png|scale9r=20|scale9l=20|scale9b=20|scale9t=50|width=190|height=340>
+<Effect|id=62|x=60|y=5|effectid=15110|effecttype=0|scale=1>
+<Text|id=63|x=12|y=45|outline=1|color=253|size=18|text=会员权益>
+<RText|id=64|x=12|y=75|outline=1|color=7|size=16|text=1.个人爆率+200%\2.赠送300万元宝\3.人物泡点15倍\4.打怪神力值×5\5.赠送:真爱钻石Max>
+<RText|id=65|x=12|y=210|outline=1|color=250|size=18|text=累积充值<268元>开启>
+<Button|id=66|x=50|y=280|nimg=public/anniu.png|color=151|size=18|text=领取会员|link=@星辰使者>
+
+<Layout|id=7|children={71,72,73,74,75,76,77,78,79}|x=0|y=0|width=190|height=340>
+<Img|id=71|x=0|y=0|img=public/wz/70857f2f_17307.png|scale9r=20|scale9l=20|scale9b=20|scale9t=50|width=190|height=340>
+<Effect|id=72|x=60|y=5|effectid=15109|effecttype=0|scale=1>
+<Text|id=73|x=12|y=45|outline=1|color=253|size=18|text=会员权益>
+<RText|id=74|x=12|y=75|outline=1|color=7|size=16|text=1.个人爆率+300%\2.赠送500万元宝\3.人物泡点20倍\4.激活神石自动升级\5.赠送神技:寒冰掌\6.自动选择下图挂机>
+<RText|id=75|x=12|y=210|outline=1|color=250|size=18|text=累积充值<398元>开启>
+<Button|id=76|x=50|y=280|nimg=public/anniu.png|color=151|size=18|text=领取会员|link=@超凡使者>
+<Button|id=77||children={81}|x=165|y=170|nimg=public/1900001024.png|width=20|height=20|link=@充值礼包#寒冰掌提示=1>
+
+
+#IF
+LARGE U3 0
+#SAY
+<Button|id=16|x=60|y=280|nimg=public/wz/cb08c71f_173839.png>
+#IF
+LARGE U3 1
+#SAY
+<Button|id=26|x=60|y=280|nimg=public/wz/cb08c71f_173839.png>
+#IF
+LARGE U3 2
+#SAY
+<Button|id=36|x=60|y=280|nimg=public/wz/cb08c71f_173839.png>
+#IF
+LARGE U3 3
+#SAY
+<Button|id=46|x=60|y=280|nimg=public/wz/cb08c71f_173839.png>
+#IF
+LARGE U3 4
+#SAY
+<Button|id=56|x=60|y=280|nimg=public/wz/cb08c71f_173839.png>
+#IF
+LARGE U3 5
+#SAY
+<Button|id=66|x=60|y=280|nimg=public/wz/cb08c71f_173839.png>
+#IF
+LARGE U3 6
+#SAY
+<Button|id=76|x=60|y=280|nimg=public/wz/cb08c71f_173839.png>
+
+#IF
+EQUAL S$寒冰掌提示 1
+#SAY
+<Layout|x=-500|y=-500|width=1880|height=1880|color=X|link=@充值礼包#寒冰掌提示=>
+<Img|id=81|children={82,83}|x=-210|y=22|img=public/bg_hhdb_03.png>
+<Button|id=82|x=107|y=15|nimg=public/alpha_1px.png|color=250|size=18|text=神技[寒冰掌]>
+<RText|id=83|x=10|y=37|color=7|size=16|text=提示：寒冰掌为<远程技能，>\使用后发动玄冰之气攻击敌\人，几率冰冻<敌人3秒。>>
+
+#IF
+EQUAL <$gameid> 1
+#SAY
+<Button|x=0|y=0|nimg=public/anniu.png|text=清空会员|link=@删除会员>
+
+[@删除会员]
+#IF
+EQUAL <$gameid> 1
+#ACT
+MOV U3 0
+DEPRIVETITLE ALL
+Goto @充值礼包
+BREAK
+
+[@inputinteger40]
+#or
+SMALL N40 0
+LARGE N40 99
+#ACT
+SENDMSG 9 请输入1-99之间的数值。
+BREAK
+
+#IF
+#ACT
+MOV U16 <$STR(N40)>
+Goto @充值礼包
+BREAK
+
+[@开启挂机保护]
+#IF
+SMALL U3 4
+#ACT
+SENDMSG 9 会员等级不足，无法开启。
+BREAK
+
+#IF
+check [16] 1
+#ACT
+set [16] 0
+#ELSEACT
+set [16] 1
+
+#IF
+#ACT
+Goto @充值礼包
+
+[@设置保护动作]
+#IF
+#ACT
+MOV U39 <$STR(S$保护动作)>
+Goto @充值礼包
+BREAK
+
+[@开启挂机地图]
+#IF
+SMALL U3 7
+#ACT
+SENDMSG 9 会员等级不足，无法开启。
+BREAK
+
+#IF
+EQUAL T16 
+#ACT
+SENDMSG 9 还未设置挂机地图，无法开启。
+BREAK
+
+#IF
+check [17] 1
+#ACT
+set [17] 0
+SENDMSG 9 关闭了自动挂机
+#ELSEACT
+set [17] 1
+SENDMSG 9 开启了自动挂机
+
+#IF
+#ACT
+Goto @充值礼包
+
+[@免费会员]
+#IF
+NOT SMALL U3 1
+#ACT
+SENDMSG 9 已激活此会员。
+BREAK
+
+
+#IF
+CHECKMONEY 充值 < 18
+#ACT
+SENDMSG 9 充值金额不满18元(领取礼包码可直接获得)
+BREAK
+
+
+#IF
+#ACT
+MOV U3 1
+money 元宝 + 20000
+Setautogetexp 1 100000 0 * 0 65535 400
+SENDMSG 9 成功激活本服会员，获得会员权益。
+SENDMSG 0 玩家{[<$username>]|254:1:0}成功激活本服会员，获得会员权益。
+Goto @充值礼包
+BREAK
+
+
+[@青铜使者]
+#IF
+not checkbagsize 10
+#ACT
+SENDMSG 9 请预留足够的背包空间
+BREAK
+#IF
+not SMALL U3 2
+#ACT
+SENDMSG 9 不能重复购买。
+BREAK
+
+#IF
+CheckMoney 充值 < 28
+#ACT
+SendMsg 9 抱歉，您充值金额不足！
+Break
+
+#IF
+not equal U3 1
+#ACT
+SENDMSG 9 请先激活普通会员
+BREAK
+
+
+#IF
+#Act
+SETNPCMSG 青铜会员
+Mov U3 2
+CONFERTITLE 青铜会员
+Money 元宝 + 200000
+Setautogetexp 1 200000 0 * 0 65535 400
+Goto @充值礼包
+SendMsg 9 恭喜您，成功领取青铜大礼包！！
+SendMsg 0 恭喜玩家{[<$username>]|254:0:1}成功领取{青铜大礼包|249:0:1}
+Break
+
+
+[@白银使者]
+#IF
+not checkbagsize 10
+#ACT
+SENDMSG 9 请预留足够的背包空间
+BREAK
+#IF
+not SMALL U3 3
+#ACT
+SENDMSG 9 不能重复购买。
+BREAK
+#IF
+CheckMoney 充值 < 58
+#ACT
+SendMsg 9 抱歉，您充值金额不足！
+Break
+#IF
+not checktitle 青铜会员
+#ACT
+SENDMSG 9 请先激活青铜会员
+BREAK
+
+#IF
+#Act
+SETNPCMSG 白银会员
+Mov U3 3
+DEPRIVETITLE 青铜会员
+CONFERTITLE 白银会员
+Money 元宝 + 500000
+GIVE 沉默盾牌Lv3 1
+Goto @充值礼包
+Setautogetexp 1 300000 0 * 0 65535 400
+SendMsg 9 恭喜您，成功领取白银大礼包！！
+SendMsg 0 恭喜玩家{[<$username>]|254:0:1}成功领取{白银大礼包|249:0:1}
+
+
+#IF
+SMALL U24 5
+#ACT
+Mov u24 5
+
+[@黄金使者]
+#IF
+not checkbagsize 10
+#ACT
+SENDMSG 9 请预留足够的背包空间
+BREAK
+#IF
+not SMALL U3 4
+#ACT
+SENDMSG 9 不能重复购买。
+BREAK
+#IF
+CheckMoney 充值 < 98
+#ACT
+SendMsg 9 抱歉，您充值金额不足！
+Break
+#IF
+not checktitle 白银会员
+#ACT
+SENDMSG 9 请先激活白银会员
+BREAK
+
+#IF
+#Act
+SETNPCMSG 黄金会员
+Mov U3 4
+DEPRIVETITLE 白银会员
+CONFERTITLE 黄金会员
+Money 元宝 + 1000000
+GiveStateItem 沉默水晶 50 1 1 0 0 1 1 1 1
+Setautogetexp 1 400000 0 * 0 65535 400
+Goto @充值礼包
+SendMsg 9 恭喜您，成功领取黄金大礼包！！
+SendMsg 0 恭喜玩家{[<$username>]|254:0:1}成功领取{黄金大礼包|249:0:1}
+Break
+
+
+
+[@至尊使者]
+#IF
+not checkbagsize 10
+#ACT
+SENDMSG 9 请预留足够的背包空间
+BREAK
+#IF
+not SMALL U3 5
+#ACT
+SENDMSG 9 不能重复购买。
+BREAK
+#IF
+CheckMoney 充值 < 138
+#ACT
+SendMsg 9 抱歉，您充值金额不足！
+Break
+#IF
+not checktitle 黄金会员
+#ACT
+SENDMSG 9 请先激活黄金会员
+BREAK
+
+#IF
+#Act
+SETNPCMSG 至尊会员
+Mov U3 5
+DEPRIVETITLE 黄金会员
+CONFERTITLE 至尊会员
+Money 元宝 + 1500000
+GiveStateItem 沉默水晶 100 1 1 0 0 1 1 1 1
+Setautogetexp 1 500000 0 * 0 65535 400
+Goto @充值礼包
+SendMsg 9 恭喜您，成功领取至尊大礼包！！
+SendMsg 0 恭喜玩家{[<$username>]|254:0:1}成功领取{至尊大礼包|249:0:1}
+Break
+#ElseAct
+SendMsg 9 抱歉，您已经领取过了！
+Break
+
+
+[@星辰使者]
+#IF
+not checkbagsize 10
+#ACT
+SENDMSG 9 请预留足够的背包空间
+BREAK
+#IF
+not SMALL U3 6
+#ACT
+SENDMSG 9 不能重复购买。
+BREAK
+#IF
+CheckMoney 充值 < 268
+#ACT
+SendMsg 9 抱歉，您充值金额不足！
+Break
+#IF
+not checktitle 至尊会员
+#ACT
+SENDMSG 9 请先激活至尊会员
+BREAK
+
+#IF
+#Act
+SETNPCMSG 星辰会员
+Mov U3 6
+DEPRIVETITLE 至尊会员
+CONFERTITLE 星辰会员
+Money 元宝 + 3000000
+GIVE 真爱钻石Max 1
+Setautogetexp 1 750000 0 * 0 65535 400
+Goto @充值礼包
+SendMsg 9 恭喜您，成功领取星辰大礼包！！
+SendMsg 0 恭喜玩家{[<$username>]|254:0:1}成功领取{星辰大礼包|249:0:1}
+
+#IF
+SMALL U20 8
+#ACT
+Mov U20 8
+
+[@超凡使者]
+#IF
+not checkbagsize 10
+#ACT
+SENDMSG 9 请预留足够的背包空间
+BREAK
+#IF
+not SMALL U3 7
+#ACT
+SENDMSG 9 不能重复购买。
+BREAK
+
+#IF
+CheckMoney 充值 < 398
+#ACT
+SendMsg 9 抱歉，您充值金额不足！
+Break
+#IF
+not checktitle 星辰会员
+#ACT
+SENDMSG 9 请先激活星辰会员
+BREAK
+
+#IF
+#Act
+SETNPCMSG 超凡会员
+Mov U3 7
+DEPRIVETITLE 星辰会员
+CONFERTITLE 超凡会员
+Money 元宝 + 5000000
+GiveStateItem 寒冰掌 1 1 1 0 0 1 1 1 1
+Setautogetexp 1 1000000 0 * 0 65535 400
+Goto @充值礼包
+SendMsg 9 恭喜您，成功领取超凡大礼包！！
+SendMsg 0 恭喜玩家{[<$username>]|254:0:1}成功领取{超凡大礼包|249:0:1}
+Break
+
+[@记录挂机地图]
+#IF
+SMALL U3 7
+#ACT
+SENDMSG 9 会员等级不足，无法记录。
+BREAK
+
+#IF
+LARGE <$GetTypeBRow(cfg_禁止挂机地图,0,<$MAP>)> 0
+#ACT
+MOV T16 
+SENDMSG 9 此区域无法记录为自动挂机地图。
+BREAK
+
+; 副本类型地图无法记录
+#IF
+CheckMirrorMap <$MAP>
+#ACT
+SENDMSG 9 [副本]无法记录为自动挂机地图。
+BREAK
+
+#IF
+INSAFEZONE
+#ACT
+SENDMSG 9 此区域无法记录为自动挂机地图。
+BREAK
+
+
+#IF
+#ACT
+MOV T16 <$MAPTITLE>#<$MAP>
+SENDMSG 9 已记录当前地图为自动挂机地图，角色1分钟无动作将开启自动挂机。
+GOTO @充值礼包
+BREAK
+
+
+}

@@ -346,6 +346,8 @@ function OpenSuperBoxManager.DoOpenBoxOnce(actor, autoflag, openitemlist)
 
     --触发开箱任务
     TaskManager.OnAddOpenBoxNum(actor, nOnceOpenNum) 
+    --触发免费VIP
+	FreeVIPManager.TriggerChgTaskCounter(actor, FreeVIPManager.TASK_TYPE_OPEN_SUPERBOX_TIMES, '+', nOnceOpenNum)
     return true
 end
 
@@ -395,6 +397,7 @@ function OpenSuperBoxManager.GMUpgradeBaoXiangLevel(actor)
         return
     end
     setplaydef(actor, CommonDefine.VAR_U_SUPER_BOX_CURR_LV, nBoxCurrLv + 1)
+    setplaydef(actor, CommonDefine.VAR_U_SUPER_BOX_ONCE_OPEN_NUM, nextLevelConfig.maxopennum)
     OpenSuperBoxManager.UpdateSuperBoxInfo(actor) 
 end
 
@@ -599,7 +602,8 @@ function OpenSuperBoxManager.DoUpgradeBoxLevel(actor)
     end
   
     setplaydef(actor, CommonDefine.VAR_U_SUPER_BOX_START_UPGRADE_TIME, 0)
-    setplaydef(actor, CommonDefine.VAR_U_SUPER_BOX_CURR_LV, nBoxCurrLv+1)    
+    setplaydef(actor, CommonDefine.VAR_U_SUPER_BOX_CURR_LV, nBoxCurrLv+1)  
+    setplaydef(actor, CommonDefine.VAR_U_SUPER_BOX_ONCE_OPEN_NUM, nextLevelConfig.maxopennum)
     OpenSuperBoxManager.UpdateSuperBoxInfo(actor)
     OpenUpgradeBoxLevelPanel(actor)
 end

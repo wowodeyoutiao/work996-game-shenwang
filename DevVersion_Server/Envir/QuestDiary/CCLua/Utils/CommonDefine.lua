@@ -677,6 +677,7 @@ CommonDefine = {
     QUICK_GOTO_TREASUREMAP = 18,                --藏宝图
     QUICK_GOTO_GUANZHI = 19,                    --官职
     QUICK_GOTO_ZCD = 20,                        --紫宸殿 离线护卫
+    QUICK_GOTO_AUTO_OPENBOX = 21,               --自动开宝箱
 
     --脚本创建的动态npcid    最终的npcid是 系统组编号*10000+动态id
     --[[
