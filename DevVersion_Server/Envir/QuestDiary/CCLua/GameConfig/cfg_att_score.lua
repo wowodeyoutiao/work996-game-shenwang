@@ -397,7 +397,7 @@ local config = {
 		name = "怒气恢复增加",
 		nbvalue = "100#100#100",
 		type = 1,
-		isshow = 2,
+		isshow = 0,
 		sort = 999,
 	},
 	[43] = { 
@@ -405,7 +405,7 @@ local config = {
 		name = "合击攻击增加",
 		nbvalue = "100#100#100",
 		type = 3,
-		isshow = 2,
+		isshow = 0,
 		sort = 999,
 	},
 	[44] = { 
@@ -413,7 +413,7 @@ local config = {
 		name = "怪物暴率",
 		nbvalue = "100#100#100",
 		type = 2,
-		isshow = 2,
+		isshow = 0,
 		sort = 999,
 	},
 	[45] = { 
@@ -429,7 +429,7 @@ local config = {
 		name = "防止护身",
 		nbvalue = "100#100#100",
 		type = 2,
-		isshow = 2,
+		isshow = 0,
 		sort = 999,
 	},
 	[47] = { 
@@ -437,7 +437,7 @@ local config = {
 		name = "防止复活",
 		nbvalue = "100#100#100",
 		type = 2,
-		isshow = 2,
+		isshow = 0,
 		sort = 999,
 	},
 	[48] = { 
@@ -445,7 +445,7 @@ local config = {
 		name = "防止全度",
 		nbvalue = "100#100#100",
 		type = 2,
-		isshow = 2,
+		isshow = 0,
 		sort = 999,
 	},
 	[49] = { 
@@ -453,7 +453,7 @@ local config = {
 		name = "防止诱惑",
 		nbvalue = "100#100#100",
 		type = 2,
-		isshow = 2,
+		isshow = 0,
 		sort = 999,
 	},
 	[50] = { 
@@ -461,7 +461,7 @@ local config = {
 		name = "防止火墙",
 		nbvalue = "100#100#100",
 		type = 2,
-		isshow = 2,
+		isshow = 0,
 		sort = 999,
 	},
 	[51] = { 
@@ -477,7 +477,7 @@ local config = {
 		name = "防止蛛网",
 		nbvalue = "100#100#100",
 		type = 2,
-		isshow = 2,
+		isshow = 0,
 		sort = 999,
 	},
 	[54] = { 
@@ -549,7 +549,7 @@ local config = {
 		nbvalue = "2#2#2",
 		type = 1,
 		desc = "每10秒恢复生命",
-		isshow = 2,
+		isshow = 0,
 		sort = 999,
 	},
 	[62] = { 
@@ -558,7 +558,7 @@ local config = {
 		nbvalue = "4#4#4",
 		type = 1,
 		desc = "每10秒恢复魔法",
-		isshow = 2,
+		isshow = 0,
 		sort = 999,
 	},
 	[63] = { 
@@ -585,7 +585,7 @@ local config = {
 		nbvalue = "100#100#100",
 		type = 2,
 		desc = "怪物掉落概率",
-		isshow = 2,
+		isshow = 0,
 		sort = 999,
 	},
 	[66] = { 
@@ -594,7 +594,7 @@ local config = {
 		nbvalue = "0#0#0",
 		type = 2,
 		desc = "增加获取到的基础经验，可被高级、超级经验放大",
-		isshow = 2,
+		isshow = 0,
 		sort = 999,
 	},
 	[67] = { 
@@ -603,7 +603,7 @@ local config = {
 		nbvalue = "100#100#100",
 		type = 2,
 		desc = "提升装备的基础攻魔道属性，包括极品属性",
-		isshow = 2,
+		isshow = 0,
 		sort = 999,
 	},
 	[68] = { 
@@ -612,7 +612,7 @@ local config = {
 		nbvalue = "60#60#60",
 		type = 1,
 		desc = "对玩家造成无视防御的伤害",
-		isshow = 2,
+		isshow = 0,
 		sort = 999,
 	},
 	[69] = { 
@@ -621,7 +621,7 @@ local config = {
 		nbvalue = "100#100#100",
 		type = 2,
 		desc = "攻击时触发冰冻效果的概率",
-		isshow = 2,
+		isshow = 0,
 		sort = 999,
 	},
 	[70] = { 
@@ -639,7 +639,7 @@ local config = {
 		nbvalue = "20#20#20",
 		type = 1,
 		desc = "每秒恢复一定数值的血量",
-		isshow = 2,
+		isshow = 1,
 		sort = 999,
 	},
 	[72] = { 
@@ -817,7 +817,7 @@ local config = {
 		nbvalue = "100#100#100",
 		type = 2,
 		desc = "新hp加成，万分比",
-		isshow = 2,
+		isshow = 0,
 		scolor = 250,
 		sort = 30,
 	},
@@ -857,7 +857,7 @@ local config = {
 		nbvalue = "100#100#100",
 		type = 1,
 		desc = "鉴定属性标识 46",
-		isshow = 2,
+		isshow = 0,
 		scolor = 255,
 		sort = 999,
 	},
@@ -1007,7 +1007,7 @@ local config = {
 		nbvalue = "100#100#100",
 		type = 3,
 		desc = "按百分比增加装备位的装备基础和强化的攻击属性",
-		isshow = 2,
+		isshow = 0,
 		sort = 999,
 	},
 	[221] = { 
@@ -1016,7 +1016,7 @@ local config = {
 		nbvalue = "100#100#100",
 		type = 3,
 		desc = "按百分比增加装备位的装备基础和强化的魔法属性",
-		isshow = 2,
+		isshow = 0,
 		sort = 999,
 	},
 	[222] = { 
@@ -1025,7 +1025,7 @@ local config = {
 		nbvalue = "100#100#100",
 		type = 3,
 		desc = "按百分比增加装备位的装备基础和强化的道术属性",
-		isshow = 2,
+		isshow = 0,
 		sort = 999,
 	},
 	[223] = { 
@@ -1034,7 +1034,7 @@ local config = {
 		nbvalue = "100#100#100",
 		type = 3,
 		desc = "按百分比增加装备位的装备基础和强化的物防属性",
-		isshow = 2,
+		isshow = 0,
 		sort = 999,
 	},
 	[224] = { 
@@ -1043,7 +1043,7 @@ local config = {
 		nbvalue = "100#100#100",
 		type = 3,
 		desc = "按百分比增加装备位的装备基础和强化的魔防属性",
-		isshow = 2,
+		isshow = 0,
 		sort = 999,
 	},
 }
