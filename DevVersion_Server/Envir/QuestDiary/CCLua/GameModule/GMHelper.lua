@@ -304,6 +304,7 @@ function GMHelper.DoGmOper(actor, sid)
     elseif sid == '158' then
         setplaydef(actor, CommonDefine.VAR_J_DAY_BIAOCHE_ACCEPT_TIMES, 0)
         setplaydef(actor, CommonDefine.VAR_U_BIAOCHE_REFRESH_TIMES, 0)
+        setplaydef(actor, CommonDefine.VAR_J_DAY_SUPERBOX_OPENNUM, 0)
     elseif sid == '999' then
         Player.TestSuperInitPlayer(actor)
     elseif sid == '1001' then
@@ -338,7 +339,7 @@ function GMHelper.DoGmOper(actor, sid)
         changemoney(actor, CommonDefine.ITEMID_KUAFU_SCORE, '+', 100, 'DoGmOper', true)
     elseif sid == '1996' then
         setsysvar(CommonDefine.VAR_A_JUMPAREA_DAMAGE_TEST_CFG_DATA, '')
-        setsysvar(CommonDefine.VAR_A_JUMPAREA_RANDFIGHTING_TEST_CFG_DATA, '')
+        setsysvar(CommonDefine.VAR_A_JUMPAREA_RANDFIGHTING_TEST_CFG_DATA, '')        
     elseif sid == '1997' then
         JumpAreaBossDamageRank.GMResetCfg(actor)
     elseif sid == '1998' then

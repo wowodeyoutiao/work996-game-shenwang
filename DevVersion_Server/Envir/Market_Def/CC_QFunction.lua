@@ -69,11 +69,23 @@ function recharge(actor)
 end
 
 --接收客户端消息触发
-function handlerequest(actor, msgID, param1, param2, param3, str)
+function handlerequest(actor, strmsgID, strparam1, strparam2, strparam3, str)
+--[[
     release_print('handlerequest')
     release_print('msgid:'..msgID..' type:'..type(msgID))
     release_print('param1:'..param1..' type:'..type(param1)..'param2:'..param2..' type:'..type(param2)..'param3:'..param3..' type:'..type(param3))
     release_print('str:'..str..' type:'..type(str))
+]]--
+    local msgID = 0
+    local param1 = 0
+    local param2 = 0
+    local param3 = 0
+    if BF_IsNumberStr(strmsgID) and BF_IsNumberStr(strparam1) and BF_IsNumberStr(strparam2) and BF_IsNumberStr(strparam3) then
+        msgID = tonumber(strmsgID)
+        param1 = tonumber(strparam1)
+        param2 = tonumber(strparam2)
+        param3 = tonumber(strparam3)
+    end
 
     ClientMsgProcess.DoProcess(actor, msgID, param1, param2, param3, str)
 end
@@ -108,6 +120,8 @@ function takeonex(actor, spos, smakeindex)
     EquipPosStarManager.UpdateEquipStarLvInPos(actor, pos)
     --检测装备天赋带来的装备槽位外显变化
     EquipInitGift.UpdateEquipposInitGiftIcon(actor, pos)
+    --开宝箱时候的穿戴触发
+    OpenSuperBoxManager.OnTakeOnEquipItem(actor, smakeindex)
     --检测加速状态
     Player.CheckSpeedUpStatus(actor)
 end
@@ -403,8 +417,8 @@ function treasuremap_button(actor, sid)
     TreasureMap.DoOperButton(actor, sid)
 end
 
-function opensuperboxmanager_button(actor, sid)
-    OpenSuperBoxManager.DoOperButton(actor, sid)
+function opensuperboxmanager_button(actor, sid, sparam)
+    OpenSuperBoxManager.DoOperButton(actor, sid, sparam)
 end
 
 function gmhelper_openpanel(actor)

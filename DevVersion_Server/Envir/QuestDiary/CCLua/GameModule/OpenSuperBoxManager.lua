@@ -13,6 +13,7 @@ local OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_9 = 9    --加速宝箱升级
 local OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_10 = 10  --一键回收
 local OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_11 = 11  --关闭宝箱列表界面
 local OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_12 = 12  --一键穿戴
+local OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_13 = 13  --查看比较装备
 
 
 local OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_21 = 21  --勾选 保留的品质条件
@@ -177,7 +178,8 @@ function OpenSuperBoxManager.UpdateSuperBoxInfo(actor)
                     local curry = 30 + 100 * (nLine - 1)
                     local flag = Item.CompareBagItemToEquipment(actor, itemobj)
                     strPanel = strPanel..'<Text|id='..textid..'|x='..currx..'|y='..curry..'|width=70|color='..itemcolor..'|size=12|text='..itemshowname..'>'
-                    strPanel = strPanel..'<MKItemShow|id='..itemshowid..'|children={'..picid..','..picid2..'}|x='..(currx+4)..'|y='..(curry+20)..'|width=70|height=70|makeindex='..value..'|showtips=1|bgtype=1>'                        
+                    strPanel = strPanel..'<DBItemShow|id='..itemshowid..'|children={'..picid..','..picid2..'}|x='..(currx+4)..'|y='..(curry+20)..'|width=70|height=70|makeindex='..value..
+                        '|showtips=0|bgtype=1|link=@opensuperboxmanager_button#sid='..OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_13..'#sparam='..value..'>'                        
                     --[[
                     strPanel = strPanel..'<MKItemShow|id='..itemshowid..'|children={'..picid..'}|x='..(currx+4)..'|y='..(curry+20)..'|width=70|height=70|makeindex='..
                         value..'|showtips=0|bgtype=1|link=@cc_showitemex#makeindex='..value..'>'                        
@@ -312,6 +314,7 @@ function OpenSuperBoxManager.DoOpenBoxOnce(actor, autoflag, openitemlist)
     setplaydef(actor, CommonDefine.VAR_U_SUPER_BOX_TOTAL_NUM, nCurrBoxNum)
 
     local strItemUniqueIDs = ''
+    local showFirstItemMakeIdx = 0
     setflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_NO_BAG_AUTORECYCLE, 1)
     for _, itemid in ipairs(newItemIDTab) do
         --屏蔽当前装备的对比提示和自动使用
@@ -337,6 +340,9 @@ function OpenSuperBoxManager.DoOpenBoxOnce(actor, autoflag, openitemlist)
             if (autoflag == true) and (openitemlist ~= nil) then                
                 openitemlist[#openitemlist+1] = infotab
             end
+            if showFirstItemMakeIdx == 0 then
+                showFirstItemMakeIdx = nNewMakeIndex
+            end
         end
     end
     setflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_NO_BAG_AUTORECYCLE, 0)
@@ -349,6 +355,36 @@ function OpenSuperBoxManager.DoOpenBoxOnce(actor, autoflag, openitemlist)
     --触发免费VIP
 	FreeVIPManager.TriggerChgTaskCounter(actor, FreeVIPManager.TASK_TYPE_OPEN_SUPERBOX_TIMES, '+', nOnceOpenNum)
     return true
+end
+
+--客户端保留指定道具
+function OpenSuperBoxManager.ClientKeepEquipItem(actor, makeindex)
+    if BF_IsNullObj(actor) or (makeindex==nil) or (makeindex==0) then
+        return
+    end
+    local strItemUniqueIDs = getplaydef(actor, CommonDefine.VAR_S_SUPERBOX_ITEMLIST)
+    if strItemUniqueIDs ~= '' then
+        local strNewItemUniqueIDs = ''
+        local bChanged = false
+        local tabUniqueIDs = string.split(strItemUniqueIDs, ',')
+        if tabUniqueIDs ~= false then
+            for _, value in ipairs(tabUniqueIDs) do
+                local nItemUniqueID = tonumber(value)
+                if makeindex == nItemUniqueID then
+                    bChanged = true
+                else
+                    if strNewItemUniqueIDs ~= '' then
+                        strNewItemUniqueIDs = strNewItemUniqueIDs..','
+                    end
+                    strNewItemUniqueIDs = strNewItemUniqueIDs..nItemUniqueID
+                end
+            end
+        end
+        if bChanged == true then
+            setplaydef(actor, CommonDefine.VAR_S_SUPERBOX_ITEMLIST, strNewItemUniqueIDs)
+        end
+    end
+    OpenSuperBoxManager.UpdateSuperBoxInfo(actor)
 end
 
 --增加宝箱同时开启的数量
@@ -792,6 +828,7 @@ local function QuickTakeOnBetterEquip(actor)
         local bChanged = false
         local tabUniqueIDs = string.split(strItemUniqueIDs, ',')
         if tabUniqueIDs ~= false then
+            setflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_SUPERBOX_NOCHECK_TAKEON, 1)
             for _, value in ipairs(tabUniqueIDs) do
                 local nItemUniqueID = tonumber(value)
                 local itemobj = getitembymakeindex(actor, nItemUniqueID)
@@ -806,6 +843,42 @@ local function QuickTakeOnBetterEquip(actor)
                         end
                         strNewItemUniqueIDs = strNewItemUniqueIDs..nItemUniqueID
                     end
+                end
+            end
+            setflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_SUPERBOX_NOCHECK_TAKEON, 0)
+        end
+        if bChanged == true then
+            setplaydef(actor, CommonDefine.VAR_S_SUPERBOX_ITEMLIST, strNewItemUniqueIDs)
+        end
+    end
+    OpenSuperBoxManager.UpdateSuperBoxInfo(actor)
+end
+
+--触发穿戴装备
+function OpenSuperBoxManager.OnTakeOnEquipItem(actor, strmakeindex)
+    if BF_IsNullObj(actor) or (not BF_IsNumberStr(strmakeindex)) then
+        return
+    end
+    if getflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_SUPERBOX_NOCHECK_TAKEON) == 1 then
+        return
+    end
+
+    local strItemUniqueIDs = getplaydef(actor, CommonDefine.VAR_S_SUPERBOX_ITEMLIST)
+    if strItemUniqueIDs ~= '' then
+        local strNewItemUniqueIDs = ''
+        local bChanged = false
+        local tabUniqueIDs = string.split(strItemUniqueIDs, ',')
+        local makeindex = tonumber(strmakeindex)
+        if tabUniqueIDs ~= false then
+            for _, value in ipairs(tabUniqueIDs) do
+                local nItemUniqueID = tonumber(value)
+                if makeindex == nItemUniqueID then
+                    bChanged = true
+                else
+                    if strNewItemUniqueIDs ~= '' then
+                        strNewItemUniqueIDs = strNewItemUniqueIDs..','
+                    end
+                    strNewItemUniqueIDs = strNewItemUniqueIDs..nItemUniqueID
                 end
             end
         end
@@ -932,8 +1005,16 @@ function OpenSuperBoxManager.DelayCheckRecycle(actor)
     delaygoto(actor, 1500, 'superbox_auto_open', 0)
 end
 
+local function SendEquipItemCompareRequest(actor, strMakeIndex)
+    if BF_IsNumberStr(strMakeIndex) then
+        local infoTab = {newitemmakeidx = tonumber(strMakeIndex), pos = nil}
+        local strTabData = tbl2json(infoTab)
+        sendluamsg(actor, MsgDefine.SM_SHOW_BOX_EQUIPITEM_COMPARE, 0, 0, 0, strTabData)
+    end
+end
+
 --处理button回调
-function OpenSuperBoxManager.DoOperButton(actor, sid)
+function OpenSuperBoxManager.DoOperButton(actor, sid, sparam)
     if BF_IsNullObj(actor) or not BF_IsNumberStr(sid) then
         return
     end
@@ -988,6 +1069,8 @@ function OpenSuperBoxManager.DoOperButton(actor, sid)
         SelectRecycleCheckBox(actor, 5)
     elseif funcid == OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_28 then
         SelectRecycleCheckBox(actor, 6)
+    elseif funcid == OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_13 then
+        SendEquipItemCompareRequest(actor, sparam)
     end
 end
 

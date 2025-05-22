@@ -510,6 +510,7 @@ CommonDefine = {
     VAR_HUM_BITFLAG_AUTO_OPEN_SUPERBOX = 204,        --自动开启超级宝箱   
     VAR_HUM_BITFLAG_AUTO_EQUIPSTAR_FLAG = 205,       --自动升星标记
     VAR_HUM_BITFLAG_AUTO_OPEN_SUPERBOX_PAUSE = 206,  --暂停自动开启超级宝箱   
+    VAR_HUM_BITFLAG_SUPERBOX_NOCHECK_TAKEON = 207,   --开宝箱时不触发穿戴检测的状态【一键穿戴不触发】
 
     --300-800 都是可以下线保存的
     VAR_HUM_BITFLAG_AUTORECYCLE_ITEM1 = 300,         --勾选装备自动回收    

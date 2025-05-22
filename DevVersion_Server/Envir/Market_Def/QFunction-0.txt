@@ -5732,7 +5732,7 @@ STOP
 [@opensuperboxmanager_button]
 #IF
 #ACT
-CALLLUA CC_QFunction @opensuperboxmanager_button,<$STR(S$sid)>
+CALLLUA CC_QFunction @opensuperboxmanager_button,<$STR(S$sid)>,<$STR(S$sparam)>
 BREAK
 
 [@gmhelper_openpanel]
@@ -5883,11 +5883,11 @@ BREAK
 [@Message_1000]
 #IF
 #ACT
-CALLLUA CC_QFunction @handlerequest,<$CUSTMSGPARAM>,<$PARAM1>,<$PARAM2>,<$PARAM3>
+CALLLUA CC_QFunction @handlerequest,1000,<$PARAM1>,<$PARAM2>,<$PARAM3>,<$CUSTMSGPARAM>
 BREAK
 
 [@Message_1001]
 #IF
 #ACT
-CALLLUA CC_QFunction @handlerequest,<$CUSTMSGPARAM>,<$PARAM1>,<$PARAM2>,<$PARAM3>
+CALLLUA CC_QFunction @handlerequest,1001,<$PARAM1>,<$PARAM2>,<$PARAM3>,<$CUSTMSGPARAM>
 BREAK
