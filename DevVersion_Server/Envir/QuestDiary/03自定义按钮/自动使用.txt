@@ -6,12 +6,12 @@ NOT CHECKBAGSIZE 6
 #ACT
 SENDMSG 9 您的背包快满了，请使用[装备回收]清理背包！
 
-#IF
-CHECK [50] 0
-NOT CHECKBAGSIZE 10
-#ACT
-MOV S$回收引导 开始
-Navigation 108 3556 点我点我
+;#IF
+;CHECK [50] 0
+;NOT CHECKBAGSIZE 10
+;#ACT
+;MOV S$回收引导 开始
+;Navigation 108 3556 点我点我
 
 
 

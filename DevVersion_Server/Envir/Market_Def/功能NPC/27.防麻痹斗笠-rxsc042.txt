@@ -1,0 +1,74 @@
+[@Main]
+#IF
+EQUAL <$HAT> 
+#ACT
+MOV S$升级费用 免费升级
+MOV S$升级斗笠 沉默斗笠(Lv1)
+#ELSEACT
+ReadConfigFileItem ..\QuestDiary\01配置项\沉默斗笠.ini <$HAT> 下级斗笠 S$升级斗笠
+ReadConfigFileItem ..\QuestDiary\01配置项\沉默斗笠.ini <$HAT> 所需材料 S$所需材料
+ReadConfigFileItem ..\QuestDiary\01配置项\沉默斗笠.ini <$HAT> 材料数量 N$材料数量
+MOV S$升级费用 <$STR(S$所需材料)>×<$STR(N$材料数量)>
+
+#IF
+EQUAL <$HAT> 沉默斗笠(Lv100)
+#ACT
+MOV S$升级费用 已满级
+MOV S$升级斗笠 沉默斗笠(Lv100)
+
+#IF
+#Act
+GetDBItemFieldValue <$STR(S$升级斗笠)> idx N$升级IDX
+#Say
+<Img|x=0.0|y=0.0|reset=1|show=4|bg=1|move=0|img=public/wz/92233812_286330.png|loadDelay=1|esc=1>
+<Layout|x=773.0|y=17.0|width=80|height=80|link=@exit>
+<Button|x=775.0|y=19.0|color=255|pimg=public/1900000510_2.png|nimg=public/1900000510_1.png|size=18|link=@exit>
+<Img|x=26.0|y=57.0|img=public/wz/7c1a9d40_64297.jpg|esc=0>
+<Text|x=367.0|y=25.0|color=116|size=18|outline=2|text=防麻斗笠>
+<Text|x=344|y=153|color=250|size=18|outline=1|text=<$STR(S$升级斗笠)>>
+<ItemShow|x=360.0|y=193.0|width=70|height=70|itemid=<$Str(N$升级IDX)>|itemcount=1|showtips=1|bgtype=1>
+<Button|x=390.0|y=420.0|nimg=public/alpha_1px.png|color=250|size=18|text=<$STR(S$升级费用)>>
+<Button|x=340.0|y=438.0|color=251|size=18|nimg=public/wz/bt21.png|text=确定升级|link=@开始锻造>
+
+
+[@开始锻造]
+#IF
+EQUAL <$HAT> 沉默斗笠(Lv100)
+#ACT
+SENDMSG 9 您的斗笠已经满级了！
+BREAK
+
+#IF
+EQUAL <$HAT>
+#ACT
+GiveOnItem 13 沉默斗笠(Lv1) 1
+SendMsg	9 恭喜您，成功合成“<$Str(S$下级斗笠)>”！
+Goto @Main
+BREAK
+
+#IF
+#ACT
+ReadConfigFileItem ..\QuestDiary\01配置项\沉默斗笠.ini <$HAT> 下级斗笠 S$升级斗笠
+ReadConfigFileItem ..\QuestDiary\01配置项\沉默斗笠.ini <$HAT> 所需材料 S$所需材料
+ReadConfigFileItem ..\QuestDiary\01配置项\沉默斗笠.ini <$HAT> 材料数量 N$材料数量
+
+#IF
+NOT CHECKBAGSIZE 2
+#ACT
+SENDMSG 9 背包空间不足，需要背包空间大于2个！
+BREAK
+
+#IF
+CheckItem <$STR(S$所需材料)> <$STR(N$材料数量)> 
+#Act
+SETNPCMSG 斗笠制造
+Take <$STR(S$所需材料)> <$STR(N$材料数量)>
+Takew <$HAT> 1
+GiveOnItem 13 <$Str(S$升级斗笠)> 1
+SendMsg	9 恭喜您，成功合成“<$Str(S$升级斗笠)>”！
+SendMsgNew 250 0 恭喜玩家：【<<$UserName>/FCOLOR=251>】成功合成“<$Str(S$升级斗笠)>”！	1	2
+Goto @Main
+Break
+#ElseAct
+SendMsg	9 抱歉，您的<$STR(S$所需材料)>不足：“<$STR(N$材料数量)>”，无法升级！
+Break
