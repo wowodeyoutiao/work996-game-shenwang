@@ -1,0 +1,148 @@
+[@等级排名显示]
+{
+#IF
+#ACT
+VAR_CHECK <$STR(S$查看页)> = 99 0 <$STR(N$查看页)> N$查看页
+VAR_CHECK <$STR(S$查看页)> = 99 0 <$STR(S$查看页)> S$查看页
+FORMULATION <$STR(N$查看页)>*10 N$读取行
+FORMULATION <$STR(N$查看页)>+1  N$显示页
+
+MOV N1 1
+WHILE N1 < 11
+
+INC N$读取行 1
+MOV N$显示顺序<$STR(N1)> <$STR(N$读取行)>
+MOV S$行会显示<$STR(N1)>
+GETVALIDSTR <$GETSTRVALUE(A22,<$STR(N$读取行)>)> : S$排名角色<$STR(N1)> S$排名数值<$STR(N1)>
+GETGUILDINFO <$STR(S$排名角色<$STR(N1)>)> S$行会显示<$STR(N1)>
+VAR_CHECK <$STR(S$排名角色<$STR(N1)>)> = <$USERNAME> 250 7 N$排名颜色<$STR(N1)>
+VAR_CHECK <$STR(S$排名角色<$STR(N1)>)> = - -- <$STR(S$排名角色<$STR(N1)>)> S$排名角色<$STR(N1)>
+INC N1 1
+
+ENDWHILE
+
+; G43 排行榜开关
+#IF
+EQUAL G43 0
+#ACT
+DELAYGOTO 10 @等级排名立即刷新
+
+; 自定义函数，取自己的排名
+LIST_CHECK <$STR(A22)> =<$USERNAME>: N$我的排名
+
+#IF
+EQUAL N$我的排名 0 
+#ACT
+MOV S$自己的排名 未上榜
+#ELSEACT
+MOV S$自己的排名 <$STR(N$我的排名)>名
+
+#IF
+#SAY
+<Img|show=4|bg=1|loadDelay=1|move=0|esc=1|img=private/cc_rank_ui/1.png|reset=1>
+<Layout|x=810.0|y=20.0|width=80|height=80|link=@exit>
+<Button|x=810.0|y=20.0|color=255|size=18|pimg=public/1900000510_2.png|nimg=public/1900000510_1.png|link=@exit>
+<Img|x=65.0|y=55.0|img=private/cc_rank_ui/8.png|esc=0>
+<Text|x=405.0|y=19.0|outline=2|color=116|size=18|text=等级排名>
+<Button|children={781}|x=71.0|y=60|width=215|height=60|color=116|size=22|nimg=private/cc_rank_ui/2.png|scale9r=10|scale9l=10|scale9b=10|scale9t=10|text=战力排名|link=@战力排名显示#查看页=99>
+<Button|children={782}|x=71.0|y=120|width=215|height=60|color=007|size=22|nimg=private/cc_rank_ui/2.png|scale9r=10|scale9l=10|scale9b=10|scale9t=10|text=等级排名|link=@等级排名显示#查看页=99>
+<Img|id=782|x=0|y=0|img=public/1900000678_1.png|scale9r=10|scale9l=10|scale9b=10|scale9t=10|width=215|height=60>
+<Img|x=293|y=55|img=public/bg_hhzy_01_2.png|width=510>
+<Text|x=309.0|y=61.0|color=116|size=18|text=排名        角色                               等级                  行会>
+
+<Text|x=318.0|y=106.0|size=18|color=<$Str(N$排名颜色1)>||text=<$Str(N$显示顺序1)>>
+<Text|x=318.0|y=136.0|size=18|color=<$Str(N$排名颜色2)>||text=<$Str(N$显示顺序2)>>
+<Text|x=318.0|y=166.0|size=18|color=<$Str(N$排名颜色3)>||text=<$Str(N$显示顺序3)>>
+<Text|x=318.0|y=196.0|size=18|color=<$Str(N$排名颜色4)>||text=<$Str(N$显示顺序4)>>
+<Text|x=318.0|y=226.0|size=18|color=<$Str(N$排名颜色5)>||text=<$Str(N$显示顺序5)>>
+<Text|x=318.0|y=256.0|size=18|color=<$Str(N$排名颜色6)>||text=<$Str(N$显示顺序6)>>
+<Text|x=318.0|y=286.0|size=18|color=<$Str(N$排名颜色7)>||text=<$Str(N$显示顺序7)>>
+<Text|x=318.0|y=316.0|size=18|color=<$Str(N$排名颜色8)>||text=<$Str(N$显示顺序8)>>
+<Text|x=318.0|y=346.0|size=18|color=<$Str(N$排名颜色9)>||text=<$Str(N$显示顺序9)>>
+<Text|x=318.0|y=376.0|size=18|color=<$Str(N$排名颜色10)>|text=<$Str(N$显示顺序10)>>
+<Text|x=378.0|y=106.0|size=18|color=<$Str(N$排名颜色1)>||text=<$Str(S$排名角色1)>||link=@查看排名角色#查看角色=<$Str(S$排名角色1)>>    
+<Text|x=378.0|y=136.0|size=18|color=<$Str(N$排名颜色2)>||text=<$Str(S$排名角色2)>||link=@查看排名角色#查看角色=<$Str(S$排名角色2)>>    
+<Text|x=378.0|y=166.0|size=18|color=<$Str(N$排名颜色3)>||text=<$Str(S$排名角色3)>||link=@查看排名角色#查看角色=<$Str(S$排名角色3)>>    
+<Text|x=378.0|y=196.0|size=18|color=<$Str(N$排名颜色4)>||text=<$Str(S$排名角色4)>||link=@查看排名角色#查看角色=<$Str(S$排名角色4)>>    
+<Text|x=378.0|y=226.0|size=18|color=<$Str(N$排名颜色5)>||text=<$Str(S$排名角色5)>||link=@查看排名角色#查看角色=<$Str(S$排名角色5)>>    
+<Text|x=378.0|y=256.0|size=18|color=<$Str(N$排名颜色6)>||text=<$Str(S$排名角色6)>||link=@查看排名角色#查看角色=<$Str(S$排名角色6)>>    
+<Text|x=378.0|y=286.0|size=18|color=<$Str(N$排名颜色7)>||text=<$Str(S$排名角色7)>||link=@查看排名角色#查看角色=<$Str(S$排名角色7)>>    
+<Text|x=378.0|y=316.0|size=18|color=<$Str(N$排名颜色8)>||text=<$Str(S$排名角色8)>||link=@查看排名角色#查看角色=<$Str(S$排名角色8)>>    
+<Text|x=378.0|y=346.0|size=18|color=<$Str(N$排名颜色9)>||text=<$Str(S$排名角色9)>||link=@查看排名角色#查看角色=<$Str(S$排名角色9)>>    
+<Text|x=378.0|y=376.0|size=18|color=<$Str(N$排名颜色10)>|text=<$Str(S$排名角色10)>|link=@查看排名角色#查看角色=<$STR(S$排名角色10)>>   
+
+<Text|x=543.0|y=106.0|size=18|color=<$Str(N$排名颜色1)>||text=<$Str(S$排名数值1)>>
+<Text|x=543.0|y=136.0|size=18|color=<$Str(N$排名颜色2)>||text=<$Str(S$排名数值2)>>
+<Text|x=543.0|y=166.0|size=18|color=<$Str(N$排名颜色3)>||text=<$Str(S$排名数值3)>>
+<Text|x=543.0|y=196.0|size=18|color=<$Str(N$排名颜色4)>||text=<$Str(S$排名数值4)>>
+<Text|x=543.0|y=226.0|size=18|color=<$Str(N$排名颜色5)>||text=<$Str(S$排名数值5)>>
+<Text|x=543.0|y=256.0|size=18|color=<$Str(N$排名颜色6)>||text=<$Str(S$排名数值6)>>
+<Text|x=543.0|y=286.0|size=18|color=<$Str(N$排名颜色7)>||text=<$Str(S$排名数值7)>>
+<Text|x=543.0|y=316.0|size=18|color=<$Str(N$排名颜色8)>||text=<$Str(S$排名数值8)>>
+<Text|x=543.0|y=346.0|size=18|color=<$Str(N$排名颜色9)>||text=<$Str(S$排名数值9)>>
+<Text|x=543.0|y=376.0|size=18|color=<$Str(N$排名颜色10)>|text=<$Str(S$排名数值10)>>
+  
+<Text|x=673|y=106.0|size=18|color=<$Str(N$排名颜色1)>||text=<$Str(S$行会显示1)>>    <Img|x=263|y=133|img=private/cc_rank_ui/5.png|width=550>
+<Text|x=673|y=136.0|size=18|color=<$Str(N$排名颜色2)>||text=<$Str(S$行会显示2)>>    <Img|x=263|y=163|img=private/cc_rank_ui/5.png|width=550>
+<Text|x=673|y=166.0|size=18|color=<$Str(N$排名颜色3)>||text=<$Str(S$行会显示3)>>    <Img|x=263|y=193|img=private/cc_rank_ui/5.png|width=550>
+<Text|x=673|y=196.0|size=18|color=<$Str(N$排名颜色4)>||text=<$Str(S$行会显示4)>>    <Img|x=263|y=223|img=private/cc_rank_ui/5.png|width=550>
+<Text|x=673|y=226.0|size=18|color=<$Str(N$排名颜色5)>||text=<$Str(S$行会显示5)>>    <Img|x=263|y=253|img=private/cc_rank_ui/5.png|width=550>
+<Text|x=673|y=256.0|size=18|color=<$Str(N$排名颜色6)>||text=<$Str(S$行会显示6)>>    <Img|x=263|y=283|img=private/cc_rank_ui/5.png|width=550>
+<Text|x=673|y=286.0|size=18|color=<$Str(N$排名颜色7)>||text=<$Str(S$行会显示7)>>    <Img|x=263|y=313|img=private/cc_rank_ui/5.png|width=550>
+<Text|x=673|y=316.0|size=18|color=<$Str(N$排名颜色8)>||text=<$Str(S$行会显示8)>>    <Img|x=263|y=343|img=private/cc_rank_ui/5.png|width=550>
+<Text|x=673|y=346.0|size=18|color=<$Str(N$排名颜色9)>||text=<$Str(S$行会显示9)>>    <Img|x=263|y=373|img=private/cc_rank_ui/5.png|width=550>
+<Text|x=673|y=376.0|size=18|color=<$Str(N$排名颜色10)>|text=<$Str(S$行会显示10)>>   <Img|x=263|y=403|img=private/cc_rank_ui/5.png|width=550>
+
+<Button|x=566.0|y=460|nimg=private/cc_rank_ui/6.png|link=@等级上一页>
+<Button|x=676.0|y=460|nimg=private/cc_rank_ui/7.png|link=@等级下一页>
+<Button|x=636.0|y=470.0|nimg=public/alpha_1px.png|color=255|size=18|text=<$Str(N$显示页)>/10>
+<Button|x=293.0|y=460.0|nimg=public/wz/92233812_186337.png|color=249|size=18|text=我的排名：<$Str(S$自己的排名)>　　>
+
+#IF
+EQUAL G43 1
+#SAY
+<Text|a=0|x=321|y=420|color=250|size=18|outline=1|text=当前排行榜维护中，排名数据暂停刷新>
+
+
+[@等级上一页]
+#IF
+SMALL N$查看页 1
+#ACT
+MOV N$查看页 10
+
+#IF
+LARGE N$查看页 0
+#ACT
+MOV N1 1
+WHILE N1 < 11
+MOV S$行会显示<$STR(N1)> 
+INC N1 1
+ENDWHILE
+
+DEC N$查看页 1
+GOTO @等级排名显示
+BREAK
+
+[@等级下一页]
+#IF
+LARGE N$查看页 8
+#ACT
+MOV N$查看页 -1
+
+#IF
+SMALL N$查看页 9
+#ACT
+MOV N1 1
+WHILE N1 < 11
+MOV S$行会显示<$STR(N1)> 
+INC N1 1
+ENDWHILE
+
+INC N$查看页 1
+GOTO @等级排名显示
+BREAK
+
+
+
+
+}

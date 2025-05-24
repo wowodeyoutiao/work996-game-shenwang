@@ -112,26 +112,25 @@ function TopIcon.InnerExtendPanel(actor)
     delbutton(actor, 102, CommonDefine.ADD_BUTTON_ID_33)
     local currIconX = -220
     local buttonstr = '<Button|x='..currIconX..'|y=14|nimg=custom/30002.png|link=@topicon_openpanel#sid='..ICON_GATHER..'>'    
-    currIconX = currIconX - 70
-    buttonstr = buttonstr..'<Layout|children=65001|x='..currIconX..'|y=10|width=55|height=55|link=@开启盒子>'..
-        '<Effect|id=65001|x=20|y=57|effectid=5109|effecttype=0|scale=0.8>'        
-    currIconX = currIconX - 90
-    buttonstr = buttonstr..'<Button|x='..currIconX..'|y=10|nimg=custom/a00003.png|width=70|height=70|link=@打开账号交易>'
+    currIconX = currIconX - 80
+    buttonstr = buttonstr..'<Button|x='..currIconX..'|y=10|nimg=private/cc_func_icon/5.png|link=@开启盒子>'
+    currIconX = currIconX - 80
+    buttonstr = buttonstr..'<Button|x='..currIconX..'|y=10|nimg=private/cc_func_icon/7.png|link=@打开账号交易>'
 
     if FirstRecharge.CanShowIcon(actor) then
         currIconX = currIconX - 80
-        buttonstr = buttonstr..'<Button|id='..MAINICON_ID_4..'|x='..currIconX..'|y=10|width=70|height=70|nimg=private/cc_func_icon/4.png|link=@topicon_openpanel#sid='..ICON_FIRSTRECHARGE..'>'
+        buttonstr = buttonstr..'<Button|id='..MAINICON_ID_4..'|x='..currIconX..'|y=10|nimg=private/cc_func_icon/4.png|link=@topicon_openpanel#sid='..ICON_FIRSTRECHARGE..'>'
     end
     if ActivityOpenServer.CanShowIcon(actor) then
         currIconX = currIconX - 80
-        buttonstr = buttonstr..'<Button|id='..MAINICON_ID_2..'|x='..currIconX..'|y=10|width=70|height=70|nimg=private/cc_func_icon/1.png|link=@topicon_openpanel#sid='..ICON_OPENSERVERACTIVITY..'>'
+        buttonstr = buttonstr..'<Button|id='..MAINICON_ID_2..'|x='..currIconX..'|y=10|nimg=private/cc_func_icon/1.png|link=@topicon_openpanel#sid='..ICON_OPENSERVERACTIVITY..'>'
     end
     if JumpAreaManager.CanShowIcon(actor) then
         currIconX = currIconX - 80
-        buttonstr = buttonstr..'<Button|id='..MAINICON_ID_7..'|x='..currIconX..'|y=10|width=70|height=70|nimg=private/cc_func_icon/6.png|link=@topicon_openpanel#sid='..ICON_JUMPAREA..'>'
+        buttonstr = buttonstr..'<Button|id='..MAINICON_ID_7..'|x='..currIconX..'|y=10|nimg=private/cc_func_icon/6.png|link=@topicon_openpanel#sid='..ICON_JUMPAREA..'>'
     end
     currIconX = currIconX - 80
-    buttonstr = buttonstr..'<Button|id='..MAINICON_ID_6..'|x='..currIconX..'|y=10|width=70|height=70|text=免费VIP|color=255|nimg=custom/a00016.png|link=@topicon_openpanel#sid='..ICON_FREEVIP..'>'
+    buttonstr = buttonstr..'<Button|id='..MAINICON_ID_6..'|x='..currIconX..'|y=10|nimg=private/cc_func_icon/9.png|link=@topicon_openpanel#sid='..ICON_FREEVIP..'>'
 --[[
     if EverydayTask.CanShowIcon(actor) then
         currIconX = currIconX - 80
@@ -143,15 +142,15 @@ function TopIcon.InnerExtendPanel(actor)
     if curlv >= 40 then
         delbutton(actor, 102, CommonDefine.ADD_BUTTON_ID_34)
         buttonstr = ''
-        currIconX = -280
-        buttonstr = buttonstr..'<Button|x='..currIconX..'|y=75|nimg=custom/a00002.png|width=70|height=70|link=@元宝充值>'
+        currIconX = -300
+        buttonstr = buttonstr..'<Button|x='..currIconX..'|y=80|nimg=private/cc_func_icon/8.png|link=@元宝充值>'
         if ActivityExtendGift.CanShowIcon(actor) then
             currIconX = currIconX - 80
-            buttonstr = buttonstr..'<Button|id='..MAINICON_ID_1..'|x='..currIconX..'|y=75|width=70|height=70|nimg=private/cc_func_icon/2.png|link=@topicon_openpanel#sid='..ICON_EXTENDGIFT..'>'        
+            buttonstr = buttonstr..'<Button|id='..MAINICON_ID_1..'|x='..currIconX..'|y=80|nimg=private/cc_func_icon/2.png|link=@topicon_openpanel#sid='..ICON_EXTENDGIFT..'>'        
         end        
         if ActivityNewPlayerRecharge.CanShowIcon(actor) then        
             currIconX = currIconX - 80
-            buttonstr = buttonstr..'<Button|id='..MAINICON_ID_3..'|x='..currIconX..'|y=75|width=70|height=70|nimg=private/cc_func_icon/3.png|link=@topicon_openpanel#sid='..ICON_NEWPLAYER_RECHARGEACTIVITY..'>'
+            buttonstr = buttonstr..'<Button|id='..MAINICON_ID_3..'|x='..currIconX..'|y=80|nimg=private/cc_func_icon/3.png|link=@topicon_openpanel#sid='..ICON_NEWPLAYER_RECHARGEACTIVITY..'>'
         end            
         addbutton(actor, 102, CommonDefine.ADD_BUTTON_ID_34, buttonstr)
     end
