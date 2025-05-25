@@ -8,7 +8,7 @@ MOV N$称号倍功   <$cfg_称号升级配置(<$STR(U1)>_4)>
 MOV N$称号攻击   <$cfg_称号升级配置(<$STR(U1)>_5)>
 MOV N$称号爆率   <$cfg_称号升级配置(<$STR(U1)>_6)>
 MOV N$称号生命   <$cfg_称号升级配置(<$STR(U1)>_7)>
-MOV N$奖励金刚石 <$cfg_称号升级配置(<$STR(U1)>_8)>
+MOV N$奖励跨服积分 <$cfg_称号升级配置(<$STR(U1)>_8)>
 MOV N$称号特效ID <$cfg_称号升级配置(<$STR(U1)>_9)>
 MOV N$偏移X      <$cfg_称号升级配置(<$STR(U1)>_10)>
 MOV N$偏移Y      <$cfg_称号升级配置(<$STR(U1)>_11)>
@@ -36,7 +36,7 @@ GetDBItemFieldValue 元宝 idx N$元宝IDX
 打怪爆率<+<$STR(N$称号爆率)>%/FCOLOR=250>\
 最大生命<+<$STR(N$称号生命)>%/FCOLOR=250>\　\
 额外奖励\
-<绑定元宝+<$STR(N$奖励绑定元宝)>/FCOLOR=250>>
+<跨服积分+<$STR(N$奖励跨服积分)>/FCOLOR=250>>
 
 <Img|x=620|y=305|img=public/bg_yxui_2.png|height=210|width=180|scale9r=10|scale9l=10|scale9b=10|scale9t=10>
 <RText|x=675|y=335|outline=1|color=250|size=18|text=升级条件>
@@ -61,7 +61,7 @@ BREAK
 #ACT
 MOV S$称号名称     <$cfg_称号升级配置(<$STR(U1)>_2)>
 MOV N$称号元宝     <$cfg_称号升级配置(<$STR(U1)>_3)>
-MOV N$奖励绑定元宝   <$cfg_称号升级配置(<$STR(U1)>_8)>
+MOV N$奖励跨服积分   <$cfg_称号升级配置(<$STR(U1)>_8)>
 MOV S$称号名称_Old <$cfg_称号升级配置(<$GetTypeBRow(cfg_称号升级配置,1,<$STR(U1)>)>_2)>
 
 #IF
@@ -96,7 +96,7 @@ INC U1 1
 SETNPCMSG 称号升级<$STR(S$称号名称)>
 CONFERTITLE	<$STR(S$称号名称)>
 MONEY 元宝 - <$STR(N$称号元宝)>
-MONE 绑定元宝 + <$STR(N$奖励绑定元宝)>
+MONE 跨服积分 + <$STR(N$奖励跨服积分)>
 #Call [\04人物属性\人物倍攻.txt] @人物倍攻
 #Call [\04人物属性\称号刷新.txt] @刷新称号
 SENDMOVEMSG 0 251 0 460 1 恭喜玩家<【<$USERNAME>】/FCOLOR=254>成功进阶称号为：<[<$STR(S$称号名称)>]/FCOLOR=242>

@@ -8,7 +8,7 @@ local config = {
 		checkparam = 0,
 		tempvar = "N51",
 		flagvar = 330,
-		recycleitems = "[{\"name\":\"元宝\", \"num\":5}]",
+		recycleitems = "[{\"name\":\"绑定元宝\", \"num\":1}]",
 		stdmodelist = "[5,6,10,11,19,20,21,15,22,23,24,26,54,64,52,62]",
 	},
 	[102] = { 
@@ -20,7 +20,7 @@ local config = {
 		checkparam = 1,
 		tempvar = "N52",
 		flagvar = 331,
-		recycleitems = "[{\"name\":\"元宝\", \"num\":10}]",
+		recycleitems = "[{\"name\":\"绑定元宝\", \"num\":2}]",
 		stdmodelist = "[5,6,10,11,19,20,21,15,22,23,24,26,54,64,52,62]",
 	},
 	[103] = { 
@@ -32,7 +32,7 @@ local config = {
 		checkparam = 2,
 		tempvar = "N53",
 		flagvar = 332,
-		recycleitems = "[{\"name\":\"元宝\", \"num\":20}]",
+		recycleitems = "[{\"name\":\"绑定元宝\", \"num\":3}]",
 		stdmodelist = "[5,6,10,11,19,20,21,15,22,23,24,26,54,64,52,62]",
 	},
 	[104] = { 
@@ -44,7 +44,7 @@ local config = {
 		checkparam = 3,
 		tempvar = "N54",
 		flagvar = 333,
-		recycleitems = "[{\"name\":\"元宝\", \"num\":50}]",
+		recycleitems = "[{\"name\":\"绑定元宝\", \"num\":5}]",
 		stdmodelist = "[5,6,10,11,19,20,21,15,22,23,24,26,54,64,52,62]",
 	},
 	[105] = { 
@@ -56,7 +56,7 @@ local config = {
 		checkparam = 4,
 		tempvar = "N55",
 		flagvar = 334,
-		recycleitems = "[{\"name\":\"元宝\", \"num\":100}]",
+		recycleitems = "[{\"name\":\"绑定元宝\", \"num\":10}]",
 		stdmodelist = "[5,6,10,11,19,20,21,15,22,23,24,26,54,64,52,62]",
 	},
 	[106] = { 
@@ -68,7 +68,7 @@ local config = {
 		checkparam = 5,
 		tempvar = "N56",
 		flagvar = 335,
-		recycleitems = "[{\"name\":\"元宝\", \"num\":150}]",
+		recycleitems = "[{\"name\":\"绑定元宝\", \"num\":15}]",
 		stdmodelist = "[5,6,10,11,19,20,21,15,22,23,24,26,54,64,52,62]",
 	},
 	[107] = { 
@@ -80,7 +80,7 @@ local config = {
 		checkparam = 6,
 		tempvar = "N57",
 		flagvar = 336,
-		recycleitems = "[{\"name\":\"元宝\", \"num\":200}]",
+		recycleitems = "[{\"name\":\"元宝\", \"num\":10}]",
 		stdmodelist = "[5,6,10,11,19,20,21,15,22,23,24,26,54,64,52,62]",
 	},
 	[201] = { 

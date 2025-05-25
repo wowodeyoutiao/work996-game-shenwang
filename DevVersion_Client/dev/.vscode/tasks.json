@@ -1,0 +1,15 @@
+{
+	"version": "2.0.0",
+    "tasks": [
+        {
+            "label": "UpdateScript",
+            "type": "shell",
+            "command": "E:\\Work996Git\\work996-game-shenwang\\仅更新脚本到_测试客户端_陈自用.bat",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": []
+        },
+    ]
+}

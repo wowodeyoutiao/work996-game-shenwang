@@ -1,0 +1,10 @@
+{
+    "Lua.diagnostics.globals": [
+        "cc",
+        "SL",
+        "GUI",
+        "ssr",
+        "SLDefine"
+    ],
+    "files.encoding": "utf8"
+}
