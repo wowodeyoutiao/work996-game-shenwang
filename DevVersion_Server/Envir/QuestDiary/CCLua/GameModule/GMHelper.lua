@@ -25,6 +25,7 @@ function GMHelper.OpenPanel(actor)
         '<Button|x=200|y=60|nimg=public/bg_hhzy_01_3.png|text=清空装备位星级|link=@gmhelper_button#sid1=1009>'..
         '<Button|x=200|y=90|nimg=public/bg_hhzy_01_3.png|text=给五星魂石|link=@gmhelper_button#sid1=3>'..
         '<Button|x=200|y=120|nimg=public/bg_hhzy_01_3.png|text=100点跨服积分|link=@gmhelper_button#sid1=1010>'..
+        '<Button|x=200|y=150|nimg=public/bg_hhzy_01_3.png|text=刷新排行榜|link=@gmhelper_button_refreshrank>'..
 
         '<Button|x=350|y=30|nimg=public/bg_hhzy_01_3.png|text=重置跨服活动配置|link=@gmhelper_button#sid1=1996>'..
         '<Button|x=350|y=60|nimg=public/bg_hhzy_01_3.png|text=设置跨服boss配置|link=@gmhelper_button#sid1=1997>'..

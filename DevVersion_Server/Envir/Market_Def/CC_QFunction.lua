@@ -583,6 +583,7 @@ function update_power_callback(actor)
     if lastpower ~= currpower then
         local diffpower = currpower - lastpower
         setplaydef(actor, CommonDefine.VAR_N_LAST_PLAYERPOWER, currpower)
+        setplayvar(actor, "HUMAN", '战斗力', currpower, 1)
         --Player.SendSelfMsg(actor, '当前战力:'..currpower, CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
         InnerUpdatePowerShow(actor)    
         if (diffpower > 0) and (lastpower > 0) then

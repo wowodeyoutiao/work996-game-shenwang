@@ -5747,6 +5747,10 @@ BREAK
 CALLLUA CC_QFunction @gmhelper_button,<$STR(S$sid1)>
 BREAK
 
+[@gmhelper_button_refreshrank]
+#Call [\03自定义按钮\排行_战力NPC.txt] @战力排名立即刷新1
+#Call [\03自定义按钮\排行_战力NPC.txt] @等级排名立即刷新1
+
 [@recyclemanager_button]
 #IF
 #ACT
