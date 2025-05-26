@@ -1182,16 +1182,16 @@ DEC U60 <$STR(N$临时)>
 ;----------------------------------------------↓穿戴触发↓------------------------------------------------
 ;--------------------------------------------------------------------------------------------------------
 [@TakeOnEx]
-;; #CALL [\04人物属性\爆率免伤.txt] @属性刷新EX
-;; #CALL [\04人物属性\刷新神器等级.txt] @神器等级刷新
+#CALL [\04人物属性\爆率免伤.txt] @属性刷新EX
+#CALL [\04人物属性\刷新神器等级.txt] @神器等级刷新
 #IF
 #ACT
 CALLLUA CC_QFunction @takeonex,<$CURRTAKETEMPOS>,<$CURRTEMMAKEINDEX>
 
 
 [@TakeOffEx]
-;;#CALL [\04人物属性\爆率免伤.txt] @属性刷新EX
-;;#CALL [\04人物属性\刷新神器等级.txt] @神器等级刷新
+#CALL [\04人物属性\爆率免伤.txt] @属性刷新EX
+#CALL [\04人物属性\刷新神器等级.txt] @神器等级刷新
 #IF
 #ACT
 CALLLUA CC_QFunction @takeoffex,<$CURRTAKETEMPOS>,<$CURRTEMMAKEINDEX>
@@ -5557,22 +5557,22 @@ ALLOWDROP 0
 SENDMSG 9 [退出跨服]服务器
 CALLLUA CC_QFunction @kuafuend
 
-;SetOnTimer 2 2 0 1
-;; 跨服定时器
-;VAR Integer HUMAN 战斗力
-;VAR Integer HUMAN 等级数
-;VAR Integer HUMAN 爆率数
-;VAR Integer HUMAN 刀魂数
-;VAR Integer HUMAN 杀怪数
-;VAR Integer HUMAN 个人捐献
-;#Call [\04人物属性\人物倍攻.txt] @人物倍攻
-;#Call [\04人物属性\称号刷新.txt] @刷新称号
+SetOnTimer 2 2 0 1
+; 跨服定时器
+VAR Integer HUMAN 战斗力
+VAR Integer HUMAN 等级数
+VAR Integer HUMAN 爆率数
+VAR Integer HUMAN 刀魂数
+VAR Integer HUMAN 杀怪数
+VAR Integer HUMAN 个人捐献
+#Call [\04人物属性\人物倍攻.txt] @人物倍攻
+#Call [\04人物属性\称号刷新.txt] @刷新称号
 ;;#CALL [\登录触发\任务触发.txt] @任务领取
-;#CALL [\04人物属性\刷新神器等级.txt] @神器等级刷新
-;#CALL [\04人物属性\爆率免伤.txt] @属性刷新EX
+#CALL [\04人物属性\刷新神器等级.txt] @神器等级刷新
+#CALL [\04人物属性\爆率免伤.txt] @属性刷新EX
 ;;#Call [\悬浮按钮\悬浮按钮展开.txt] @悬浮按钮展开
-;#Call [\主界面基础按钮\主界面基础按钮QM.txt] @基础按钮QM
-;#Call [\03自定义按钮\战斗力计算.txt] @战力计算
+#Call [\主界面基础按钮\主界面基础按钮QM.txt] @基础按钮QM
+#Call [\03自定义按钮\战斗力计算.txt] @战力计算
 
 
 ; 进入跨服  跨服触发
@@ -5581,13 +5581,13 @@ CALLLUA CC_QFunction @kuafuend
 #ACT
 ;SETONTIMER 4 1 0 1
 ;PICKUPITEMS 0 10 500
-;#Call [\04人物属性\人物倍攻.txt] @人物倍攻
-;#Call [\04人物属性\称号刷新.txt] @刷新称号
+#Call [\04人物属性\人物倍攻.txt] @人物倍攻
+#Call [\04人物属性\称号刷新.txt] @刷新称号
 ;;#CALL [\登录触发\任务触发.txt] @任务领取
-;#CALL [\04人物属性\刷新神器等级.txt] @神器等级刷新
-;#CALL [\04人物属性\爆率免伤.txt] @属性刷新EX
+#CALL [\04人物属性\刷新神器等级.txt] @神器等级刷新
+#CALL [\04人物属性\爆率免伤.txt] @属性刷新EX
 ;#Call [\悬浮按钮\悬浮按钮跨服.txt] @跨服按钮展开
-;#Call [\03自定义按钮\战斗力计算.txt] @战力计算
+#Call [\03自定义按钮\战斗力计算.txt] @战力计算
 SENDMSG 9 [进入跨服]服务器
 CALLLUA CC_QFunction @kflogin
 
