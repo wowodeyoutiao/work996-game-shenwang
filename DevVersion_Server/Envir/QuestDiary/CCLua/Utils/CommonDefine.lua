@@ -12,12 +12,14 @@ CommonDefine = {
     GENDER_MAN = 0,
     GENDER_WOMAN = 1,
 
-    --基础道具ID
-    ITEMID_GOLD = 28,                   --金币
+    --基础道具ID    
     ITEMID_YB = 1,                      --元宝
-    ITEMID_BINDYB = 4,                  --绑定元宝
     ITEMID_JINGANGSHI = 2,              --金刚石
-    ITEMID_EXP = 6,                     --经验    
+    ITEMID_RECHARGE = 3,                --充值【只记录】
+    ITEMID_BINDYB = 4,                  --绑定元宝
+    ITEMID_EXP = 6,                     --经验        
+
+    ITEMID_GOLD = 28,                   --金币    
 
     --ITEMID_MOFANGZHEN_JIFEN = 20,     --魔方阵积分
 
