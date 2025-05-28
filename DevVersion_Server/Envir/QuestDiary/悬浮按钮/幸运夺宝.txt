@@ -1,0 +1,486 @@
+[@幸运夺宝]
+{
+#IF
+EQUAL G0 0
+#ACT
+SENDMSG 9 开区第二天开放领取。
+BREAK
+
+; 变量替换兼容老版本 2023.5.1删除
+#IF
+LARGE U9 <$STR(J9)>
+#ACT
+MOV J9 <$STR(U9)>
+
+; 容错 不删
+#IF
+LARGE J69 <$STR(J9)>
+#ACT
+MOV J9 <$STR(J69)>
+
+
+#IF
+#ACT
+MOV S$夺宝数据
+MOV S$夺宝记录
+MOV N$展示天数1 1
+MOV N$展示天数2 2
+MOV N$展示天数3 3
+GetDBItemFieldValue 元宝 idx N$元宝IDX
+
+MOV N1 0
+WHILE N1 < 9
+GETLISTSTRING ..\QuestDiary\05数据文件\夺宝记录.txt <$STR(N1)> S$夺宝数据
+INC N1 1
+INC S$夺宝记录 <<$STR(N1)>./FCOLOR=146><$STR(S$夺宝数据)>\
+ENDWHILE
+
+
+; 每3天展示一轮累积奖励
+DIV N$累积天数 <$STR(U23)> 3
+MUL N$累积天数 3
+MOV N$累积天数1 <$STR(N$累积天数)>
+MOV N$累积天数2 <$STR(N$累积天数)>
+MOV N$累积天数3 <$STR(N$累积天数)>
+INC N$累积天数1 1
+INC N$累积天数2 2
+INC N$累积天数3 3
+
+ReadConfigFileItem ..\QuestDiary\01配置项\每日夺宝配置.ini 连续领取奖励 连续<$STR(N$累积天数1)>次 N$累积奖励1
+ReadConfigFileItem ..\QuestDiary\01配置项\每日夺宝配置.ini 连续领取奖励 连续<$STR(N$累积天数2)>次 N$累积奖励2
+ReadConfigFileItem ..\QuestDiary\01配置项\每日夺宝配置.ini 连续领取奖励 连续<$STR(N$累积天数3)>次 N$累积奖励3
+
+#IF
+LARGE N$累积天数1 30
+#ACT
+ReadConfigFileItem ..\QuestDiary\01配置项\每日夺宝配置.ini 连续领取奖励 连续30次 N$累积奖励1
+#IF
+LARGE N$累积天数2 30
+#ACT
+ReadConfigFileItem ..\QuestDiary\01配置项\每日夺宝配置.ini 连续领取奖励 连续30次 N$累积奖励2
+#IF
+LARGE N$累积天数3 30
+#ACT
+ReadConfigFileItem ..\QuestDiary\01配置项\每日夺宝配置.ini 连续领取奖励 连续30次 N$累积奖励3
+
+#IF
+EQUAL N$累积天数1 1
+#ACT
+MOV S$累积奖励1 两倍爆率卷
+MOV S$奖励描述1 两倍卷*1
+MOV S$累积奖励2 五倍爆率卷
+MOV S$奖励描述2 五倍卷*1
+MOV S$累积奖励3 十倍爆率卷
+MOV S$奖励描述3 三种卷轴\各领一张
+#IF
+EQUAL N$累积天数1 2
+#ACT
+MOV S$累积奖励1 五倍爆率卷
+MOV S$奖励描述1 五倍卷*1
+MOV S$累积奖励2 十倍爆率卷
+MOV S$奖励描述2 三种卷轴\各领一张
+MOV S$累积奖励3 十倍爆率卷
+MOV S$奖励描述3 三种卷轴\各领一张
+#IF
+LARGE N$累积天数1 2
+#ACT
+MOV S$累积奖励1 十倍爆率卷
+MOV S$奖励描述1 三种卷轴\各领一张
+MOV S$累积奖励2 十倍爆率卷
+MOV S$奖励描述2 三种卷轴\各领一张
+MOV S$累积奖励3 十倍爆率卷
+MOV S$奖励描述3 三种卷轴\各领一张
+
+#IF
+#ACT
+GetDBItemFieldValue <$STR(S$累积奖励1)> idx N$道具IDX1
+GetDBItemFieldValue <$STR(S$累积奖励2)> idx N$道具IDX2
+GetDBItemFieldValue <$STR(S$累积奖励3)> idx N$道具IDX3
+#SAY
+<Img|x=0.0|y=0.0|width=680|height=470|show=4|scale9l=20|scale9r=20|bg=1|move=0|scale9t=20|scale9b=20|img=public/bg_npc_01.png|esc=1|reset=1>
+<Button|x=679.0|y=0.0|nimg=public/1900000510.png|pimg=public/1900000511.png|link=@exit>
+<Img|x=10|y=10|img=public/984fc09_44154.jpg|height=430|width=660>
+
+<Img|x=30|y=105|img=public/icon_paihangbang_05.png|height=200|width=400>
+<Img|children={10}|x=440|y=105|img=public/icon_paihangbang_05.png|height=200|width=200>
+<RText|x=30|y=20|color=103|size=18|text=玩家每日真实充值达到指定金额可最多累积获得5次领取机会；\每日累积充值达到10、20、30、50、100元各获得1次领取机会。>
+<RText|x=30|y=67|color=103|size=18|text=领取后可<获得1.5-10倍元宝翻倍暴击，/FCOLOR=70>最高<获得888元充值/FCOLOR=249>。>
+<RText|x=210|y=420|color=7|size=18|text=今日充值:<<$STR(J9)>元/FCOLOR=253>    累积领取:<<$STR(U22)>天/FCOLOR=253>>
+
+<RText|x=45|y=107|color=250|size=16|text=<$STR(S$夺宝记录)>>
+<ListView|id=10|children={401,402,403,404,405|x=6|y=5|width=220|height=190|direction=1|bounce=1|margin=1|reload=0>
+<Img|id=403|children={4011,4012,4013,4014,4015,4016,4017}|x=0|y=0|img=public/1900000677.png|height=110|width=188|scale9r=10|scale9l=10|scale9b=10|scale9t=10>
+<Img|id=404|children={4021,4022,4023,4024,4025,4026,4027}|x=0|y=0|img=public/1900000677.png|height=110|width=188|scale9r=10|scale9l=10|scale9b=10|scale9t=10>
+<Img|id=405|children={4031,4032,4033,4034,4035,4036,4037}|x=0|y=0|img=public/1900000677.png|height=110|width=188|scale9r=10|scale9l=10|scale9b=10|scale9t=10>
+<Img|id=4011|x=15|y=30|img=public/1900000667.png|width=150>
+<Img|id=4021|x=15|y=30|img=public/1900000667.png|width=150>
+<Img|id=4031|x=15|y=30|img=public/1900000667.png|width=150>
+<Button|id=4012|x=95|y=15|nimg=public/alpha_1px.png|color=253|size=18|text=连续领取<$STR(N$累积天数1)>天>
+<Button|id=4022|x=95|y=15|nimg=public/alpha_1px.png|color=253|size=18|text=连续领取<$STR(N$累积天数2)>天>
+<Button|id=4032|x=95|y=15|nimg=public/alpha_1px.png|color=253|size=18|text=连续领取<$STR(N$累积天数3)>天>
+<ItemShow|id=4013|x=15.0|y=35.0|width=70|height=70|itemid=<$STR(N$道具IDX1)>|itemcount=1|showtips=1|bgtype=1>
+<ItemShow|id=4023|x=15.0|y=35.0|width=70|height=70|itemid=<$STR(N$道具IDX2)>|itemcount=1|showtips=1|bgtype=1>
+<ItemShow|id=4033|x=15.0|y=35.0|width=70|height=70|itemid=<$STR(N$道具IDX3)>|itemcount=1|showtips=1|bgtype=1>
+<Text|id=4015|x=19|y=70|color=250|size=14|text=<$STR(S$奖励描述1)>>
+<Text|id=4025|x=19|y=70|color=250|size=14|text=<$STR(S$奖励描述2)>>
+<Text|id=4035|x=19|y=70|color=250|size=14|text=<$STR(S$奖励描述3)>>
+<Button|id=4014|x=130|y=48|nimg=public/alpha_1px.png|color=151|size=16|text=<$STR(N$累积奖励1)>元宝>
+<Button|id=4024|x=130|y=48|nimg=public/alpha_1px.png|color=151|size=16|text=<$STR(N$累积奖励2)>元宝>
+<Button|id=4034|x=130|y=48|nimg=public/alpha_1px.png|color=151|size=16|text=<$STR(N$累积奖励3)>元宝>
+<Button|id=4017|x=95|y=70|nimg=public/1900000611.png|width=70|height=30|size=18|color=151|clickInterval=268|text=领取|link=@领取累积奖励#领取天数=<$STR(N$累积天数1)>>
+<Button|id=4027|x=95|y=70|nimg=public/1900000611.png|width=70|height=30|size=18|color=151|clickInterval=268|text=领取|link=@领取累积奖励#领取天数=<$STR(N$累积天数2)>>
+<Button|id=4037|x=95|y=70|nimg=public/1900000611.png|width=70|height=30|size=18|color=151|clickInterval=268|text=领取|link=@领取累积奖励#领取天数=<$STR(N$累积天数3)>>
+
+
+<Img|x=-20|y=368|img=public/1900000667.png|width=680>
+<Img|x=100|y=358|img=public/btn_npcfh_05.png> <Img|id=301|children={21}|x=66|y=280|img=public/icon_fubentg_01.png>  <Effect|x=111|y=369|effectid=4005|effecttype=0|scale=0.26>
+<Img|x=215|y=358|img=public/btn_npcfh_05.png> <Img|id=302|children={22}|x=181|y=280|img=public/icon_fubentg_01.png> <Effect|x=226|y=369|effectid=4005|effecttype=0|scale=0.26>
+<Img|x=330|y=358|img=public/btn_npcfh_05.png> <Img|id=303|children={23}|x=296|y=280|img=public/icon_fubentg_02.png> <Effect|x=341|y=369|effectid=4005|effecttype=0|scale=0.26>
+<Img|x=445|y=358|img=public/btn_npcfh_05.png> <Img|id=304|children={24}|x=411|y=280|img=public/icon_fubentg_02.png> <Effect|x=456|y=369|effectid=4005|effecttype=0|scale=0.26>
+<Img|x=568|y=358|img=public/btn_npcfh_05.png> <Img|id=305|children={25}|x=536|y=280|img=public/icon_fubentg_03.png> <Effect|x=579|y=369|effectid=4005|effecttype=0|scale=0.26>
+<Button|id=21|x=0.00|y=55|nimg=public/bg_hhzy_01_2.png|width=90|height=20|size=16|color=151|text=10万元宝领取>
+<Button|id=22|x=0.00|y=55|nimg=public/bg_hhzy_01_2.png|width=90|height=20|size=16|color=151|text=50万元宝领取>
+<Button|id=23|x=0.00|y=55|nimg=public/bg_hhzy_01_2.png|width=90|height=20|size=16|color=151|text=100万元宝领取>
+<Button|id=24|x=0.00|y=55|nimg=public/bg_hhzy_01_2.png|width=90|height=20|size=16|color=151|text=200万元宝领取>
+<Button|id=25|x=0.00|y=55|nimg=public/bg_hhzy_01_2.png|width=90|height=20|size=16|color=151|text=300万元宝领取>
+<Button|id=101|x=78.00|y=390|nimg=public/1900000668.png|width=70|height=30|size=18|color=151|clickInterval=268|text=领取|link=@确定领奖#领取阶段=1#无效=0>
+<Button|id=102|x=193.0|y=390|nimg=public/1900000668.png|width=70|height=30|size=18|color=151|clickInterval=268|text=领取|link=@确定领奖#领取阶段=2#无效=0>
+<Button|id=103|x=310.0|y=390|nimg=public/1900000668.png|width=70|height=30|size=18|color=151|clickInterval=268|text=领取|link=@确定领奖#领取阶段=3#无效=0>
+<Button|id=104|x=423.0|y=390|nimg=public/1900000668.png|width=70|height=30|size=18|color=151|clickInterval=268|text=领取|link=@确定领奖#领取阶段=4#无效=0>
+<Button|id=105|x=550.0|y=390|nimg=public/1900000668.png|width=70|height=30|size=18|color=151|clickInterval=268|text=领取|link=@确定领奖#领取阶段=5#无效=0>
+
+#IF
+NOT SMALL U23 <$STR(N$累积天数1)>
+#SAY
+<Button|id=4017|x=95|y=70|nimg=public/1900000611.png|width=70|height=30|size=18|color=7|text=已领取>
+#IF
+NOT SMALL U23 <$STR(N$累积天数2)>
+#SAY
+<Button|id=4027|x=95|y=70|nimg=public/1900000611.png|width=70|height=30|size=18|color=7|text=已领取>
+#IF
+NOT SMALL U23 <$STR(N$累积天数3)>
+#SAY
+<Button|id=4037|x=95|y=70|nimg=public/1900000611.png|width=70|height=30|size=18|color=7|text=已领取>
+
+#IF
+SMALL J9 100
+#SAY
+<Button|id=105|x=550.0|y=390|nimg=public/alpha_1px.png|width=70|height=30|size=16|color=151|text=充值100元领取>
+#IF
+SMALL J9 50
+#SAY
+<Button|id=104|x=428.00|y=390|nimg=public/alpha_1px.png|width=70|height=30|size=16|color=151|text=充值50元领取>
+#IF
+SMALL J9 30
+#SAY
+<Button|id=103|x=310.00|y=390|nimg=public/alpha_1px.png|width=70|height=30|size=16|color=151|text=充值30元领取>
+#IF
+SMALL J9 20
+#SAY
+<Button|id=102|x=190.00|y=390|nimg=public/alpha_1px.png|width=70|height=30|size=16|color=151|text=充值20元领取>
+#IF
+SMALL J9 10
+#SAY
+<Button|id=101|x=78.00|y=390|nimg=public/alpha_1px.png|width=70|height=30|size=16|color=151|text=充值10元领取>
+
+#IF
+NOT EQUAL T21 
+#SAY
+<Img|id=301|children={21}|x=66|y=280|img=public/icon_fubentg_01_1.png> 
+<Button|id=101|x=78|y=390|nimg=public/1900000668.png|width=70|height=30|color=7|text=已领取>
+<Button|id=21|x=10.00|y=55|nimg=public/bg_hhzy_01_2.png|width=70|height=20|size=16|color=151|text=<$STR(T21)>>
+#IF
+NOT EQUAL T22
+#SAY
+<Img|id=302|children={22}|x=181|y=280|img=public/icon_fubentg_01_1.png>
+<Button|id=102|x=193|y=390|nimg=public/1900000668.png|width=70|height=30|color=7|text=已领取>
+<Button|id=22|x=10.00|y=55|nimg=public/bg_hhzy_01_2.png|width=70|height=20|size=16|color=151|text=<$STR(T22)>>
+#IF
+NOT EQUAL T23
+#SAY
+<Img|id=303|children={23}|x=296|y=280|img=public/icon_fubentg_02_1.png>
+<Button|id=103|x=310|y=390|nimg=public/1900000668.png|width=70|height=30|color=7|text=已领取>
+<Button|id=23|x=10.00|y=55|nimg=public/bg_hhzy_01_2.png|width=70|height=20|size=16|color=151|text=<$STR(T23)>>
+#IF
+NOT EQUAL T24
+#SAY
+<Img|id=304|children={24}|x=411|y=280|img=public/icon_fubentg_02_1.png>
+<Button|id=104|x=423|y=390|nimg=public/1900000668.png|width=70|height=30|color=7|text=已领取>
+<Button|id=24|x=10.00|y=55|nimg=public/bg_hhzy_01_2.png|width=70|height=20|size=16|color=151|text=<$STR(T24)>>
+#IF
+NOT EQUAL T25
+#SAY
+<Img|id=305|children={25}|x=536|y=280|img=public/icon_fubentg_03_1.png>
+<Button|id=105|x=550|y=390|nimg=public/1900000668.png|width=70|height=30|color=7|text=已领取>
+<Button|id=25|x=10.00|y=55|nimg=public/bg_hhzy_01_2.png|width=70|height=20|size=16|color=151|text=<$STR(T25)>>
+
+#IF
+EQUAL <$GAMEID> 1
+#SAY
+<Button|x=540.0|y=60|nimg=public/1900000668.png|width=50|height=30|color=151|text=清理|link=@清理夺宝>
+<Button|x=600.0|y=60|nimg=public/1900000668.png|width=60|height=30|color=151|text=天数+1|link=@天数+1>
+
+
+[@清理夺宝]
+#IF
+EQUAL <$gameid> 1
+#ACT
+MOV T21 
+MOV T22 
+MOV T23 
+MOV T24 
+MOV T25 
+MOV U22 0
+MOV U23 0
+MOV J9 100
+GOTO @幸运夺宝
+BREAK
+
+[@天数+1]
+#IF
+EQUAL <$gameid> 1
+#ACT
+MOV T21 
+MOV T22 
+MOV T23 
+MOV T24 
+MOV T25 
+GOTO @幸运夺宝
+
+[@领取累积奖励]
+#IF
+NOT SMALL U23 <$STR(S$领取天数)>
+#ACT
+SENDMSG 9 已领取此奖励，无法再次领取。
+BREAK
+
+#IF
+SMALL U22 <$STR(S$领取天数)>
+#ACT
+SENDMSG 9 未达到领取要求
+BREAK
+
+#IF
+#ACT
+ReadConfigFileItem ..\QuestDiary\01配置项\每日夺宝配置.ini 连续领取奖励 连续<$STR(U22)>次 N$当前累积奖励
+
+;大于30天按30天领取
+#IF
+LARGE U22 29
+#ACT
+ReadConfigFileItem ..\QuestDiary\01配置项\每日夺宝配置.ini 连续领取奖励 连续30次 N$当前累积奖励
+
+#IF
+LARGE N$当前累积奖励 0
+#ACT
+; 同步夺宝天数和领奖天数
+MOV U23 <$STR(U22)>
+setnpcmsg 连续夺宝奖励<$STR(U23)>day
+money 元宝 + <$STR(N$当前累积奖励)>
+MOV T6 <$YEAR>-<$MONTH>-<$DAY>
+; 记录最近领取的日期，计算连续领取天数
+SENDMSG 9 成功领取累积夺宝奖励<$STR(N$当前累积奖励)>元宝
+SENDMSG 6 成功领取累积夺宝奖励<$STR(N$当前累积奖励)>元宝
+
+get_post_data S$上报数据 {"gevent":"夺宝累积","gvalue":"<$STR(U23)>","desc":""}
+HTTPPOST http://211.149.241.27:4473/api/api996/get_log 0 <$STR(S$上报数据)>
+
+GOTO @幸运夺宝
+#ELSEACT
+SENDMSG 9 领取失败！
+BREAK
+
+#IF
+EQUAL S$领取天数 1
+#ACT
+GIVE 两倍爆率卷 1
+BREAK
+#IF
+EQUAL S$领取天数 2
+#ACT
+GIVE 五倍爆率卷 1
+BREAK
+
+#IF
+LARGE S$领取天数 2
+#ACT
+GIVE 两倍爆率卷 1
+GIVE 五倍爆率卷 1
+GIVE 十倍爆率卷 1
+BREAK
+
+[@确定领奖]
+#IF
+EQUAL G0 0
+#ACT
+SENDMSG 9 开区第二天开放领取。
+BREAK
+
+#IF
+EQUAL S$领取阶段
+#ACT
+BREAK
+
+#IF
+NOT EQUAL T2<$STR(S$领取阶段)>
+#ACT
+SENDMSG 9 已领取过当前奖励。
+BREAK
+
+#IF
+LARGE J1 4
+#ACT
+SENDMSG 9 领取上限！
+BREAK
+
+#IF
+#ACT
+MOV N$奖励倍数 0
+ReadConfigFileItem ..\QuestDiary\01配置项\每日夺宝配置.ini 充值夺宝<$STR(S$领取阶段)> 充值限制 N$充值限制
+ReadConfigFileItem ..\QuestDiary\01配置项\每日夺宝配置.ini 充值夺宝<$STR(S$领取阶段)> 需要元宝 N$需要元宝
+ReadConfigFileItem ..\QuestDiary\01配置项\每日夺宝配置.ini 充值夺宝<$STR(S$领取阶段)> 概率1 N$概率1
+ReadConfigFileItem ..\QuestDiary\01配置项\每日夺宝配置.ini 充值夺宝<$STR(S$领取阶段)> 概率2 N$概率2
+ReadConfigFileItem ..\QuestDiary\01配置项\每日夺宝配置.ini 充值夺宝<$STR(S$领取阶段)> 概率3 N$概率3
+ReadConfigFileItem ..\QuestDiary\01配置项\每日夺宝配置.ini 充值夺宝<$STR(S$领取阶段)> 概率4 N$概率4
+ReadConfigFileItem ..\QuestDiary\01配置项\每日夺宝配置.ini 充值夺宝<$STR(S$领取阶段)> 概率5 N$概率5
+ReadConfigFileItem ..\QuestDiary\01配置项\每日夺宝配置.ini 充值夺宝<$STR(S$领取阶段)> 概率6 N$概率6
+ReadConfigFileItem ..\QuestDiary\01配置项\每日夺宝配置.ini 充值夺宝<$STR(S$领取阶段)> 概率7 N$概率7
+ReadConfigFileItem ..\QuestDiary\01配置项\每日夺宝配置.ini 充值夺宝<$STR(S$领取阶段)> 概率8 N$概率8
+ReadConfigFileItem ..\QuestDiary\01配置项\每日夺宝配置.ini 充值夺宝<$STR(S$领取阶段)> 计算倍数 S$计算倍数
+ReadConfigFileItem ..\QuestDiary\01配置项\每日夺宝配置.ini 充值夺宝<$STR(S$领取阶段)> 显示倍数 S$显示倍数
+
+GETVALIDSTRSUPER <$STR(S$计算倍数)> | S$计算倍数
+GETVALIDSTRSUPER <$STR(S$显示倍数)> | S$显示倍数
+
+#IF
+SMALL J9 <$STR(N$充值限制)>
+#ACT
+SENDMSG 9 今日充值金额不足[<$STR(N$充值限制)>]，领取失败！
+BREAK
+#IF
+CHECKMONEY 元宝 < <$STR(N$需要元宝)>
+#ACT
+SENDMSG 9 元宝数量不足[<$STR(N$需要元宝)>]个，领取失败！
+BREAK
+
+#IF
+#ACT
+Money 元宝 - <$STR(N$需要元宝)>
+
+#IF
+EQUAL N$奖励倍数 0
+randomex <$STR(N$概率2)> 100
+#ACT
+MOV N$奖励倍数 <$STR(S$计算倍数2)>
+MOV S$显示倍数 <$STR(S$显示倍数2)>
+#IF
+EQUAL N$奖励倍数 0
+randomex <$STR(N$概率3)> 100
+#ACT
+MOV N$奖励倍数 <$STR(S$计算倍数3)>
+MOV S$显示倍数 <$STR(S$显示倍数3)>
+#IF
+EQUAL N$奖励倍数 0
+randomex <$STR(N$概率4)> 100
+#ACT
+MOV N$奖励倍数 <$STR(S$计算倍数4)>
+MOV S$显示倍数 <$STR(S$显示倍数4)>
+#IF
+EQUAL N$奖励倍数 0
+randomex <$STR(N$概率5)> 100
+#ACT
+MOV N$奖励倍数 <$STR(S$计算倍数5)>
+MOV S$显示倍数 <$STR(S$显示倍数5)>
+#IF
+EQUAL N$奖励倍数 0
+randomex <$STR(N$概率6)> 100
+#ACT
+MOV N$奖励倍数 <$STR(S$计算倍数6)>
+MOV S$显示倍数 <$STR(S$显示倍数6)>
+#IF
+EQUAL N$奖励倍数 0
+randomex <$STR(N$概率8)> 100
+#ACT
+MOV N$奖励倍数 <$STR(S$计算倍数8)>
+MOV S$显示倍数 <$STR(S$显示倍数8)>
+
+#IF
+EQUAL N$奖励倍数 0
+#ACT
+MOV N$奖励倍数 <$STR(S$计算倍数1)>
+MOV S$显示倍数 <$STR(S$显示倍数1)>
+
+#IF
+LARGE G3 0
+random 10
+#ACT
+DEC G3 1
+; 记录888次数
+INC G35 1
+MOV S$显示倍数 888充值
+
+
+#IF
+not equal S$显示倍数 888充值
+#ACT
+; 记录对应档位领取的倍数
+MOV T2<$STR(S$领取阶段)> <$STR(S$显示倍数)>倍奖励
+MUL N$奖励元宝 <$STR(N$需要元宝)> <$STR(N$奖励倍数)>
+DIV N$奖励元宝 10
+Money 元宝 + <$STR(N$奖励元宝)>
+SENDMSG 9 成功领取元宝咻咻咻奖励[<$STR(S$显示倍数)>]倍奖励，奖励[<$STR(N$奖励元宝)>]元宝。
+SENDMSGNEW 253 0 玩家<[<$username>]/FCOLOR=250>成功领取元宝咻咻咻<奖励[<$STR(S$显示倍数)>]倍元宝/FCOLOR=250>，奖励<[<$STR(N$奖励元宝)>]元宝/FCOLOR=70> 1 3
+addtextlistex ..\questdiary\05数据文件\夺宝记录.txt 玩家<<$username>/FCOLOR=70>　成功夺宝　<获得[<$STR(S$显示倍数)>]倍/FCOLOR=253>元宝奖励。  0
+DelText ..\questdiary\05数据文件\夺宝记录.txt 10 0
+
+
+#IF
+equal S$显示倍数 888充值
+#ACT
+MOV T2<$STR(S$领取阶段)> <$STR(S$显示倍数)>
+money 充值 + 888
+money 充值点 + 888
+Money 元宝 + 8880000
+SENDMSG 9 成功领取元宝咻咻咻奖励888元充值奖励。
+SENDMSGNEW 253 0 玩家<[<$username>]/FCOLOR=250>成功领取元宝咻咻咻<奖励[888元充值]/FCOLOR=70> 1 3
+addtextlistex ..\questdiary\05数据文件\夺宝记录.txt 玩家<<$username>/FCOLOR=70>　成功夺宝　<获得888元/FCOLOR=70>充值奖励。 0
+DelText ..\questdiary\05数据文件\夺宝记录.txt 10 0
+
+
+
+#IF
+EQUAL S$显示倍数 5
+#ACT
+SENDMOVEMSG 1 253 0 220 1 玩家<[<$username>]/FCOLOR=250>成功领取元宝咻咻咻<奖励[<$STR(S$显示倍数)>]倍元宝/FCOLOR=250>，奖励<[<$STR(N$奖励元宝)>]元宝/FCOLOR=70> 
+#IF
+EQUAL S$显示倍数 10
+#ACT
+SENDMOVEMSG 1 253 0 220 2 玩家<[<$username>]/FCOLOR=250>成功领取元宝咻咻咻<奖励[<$STR(S$显示倍数)>]倍元宝/FCOLOR=250>，奖励<[<$STR(N$奖励元宝)>]元宝/FCOLOR=70> 
+SENDMOVEMSG 1 253 0 250 2 玩家<[<$username>]/FCOLOR=250>成功领取元宝咻咻咻<奖励[<$STR(S$显示倍数)>]倍元宝/FCOLOR=250>，奖励<[<$STR(N$奖励元宝)>]元宝/FCOLOR=70> 
+#IF
+EQUAL S$显示倍数 888充值
+#ACT
+SENDMOVEMSG 1 253 0 220 3 玩家<[<$username>]/FCOLOR=250>成功领取元宝咻咻咻<奖励[888元充值]/FCOLOR=70>
+SENDMOVEMSG 1 253 0 250 3 玩家<[<$username>]/FCOLOR=250>成功领取元宝咻咻咻<奖励[888元充值]/FCOLOR=70>
+SENDMOVEMSG 1 253 0 280 3 玩家<[<$username>]/FCOLOR=250>成功领取元宝咻咻咻<奖励[888元充值]/FCOLOR=70>
+
+
+#IF
+NOT EQUAL T6 <$YEAR>-<$MONTH>-<$DAY>
+#ACT
+; 领取次数 +1
+INC U22 1
+#IF
+#ACT
+; 记录每日领取的次数
+INC J1 1
+; 记录最近领取时的日期，登录时判断是否连续领取
+MOV T6 <$YEAR>-<$MONTH>-<$DAY>
+
+get_post_data S$上报数据 {"gevent":"每日夺宝","gvalue":"<$STR(N$奖励元宝)>","desc":"<$STR(S$显示倍数)>"}
+HTTPPOST http://211.149.241.27:4473/api/api996/get_log 0 <$STR(S$上报数据)>
+
+GOTO @幸运夺宝
+
+}
+

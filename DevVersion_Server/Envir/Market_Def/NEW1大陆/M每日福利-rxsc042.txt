@@ -1,0 +1,19 @@
+[@main]
+; #IF
+; #ACT
+; SENDMSG 9 优化中
+; BREAK
+
+; #IF
+; check [1] 0
+; #ACT
+; set [1] 1
+; MOV T21
+; MOV T22
+; MOV T23
+; MOV T24
+; MOV T25
+
+#CALL [\悬浮按钮\幸运夺宝.txt] @幸运夺宝
+
+

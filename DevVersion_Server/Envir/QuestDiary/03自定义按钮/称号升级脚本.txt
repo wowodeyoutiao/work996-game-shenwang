@@ -96,7 +96,7 @@ INC U1 1
 SETNPCMSG 称号升级<$STR(S$称号名称)>
 CONFERTITLE	<$STR(S$称号名称)>
 MONEY 元宝 - <$STR(N$称号元宝)>
-MONE 跨服积分 + <$STR(N$奖励跨服积分)>
+MONEY 跨服积分 + <$STR(N$奖励跨服积分)>
 #Call [\04人物属性\人物倍攻.txt] @人物倍攻
 #Call [\04人物属性\称号刷新.txt] @刷新称号
 SENDMOVEMSG 0 251 0 460 1 恭喜玩家<【<$USERNAME>】/FCOLOR=254>成功进阶称号为：<[<$STR(S$称号名称)>]/FCOLOR=242>

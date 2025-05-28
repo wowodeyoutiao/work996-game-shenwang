@@ -472,6 +472,8 @@ CommonDefine = {
     VAR_J_DAY_TREASUREMAP_USETIMES = 'J16',             --玩家 今日使用藏宝图次数
     VAR_J_DAY_TREASUREMAP_NO_PANELTIP_FLAG = 'J17',     --玩家 今日不再显示藏宝图的提示面板
     ]]--
+    VAR_J_DAY_RECHARGE_TOTAL_OLDVERSION = 'J9',         --玩家今日的总充值  原来版本中的记录
+
     VAR_J_DAY_SUPERBOX_ADDNUM = 'J101',                 --玩家 今日获得超级宝箱次数
     VAR_J_DAY_SUPERBOX_OPENNUM = 'J102',                --玩家 今日开启超级宝箱次数
     VAR_J_DAY_GUAZHI_ADDEXP = 'J103',                   --玩家今日获得的官职经验

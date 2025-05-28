@@ -31,6 +31,7 @@ function RechargeManager.DoRecharge(actor)
     local dayrecharge = getplaydef(actor, CommonDefine.VAR_J_DAY_RECHARGE_TOTAL)
     dayrecharge = dayrecharge + gold
     setplaydef(actor, CommonDefine.VAR_J_DAY_RECHARGE_TOTAL, dayrecharge)
+    setplaydef(actor, CommonDefine.VAR_J_DAY_RECHARGE_TOTAL_OLDVERSION, dayrecharge)    
 
     --增加 充值 虚拟道具的记录 这个只加不减
     changemoney(actor, CommonDefine.ITEMID_RECHARGE, '+', gold, 'DoRecharge', true)

@@ -1,0 +1,121 @@
+[@Main]
+#IF
+#Act
+; 获取总行数
+DIV N$b_page <$Getcsv(cfg_首爆奖励配置,Row)> 10
+Mul N$b_line <$STR(N$b_line)> 10
+; 计算总页数
+#IF
+Not Equal S$line <$STR(N$b_line)>
+#Act
+Inc N$b_page 1
+
+#IF
+#Act
+Mov N$n_page 1
+Goto @首爆界面UI
+Break
+
+[@首爆界面UI]
+#IF
+#Act
+Goto @取首爆数据
+#Say
+<Img|x=0|y=0|show=4|scale9r=20|scale9t=20|scale9l=20|bg=1|scale9b=20|move=0|reset=1|img=public/wz/92233812_186329.png|esc=1>
+<Layout|x=804.0|y=10.0|width=80|height=80|link=@exit>
+<Button|x=808.0|y=50.0|nimg=public/1900000510_1.png|pimg=public/1900000511_2.png|link=@exit>
+<Text|x=407.0|y=57.0|outline=2|color=116|size=18|text=首爆奖励>
+<Img|x=80|y=105|img=public/bg_hhzy_01_2.png|width=725>
+<Img|x=80|y=135|img=public/bg_hhzy_01_2.png|width=725>
+<Img|x=80|y=165|img=public/bg_hhzy_01_2.png|width=725>
+<Img|x=80|y=195|img=public/bg_hhzy_01_2.png|width=725>
+<Img|x=80|y=225|img=public/bg_hhzy_01_2.png|width=725>
+<Img|x=80|y=255|img=public/bg_hhzy_01_2.png|width=725>
+<Img|x=80|y=285|img=public/bg_hhzy_01_2.png|width=725>
+<Img|x=80|y=315|img=public/bg_hhzy_01_2.png|width=725>
+<Img|x=80|y=345|img=public/bg_hhzy_01_2.png|width=725>
+<Img|x=80|y=375|img=public/bg_hhzy_01_2.png|width=725>
+<$STR(S$首爆UI)>
+
+<Button|x=260.0|y=480.0|nimg=public/wz/bt11.png|color=251|text=上一页|link=@pageup>
+<Button|x=500.0|y=480.0|nimg=public/wz/bt11.png|color=251|text=下一页|link=@pagedown>
+<Button|x=392.0|y=480.0|color=251|nimg=public/1900015004.png|text=<$STR(N$n_page)>/<$STR(N$b_page)>|width=90>
+
+<RText|x=106.0|y=415.0|outline=1|color=7|size=18|text=本区首爆<2000多件>总计<2万多元，>打到就是赚到！>
+<Text|x=658.0|y=510.0|outline=1|color=7|size=18|text=合区后关闭首爆>
+
+[@pageup]
+#IF
+Large N$n_page 1
+#Act
+Dec N$n_page 1
+Goto @首爆界面UI
+Break
+#ElseAct
+Mov N$n_page <$STR(N$b_page)>
+Goto @首爆界面UI
+
+
+[@pagedown]
+#IF
+Small N$n_page <$STR(N$b_page)>
+#Act
+Inc N$n_page 1
+Goto @首爆界面UI
+Break
+#ElseAct
+Goto @Main
+
+
+[@取首爆数据]
+#IF
+#Act
+MOV S$首爆UI
+MOV N$Y1 110
+Mul n$now_line <$STR(N$n_page)> 10
+FORMULATION <$STR(n$now_line)>-10 n$now_line_d
+
+MOV N1 <$STR(n$now_line_d)>
+while N1 < <$STR(N$now_line)>
+MOV S$item_name <$cfg_首爆奖励配置(<$STR(N1)>_0)>
+GETSTRVALUE A16 <$cfg_首爆奖励配置(<$STR(N1)>_0)> N$剩余名额
+GETSTRVALUE A13 <$cfg_首爆奖励配置(<$STR(N1)>_0)> N$item_gold
+GETSTRVALUE A14 <$cfg_首爆奖励配置(<$STR(N1)>_0)> S$gold_type
+GETSTRVALUE A15 <$cfg_首爆奖励配置(<$STR(N1)>_0)> S$item_play
+GOTO @装载首爆UI
+
+INC N$Y1 30
+INC N1 1
+endwhile
+
+[@装载首爆UI]
+#IF
+Equal S$item_name
+#ACT
+BREAK
+
+#IF
+#Act
+Mov N$COLOR_1 254
+Mov N$COLOR_2 249
+GetDBItemFieldValue <$STR(S$item_name)> color N$color_0
+
+#IF
+equal S$item_play 未领取
+#ACT
+Mov N$COLOR_1 7
+
+#IF
+Large N$剩余名额 0
+#Act
+Mov N$COLOR_2 250
+
+#IF
+#ACT
+INC S$首爆UI <RText|x=102.0|y=<$STR(N$Y1)>|color=<$STR(N$color_0)>|size=18|text=<$STR(S$item_name)>>
+INC S$首爆UI <RText|x=368.0|y=<$STR(N$Y1)>|color=<$STR(N$COLOR_2)>|size=18|text=剩余名额:<$Str(N$剩余名额)>>
+INC S$首爆UI <Text|x=550.0|y=<$STR(N$Y1)>|color=253|size=18|text=<$str(S$gold_type)>*<$str(N$item_gold)>>
+INC S$首爆UI <Text|x=700.0|y=<$STR(N$Y1)>|color=<$STR(N$COLOR_1)>|size=18|text=<$STR(S$item_play)>>
+BREAK
+
+
