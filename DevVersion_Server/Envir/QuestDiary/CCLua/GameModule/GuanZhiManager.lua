@@ -42,7 +42,7 @@ function GuanZhiManager.AddExp(actor, addexp, daylimit)
         setplaydef(actor, CommonDefine.VAR_J_DAY_GUAZHI_ADDEXP, dayaddexp)
 
         --每日必做计数        
-        EverydayTask.AddTaskCounter(actor, CommonDefine.FUNC_ID_GUANZHI, addexp)  
+        --EverydayTask.AddTaskCounter(actor, CommonDefine.FUNC_ID_GUANZHI, addexp)  
     end
 
     local currexp = getplaydef(actor, CommonDefine.VAR_U_GUANZHI_CURREXP) + addexp

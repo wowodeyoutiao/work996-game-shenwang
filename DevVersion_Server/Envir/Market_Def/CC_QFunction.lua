@@ -410,11 +410,11 @@ function singleboss_button(actor, sid)
 end
 
 function everyday_task_button(actor, sid, sparam)
-    EverydayTask.DoOperButton(actor, sid, sparam)
+    --EverydayTask.DoOperButton(actor, sid, sparam)
 end
 
 function treasuremap_button(actor, sid)
-    TreasureMap.DoOperButton(actor, sid)
+    --TreasureMap.DoOperButton(actor, sid)
 end
 
 function opensuperboxmanager_button(actor, sid, sparam)

@@ -1,0 +1,30 @@
+(@@inputstring @@inputinteger)
+[@MAIN]
+
+#IF
+EQUAL A71 开启
+#ACT
+#CALL [调试功能.txt] @调试功能UI
+
+
+
+#IF
+RANDOM 2
+#ACT
+MOV S$NPC提示 听说铁匠铺可以将装备洗练出高级属性……\不知是真是假
+#ELSEACT
+MOV S$NPC提示 武器被诅咒了？\点击“治疗仙子”可以回血状态，还可以清除武器诅咒……
+
+
+#IF
+NOT EQUAL A71 开启
+#ACT
+BREAK
+#SAY
+<Img|move=1|img=public/bg_npc_01.png|loadDelay=1|bg=1|reset=1|show=0>
+<Layout|x=524.0|y=0.0|width=80|height=80|link=@exit>
+<Button|x=524.0|y=0.0|nimg=public/1900000510.png|pimg=public/1900000511.png|link=@exit>
+<RText|x=20|y=20|color=255|size=18|text=<$STR(S$NPC提示)>>
+
+
+

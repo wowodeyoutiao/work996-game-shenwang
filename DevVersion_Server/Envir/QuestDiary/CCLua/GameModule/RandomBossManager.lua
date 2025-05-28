@@ -380,7 +380,7 @@ function RandomBossManager.OnMonKilled(hitter, mon)
 				SendSuccessDialogue(hitter, rewarditems)
 
 				--每日必做计数        
-				EverydayTask.AddTaskCounter(hitter, CommonDefine.FUNC_ID_RANDOMBOSS, 1)  				
+				--EverydayTask.AddTaskCounter(hitter, CommonDefine.FUNC_ID_RANDOMBOSS, 1)  				
 			end
 		end	
 	else

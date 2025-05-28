@@ -1,5 +1,49 @@
 GMHelper = {}
 
+local TEST_SUPER_JUMP_CFG = {
+    {sid='3001', showname='第2大陆', mapidstr='jyt01', x=72, y=72},
+    {sid='3002', showname='第3大陆', mapidstr='jyt02', x=53, y=48},
+    {sid='3003', showname='第4大陆', mapidstr='jyt03', x=19, y=22},
+    {sid='3004', showname='第5大陆', mapidstr='jyt04', x=16, y=18},
+    {sid='3005', showname='第6大陆', mapidstr='jyt05', x=25, y=25},
+    {sid='3006', showname='第7大陆', mapidstr='jyt06', x=78, y=45},
+    {sid='3007', showname='远古比奇城', mapidstr='jyt07', x=330, y=260},
+    {sid='3008', showname='远古封魔谷', mapidstr='jyt08', x=240, y=200},
+    {sid='3009', showname='远古白日门', mapidstr='jyt09', x=179, y=326},
+    {sid='3010', showname='远古魔龙城', mapidstr='jyt10', x=123, y=158},
+    {sid='3011', showname='远古苍月岛', mapidstr='cyd', x=140, y=333},
+    {sid='3012', showname='蛮荒之城', mapidstr='mhzc', x=135, y=184},
+    {sid='3013', showname='无尽之海', mapidstr='haidi6', x=73, y=77},
+    {sid='3014', showname='卧龙山庄', mapidstr='wlsz', x=66, y=40},
+    {sid='3015', showname='神龙帝国', mapidstr='shenlong', x=260, y=321},
+    {sid='3016', showname='万年雪山', mapidstr='wnxs', x=40, y=32},
+    {sid='3017', showname='返回盟重', mapidstr='rxsc042', x=330, y=330},
+    {sid='', showname='', mapidstr='rxsc042', x=330, y=330},
+    {sid='', showname='', mapidstr='rxsc042', x=330, y=330},
+    {sid='', showname='', mapidstr='rxsc042', x=330, y=330},
+
+    {sid='3021', showname='苍月传送', mapidstr='jyt08', x=122, y=403},
+    {sid='3022', showname='幽灵船内', mapidstr='ygylc5', x=33, y=33},
+    {sid='3023', showname='锻造', mapidstr='jyt08', x=224, y=193},
+    {sid='3024', showname='洗练', mapidstr='tjp', x=6, y=14},
+    {sid='3025', showname='渡劫', mapidstr='jyt08', x=250, y=210},
+    {sid='3026', showname='目标奖励', mapidstr='jyt07', x=330, y=260},
+    {sid='3027', showname='比奇BOSS', mapidstr='m101', x=18, y=36},
+    {sid='3028', showname='封魔谷BOSS', mapidstr='b341', x=23, y=29},
+    {sid='3029', showname='时装合成', mapidstr='zzzd', x=82, y=26},
+    {sid='3030', showname='九幽神力', mapidstr='jyt08', x=234, y=192},
+    {sid='3031', showname='卧龙军师圣物', mapidstr='wlsz', x=66, y=40},
+    {sid='3032', showname='精品生肖', mapidstr='jyt02', x=56, y=45},
+    {sid='3033', showname='仙品生肖', mapidstr='jyt04', x=9, y=12},
+    {sid='3034', showname='无极天尊-光环', mapidstr='jyt07', x=334, y=256},
+    {sid='3035', showname='卧龙将军', mapidstr='b341', x=25, y=29}, 
+    {sid='3036', showname='幽灵船入口', mapidstr='jyt07', x=322, y=252},
+    {sid='3037', showname='天赋系统', mapidstr='jyt08', x=249, y=191},
+    {sid='3038', showname='葬龙台', mapidstr='shenlong', x=256, y=303},
+    {sid='3039', showname='生肖五行-法神', mapidstr='shenlong', x=252, y=319},
+}
+
+
 function GMHelper.InitUI(actor)
     --gm 测试模式
     if getgmlevel(actor) > 0 then
@@ -14,28 +58,30 @@ function GMHelper.OpenPanel(actor)
     local sPanelStr = '<Button|x=40|y=30|nimg=public/bg_hhzy_01_3.png|text=等级加10级|link=@gmhelper_button#sid1=1>'..
         '<Button|x=40|y=60|nimg=public/bg_hhzy_01_3.png|text=超级宝箱升级|link=@gmhelper_button#sid1=1001>'..
         '<Button|x=40|y=90|nimg=public/bg_hhzy_01_3.png|text=超级宝箱重置|link=@gmhelper_button#sid1=1002>'..
-        '<Button|x=40|y=120|nimg=public/bg_hhzy_01_3.png|text=增加10个宝箱|link=@gmhelper_button#sid1=1003>'..
-        '<Button|x=40|y=150|nimg=public/bg_hhzy_01_3.png|text=增加8w攻击|color=253|link=@gmhelper_button#sid1=1004>'..
-        '<Button|x=40|y=180|nimg=public/bg_hhzy_01_3.png|text=增加8w魔法|color=253|link=@gmhelper_button#sid1=1005>'..
-        '<Button|x=40|y=210|nimg=public/bg_hhzy_01_3.png|text=增加8w道术|color=253|link=@gmhelper_button#sid1=1006>'..
-        '<Button|x=40|y=240|nimg=public/bg_hhzy_01_3.png|text=100w金币10w元宝10w绑元|link=@gmhelper_button#sid1=2>'..
-        '<Button|x=40|y=270|nimg=public/bg_hhzy_01_3.png|text=等级设置60|link=@gmhelper_button#sid1=1007>'..
-
-        '<Button|x=200|y=30|nimg=public/bg_hhzy_01_3.png|text=清空装备位强化|link=@gmhelper_button#sid1=1008>'..
-        '<Button|x=200|y=60|nimg=public/bg_hhzy_01_3.png|text=清空装备位星级|link=@gmhelper_button#sid1=1009>'..
-        '<Button|x=200|y=90|nimg=public/bg_hhzy_01_3.png|text=给五星魂石|link=@gmhelper_button#sid1=3>'..
-        '<Button|x=200|y=120|nimg=public/bg_hhzy_01_3.png|text=100点跨服积分|link=@gmhelper_button#sid1=1010>'..
+        '<Button|x=40|y=120|nimg=public/bg_hhzy_01_3.png|text=增加100个宝箱|link=@gmhelper_button#sid1=1003>'..
+        '<Button|x=40|y=150|nimg=public/bg_hhzy_01_3.png|text=增加8w攻魔道|color=253|link=@gmhelper_button#sid1=1004>'..
+        '<Button|x=40|y=180|nimg=public/bg_hhzy_01_3.png|text=1000w金币|link=@gmhelper_button#sid1=35>'..
+        '<Button|x=40|y=210|nimg=public/bg_hhzy_01_3.png|text=10w元宝,绑元|link=@gmhelper_button#sid1=36>'..
+        '<Button|x=40|y=240|nimg=public/bg_hhzy_01_3.png|text=100点跨服积分|link=@gmhelper_button#sid1=1010>'..
+        
+        '<Button|x=200|y=30|nimg=public/bg_hhzy_01_3.png|text=等级设置10|link=@gmhelper_button#sid1=1007>'..
+        '<Button|x=200|y=60|nimg=public/bg_hhzy_01_3.png|text=清空装备位强化|link=@gmhelper_button#sid1=1008>'..
+        '<Button|x=200|y=90|nimg=public/bg_hhzy_01_3.png|text=清空装备位星级|link=@gmhelper_button#sid1=1009>'..
+        '<Button|x=200|y=120|nimg=public/bg_hhzy_01_3.png|text=给五星魂石|link=@gmhelper_button#sid1=3>'..        
         '<Button|x=200|y=150|nimg=public/bg_hhzy_01_3.png|text=刷新排行榜|link=@gmhelper_button_refreshrank>'..
 
         '<Button|x=350|y=30|nimg=public/bg_hhzy_01_3.png|text=重置跨服活动配置|link=@gmhelper_button#sid1=1996>'..
         '<Button|x=350|y=60|nimg=public/bg_hhzy_01_3.png|text=设置跨服boss配置|link=@gmhelper_button#sid1=1997>'..
         '<Button|x=350|y=90|nimg=public/bg_hhzy_01_3.png|text=设置跨服大乱斗配置|link=@gmhelper_button#sid1=1998>'..        
+        '<Button|x=350|y=120|nimg=public/bg_hhzy_01_3.png|text=重置开服天数|link=@gmhelper_button#sid1=1901>'..        
+        '<Button|x=350|y=150|nimg=public/bg_hhzy_01_3.png|text=开服天数+1|link=@gmhelper_button#sid1=1902>'..        
 
         '<Button|x=500|y=30|nimg=public/bg_hhzy_01_3.png|text=清空首充|link=@gmhelper_button#sid1=154>'..
         '<Button|x=500|y=60|nimg=public/bg_hhzy_01_3.png|text=模拟充值1元|link=@gmhelper_button#sid1=155>'..
         '<Button|x=500|y=90|nimg=public/bg_hhzy_01_3.png|text=模拟充值10元|link=@gmhelper_button#sid1=156>'..
         '<Button|x=500|y=120|nimg=public/bg_hhzy_01_3.png|text=模拟充值100元|link=@gmhelper_button#sid1=157>'..        
         '<Button|x=500|y=150|nimg=public/bg_hhzy_01_3.png|text=清空跨天变量|link=@gmhelper_button#sid1=158>'..        
+        '<Button|x=500|y=180|nimg=public/bg_hhzy_01_3.png|text=功能NPC面板|color=252|link=@gmhelper_button#sid1=1995>'..
         '<Button|x=500|y=240|nimg=public/bg_hhzy_01_3.png|text=临时测试|link=@gmhelper_button#sid1=1999>'
     --[[                                      
         '<Button|x=40|y=120|nimg=public/bg_hhzy_01_3.png|text=无敌|link=@gmhelper_button,4>'..
@@ -85,6 +131,36 @@ function GMHelper.OpenPanel(actor)
         '<Button|x=350|y=210|nimg=public/bg_hhzy_01_3.png|text=增加测试属性组|link=@gmhelper_button,21>'..
         '<Button|x=350|y=240|nimg=public/bg_hhzy_01_3.png|text=删除测试属性组|link=@gmhelper_button,22>'
     ]]--
+
+    local mapidstr = Player.GetMapIDStr(actor)
+    local posx, posy = Player.GetMapXY(actor)
+    local openday = getsysvar('G0') + 1
+    local sTempInfo = "当前开服天数"..openday.."  在线玩家数:"..globalinfo(6).." 位置:"..mapidstr..' ['..posx..','..posy..']'
+    sPanelStr = sPanelStr..'<Text|text=信息：'..sTempInfo..'|x=40|y=300|color='..CSS.NPC_YELLOW..'>'
+    BF_NPCSayExt(actor, sPanelStr, 1, 650, 350)
+end
+
+function GMHelper.OpenSuperJumpPanel(actor)
+    if getgmlevel(actor) == 0 then
+        return
+    end
+
+    local sPanelStr = ''
+    local column = 0
+    local line = 0
+    for index, value in ipairs(TEST_SUPER_JUMP_CFG) do
+        local currx = 40 + 150 * column
+        local curry = 30 + 30 * line
+        if value.sid ~= '' then
+            sPanelStr = sPanelStr..'<Button|x='..currx..'|y='..curry..'|nimg=public/bg_hhzy_01_3.png|text='..value.showname..'|link=@gmhelper_button#sid1='..value.sid..'>'
+        end
+        line = line + 1
+        if line % 10 == 0 then
+            line = 0
+            column = column + 1
+        end        
+    end
+    
     BF_NPCSayExt(actor, sPanelStr, 1, 650, 350)
 end
 
@@ -98,11 +174,6 @@ function GMHelper.DoGmOper(actor, sid)
     if sid == '1' then
         changelevel(actor, '+', 10)
         Player.FullHPMP(actor)    
-    elseif sid == '2' then
-        changemoney(actor, CommonDefine.ITEMID_GOLD, '+', 1000000, 'DoGmOper', true)
-        changemoney(actor, CommonDefine.ITEMID_YB, '+', 100000, 'DoGmOper', true)
-        changemoney(actor, CommonDefine.ITEMID_BINDYB, '+', 100000, 'DoGmOper', true)
-        changemoney(actor, CommonDefine.ITEMID_MOFANGZHEN_JIFEN, '+', 5000, 'DoGmOper', true)
     elseif sid == '3' then  
         giveitem(actor, '5级红魂石', 12)
         giveitem(actor, '5级绿魂石', 12)
@@ -255,6 +326,11 @@ function GMHelper.DoGmOper(actor, sid)
         Player.QuickGoTo(actor, CommonDefine.QUICK_GOTO_RECHARGE)
     elseif sid == '34' then
         setplaydef(actor, CommonDefine.VAR_T_EXTENDGIFT_REWARDDATA, '')
+    elseif sid == '35' then
+        changemoney(actor, CommonDefine.ITEMID_GOLD, '+', 10000000, 'DoGmOper', true)
+    elseif sid == '36' then
+        changemoney(actor, CommonDefine.ITEMID_YB, '+', 100000, 'DoGmOper', true)
+        changemoney(actor, CommonDefine.ITEMID_BINDYB, '+', 100000, 'DoGmOper', true)
     elseif sid == '101' then
         TaskManager.AddNewTask(actor, CommonDefine.TASK_LINE_ID_MAIN, 0)
     elseif sid == '102' then
@@ -315,16 +391,10 @@ function GMHelper.DoGmOper(actor, sid)
     elseif sid == '1003' then
         OpenSuperBoxManager.GMAddNewBoxNum(actor, 100)
     elseif sid == '1004' then
-        addattlist(actor, CommonDefine.ABILITY_GROUP_TEMPTEST, "+", "3#3#80000|3#4#80000")      
+        addattlist(actor, CommonDefine.ABILITY_GROUP_TEMPTEST, "+", "3#3#80000|3#4#80000|3#5#80000|3#6#80000|3#7#80000|3#8#80000")      
         recalcabilitys(actor)
-    elseif sid == '1005' then
-        addattlist(actor, CommonDefine.ABILITY_GROUP_TEMPTEST, "+", "3#5#80000|3#6#80000")      
-        recalcabilitys(actor)        
-    elseif sid == '1006' then
-        addattlist(actor, CommonDefine.ABILITY_GROUP_TEMPTEST, "+", "3#7#80000|3#8#80000")      
-        recalcabilitys(actor)  
     elseif sid == '1007' then
-        changelevel(actor, '=', 60)
+        changelevel(actor, '=', 10)
         Player.FullHPMP(actor)   
     elseif sid == '1008' then
         setplaydef(actor, CommonDefine.VAR_T_EQUIPPOS_STRENGTH_INFO, '')
@@ -338,6 +408,18 @@ function GMHelper.DoGmOper(actor, sid)
         end  
     elseif sid == '1010' then
         changemoney(actor, CommonDefine.ITEMID_KUAFU_SCORE, '+', 100, 'DoGmOper', true)
+    elseif sid == '1901' then
+        setsysvar('G0', 0)
+        Player.SendSelfMsg(actor, '重置为开服第一天', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+        GMHelper.OpenPanel(actor)
+    elseif sid == '1902' then
+        local openday = getsysvar('G0') + 1        
+        setsysvar('G0', openday)
+        local showday = openday + 1
+        Player.SendSelfMsg(actor, '设置开服天数:'..showday, CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+        GMHelper.OpenPanel(actor)
+    elseif sid == '1995' then
+        GMHelper.OpenSuperJumpPanel(actor)
     elseif sid == '1996' then
         setsysvar(CommonDefine.VAR_A_JUMPAREA_DAMAGE_TEST_CFG_DATA, '')
         setsysvar(CommonDefine.VAR_A_JUMPAREA_RANDFIGHTING_TEST_CFG_DATA, '')        
@@ -349,6 +431,14 @@ function GMHelper.DoGmOper(actor, sid)
         --changeexp(actor, '+', 500, true)
         --delbutton(actor, 108, CommonDefine.ADD_BUTTON_ID_5)
         setplaydef(actor, CommonDefine.VAR_J_DAY_SUPERBOX_OPENNUM, 0)
+    else
+        --超级跳转
+        for index, value in ipairs(TEST_SUPER_JUMP_CFG) do
+            if value.sid == sid then
+                mapmove(actor, value.mapidstr, value.x, value.y, 3)                
+                break
+            end       
+        end       
     end   
 end
 
