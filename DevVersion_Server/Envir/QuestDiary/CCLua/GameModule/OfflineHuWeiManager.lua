@@ -156,7 +156,7 @@ local function GetConditionDescStr(actor, conditionstr)
                     end                    
                 end
                 if descstr ~= '' then
-                    descstr = descstr..';'
+                    descstr = descstr..'; '
                 end
                 descstr = descstr..tempconstr
             end
@@ -265,19 +265,44 @@ function OfflineHuWeiManager.ShowBasePanel(actor, sparam)
     idstr = '51,52,53'
     local tempCurrX = 0
     local tempCurrY = 0
+    local itemidstr = ''
     if bCurrIsMaxLv then
-        strPanelInfo = strPanelInfo..'<Text|id=51|text=已达到最高等级|size=20|x='..(tempCurrX+200)..'|y='..(tempCurrY+20)..'|color='..CSS.NPC_YELLOW..'>'
+        strPanelInfo = strPanelInfo..'<Text|id=51|text=已达到最高等级|size=20|x='..(tempCurrX+200)..'|y='..(tempCurrY+80)..'|color='..CSS.NPC_YELLOW..'>'
     else
         local sConditionDesc = GetConditionDescStr(actor, cfgCurrLv.condition)
-        strPanelInfo = strPanelInfo..'<Text|id=51|text=升级条件:  '..sConditionDesc..'|size=18|x='..(tempCurrX+20)..'|y='..tempCurrY..'|color='..CSS.NPC_WHITE..'>'
+        strPanelInfo = strPanelInfo..'<Text|id=51|text=升级条件:  '..sConditionDesc..'|size=18|x='..(tempCurrX+80)..'|y='..tempCurrY..'|color='..CSS.NPC_WHITE..'>'
         tempCurrY = tempCurrY + 30
-        local sConsumeInfo = BF_GetItemTableDescStr(actor, cfgCurrLv.needitems_tab)
-        strPanelInfo = strPanelInfo..'<Text|id=52|text=升级消耗:  '..sConsumeInfo..'|size=18|x='..(tempCurrX+20)..'|y='..tempCurrY..'|color='..CSS.NPC_WHITE..'>'
+        --local sConsumeInfo = BF_GetItemTableDescStr(actor, cfgCurrLv.needitems_tab)
+        --strPanelInfo = strPanelInfo..'<Text|id=52|text=升级消耗:  '..sConsumeInfo..'|size=18|x='..(tempCurrX+80)..'|y='..tempCurrY..'|color='..CSS.NPC_WHITE..'>'
+        strPanelInfo = strPanelInfo..'<Text|id=52|text=升级消耗:|size=18|x='..(tempCurrX+80)..'|y='..tempCurrY..'|color='..CSS.NPC_WHITE..'>'
+        if cfgCurrLv.needitems_tab then
+            local itemgrid_x = tempCurrX + 80
+            local itemgrid_y = tempCurrY
+            local itemimgid = 170
+            local itemtextid = 180
+            local finalrewardtab = Player.FilterTable(actor, cfgCurrLv.needitems_tab)  
+            for _, reward in ipairs(finalrewardtab) do  
+                local itemidx = getstditeminfo(reward.name, CommonDefine.STDITEMINFO_IDX)
+                local imgpath = Item.GetItemImgPath(itemidx)
+                local strNeedItemInfo = BF_NumToShowStr(reward.num)..'/'..BF_NumToShowStr(Player.GetItemNumInBag(actor, reward.name))
+                strPanelInfo = strPanelInfo..'<Img|id='..itemimgid..'|x='..(itemgrid_x+90)..'|y='..(itemgrid_y-10)..'|width=30|height=30|img='..imgpath..'>'
+                strPanelInfo = strPanelInfo..'<Text|id='..itemtextid..'|text=X'..strNeedItemInfo..'|x='..(itemgrid_x+120)..'|y='..itemgrid_y..'|color='..CSS.NPC_WHITE..'>'
+                if itemidstr ~= '' then
+                    itemidstr = itemidstr..','
+                end
+                itemidstr = itemidstr..itemimgid
+                itemidstr = itemidstr..','..itemtextid                    
+                itemgrid_x = itemgrid_x + 140
+                itemimgid = itemimgid + 1
+                itemtextid = itemtextid + 1
+            end
+        end
+
         tempCurrY = tempCurrY + 50
         strPanelInfo = strPanelInfo..'<Button|id=53|x='..(tempCurrX+200)..'|y='..tempCurrY..'|color='..CSS.NPC_WHITE..'|mimg=private/cc_common/button_1.png|nimg=private/cc_common/button_1.png|size=18|text=升    级|link=@function_button,'..
             NPCPANEL_BUTTONFUNC_ID_1..','..huweitype..'>'
     end
-    strPanelInfo = strPanelInfo..'<Layout|id=17|children={'..idstr..'}|x=72.0|y=290.0|width=480|height=120>'
+    strPanelInfo = strPanelInfo..'<Layout|id=17|children={'..idstr..','..itemidstr..'}|x=72.0|y=290.0|width=480|height=120>'
 
 
 

@@ -779,7 +779,7 @@ function SoulStoneManager.ShowBasePanel(actor)
                 end
             end          
             
-            local color = CSS.NPC_GRAY
+            local color = CSS.NPC_WHITE
             if wxstone >= CommonDefine.SOUL_STONE_SLOT_MAX_HOLE_NUM then
                 color = CSS.NPC_LIGHTGREEN
             elseif wxstone > 0 then

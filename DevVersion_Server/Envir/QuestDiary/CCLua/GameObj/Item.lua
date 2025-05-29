@@ -108,6 +108,27 @@ function Item.GetItemShowName(actor, itemobj)
     return itemshowname
 end
 
+function Item.GetItemImgPath(itemid)
+    local imgpath = ''
+    if itemid == nil then
+        return imgpath
+    end
+    local cfgInfo = cfg_equip[itemid]
+    if cfgInfo == nil then
+        cfgInfo = cfg_item[itemid]
+    end
+    if cfgInfo == nil then
+        return imgpath
+    end
+    local looks = cfgInfo.Looks
+    if looks ~= nil then
+        local preid = math.floor(looks / 10000)
+        local innerid = math.floor(looks % 10000)
+        imgpath = 'item/item_'..preid..'/'..string.format("%06d", innerid)..'.png'
+    end    
+    return imgpath
+end
+
 function Item.GetEquipposByStdmode(stdmode)
     if stdmode == CommonDefine.ITEM_STDMODE_WEAPON then
         return CommonDefine.EQUIPPOS_WEAPON, -1

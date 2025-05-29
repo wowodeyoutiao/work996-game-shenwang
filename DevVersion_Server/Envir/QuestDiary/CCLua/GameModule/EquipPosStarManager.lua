@@ -327,14 +327,38 @@ local function GetSingleEquipPosShowInfo(actor, equippos)
 
         --消耗
         local tempX = 150
-        local tempY = 30
-        sPanelStr = sPanelStr..'<Layout|id=160|children={161,162}|x=0|y=150.0|width=580|height=110>'
+        local tempY = 30        
+        local itemidstr = ''
         if not bCurrIsMaxLv then            
-            sPanelStr = sPanelStr..'<Text|id=161|text=升星成功概率：'..cfgEquipPosUpgradeStar[cfgCurrKey].successrate ..'%|size=20|x='..tempX..'|y='..tempY..'|color='..CSS.NPC_YELLOW..'>'
-            tempY = tempY + 30
-            local sConsumeInfo = BF_GetItemTableDescStr(actor, cfgEquipPosUpgradeStar[cfgCurrKey].needitems_tab)
-            sPanelStr = sPanelStr..'<Text|id=162|text=升星消耗：'..sConsumeInfo..'|size=20|x='..tempX..'|y='..tempY..'|color='..CSS.NPC_YELLOW..'>'
+            sPanelStr = sPanelStr..'<Text|id=161|text=成功概率：'..cfgEquipPosUpgradeStar[cfgCurrKey].successrate ..'%|x='..tempX..'|y='..tempY..'|color='..CSS.NPC_YELLOW..'>'
+            tempY = tempY + 50
+            --local sConsumeInfo = BF_GetItemTableDescStr(actor, cfgEquipPosUpgradeStar[cfgCurrKey].needitems_tab)
+            --sPanelStr = sPanelStr..'<Text|id=162|text=升星消耗：'..sConsumeInfo..'|x='..tempX..'|y='..tempY..'|color='..CSS.NPC_YELLOW..'>'
+            sPanelStr = sPanelStr..'<Text|id=162|text=升星消耗：|x='..tempX..'|y='..tempY..'|color='..CSS.NPC_YELLOW..'>'
+            if cfgEquipPosUpgradeStar[cfgCurrKey].needitems_tab then
+                local itemgrid_x = tempX
+                local itemgrid_y = tempY
+                local itemimgid = 170
+                local itemtextid = 180
+                local finalrewardtab = Player.FilterTable(actor, cfgEquipPosUpgradeStar[cfgCurrKey].needitems_tab)  
+                for _, reward in ipairs(finalrewardtab) do  
+                    local itemidx = getstditeminfo(reward.name, CommonDefine.STDITEMINFO_IDX)
+                    local imgpath = Item.GetItemImgPath(itemidx)
+                    local strNeedItemInfo = BF_NumToShowStr(reward.num)..'/'..BF_NumToShowStr(Player.GetItemNumInBag(actor, reward.name))
+                    sPanelStr = sPanelStr..'<Img|id='..itemimgid..'|x='..(itemgrid_x+90)..'|y='..(itemgrid_y-10)..'|width=30|height=30|img='..imgpath..'>'
+                    sPanelStr = sPanelStr..'<Text|id='..itemtextid..'|text=X'..strNeedItemInfo..'|x='..(itemgrid_x+120)..'|y='..itemgrid_y..'|color='..CSS.NPC_WHITE..'>'
+                    if itemidstr ~= '' then
+                        itemidstr = itemidstr..','
+                    end
+                    itemidstr = itemidstr..itemimgid
+                    itemidstr = itemidstr..','..itemtextid                    
+                    itemgrid_x = itemgrid_x + 140
+                    itemimgid = itemimgid + 1
+                    itemtextid = itemtextid + 1
+                end
+            end            
         end
+        sPanelStr = sPanelStr..'<Layout|id=160|children={161,162,'..itemidstr..'}|x=0|y=150.0|width=580|height=110>'
 
         --升星按钮
         idstr = '501,502,503'
@@ -426,7 +450,7 @@ function EquipPosStarManager.ShowBasePanel(actor)
     local strPanelInfo = '<Img|id=10|children={11,12,13,14,15,16}|x=20.0|y=16.0|reset=1|img=private/cc_equip_star/8.png|show=0|esc=1|move=0|bg=1|loadDelay=0>'..
         '<Layout|id=11|x=813.0|y=14.0|width=80|height=80|link=@exit>'..
         '<Button|id=12|x=814.0|y=14.0|nimg=public/1900000510.png|pimg=public/1900000511.png|link=@exit>'..
-        '<Text|id=13|x=72.0|y=70.0|size=18|color=151|text=选择槽位>'..
+        --'<Text|id=13|x=72.0|y=70.0|size=18|color=151|text=选择槽位>'..
         '<Button|id=16|x=700.0|y=14.0|esc=0|nimg=private/cc_common/button_help.png|pimg=private/cc_common/button_help.png|link=@show_rule_panel>'
 
     local idstr1 = ''
@@ -436,7 +460,7 @@ function EquipPosStarManager.ShowBasePanel(actor)
         end
         idstr1 = idstr1..(30+seq)
     end
-    strPanelInfo = strPanelInfo..'<ListView|id=14|children={'..idstr1..'}|x=65.0|y=110.0|width=130|height=350|margin=0|direction=1>'
+    strPanelInfo = strPanelInfo..'<ListView|id=14|children={'..idstr1..'}|x=65.0|y=70.0|width=130|height=400|margin=0|direction=1>'
     local choosepos = getplaydef(actor, CommonDefine.VAR_N_LAST_NPC_CHOOSEID)   
 
     for seq, value in ipairs(posTab) do

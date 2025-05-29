@@ -267,25 +267,50 @@ local function GetSingleEquipPosShowInfo(actor, equippos)
 
         --消耗
         local tempX = 150
-        local tempY = 30
+        local tempY = 10
         local currPlayerLv = Player.GetLevel(actor)
-        sPanelStr = sPanelStr..'<Layout|id=160|children={161,162}|x=0|y=200.0|width=580|height=110>'
+        local itemidstr = ''
         if not bCurrIsMaxLv then            
-            sPanelStr = sPanelStr..'<Text|id=161|text=等级限制：角色达到'..cfgEquipPosStrength[cfgCurrKey].needlv..'级/'..currPlayerLv..'级|x='..tempX..'|y='..tempY..'|color='..CSS.NPC_YELLOW..'>'
-            tempY = tempY + 30
-            local sConsumeInfo = BF_GetItemTableDescStr(actor, cfgEquipPosStrength[cfgCurrKey].needitems_tab)
-            sPanelStr = sPanelStr..'<Text|id=162|text=强化消耗：'..sConsumeInfo..'|size=20|x='..tempX..'|y='..tempY..'|color='..CSS.NPC_YELLOW..'>'
+            sPanelStr = sPanelStr..'<Text|id=161|text=等级限制：'..cfgEquipPosStrength[cfgCurrKey].needlv..'级|x='..tempX..'|y='..tempY..'|color='..CSS.NPC_YELLOW..'>'
+            tempY = tempY + 50
+            --local sConsumeInfo = BF_GetItemTableDescStr(actor, cfgEquipPosStrength[cfgCurrKey].needitems_tab)
+            --sPanelStr = sPanelStr..'<Text|id=162|text=强化消耗：'..sConsumeInfo..'|x='..tempX..'|y='..tempY..'|color='..CSS.NPC_YELLOW..'>'
+            sPanelStr = sPanelStr..'<Text|id=162|text=强化消耗：|x='..tempX..'|y='..tempY..'|color='..CSS.NPC_YELLOW..'>'
+            if cfgEquipPosStrength[cfgCurrKey].needitems_tab then
+                local itemgrid_x = tempX
+                local itemgrid_y = tempY
+                local itemimgid = 170
+                local itemtextid = 180
+                local finalrewardtab = Player.FilterTable(actor, cfgEquipPosStrength[cfgCurrKey].needitems_tab)  
+                for _, reward in ipairs(finalrewardtab) do  
+                    local itemidx = getstditeminfo(reward.name, CommonDefine.STDITEMINFO_IDX)
+                    local imgpath = Item.GetItemImgPath(itemidx)
+                    local strNeedItemInfo = BF_NumToShowStr(reward.num)..'/'..BF_NumToShowStr(Player.GetItemNumInBag(actor, reward.name))
+                    --sPanelStr = sPanelStr..'<ItemShow|id='..itemgridid..'|x='..(itemgrid_x+80)..'|y='..(itemgrid_y-20)..'|width=40|height=40|itemid='..itemidx..'|itemcount=1|bgtype=0|showtips=1>'
+                    --sPanelStr = sPanelStr..'<ItemShow|id='..itemgridid..'|x='..(itemgrid_x+80)..'|y='..(itemgrid_y-20)..'|width=40|height=40|itemid='..itemidx..'|itemcount=1|bgtype=0|showtips=1>'                    
+                    sPanelStr = sPanelStr..'<Img|id='..itemimgid..'|x='..(itemgrid_x+90)..'|y='..(itemgrid_y-10)..'|width=30|height=30|img='..imgpath..'>'
+                    sPanelStr = sPanelStr..'<Text|id='..itemtextid..'|text=X'..strNeedItemInfo..'|x='..(itemgrid_x+120)..'|y='..itemgrid_y..'|color='..CSS.NPC_WHITE..'>'
+                    if itemidstr ~= '' then
+                        itemidstr = itemidstr..','
+                    end
+                    itemidstr = itemidstr..itemimgid
+                    itemidstr = itemidstr..','..itemtextid                    
+                    itemgrid_x = itemgrid_x + 140
+                    itemimgid = itemimgid + 1
+                    itemtextid = itemtextid + 1
+                end
+            end
         end
+        sPanelStr = sPanelStr..'<Layout|id=160|children={161,162,'..itemidstr..'}|x=0|y=200.0|width=580|height=110>'        
 
         --强化按钮
         idstr = '501,502'
         if bCurrIsMaxLv then
             sPanelStr = sPanelStr..'<Text|id=501|text=已达到最高强化等级！|x=200|y=30|color='..CSS.NPC_LIGHTGREEN..'>'
         else
-            local tempCurrY = 10
-            sPanelStr = sPanelStr..'<Button|id=501|x=120|y=10|text=强化一次|size=18|color='..CSS.NPC_WHITE..'|mimg=private/cc_equip_strength/3.png|nimg=private/cc_equip_strength/3.png|link=@function_button,'..            
+            sPanelStr = sPanelStr..'<Button|id=501|x=120|y=20|text=强化一次|size=18|color='..CSS.NPC_WHITE..'|mimg=private/cc_equip_strength/3.png|nimg=private/cc_equip_strength/3.png|link=@function_button,'..            
                 EQUIPPOS_STRENGTH_BUTTONFUNC_ID_2..'>'
-            sPanelStr = sPanelStr..'<Button|id=502|x=350|y=10|text=强化十次|size=18|color='..CSS.NPC_WHITE..'|mimg=private/cc_equip_strength/3.png|nimg=private/cc_equip_strength/3.png|link=@function_button,'..            
+            sPanelStr = sPanelStr..'<Button|id=502|x=350|y=20|text=强化十次|size=18|color='..CSS.NPC_WHITE..'|mimg=private/cc_equip_strength/3.png|nimg=private/cc_equip_strength/3.png|link=@function_button,'..            
                 EQUIPPOS_STRENGTH_BUTTONFUNC_ID_3..'>'
         end
         sPanelStr = sPanelStr..'<Layout|id=500|children={'..idstr..'}|x=0|y=310.0|width=580|height=110>'
@@ -352,7 +377,7 @@ function EquipPosStrengthManager.ShowBasePanel(actor)
     local strPanelInfo = '<Img|id=10|children={11,12,13,14,15,16}|x=20.0|y=16.0|reset=1|img=private/cc_equip_strength/8.png|show=0|esc=1|move=0|bg=1|loadDelay=0>'..
         '<Layout|id=11|x=813.0|y=14.0|width=80|height=80|link=@exit>'..
         '<Button|id=12|x=814.0|y=14.0|nimg=public/1900000510.png|pimg=public/1900000511.png|link=@exit>'..
-        '<Text|id=13|x=72.0|y=70.0|size=18|color=151|text=选择槽位>'..
+        --'<Text|id=13|x=84.0|y=70.0|size=18|color=151|text=选择槽位>'..
         '<Button|id=16|x=700.0|y=14.0|esc=0|nimg=private/cc_common/button_help.png|pimg=private/cc_common/button_help.png|link=@show_rule_panel>'
 
     local idstr1 = ''
@@ -362,7 +387,7 @@ function EquipPosStrengthManager.ShowBasePanel(actor)
         end
         idstr1 = idstr1..(30+seq)
     end
-    strPanelInfo = strPanelInfo..'<ListView|id=14|children={'..idstr1..'}|x=65.0|y=110.0|width=130|height=350|margin=0|direction=1>'
+    strPanelInfo = strPanelInfo..'<ListView|id=14|children={'..idstr1..'}|x=65.0|y=70.0|width=130|height=400|margin=0|direction=1>'
     local choosepos = getplaydef(actor, CommonDefine.VAR_N_LAST_NPC_CHOOSEID)   
 
     for seq, value in ipairs(posTab) do
@@ -392,6 +417,7 @@ function EquipPosStrengthManager.ShowBasePanel(actor)
             Player.DelRedPoint(actor, 0, baseid)
         end
     end
+
     BF_ShowSpecialUI(actor, strPanelInfo)        
 end
 
