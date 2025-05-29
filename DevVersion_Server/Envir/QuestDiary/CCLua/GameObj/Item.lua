@@ -100,6 +100,14 @@ function Item.IsEquipment(stdmode)
     end
 end
 
+function Item.GetItemShowName(actor, itemobj)
+    local itemshowname = getiteminfo(actor, itemobj, CommonDefine.ITEMINFO_CHGEDNAME) 
+    if itemshowname == '' then
+        itemshowname = getiteminfo(actor, itemobj, CommonDefine.ITEMINFO_SRCNAME) 
+    end
+    return itemshowname
+end
+
 function Item.GetEquipposByStdmode(stdmode)
     if stdmode == CommonDefine.ITEM_STDMODE_WEAPON then
         return CommonDefine.EQUIPPOS_WEAPON, -1

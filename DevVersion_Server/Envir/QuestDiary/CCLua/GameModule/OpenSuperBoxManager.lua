@@ -156,7 +156,7 @@ function OpenSuperBoxManager.UpdateSuperBoxInfo(actor)
                 local nItemUniqueID = tonumber(value)
                 local itemobj = getitembymakeindex(actor, nItemUniqueID)
                 if not BF_IsNullObj(itemobj) then
-                    local itemshowname = getiteminfo(actor, itemobj, CommonDefine.ITEMINFO_CHGEDNAME)                 
+                    local itemshowname = Item.GetItemShowName(actor, itemobj)          
                     local itemid = getiteminfo(actor, itemobj, CommonDefine.ITEMINFO_ITEMIDX)
                     local itemcolor = getstditeminfo(itemid, CommonDefine.STDITEMINFO_NAMECOLOR)                    
                     local initgifttype = getitemintparam(actor, -2, CommonDefine.ITEM_INTVAR_INITGIFT_TYPE, itemobj)
@@ -190,7 +190,7 @@ function OpenSuperBoxManager.UpdateSuperBoxInfo(actor)
                     elseif flag == -1 then
                         strPanel = strPanel..'<Img|id='..picid..'|x=50|y=10|move=0|img=private/cc_superbox_1/cmp_down.png>'
                     end
-                    if initgifttype > 0 then     
+                    if initgifttype~=nil and initgifttype > 0 then     
                         local giftpic = EquipInitGift.GetInitGiftPic(initgifttype)                   
                         strPanel = strPanel..'<Img|id='..picid2..'|x=0|y=45|height=25|width=25|move=0|img='..giftpic..'>'
                     end
@@ -912,7 +912,7 @@ function OpenSuperBoxManager.AutoOpenSuperBox(actor)
 
         for _, value in ipairs(openitemlist) do
             if not BF_IsNullObj(value.itemobj) then
-                local itemname = getiteminfo(actor, value.itemobj, CommonDefine.ITEMINFO_CHGEDNAME)
+                local itemname = Item.GetItemShowName(actor, value.itemobj)
                 if checkstopflag1 == 1 then
                     if Item.CompareBagItemToEquipment(actor, value.itemobj) == 1 then
                         bNeedPause = true
