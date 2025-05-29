@@ -190,7 +190,7 @@ function OpenSuperBoxManager.UpdateSuperBoxInfo(actor)
                     elseif flag == -1 then
                         strPanel = strPanel..'<Img|id='..picid..'|x=50|y=10|move=0|img=private/cc_superbox_1/cmp_down.png>'
                     end
-                    if initgifttype > 0 then     
+                    if initgifttype~=nil and initgifttype > 0 then     
                         local giftpic = EquipInitGift.GetInitGiftPic(initgifttype)                   
                         strPanel = strPanel..'<Img|id='..picid2..'|x=0|y=45|height=25|width=25|move=0|img='..giftpic..'>'
                     end

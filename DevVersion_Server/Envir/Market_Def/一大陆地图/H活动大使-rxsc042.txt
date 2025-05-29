@@ -1,0 +1,419 @@
+[@Main]
+#IF
+EQUAL S$查看列表
+#ACT
+MOV S$查看列表 1109
+
+#IF
+CHECKUNDERWAR 沙巴克
+equal <$HOUR> 21
+#ACT
+SENDMSG 9 沙巴克攻城期间，禁止入图
+BREAK
+
+#IF
+#SAY
+<Img|show=4|bg=1|loadDelay=0|move=0|esc=1|img=public/wz/92233812_186329.png|reset=1>
+<Layout|x=803.0|y=46.0|width=80|height=80|link=@exit>
+<Button|x=805.0|y=48.0|color=255|pimg=public/1900000510_2.png|nimg=public/1900000510_1.png|size=18|link=@exit>
+<Img|x=72.0|y=96.0|img=public/wz/b9851223_54590.jpg|esc=0>
+<Text|x=409.0|y=59.0|outline=2|color=116|size=18|text=游戏活动>
+<Text|children={100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120}|x=307|y=105|color=250|size=18|outline=1|text=活动说明>
+<ListView|children={11,12,13,14,15,16,17,18,19,20,21,22}|x=73|y=95|width=226|height=356|direction=1|bounce=1|margin=1|reload=0>
+
+<Layout|id=11|x=0|y=0|children={1100}|width=226|height=50|link=@main#查看列表=1109>
+<Layout|id=12|x=0|y=0|children={1200}|width=226|height=50|link=@main#查看列表=1209>
+<Layout|id=13|x=0|y=0|children={1300}|width=226|height=50|link=@main#查看列表=1309>
+<Layout|id=14|x=0|y=0|children={1400}|width=226|height=50|link=@main#查看列表=1409>
+<Layout|id=15|x=0|y=0|children={1500}|width=226|height=50|link=@main#查看列表=1509>
+<Layout|id=16|x=0|y=0|children={1600}|width=226|height=50|link=@main#查看列表=1609>
+<Layout|id=17|x=0|y=0|children={1700}|width=226|height=50|link=@main#查看列表=1709>
+<Layout|id=18|x=0|y=0|children={1800}|width=226|height=50|link=@main#查看列表=1809>
+<Layout|id=19|x=0|y=0|children={1900}|width=226|height=50|link=@main#查看列表=1909>
+<Layout|id=20|x=0|y=0|children={2000}|width=226|height=50|link=@main#查看列表=2009>
+
+<Button|id=1100|children={1101,1102,1103,1109}|x=0|y=0|nimg=public/start_10/h2_001.png|width=220|height=50|width=226|color=116|size=22|text=◆天降福利>
+<Button|id=1200|children={1201,1202,1203,1209}|x=0|y=0|nimg=public/start_10/h2_002.png|width=220|height=50|width=226|color=116|size=22|text=◆新区狂欢>
+<Button|id=1300|children={1301,1302,1303,1309}|x=0|y=0|nimg=public/start_10/h2_004.png|width=220|height=50|width=226|color=116|size=22|text=◆激情跑酷>
+<Button|id=1400|children={1401,1402,1403,1409}|x=0|y=0|nimg=public/start_10/h2_006.png|width=220|height=50|width=226|color=116|size=22|text=◆世界BOSS>
+<Button|id=1500|children={1501,1502,1503,1509}|x=0|y=0|nimg=public/start_10/h2_007.png|width=220|height=50|width=226|color=116|size=22|text=◆天下第一>
+<Button|id=1600|children={1601,1602,1603,1609}|x=0|y=0|nimg=public/start_10/h2_007.png|width=220|height=50|width=226|color=116|size=22|text=◆一夜暴富>
+<Button|id=1700|children={1701,1702,1703,1709}|x=0|y=0|nimg=public/start_10/h2_007.png|width=220|height=50|width=226|color=116|size=22|text=◆BOSS巢穴>
+<Button|id=1800|children={1801,1802,1803,1809}|x=0|y=0|nimg=public/start_10/h2_007.png|width=220|height=50|width=226|color=116|size=22|text=◆沙城奇兵>
+<Button|id=1900|children={1901,1902,1903,1909}|x=0|y=0|nimg=public/start_10/h2_007.png|width=220|height=50|width=226|color=116|size=22|text=◆黄金矿工>
+<Button|id=2000|children={2001,2002,2003,2009}|x=0|y=0|nimg=public/start_10/h2_007.png|width=220|height=50|width=226|color=116|size=22|text=◆沙漠废墟>
+<Img|id=<$STR(S$查看列表)>|x=0|y=0|img=public/1900000678_1.png|height=50|width=226|scale9r=10|scale9l=10|scale9b=10|scale9t=10>
+
+#IF
+EQUAL S$查看列表 1109
+#SAY
+<RText|id=100|x=10|y=45.00|color=255|size=18|text=
+全服弹窗提示，活动持续5分钟，活动开启后通过弹窗进入\
+活动进入地图后，玩家不可移动，不可自动拾取，不可使用\
+技能，只能使用随机传送石随机移动可获得大量元宝、金刚\
+石、真实充值等奖励。>
+<Text|id=101|x=10|y=200.0|color=250|size=18|text=开服100分钟开启，活动持续5分钟。>
+<Button|id=110|x=180|y=288|color=251|nimg=public/wz/bt11.png|size=18|text=进入活动|link=@步步惊心>
+
+#IF
+EQUAL S$查看列表 1209
+#SAY
+<Text|id=100|x=10|y=45.00|color=255|size=18|text=
+活动开启全服弹窗提示，无时间限制，直到击杀完所有\
+BOSS。活动总共刷新45只必爆大量真实充值的BOSS，抢\
+到就是赚到。每只活动BOSS必定掉落大量金刚石、元宝、\1-20元真实充值卷。>
+<Text|id=101|x=10|y=200.0|color=250|size=18|text=新区开区70分钟后开启>
+<Button|id=110|x=180|y=288|color=251|nimg=public/wz/bt11.png|size=18|text=进入活动|link=@财富之路>
+
+#IF
+EQUAL S$查看列表 1309
+#SAY
+<Text|id=100|x=10|y=45.000|color=255|size=18|text=
+新区开区20分钟后开启，在土城安全区跑动即可获得大量\
+元宝、金刚石、经验、以及各种稀有的材料，想抢首爆的\
+不要错过该活动，此活动可以让你更快的达到400级进入新\
+大陆抢BOSS，抢首爆。>
+<Text|id=101|x=10|y=200.0|color=250|size=18|text=开区20分钟，活动持续5分钟。>
+<Button|id=110|x=180|y=288|color=251|nimg=public/wz/bt11.png|size=18|text=进入活动|link=@进入跑酷>
+
+#IF
+EQUAL S$查看列表 1409
+#SAY
+<Text|id=100|x=10|y=45.00|color=255|size=18|text=
+新区合服后开启，每天定时在盟重土城药店刷新世界\
+BOSS，世界BOSS掉落大量金刚石元宝，各种矿石、幸运保护\
+卷、沉默水晶、命运水晶，以及本服所有高级装备。>
+<Text|id=101|x=10|y=200.0|color=250|size=18|text=新区开启第二天每天10点、14点、19点、21点、23点>
+
+#IF
+EQUAL S$查看列表 1509
+#SAY
+<Text|id=100|x=10|y=45.00|color=255|size=18|text=
+活动全天开启，玩家可重复进入活动，通过等级排名，高等级\
+玩家可以顶替等级低的玩家.全服最高等级为天下第一,共有五\
+个排名，第一到第五，谁能霸榜算谁的，每晚23点清空排行榜\
+需要重新占榜。>
+<Text|id=101|x=10|y=200.0|color=250|size=18|text=每晚11点清空排行。>
+<Button|id=110|x=180|y=288|color=251|nimg=public/wz/bt11.png|size=18|text=进入活动|link=@进入第一>
+
+#IF
+EQUAL S$查看列表 1609
+#SAY
+<Text|id=100|x=10|y=45.00|color=255|size=18|text=
+开区第二天开启，活动地图为安全区，通过杀怪数量排名活动\
+开启期间活动区域刷新N只怪物，每2分钟刷一波每只怪物\
+必须砍10刀才能杀死，杀死怪物越多排名越高前20名可获\
+得大量元宝奖励，前三名可获得充值奖励\>
+<Text|id=101|x=10|y=200.0|color=250|size=15|text=
+开区第二天晚上18点准时开启。此活动仅开启一次！\
+第一名奖励：300万金刚石  888万元宝  100元真实充值\
+第二名奖励：200万金刚石  666万元宝  50元真实充值\
+第三名奖励：100万金刚石  333万元宝  30元真实充值\
+前二十名都可获得大量金刚石,元宝奖励\
+参与奖励：10万金刚石、50万元宝>
+<Button|id=102|x=350|y=288|color=251|nimg=public/wz/bt11.png|size=18|text=进入活动|link=@进入暴富>
+<Button|id=120|x=350|y=378|color=251|nimg=public/wz/bt21.png|size=18|text=查看排名|link=@查看活动排名>
+
+#IF
+EQUAL S$查看列表 1709
+#SAY
+<Text|id=100|x=10|y=45.00|color=255|size=18|text=
+每周二、周五，开启BOSS巢穴活动，400级以上玩家可参与\
+地图刷新大量BOSS及超级BOSS，击杀后必爆顶级系列装备\
+巢穴总共刷新两波怪物，第二波刷新超级BOSS>
+<Text|id=101|x=10|y=200.0|color=250|size=18|text=每周二、周五晚上19点开启，持续1小时。>
+<Button|id=110|x=180|y=288|color=251|nimg=public/wz/bt11.png|size=18|text=进入活动|link=@进入巢穴>
+
+#IF
+EQUAL S$查看列表 1809
+#SAY
+<RText|id=100|x=5|y=33.00|color=255|size=18|text=
+每次沙巴克攻城结束以后，玩家可以通过活动NPC进入\
+开服7天后每周一、三、六22:00-23:00开启，沙巴克成员可进\
+入<[黄金藏宝殿]>，所有行会成员可进入<[白银藏宝殿]>击杀BOSS\
+可获得奖励。>
+<RText|id=101|x=10|y=200.0|color=250|size=18|text=<[白银藏宝殿]>BOSS掉落<热血宝盒>，必出95-103级剑甲1件\<[黄金藏宝殿]>BOSS掉落<胜利宝盒>，必出100-105级剑甲1件\每个地图可掉落大量元宝、金刚石>
+<Button|id=110|x=30|y=288|color=251||width=160|nimg=public/wz/bt11.png|size=18|text=进入白银藏宝殿|link=@进入白银藏宝殿>
+<Button|id=111|x=290|y=288|color=251|width=160|nimg=public/wz/bt21.png|size=18|text=进入黄金藏宝殿|link=@进入黄金藏宝殿>
+
+#IF
+EQUAL S$查看列表 1909
+#SAY
+<RText|id=100|x=5|y=33.00|color=255|size=18|text=
+新区开区40分钟活动开启，活动开启后通过弹窗进入。\
+进入盟重挖矿区域内佩戴矿镐挖宝。\
+活动产出大量红包，材料，元宝，金刚石。\
+可挖出66元真实充值。>
+<Text|id=101|x=10|y=200.0|color=250|size=18|text=开服40分钟开启，活动持续5分钟。\>
+<Button|id=110|x=100|y=288|color=251|nimg=public/wz/bt11.png|size=18|text=立即前往|link=@进入黄金矿工>
+<Button|id=111|x=280|y=288|color=251|nimg=public/wz/bt21.png|size=18|text=领取矿镐|link=@领取矿镐>
+
+#IF
+EQUAL S$查看列表 2009
+#ACT
+MOV S$活动说明 合区后每天中午12点开启此活动，通过此NPC可前往活动入\口，入口每3分钟刷新1只僵尸，通过僵尸洞可进入活动地图，\在活动地图内击杀任意怪物均有机会触发[废墟遗迹]，废墟遗\迹内概率刷新剑甲BOSS
+#SAY
+<RText|id=100|x=5|y=33.00|color=255|size=18|text=<$STR(S$活动说明)>>\
+<Text|id=101|x=10|y=200.0|color=250|size=18|text=合区后每天中午12点开启，12:55分关闭\活动关闭后所有活动地图玩家统一回城。\>
+<Button|id=110|x=190|y=288|color=251|nimg=public/wz/bt21.png|size=18|text=废墟入口|link=@沙漠废墟入口>
+
+
+[@沙漠废墟入口]
+#IF
+EQUAL <$HFCOUNT> 0
+#ACT
+SENDMSG 9 此活动合区后开放
+BREAK
+
+#IF
+NOT EQUAL <$HOUR> 12
+#ACT
+SENDMSG 9 未在活动开放时间
+BREAK
+#IF
+#ACT
+MAPMOVE rxsc042 287 342 2
+BREAK
+
+
+[@进入黄金矿工]
+#IF
+NOT EQUAL A12 已开启
+#ACT
+SENDMSG 9 不在活动时间，无法前往。
+BREAK
+
+#IF
+#ACT
+MAPMOVE RXSC042	305 326 8
+BREAK
+
+
+
+[@领取矿镐]
+#IF
+NOT EQUAL A12 已开启
+#ACT
+SENDMSG 9 不在活动时间，无法领取。
+BREAK
+
+#IF
+NOT CHECKITEM 矿镐 1
+NOT CHECKITEMW 矿镐 1
+#ACT
+GIVEONITEM 1 矿镐 1
+SENDMSG 9 已领取并佩戴矿镐，现在前往挖矿之旅吧！
+#ELSEACT
+SENDMSG 9 只需要1个矿镐就足够了
+
+
+[@进入白银藏宝殿]
+#IF
+NOT DAYOFWEEK MON
+NOT DAYOFWEEK WED
+NOT DAYOFWEEK SAT
+#ACT
+SENDMSG 9 此活动每周1、3、6晚上22点至23点开启，当前非活动时间
+BREAK
+
+#IF
+SMALL G0 7
+#ACT
+SENDMSG 9 此活动开区7天后开启
+BREAK
+
+#IF
+not equal <$hour> 22
+#ACT
+SENDMSG 9 此活动每周1、3、6晚上22点至23点开启，当前非活动时间
+BREAK
+
+#IF
+not haveguild
+#ACT
+SENDMSG 9 没有行会，无法进入
+BREAK
+
+#IF
+#ACT
+map sbksbf
+GuildNoticeMsg 251 11 玩家[<$username>]进入了白银藏宝殿
+BREAK
+
+[@进入黄金藏宝殿]
+#IF
+NOT DAYOFWEEK MON
+NOT DAYOFWEEK WED
+NOT DAYOFWEEK SAT
+#ACT
+SENDMSG 9 此活动每周1、3、6晚上22点至23点开启，当前非活动时间
+BREAK
+
+#IF
+SMALL G0 7
+#ACT
+SENDMSG 9 此活动开区7天后开启
+BREAK
+
+#IF
+NOT EQUAL <$HOUR> 22
+#ACT
+SENDMSG 9 此活动每周1、3、6晚上22点至23点开启，当前非活动时间
+BREAK
+
+#IF
+Not HAVEGUILD
+#ACT
+SENDMSG 9 没有行会，无法进入
+BREAK
+
+#IF
+ISCASTLEGUILD
+#ACT
+MAP sbkslf
+GuildNoticeMsg 251 11 玩家[<$username>]进入了黄金藏宝殿
+BREAK
+#ELSEACT
+SENDMSG 9 非沙巴克成员，无法进入
+
+
+
+[@进入跑酷]
+#IF
+Equal A10 已开启
+#Act
+MapMove Rxsc042 331 332 10
+SendMsg 1 “<$UserName>”成功参与土城跑酷活动，您也赶紧参与进来吧！
+Break
+#ElseAct
+SendMsg 9 抱歉，当前非活动时间，无法进入！
+Break
+
+
+[@步步惊心]
+#IF
+Equal A11 已开启
+#Act
+MapMOVE rxsc051
+PICKUPITEMS 0 0 1000000
+SendMsg 1 “<$UserName>”成功参与天降福利活动，您也赶紧参与进来吧！
+Break
+#ElseAct
+SendMsg 9 抱歉，当前非活动时间，无法进入！
+Break
+
+[@财富之路]
+#IF
+#Act
+Mapmove cfzl 142 222 2
+SendMsg 1 “<$UserName>”进入财富之路，无尽宝物正在等待着他！
+Break 
+
+[@荣耀殿堂]
+#IF
+LARGE u1 1
+#ELSEACT
+SENDMSG 9 传送失败，进入此地图需要宿命的羁绊以上称号！
+Break 
+
+#IF
+check [2] 1
+#ACT
+Mapmove rydt 31 40 2
+Break
+#ELSEACT
+SENDMSG 9 传送失败，进入此地图需要开启狂暴模式！
+BREAK
+
+[@进入长跑]
+#IF
+LARGE gG387 59
+SMALL gG387 70
+#ACT
+Mapmove paoku 14 20
+SendMsg 1 “<$UserName>”进入活动，争夺长跑冠军！
+#ELSEACT
+SENDMSG 9 进入失败！活动未开启，或者活动已结束
+Break
+
+
+[@进入第一]
+#IF
+#ACT
+MAPMOVE txdy 18 73 5
+SendMsg 1 “<$UserName>”进入活动，争夺天下第一！
+Break
+
+[@进入暴富]
+#IF
+NOT EQUAL G0 1
+#ACT
+SendMsg 9 此活动仅限第一次合区开启！
+BREAK
+
+#IF
+checklevelex < 400
+#Act
+SendMsg 9 等级不够！无法进入活动
+BREAK
+
+#IF
+NOT EQUAL <$HOUR> 18
+#ACT
+SendMsg 9 抱歉，当前非活动时间，无法进入！
+BREAK
+
+#IF
+#ACT
+MAPMOVE yybf 240 199
+SendMsg 1 “<$UserName>”进入活动，争夺一夜暴富！
+Break
+
+
+[@进入巢穴]
+#IF
+SMALL <$HFCOUNT> 1
+#ACT
+SENDMSG 9 未合区!活动暂未开启！
+BREAK
+
+#IF
+checklevelex < 400
+#Act
+SendMsg 9 等级不够！无法进入活动
+BREAK
+
+#IF
+NOT DAYOFWEEK TUE
+NOT DAYOFWEEK FRI
+#Act
+SendMsg 9 未到活动日期！活动暂未开启
+BREAK
+
+#IF
+#ACT
+MapMove bosscx 100 100 10
+SendMsg	1 “<$UserName>”成功参与BOSS巢穴活动，您也赶紧参与进来吧！
+SendCenterMsg 254 0 <[活动]：/FCOLOR=249>：玩家【<<$USERNAME>/FCOLOR=250>】进入BOSS巢穴，全服BOSS近在眼前！ 1 1
+Break
+
+
+[@进入黄金矿工]
+#IF
+#ACT
+GiveStateItem 矿镐 1
+MAPMOVE hjkg 15 13
+BREAK
+
+
+
+;[@进入幻境]
+;#IF
+;#ACT
+;mapmove  h001 75 78 5
+;Break
+
+
+
+[@查看活动排名]
+#Call [\主界面基础按钮\主界面基础按钮QF.txt] @查看暴富排名

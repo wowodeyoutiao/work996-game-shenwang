@@ -430,7 +430,9 @@ function GMHelper.DoGmOper(actor, sid)
     elseif sid == '1999' then 
         --changeexp(actor, '+', 500, true)
         --delbutton(actor, 108, CommonDefine.ADD_BUTTON_ID_5)
-        setplaydef(actor, CommonDefine.VAR_J_DAY_SUPERBOX_OPENNUM, 0)
+        --setplaydef(actor, CommonDefine.VAR_J_DAY_SUPERBOX_OPENNUM, 0)
+        addattlist(actor, CommonDefine.ABILITY_GROUP_TEMPTEST, "+", "3#72#1")      
+        recalcabilitys(actor)        
     else
         --³¬¼¶Ìø×ª
         for index, value in ipairs(TEST_SUPER_JUMP_CFG) do
