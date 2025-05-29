@@ -108,7 +108,7 @@ function TaskManager.AcceptTask(actor, tasklineid)
                 end
             elseif singletask.tasktype == CommonDefine.TASK_TYPE_POWERSCORE then
                 local currlv = Player.GetPlayerPower(actor)
-                if currlv >= Player.GetPlayerPower(actor) then
+                if currlv >= singletask.tasktargparam then
                     TaskManager.FinishTask(actor, tasklineid)
                 end                
             end
