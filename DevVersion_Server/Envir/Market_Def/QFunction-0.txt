@@ -1208,6 +1208,11 @@ MOV S$œ¥¡∑Œª÷√
 BREAK
 
 
+[@TakeOffExchange]
+#IF
+#ACT
+CALLLUA CC_QFunction @takeoffexchange,<$CURRTAKETEMPOS>,<$CURRTEMMAKEINDEX>
+
 
 [@TAKEON0]
 

@@ -69,6 +69,8 @@ function GMHelper.OpenPanel(actor)
         '<Button|x=200|y=90|nimg=public/bg_hhzy_01_3.png|text=清空装备位星级|link=@gmhelper_button#sid1=1009>'..
         '<Button|x=200|y=120|nimg=public/bg_hhzy_01_3.png|text=给五星魂石|link=@gmhelper_button#sid1=3>'..        
         '<Button|x=200|y=150|nimg=public/bg_hhzy_01_3.png|text=刷新排行榜|link=@gmhelper_button_refreshrank>'..
+        '<Button|x=200|y=180|nimg=public/bg_hhzy_01_3.png|text=停止泡点|link=@gmhelper_button#sid1=1011>'..
+        '<Button|x=200|y=210|nimg=public/bg_hhzy_01_3.png|text=各种升级材料加2000|link=@gmhelper_button#sid1=5>'..
 
         '<Button|x=350|y=30|nimg=public/bg_hhzy_01_3.png|text=重置跨服活动配置|link=@gmhelper_button#sid1=1996>'..
         '<Button|x=350|y=60|nimg=public/bg_hhzy_01_3.png|text=设置跨服boss配置|link=@gmhelper_button#sid1=1997>'..
@@ -84,8 +86,7 @@ function GMHelper.OpenPanel(actor)
         '<Button|x=500|y=180|nimg=public/bg_hhzy_01_3.png|text=功能NPC面板|color=252|link=@gmhelper_button#sid1=1995>'..
         '<Button|x=500|y=240|nimg=public/bg_hhzy_01_3.png|text=临时测试|link=@gmhelper_button#sid1=1999>'
     --[[                                      
-        '<Button|x=40|y=120|nimg=public/bg_hhzy_01_3.png|text=无敌|link=@gmhelper_button,4>'..
-        '<Button|x=40|y=150|nimg=public/bg_hhzy_01_3.png|text=各种升级材料加2000|link=@gmhelper_button,5>'..
+        '<Button|x=40|y=120|nimg=public/bg_hhzy_01_3.png|text=无敌|link=@gmhelper_button,4>'..        
         '<Button|x=40|y=180|nimg=public/bg_hhzy_01_3.png|text=给粉色灵玉|link=@gmhelper_button,6>'..
         '<Button|x=40|y=210|nimg=public/bg_hhzy_01_3.png|text=学习职业技能|link=@gmhelper_button,13>'..                      
         '<Button|x=40|y=240|nimg=public/bg_hhzy_01_3.png|text=赠送洗炼测试装备|color=253|link=@gmhelper_button,999>'..
@@ -186,9 +187,6 @@ function GMHelper.DoGmOper(actor, sid)
         giveitem(actor, '升星石', 2000)
         giveitem(actor, '书页', 2000)
         giveitem(actor, '技能秘籍', 2000)
-        giveitem(actor, '祝福油', 2000)
-        giveitem(actor, '幸运符', 200)
-        giveitem(actor, '保底符', 200)        
     elseif sid == '6' then
         giveitem(actor, '鼠灵玉·粉1星', 1)
         giveitem(actor, '牛灵玉·粉1星', 1)
@@ -408,6 +406,8 @@ function GMHelper.DoGmOper(actor, sid)
         end  
     elseif sid == '1010' then
         changemoney(actor, CommonDefine.ITEMID_KUAFU_SCORE, '+', 100, 'DoGmOper', true)
+    elseif sid == '1011' then
+        setautogetexp(actor, 1, 1, 0, '*', 0, 3, CommonDefine.AUTO_ADDEXP_MAX_LEVEL)
     elseif sid == '1901' then
         setsysvar('G0', 0)
         Player.SendSelfMsg(actor, '重置为开服第一天', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)

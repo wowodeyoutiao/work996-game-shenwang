@@ -194,6 +194,8 @@ function OpenSuperBoxManager.UpdateSuperBoxInfo(actor)
                         local giftpic = EquipInitGift.GetInitGiftPic(initgifttype)                   
                         strPanel = strPanel..'<Img|id='..picid2..'|x=0|y=45|height=25|width=25|move=0|img='..giftpic..'>'
                     end
+                else
+                    release_print('UpdateSuperBoxInfo error null itemobj nItemUniqueID:'..nItemUniqueID)
                 end
             end
 
@@ -343,6 +345,8 @@ function OpenSuperBoxManager.DoOpenBoxOnce(actor, autoflag, openitemlist)
             if showFirstItemMakeIdx == 0 then
                 showFirstItemMakeIdx = nNewMakeIndex
             end
+        else
+            release_print('DoOpenBoxOnce error 3333 itemid:'..itemid)
         end
     end
     setflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_NO_BAG_AUTORECYCLE, 0)

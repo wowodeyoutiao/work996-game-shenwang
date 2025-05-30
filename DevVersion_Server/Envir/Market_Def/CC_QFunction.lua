@@ -129,6 +129,11 @@ end
 -- 脱下装备触发
 --function takeoffex(actor, equipitem, pos, itemname, makeindex)
 function takeoffex(actor, spos, smakeindex)
+ 
+end
+
+-- 脱下装备进背包前触发
+function takeoffexchange(actor, spos, smakeindex)
     if (actor == nil) or not BF_IsNumberStr(smakeindex) or not BF_IsNumberStr(spos) then
         return
     end
