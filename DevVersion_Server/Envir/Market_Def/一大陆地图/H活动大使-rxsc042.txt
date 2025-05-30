@@ -23,7 +23,7 @@ BREAK
 
 <Layout|id=11|x=0|y=0|children={1100}|width=226|height=50|link=@main#查看列表=1109>
 <Layout|id=12|x=0|y=0|children={1200}|width=226|height=50|link=@main#查看列表=1209>
-<Layout|id=13|x=0|y=0|children={1300}|width=226|height=50|link=@main#查看列表=1309>
+;<Layout|id=13|x=0|y=0|children={1300}|width=226|height=50|link=@main#查看列表=1309>
 <Layout|id=14|x=0|y=0|children={1400}|width=226|height=50|link=@main#查看列表=1409>
 <Layout|id=15|x=0|y=0|children={1500}|width=226|height=50|link=@main#查看列表=1509>
 <Layout|id=16|x=0|y=0|children={1600}|width=226|height=50|link=@main#查看列表=1609>
@@ -34,7 +34,7 @@ BREAK
 
 <Button|id=1100|children={1101,1102,1103,1109}|x=0|y=0|nimg=public/start_10/h2_001.png|width=220|height=50|width=226|color=116|size=22|text=◆天降福利>
 <Button|id=1200|children={1201,1202,1203,1209}|x=0|y=0|nimg=public/start_10/h2_002.png|width=220|height=50|width=226|color=116|size=22|text=◆新区狂欢>
-<Button|id=1300|children={1301,1302,1303,1309}|x=0|y=0|nimg=public/start_10/h2_004.png|width=220|height=50|width=226|color=116|size=22|text=◆激情跑酷>
+;<Button|id=1300|children={1301,1302,1303,1309}|x=0|y=0|nimg=public/start_10/h2_004.png|width=220|height=50|width=226|color=116|size=22|text=◆激情跑酷>
 <Button|id=1400|children={1401,1402,1403,1409}|x=0|y=0|nimg=public/start_10/h2_006.png|width=220|height=50|width=226|color=116|size=22|text=◆世界BOSS>
 <Button|id=1500|children={1501,1502,1503,1509}|x=0|y=0|nimg=public/start_10/h2_007.png|width=220|height=50|width=226|color=116|size=22|text=◆天下第一>
 <Button|id=1600|children={1601,1602,1603,1609}|x=0|y=0|nimg=public/start_10/h2_007.png|width=220|height=50|width=226|color=116|size=22|text=◆一夜暴富>

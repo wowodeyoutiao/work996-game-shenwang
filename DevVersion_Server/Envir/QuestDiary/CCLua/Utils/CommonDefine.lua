@@ -293,10 +293,17 @@ CommonDefine = {
     VAR_I_LAST_KFLOGIN_DAY = 'I2',               --记录跨服登录对应天数，用于触发跨服跨天的问题
 
     --系统全局数字变量，重启保存 G0 - G499
+    VAR_G_OPENSERVER_DAY = 'G0',                        --服务器开服天数
+
     VAR_G_JUMPAREA_DAMAGERANK_REWARD_STATUS = 'G101',   --跨服boss伤害 活动状态 1活动未发奖 2活动已发奖
     VAR_G_JUMPAREA_RANDFIGHTING_REWARD_STATUS = 'G102', --跨服大乱斗 活动状态 1活动未发奖 2活动已发奖
 
+    VAR_G_OPENSERVER_SECOND_COUNTER = 'G200',           --开服后 秒计数 有人才计数
+    VAR_G_OPENSERVER_MINITUE_COUNTER = 'G387',          --开服后 分钟计数 有人才计数
+
     --系统全局字符型变量，重启保存 A0-A499
+    VAR_A_PAOKU_SWITCH = 'A10',                         --跑酷活动开关  '已开启'表示开启
+    ---------------------
     VAR_A_JUMPAREA_DAMAGE_RANK_DATA = 'A100',           --跨服boss伤害排行数据
     VAR_A_JUMPAREA_DAMAGE_TEST_CFG_DATA = 'A101',       --跨服boss伤害排行测试配置
     VAR_A_JUMPAREA_RANDFIGHTING_RANK_DATA = 'A102',     --跨服大乱斗排行数据

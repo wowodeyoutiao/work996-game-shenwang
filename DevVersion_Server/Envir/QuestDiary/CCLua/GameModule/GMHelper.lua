@@ -55,6 +55,13 @@ function GMHelper.OpenPanel(actor)
     if getgmlevel(actor) == 0 then
         return
     end
+
+    local strPaoKuSwitch = getsysvar(CommonDefine.VAR_A_PAOKU_SWITCH)
+    local strPaoKuMenu = '关闭跑酷'
+    if strPaoKuSwitch ~= '已开启' then
+        strPaoKuMenu = '开启跑酷'
+    end
+
     local sPanelStr = '<Button|x=40|y=30|nimg=public/bg_hhzy_01_3.png|text=等级加10级|link=@gmhelper_button#sid1=1>'..
         '<Button|x=40|y=60|nimg=public/bg_hhzy_01_3.png|text=超级宝箱升级|link=@gmhelper_button#sid1=1001>'..
         '<Button|x=40|y=90|nimg=public/bg_hhzy_01_3.png|text=超级宝箱重置|link=@gmhelper_button#sid1=1002>'..
@@ -75,8 +82,12 @@ function GMHelper.OpenPanel(actor)
         '<Button|x=350|y=30|nimg=public/bg_hhzy_01_3.png|text=重置跨服活动配置|link=@gmhelper_button#sid1=1996>'..
         '<Button|x=350|y=60|nimg=public/bg_hhzy_01_3.png|text=设置跨服boss配置|link=@gmhelper_button#sid1=1997>'..
         '<Button|x=350|y=90|nimg=public/bg_hhzy_01_3.png|text=设置跨服大乱斗配置|link=@gmhelper_button#sid1=1998>'..        
-        '<Button|x=350|y=120|nimg=public/bg_hhzy_01_3.png|text=重置开服天数|link=@gmhelper_button#sid1=1901>'..        
+        '<Button|x=350|y=120|nimg=public/bg_hhzy_01_3.png|text=重置开服天分秒|link=@gmhelper_button#sid1=1901>'..        
         '<Button|x=350|y=150|nimg=public/bg_hhzy_01_3.png|text=开服天数+1|link=@gmhelper_button#sid1=1902>'..        
+        '<Button|x=350|y=180|nimg=public/bg_hhzy_01_3.png|text=开服分钟+10|link=@gmhelper_button#sid1=1903>'..
+        '<Button|x=350|y=210|nimg=public/bg_hhzy_01_3.png|text=开服分钟+1|link=@gmhelper_button#sid1=1904>'..
+        '<Button|x=350|y=240|nimg=public/bg_hhzy_01_3.png|text='..strPaoKuMenu..'|link=@gmhelper_button#sid1=1905>'..
+        
 
         '<Button|x=500|y=30|nimg=public/bg_hhzy_01_3.png|text=清空首充|link=@gmhelper_button#sid1=154>'..
         '<Button|x=500|y=60|nimg=public/bg_hhzy_01_3.png|text=模拟充值1元|link=@gmhelper_button#sid1=155>'..
@@ -135,10 +146,11 @@ function GMHelper.OpenPanel(actor)
 
     local mapidstr = Player.GetMapIDStr(actor)
     local posx, posy = Player.GetMapXY(actor)
-    local openday = getsysvar('G0') + 1
-    local sTempInfo = "当前开服天数"..openday.."  在线玩家数:"..globalinfo(6).." 位置:"..mapidstr..' ['..posx..','..posy..']'
-    sPanelStr = sPanelStr..'<Text|text=信息：'..sTempInfo..'|x=40|y=300|color='..CSS.NPC_YELLOW..'>'
-    BF_NPCSayExt(actor, sPanelStr, 1, 650, 350)
+    local sTempInfo = '位置:'..mapidstr..' ['..posx..','..posy..']'
+    sPanelStr = sPanelStr..'<Text|text=【个人信息】： '..sTempInfo..'|x=40|y=350|color='..CSS.NPC_YELLOW..'>'
+    sPanelStr = sPanelStr..parsetext('<RText|x=40|y=380|color=103|outline=1|text=【服务器信息】：  开区<$STR(G0)>天/<$KFDAY>    <$STR(G387)>分钟    <$STR(G200)>秒    周：<$STR(G58)> >', '')
+    
+    BF_NPCSayExt(actor, sPanelStr, 1, 650, 420)
 end
 
 function GMHelper.OpenSuperJumpPanel(actor)
@@ -409,15 +421,37 @@ function GMHelper.DoGmOper(actor, sid)
     elseif sid == '1011' then
         setautogetexp(actor, 1, 1, 0, '*', 0, 3, CommonDefine.AUTO_ADDEXP_MAX_LEVEL)
     elseif sid == '1901' then
-        setsysvar('G0', 0)
-        Player.SendSelfMsg(actor, '重置为开服第一天', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+        setsysvar(CommonDefine.VAR_G_OPENSERVER_DAY, 0)
+        setsysvar(CommonDefine.VAR_G_OPENSERVER_MINITUE_COUNTER, 0)
+        setsysvar(CommonDefine.VAR_G_OPENSERVER_SECOND_COUNTER, 0)
+        Player.SendSelfMsg(actor, '重置为开服第1天 0分 0秒', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
         GMHelper.OpenPanel(actor)
     elseif sid == '1902' then
-        local openday = getsysvar('G0') + 1        
-        setsysvar('G0', openday)
-        local showday = openday + 1
-        Player.SendSelfMsg(actor, '设置开服天数:'..showday, CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+        local openday = getsysvar(CommonDefine.VAR_G_OPENSERVER_DAY) + 1        
+        setsysvar(CommonDefine.VAR_G_OPENSERVER_DAY, openday)
+        Player.SendSelfMsg(actor, '设置开服天数:'..openday, CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
         GMHelper.OpenPanel(actor)
+    elseif sid == '1903' then
+        local counter = getsysvar(CommonDefine.VAR_G_OPENSERVER_MINITUE_COUNTER) + 10        
+        setsysvar(CommonDefine.VAR_G_OPENSERVER_MINITUE_COUNTER, counter)
+        Player.SendSelfMsg(actor, '设置开服分钟:'..counter, CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+        GMHelper.OpenPanel(actor)
+    elseif sid == '1904' then
+        local counter = getsysvar(CommonDefine.VAR_G_OPENSERVER_MINITUE_COUNTER) + 1        
+        setsysvar(CommonDefine.VAR_G_OPENSERVER_MINITUE_COUNTER, counter)
+        Player.SendSelfMsg(actor, '设置开服分钟:'..counter, CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+        GMHelper.OpenPanel(actor)
+    elseif sid == '1905' then
+        local strPaoKuSwitch = getsysvar(CommonDefine.VAR_A_PAOKU_SWITCH)
+        if strPaoKuSwitch == '已开启' then
+            setsysvar(CommonDefine.VAR_A_PAOKU_SWITCH, '')
+            Player.SendSelfMsg(actor, '跑酷已关闭', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+            GMHelper.OpenPanel(actor)            
+        else
+            setsysvar(CommonDefine.VAR_A_PAOKU_SWITCH, '已开启')
+            Player.SendSelfMsg(actor, '跑酷已开启', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+            GMHelper.OpenPanel(actor)            
+        end
     elseif sid == '1995' then
         GMHelper.OpenSuperJumpPanel(actor)
     elseif sid == '1996' then
