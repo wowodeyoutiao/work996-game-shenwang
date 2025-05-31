@@ -1391,6 +1391,16 @@ ABIL_EX_CLEAR 8 1
 CHANGECUSTOMITEMTEXT 8 <[神秘属性:]◆<$STR(S$OUTTIME)>◆已到期/FCOLOR=7> 1
 
 
+;========================================================个人定时器
+[@OnTimer101]
+#IF
+#ACT
+CALLLUA CC_QManage @ontimer101
+
+[@OnTimer102]
+#IF
+#ACT
+CALLLUA CC_QManage @ontimer102
 
 ;========================================================全局定时器
 [@OnTimerEx101]

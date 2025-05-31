@@ -18,8 +18,6 @@ local ICON_QUICK_TIP_GOTO = '15'                --对应红点功能提示的快捷前往
 local ICON_HIDE_QUICK_TIP_PANEL = '16'          --关闭有红点功能对应的快捷提示框
 
 
-
-
 local MAINICON_ID_1 = 'mainicon_1'              --进阶礼包 iconid
 local MAINICON_ID_2 = 'mainicon_2'              --开服活动 iconid
 local MAINICON_ID_3 = 'mainicon_3'              --新人充值返利 iconid
@@ -178,15 +176,39 @@ function TopIcon.CheckRedPoint(actor)
     if FirstRecharge.IsTopIconHaveRedPoint(actor) then
         Player.AddRedPoint(actor, 102, MAINICON_ID_4, 10, 10)    
     else
-        Player.DelRedPoint(actor, 102, MAINICON_ID_4)    
+        Player.DelRedPoint(actor, 102, MAINICON_ID_4)
     end
---[[
-    if EverydayTask.IsTopIconHaveRedPoint(actor) then    
-        Player.AddRedPoint(actor, 102, MAINICON_ID_5, 10, 10)    
+    
+
+    if EquipPosStrengthManager.IsTopIconHaveRedPoint(actor) then
+        Player.AddRedPoint(actor, 109, NewMainUIBase.UI_ICON_POSSTRENGTH, 10, 10)    
     else
-        Player.DelRedPoint(actor, 102, MAINICON_ID_5)    
+        Player.DelRedPoint(actor, 109, NewMainUIBase.UI_ICON_POSSTRENGTH)
     end
-]]--    
+
+    if EquipPosStarManager.IsTopIconHaveRedPoint(actor) then
+        Player.AddRedPoint(actor, 109, NewMainUIBase.UI_ICON_POSSTAR, 10, 10)    
+    else
+        Player.DelRedPoint(actor, 109, NewMainUIBase.UI_ICON_POSSTAR)
+    end   
+    
+    if GuanZhiManager.IsTopIconHaveRedPoint(actor) then
+        Player.AddRedPoint(actor, 109, NewMainUIBase.UI_ICON_GUANZHI, 10, 10)    
+    else
+        Player.DelRedPoint(actor, 109, NewMainUIBase.UI_ICON_GUANZHI)  
+    end
+
+    if OfflineHuWeiManager.IsTopIconHaveRedPoint(actor) then
+        Player.AddRedPoint(actor, 109, NewMainUIBase.UI_ICON_HUWEI, 10, 10)    
+    else
+        Player.DelRedPoint(actor, 109, NewMainUIBase.UI_ICON_HUWEI)
+    end
+
+    if SkillUpgrade.IsTopIconHaveRedPoint(actor) then
+        Player.AddRedPoint(actor, 109, NewMainUIBase.UI_ICON_SKILL, 10, 10)    
+    else
+        Player.DelRedPoint(actor, 109, NewMainUIBase.UI_ICON_SKILL)
+    end
 end
 
 function TopIcon.HideQuickInfoTipPanel(actor)
@@ -203,21 +225,18 @@ local function FillRedPointFunctionInfoList(actor, infolist)
     if BaoZhuManager.IsHaveQuickTip(actor) then
         infolist[#infolist+1] = {id=CommonDefine.QUICK_GOTO_BAOZHU, name='灵玉提升'}
     end
-    -- if YunBiaoManager.IsHaveQuickTip(actor) then
-    --     infolist[#infolist+1] = {id=CommonDefine.QUICK_GOTO_YUNBIAO, name='运镖'}
-    -- end
-    -- if SingleBossManager.IsHaveQuickTip(actor) then
-    --     infolist[#infolist+1] = {id=CommonDefine.QUICK_GOTO_SINGLEBOSS, name='个人首领'}
-    -- end
-    -- if BaoZhuBossManager.IsHaveQuickTip(actor) then
-    --     infolist[#infolist+1] = {id=CommonDefine.QUICK_GOTO_KILL_BAOZHUBOSS, name='灵玉副本'}
-    -- end
-    -- if RandomBossManager.IsHaveQuickTip(actor) then
-    --     infolist[#infolist+1] = {id=CommonDefine.QUICK_GOTO_KILL_RANDOMBOSS, name='战力首领'}
-    -- end
-    -- if MoFangZhenManager.IsHaveQuickTip(actor) then
-    --     infolist[#infolist+1] = {id=CommonDefine.QUICK_GOTO_KILL_RANDOMBOSS, name='战力首领'}
-    -- end
+    if YunBiaoManager.IsHaveQuickTip(actor) then
+        infolist[#infolist+1] = {id=CommonDefine.QUICK_GOTO_YUNBIAO, name='运镖'}
+    end
+    if SingleBossManager.IsHaveQuickTip(actor) then
+        infolist[#infolist+1] = {id=CommonDefine.QUICK_GOTO_SINGLEBOSS, name='个人首领'}
+    end
+    if BaoZhuBossManager.IsHaveQuickTip(actor) then
+        infolist[#infolist+1] = {id=CommonDefine.QUICK_GOTO_KILL_BAOZHUBOSS, name='灵玉副本'}
+    end
+    if RandomBossManager.IsHaveQuickTip(actor) then
+        infolist[#infolist+1] = {id=CommonDefine.QUICK_GOTO_KILL_RANDOMBOSS, name='战力首领'}
+    end
     if GuanZhiManager.IsHaveQuickTip(actor) then
         infolist[#infolist+1] = {id=CommonDefine.QUICK_GOTO_GUANZHI, name='提升官职'}
     end
@@ -271,17 +290,16 @@ function TopIcon.CheckQuickInfoTip(actor)
     if EquipPosStrengthManager.IsHaveQuickTip(actor) or 
         SoulStoneManager.IsHaveQuickTip(actor) or 
         BaoZhuManager.IsHaveQuickTip(actor) or
-        -- YunBiaoManager.IsHaveQuickTip(actor) or
-        -- SingleBossManager.IsHaveQuickTip(actor) or
-        -- BaoZhuBossManager.IsHaveQuickTip(actor) or
-        -- RandomBossManager.IsHaveQuickTip(actor) or
-        -- MoFangZhenManager.IsHaveQuickTip(actor) or
+        YunBiaoManager.IsHaveQuickTip(actor) or
+        SingleBossManager.IsHaveQuickTip(actor) or
+        BaoZhuBossManager.IsHaveQuickTip(actor) or
+        RandomBossManager.IsHaveQuickTip(actor) or
         GuanZhiManager.IsHaveQuickTip(actor) or
         FreeVIPManager.IsHaveQuickTip(actor) or
         OfflineHuWeiManager.IsHaveQuickTipUpgrade(actor) or
         OfflineHuWeiManager.IsHaveQuickTipReward(actor) then
 
-        local buttonstr = '<Button|x=210|y=-240|nimg=private/cc_quicktip/1.png|link=@topicon_openpanel#sid='..ICON_SHOW_QUICK_TIP_PANEL..'>'
+        local buttonstr = '<Button|x=180|y=-240|nimg=private/cc_quicktip/1.png|link=@topicon_openpanel#sid='..ICON_SHOW_QUICK_TIP_PANEL..'>'
         addbutton(actor, 108, CommonDefine.ADD_BUTTON_ID_32, buttonstr)    
     end
 end

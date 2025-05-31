@@ -340,30 +340,6 @@ local function GetSingleEquipPosShowInfo(actor, equippos)
             if sTempStr ~= '' then
                 sPanelStr = sPanelStr..sTempStr
             end
---[[
-            if cfgEquipPosUpgradeStar[cfgCurrKey].needitems_tab then
-                local itemgrid_x = tempX
-                local itemgrid_y = tempY
-                local itemimgid = 170
-                local itemtextid = 180
-                local finalrewardtab = Player.FilterTable(actor, cfgEquipPosUpgradeStar[cfgCurrKey].needitems_tab)  
-                for _, reward in ipairs(finalrewardtab) do  
-                    local itemidx = getstditeminfo(reward.name, CommonDefine.STDITEMINFO_IDX)
-                    local imgpath = Item.GetItemImgPath(itemidx)
-                    local strNeedItemInfo = BF_NumToShowStr(reward.num)..'/'..BF_NumToShowStr(Player.GetItemNumInBag(actor, reward.name))
-                    sPanelStr = sPanelStr..'<Img|id='..itemimgid..'|x='..(itemgrid_x+90)..'|y='..(itemgrid_y-10)..'|width=30|height=30|img='..imgpath..'>'
-                    sPanelStr = sPanelStr..'<Text|id='..itemtextid..'|text=X'..strNeedItemInfo..'|x='..(itemgrid_x+120)..'|y='..itemgrid_y..'|color='..CSS.NPC_WHITE..'>'
-                    if itemidstr ~= '' then
-                        itemidstr = itemidstr..','
-                    end
-                    itemidstr = itemidstr..itemimgid
-                    itemidstr = itemidstr..','..itemtextid                    
-                    itemgrid_x = itemgrid_x + 140
-                    itemimgid = itemimgid + 1
-                    itemtextid = itemtextid + 1
-                end
-            end            
-]]--
         end
         sPanelStr = sPanelStr..'<Layout|id=160|children={161,162,'..itemidstr..'}|x=0|y=150.0|width=580|height=110>'
 
@@ -836,6 +812,14 @@ function EquipPosStarManager.DoOperButton(actor, sid, sparam)
         SetAutoUpgradeTargStarEx(actor)
     end
     EquipPosStarManager.ShowBasePanel(actor)
+end
+
+function EquipPosStarManager.IsTopIconHaveRedPoint(actor)
+
+    ------------------------    
+    ------------------------
+    ------------------------
+    return false
 end
 
 return EquipPosStarManager

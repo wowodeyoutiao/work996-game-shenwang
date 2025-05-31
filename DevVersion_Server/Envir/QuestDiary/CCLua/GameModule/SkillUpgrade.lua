@@ -508,30 +508,22 @@ function SkillUpgrade.DoOperButton(actor, sid, sparam)
     SkillUpgrade.ShowBasePanel(actor)
 end
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+function SkillUpgrade.IsTopIconHaveRedPoint(actor)    
+    local skill_list = getallskills(actor)
+    local choosetype = getplaydef(actor, CommonDefine.VAR_N_CHOOSE_OPER_TYPE)
+    local seq = 0
+    for _, skillID in ipairs(skill_list or {}) do
+        if SkillUpgrade.IsValidUpgradeSkill(actor, skillID) then     
+            local magicInfo = cfg_magic[skillID]            
+            if magicInfo ~= nil then
+                seq = seq + 1
+                if IsSkillCanUpgradeOnce(actor, skillID, choosetype) then
+                    return true
+                end
+            end
+        end
+    end
+    return false
+end
 
 return SkillUpgrade

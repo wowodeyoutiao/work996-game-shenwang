@@ -525,4 +525,20 @@ function OfflineHuWeiManager.IsHaveQuickTipReward(actor)
     return false
 end
 
+function OfflineHuWeiManager.IsTopIconHaveRedPoint(actor)
+    if not Player.IsFunctionOpen(actor, CommonDefine.FUNC_ID_OFFLINE, false) then
+        return false
+    end
+
+    if OfflineHuWeiManager.IsHaveQuickTipUpgrade(actor) == true then
+        return true
+    end
+
+    if OfflineHuWeiManager.IsHaveQuickTipReward(actor) == true then
+        return true
+    end
+
+    return false
+end
+
 return OfflineHuWeiManager

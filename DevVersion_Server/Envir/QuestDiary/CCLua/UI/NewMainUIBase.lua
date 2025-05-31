@@ -11,14 +11,14 @@ NewMainUIBase.UI_ICON_COMPOSE = '8'         --ºÏ³É
 
 
 function NewMainUIBase.InitUI(actor)
-    addbutton(actor, 109, 11, '<Button|x=92|y=170|mimg=private/cc_functionicon/icon_posstrength.png|nimg=private/cc_functionicon/icon_posstrength.png|link=@newmainuibase_openpanel#sid='..NewMainUIBase.UI_ICON_POSSTRENGTH..'>')        
-    addbutton(actor, 109, 12, '<Button|x=92|y=240|mimg=private/cc_functionicon/icon_posstar.png|nimg=private/cc_functionicon/icon_posstar.png|link=@newmainuibase_openpanel#sid='..NewMainUIBase.UI_ICON_POSSTAR..'>')
-    addbutton(actor, 109, 13, '<Button|x=22|y=30|mimg=private/cc_functionicon/icon_baozhu.png|nimg=private/cc_functionicon/icon_baozhu.png|link=@newmainuibase_openpanel#sid='..NewMainUIBase.UI_ICON_BAOZHU..'>')        
-    addbutton(actor, 109, 14, '<Button|x=22|y=100|mimg=private/cc_functionicon/icon_soulstone.png|nimg=private/cc_functionicon/icon_soulstone.png|link=@newmainuibase_openpanel#sid='..NewMainUIBase.UI_ICON_SOULSTONE..'>')
-    addbutton(actor, 109, 15, '<Button|x=22|y=170|mimg=private/cc_functionicon/icon_guanzhi.png|nimg=private/cc_functionicon/icon_guanzhi.png|link=@newmainuibase_openpanel#sid='..NewMainUIBase.UI_ICON_GUANZHI..'>') 
-    addbutton(actor, 109, 16, '<Button|x=22|y=240|mimg=private/cc_functionicon/icon_huwei.png|nimg=private/cc_functionicon/icon_huwei.png|link=@newmainuibase_openpanel#sid='..NewMainUIBase.UI_ICON_HUWEI..'>')
-    addbutton(actor, 109, 17, '<Button|x=-52|y=30|mimg=private/cc_functionicon/icon_skill.png|nimg=private/cc_functionicon/icon_skill.png|link=@newmainuibase_openpanel#sid='..NewMainUIBase.UI_ICON_SKILL..'>')
-    addbutton(actor, 109, 18, '<Button|x=-52|y=100|mimg=private/cc_functionicon/icon_compose.png|nimg=private/cc_functionicon/icon_compose.png|link=@newmainuibase_openpanel#sid='..NewMainUIBase.UI_ICON_COMPOSE..'>')
+    addbutton(actor, 109, 11, '<Button|id='..NewMainUIBase.UI_ICON_POSSTRENGTH..'|x=92|y=170|mimg=private/cc_functionicon/icon_posstrength.png|nimg=private/cc_functionicon/icon_posstrength.png|link=@newmainuibase_openpanel#sid='..NewMainUIBase.UI_ICON_POSSTRENGTH..'>')        
+    addbutton(actor, 109, 12, '<Button|id='..NewMainUIBase.UI_ICON_POSSTAR..'|x=92|y=240|mimg=private/cc_functionicon/icon_posstar.png|nimg=private/cc_functionicon/icon_posstar.png|link=@newmainuibase_openpanel#sid='..NewMainUIBase.UI_ICON_POSSTAR..'>')
+    addbutton(actor, 109, 13, '<Button|id='..NewMainUIBase.UI_ICON_BAOZHU..'|x=22|y=30|mimg=private/cc_functionicon/icon_baozhu.png|nimg=private/cc_functionicon/icon_baozhu.png|link=@newmainuibase_openpanel#sid='..NewMainUIBase.UI_ICON_BAOZHU..'>')        
+    addbutton(actor, 109, 14, '<Button|id='..NewMainUIBase.UI_ICON_SOULSTONE..'|x=22|y=100|mimg=private/cc_functionicon/icon_soulstone.png|nimg=private/cc_functionicon/icon_soulstone.png|link=@newmainuibase_openpanel#sid='..NewMainUIBase.UI_ICON_SOULSTONE..'>')
+    addbutton(actor, 109, 15, '<Button|id='..NewMainUIBase.UI_ICON_GUANZHI..'|x=22|y=170|mimg=private/cc_functionicon/icon_guanzhi.png|nimg=private/cc_functionicon/icon_guanzhi.png|link=@newmainuibase_openpanel#sid='..NewMainUIBase.UI_ICON_GUANZHI..'>') 
+    addbutton(actor, 109, 16, '<Button|id='..NewMainUIBase.UI_ICON_HUWEI..'|x=22|y=240|mimg=private/cc_functionicon/icon_huwei.png|nimg=private/cc_functionicon/icon_huwei.png|link=@newmainuibase_openpanel#sid='..NewMainUIBase.UI_ICON_HUWEI..'>')
+    addbutton(actor, 109, 17, '<Button|id='..NewMainUIBase.UI_ICON_SKILL..'|x=-52|y=30|mimg=private/cc_functionicon/icon_skill.png|nimg=private/cc_functionicon/icon_skill.png|link=@newmainuibase_openpanel#sid='..NewMainUIBase.UI_ICON_SKILL..'>')
+    addbutton(actor, 109, 18, '<Button|id='..NewMainUIBase.UI_ICON_COMPOSE..'|x=-52|y=100|mimg=private/cc_functionicon/icon_compose.png|nimg=private/cc_functionicon/icon_compose.png|link=@newmainuibase_openpanel#sid='..NewMainUIBase.UI_ICON_COMPOSE..'>')
 end
 
 function NewMainUIBase.OpenPanel(actor, sid)
