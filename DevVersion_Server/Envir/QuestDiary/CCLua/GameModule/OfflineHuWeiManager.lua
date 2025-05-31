@@ -270,13 +270,13 @@ function OfflineHuWeiManager.ShowBasePanel(actor, sparam)
         strPanelInfo = strPanelInfo..'<Text|id=51|text=已达到最高等级|size=20|x='..(tempCurrX+200)..'|y='..(tempCurrY+80)..'|color='..CSS.NPC_YELLOW..'>'
     else
         local sConditionDesc = GetConditionDescStr(actor, cfgCurrLv.condition)
-        strPanelInfo = strPanelInfo..'<Text|id=51|text=升级条件:  '..sConditionDesc..'|size=18|x='..(tempCurrX+80)..'|y='..tempCurrY..'|color='..CSS.NPC_WHITE..'>'
+        strPanelInfo = strPanelInfo..'<Text|id=51|text=升级条件:  '..sConditionDesc..'|size=18|x='..(tempCurrX+20)..'|y='..tempCurrY..'|color='..CSS.NPC_WHITE..'>'
         tempCurrY = tempCurrY + 30
         --local sConsumeInfo = BF_GetItemTableDescStr(actor, cfgCurrLv.needitems_tab)
         --strPanelInfo = strPanelInfo..'<Text|id=52|text=升级消耗:  '..sConsumeInfo..'|size=18|x='..(tempCurrX+80)..'|y='..tempCurrY..'|color='..CSS.NPC_WHITE..'>'
-        strPanelInfo = strPanelInfo..'<Text|id=52|text=升级消耗:|size=18|x='..(tempCurrX+80)..'|y='..tempCurrY..'|color='..CSS.NPC_WHITE..'>'
+        strPanelInfo = strPanelInfo..'<Text|id=52|text=升级消耗:|size=18|x='..(tempCurrX+20)..'|y='..tempCurrY..'|color='..CSS.NPC_WHITE..'>'
         local sTempStr = ''
-        sTempStr, itemidstr = Item.GetNeedItemsShowInfo(actor, cfgCurrLv.needitems_tab, tempCurrX + 80, tempCurrY, 170, 180, CSS.NPC_WHITE)
+        sTempStr, itemidstr = Item.GetNeedItemsShowInfo(actor, cfgCurrLv.needitems_tab, tempCurrX + 20, tempCurrY, 170, 180, CSS.NPC_WHITE)
         if sTempStr ~= '' then
             strPanelInfo = strPanelInfo..sTempStr
         end

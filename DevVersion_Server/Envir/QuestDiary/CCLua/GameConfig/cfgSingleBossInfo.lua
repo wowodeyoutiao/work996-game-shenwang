@@ -7,7 +7,7 @@ local config = {
 		tipinfo = "掉落介绍：可获得各职业对应等级角色装备以及大量养成道具",
 		needlevel = 40,
 		mapid = "singleboss1",
-		showrewards = "[{\"name\":\"元宝\", \"num\":1}, {\"name\":\"强化石\", \"num\":1}]",
+		showrewards = "[{\"name\":\"绮·命运之刃[紫电]\", \"num\":1}, {\"name\":\"绮·法神披风[紫电]\", \"num\":1}, {\"name\":\"绮·记忆头盔[紫电]\", \"num\":1}, {\"name\":\"绮·记忆项链[紫电]\", \"num\":1}]",
 	},
 	[2] = { 
 		id = 2,
@@ -17,7 +17,7 @@ local config = {
 		tipinfo = "掉落介绍：可获得各职业对应等级角色装备以及大量养成道具",
 		needlevel = 50,
 		mapid = "singleboss2",
-		showrewards = "[{\"name\":\"元宝\", \"num\":1}, {\"name\":\"强化石\", \"num\":1}]",
+		showrewards = "[{\"name\":\"绮·怒斩[青锋]\", \"num\":1}, {\"name\":\"绮·天魔神甲[青锋]\", \"num\":1}, {\"name\":\"绮·圣战头盔[青锋]\", \"num\":1}, {\"name\":\"绮·圣战项链[青锋]\", \"num\":1}]",
 	},
 	[3] = { 
 		id = 3,
@@ -27,7 +27,7 @@ local config = {
 		tipinfo = "掉落介绍：可获得各职业对应等级角色装备以及大量养成道具",
 		needlevel = 60,
 		mapid = "singleboss3",
-		showrewards = "[{\"name\":\"元宝\", \"num\":1}, {\"name\":\"强化石\", \"num\":1}]",
+		showrewards = "[{\"name\":\"绮·屠龙[龙吟]\", \"num\":1}, {\"name\":\"绮·雷霆盔甲[龙吟]\", \"num\":1}, {\"name\":\"绮·圣龙头盔[龙吟]\", \"num\":1}, {\"name\":\"绮·雷霆项链[龙吟]\", \"num\":1}]",
 	},
 	[4] = { 
 		id = 4,
@@ -37,7 +37,7 @@ local config = {
 		tipinfo = "掉落介绍：可获得各职业对应等级角色装备以及大量养成道具",
 		needlevel = 70,
 		mapid = "singleboss4",
-		showrewards = "[{\"name\":\"元宝\", \"num\":1}, {\"name\":\"强化石\", \"num\":1}]",
+		showrewards = "[{\"name\":\"绮·火龙之刃[紫电]\", \"num\":1}, {\"name\":\"绮·火龙战甲[紫电]\", \"num\":1}, {\"name\":\"绮·火龙头盔[紫电]\", \"num\":1}, {\"name\":\"绮·火龙项链[紫电]\", \"num\":1}]",
 	},
 	[5] = { 
 		id = 5,
@@ -47,7 +47,7 @@ local config = {
 		tipinfo = "掉落介绍：可获得各职业对应等级角色装备以及大量养成道具",
 		needlevel = 75,
 		mapid = "singleboss5",
-		showrewards = "[{\"name\":\"元宝\", \"num\":1}, {\"name\":\"强化石\", \"num\":1}]",
+		showrewards = "[{\"name\":\"绮·绿玉裁决[寒霜]\", \"num\":1}, {\"name\":\"绮·钢盔甲[寒霜]\", \"num\":1}, {\"name\":\"绮·浮游头盔[寒霜]\", \"num\":1}, {\"name\":\"绮·浮游项链[寒霜]\", \"num\":1}]",
 	},
 	[6] = { 
 		id = 6,
@@ -57,7 +57,7 @@ local config = {
 		tipinfo = "掉落介绍：可获得各职业对应等级角色装备以及大量养成道具",
 		needlevel = 80,
 		mapid = "singleboss6",
-		showrewards = "[{\"name\":\"元宝\", \"num\":1}, {\"name\":\"强化石\", \"num\":1}]",
+		showrewards = "[{\"name\":\"绮·绿玉屠龙[青锋]\", \"num\":1}, {\"name\":\"绮·无敌甲[青锋]\", \"num\":1}, {\"name\":\"绮·铜域头盔[青锋]\", \"num\":1}, {\"name\":\"绮·铜域项链[青锋]\", \"num\":1}]",
 	},
 	[7] = { 
 		id = 7,
@@ -67,7 +67,7 @@ local config = {
 		tipinfo = "掉落介绍：可获得各职业对应等级角色装备以及大量养成道具",
 		needlevel = 85,
 		mapid = "singleboss7",
-		showrewards = "[{\"name\":\"元宝\", \"num\":1}, {\"name\":\"强化石\", \"num\":1}]",
+		showrewards = "[{\"name\":\"绮·梦幻之刃\", \"num\":1}, {\"name\":\"绮·白虎战甲\", \"num\":1}, {\"name\":\"绮·梦幻头盔\", \"num\":1}, {\"name\":\"绮·梦幻项链\", \"num\":1}]",
 	},
 	[8] = { 
 		id = 8,
@@ -77,7 +77,7 @@ local config = {
 		tipinfo = "掉落介绍：可获得各职业对应等级角色装备以及大量养成道具",
 		needlevel = 90,
 		mapid = "singleboss8",
-		showrewards = "[{\"name\":\"元宝\", \"num\":1}, {\"name\":\"强化石\", \"num\":1}]",
+		showrewards = "[{\"name\":\"绮·梦幻之刃[龙吟]\", \"num\":1}, {\"name\":\"绮·白虎战甲[龙吟]\", \"num\":1}, {\"name\":\"绮·梦幻头盔[龙吟]\", \"num\":1}, {\"name\":\"绮·梦幻项链[龙吟]\", \"num\":1}]",
 	},
 	[9] = { 
 		id = 9,
@@ -87,7 +87,7 @@ local config = {
 		tipinfo = "掉落介绍：可获得各职业对应等级角色装备以及大量养成道具",
 		needlevel = 95,
 		mapid = "singleboss9",
-		showrewards = "[{\"name\":\"元宝\", \"num\":1}, {\"name\":\"强化石\", \"num\":1}]",
+		showrewards = "[{\"name\":\"绮·海边月[霓裳]\", \"num\":1}, {\"name\":\"绮·铁骑战袍[霓裳]\", \"num\":1}, {\"name\":\"绮·神域头盔[霓裳]\", \"num\":1}, {\"name\":\"绮·神域项链[霓裳]\", \"num\":1}]",
 	},
 	[10] = { 
 		id = 10,
@@ -97,7 +97,7 @@ local config = {
 		tipinfo = "掉落介绍：可获得各职业对应等级角色装备以及大量养成道具",
 		needlevel = 100,
 		mapid = "singleboss10",
-		showrewards = "[{\"name\":\"元宝\", \"num\":1}, {\"name\":\"强化石\", \"num\":1}]",
+		showrewards = "[{\"name\":\"绮·风云斩[紫电]\", \"num\":1}, {\"name\":\"绮·绝对防御[紫电]\", \"num\":1}, {\"name\":\"绮·静寂战盔[紫电]\", \"num\":1}, {\"name\":\"绮·静寂战链[紫电]\", \"num\":1}]",
 	},
 	[11] = { 
 		id = 11,
@@ -107,7 +107,7 @@ local config = {
 		tipinfo = "掉落介绍：可获得各职业对应等级角色装备以及大量养成道具",
 		needlevel = 105,
 		mapid = "singleboss11",
-		showrewards = "[{\"name\":\"元宝\", \"num\":1}, {\"name\":\"强化石\", \"num\":1}]",
+		showrewards = "[{\"name\":\"绮·鬼斩[寒霜]\", \"num\":1}, {\"name\":\"绮·鬼甲[寒霜]\", \"num\":1}, {\"name\":\"绮·金域头盔[寒霜]\", \"num\":1}, {\"name\":\"绮·金域令[寒霜]\", \"num\":1}]",
 	},
 	[12] = { 
 		id = 12,
@@ -117,7 +117,7 @@ local config = {
 		tipinfo = "掉落介绍：可获得各职业对应等级角色装备以及大量养成道具",
 		needlevel = 110,
 		mapid = "singleboss12",
-		showrewards = "[{\"name\":\"元宝\", \"num\":1}, {\"name\":\"强化石\", \"num\":1}]",
+		showrewards = "[{\"name\":\"绮·天神刀[青锋]\", \"num\":1}, {\"name\":\"绮·圣龙魔袍[青锋]\", \"num\":1}, {\"name\":\"绮·贝迪头盔[青锋]\", \"num\":1}, {\"name\":\"绮·蓝灵项链[青锋]\", \"num\":1}]",
 	},
 	[13] = { 
 		id = 13,
@@ -127,7 +127,7 @@ local config = {
 		tipinfo = "掉落介绍：可获得各职业对应等级角色装备以及大量养成道具",
 		needlevel = 115,
 		mapid = "singleboss13",
-		showrewards = "[{\"name\":\"元宝\", \"num\":1}, {\"name\":\"强化石\", \"num\":1}]",
+		showrewards = "[{\"name\":\"绮·帝王之剑\", \"num\":1}, {\"name\":\"绮·帝王之甲\", \"num\":1}, {\"name\":\"绮·帝王之盔\", \"num\":1}, {\"name\":\"绮·帝王之链\", \"num\":1}]",
 	},
 	[14] = { 
 		id = 14,
@@ -137,7 +137,7 @@ local config = {
 		tipinfo = "掉落介绍：可获得各职业对应等级角色装备以及大量养成道具",
 		needlevel = 120,
 		mapid = "singleboss14",
-		showrewards = "[{\"name\":\"元宝\", \"num\":1}, {\"name\":\"强化石\", \"num\":1}]",
+		showrewards = "[{\"name\":\"绮·圣战屠龙[龙吟]\", \"num\":1}, {\"name\":\"绮·黄金战甲[龙吟]\", \"num\":1}, {\"name\":\"绮·勇士头盔[龙吟]\", \"num\":1}, {\"name\":\"绮·紫翡翠项链[龙吟]\", \"num\":1}]",
 	},
 	[15] = { 
 		id = 15,
@@ -147,7 +147,7 @@ local config = {
 		tipinfo = "掉落介绍：可获得各职业对应等级角色装备以及大量养成道具",
 		needlevel = 125,
 		mapid = "singleboss15",
-		showrewards = "[{\"name\":\"元宝\", \"num\":1}, {\"name\":\"强化石\", \"num\":1}]",
+		showrewards = "[{\"name\":\"绮·沙漠之鹰[霓裳]\", \"num\":1}, {\"name\":\"绮·泰坦战甲[霓裳]\", \"num\":1}, {\"name\":\"绮·宙神头盔[霓裳]\", \"num\":1}, {\"name\":\"绮·迪斯项链[霓裳]\", \"num\":1}]",
 	},
 }
 return config
