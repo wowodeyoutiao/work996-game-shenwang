@@ -289,7 +289,25 @@ end
 
 --是否有快捷提示
 function GuanZhiManager.IsHaveQuickTip(actor)
-    if not Player.IsFunctionOpen(actor, CommonDefine.FUNC_ID_RANDOMBOSS, false) then
+    if not Player.IsFunctionOpen(actor, CommonDefine.FUNC_ID_GUANZHI, false) then
+        return false
+    end
+
+    local getrewardflag = getplaydef(actor, CommonDefine.VAR_J_DAY_GUAZHI_GETREWARD)
+    if getrewardflag == 1 then
+        return false
+    end
+
+    local currlv = getplaydef(actor, CommonDefine.VAR_U_GUANZHI_LEVEL)
+    if (currlv <= 0) or (cfgGuanZhi[currlv] == nil) then
+        return false
+    end
+
+    return true
+end
+
+function GuanZhiManager.IsTopIconHaveRedPoint(actor)
+    if not Player.IsFunctionOpen(actor, CommonDefine.FUNC_ID_GUANZHI, false) then
         return false
     end
 

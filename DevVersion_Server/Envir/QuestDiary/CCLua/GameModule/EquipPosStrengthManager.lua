@@ -601,4 +601,29 @@ function EquipPosStrengthManager.IsHaveQuickTip(actor)
     return false
 end
 
+function EquipPosStrengthManager.IsTopIconHaveRedPoint(actor)
+    if not Player.IsFunctionOpen(actor, CommonDefine.FUNC_ID_EQUIPPOS_STRENGTH, false) then
+        return false
+    end
+
+    local infoStr = getplaydef(actor, CommonDefine.VAR_T_EQUIPPOS_STRENGTH_INFO)
+    local infoTab = {}
+    if infoStr ~= '' then
+        infoTab = json2tbl(infoStr)
+    end
+    
+    for pos, _ in pairs(CommonDefine.EQUIPPOS_NAME) do
+        if EquipPosStrengthManager.IsValidEquipPosForStrength(pos, 1) then
+            local sid = pos..''
+            if infoTab[sid] ~= nil then
+                if IsPosCanUpgradeOnce(actor, pos, infoTab) then
+                    return true
+                end
+            end
+        end   
+    end
+
+    return false
+end
+
 return EquipPosStrengthManager

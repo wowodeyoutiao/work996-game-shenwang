@@ -21,10 +21,10 @@ JumpAreaManager.ACTIVITY_TYPE_DUOBAO = 4             --跨服夺宝战
 JumpAreaManager.ACTIVITY_TYPE_SHOP = 5               --跨服商店
 
 local JUMPAREA_ACTIVITY_CFG = {
-    {id=JumpAreaManager.ACTIVITY_TYPE_SINGLEPK, name='跨服个人战', funcid=CommonDefine.FUNC_ID_JUMPAREA_1},
+    --{id=JumpAreaManager.ACTIVITY_TYPE_SINGLEPK, name='跨服个人战', funcid=CommonDefine.FUNC_ID_JUMPAREA_1},
     {id=JumpAreaManager.ACTIVITY_TYPE_MULTIPK, name='跨服大乱斗', funcid=CommonDefine.FUNC_ID_JUMPAREA_2},
     {id=JumpAreaManager.ACTIVITY_TYPE_BOSS, name='跨服BOSS', funcid=CommonDefine.FUNC_ID_JUMPAREA_3},
-    {id=JumpAreaManager.ACTIVITY_TYPE_DUOBAO, name='跨服夺宝战', funcid=CommonDefine.FUNC_ID_JUMPAREA_4},
+    --{id=JumpAreaManager.ACTIVITY_TYPE_DUOBAO, name='跨服夺宝战', funcid=CommonDefine.FUNC_ID_JUMPAREA_4},
     {id=JumpAreaManager.ACTIVITY_TYPE_SHOP, name='跨服商店', funcid=CommonDefine.FUNC_ID_JUMPAREA_5},
 }
 
