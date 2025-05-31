@@ -129,6 +129,46 @@ function Item.GetItemImgPath(itemid)
     return imgpath
 end
 
+function Item.GetNeedItemsShowInfo(actor, needitems_tab, basex, basey, imgbaseid, textbaseid, color, bNoBagItemFlag)
+    local sInfo = ''
+    local sIdstr = ''
+    if BF_IsNullObj(actor) or (needitems_tab==nil) or (table.isempty(needitems_tab)) then
+        return sInfo, sIdstr
+    end
+
+    if needitems_tab then
+        local itemgrid_x = basex
+        local itemgrid_y = basey
+        local itemimgid = imgbaseid
+        local itemtextid = textbaseid
+        local finalrewardtab = Player.FilterTable(actor, needitems_tab)  
+        for _, reward in ipairs(finalrewardtab) do  
+            local itemidx = getstditeminfo(reward.name, CommonDefine.STDITEMINFO_IDX)
+            local imgpath = Item.GetItemImgPath(itemidx)
+            local strNeedItemInfo = BF_NumToShowStr(reward.num)
+            if bNoBagItemFlag==nil or bNoBagItemFlag~=true then
+                strNeedItemInfo = strNeedItemInfo..'/'..BF_NumToShowStr(Player.GetItemNumInBag(actor, reward.name))
+            end
+            sInfo = sInfo..'<Img|id='..itemimgid..'|x='..(itemgrid_x+90)..'|y='..(itemgrid_y-4)..'|width=24|height=24|img='..imgpath..'>'
+            sInfo = sInfo..'<Text|id='..itemtextid..'|text=X'..strNeedItemInfo..'|x='..(itemgrid_x+120)..'|y='..itemgrid_y..'|color='..color..'>'
+            if sIdstr ~= '' then
+                sIdstr = sIdstr..','
+            end
+            sIdstr = sIdstr..itemimgid
+            sIdstr = sIdstr..','..itemtextid               
+            local strlenth = string.len(strNeedItemInfo) + 1
+            if strlenth < 10 then
+                strlenth = strlenth + 1
+            end
+            itemgrid_x = itemgrid_x + 14*strlenth
+            itemimgid = itemimgid + 1
+            itemtextid = itemtextid + 1
+        end
+    end    
+
+    return sInfo, sIdstr
+end
+
 function Item.GetEquipposByStdmode(stdmode)
     if stdmode == CommonDefine.ITEM_STDMODE_WEAPON then
         return CommonDefine.EQUIPPOS_WEAPON, -1

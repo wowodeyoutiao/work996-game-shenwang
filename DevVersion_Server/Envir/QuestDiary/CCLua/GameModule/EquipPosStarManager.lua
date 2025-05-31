@@ -335,6 +335,12 @@ local function GetSingleEquipPosShowInfo(actor, equippos)
             --local sConsumeInfo = BF_GetItemTableDescStr(actor, cfgEquipPosUpgradeStar[cfgCurrKey].needitems_tab)
             --sPanelStr = sPanelStr..'<Text|id=162|text=ÉýÐÇÏûºÄ£º'..sConsumeInfo..'|x='..tempX..'|y='..tempY..'|color='..CSS.NPC_YELLOW..'>'
             sPanelStr = sPanelStr..'<Text|id=162|text=ÉýÐÇÏûºÄ£º|x='..tempX..'|y='..tempY..'|color='..CSS.NPC_YELLOW..'>'
+            local sTempStr = ''
+            sTempStr, itemidstr = Item.GetNeedItemsShowInfo(actor, cfgEquipPosUpgradeStar[cfgCurrKey].needitems_tab, tempX, tempY, 170, 180, CSS.NPC_WHITE)
+            if sTempStr ~= '' then
+                sPanelStr = sPanelStr..sTempStr
+            end
+--[[
             if cfgEquipPosUpgradeStar[cfgCurrKey].needitems_tab then
                 local itemgrid_x = tempX
                 local itemgrid_y = tempY
@@ -357,6 +363,7 @@ local function GetSingleEquipPosShowInfo(actor, equippos)
                     itemtextid = itemtextid + 1
                 end
             end            
+]]--
         end
         sPanelStr = sPanelStr..'<Layout|id=160|children={161,162,'..itemidstr..'}|x=0|y=150.0|width=580|height=110>'
 
@@ -390,7 +397,7 @@ local function GetSingleEquipPosShowInfo(actor, equippos)
                 currSelectStr1 = SELECT_AUTO_STAR_LIST[chooseseq].showstr
             end
 
-            sPanelStr = sPanelStr..'<MenuItem|id=503|x=480.0|y='..tempCurrY..'|width=100|height=22|itemname='..strItemList1..'|select='..currSelectStr1..'|fontsize=16|itemhei=20|menuid='..CommonDefine.VAR_S_SELECT_MENUITEM_3..
+            sPanelStr = sPanelStr..'<MenuItem|id=503|x=488.0|y='..tempCurrY..'|width=80|height=30|itemname='..strItemList1..'|select='..currSelectStr1..'|fontsize=16|itemhei=20|menuid='..CommonDefine.VAR_S_SELECT_MENUITEM_3..
                 '|selectcolor=254|fontcolor=250|direction=0|link=@function_button,'..EQUIPPOS_STAR_BUTTONFUNC_ID_6..'>'
 
 --[[

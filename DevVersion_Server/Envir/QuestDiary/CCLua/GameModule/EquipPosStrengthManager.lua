@@ -276,29 +276,10 @@ local function GetSingleEquipPosShowInfo(actor, equippos)
             --local sConsumeInfo = BF_GetItemTableDescStr(actor, cfgEquipPosStrength[cfgCurrKey].needitems_tab)
             --sPanelStr = sPanelStr..'<Text|id=162|text=强化消耗：'..sConsumeInfo..'|x='..tempX..'|y='..tempY..'|color='..CSS.NPC_YELLOW..'>'
             sPanelStr = sPanelStr..'<Text|id=162|text=强化消耗：|x='..tempX..'|y='..tempY..'|color='..CSS.NPC_YELLOW..'>'
-            if cfgEquipPosStrength[cfgCurrKey].needitems_tab then
-                local itemgrid_x = tempX
-                local itemgrid_y = tempY
-                local itemimgid = 170
-                local itemtextid = 180
-                local finalrewardtab = Player.FilterTable(actor, cfgEquipPosStrength[cfgCurrKey].needitems_tab)  
-                for _, reward in ipairs(finalrewardtab) do  
-                    local itemidx = getstditeminfo(reward.name, CommonDefine.STDITEMINFO_IDX)
-                    local imgpath = Item.GetItemImgPath(itemidx)
-                    local strNeedItemInfo = BF_NumToShowStr(reward.num)..'/'..BF_NumToShowStr(Player.GetItemNumInBag(actor, reward.name))
-                    --sPanelStr = sPanelStr..'<ItemShow|id='..itemgridid..'|x='..(itemgrid_x+80)..'|y='..(itemgrid_y-20)..'|width=40|height=40|itemid='..itemidx..'|itemcount=1|bgtype=0|showtips=1>'
-                    --sPanelStr = sPanelStr..'<ItemShow|id='..itemgridid..'|x='..(itemgrid_x+80)..'|y='..(itemgrid_y-20)..'|width=40|height=40|itemid='..itemidx..'|itemcount=1|bgtype=0|showtips=1>'                    
-                    sPanelStr = sPanelStr..'<Img|id='..itemimgid..'|x='..(itemgrid_x+90)..'|y='..(itemgrid_y-10)..'|width=30|height=30|img='..imgpath..'>'
-                    sPanelStr = sPanelStr..'<Text|id='..itemtextid..'|text=X'..strNeedItemInfo..'|x='..(itemgrid_x+120)..'|y='..itemgrid_y..'|color='..CSS.NPC_WHITE..'>'
-                    if itemidstr ~= '' then
-                        itemidstr = itemidstr..','
-                    end
-                    itemidstr = itemidstr..itemimgid
-                    itemidstr = itemidstr..','..itemtextid                    
-                    itemgrid_x = itemgrid_x + 140
-                    itemimgid = itemimgid + 1
-                    itemtextid = itemtextid + 1
-                end
+            local sTempStr = ''
+            sTempStr, itemidstr = Item.GetNeedItemsShowInfo(actor, cfgEquipPosStrength[cfgCurrKey].needitems_tab, tempX, tempY, 170, 180, CSS.NPC_WHITE)
+            if sTempStr ~= '' then
+                sPanelStr = sPanelStr..sTempStr
             end
         end
         sPanelStr = sPanelStr..'<Layout|id=160|children={161,162,'..itemidstr..'}|x=0|y=200.0|width=580|height=110>'        

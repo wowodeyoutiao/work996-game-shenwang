@@ -301,6 +301,7 @@ local function GetSingleShowInfo(actor, viplevel)
     local tempCurrY = 10
     local finishtasknum = 0
     local idstr = ''
+    local itemidstr = ''
     local baseid = 100
     local currVIPLv = getplaydef(actor, CommonDefine.VAR_U_FREEVIP_LEVEL)    
     for i = 1, FreeVIPManager.MAX_TASK_NUM, 1 do
@@ -325,7 +326,7 @@ local function GetSingleShowInfo(actor, viplevel)
                 taskdesc = string.format(taskconfig.taskdesc, str1)
             end
             
-            strPanelInfo = strPanelInfo..'<Text|id='..textid1..'|text=VIP任务'..i..':'..taskdesc..
+            strPanelInfo = strPanelInfo..'<Text|id='..textid1..'|text=任务'..i..':'..taskdesc..
                 '|size=17|x='..tempCurrX..'|y='..tempCurrY..'|color='..CSS.NPC_YELLOW..'>'                
             local color1 = CSS.NPC_WHITE
             if currcounter >= taskconfig.tasktargnum then
@@ -338,8 +339,16 @@ local function GetSingleShowInfo(actor, viplevel)
 
             tempCurrY = tempCurrY + 30
 
-            local sRewardInfo = BF_GetItemTableDescStr(nil, taskconfig.finishrewards_tab)
-            strPanelInfo = strPanelInfo..'<Text|id='..textid3..'|text=  任务奖励: '..sRewardInfo..'|size=15|x='..tempCurrX..'|y='..tempCurrY..'|color='..CSS.NPC_WHITE..'>'
+            --local sRewardInfo = BF_GetItemTableDescStr(nil, taskconfig.finishrewards_tab)
+            --strPanelInfo = strPanelInfo..'<Text|id='..textid3..'|text=  任务奖励: '..sRewardInfo..'|size=15|x='..tempCurrX..'|y='..tempCurrY..'|color='..CSS.NPC_WHITE..'>'
+            strPanelInfo = strPanelInfo..'<Text|id='..textid3..'|text=  任务奖励: |size=15|x='..tempCurrX..'|y='..tempCurrY..'|color='..CSS.NPC_WHITE..'>'
+            local sTempStr, sTempIdStr = Item.GetNeedItemsShowInfo(actor, taskconfig.finishrewards_tab, tempCurrX, tempCurrY, 610 + i*20, 620 + i*20, CSS.NPC_WHITE, true)
+            if sTempStr ~= '' then
+                strPanelInfo = strPanelInfo..sTempStr
+            end            
+            if sTempIdStr ~= '' then
+                itemidstr = itemidstr..','..sTempIdStr              
+            end
             if currVIPLv + 1 == viplevel then
                 if currcounter < taskconfig.tasktargnum then
                     strPanelInfo = strPanelInfo..'<Button|id='..textid4..'|x='..(tempCurrX+280)..'|y='..tempCurrY..'|color='..CSS.NPC_WHITE..
@@ -357,7 +366,7 @@ local function GetSingleShowInfo(actor, viplevel)
         end
         tempCurrY = tempCurrY + 40
     end
-    strPanelInfo = strPanelInfo..'<Layout|id=13|children={'..idstr..'}|x=196.0|y=60.0|width=350|height=360>'
+    strPanelInfo = strPanelInfo..'<Layout|id=13|children={'..idstr..','..itemidstr..'}|x=196.0|y=60.0|width=350|height=360>'
 
     
     local currLvConfig = cfgFreeVIP[viplevel]
@@ -395,7 +404,7 @@ local function GetSingleShowInfo(actor, viplevel)
     if currLvConfig and currLvConfig.dayrewards_tab then        
         idstr = '330,331'
         strPanelInfo = strPanelInfo..'<Text|id=330|text=VIP'..viplevel..'福利:|size=18|x='..tempLeftX..'|y='..tempLeftY..'|color='..CSS.NPC_YELLOW..'>'
-        tempLeftY = tempLeftY + 25
+        tempLeftY = tempLeftY + 30
         local rewardtab = currLvConfig.dayrewards_tab
         if #rewardtab == 0 then
             strPanelInfo = strPanelInfo..'<Text|id=331|text=无|size=15|x='..tempLeftX..'|y='..tempLeftY..'|color=w'..CSS.NPC_WHITE..'>'
@@ -403,8 +412,13 @@ local function GetSingleShowInfo(actor, viplevel)
         else
             for seq, descItem in ipairs(rewardtab) do
                 local textid = 340 + seq
-                idstr = idstr..','..textid
-                strPanelInfo = strPanelInfo..'<Text|id='..textid..'|text='..descItem.name..'*'..BF_NumToShowStr(descItem.num)..'|size=15|x='..tempLeftX..'|y='..tempLeftY..'|color='..CSS.NPC_WHITE..'>'
+                local picid = 360 + seq
+                idstr = idstr..','..textid..','..picid
+
+                local itemidx = getstditeminfo(descItem.name, CommonDefine.STDITEMINFO_IDX)
+                local imgpath = Item.GetItemImgPath(itemidx)        
+                strPanelInfo = strPanelInfo..'<Img|id='..picid..'|x='..(tempLeftX)..'|y='..(tempLeftY-4)..'|width=24|height=24|img='..imgpath..'>'
+                strPanelInfo = strPanelInfo..'<Text|id='..textid..'|text=X'..BF_NumToShowStr(descItem.num)..'|size=15|x='..(tempLeftX+30)..'|y='..tempLeftY..'|color='..CSS.NPC_WHITE..'>'
                 tempLeftY = tempLeftY + 25
             end
         end
@@ -475,7 +489,6 @@ function FreeVIPManager.ShowBasePanel(actor)
         listitemidstr = listitemidstr..picid
     end
     strPanelInfo = strPanelInfo..'<ListView|id=15|children={'..listitemidstr..'}|x=62.0|y=60.0|width=130|height=360|direction=1>'
-
     BF_ShowSpecialUI(actor, strPanelInfo)
 end
 

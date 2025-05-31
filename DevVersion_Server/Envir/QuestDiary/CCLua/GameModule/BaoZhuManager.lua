@@ -357,12 +357,18 @@ local function ShowPanel6(actor, sid)
     tempCurrY = tempCurrY + 20       
     local currPlayerLv = Player.GetLevel(actor)
     if not bCurrIsMaxLv then
-        sPanelStr = sPanelStr..'<Text|text=等级限制：角色达到'..cfgEquipPosStrength[cfgCurrKey].needlv..'级/'..currPlayerLv..'级|x='..tempCurrX..'|y='..tempCurrY..'|color='..CSS.NPC_YELLOW..'>'
+        sPanelStr = sPanelStr..'<Text|text=等级限制：'..cfgEquipPosStrength[cfgCurrKey].needlv..'级/'..currPlayerLv..'级|x='..tempCurrX..'|y='..tempCurrY..'|color='..CSS.NPC_YELLOW..'>'
     end
     tempCurrY = tempCurrY + 30
     if not bCurrIsMaxLv then
-        local sConsumeInfo = BF_GetItemTableDescStr(actor, cfgEquipPosStrength[cfgCurrKey].needitems_tab)
-        sPanelStr = sPanelStr..'<Text|text=强化消耗：'..sConsumeInfo..'|x='..tempCurrX..'|y='..tempCurrY..'|color='..CSS.NPC_YELLOW..'>'
+        --local sConsumeInfo = BF_GetItemTableDescStr(actor, cfgEquipPosStrength[cfgCurrKey].needitems_tab)
+        --sPanelStr = sPanelStr..'<Text|text=强化消耗：'..sConsumeInfo..'|x='..tempCurrX..'|y='..tempCurrY..'|color='..CSS.NPC_YELLOW..'>'
+        sPanelStr = sPanelStr..'<Text|text=强化消耗：|x='..tempCurrX..'|y='..tempCurrY..'|color='..CSS.NPC_YELLOW..'>'
+        local sTempStr = ''
+        sTempStr = Item.GetNeedItemsShowInfo(actor, cfgEquipPosStrength[cfgCurrKey].needitems_tab, tempCurrX, tempCurrY, 170, 180, CSS.NPC_YELLOW)
+        if sTempStr ~= '' then
+            sPanelStr = sPanelStr..sTempStr
+        end        
     end
     tempCurrY = tempCurrY + 20
     sPanelStr = sPanelStr..'<Text|text= - —— - —— - —— - —— - —— - —— - —— - —— - —— - —— - —— - |x=15|y='..tempCurrY..'|color='..CSS.NPC_BLUE_LINE..'>'

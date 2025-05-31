@@ -197,14 +197,22 @@ local function GetSingleShowInfo(actor, targSkillID)
         end        
     end
     tempCurrY = tempCurrY + 30
+    local itemidstr = ''
     if upgradeNextInfo ~= nil then
-        local sConsumeInfo = BF_GetItemTableDescStr(actor, upgradeInfo.needitems_tab)
+        --local sConsumeInfo = BF_GetItemTableDescStr(actor, upgradeInfo.needitems_tab)
         if choosetype == UPGRADE_TYPE_LEVEL then
-            sPanelStr = sPanelStr..'<Text|id=37|text=升级消耗：'..sConsumeInfo..'|x='..tempCurrX..'|y='..tempCurrY..'|color='..CSS.NPC_WHITE..'>'
+            --sPanelStr = sPanelStr..'<Text|id=37|text=升级消耗：'..sConsumeInfo..'|x='..tempCurrX..'|y='..tempCurrY..'|color='..CSS.NPC_WHITE..'>'
+            sPanelStr = sPanelStr..'<Text|id=37|text=升级消耗：|x='..tempCurrX..'|y='..tempCurrY..'|color='..CSS.NPC_WHITE..'>'
         else
-            sPanelStr = sPanelStr..'<Text|id=37|text=进阶消耗：'..sConsumeInfo..'|x='..tempCurrX..'|y='..tempCurrY..'|color='..CSS.NPC_WHITE..'>'
+            --sPanelStr = sPanelStr..'<Text|id=37|text=进阶消耗：'..sConsumeInfo..'|x='..tempCurrX..'|y='..tempCurrY..'|color='..CSS.NPC_WHITE..'>'
+            sPanelStr = sPanelStr..'<Text|id=37|text=进阶消耗：|x='..tempCurrX..'|y='..tempCurrY..'|color='..CSS.NPC_WHITE..'>'
         end        
-    end
+        local sTempStr = ''
+        sTempStr, itemidstr = Item.GetNeedItemsShowInfo(actor, upgradeInfo.needitems_tab, tempCurrX, tempCurrY, 170, 180, CSS.NPC_WHITE)
+        if sTempStr ~= '' then
+            sPanelStr = sPanelStr..sTempStr
+        end        
+    end    
     tempCurrX = 0
     tempCurrY = tempCurrY + 30   
     sPanelStr = sPanelStr..'<Img|id=38|x='..tempCurrX..'|y='..tempCurrY..'|move=0|img=private/cc_skill/5.png>'
@@ -223,7 +231,7 @@ local function GetSingleShowInfo(actor, targSkillID)
         sPanelStr = sPanelStr..'<Text|id=39|text=已达到最高技能'..sLvName..'！|x='..(tempCurrX+240)..'|y='..tempCurrY..'|color='..CSS.NPC_LIGHTGREEN..'>'
     end
 
-    sPanelStr = sPanelStr..'<Layout|id=13|children={'..idstr..'}|x=200.0|y=100.0|width=580|height=320>'
+    sPanelStr = sPanelStr..'<Layout|id=13|children={'..idstr..','..itemidstr..'}|x=200.0|y=100.0|width=580|height=320>'
 
     return sPanelStr
 end

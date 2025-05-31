@@ -275,29 +275,11 @@ function OfflineHuWeiManager.ShowBasePanel(actor, sparam)
         --local sConsumeInfo = BF_GetItemTableDescStr(actor, cfgCurrLv.needitems_tab)
         --strPanelInfo = strPanelInfo..'<Text|id=52|text=升级消耗:  '..sConsumeInfo..'|size=18|x='..(tempCurrX+80)..'|y='..tempCurrY..'|color='..CSS.NPC_WHITE..'>'
         strPanelInfo = strPanelInfo..'<Text|id=52|text=升级消耗:|size=18|x='..(tempCurrX+80)..'|y='..tempCurrY..'|color='..CSS.NPC_WHITE..'>'
-        if cfgCurrLv.needitems_tab then
-            local itemgrid_x = tempCurrX + 80
-            local itemgrid_y = tempCurrY
-            local itemimgid = 170
-            local itemtextid = 180
-            local finalrewardtab = Player.FilterTable(actor, cfgCurrLv.needitems_tab)  
-            for _, reward in ipairs(finalrewardtab) do  
-                local itemidx = getstditeminfo(reward.name, CommonDefine.STDITEMINFO_IDX)
-                local imgpath = Item.GetItemImgPath(itemidx)
-                local strNeedItemInfo = BF_NumToShowStr(reward.num)..'/'..BF_NumToShowStr(Player.GetItemNumInBag(actor, reward.name))
-                strPanelInfo = strPanelInfo..'<Img|id='..itemimgid..'|x='..(itemgrid_x+90)..'|y='..(itemgrid_y-10)..'|width=30|height=30|img='..imgpath..'>'
-                strPanelInfo = strPanelInfo..'<Text|id='..itemtextid..'|text=X'..strNeedItemInfo..'|x='..(itemgrid_x+120)..'|y='..itemgrid_y..'|color='..CSS.NPC_WHITE..'>'
-                if itemidstr ~= '' then
-                    itemidstr = itemidstr..','
-                end
-                itemidstr = itemidstr..itemimgid
-                itemidstr = itemidstr..','..itemtextid                    
-                itemgrid_x = itemgrid_x + 140
-                itemimgid = itemimgid + 1
-                itemtextid = itemtextid + 1
-            end
+        local sTempStr = ''
+        sTempStr, itemidstr = Item.GetNeedItemsShowInfo(actor, cfgCurrLv.needitems_tab, tempCurrX + 80, tempCurrY, 170, 180, CSS.NPC_WHITE)
+        if sTempStr ~= '' then
+            strPanelInfo = strPanelInfo..sTempStr
         end
-
         tempCurrY = tempCurrY + 50
         strPanelInfo = strPanelInfo..'<Button|id=53|x='..(tempCurrX+200)..'|y='..tempCurrY..'|color='..CSS.NPC_WHITE..'|mimg=private/cc_common/button_1.png|nimg=private/cc_common/button_1.png|size=18|text=升    级|link=@function_button,'..
             NPCPANEL_BUTTONFUNC_ID_1..','..huweitype..'>'
@@ -306,7 +288,7 @@ function OfflineHuWeiManager.ShowBasePanel(actor, sparam)
 
 
 
-    idstr = '61,62,63,64'
+    idstr = '61,62,63,64,65'
     local offlineitemdesc = ''
     if cfgCurrLv.offlineitemname and (cfgCurrLv.offlineitemname ~= '') then    
         local infoTab = GetOfflineRewardInfoTab(actor)
@@ -316,17 +298,20 @@ function OfflineHuWeiManager.ShowBasePanel(actor, sparam)
             local passseconds = math.max(0, os.time() - infoTab[sHWType].starttime)
             local currnum = cfgCurrLv.offlineitemnum * math.floor(passseconds / 60)
             currnum = math.min(dayleftnum, currnum)    
-            offlineitemdesc = cfgCurrLv.offlineitemname..'*'..currnum..'/'..dayleftnum           
+            offlineitemdesc = 'X'..currnum..'/'..dayleftnum           
         end
     end
 
     tempCurrX = 5
     tempCurrY = 30
     if offlineitemdesc ~= '' then
+        local itemidx = getstditeminfo(cfgCurrLv.offlineitemname, CommonDefine.STDITEMINFO_IDX)
+        local imgpath = Item.GetItemImgPath(itemidx)        
         strPanelInfo = strPanelInfo..'<Text|id=61|text=当前离线收益:|size=18|x='..tempCurrX..'|y='..(tempCurrY+20)..'|color='..CSS.NPC_WHITE..'>'
-        strPanelInfo = strPanelInfo..'<Text|id=62|text='..offlineitemdesc..' |size=18|x='..tempCurrX..'|y='..(tempCurrY+50)..'|color='..CSS.NPC_WHITE..'>'
-        strPanelInfo = strPanelInfo..'<Text|id=63|text=(收益达到上限后不再累计)|size=15|x='..tempCurrX..'|y='..(tempCurrY+80)..'|color='..CSS.NPC_LIGHTGREEN..'>'       
-        strPanelInfo = strPanelInfo..'<Button|id=64|x='..(tempCurrX+40)..'|y='..(tempCurrY+120)..'|color='..CSS.NPC_WHITE..'|mimg=private/cc_common/button_1.png|nimg=private/cc_common/button_1.png|size=18|text=收    取|link=@function_button,'..
+        strPanelInfo = strPanelInfo..'<Img|id=62|x='..(tempCurrX)..'|y='..(tempCurrY+46)..'|width=24|height=24|img='..imgpath..'>'
+        strPanelInfo = strPanelInfo..'<Text|id=63|text='..offlineitemdesc..' |size=18|x='..(tempCurrX+30)..'|y='..(tempCurrY+50)..'|color='..CSS.NPC_WHITE..'>'
+        strPanelInfo = strPanelInfo..'<Text|id=64|text=(收益达到上限后不再累计)|size=15|x='..tempCurrX..'|y='..(tempCurrY+80)..'|color='..CSS.NPC_LIGHTGREEN..'>'       
+        strPanelInfo = strPanelInfo..'<Button|id=65|x='..(tempCurrX+40)..'|y='..(tempCurrY+120)..'|color='..CSS.NPC_WHITE..'|mimg=private/cc_common/button_1.png|nimg=private/cc_common/button_1.png|size=18|text=收    取|link=@function_button,'..
             NPCPANEL_BUTTONFUNC_ID_2..','..huweitype..'>'
     else
         strPanelInfo = strPanelInfo..'<Text|id=61|text=升级后领取离线收益|size=18|x='..tempCurrX..'|y='..(tempCurrY+100)..'|color='..CSS.NPC_LIGHTGREEN..'>'
