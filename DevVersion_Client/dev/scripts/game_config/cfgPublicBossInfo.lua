@@ -7,6 +7,7 @@ local config = {
 		tipinfo = "掉落介绍：可获得各职业对应等级角色装备以及大量稀有道具",
 		needlevel = 40,
 		mapid = "publicboss1",
+		showrewards = "[{\"name\":\"元宝\", \"num\":1}, {\"name\":\"强化石\", \"num\":1}]",
 	},
 	[2] = { 
 		id = 2,
@@ -16,6 +17,7 @@ local config = {
 		tipinfo = "掉落介绍：可获得各职业对应等级角色装备以及大量稀有道具",
 		needlevel = 50,
 		mapid = "publicboss2",
+		showrewards = "[{\"name\":\"元宝\", \"num\":1}, {\"name\":\"强化石\", \"num\":1}]",
 	},
 	[3] = { 
 		id = 3,
@@ -25,6 +27,7 @@ local config = {
 		tipinfo = "掉落介绍：可获得各职业对应等级角色装备以及大量稀有道具",
 		needlevel = 60,
 		mapid = "publicboss3",
+		showrewards = "[{\"name\":\"元宝\", \"num\":1}, {\"name\":\"强化石\", \"num\":1}]",
 	},
 	[4] = { 
 		id = 4,
@@ -34,6 +37,7 @@ local config = {
 		tipinfo = "掉落介绍：可获得各职业对应等级角色装备以及大量稀有道具",
 		needlevel = 70,
 		mapid = "publicboss4",
+		showrewards = "[{\"name\":\"元宝\", \"num\":1}, {\"name\":\"强化石\", \"num\":1}]",
 	},
 	[5] = { 
 		id = 5,
@@ -43,6 +47,7 @@ local config = {
 		tipinfo = "掉落介绍：可获得各职业对应等级角色装备以及大量稀有道具",
 		needlevel = 75,
 		mapid = "publicboss5",
+		showrewards = "[{\"name\":\"元宝\", \"num\":1}, {\"name\":\"强化石\", \"num\":1}]",
 	},
 	[6] = { 
 		id = 6,
@@ -52,6 +57,7 @@ local config = {
 		tipinfo = "掉落介绍：可获得各职业对应等级角色装备以及大量稀有道具",
 		needlevel = 80,
 		mapid = "publicboss6",
+		showrewards = "[{\"name\":\"元宝\", \"num\":1}, {\"name\":\"强化石\", \"num\":1}]",
 	},
 	[7] = { 
 		id = 7,
@@ -61,6 +67,7 @@ local config = {
 		tipinfo = "掉落介绍：可获得各职业对应等级角色装备以及大量稀有道具",
 		needlevel = 85,
 		mapid = "publicboss7",
+		showrewards = "[{\"name\":\"元宝\", \"num\":1}, {\"name\":\"强化石\", \"num\":1}]",
 	},
 	[8] = { 
 		id = 8,
@@ -70,6 +77,7 @@ local config = {
 		tipinfo = "掉落介绍：可获得各职业对应等级角色装备以及大量稀有道具",
 		needlevel = 90,
 		mapid = "publicboss8",
+		showrewards = "[{\"name\":\"元宝\", \"num\":1}, {\"name\":\"强化石\", \"num\":1}]",
 	},
 	[9] = { 
 		id = 9,
@@ -79,6 +87,7 @@ local config = {
 		tipinfo = "掉落介绍：可获得各职业对应等级角色装备以及大量稀有道具",
 		needlevel = 95,
 		mapid = "publicboss9",
+		showrewards = "[{\"name\":\"元宝\", \"num\":1}, {\"name\":\"强化石\", \"num\":1}]",
 	},
 	[10] = { 
 		id = 10,
@@ -88,6 +97,7 @@ local config = {
 		tipinfo = "掉落介绍：可获得各职业对应等级角色装备以及大量稀有道具",
 		needlevel = 100,
 		mapid = "publicboss10",
+		showrewards = "[{\"name\":\"元宝\", \"num\":1}, {\"name\":\"强化石\", \"num\":1}]",
 	},
 	[11] = { 
 		id = 11,
@@ -97,6 +107,7 @@ local config = {
 		tipinfo = "掉落介绍：可获得各职业对应等级角色装备以及大量稀有道具",
 		needlevel = 105,
 		mapid = "publicboss11",
+		showrewards = "[{\"name\":\"元宝\", \"num\":1}, {\"name\":\"强化石\", \"num\":1}]",
 	},
 	[12] = { 
 		id = 12,
@@ -106,6 +117,7 @@ local config = {
 		tipinfo = "掉落介绍：可获得各职业对应等级角色装备以及大量稀有道具",
 		needlevel = 110,
 		mapid = "publicboss12",
+		showrewards = "[{\"name\":\"元宝\", \"num\":1}, {\"name\":\"强化石\", \"num\":1}]",
 	},
 	[13] = { 
 		id = 13,
@@ -115,6 +127,7 @@ local config = {
 		tipinfo = "掉落介绍：可获得各职业对应等级角色装备以及大量稀有道具",
 		needlevel = 115,
 		mapid = "publicboss13",
+		showrewards = "[{\"name\":\"元宝\", \"num\":1}, {\"name\":\"强化石\", \"num\":1}]",
 	},
 }
 return config

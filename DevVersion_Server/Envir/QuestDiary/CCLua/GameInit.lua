@@ -310,8 +310,32 @@ local function _Includes()
             value.rewarditems_tab = BF_Json2Table(value.rewarditems)
         else
             value.rewarditems_tab = {}
-        end      
+        end
+        
+        if (value.showrewards ~= nil) and (value.showrewards ~= '') then
+            value.showrewards_tab = BF_Json2Table(value.showrewards)
+        else
+            value.showrewards_tab = {}
+        end        
     end
+
+    --SINGLEBOSS
+    for _, value in pairs(cfgSingleBossInfo) do
+        if (value.showrewards ~= nil) and (value.showrewards ~= '') then
+            value.showrewards_tab = BF_Json2Table(value.showrewards)
+        else
+            value.showrewards_tab = {}
+        end        
+    end 
+    
+    --PUBLICBOSS
+    for _, value in pairs(cfgPublicBossInfo) do
+        if (value.showrewards ~= nil) and (value.showrewards ~= '') then
+            value.showrewards_tab = BF_Json2Table(value.showrewards)
+        else
+            value.showrewards_tab = {}
+        end        
+    end     
 
     --»êÊ¯î¿°í
     for _, value in pairs(SoulStoneManager.JI_BAN_CFG_INFO) do

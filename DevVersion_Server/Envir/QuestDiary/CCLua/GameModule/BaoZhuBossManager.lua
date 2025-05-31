@@ -283,24 +283,32 @@ function BaoZhuBossManager.ShowBasePanel(actor)
 	else
 		local baseid = 400
 		for seq, bossinfo in ipairs(cfgBaoZhuBossInfo) do
-			local picid = baseid + seq * 10			
+			local picid = baseid + seq * 20			
 			if itemidstr ~= '' then
 				itemidstr = itemidstr..','
 			end
 			itemidstr = itemidstr..picid
 			local childstr = (picid+1)..','..(picid+2)..','..(picid+3)..','..(picid+4)
-			strPanelInfo = strPanelInfo..'<Img|id='..picid..'|children={'..childstr..'}|x=0.0|y=0.0|reset=1|img=private/cc_bosslist_ex/2.png>'..
+            for seq1, value1 in ipairs(bossinfo.showrewards_tab) do
+                local itemidx = getstditeminfo(value1.name, CommonDefine.STDITEMINFO_IDX)
+                local tempx1 = 40 + seq1 * 70
+                local itemid = picid + 10 + seq1
+                childstr = childstr..','..itemid
+                strPanelInfo = strPanelInfo..'<ItemShow|id='..itemid..'|ay=1|x='..tempx1..'|y=42|width=50|height=50|itemid='..itemidx..'|itemcount='..value1.num..'|bgtype=1|showtips=1>'
+            end
+			strPanelInfo = strPanelInfo..'<Img|id='..picid..'|children={'..childstr..'}|x=0.0|y=0.0|height=110|reset=1|img=private/cc_bosslist_ex/2.png>'..
 				'<Text|id='..(picid+1)..'|text='..bossinfo.showname..'|size=18|x=10|y=10|color='..CSS.NPC_YELLOW..'>'..
-                '<Text|id='..(picid+2)..'|text=奖励介绍:可获得各等级的直升宝石和稀有材料!|size=18|x=10|y=50|color='..CSS.NPC_WHITE..'>'
+                --'<Text|id='..(picid+2)..'|text=奖励介绍:可获得各等级的直升宝石和稀有材料!|size=18|x=10|y=50|color='..CSS.NPC_WHITE..'>'
+                '<Text|id='..(picid+2)..'|text=奖励介绍:|size=18|x=10|y=50|color='..CSS.NPC_WHITE..'>'
 
             if currpower < bossinfo.needscore then
-                strPanelInfo = strPanelInfo..'<Text|id='..(picid+3)..'|text=需角色战力|size=18|x=480|y=10|color='..CSS.NPC_RED..'>'..                
-                    '<Text|id='..(picid+4)..'|text='..BF_NumToShowStr(bossinfo.needscore)..'/'..BF_NumToShowStr(currpower)..'|size=15|x=480|y=50|color='..CSS.NPC_WHITE..'>'
+                strPanelInfo = strPanelInfo..'<Text|id='..(picid+3)..'|text=需角色战力|size=18|x=480|y=20|color='..CSS.NPC_RED..'>'..                
+                    '<Text|id='..(picid+4)..'|text='..BF_NumToShowStr(bossinfo.needscore)..'/'..BF_NumToShowStr(currpower)..'|size=15|x=480|y=60|color='..CSS.NPC_WHITE..'>'
             else
                 local _, leftseconds = BF_GetMapBossInfo(bossinfo.mapid, bossinfo.monidx)
                 if leftseconds > 0 then
-                    strPanelInfo = strPanelInfo..'<Text|id='..(picid+3)..'|text=死亡复活|size=18|x=480|y=10|color='..CSS.NPC_RED..'>'..
-                        '<COUNTDOWN|id='..(picid+4)..'|x=500|y=50|time='..leftseconds..'|count=1|size=18|color='..
+                    strPanelInfo = strPanelInfo..'<Text|id='..(picid+3)..'|text=死亡复活|size=18|x=480|y=20|color='..CSS.NPC_RED..'>'..
+                        '<COUNTDOWN|id='..(picid+4)..'|x=500|y=60|time='..leftseconds..'|count=1|size=18|color='..
                         CSS.NPC_LIGHTGREEN..'|link=@show_base_panel>'
                 else
                     strPanelInfo = strPanelInfo..'<Button|id='..(picid+3)..'|x=480|y=40|mimg=private/cc_bosslist_ex/4.png|nimg=private/cc_bosslist_ex/4.png|size=18|color='..

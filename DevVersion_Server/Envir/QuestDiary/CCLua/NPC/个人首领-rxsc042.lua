@@ -31,9 +31,18 @@ function show_boss_panel(actor)
         local info = cfgSingleBossInfo[i]
         local baseid = nStartID + i * 20
         local idstr1 = (baseid+1)..','..(baseid+2)..','..(baseid+3)..','..(baseid+4)..','..(baseid+5)..','..(baseid+6)
-        msg = msg..'<Img|id='..baseid..'|children={'..idstr1..'}|img=private/cc_bosslist/9.png>'..
+
+        for seq1, value1 in ipairs(info.showrewards_tab) do
+            local itemidx = getstditeminfo(value1.name, CommonDefine.STDITEMINFO_IDX)
+            local tempx1 = 40 + seq1 * 70
+            local itemid = baseid + 10 + seq1
+            idstr1 = idstr1..','..itemid
+            msg = msg..'<ItemShow|id='..itemid..'|ay=1|x='..tempx1..'|y=42|width=50|height=50|itemid='..itemidx..'|itemcount='..value1.num..'|bgtype=1|showtips=1>'
+        end    
+
+        msg = msg..'<Img|id='..baseid..'|height=110|children={'..idstr1..'}|img=private/cc_bosslist/9.png>'..
             '<Text|id='..(baseid+1)..'|text='..info.showname..'|size=20|x=15|y=10|color='..info.showcolor..'>'..
-            '<Text|id='..(baseid+2)..'|text='..info.tipinfo..'|size=15|x=15|y=50|color='..CSS.NPC_WHITE..'>'
+            '<Text|id='..(baseid+2)..'|text=µôÂä½éÉÜ:|size=18|x=15|y=50|color='..CSS.NPC_WHITE..'>'
 
         local lefthprate, leftseconds = BF_GetMapBossInfo(info.mapid, info.monidx)
         if info.needlevel > currlv then
