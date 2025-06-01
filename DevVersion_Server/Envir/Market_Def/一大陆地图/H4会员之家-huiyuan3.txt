@@ -1,0 +1,28 @@
+[@MAIN]
+#IF
+CHECKUNDERWAR 沙巴克
+equal <$HOUR> 21
+#ACT
+SENDMSG 9 沙巴克攻城期间，禁止入图
+BREAK
+#IF
+#ACT
+messagebox 尊敬的勇士您好：\进入会员之家4层需要VIP8，是否确定进入？ @进入会员之家4 @exit
+
+
+
+
+[@进入会员之家4]
+#IF
+NOT SMALL U211 8
+#ACT
+MAPMOVE  huiyuan4 53 51
+#ELSEACT
+SendMsg 9 传送失败，此地图需要VIP8进入！
+
+
+
+[@自动打怪]
+#ACT
+StartAutoPlayGame
+

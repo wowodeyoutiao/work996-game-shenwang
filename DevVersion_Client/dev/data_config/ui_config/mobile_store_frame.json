@@ -1,1 +1,1 @@
-{"#FrameLayout#FrameBG":{"visible":1,"offsety":3,"offsetx":-12,"width":830,"height":530},"#FrameLayout#TitleText":{"visible":1,"offsety":4,"offsetx":280,"width":40,"height":24},"#FrameLayout#DressIMG":{"visible":0,"offsety":-14,"offsetx":13,"width":83,"height":78}}
+{"#FrameLayout#FrameBG":{"offsetx":-12,"offsety":3,"visible":1,"height":530,"width":830},"#FrameLayout#TitleText":{"offsetx":280,"offsety":4,"visible":1,"height":24,"width":40},"#FrameLayout#DressIMG":{"offsetx":13,"offsety":-14,"visible":0,"height":78,"width":83}}

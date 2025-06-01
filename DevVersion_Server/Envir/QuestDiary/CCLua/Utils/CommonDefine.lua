@@ -116,6 +116,7 @@ CommonDefine = {
     INFO_SLAVECOUNT = 38,                --宝宝数量
     INFO_MONIDX = 55,                    --怪物的Idx
     INFO_NAMECOLOR = 56,                 --名字颜色
+    INFO_MASTEROBJ = 59,                 --主人
     INFO_BAGCOUNT = 63,                  --背包大小
     INFO_CURRTARG = 67,                  --当前攻击对象
 

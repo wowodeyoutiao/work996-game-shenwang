@@ -82,6 +82,12 @@ function Player.GetCurrTargetObj(actor)
     return targobj
 end
 
+--返回主人
+function Player.GetMasterObj(actor)
+    local masterobj = getbaseinfo(actor, CommonDefine.INFO_MASTEROBJ)
+    return masterobj
+end
+
 --设置对象满血满蓝
 function Player.FullHPMP(actor)
     addhpper(actor, '=', 100)

@@ -5660,6 +5660,12 @@ BREAK
 CALLLUA CC_QFunction @carpathend
 BREAK
 
+[@CarDie]
+#IF
+#ACT
+CALLLUA CC_QFunction @cardie,<$KILLMONNAME>,<$TEMPMONUSERID>
+BREAK
+
 ;==============================================================================新功能  道具使用
 [@StdModeFunc0]
 #IF

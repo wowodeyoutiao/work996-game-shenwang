@@ -309,6 +309,11 @@ function carpathend(actor)
     YunBiaoManager.OnArriveTargetPos(actor)
 end
 
+--»÷É±ïÚ³µ
+function cardie(actor, carmonname, monobjidstr)
+    YunBiaoManager.OnPlayerKillCar(actor, carmonname, monobjidstr)
+end
+
 --Íæ¼Ò¶ªÊ§ïÚ³µ´¥·¢
 --[[
 function losercar(actor, biaoche)

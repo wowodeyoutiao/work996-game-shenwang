@@ -186,7 +186,7 @@ local function GetSingleShowInfo(actor, targSkillID)
     tempCurrX = 0
     tempCurrY = 150
     sPanelStr = sPanelStr..'<Img|id=35|x='..tempCurrX..'|y='..tempCurrY..'|move=0|img=private/cc_skill/5.png>'
-    tempCurrX = 190
+    tempCurrX = 40
     tempCurrY = tempCurrY + 10
     local currPlayerLv = Player.GetLevel(actor)
     if upgradeNextInfo ~= nil then

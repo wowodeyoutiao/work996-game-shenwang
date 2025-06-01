@@ -266,7 +266,7 @@ local function GetSingleEquipPosShowInfo(actor, equippos)
         sPanelStr = sPanelStr..'<Layout|id='..startid..'|children={'..idstr..'}|x=330.0|y=0|width=240|height=180>'       
 
         --ÏûºÄ
-        local tempX = 150
+        local tempX = 70
         local tempY = 10
         local currPlayerLv = Player.GetLevel(actor)
         local itemidstr = ''

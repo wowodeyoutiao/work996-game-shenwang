@@ -7,7 +7,7 @@ local config = {
 		tipinfo = "掉落介绍：可获得各职业对应等级角色装备以及大量稀有道具",
 		needlevel = 40,
 		mapid = "publicboss1",
-		showrewards = "[{\"name\":\"元宝\", \"num\":1}, {\"name\":\"强化石\", \"num\":1}]",
+		showrewards = "[{\"name\":\"极·命运之刃[紫电]\", \"num\":1}, {\"name\":\"极·法神披风[紫电]\", \"num\":1}, {\"name\":\"极·记忆头盔[紫电]\", \"num\":1}, {\"name\":\"极·记忆项链[紫电]\", \"num\":1}]",
 	},
 	[2] = { 
 		id = 2,
@@ -17,7 +17,7 @@ local config = {
 		tipinfo = "掉落介绍：可获得各职业对应等级角色装备以及大量稀有道具",
 		needlevel = 50,
 		mapid = "publicboss2",
-		showrewards = "[{\"name\":\"元宝\", \"num\":1}, {\"name\":\"强化石\", \"num\":1}]",
+		showrewards = "[{\"name\":\"极·怒斩[青锋]\", \"num\":1}, {\"name\":\"极·天魔神甲[青锋]\", \"num\":1}, {\"name\":\"极·圣战头盔[青锋]\", \"num\":1}, {\"name\":\"极·圣战项链[青锋]\", \"num\":1}]",
 	},
 	[3] = { 
 		id = 3,
@@ -27,7 +27,7 @@ local config = {
 		tipinfo = "掉落介绍：可获得各职业对应等级角色装备以及大量稀有道具",
 		needlevel = 60,
 		mapid = "publicboss3",
-		showrewards = "[{\"name\":\"元宝\", \"num\":1}, {\"name\":\"强化石\", \"num\":1}]",
+		showrewards = "[{\"name\":\"极·屠龙[龙吟]\", \"num\":1}, {\"name\":\"极·雷霆盔甲[龙吟]\", \"num\":1}, {\"name\":\"极·圣龙头盔[龙吟]\", \"num\":1}, {\"name\":\"极·雷霆项链[龙吟]\", \"num\":1}]",
 	},
 	[4] = { 
 		id = 4,
@@ -37,7 +37,7 @@ local config = {
 		tipinfo = "掉落介绍：可获得各职业对应等级角色装备以及大量稀有道具",
 		needlevel = 70,
 		mapid = "publicboss4",
-		showrewards = "[{\"name\":\"元宝\", \"num\":1}, {\"name\":\"强化石\", \"num\":1}]",
+		showrewards = "[{\"name\":\"极·火龙之刃[紫电]\", \"num\":1}, {\"name\":\"极·火龙战甲[紫电]\", \"num\":1}, {\"name\":\"极·火龙头盔[紫电]\", \"num\":1}, {\"name\":\"极·火龙项链[紫电]\", \"num\":1}]",
 	},
 	[5] = { 
 		id = 5,
@@ -47,7 +47,7 @@ local config = {
 		tipinfo = "掉落介绍：可获得各职业对应等级角色装备以及大量稀有道具",
 		needlevel = 75,
 		mapid = "publicboss5",
-		showrewards = "[{\"name\":\"元宝\", \"num\":1}, {\"name\":\"强化石\", \"num\":1}]",
+		showrewards = "[{\"name\":\"极·绿玉裁决[寒霜]\", \"num\":1}, {\"name\":\"极·钢盔甲[寒霜]\", \"num\":1}, {\"name\":\"极·浮游头盔[寒霜]\", \"num\":1}, {\"name\":\"极·浮游项链[寒霜]\", \"num\":1}]",
 	},
 	[6] = { 
 		id = 6,
@@ -57,7 +57,7 @@ local config = {
 		tipinfo = "掉落介绍：可获得各职业对应等级角色装备以及大量稀有道具",
 		needlevel = 80,
 		mapid = "publicboss6",
-		showrewards = "[{\"name\":\"元宝\", \"num\":1}, {\"name\":\"强化石\", \"num\":1}]",
+		showrewards = "[{\"name\":\"极·绿玉屠龙[青锋]\", \"num\":1}, {\"name\":\"极·无敌甲[青锋]\", \"num\":1}, {\"name\":\"极·铜域头盔[青锋]\", \"num\":1}, {\"name\":\"极·铜域项链[青锋]\", \"num\":1}]",
 	},
 	[7] = { 
 		id = 7,
@@ -67,7 +67,7 @@ local config = {
 		tipinfo = "掉落介绍：可获得各职业对应等级角色装备以及大量稀有道具",
 		needlevel = 85,
 		mapid = "publicboss7",
-		showrewards = "[{\"name\":\"元宝\", \"num\":1}, {\"name\":\"强化石\", \"num\":1}]",
+		showrewards = "[{\"name\":\"极·梦幻之刃\", \"num\":1}, {\"name\":\"极·白虎战甲\", \"num\":1}, {\"name\":\"极·梦幻头盔\", \"num\":1}, {\"name\":\"极·梦幻项链\", \"num\":1}]",
 	},
 	[8] = { 
 		id = 8,
@@ -77,7 +77,7 @@ local config = {
 		tipinfo = "掉落介绍：可获得各职业对应等级角色装备以及大量稀有道具",
 		needlevel = 90,
 		mapid = "publicboss8",
-		showrewards = "[{\"name\":\"元宝\", \"num\":1}, {\"name\":\"强化石\", \"num\":1}]",
+		showrewards = "[{\"name\":\"极·梦幻之刃[龙吟]\", \"num\":1}, {\"name\":\"极·白虎战甲[龙吟]\", \"num\":1}, {\"name\":\"极·梦幻头盔[龙吟]\", \"num\":1}, {\"name\":\"极·梦幻项链[龙吟]\", \"num\":1}]",
 	},
 	[9] = { 
 		id = 9,
@@ -87,7 +87,7 @@ local config = {
 		tipinfo = "掉落介绍：可获得各职业对应等级角色装备以及大量稀有道具",
 		needlevel = 95,
 		mapid = "publicboss9",
-		showrewards = "[{\"name\":\"元宝\", \"num\":1}, {\"name\":\"强化石\", \"num\":1}]",
+		showrewards = "[{\"name\":\"极·海边月[霓裳]\", \"num\":1}, {\"name\":\"极·铁骑战袍[霓裳]\", \"num\":1}, {\"name\":\"极·神域头盔[霓裳]\", \"num\":1}, {\"name\":\"极·神域项链[霓裳]\", \"num\":1}]",
 	},
 	[10] = { 
 		id = 10,
@@ -97,7 +97,7 @@ local config = {
 		tipinfo = "掉落介绍：可获得各职业对应等级角色装备以及大量稀有道具",
 		needlevel = 100,
 		mapid = "publicboss10",
-		showrewards = "[{\"name\":\"元宝\", \"num\":1}, {\"name\":\"强化石\", \"num\":1}]",
+		showrewards = "[{\"name\":\"极·风云斩[紫电]\", \"num\":1}, {\"name\":\"极·绝对防御[紫电]\", \"num\":1}, {\"name\":\"极·静寂战盔[紫电]\", \"num\":1}, {\"name\":\"极·静寂战链[紫电]\", \"num\":1}]",
 	},
 	[11] = { 
 		id = 11,
@@ -107,7 +107,7 @@ local config = {
 		tipinfo = "掉落介绍：可获得各职业对应等级角色装备以及大量稀有道具",
 		needlevel = 105,
 		mapid = "publicboss11",
-		showrewards = "[{\"name\":\"元宝\", \"num\":1}, {\"name\":\"强化石\", \"num\":1}]",
+		showrewards = "[{\"name\":\"极·鬼斩[寒霜]\", \"num\":1}, {\"name\":\"极·鬼甲[寒霜]\", \"num\":1}, {\"name\":\"极·金域头盔[寒霜]\", \"num\":1}, {\"name\":\"极·金域令[寒霜]\", \"num\":1}]",
 	},
 	[12] = { 
 		id = 12,
@@ -117,7 +117,7 @@ local config = {
 		tipinfo = "掉落介绍：可获得各职业对应等级角色装备以及大量稀有道具",
 		needlevel = 110,
 		mapid = "publicboss12",
-		showrewards = "[{\"name\":\"元宝\", \"num\":1}, {\"name\":\"强化石\", \"num\":1}]",
+		showrewards = "[{\"name\":\"极·天神刀[青锋]\", \"num\":1}, {\"name\":\"极·圣龙魔袍[青锋]\", \"num\":1}, {\"name\":\"极·贝迪头盔[青锋]\", \"num\":1}, {\"name\":\"极·蓝灵项链[青锋]\", \"num\":1}]",
 	},
 	[13] = { 
 		id = 13,
@@ -127,7 +127,7 @@ local config = {
 		tipinfo = "掉落介绍：可获得各职业对应等级角色装备以及大量稀有道具",
 		needlevel = 115,
 		mapid = "publicboss13",
-		showrewards = "[{\"name\":\"元宝\", \"num\":1}, {\"name\":\"强化石\", \"num\":1}]",
+		showrewards = "[{\"name\":\"极·帝王之剑\", \"num\":1}, {\"name\":\"极·帝王之甲\", \"num\":1}, {\"name\":\"极·帝王之盔\", \"num\":1}, {\"name\":\"极·帝王之链\", \"num\":1}]",
 	},
 }
 return config
