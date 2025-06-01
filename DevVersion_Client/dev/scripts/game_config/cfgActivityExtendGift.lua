@@ -5,7 +5,7 @@ local config = {
 		checknum = 25,
 		checkparam = 0,
 		showinfo = "等级达到25级",
-		rewards = "[{\"name\":\"强化石\", \"num\":300}, {\"name\":\"金币\", \"num\":1000000}]",
+		rewards = "[{\"name\":\"1级筛子\", \"num\":2},{\"name\":\"强化石\", \"num\":300}, {\"name\":\"金币\", \"num\":1000000}]",
 	},
 	[2] = { 
 		seq = 2,
@@ -13,7 +13,7 @@ local config = {
 		checknum = 100000,
 		checkparam = 0,
 		showinfo = "战力达到10万",
-		rewards = "[{\"name\":\"书页\", \"num\":300}, {\"name\":\"金币\", \"num\":2000000}]",
+		rewards = "[{\"name\":\"2级筛子\", \"num\":2},{\"name\":\"书页\", \"num\":300}, {\"name\":\"金币\", \"num\":2000000}]",
 	},
 	[3] = { 
 		seq = 3,
@@ -22,7 +22,7 @@ local config = {
 		checkparam = 0,
 		showinfo = "需600元宝",
 		needitems = "[{\"name\":\"元宝\", \"num\":600}]",
-		rewards = "[{\"name\":\"强化石\", \"num\":300}, {\"name\":\"金币\", \"num\":1000000}]",
+		rewards = "[{\"name\":\"升星石\", \"num\":500}, {\"name\":\"特级升星符\", \"num\":1}, {\"name\":\"金币\", \"num\":5000000}]",
 	},
 	[4] = { 
 		seq = 4,
@@ -30,7 +30,7 @@ local config = {
 		checknum = 50,
 		checkparam = 0,
 		showinfo = "等级达到50级",
-		rewards = "[{\"name\":\"书页\", \"num\":300}, {\"name\":\"金币\", \"num\":2000000}]",
+		rewards = "[{\"name\":\"6星直升宝石\", \"num\":1},{\"name\":\"3级筛子\", \"num\":3}, {\"name\":\"金币\", \"num\":3000000}]",
 	},
 	[5] = { 
 		seq = 5,
@@ -38,7 +38,7 @@ local config = {
 		checknum = 1000000,
 		checkparam = 0,
 		showinfo = "战力达到100万",
-		rewards = "[{\"name\":\"强化石\", \"num\":300}, {\"name\":\"金币\", \"num\":1000000}]",
+		rewards = "[{\"name\":\"8星直升宝石\", \"num\":1},{\"name\":\"4级筛子\", \"num\":5}, {\"name\":\"绑定元宝\", \"num\":3000}]",
 	},
 	[6] = { 
 		seq = 6,
@@ -47,7 +47,7 @@ local config = {
 		checkparam = 0,
 		showinfo = "需1500元宝",
 		needitems = "[{\"name\":\"元宝\", \"num\":1500}]",
-		rewards = "[{\"name\":\"书页\", \"num\":300}, {\"name\":\"金币\", \"num\":2000000}]",
+		rewards = "[{\"name\":\"10星直升宝石\", \"num\":1}, {\"name\":\"传奇经验珠\", \"num\":2}, {\"name\":\"金币\", \"num\":5000000}]",
 	},
 	[7] = { 
 		seq = 7,
@@ -55,7 +55,7 @@ local config = {
 		checknum = 70,
 		checkparam = 0,
 		showinfo = "等级达到70级",
-		rewards = "[{\"name\":\"强化石\", \"num\":300}, {\"name\":\"金币\", \"num\":1000000}]",
+		rewards = "[{\"name\":\"升星石\", \"num\":1000},{\"name\":\"5级筛子\", \"num\":5}, {\"name\":\"金币\", \"num\":5000000}]",
 	},
 	[8] = { 
 		seq = 8,
@@ -63,7 +63,7 @@ local config = {
 		checknum = 1500000,
 		checkparam = 0,
 		showinfo = "战力达到150万",
-		rewards = "[{\"name\":\"书页\", \"num\":300}, {\"name\":\"金币\", \"num\":2000000}]",
+		rewards = "[{\"name\":\"6级筛子\", \"num\":5}, {\"name\":\"技能秘籍\", \"num\":500}, {\"name\":\"金币\", \"num\":5000000}]",
 	},
 	[9] = { 
 		seq = 9,
@@ -72,7 +72,7 @@ local config = {
 		checkparam = 0,
 		showinfo = "需3000元宝",
 		needitems = "[{\"name\":\"元宝\", \"num\":3000}]",
-		rewards = "[{\"name\":\"强化石\", \"num\":300}, {\"name\":\"金币\", \"num\":1000000}]",
+		rewards = "[{\"name\":\"6级红魂石(金)\", \"num\":1}, {\"name\":\"6级蓝魂石(金)\", \"num\":1}, {\"name\":\"6级绿魂石(金)\", \"num\":1}, {\"name\":\"6级黄魂石(金)\", \"num\":1}]",
 	},
 	[10] = { 
 		seq = 10,
@@ -80,7 +80,7 @@ local config = {
 		checknum = 80,
 		checkparam = 0,
 		showinfo = "等级达到80级",
-		rewards = "[{\"name\":\"书页\", \"num\":300}, {\"name\":\"金币\", \"num\":2000000}]",
+		rewards = "[{\"name\":\"6级筛子\", \"num\":8}, {\"name\":\"技能秘籍\", \"num\":1000}, {\"name\":\"金币\", \"num\":8000000}]",
 	},
 	[11] = { 
 		seq = 11,
@@ -88,7 +88,7 @@ local config = {
 		checknum = 2000000,
 		checkparam = 0,
 		showinfo = "战力达到200万",
-		rewards = "[{\"name\":\"强化石\", \"num\":300}, {\"name\":\"金币\", \"num\":1000000}]",
+		rewards = "[{\"name\":\"6级筛子\", \"num\":10},{\"name\":\"祝福油\", \"num\":200}, {\"name\":\"金币\", \"num\":10000000}]",
 	},
 	[12] = { 
 		seq = 12,
@@ -97,7 +97,7 @@ local config = {
 		checkparam = 0,
 		showinfo = "需6800元宝",
 		needitems = "[{\"name\":\"元宝\", \"num\":6800}]",
-		rewards = "[{\"name\":\"书页\", \"num\":300}, {\"name\":\"金币\", \"num\":2000000}]",
+		rewards = "[{\"name\":\"鼠灵玉·粉1星\", \"num\":1}, {\"name\":\"兔灵玉·粉1星\", \"num\":1}, {\"name\":\"马灵玉·粉1星\", \"num\":1}, {\"name\":\"鸡灵玉·粉1星\", \"num\":1}]",
 	},
 }
 return config
