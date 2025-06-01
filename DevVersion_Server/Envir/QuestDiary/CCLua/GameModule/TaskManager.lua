@@ -633,6 +633,7 @@ GameEventManager.AddListener(CommonDefine.EVENT_NAME_CLICK_TASK, TaskManager.OnP
 -------杀怪的触发还需要处理！！！！！！！！！！！！！！！！！！！！！！
 -------杀怪的触发还需要处理！！！！！！！！！！！！！！！！！！！！！！
 -------杀怪的触发还需要处理！！！！！！！！！！！！！！！！！！！！！！
-GameEventManager.AddListener(CommonDefine.EVENT_NAME_KILL_MON, TaskManager.OnKillMon, CommonDefine.FUNC_ID_GAMETASK)
+---现在去掉杀怪任务
+--GameEventManager.AddListener(CommonDefine.EVENT_NAME_KILL_MON, TaskManager.OnKillMon, CommonDefine.FUNC_ID_GAMETASK)
 
 return TaskManager

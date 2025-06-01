@@ -3,17 +3,17 @@ YunBiaoManager = {}
 --不同档次镖车的配置，高级的配到最后
 local RANDOM_BIAOCHE_CONFIG = {
     {
-        level=1, prop=6000, monid=2201, showname='普通镖车', showcolor=CSS.NPC_LIGHTGREEN, appr=290,
+        level=1, prop=6000, monid=2201, showname='普通镖车', showcolor=CSS.NPC_LIGHTGREEN, appr=290, killaddguanzhiexp=200,
         rewarditems={{name='绑定元宝', num=100}, {name='升星石', num=50}, {name='经验', num=500000}},
         extrewarditems={{name='绑定元宝', num=100}, {name='升星石', num=50}, {name='经验', num=500000}},
     },
     {
-        level=2, prop=3000, monid=2202, showname='高级镖车', showcolor=CSS.NPC_PURPLE, appr=291, 
+        level=2, prop=3000, monid=2202, showname='高级镖车', showcolor=CSS.NPC_PURPLE, appr=291, killaddguanzhiexp=400,
         rewarditems={{name='绑定元宝', num=200}, {name='升星石', num=100}, {name='经验', num=1000000}},
         extrewarditems={{name='绑定元宝', num=200}, {name='升星石', num=100}, {name='经验', num=1000000}},
     },
     {
-        level=3, prop=1000, monid=2203, showname='豪华镖车', showcolor=CSS.NPC_ORANGE, appr=292,
+        level=3, prop=1000, monid=2203, showname='超级镖车', showcolor=CSS.NPC_ORANGE, appr=292, killaddguanzhiexp=700,
         rewarditems={{name='绑定元宝', num=300}, {name='升星石', num=200}, {name='经验', num=1500000}},
         extrewarditems={{name='绑定元宝', num=300}, {name='升星石', num=200}, {name='经验', num=1500000}},
     },
@@ -330,6 +330,33 @@ function YunBiaoManager.OnCheckBiaoCheMon(actor)
     end
 end
 
+function YunBiaoManager.OnPlayerKillCar(actor, carmonname, monobjidstr)
+    if BF_IsNullObj(actor) or (carmonname==nil) then
+        return
+    end
+    local mapidstr = Player.GetMapIDStr(actor)
+    local carmon = getmonbyuserid(mapidstr, monobjidstr)
+    if BF_IsNullObj(carmon) then
+        return
+    end
+    if not Player.IsPlayer(actor) then
+        return
+    end
+    local biaochemonid = Player.GetMonIdx(carmon)
+    for _, value in ipairs(RANDOM_BIAOCHE_CONFIG) do
+        if value.monid == biaochemonid then       
+            GuanZhiManager.AddExp(actor, value.killaddguanzhiexp, true)
+            Player.SendSelfMsg(actor, '你击杀了'..value.showname..'！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+            local masterobj = Player.GetMasterObj(carmon)
+            if Player.IsPlayer(masterobj) then
+                YunBiaoManager.LostBiaoChe(masterobj)
+            end
+            break
+        end
+    end  
+end
+
 GameEventManager.AddListener(CommonDefine.EVENT_NAME_PLAYER_ENTERGAME, YunBiaoManager.OnCheckBiaoCheMon, CommonDefine.FUNC_ID_YUNBIAO)
+
 
 return YunBiaoManager
