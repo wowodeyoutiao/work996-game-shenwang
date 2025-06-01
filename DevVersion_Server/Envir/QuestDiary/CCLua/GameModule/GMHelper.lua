@@ -78,6 +78,7 @@ function GMHelper.OpenPanel(actor)
         '<Button|x=200|y=150|nimg=public/bg_hhzy_01_3.png|text=刷新排行榜|link=@gmhelper_button_refreshrank>'..
         '<Button|x=200|y=180|nimg=public/bg_hhzy_01_3.png|text=停止泡点|link=@gmhelper_button#sid1=1011>'..
         '<Button|x=200|y=210|nimg=public/bg_hhzy_01_3.png|text=各种升级材料加2000|link=@gmhelper_button#sid1=5>'..
+        '<Button|x=200|y=240|nimg=public/bg_hhzy_01_3.png|text=免费VIP升级|link=@gmhelper_button#sid1=30>'..
 
         '<Button|x=350|y=30|nimg=public/bg_hhzy_01_3.png|text=重置跨服活动配置|link=@gmhelper_button#sid1=1996>'..
         '<Button|x=350|y=60|nimg=public/bg_hhzy_01_3.png|text=设置跨服boss配置|link=@gmhelper_button#sid1=1997>'..
@@ -112,7 +113,7 @@ function GMHelper.OpenPanel(actor)
         '<Button|x=200|y=210|nimg=public/bg_hhzy_01_3.png|text=增加100官职经验|link=@gmhelper_button,107>'..
         
         '<Button|x=350|y=30|nimg=public/bg_hhzy_01_3.png|text=3次魔方阵|link=@gmhelper_button,15>'..                      
-        '<Button|x=350|y=60|nimg=public/bg_hhzy_01_3.png|text=免费VIP升级|link=@gmhelper_button,30>'..
+        
         '<Button|x=350|y=90|nimg=public/bg_hhzy_01_3.png|text=恢复灵玉副本|link=@gmhelper_button,17>'..
         '<Button|x=350|y=120|nimg=public/bg_hhzy_01_3.png|text=刷出战力首领|link=@gmhelper_button,18>'..
         '<Button|x=350|y=150|nimg=public/bg_hhzy_01_3.png|text=设置空血|link=@gmhelper_button,31>'..

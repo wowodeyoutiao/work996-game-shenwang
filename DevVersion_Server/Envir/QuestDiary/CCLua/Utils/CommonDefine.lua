@@ -162,6 +162,7 @@ CommonDefine = {
     MON_NAME_COLOR_WHITE = 255,           --白色
     MON_NAME_COLOR_GOLD = 116,            --橙色
     MON_NAME_COLOR_RED = 22,              --红色
+    MON_NAME_COLOR_PURPLE = 241,          --紫色
     
     --道具 additemvalue type=1时 position=0~49的定义
     ITEMADDVALUE_TYPE1_AC = 0,           --物防

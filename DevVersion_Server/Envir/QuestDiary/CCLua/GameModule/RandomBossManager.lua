@@ -18,7 +18,7 @@ RandomBossManager.MIN_CAN_JOIN_BOSS_HPPERCENT = 30
 
 --杀怪可触发随机boss的地图
 local VALID_TRIGGER_RANDOMBOSS_MAPIDSTR = {
-	'0', '1', '2', '3', 
+	'huiyuan1', 'huiyuan2', 'huiyuan3', 'huiyuan4', 'fmg', 'hero1', 'rxsc1891', 'rxsc014', 'rxsc001'
 }
 
 --玩家第一次触发的随机boss名，只能触发一次
@@ -31,6 +31,7 @@ local FIRST_KILL_RANDOMBOSS_REWARD = {{name='绑定元宝',num=100},{name='金币',num
 local KILL_MON_TRIGGER_RANDOMBOSS = {
 	{moncolor=CommonDefine.MON_NAME_COLOR_WHITE, rate=500},
 	{moncolor=253, rate=500},
+	{moncolor=CommonDefine.MON_NAME_COLOR_PURPLE, rate=800},
 	{moncolor=CommonDefine.MON_NAME_COLOR_GOLD, rate=1000},
 	{moncolor=CommonDefine.MON_NAME_COLOR_RED, rate=2000},
 }

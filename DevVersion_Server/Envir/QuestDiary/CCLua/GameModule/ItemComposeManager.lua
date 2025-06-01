@@ -21,12 +21,8 @@ local COMPOSE_TYPE_5 = 5 	--材料
 local COMPOSE_TYPE_6 = 6 	--其他
 
 local COMPOSE_TYPE_INFO = {
-	{ctype=COMPOSE_TYPE_1, showname='角色装备'},
 	{ctype=COMPOSE_TYPE_2, showname='升星宝石'},
 	{ctype=COMPOSE_TYPE_3, showname='魂石'},
-	{ctype=COMPOSE_TYPE_4, showname='灵玉'},
-	{ctype=COMPOSE_TYPE_5, showname='材料'},
-	{ctype=COMPOSE_TYPE_6, showname='其他'},
 }
 
 --每页的格子数量

@@ -334,7 +334,7 @@ local function GetSingleShowInfo(actor, viplevel)
             end
             if currVIPLv + 1 == viplevel then
                 strPanelInfo = strPanelInfo..'<Text|id='..textid2..'|text=进度:'..currcounter..'/'..taskconfig.tasktargnum..
-                    '|size=15|x='..(tempCurrX+280)..'|y='..tempCurrY..'|color='..color1..'>'
+                    '|size=15|x='..(tempCurrX+270)..'|y='..tempCurrY..'|color='..color1..'>'
             end
 
             tempCurrY = tempCurrY + 30
@@ -351,14 +351,14 @@ local function GetSingleShowInfo(actor, viplevel)
             end
             if currVIPLv + 1 == viplevel then
                 if currcounter < taskconfig.tasktargnum then
-                    strPanelInfo = strPanelInfo..'<Button|id='..textid4..'|x='..(tempCurrX+280)..'|y='..tempCurrY..'|color='..CSS.NPC_WHITE..
+                    strPanelInfo = strPanelInfo..'<Button|id='..textid4..'|x='..(tempCurrX+270)..'|y='..tempCurrY..'|color='..CSS.NPC_WHITE..
                         '|mimg=private/cc_common/button_2.png|nimg=private/cc_common/button_2.png|size=18|text=前往|link=@function_button,'..NPCPANEL_BUTTONFUNC_ID_2..','..taskconfig.tasktype..'>'
                 else 
                     if getflagstatus(actor, FreeVIPManager.TASK_DRAWREWARD_FLAGLIST[i]) == 1 then
-                        strPanelInfo = strPanelInfo..'<Text|id='..textid4..'|text=已完成|size=17|x='..(tempCurrX+280)..'|y='..tempCurrY..'|color='..CSS.NPC_LIGHTGREEN..'>'
+                        strPanelInfo = strPanelInfo..'<Text|id='..textid4..'|text=已完成|size=17|x='..(tempCurrX+270)..'|y='..tempCurrY..'|color='..CSS.NPC_LIGHTGREEN..'>'
                         finishtasknum = finishtasknum + 1
                     else
-                        strPanelInfo = strPanelInfo..'<Button|id='..textid4..'|x='..(tempCurrX+280)..'|y='..tempCurrY..'|color='..CSS.NPC_WHITE..
+                        strPanelInfo = strPanelInfo..'<Button|id='..textid4..'|x='..(tempCurrX+270)..'|y='..tempCurrY..'|color='..CSS.NPC_WHITE..
                             '|mimg=private/cc_common/button_2.png|nimg=private/cc_common/button_2.png|size=18|text=领奖|link=@function_button,'..NPCPANEL_BUTTONFUNC_ID_3..','..i..'>'
                     end
                 end
@@ -393,13 +393,20 @@ local function GetSingleShowInfo(actor, viplevel)
             local showexpaddstr = '自动泡点加成:'..totalrate..'%'
             strPanelInfo = strPanelInfo..'<Text|id='..textid..'|text='..showexpaddstr..'|size=15|x='..tempLeftX..'|y='..tempLeftY..'|color='..CSS.NPC_WHITE..'>'            
             tempLeftY = tempLeftY + 25
+
+            if currLvConfig.extendprivilege and currLvConfig.extendprivilege~='' then
+                textid = textid + 1
+                idstr = idstr..','..textid   
+                strPanelInfo = strPanelInfo..'<Text|id='..textid..'|text='..currLvConfig.extendprivilege..'|size=15|x='..tempLeftX..'|y='..tempLeftY..'|color='..CSS.NPC_LIGHTGREEN..'>'            
+                tempLeftY = tempLeftY + 25                
+            end
         end
     end  
     strPanelInfo = strPanelInfo..'<Layout|id=14|children={'..idstr..'}|x=560.0|y=60.0|width=220|height=180>'
 
 
     tempLeftX = 50
-    tempLeftY = 10
+    tempLeftY = 30
     idstr = ''
     if currLvConfig and currLvConfig.dayrewards_tab then        
         idstr = '330,331'

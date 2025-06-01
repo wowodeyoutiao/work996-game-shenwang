@@ -14,6 +14,7 @@ local config = {
 		dayrewards = "[{\"name\":\"绑定元宝\", \"num\":1000}]",
 		addprop = "[{\"id\":35, \"value\":2},{\"id\":36, \"value\":2},{\"id\":37, \"value\":2},{\"id\":30, \"value\":2}]",
 		autoexpaddrate = 0.4,
+		extendprivilege = "可进入会员之家一",
 	},
 	[3] = { 
 		level = 3,
@@ -26,6 +27,7 @@ local config = {
 		dayrewards = "[{\"name\":\"绑定元宝\", \"num\":2000}]",
 		addprop = "[{\"id\":35, \"value\":4},{\"id\":36, \"value\":4},{\"id\":37, \"value\":4},{\"id\":30, \"value\":4}]",
 		autoexpaddrate = 0.8,
+		extendprivilege = "可进入会员之家二",
 	},
 	[5] = { 
 		level = 5,
@@ -38,6 +40,7 @@ local config = {
 		dayrewards = "[{\"name\":\"绑定元宝\", \"num\":3000}]",
 		addprop = "[{\"id\":35, \"value\":6},{\"id\":36, \"value\":6},{\"id\":37, \"value\":6},{\"id\":30, \"value\":6}]",
 		autoexpaddrate = 1.2,
+		extendprivilege = "可进入会员之家三",
 	},
 	[7] = { 
 		level = 7,
@@ -50,6 +53,7 @@ local config = {
 		dayrewards = "[{\"name\":\"绑定元宝\", \"num\":4000}]",
 		addprop = "[{\"id\":35, \"value\":8},{\"id\":36, \"value\":8},{\"id\":37, \"value\":8},{\"id\":30, \"value\":8}]",
 		autoexpaddrate = 1.6,
+		extendprivilege = "可进入会员之家四",
 	},
 	[9] = { 
 		level = 9,
