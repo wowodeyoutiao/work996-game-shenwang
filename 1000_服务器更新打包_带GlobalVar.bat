@@ -10,7 +10,7 @@ xcopy /y .\DevVersion_Server\Envir\MonItems\*.*  E:\TargetVersion996\DirServer\M
 xcopy /y .\DevVersion_Server\Envir\QuestDiary\*.*  E:\TargetVersion996\DirServer\MirServer\Mir200\Envir\QuestDiary\ /I /E
 xcopy /y .\DevVersion_Server\Envir\Robot_def\*.*  E:\TargetVersion996\DirServer\MirServer\Mir200\Envir\Robot_def\ /I /E
 xcopy /y .\DevVersion_Server\Envir\MapInfo.txt  E:\TargetVersion996\DirServer\MirServer\Mir200\Envir\ /I /E
-Echo ====do not xcopy /y .\DevVersion_Server\GlobalVal.ini  E:\TargetVersion996\DirServer\MirServer\Mir200\ /I /E
+xcopy /y .\DevVersion_Server\GlobalVal.ini  E:\TargetVersion996\DirServer\MirServer\Mir200\ /I /E
 xcopy /y .\DevVersion_Server\String.ini  E:\TargetVersion996\DirServer\MirServer\Mir200\ /I /E
 xcopy /y .\DevVersion_Server\!Setup.txt  E:\TargetVersion996\DirServer\MirServer\Mir200\ /I /E
 

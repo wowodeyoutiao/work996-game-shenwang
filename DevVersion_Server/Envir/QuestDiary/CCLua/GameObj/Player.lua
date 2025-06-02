@@ -759,18 +759,16 @@ function Player.CheckSpeedUpStatus(actor)
     if BF_IsNullObj(actor) then
         return
     end
-
-    local FIRST_RECHARGE_SPEEDUP_WEAPON_ID = 15001
-    local FIRST_RECHARGE_SPEEDUP_WEAPON_ADDNUM = 100
-
+    
     local nSpeedUp = 0
     for i = 1, #CommonDefine.BASE_EQUIPMENT_POS, 1 do
         local equipitem = linkbodyitem(actor, CommonDefine.BASE_EQUIPMENT_POS[i])
         if not BF_IsNullObj(equipitem) then
-            --判断首充道具
+            --判断装备是否有百分比加速
             local itemid = getiteminfo(actor, equipitem, CommonDefine.ITEMINFO_ITEMIDX)
-            if itemid == FIRST_RECHARGE_SPEEDUP_WEAPON_ID then
-                nSpeedUp = nSpeedUp + FIRST_RECHARGE_SPEEDUP_WEAPON_ADDNUM
+            local equipcfg = cfg_equip[itemid]
+            if equipcfg and equipcfg.SpeedUpRate and equipcfg.SpeedUpRate>0 then
+                nSpeedUp = nSpeedUp + equipcfg.SpeedUpRate
             end
 
             --判断装备的天赋的加速属性

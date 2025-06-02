@@ -13,19 +13,27 @@ CommonDefine = {
     GENDER_WOMAN = 1,
 
     --基础道具ID    
+    ITEMID_GOLD = 1,                    --金币 
+    ITEMID_YB = 2,                      --元宝
+    ITEMID_RECHARGE = 3,                --充值【只记录】
+    ITEMID_BINDYB = 4,                  --绑定元宝
+    ITEMID_EXP = 6,                     --经验        
+           
+    ITEMID_KUAFU_SCORE = 32,            --跨服积分
+
+    --[[
     ITEMID_YB = 1,                      --元宝
     ITEMID_JINGANGSHI = 2,              --金刚石
     ITEMID_RECHARGE = 3,                --充值【只记录】
     ITEMID_BINDYB = 4,                  --绑定元宝
     ITEMID_EXP = 6,                     --经验        
-
     ITEMID_GOLD = 28,                   --金币    
-
     --ITEMID_MOFANGZHEN_JIFEN = 20,     --魔方阵积分
-
     ITEMID_KUAFU_SCORE = 32,            --跨服积分
     --ITEMID_XINYUNFU = 208,            --幸运符
     --ITEMID_BAODIFU = 209,             --保底符
+    ]]--
+
 
     --道具的Stdmode
     ITEM_STDMODE_WEAPON = 5,        --武器
