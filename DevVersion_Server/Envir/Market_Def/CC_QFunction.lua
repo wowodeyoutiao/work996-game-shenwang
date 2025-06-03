@@ -114,6 +114,7 @@ function takeonex(actor, spos, smakeindex)
         return
     end    
     local pos = tonumber(spos)
+
     --根据装备位的强化等级 更新当前穿戴装备强化属性
     EquipPosStrengthManager.UpdateEquipStrengthLvInPos(actor, pos)    
     --根据装备位的星级 更新当前穿戴装备星级及属性 注意：强化在升星前
@@ -140,6 +141,7 @@ function takeoffexchange(actor, spos, smakeindex)
     local pos = tonumber(spos)
     local makeindex = tonumber(smakeindex)
     local equipitem = getitembymakeindex(actor, makeindex)
+
     --清空脱掉装备的强化属性
     EquipPosStrengthManager.ClearEquipStrengthLv(actor, equipitem, pos)    
     --清空脱掉装备的星级属性
@@ -147,7 +149,7 @@ function takeoffexchange(actor, spos, smakeindex)
     --检测装备天赋带来的装备槽位外显变化
     EquipInitGift.UpdateEquipposInitGiftIcon(actor, pos)
     --检测加速状态
-    Player.CheckSpeedUpStatus(actor)    
+    Player.CheckSpeedUpStatus(actor)
 end
 
 --玩家死亡 装备掉落前触发

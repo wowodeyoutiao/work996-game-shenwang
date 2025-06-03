@@ -137,8 +137,13 @@ MOV G4 0
 GmexecuTe StartQuest @副本数量统计
 
 ; 老区不开放下面的活动
+;#IF
+;NOT SMALL G0 3
+;#ACT
+;BREAK
+
+；活动全部关闭
 #IF
-NOT SMALL G0 3
 #ACT
 BREAK
 
