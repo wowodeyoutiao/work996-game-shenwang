@@ -1,11 +1,11 @@
 
-#AutoRun NPC RUNONDAY 12:00 @新年活动年兽
-#AutoRun NPC RUNONDAY 17:00 @新年活动财神
+;#AutoRun NPC RUNONDAY 12:00 @新年活动年兽
+;#AutoRun NPC RUNONDAY 17:00 @新年活动财神
 ;————————————————————————————————————————————————————
 #AutoRun NPC RUNONDAY 19:00 @攻沙喊话1
 #AutoRun NPC RUNONDAY 19:30 @攻沙喊话2
 #AutoRun NPC RUNONDAY 19:59 @攻沙设置
-#AutoRun NPC RUNONDAY 20:30 @合服BOSS刷新
+;#AutoRun NPC RUNONDAY 20:30 @合服BOSS刷新
 #AutoRun NPC RUNONDAY 22:00 @清除沙巴克变量
 
 ;————————————————————————————————————————————————————
@@ -24,29 +24,29 @@
 ;————————————————————————————————————————————————————
 
 ;--------------------每日刷新世界BOSS
-#AutoRun NPC RUNONDAY 10:00 @世界BOSS活动
-#AutoRun NPC RUNONDAY 12:00 @沙漠废墟开启
-#AutoRun NPC RUNONDAY 13:00 @沙漠废墟关闭
-#AutoRun NPC RUNONDAY 14:00 @世界BOSS活动
-#AutoRun NPC RUNONDAY 19:00 @世界BOSS活动
-#AutoRun NPC RUNONDAY 21:00 @世界BOSS活动
-#AutoRun NPC RUNONDAY 23:00 @世界BOSS活动
+;#AutoRun NPC RUNONDAY 10:00 @世界BOSS活动
+;#AutoRun NPC RUNONDAY 12:00 @沙漠废墟开启
+;#AutoRun NPC RUNONDAY 13:00 @沙漠废墟关闭
+;#AutoRun NPC RUNONDAY 14:00 @世界BOSS活动
+;#AutoRun NPC RUNONDAY 19:00 @世界BOSS活动
+;#AutoRun NPC RUNONDAY 21:00 @世界BOSS活动
+;#AutoRun NPC RUNONDAY 23:00 @世界BOSS活动
 
 ;--------------------每日天下第一
-#AutoRun NPC RUNONDAY 23:00 @23点活动触发
+;#AutoRun NPC RUNONDAY 23:00 @23点活动触发
 ;--------------------每合区一夜暴富
-#AutoRun NPC RUNONDAY 18:00 @18点活动触发
+;#AutoRun NPC RUNONDAY 18:00 @18点活动触发
 ;--------------------每周BOSS
-#AutoRun NPC RUNONDAY 19:00 @每周BOSS1
-#AutoRun NPC RUNONDAY 19:30 @每周BOSS2
+;#AutoRun NPC RUNONDAY 19:00 @每周BOSS1
+;#AutoRun NPC RUNONDAY 19:30 @每周BOSS2
 
 ;--------------------跨服活动定时器
-#AutoRun NPC RUNONDAY 19:55 @跨服开启通知1
-#AutoRun NPC RUNONDAY 20:00 @跨服开启通知2
-#AutoRun NPC RUNONDAY 20:55 @跨服乱斗通知1
-#AutoRun NPC RUNONDAY 21:00 @跨服乱斗通知2
-#AutoRun NPC RUNONDAY 21:10 @跨服乱斗刷怪1
-#AutoRun NPC RUNONDAY 21:20 @跨服乱斗刷怪1
-#AutoRun NPC RUNONDAY 21:30 @跨服乱斗刷怪2
-#AutoRun NPC RUNONDAY 21:40 @跨服乱斗刷怪1
-#AutoRun NPC RUNONDAY 22:00 @跨服关闭通知 2
+;#AutoRun NPC RUNONDAY 19:55 @跨服开启通知1
+;#AutoRun NPC RUNONDAY 20:00 @跨服开启通知2
+;#AutoRun NPC RUNONDAY 20:55 @跨服乱斗通知1
+;#AutoRun NPC RUNONDAY 21:00 @跨服乱斗通知2
+;#AutoRun NPC RUNONDAY 21:10 @跨服乱斗刷怪1
+;#AutoRun NPC RUNONDAY 21:20 @跨服乱斗刷怪1
+;#AutoRun NPC RUNONDAY 21:30 @跨服乱斗刷怪2
+;#AutoRun NPC RUNONDAY 21:40 @跨服乱斗刷怪1
+;#AutoRun NPC RUNONDAY 22:00 @跨服关闭通知 2
