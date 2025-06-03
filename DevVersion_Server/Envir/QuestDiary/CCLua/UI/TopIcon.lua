@@ -249,6 +249,9 @@ local function FillRedPointFunctionInfoList(actor, infolist)
     if OfflineHuWeiManager.IsHaveQuickTipReward(actor) then
         infolist[#infolist+1] = {id=CommonDefine.QUICK_GOTO_ZCD, name='离线奖励'}
     end
+    if OpenSuperBoxManager.IsHaveQuickTipReward(actor) then
+        infolist[#infolist+1] = {id=CommonDefine.QUICK_GOTO_BAG_USEDICE, name='获得箱子'}
+    end
 end
 
 function TopIcon.ShowQuickInfoTipPanel(actor)
@@ -297,7 +300,8 @@ function TopIcon.CheckQuickInfoTip(actor)
         GuanZhiManager.IsHaveQuickTip(actor) or
         FreeVIPManager.IsHaveQuickTip(actor) or
         OfflineHuWeiManager.IsHaveQuickTipUpgrade(actor) or
-        OfflineHuWeiManager.IsHaveQuickTipReward(actor) then
+        OfflineHuWeiManager.IsHaveQuickTipReward(actor) or
+        OpenSuperBoxManager.IsHaveQuickTipReward(actor) then
 
         local buttonstr = '<Button|x=180|y=-240|nimg=private/cc_quicktip/1.png|link=@topicon_openpanel#sid='..ICON_SHOW_QUICK_TIP_PANEL..'>'
         addbutton(actor, 108, CommonDefine.ADD_BUTTON_ID_32, buttonstr)    

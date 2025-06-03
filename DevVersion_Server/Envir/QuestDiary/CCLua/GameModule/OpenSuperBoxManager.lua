@@ -1078,6 +1078,40 @@ function OpenSuperBoxManager.DoOperButton(actor, sid, sparam)
     end
 end
 
+--返回背包中开箱骰子的makeindex
+function OpenSuperBoxManager.GetOpenBoxDiceMakeIndex(actor)
+    local makeindex = 0
+    if not BF_IsNullObj(actor) then
+        local item_num = getbaseinfo(actor, CommonDefine.INFO_HUMBAGITEMNUM)
+        for i=0, item_num-1 do
+            local itemobj = getiteminfobyindex(actor, i)
+            if not BF_IsNullObj(itemobj) then
+                local itemidx = getiteminfo(actor, itemobj, CommonDefine.ITEMINFO_ITEMIDX)
+                if itemidx ~= nil then
+                    local anicount = getstditeminfo(itemidx, CommonDefine.STDITEMINFO_ANICOUNT)
+                    if (anicount == 206) then
+                        --开箱骰子
+                        makeindex = getiteminfo(actor, itemobj, CommonDefine.ITEMINFO_UNIQUEID)
+                    end
+                end
+            end
+        end
+    end
+	return makeindex
+end
+
+--是否有快捷提示
+function OpenSuperBoxManager.IsHaveQuickTipReward(actor)
+    if not Player.IsFunctionOpen(actor, CommonDefine.FUNC_ID_SUPERBOX, false) then
+        return false
+    end
+
+    if OpenSuperBoxManager.GetOpenBoxDiceMakeIndex(actor) > 0 then
+        return true
+    end
+    
+    return false
+end
 
 --玩家登录时触发
 function OpenSuperBoxManager.OnPlayerEnterGame(actor)
