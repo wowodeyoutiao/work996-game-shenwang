@@ -584,7 +584,10 @@ function TaskManager.OnPlayerEnterGame(actor)
                     newcompletetask(actor, taskid)   
                 end                  
             end          
-        end
+            if tasklineid == CommonDefine.TASK_LINE_ID_MAIN then
+                tasktopshow(actor, taskid)
+            end            
+        end        
     end
 end
 
