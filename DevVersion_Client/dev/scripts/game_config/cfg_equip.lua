@@ -256056,7 +256056,7 @@ local config = {
 		Job = 0,
 		Desc = "\\<[天赋属性]:/FCOLOR=254>\\<攻速提升100%/FCOLOR=253>",
 		guangzhu = "16006#1",
-		bEffect = "15011#1",
+		bEffect = "14004#0#-90#85#1.15#0|14004#0#-121#113#0#1.5",
 		QualityLv = 6,
 		SpeedUpRate = 100,
 	},
