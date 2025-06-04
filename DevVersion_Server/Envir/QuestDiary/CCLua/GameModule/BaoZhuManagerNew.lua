@@ -3,13 +3,13 @@ BaoZhuManagerNew = {}
 local DO_FUNCTION_ID_1 = 1      --显示灵玉宝盒  穿戴
 local DO_FUNCTION_ID_2 = 2      --灵玉的规则说明面板
 local DO_FUNCTION_ID_3 = 3      --灵玉强化面板
+
+
 local DO_FUNCTION_ID_4 = 4      --灵玉回收面板
 
-local DO_FUNCTION_ID_5 = 5      --打开灵玉的装备界面
 local DO_FUNCTION_ID_6 = 6      --快捷穿戴
 local DO_FUNCTION_ID_7 = 7      --全部脱下
 local DO_FUNCTION_ID_8 = 8      --打开回收灵玉界面
-local DO_FUNCTION_ID_9 = 9      --灵玉单件强化面板
 local DO_FUNCTION_ID_10 = 10    --灵玉回收设置品质
 local DO_FUNCTION_ID_11 = 11    --设置保留更好的宝珠
 local DO_FUNCTION_ID_12 = 12    --灵玉单件单次强化
@@ -17,8 +17,8 @@ local DO_FUNCTION_ID_13 = 13    --穿戴单件灵玉
 local DO_FUNCTION_ID_14 = 14    --脱下单件灵玉
 local DO_FUNCTION_ID_15 = 15    --灵玉的背包   上一页
 local DO_FUNCTION_ID_16 = 16    --灵玉的背包   下一页
-
-local DO_FUNCTION_ID_17 = 17    --选择灵玉的槽位
+local DO_FUNCTION_ID_17 = 17    --灵玉宝盒里选择灵玉的槽位
+local DO_FUNCTION_ID_18 = 18    --灵玉强化里选择灵玉的槽位
 
 local RecycleSettingPanelCfg = {
     {id=1, tip='白色灵玉', qualitylv=CommonDefine.ITEM_QUALITY_WHITE, tempvar=CommonDefine.VAR_N_NPC_CHECKBOX_1, flagvar=CommonDefine.VAR_HUM_BITFLAG_RECYCLE_BAOZHU_1},
@@ -29,7 +29,21 @@ local RecycleSettingPanelCfg = {
     {id=6, tip='橙色灵玉', qualitylv=CommonDefine.ITEM_QUALITY_GOLD, tempvar=CommonDefine.VAR_N_NPC_CHECKBOX_6, flagvar=CommonDefine.VAR_HUM_BITFLAG_RECYCLE_BAOZHU_6},
 }
 
-local BAOZHU_ITEM_STDMODE = {100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111}
+local BAOZHU_BASE_CFG = {
+    [1] = {stdmode = 100, pos=CommonDefine.EQUIPPOS_SSH_1, posname = '鼠灵玉位'},
+    [2] = {stdmode = 101, pos=CommonDefine.EQUIPPOS_SSH_2, posname = '牛灵玉位'},
+    [3] = {stdmode = 102, pos=CommonDefine.EQUIPPOS_SSH_3, posname = '虎灵玉位'},
+    [4] = {stdmode = 103, pos=CommonDefine.EQUIPPOS_SSH_4, posname = '兔灵玉位'},
+    [5] = {stdmode = 104, pos=CommonDefine.EQUIPPOS_SSH_5, posname = '龙灵玉位'},
+    [6] = {stdmode = 105, pos=CommonDefine.EQUIPPOS_SSH_6, posname = '蛇灵玉位'},
+    [7] = {stdmode = 106, pos=CommonDefine.EQUIPPOS_SSH_7, posname = '马灵玉位'},
+    [8] = {stdmode = 107, pos=CommonDefine.EQUIPPOS_SSH_8, posname = '羊灵玉位'},
+    [9] = {stdmode = 108, pos=CommonDefine.EQUIPPOS_SSH_9, posname = '猴灵玉位'},
+    [10] = {stdmode = 109, pos=CommonDefine.EQUIPPOS_SSH_10, posname = '鸡灵玉位'},
+    [11] = {stdmode = 110, pos=CommonDefine.EQUIPPOS_SSH_11, posname = '狗灵玉位'},
+    [12] = {stdmode = 111, pos=CommonDefine.EQUIPPOS_SSH_12, posname = '猪灵玉位'},
+}
+
 
 --每页的格子数量
 local BAG_ITEM_COUNT_PER_PAGE = 21
@@ -54,6 +68,18 @@ function BaoZhuManagerNew.IsValidRecycleID(id)
         end
     end    
     return false
+end
+
+--根据宝珠的stdmode返回equippos
+local function GetBaoZhuEquipPosByStdMode(stdmode)
+    local pos = 0
+    for _, value in ipairs(BAOZHU_BASE_CFG) do
+        if value.stdmode == stdmode then
+            pos = value.pos
+            break
+        end
+    end
+    return pos
 end
 
 --返回背包中[min,max]的, 灵玉道具ID字符串  ,  分割
@@ -94,12 +120,44 @@ local function GetBagBaoZhuItemIDStr(actor, min, max)
     return strItemList, bFinished
 end
 
+--穿戴单个宝珠
+local function TakeOnSingleBaoZhu(actor)
+    if BF_IsNullObj(actor) then
+        return
+    end
+
+	local strSelectItem1 = getplaydef(actor, CommonDefine.VAR_S_SELECT_ITEM)
+	if not BF_IsNumberStr(strSelectItem1) then
+		return
+	end
+    local itemmakeindex = tonumber(strSelectItem1)
+    local baozhuitemobj = Bag.GetItemByMakeindex(actor, itemmakeindex)
+    if not BF_IsNullObj(baozhuitemobj) then
+        local itemid = getiteminfo(actor, baozhuitemobj, CommonDefine.ITEMINFO_ITEMIDX)
+        local stdmode = getstditeminfo(itemid, CommonDefine.STDITEMINFO_STDMODE)
+        local pos = GetBaoZhuEquipPosByStdMode(stdmode)
+        takeonitem(actor, pos, itemmakeindex)
+    end	
+end
+
+--脱下单个宝珠
+local function TakeOffSingleBaoZhu(actor)
+    if BF_IsNullObj(actor) then
+        return
+    end
+
+    local chooseid = getplaydef(actor, CommonDefine.VAR_N_LAST_NPC_CHOOSEID)
+    if (chooseid >= 1) and (chooseid <= #BAOZHU_BASE_CFG) then
+        takeoffitem(actor, BAOZHU_BASE_CFG[chooseid].pos)
+    end
+end
+
 --快速穿戴灵玉
 function BaoZhuManagerNew.QuickTakeOn(actor)
     local takeonobjids = {}
 	local item_num = getbaseinfo(actor, CommonDefine.INFO_HUMBAGITEMNUM)
-    local baozhuStdmodeStart = BAOZHU_ITEM_STDMODE[1]
-    local baozhuStdmodeEnd = BAOZHU_ITEM_STDMODE[#BAOZHU_ITEM_STDMODE]
+    local baozhuStdmodeStart = BAOZHU_BASE_CFG[1].stdmode
+    local baozhuStdmodeEnd = BAOZHU_BASE_CFG[#BAOZHU_BASE_CFG].stdmode
    	for i=0, item_num-1 do
 		local itemobj = getiteminfobyindex(actor, i)
 		if not BF_IsNullObj(itemobj) then 
@@ -127,7 +185,9 @@ function BaoZhuManagerNew.QuickTakeOff(actor)
     for i = CommonDefine.EQUIPPOS_SSH_1, CommonDefine.EQUIPPOS_SSH_12, 1 do
         local itemobj = linkbodyitem(actor, i)
         if not BF_IsNullObj(itemobj) then
-            takeoffitem(actor, i)    
+            local makeindex = getiteminfo(actor, itemobj, CommonDefine.ITEMINFO_UNIQUEID)
+            nothintitem(actor, 1, makeindex)
+            takeoffitem(actor, i)
         end        
     end        
 end
@@ -184,7 +244,7 @@ function BaoZhuManagerNew.DoAutoRecycleBaoZhu(actor, itemobj, makeindex)
     if cfgItem == nil then
         return
     end
-    if (cfgItem.StdMode >= BAOZHU_ITEM_STDMODE[1]) and (cfgItem.StdMode <= BAOZHU_ITEM_STDMODE[#BAOZHU_ITEM_STDMODE]) then
+    if (cfgItem.StdMode >= BAOZHU_BASE_CFG[1].stdmode) and (cfgItem.StdMode <= BAOZHU_BASE_CFG[#BAOZHU_BASE_CFG].stdmode) then
         for _, recycleCfg in ipairs(RecycleSettingPanelCfg) do
             if recycleCfg.qualitylv == cfgItem.QualityLv then                
                 local flag = getflagstatus(actor, recycleCfg.flagvar)                         
@@ -193,7 +253,7 @@ function BaoZhuManagerNew.DoAutoRecycleBaoZhu(actor, itemobj, makeindex)
                     local keepbetterflag = getflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_RECYCLE_BAOZHU_KEEPBETTER)
                     if keepbetterflag == 1 then                                        
                         --选中保留比穿戴更好的宝珠
-                        local equippos = (cfgItem.StdMode - BAOZHU_ITEM_STDMODE[1]) + CommonDefine.EQUIPPOS_SSH_1
+                        local equippos = GetBaoZhuEquipPosByStdMode(cfgItem.StdMode)
                         local equipobj = linkbodyitem(actor, equippos) 
                         if BF_IsNullObj(equipobj) then
                             break
@@ -231,13 +291,13 @@ GameEventManager.AddListener(CommonDefine.EVENT_NAME_PLAYER_ADDBAGITEM, BaoZhuMa
 
 --初始面板 灵玉宝盒
 function BaoZhuManagerNew.ShowBasePanel(actor)
-    local strPanelInfo = '<Img|id=10|children={11,12,13,20,21,22,23,24}|x=20.0|y=16.0|img=private/cc_baozhu/7.png|move=0|show=0|reset=1|esc=1|bg=1|loadDelay=0>'..
+    local strPanelInfo = '<Img|id=10|children={11,12,13,20,21,22,25,26,27}|x=20.0|y=16.0|img=private/cc_baozhu/7.png|move=0|show=0|reset=1|esc=1|bg=1|loadDelay=0>'..
         '<Layout|id=11|x=813.0|y=14.0|width=80|height=80|link=@exit>'..
         '<Button|id=12|x=814.0|y=14.0|nimg=public/1900000510.png|pimg=public/1900000511.png|link=@exit>'..
 		'<Button|id=13|x=700.0|y=14.0|esc=0|nimg=private/cc_common/button_help.png|pimg=private/cc_common/button_help.png|link=@function_button,'..DO_FUNCTION_ID_2..'>'..
-        '<Button|id=22|x=16.0|children={221,222}|y=133.0|pimg=private/cc_baozhu/2.png|color=255|nimg=private/cc_baozhu/1.png|size=18|mimg=private/cc_baozhu/2.png>'..
-        '<Button|id=23|x=16.0|children={231,232}|y=222.0|width=30|height=96|nimg=private/cc_baozhu/2.png|size=18|mimg=private/cc_baozhu/2.png|pimg=private/cc_baozhu/1.png|color=255|link=@function_button,'..DO_FUNCTION_ID_3..'>'..
-        '<Button|id=24|ax=0|x=16.0|y=310.0|children={241,242}|width=30|height=96|nimg=private/cc_baozhu/2.png|pimg=private/cc_baozhu/1.png|size=18|color=255|mimg=private/cc_baozhu/2.png|link=@function_button,'..DO_FUNCTION_ID_4..'>'..
+        '<Button|id=25|x=16.0|children={221,222}|y=133.0|pimg=private/cc_baozhu/2.png|color=255|nimg=private/cc_baozhu/1.png|size=18|mimg=private/cc_baozhu/2.png>'..
+        '<Button|id=26|x=16.0|children={231,232}|y=222.0|width=30|height=96|nimg=private/cc_baozhu/2.png|size=18|mimg=private/cc_baozhu/2.png|pimg=private/cc_baozhu/1.png|color=255|link=@function_button,'..DO_FUNCTION_ID_3..'>'..
+        '<Button|id=27|ax=0|x=16.0|y=310.0|children={241,242}|width=30|height=96|nimg=private/cc_baozhu/2.png|pimg=private/cc_baozhu/1.png|size=18|color=255|mimg=private/cc_baozhu/2.png|link=@function_button,'..DO_FUNCTION_ID_4..'>'..
         '<Text|id=221|x=9.0|y=9.0|color=161|size=20|text=宝>'..
         '<Text|id=222|x=9.0|y=45.0|color=161|size=20|text=盒>'..
         '<Text|id=231|x=9.0|y=9.0|color=161|size=20|text=强>'..
@@ -245,20 +305,31 @@ function BaoZhuManagerNew.ShowBasePanel(actor)
         '<Text|id=241|x=9.0|y=9.0|color=161|size=20|text=回>'..
         '<Text|id=242|x=9.0|y=45.0|color=161|size=20|text=收>'        
 
+    local chooseid = getplaydef(actor, CommonDefine.VAR_N_LAST_NPC_CHOOSEID)
+    if (chooseid < 1) or (chooseid > #BAOZHU_BASE_CFG) then
+        chooseid = 1
+        setplaydef(actor, CommonDefine.VAR_N_LAST_NPC_CHOOSEID, chooseid)
+    end
+
     local equipshowid = 40
     local equipshowidstr = ''
-    for i = CommonDefine.EQUIPPOS_SSH_1, CommonDefine.EQUIPPOS_SSH_12, 1 do
-        local seq = i - CommonDefine.EQUIPPOS_SSH_1
-        local tempid = equipshowid + seq
+    for i = 1, #BAOZHU_BASE_CFG, 1 do
+        local tempid = equipshowid + i
         if equipshowidstr ~= '' then
             equipshowidstr = equipshowidstr..','
         end
         equipshowidstr = equipshowidstr..tempid
-        local tempx = 6 + 83 * (seq % 3)
-        local tempy = 4 + 88 * math.floor(seq / 3)
-        strPanelInfo = strPanelInfo..'<Layout|id='..tempid..'|x='..tempx..'|y='..tempy..'|width=70|height=70|link=@function_button,'..DO_FUNCTION_ID_17..','..i..'>'
+        local tempx = 6 + 83 * ((i-1) % 3)
+        local tempy = 4 + 88 * math.floor((i-1) / 3)
+        if chooseid == i then
+            strPanelInfo = strPanelInfo..'<Img|id=40|x=0|y=0|img=private/cc_baozhu/3.png>'
+            strPanelInfo = strPanelInfo..'<Layout|id='..tempid..'|children={40}|x='..tempx..'|y='..tempy..'|width=70|height=70|link=@function_button,'..DO_FUNCTION_ID_17..','..i..'>'
+        else
+            strPanelInfo = strPanelInfo..'<Layout|id='..tempid..'|x='..tempx..'|y='..tempy..'|width=70|height=70|link=@function_button,'..DO_FUNCTION_ID_17..','..i..'>'
+        end        
     end
-    strPanelInfo = strPanelInfo..'<Layout|id=20|children={'..equipshowidstr..'}|x=66.0|y=56.0|width=248|height=440>'
+    strPanelInfo = strPanelInfo..'<Text|id=29|text=单击选择灵玉位|x=50|y=400|size=20|color='..CSS.NPC_YELLOW..'>'
+    strPanelInfo = strPanelInfo..'<Layout|id=20|children={29,'..equipshowidstr..'}|x=66.0|y=56.0|width=248|height=440>'
 
     --背包道具
     local currPageNo = getplaydef(actor, CommonDefine.VAR_N_CURR_NPC_DATA_PAGE1)
@@ -267,117 +338,105 @@ function BaoZhuManagerNew.ShowBasePanel(actor)
         setplaydef(actor, CommonDefine.VAR_N_CURR_NPC_DATA_PAGE1, currPageNo)
     end
 
-    local strSelectItem1 = getplaydef(actor, CommonDefine.VAR_S_SELECT_ITEM)
     local nTempMin = (currPageNo - 1) * BAG_ITEM_COUNT_PER_PAGE + 1
     local nTempMax = currPageNo * BAG_ITEM_COUNT_PER_PAGE
-    local sValidItemIDList, bDataFinished = GetBagBaoZhuItemIDStr(actor, nTempMin, nTempMax)
-    strPanelInfo = strPanelInfo..'<BAGITEMS|id=31|x=18|y=8|select='..strSelectItem1..'|filter3='..sValidItemIDList..'|count='..BAG_ITEM_COUNT_PER_PAGE..
+    local targstdmode = BAOZHU_BASE_CFG[chooseid].stdmode
+    local sValidItemIDList, bDataFinished = Bag.GetBagItemIDInStdmodeStr(actor, targstdmode, 0, nTempMin, nTempMax)
+    strPanelInfo = strPanelInfo..'<BAGITEMS|id=31|x=18|y=8|select=|filter3='..sValidItemIDList..'|count='..BAG_ITEM_COUNT_PER_PAGE..
         '|showtips=1|selecttype=1|row=7|iwidth=50|iheight=50|dblink=@function_button,'..DO_FUNCTION_ID_13..'>'
 
     if currPageNo > 1 then
-        strPanelInfo = strPanelInfo..'<Button|id=32|x=4.0|y=360|nimg=private/cc_rank_ui/6.png|link=function_button,'..DO_FUNCTION_ID_15..'>'
+        strPanelInfo = strPanelInfo..'<Button|id=32|x=4.0|y=360|nimg=private/cc_rank_ui/6.png|link=@function_button,'..DO_FUNCTION_ID_15..'>'
     end
     if not bDataFinished then
-        strPanelInfo = strPanelInfo..'<Button|id=33|x=160.0|y=360|nimg=private/cc_rank_ui/7.png|link=function_button,'..DO_FUNCTION_ID_16..'>'
+        strPanelInfo = strPanelInfo..'<Button|id=33|x=160.0|y=360|nimg=private/cc_rank_ui/7.png|link=@function_button,'..DO_FUNCTION_ID_16..'>'
     end
-    strPanelInfo = strPanelInfo..'<Text|id=34|text=双击选择灵玉|x=30|y=400|size=20|color='..CSS.NPC_YELLOW..'>'
+    strPanelInfo = strPanelInfo..'<Text|id=34|text=双击穿戴灵玉|x=30|y=400|size=20|color='..CSS.NPC_YELLOW..'>'
     strPanelInfo = strPanelInfo..'<Layout|id=21|children={31,32,33,34}|x=606.0|y=56.0|width=180|height=440>'
 
-release_print(strPanelInfo)    
+    --槽位对应
+    strPanelInfo = strPanelInfo..'<EquipShow|id=91|x=102.0|y=110.0|showtips=1|reload=1|index='..BAOZHU_BASE_CFG[chooseid].pos..'>'
+    strPanelInfo = strPanelInfo..'<Text|id=92|text='..BAOZHU_BASE_CFG[chooseid].posname..'|x=86|y=20|size=25|color='..CSS.NPC_YELLOW..'>'
+    strPanelInfo = strPanelInfo..'<Button|id=93|x=80.0|y=290.0|size=18|color=255|text=单件脱下|nimg=private/cc_common/button_up.png|pimg=private/cc_common/button_down.png|mimg=private/cc_common/button_down.png|link=@function_button,'..DO_FUNCTION_ID_14..'>'
+    strPanelInfo = strPanelInfo..'<Button|id=94|x=80.0|y=340.0|size=18|color=255|text=一键穿戴|nimg=private/cc_common/button_up.png|pimg=private/cc_common/button_down.png|mimg=private/cc_common/button_down.png|link=@function_button,'..DO_FUNCTION_ID_6..'>'
+    strPanelInfo = strPanelInfo..'<Button|id=95|x=80.0|y=390.0|size=18|color=255|text=全部脱下|nimg=private/cc_common/button_up.png|pimg=private/cc_common/button_down.png|mimg=private/cc_common/button_down.png|link=@function_button,'..DO_FUNCTION_ID_7..'>'
+    strPanelInfo = strPanelInfo..'<Layout|id=22|children={91,92,93,94,95}|x=320.0|y=56.0|width=270|height=440>'    
+
     BF_ShowSpecialUI(actor, strPanelInfo)
 end
 
 --规则说明面板
 local function ShowPanel2(actor)
-    local tempCurrX = CSS.NPC_LEFT_START_X
-    local tempCurrY = CSS.NPC_TOP_START_Y    
-    local msg = '<Text|text=灵玉系统规则说明：|x='..tempCurrX..'|y='..tempCurrY..'|color='..CSS.NPC_LIGHTGREEN..'>'
-    msg = msg..'<Text|text=返回上一层|x='..(tempCurrX+400)..'|y='..tempCurrY..'|size=15|color='..CSS.NPC_YELLOW..'|link=@baozhu_button_function,'..DO_FUNCTION_ID_1..'>'
+    local strPanelInfo = '<Img|id=10|children={11,12,21,22,23,24,25,26,27}|x=268.0|y=69.0|show=0|esc=1|reset=1|img=private/cc_common/rule_panel.png|bg=1|move=0>'..
+        '<Layout|id=11|x=525.0|y=-1.0|width=80|height=80|link=@function_button,'..DO_FUNCTION_ID_1..'>'..
+        '<Button|id=12|x=528.0|y=0.0|nimg=public/1900000510.png|pimg=public/1900000511.png|link=@function_button,'..DO_FUNCTION_ID_1..'>'
+
+    local tempCurrX = 20
+    local tempCurrY = 50
+    strPanelInfo = strPanelInfo..'<Text|id=21|text=灵玉系统规则说明：|x='..tempCurrX..'|y='..tempCurrY..'|color='..CSS.NPC_LIGHTGREEN..'>'
     tempCurrY = tempCurrY + 35
-    msg = msg..'<Text|text=1、灵玉共分为{白绿蓝紫粉橙红}七种品质，每种品质分为|x='..tempCurrX..'|y='..tempCurrY..'|color='..CSS.NPC_WHITE..'>'    
-    tempCurrY = tempCurrY + 25
-    msg = msg..'<Text|text=三种星级，每种星级分为12种生肖的部位。|x='..(tempCurrX+26)..'|y='..tempCurrY..'|color='..CSS.NPC_WHITE..'>'
-    tempCurrY = tempCurrY + 25    
-    msg = msg..'<Text|text=2、相同品质相同星级的灵玉可以每3、6、9、12件穿戴激|x='..tempCurrX..'|y='..tempCurrY..'|color='..CSS.NPC_WHITE..'>'
-    tempCurrY = tempCurrY + 25    
-    msg = msg..'<Text|text=活对应的套装属性。|x='..(tempCurrX+26)..'|y='..tempCurrY..'|color='..CSS.NPC_WHITE..'>'    
-    tempCurrY = tempCurrY + 25
-    msg = msg..'<Text|text=3、灵玉为独立的属性加成系统，其所增加的属性将会直接|x='..tempCurrX..'|y='..tempCurrY..'|color='..CSS.NPC_WHITE..'>'
-    tempCurrY = tempCurrY + 25
-    msg = msg..'<Text|text=加成到主角面板。|x='..(tempCurrX+26)..'|y='..tempCurrY..'|color='..CSS.NPC_WHITE..'>'
-    BF_NPCSayExt(actor,msg)
-end
+    strPanelInfo = strPanelInfo..'<Text|id=22|text=1、灵玉共分为{白绿蓝紫粉橙红}七种品质，每种品质分为|x='..tempCurrX..'|y='..tempCurrY..'|color='..CSS.NPC_WHITE..'>'    
+    tempCurrY = tempCurrY + 30
+    strPanelInfo = strPanelInfo..'<Text|id=23|text=三种星级，每种星级分为12种生肖的部位。|x='..(tempCurrX+26)..'|y='..tempCurrY..'|color='..CSS.NPC_WHITE..'>'
+    tempCurrY = tempCurrY + 30
+    strPanelInfo = strPanelInfo..'<Text|id=24|text=2、相同品质相同星级的灵玉可以每3、6、9、12件穿戴激|x='..tempCurrX..'|y='..tempCurrY..'|color='..CSS.NPC_WHITE..'>'
+    tempCurrY = tempCurrY + 30
+    strPanelInfo = strPanelInfo..'<Text|id=25|text=活对应的套装属性。|x='..(tempCurrX+26)..'|y='..tempCurrY..'|color='..CSS.NPC_WHITE..'>'    
+    tempCurrY = tempCurrY + 30
+    strPanelInfo = strPanelInfo..'<Text|id=26|text=3、灵玉为独立的属性加成系统，其所增加的属性将会直接|x='..tempCurrX..'|y='..tempCurrY..'|color='..CSS.NPC_WHITE..'>'
+    tempCurrY = tempCurrY + 30
+    strPanelInfo = strPanelInfo..'<Text|id=27|text=加成到主角面板。|x='..(tempCurrX+26)..'|y='..tempCurrY..'|color='..CSS.NPC_WHITE..'>'
 
---灵玉宝盒的面板
-local function ShowPanel3(actor)
-    local tempCurrX = CSS.NPC_LEFT_START_X
-    local tempCurrY = CSS.NPC_TOP_START_Y
-    local msg = '<Text|text=灵玉尊者:|x='..tempCurrX..'|y='..tempCurrY..'|color='..CSS.NPC_LIGHTGREEN..'>'..
-                '<Text|text=可在包裹中单独穿戴灵玉，也可在这进行一键操作！|x='..(tempCurrX+100)..'|y='..tempCurrY..'|color='..CSS.NPC_WHITE..'>'
-    msg = msg..'<Text|text= - —— - —— - —— - —— - —— - —— - —— - —— - —— - —— - —— - |x=15|y='..(tempCurrY+20)..'|color='..CSS.NPC_BLUE_LINE..'>'    
-    msg = msg..'<Button|text=快捷穿戴|size=20|x='..(tempCurrX+20)..'|y='..(tempCurrY+100)..'|color='..CSS.NPC_LIGHTGREEN..'|mimg=private/cc_common/button_1.png|nimg=private/cc_common/button_1.png|link=@baozhu_button_function,'..DO_FUNCTION_ID_6..'>'..
-                '<Button|text=全部卸下|size=20|x='..(tempCurrX+140)..'|y='..(tempCurrY+100)..'|color='..CSS.NPC_LIGHTGREEN..'|mimg=private/cc_common/button_1.png|nimg=private/cc_common/button_1.png|link=@baozhu_button_function,'..DO_FUNCTION_ID_7..'>'..
-                '<Button|text=开关界面|size=20|x='..(tempCurrX+260)..'|y='..(tempCurrY+100)..'|color='..CSS.NPC_LIGHTGREEN..'|mimg=private/cc_common/button_1.png|nimg=private/cc_common/button_1.png|link=@baozhu_button_function,'..DO_FUNCTION_ID_5..'>'..
-                '<Button|text=回收灵玉|size=20|x='..(tempCurrX+380)..'|y='..(tempCurrY+100)..'|color='..CSS.NPC_LIGHTGREEN..'|mimg=private/cc_common/button_1.png|nimg=private/cc_common/button_1.png|link=@baozhu_button_function,'..DO_FUNCTION_ID_8..'>'
-
-    msg = msg..'<Text|text= - —— - —— - —— - —— - —— - —— - —— - —— - —— - —— - —— - |x=15|y='..(tempCurrY+200)..'|color='..CSS.NPC_BLUE_LINE..'>'    
-    msg = msg..'<Text|text=返回上一层|x='..(tempCurrX+400)..'|y='..(tempCurrY+220)..'|color='..CSS.NPC_ORANGE..'|link=@baozhu_button_function,'..DO_FUNCTION_ID_1..'>'
-    BF_NPCSayExt(actor,msg)
-
-    openhyperlink(actor, 6)
+    BF_ShowSpecialUI(actor, strPanelInfo)
 end
 
 --灵玉强化的面板
-local function ShowPanel4(actor)
-    local tempCurrX = CSS.NPC_LEFT_START_X
-    local tempCurrY = CSS.NPC_TOP_START_Y
-    local msg = '<Text|text=灵玉尊者:|x='..tempCurrX..'|y='..tempCurrY..'|color='..CSS.NPC_LIGHTGREEN..'>'..
-                '<Text|text=放心强化，灵玉替换会自动继承！|x='..(tempCurrX+100)..'|y='..tempCurrY..'|color='..CSS.NPC_WHITE..'>'
-    msg = msg..'<Text|text= - —— - —— - —— - —— - —— - —— - —— - —— - —— - —— - —— - |x=15|y='..(tempCurrY+20)..'|color='..CSS.NPC_BLUE_LINE..'>'   
+local function ShowPanel3(actor)
+    local strPanelInfo = '<Img|id=10|children={11,12,13,20,21,25,26,27}|x=20.0|y=16.0|img=private/cc_baozhu/9.png|move=0|show=0|reset=1|esc=1|bg=1|loadDelay=0>'..
+        '<Layout|id=11|x=813.0|y=14.0|width=80|height=80|link=@exit>'..
+        '<Button|id=12|x=814.0|y=14.0|nimg=public/1900000510.png|pimg=public/1900000511.png|link=@exit>'..
+		'<Button|id=13|x=700.0|y=14.0|esc=0|nimg=private/cc_common/button_help.png|pimg=private/cc_common/button_help.png|link=@function_button,'..DO_FUNCTION_ID_2..'>'..
+        '<Button|id=25|x=16.0|children={221,222}|y=133.0|pimg=private/cc_baozhu/1.png|color=255|nimg=private/cc_baozhu/2.png|size=18|mimg=private/cc_baozhu/1.png|link=@function_button,'..DO_FUNCTION_ID_1..'>'..
+        '<Button|id=26|x=16.0|children={231,232}|y=222.0|width=30|height=96|nimg=private/cc_baozhu/1.png|size=18|mimg=private/cc_baozhu/1.png|pimg=private/cc_baozhu/2.png|color=255>'..
+        '<Button|id=27|ax=0|x=16.0|y=310.0|children={241,242}|width=30|height=96|nimg=private/cc_baozhu/2.png|pimg=private/cc_baozhu/1.png|size=18|color=255|mimg=private/cc_baozhu/2.png|link=@function_button,'..DO_FUNCTION_ID_4..'>'..
+        '<Text|id=221|x=9.0|y=9.0|color=161|size=20|text=宝>'..
+        '<Text|id=222|x=9.0|y=45.0|color=161|size=20|text=盒>'..
+        '<Text|id=231|x=9.0|y=9.0|color=161|size=20|text=强>'..
+        '<Text|id=232|x=9.0|y=45.0|color=161|size=20|text=化>'..
+        '<Text|id=241|x=9.0|y=9.0|color=161|size=20|text=回>'..
+        '<Text|id=242|x=9.0|y=45.0|color=161|size=20|text=收>'        
 
-    local yInterval = 40
-    msg = msg..'<Text|text=鼠灵玉位|x='..tempCurrX..'|y='..(tempCurrY+yInterval)..'|color='..CSS.NPC_LIGHTGREEN..'|link=@baozhu_button_function,'..DO_FUNCTION_ID_9..','..CommonDefine.EQUIPPOS_SSH_1..'>'..
-        '<Text|text=牛灵玉位|x='..(tempCurrX+180)..'|y='..(tempCurrY+yInterval)..'|color='..CSS.NPC_LIGHTGREEN..'|link=@baozhu_button_function,'..DO_FUNCTION_ID_9..','..CommonDefine.EQUIPPOS_SSH_2..'>'..
-        '<Text|text=虎灵玉位|x='..(tempCurrX+360)..'|y='..(tempCurrY+yInterval)..'|color='..CSS.NPC_LIGHTGREEN..'|link=@baozhu_button_function,'..DO_FUNCTION_ID_9..','..CommonDefine.EQUIPPOS_SSH_3..'>'    
-    yInterval = yInterval + 35
-    msg = msg..'<Text|text=兔灵玉位|x='..tempCurrX..'|y='..(tempCurrY+yInterval)..'|color='..CSS.NPC_LIGHTGREEN..'|link=@baozhu_button_function,'..DO_FUNCTION_ID_9..','..CommonDefine.EQUIPPOS_SSH_4..'>'..
-        '<Text|text=龙灵玉位|x='..(tempCurrX+180)..'|y='..(tempCurrY+yInterval)..'|color='..CSS.NPC_LIGHTGREEN..'|link=@baozhu_button_function,'..DO_FUNCTION_ID_9..','..CommonDefine.EQUIPPOS_SSH_5..'>'..
-        '<Text|text=蛇灵玉位|x='..(tempCurrX+360)..'|y='..(tempCurrY+yInterval)..'|color='..CSS.NPC_LIGHTGREEN..'|link=@baozhu_button_function,'..DO_FUNCTION_ID_9..','..CommonDefine.EQUIPPOS_SSH_6..'>'    
-    yInterval = yInterval + 35
-    msg = msg..'<Text|text=马灵玉位|x='..tempCurrX..'|y='..(tempCurrY+yInterval)..'|color='..CSS.NPC_LIGHTGREEN..'|link=@baozhu_button_function,'..DO_FUNCTION_ID_9..','..CommonDefine.EQUIPPOS_SSH_7..'>'..
-        '<Text|text=羊灵玉位|x='..(tempCurrX+180)..'|y='..(tempCurrY+yInterval)..'|color='..CSS.NPC_LIGHTGREEN..'|link=@baozhu_button_function,'..DO_FUNCTION_ID_9..','..CommonDefine.EQUIPPOS_SSH_8..'>'..
-        '<Text|text=猴灵玉位|x='..(tempCurrX+360)..'|y='..(tempCurrY+yInterval)..'|color='..CSS.NPC_LIGHTGREEN..'|link=@baozhu_button_function,'..DO_FUNCTION_ID_9..','..CommonDefine.EQUIPPOS_SSH_9..'>'    
-    yInterval = yInterval + 35
-    msg = msg..'<Text|text=鸡灵玉位|x='..tempCurrX..'|y='..(tempCurrY+yInterval)..'|color='..CSS.NPC_LIGHTGREEN..'|link=@baozhu_button_function,'..DO_FUNCTION_ID_9..','..CommonDefine.EQUIPPOS_SSH_10..'>'..
-        '<Text|text=狗灵玉位|x='..(tempCurrX+180)..'|y='..(tempCurrY+yInterval)..'|color='..CSS.NPC_LIGHTGREEN..'|link=@baozhu_button_function,'..DO_FUNCTION_ID_9..','..CommonDefine.EQUIPPOS_SSH_11..'>'..
-        '<Text|text=猪灵玉位|x='..(tempCurrX+360)..'|y='..(tempCurrY+yInterval)..'|color='..CSS.NPC_LIGHTGREEN..'|link=@baozhu_button_function,'..DO_FUNCTION_ID_9..','..CommonDefine.EQUIPPOS_SSH_12..'>'        
-
-    msg = msg..'<Text|text= - —— - —— - —— - —— - —— - —— - —— - —— - —— - —— - —— - |x=15|y='..(tempCurrY+200)..'|color='..CSS.NPC_BLUE_LINE..'>'    
-    msg = msg..'<Text|text=规则说明|x='..(tempCurrX)..'|y='..(tempCurrY+220)..'|color='..CSS.NPC_RED..'|link=@baozhu_button_function,'..DO_FUNCTION_ID_2..'>'..
-               '<Text|text=返回上一层|x='..(tempCurrX+400)..'|y='..(tempCurrY+220)..'|color='..CSS.NPC_ORANGE..'|link=@baozhu_button_function,'..DO_FUNCTION_ID_1..'>'
-    BF_NPCSayExt(actor,msg)
-end
-
-local function IsValidPosStrForStrength(sid)
-    if not BF_IsNumberStr(sid) then
-        return false
+    local chooseid = getplaydef(actor, CommonDefine.VAR_N_LAST_NPC_CHOOSEID)
+    if (chooseid < 1) or (chooseid > #BAOZHU_BASE_CFG) then
+        chooseid = 1
+        setplaydef(actor, CommonDefine.VAR_N_LAST_NPC_CHOOSEID, chooseid)
     end
 
-    local pos = tonumber(sid)
-    return EquipPosStrengthManager.IsValidEquipPosForStrength(pos, 2)
-end
+    --槽位对应
+    local equipshowid = 40
+    local equipshowidstr = ''
+    for i = 1, #BAOZHU_BASE_CFG, 1 do
+        local tempid = equipshowid + i
+        if equipshowidstr ~= '' then
+            equipshowidstr = equipshowidstr..','
+        end
+        equipshowidstr = equipshowidstr..tempid
+        local tempx = 6 + 83 * ((i-1) % 3)
+        local tempy = 4 + 88 * math.floor((i-1) / 3)
+        if chooseid == i then
+            strPanelInfo = strPanelInfo..'<Img|id=40|x=0|y=0|img=private/cc_baozhu/3.png>'
+            strPanelInfo = strPanelInfo..'<Layout|id='..tempid..'|children={40}|x='..tempx..'|y='..tempy..'|width=70|height=70|link=@function_button,'..DO_FUNCTION_ID_18..','..i..'>'
+        else
+            strPanelInfo = strPanelInfo..'<Layout|id='..tempid..'|x='..tempx..'|y='..tempy..'|width=70|height=70|link=@function_button,'..DO_FUNCTION_ID_18..','..i..'>'
+        end        
+    end
+    strPanelInfo = strPanelInfo..'<Text|id=29|text=单击选择灵玉位|x=50|y=400|size=20|color='..CSS.NPC_YELLOW..'>'
+    strPanelInfo = strPanelInfo..'<Layout|id=20|children={29,'..equipshowidstr..'}|x=66.0|y=56.0|width=248|height=440>'
 
---单个装备位的强化面板
-local function ShowPanel6(actor, sid)
-    if (actor == nil) or (sid == nil) then
-        return
-    end
-    if not IsValidPosStrForStrength(sid) then
-        return
-    end
-    local equippos = tonumber(sid)
+    --强化信息
+    local equippos = BAOZHU_BASE_CFG[chooseid].pos
+    local sid = equippos..''
     local infoStr = getplaydef(actor, CommonDefine.VAR_T_EQUIPPOS_STRENGTH_INFO)
-
     local infoTab = {}
     if infoStr ~= '' then
         infoTab = json2tbl(infoStr)
@@ -387,20 +446,16 @@ local function ShowPanel6(actor, sid)
         infoStr = tbl2json(infoTab)
         setplaydef(actor, CommonDefine.VAR_T_EQUIPPOS_STRENGTH_INFO, infoStr)
     end
-
     local curPosLevel = infoTab[sid]
     if curPosLevel < 0 then
         return
     end
     local nextPosLevel = curPosLevel + 1
-    local bCurrIsMaxLv = false
-    --记录当前npc选择的强化装备位
-    setplaydef(actor, CommonDefine.VAR_N_LAST_NPC_CHOOSEID, equippos)
-
+    local bCurrIsMaxLv = false    
     local bJob = Player.GetJob(actor)
     local cfgCurrKey = EquipPosStrengthManager.GetStrengthCfgKey(bJob, equippos, curPosLevel)
     if cfgEquipPosStrength[cfgCurrKey] == nil then
-        --异常日志记录！！！！！怎么处理
+        --异常日志记录！！！！
         release_print("equippos_strength_panel no config key:"..cfgCurrKey)
         return
     end
@@ -409,71 +464,75 @@ local function ShowPanel6(actor, sid)
         bCurrIsMaxLv = true
     end
 
-    local tempCurrX = CSS.NPC_CENTER_START_X
-    local tempCurrY = CSS.NPC_TOP_START_Y
-    local sPanelStr = '<Text|text='..CommonDefine.EQUIPPOS_NAME[equippos]..'珠位|x='..tempCurrX..'|y='..tempCurrY..'|color='..CSS.NPC_LIGHTGREEN..'>'
     --当前等级属性
-    local tempLeftX = CSS.NPC_LEFT_START_X + 30
-    local tempLeftY = tempCurrY + 30    
-    sPanelStr = sPanelStr..'<Text|text=当前等级：|x='..tempLeftX..'|y='..tempLeftY..'|color='..CSS.NPC_YELLOW..'>'..
-                           '<Text|text='..curPosLevel..'|x='..(tempLeftX+100)..'|y='..tempLeftY..'|color='..CSS.NPC_WHITE..'>'
+    local tempLeftX = 50
+    local tempLeftY = 90
+    local tempidstr = '91,92,93,94,101,102,103,104,105,106'
+    local tempid = 120
+    strPanelInfo = strPanelInfo..'<Text|id=101|text=当前等级：|x='..tempLeftX..'|y='..tempLeftY..'|color='..CSS.NPC_YELLOW..'>'..
+                           '<Text|id=102|text='..curPosLevel..'|x='..(tempLeftX+100)..'|y='..tempLeftY..'|color='..CSS.NPC_WHITE..'>'
     tempLeftY = tempLeftY + 30
     local currPropDescTable = cfgEquipPosStrength[cfgCurrKey].addprop_desctab    
-  
+
     for _, descItem in ipairs(currPropDescTable) do
-        sPanelStr = sPanelStr..'<Text|text='..descItem.desc..'|x='..tempLeftX..'|y='..tempLeftY..'|color='..CSS.NPC_WHITE..'>'
+        strPanelInfo = strPanelInfo..'<Text|id='..tempid..'|text='..descItem.desc..'|x='..tempLeftX..'|y='..tempLeftY..'|color='..CSS.NPC_WHITE..'>'
+        tempidstr = tempidstr..','..tempid
+        tempid = tempid + 1        
         tempLeftY = tempLeftY + 30
     end
     --下一等级属性
-    local tempRightX = CSS.NPC_LEFT_START_X + 300
-    local tempRightY = tempCurrY + 30
+    local tempRightX = 300
+    local tempRightY = 90
     if bCurrIsMaxLv then
-        sPanelStr = sPanelStr..'<Text|text=已达到等级上限|x='..tempRightX..'|y='..tempRightY..'|color='..CSS.NPC_YELLOW..'>'
+        strPanelInfo = strPanelInfo..'<Text|id=103|text=已达到等级上限|x='..tempRightX..'|y='..tempRightY..'|color='..CSS.NPC_YELLOW..'>'
         tempRightY = tempRightY + 30
     else
-        sPanelStr = sPanelStr..'<Text|text=下一等级：|x='..tempRightX..'|y='..tempRightY..'|color='..CSS.NPC_YELLOW..'>'..
-                                '<Text|text='..nextPosLevel..'|x='..(tempRightX+100)..'|y='..tempRightY..'|color='..CSS.NPC_WHITE..'>'
+        strPanelInfo = strPanelInfo..'<Text|id=103|text=下一等级：|x='..tempRightX..'|y='..tempRightY..'|color='..CSS.NPC_YELLOW..'>'..
+                                '<Text|id=104|text='..nextPosLevel..'|x='..(tempRightX+100)..'|y='..tempRightY..'|color='..CSS.NPC_WHITE..'>'
         tempRightY = tempRightY + 30
         local nextPropDescTable =  cfgEquipPosStrength[cfgNextKey].addprop_desctab
         for _, descItem in ipairs(nextPropDescTable) do
-            sPanelStr = sPanelStr..'<Text|text='..descItem.desc..'|x='..tempRightX..'|y='..tempRightY..'|color='..CSS.NPC_WHITE..'>'
+            strPanelInfo = strPanelInfo..'<Text|id='..tempid..'|text='..descItem.desc..'|x='..tempRightX..'|y='..tempRightY..'|color='..CSS.NPC_WHITE..'>'
+            tempidstr = tempidstr..','..tempid
+            tempid = tempid + 1            
             tempRightY = tempRightY + 30
         end
     end
 
     --等级限制和强化消耗
     local tempCurrY = math.max(tempLeftY, tempRightY)
-    sPanelStr = sPanelStr..'<Text|text= - —— - —— - —— - —— - —— - —— - —— - —— - —— - —— - —— - |x=15|y='..tempCurrY..'|color='..CSS.NPC_BLUE_LINE..'>'
-    tempCurrX = CSS.NPC_LEFT_START_X + 30
-    tempCurrY = tempCurrY + 20       
+    local tempCurrX = 50
+    tempCurrY = tempCurrY + 80       
     local currPlayerLv = Player.GetLevel(actor)
     if not bCurrIsMaxLv then
-        sPanelStr = sPanelStr..'<Text|text=等级限制：'..cfgEquipPosStrength[cfgCurrKey].needlv..'级/'..currPlayerLv..'级|x='..tempCurrX..'|y='..tempCurrY..'|color='..CSS.NPC_YELLOW..'>'
+        strPanelInfo = strPanelInfo..'<Text|id=105|text=等级限制：'..cfgEquipPosStrength[cfgCurrKey].needlv..'级/'..currPlayerLv..'级|x='..tempCurrX..'|y='..tempCurrY..'|color='..CSS.NPC_YELLOW..'>'
     end
     tempCurrY = tempCurrY + 30
     if not bCurrIsMaxLv then
-        --local sConsumeInfo = BF_GetItemTableDescStr(actor, cfgEquipPosStrength[cfgCurrKey].needitems_tab)
-        --sPanelStr = sPanelStr..'<Text|text=强化消耗：'..sConsumeInfo..'|x='..tempCurrX..'|y='..tempCurrY..'|color='..CSS.NPC_YELLOW..'>'
-        sPanelStr = sPanelStr..'<Text|text=强化消耗：|x='..tempCurrX..'|y='..tempCurrY..'|color='..CSS.NPC_YELLOW..'>'
+        strPanelInfo = strPanelInfo..'<Text|id=106|text=强化消耗：|x='..tempCurrX..'|y='..tempCurrY..'|color='..CSS.NPC_YELLOW..'>'
         local sTempStr = ''
-        sTempStr = Item.GetNeedItemsShowInfo(actor, cfgEquipPosStrength[cfgCurrKey].needitems_tab, tempCurrX, tempCurrY, 170, 180, CSS.NPC_YELLOW)
+        local s1 = ''
+        sTempStr, s1 = Item.GetNeedItemsShowInfo(actor, cfgEquipPosStrength[cfgCurrKey].needitems_tab, tempCurrX, tempCurrY, 170, 180, CSS.NPC_YELLOW)
         if sTempStr ~= '' then
-            sPanelStr = sPanelStr..sTempStr
-        end        
+            strPanelInfo = strPanelInfo..sTempStr
+        end
+        if s1 ~= '' then
+            tempidstr = tempidstr..','..s1
+        end
     end
     tempCurrY = tempCurrY + 20
-    sPanelStr = sPanelStr..'<Text|text= - —— - —— - —— - —— - —— - —— - —— - —— - —— - —— - —— - |x=15|y='..tempCurrY..'|color='..CSS.NPC_BLUE_LINE..'>'
-    tempCurrY = tempCurrY + 50
-    --升级按钮
-    if bCurrIsMaxLv then
-        sPanelStr = sPanelStr..'<Text|text=已达到最高强化等级！|x=100|y='..tempCurrY..'|color='..CSS.NPC_LIGHTGREEN..'>'    
-    else
-        sPanelStr = sPanelStr..'<Text|text=升级一次|x=50|y='..tempCurrY..'|color='..CSS.NPC_LIGHTGREEN..'|link=@baozhu_button_function,'..DO_FUNCTION_ID_12..'>'..
-            --'<Text|text=一键至顶|x=220|y='..tempCurrY..'|color='..CSS.NPC_LIGHTGREEN..'|link=@equippos_strength_upgrade_currtop>'..
-            '<Text|text=返回上一页|x=400|y='..tempCurrY..'|color='..CSS.NPC_LIGHTGREEN..'|link=@baozhu_button_function,'..DO_FUNCTION_ID_4..'>'
-    end
 
-    BF_NPCSayExt(actor, sPanelStr)
+    --强化按钮
+    strPanelInfo = strPanelInfo..'<Text|id=92|text='..BAOZHU_BASE_CFG[chooseid].posname..'|x=180|y=50|size=25|color='..CSS.NPC_YELLOW..'>'
+    if bCurrIsMaxLv then
+        strPanelInfo = strPanelInfo..'<Text|id=93|text=已达到最高强化等级！|x=150|y=350|color='..CSS.NPC_LIGHTGREEN..'>'    
+    else
+        strPanelInfo = strPanelInfo..'<Button|id=93|x=50.0|y=350.0|size=18|color=255|text=强化一次|nimg=private/cc_common/button_up.png|pimg=private/cc_common/button_down.png|mimg=private/cc_common/button_down.png|link=@function_button,'..DO_FUNCTION_ID_12..'>'
+        strPanelInfo = strPanelInfo..'<Button|id=94|x=300.0|y=350.0|size=18|color=255|text=强化十次|nimg=private/cc_common/button_up.png|pimg=private/cc_common/button_down.png|mimg=private/cc_common/button_down.png|link=@function_button,'..DO_FUNCTION_ID_12..'>'
+    end
+    strPanelInfo = strPanelInfo..'<Layout|id=21|children={'..tempidstr..'}|x=320.0|y=56.0|width=470|height=440>'
+
+    BF_ShowSpecialUI(actor, strPanelInfo)  
 end
 
 --装备位 强化一次
@@ -485,7 +544,12 @@ local function DoEquipPosStrengthUpgradeOnce(actor)
         return
     end
 
-    local equippos = getplaydef(actor, CommonDefine.VAR_N_LAST_NPC_CHOOSEID) 
+    local chooseid = getplaydef(actor, CommonDefine.VAR_N_LAST_NPC_CHOOSEID) 
+    if (chooseid <= 0) or (chooseid >= #BAOZHU_BASE_CFG) then
+        return
+    end
+
+    local equippos = BAOZHU_BASE_CFG[chooseid].pos
     if not EquipPosStrengthManager.IsValidEquipPosForStrength(equippos, 2) then
         return
     end
@@ -535,20 +599,11 @@ local function DoEquipPosStrengthUpgradeOnce(actor)
     infoTab[sid] = nextPosLevel;
     infoStr = tbl2json(infoTab)
     setplaydef(actor, CommonDefine.VAR_T_EQUIPPOS_STRENGTH_INFO, infoStr)
-    ShowPanel6(actor, sid)
     Player.SendSelfMsg(actor, '强化成功！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
-
-    --每日必做计数        
-    --[[
-    ---------------------------------------todo
-    EverydayTask.AddTaskCounter(actor, CommonDefine.FUNC_ID_BAOZHU, 1)              
-    ]]--
 
     --更新当前装备位的强化状态
     EquipPosStrengthManager.UpdateEquipStrengthLvInPos(actor, equippos)  
 end
-
-
 
 --回收宝珠
 local function ShowPanel5(actor)
@@ -617,23 +672,28 @@ function BaoZhuManagerNew.DoOperButton(actor, sid, sparam)
     elseif funcid == DO_FUNCTION_ID_3 then
         ShowPanel3(actor)
     elseif funcid == DO_FUNCTION_ID_4 then
-        ShowPanel4(actor)
-    elseif funcid == DO_FUNCTION_ID_5 then
-        openhyperlink(actor, 6)
+        
     elseif funcid == DO_FUNCTION_ID_6 then
         BaoZhuManagerNew.QuickTakeOn(actor)
+        BaoZhuManagerNew.ShowBasePanel(actor)
     elseif funcid == DO_FUNCTION_ID_7 then
         BaoZhuManagerNew.QuickTakeOff(actor)
+        BaoZhuManagerNew.ShowBasePanel(actor)
     elseif funcid == DO_FUNCTION_ID_8 then
         ShowPanel5(actor)
-    elseif funcid == DO_FUNCTION_ID_9 then
-        ShowPanel6(actor, sparam)
     elseif funcid == DO_FUNCTION_ID_10 then
         DoSetRecycleQuality(actor, sparam)
     elseif funcid == DO_FUNCTION_ID_11 then
         DoSetKeepBetter(actor)
     elseif funcid == DO_FUNCTION_ID_12 then
         DoEquipPosStrengthUpgradeOnce(actor)
+        ShowPanel3(actor)
+    elseif funcid == DO_FUNCTION_ID_13 then
+        TakeOnSingleBaoZhu(actor)
+        BaoZhuManagerNew.ShowBasePanel(actor)
+    elseif funcid == DO_FUNCTION_ID_14 then
+        TakeOffSingleBaoZhu(actor)
+        BaoZhuManagerNew.ShowBasePanel(actor)
     elseif funcid == DO_FUNCTION_ID_15 then
         local currpage = getplaydef(actor, CommonDefine.VAR_N_CURR_NPC_DATA_PAGE1)       
         if currpage > 0 then
@@ -642,11 +702,21 @@ function BaoZhuManagerNew.DoOperButton(actor, sid, sparam)
         end
     elseif funcid == DO_FUNCTION_ID_16 then
         local currpage = getplaydef(actor, CommonDefine.VAR_N_CURR_NPC_DATA_PAGE1)       
-        setplaydef(actor, CommonDefine.VAR_N_CURR_NPC_DATA_PAGE1, currpage + 1)
+        setplaydef(actor, CommonDefine.VAR_N_CURR_NPC_DATA_PAGE1, currpage + 1)        
         BaoZhuManagerNew.ShowBasePanel(actor)
     elseif funcid == DO_FUNCTION_ID_17 then
-        --选择灵玉槽位
-    end
+        if BF_IsNumberStr(sparam) then
+            local chooseid = tonumber(sparam)
+            setplaydef(actor, CommonDefine.VAR_N_LAST_NPC_CHOOSEID, chooseid)
+            BaoZhuManagerNew.ShowBasePanel(actor)
+        end
+    elseif funcid == DO_FUNCTION_ID_18 then
+        if BF_IsNumberStr(sparam) then
+            local chooseid = tonumber(sparam)
+            setplaydef(actor, CommonDefine.VAR_N_LAST_NPC_CHOOSEID, chooseid)
+            ShowPanel3(actor)
+        end
+    end    
 end
 
 ---------------------------------------------------------------小红点相关----------------------------------------------

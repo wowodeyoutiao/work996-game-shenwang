@@ -720,9 +720,13 @@ function Player.QuickGoTo(actor, gotoid)
         --宝珠【灵玉】系统
         NewMainUIBase.OpenPanel(actor, NewMainUIBase.UI_ICON_BAOZHU)
     elseif gotoid == CommonDefine.QUICK_GOTO_FREEVIP then
-        --免费VIP系统
-        local currVIPLv = getplaydef(actor, CommonDefine.VAR_U_FREEVIP_LEVEL)
-        setplaydef(actor, CommonDefine.VAR_N_LAST_NPC_CHOOSEID,  currVIPLv)
+        --免费VIP系统          
+        local chooseid = -1
+        if getplaydef(actor, CommonDefine.VAR_U_FREEVIP_LEVEL) > 0 then
+            chooseid = getplaydef(actor, CommonDefine.VAR_U_FREEVIP_LEVEL)
+        end
+        setplaydef(actor, CommonDefine.VAR_N_LAST_NPC_CHOOSEID, chooseid)
+        setplaydef(actor, CommonDefine.VAR_N_CURR_FUNCTION_ID, CommonDefine.FUNC_ID_FREEVIP)                
         FreeVIPManager.ShowBasePanel(actor)
     elseif gotoid == CommonDefine.QUICK_GOTO_RECHARGE then
         --充值系统

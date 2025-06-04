@@ -550,8 +550,8 @@ function show_base_panel(actor, sparam)
 end
 
 --对应的功能操作
-function function_button(actor, sid, sparam)    
-    local currfuncid = getplaydef(actor, CommonDefine.VAR_N_CURR_FUNCTION_ID)
+function function_button(actor, sid, sparam)   
+    local currfuncid = getplaydef(actor, CommonDefine.VAR_N_CURR_FUNCTION_ID)    
     if currfuncid == CommonDefine.FUNC_ID_EQUIPPOS_STRENGTH then
         EquipPosStrengthManager.DoOperButton(actor, sid, sparam)
     elseif currfuncid == CommonDefine.FUNC_ID_EQUIPPOS_STAR then

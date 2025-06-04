@@ -52,6 +52,7 @@ function NewMainUIBase.OpenPanel(actor, sid)
         end
         setplaydef(actor, CommonDefine.VAR_N_CURR_FUNCTION_ID, CommonDefine.FUNC_ID_BAOZHU)
         setplaydef(actor, CommonDefine.VAR_N_CURR_NPC_DATA_PAGE1, 0)
+        setplaydef(actor, CommonDefine.VAR_N_LAST_NPC_CHOOSEID, 0)
        
         --BaoZhuManager.DoOperButton(actor, '1')
         BaoZhuManagerNew.ShowBasePanel(actor)

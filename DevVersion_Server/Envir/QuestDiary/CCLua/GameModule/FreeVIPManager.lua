@@ -468,7 +468,11 @@ function FreeVIPManager.ShowBasePanel(actor)
         local picid = 30 + i * 2
         local textid = 30 + i * 2 + 1
         if chooseid == -1 then          
-            chooseid = i
+            if currVIPLv > 0 then
+                chooseid = math.min(currVIPLv + 1, FreeVIPManager.MAX_LEVEL)
+            else
+                chooseid = i
+            end            
             setplaydef(actor, CommonDefine.VAR_N_LAST_NPC_CHOOSEID, chooseid)
         end
 
