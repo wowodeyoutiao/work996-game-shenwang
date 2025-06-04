@@ -831,11 +831,63 @@ TaskLineConfig = {
                 reward_tab = {{name='强化石', num=200},{name='金币', num=1000000}},
 
             },            
-
-
-
         }
-    }
+    },
+
+
+    [CommonDefine.TASK_LINE_ID_BRANCH] = {
+        taskIDVar = CommonDefine.VAR_U_ID_TASKLINE2,
+        taskStatusVar = CommonDefine.VAR_U_STATUS_TASKLINE2,
+        taskCounterVar = CommonDefine.VAR_T_COUNTERDATA_TASKLINE2,
+        taskSingleCounterVar = CommonDefine.VAR_U_COUNTER_TASKLINE2,
+        firstTaskID = 501,
+        taskDataList = { 
+            [501] = {
+                nextid = 502, 
+                acceptnpcid = 0,      --'接任务NPC',
+                submitnpcid = 0,      --'交任务NPC',
+                autoaccept=1, 
+                autosubmit=0,
+                acceptdialogue = '在对应等级地图挂机是快速成长的捷径！',
+                submitdialogue = '付出才会得到回报，这是个真理！',
+                tasktype = CommonDefine.TASK_TYPE_FREEVIP,
+                --一个子任务最多支持三个目标，扩展另开发
+                tasktargparam = 1,
+                tasktargdesc = '等级达到10级',
+                reward_tab = {{name='金币', num=100000}},
+                openbox_num = 10,
+            },
+            [502] = {
+                nextid = 503, 
+                acceptnpcid = 0,      --'接任务NPC',
+                submitnpcid = 0,      --'交任务NPC',
+                autoaccept=1, 
+                autosubmit=0,
+                acceptdialogue = '只管开箱，剩下的交给运气！',
+                submitdialogue = '开到自己心仪的装备了吗？',
+                tasktype = CommonDefine.TASK_TYPE_FREEVIP,
+                --一个子任务最多支持三个目标，扩展另开发
+                tasktargparam = 2,
+                tasktargdesc = '累计开箱10次',
+                reward_tab = {{name='强化石', num=200},{name='金币', num=200000}},
+            }, 
+            [503] = {
+                nextid = 504, 
+                acceptnpcid = 0,      --'接任务NPC',
+                submitnpcid = 0,      --'交任务NPC',
+                autoaccept=1, 
+                autosubmit=0,
+                acceptdialogue = '只管开箱，剩下的交给运气！',
+                submitdialogue = '开到自己心仪的装备了吗？',
+                tasktype = CommonDefine.TASK_TYPE_FREEVIP,
+                --一个子任务最多支持三个目标，扩展另开发
+                tasktargparam = 3,
+                tasktargdesc = '累计开箱10次',
+                reward_tab = {{name='强化石', num=200},{name='金币', num=200000}},
+            },             
+        }
+    }    
+
 }
 
 return TaskLineConfig

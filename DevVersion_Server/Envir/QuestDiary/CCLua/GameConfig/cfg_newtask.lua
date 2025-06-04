@@ -323,5 +323,23 @@ local config = {
 		Haveinfo = "<font colorStyleID='1030'>战力</font>&nbsp;&nbsp;<u><font color = '#28ef01' size = '16'>达到&nbsp;%s/5000万</font></u>",
 		Completeinfo = "<font colorStyleID='1030'>任务完成</font>&nbsp;&nbsp;<u><font color = '#28ef01' size = '16'>领取强化石</font></u>",
 	},
+	[501] = { 
+		ID = 501,
+		TaskTitle = "<font color='#F7E700'>[支线]  VIP1</font>",
+		Haveinfo = "<font colorStyleID='1030'>VIP等级</font>&nbsp;&nbsp;<u><font color = '#28ef01' size = '16'>达到&nbsp;%s/1级</font></u>",
+		Completeinfo = "<font colorStyleID='1030'>任务完成</font>&nbsp;&nbsp;<u><font color = '#28ef01' size = '16'>领取强化石</font></u>",
+	},
+	[502] = { 
+		ID = 502,
+		TaskTitle = "<font color='#F7E700'>[支线]  VIP2</font>",
+		Haveinfo = "<font colorStyleID='1030'>VIP等级</font>&nbsp;&nbsp;<u><font color = '#28ef01' size = '16'>达到&nbsp;%s/2级</font></u>",
+		Completeinfo = "<font colorStyleID='1030'>任务完成</font>&nbsp;&nbsp;<u><font color = '#28ef01' size = '16'>领取强化石</font></u>",
+	},
+	[503] = { 
+		ID = 503,
+		TaskTitle = "<font color='#F7E700'>[支线]  VIP3</font>",
+		Haveinfo = "<font colorStyleID='1030'>VIP等级</font>&nbsp;&nbsp;<u><font color = '#28ef01' size = '16'>达到&nbsp;%s/3级</font></u>",
+		Completeinfo = "<font colorStyleID='1030'>任务完成</font>&nbsp;&nbsp;<u><font color = '#28ef01' size = '16'>领取强化石</font></u>",
+	},
 }
 return config

@@ -80,6 +80,7 @@ function GMHelper.OpenPanel(actor)
         '<Button|x=200|y=180|nimg=public/bg_hhzy_01_3.png|text=停止泡点|link=@gmhelper_button#sid1=1011>'..
         '<Button|x=200|y=210|nimg=public/bg_hhzy_01_3.png|text=各种升级材料加2000|link=@gmhelper_button#sid1=5>'..
         '<Button|x=200|y=240|nimg=public/bg_hhzy_01_3.png|text=免费VIP升级|link=@gmhelper_button#sid1=30>'..
+        '<Button|x=200|y=270|nimg=public/bg_hhzy_01_3.png|text=删除支线任务|link=@gmhelper_button#sid1=37>'..
 
         '<Button|x=350|y=30|nimg=public/bg_hhzy_01_3.png|text=重置跨服活动配置|link=@gmhelper_button#sid1=1996>'..
         '<Button|x=350|y=60|nimg=public/bg_hhzy_01_3.png|text=设置跨服boss配置|link=@gmhelper_button#sid1=1997>'..
@@ -348,6 +349,8 @@ function GMHelper.DoGmOper(actor, sid)
     elseif sid == '36' then
         changemoney(actor, CommonDefine.ITEMID_YB, '+', 100000, 'DoGmOper', true)
         changemoney(actor, CommonDefine.ITEMID_BINDYB, '+', 100000, 'DoGmOper', true)
+    elseif sid == '37' then
+        TaskManager.DeleteTask(actor, CommonDefine.TASK_LINE_ID_BRANCH)
     elseif sid == '101' then
         TaskManager.AddNewTask(actor, CommonDefine.TASK_LINE_ID_MAIN, 0)
     elseif sid == '102' then

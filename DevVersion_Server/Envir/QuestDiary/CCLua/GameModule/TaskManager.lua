@@ -35,6 +35,9 @@ function TaskManager.AddNewTask(actor, tasklineid, newtaskid)
             setplaydef(actor, config.taskStatusVar, CommonDefine.TASK_STATUS_ADD)
             setplaydef(actor, config.taskCounterVar, '')
             setplaydef(actor, config.taskSingleCounterVar, 0)
+            if tasklineid == CommonDefine.TASK_LINE_ID_MAIN then
+                tasktopshow(actor, newtaskid)
+            end
             if singletask.autoaccept and (singletask.autoaccept == 1) then
                 -- if singletask.tasktype == CommonDefine.TASK_TYPE_FREEVIP then
                 --     local currlv = getplaydef(actor, CommonDefine.VAR_U_FREEVIP_LEVEL)
@@ -97,7 +100,7 @@ function TaskManager.AcceptTask(actor, tasklineid)
 
             --接任务的时候判断任务是否已完成
             if singletask.tasktype == CommonDefine.TASK_TYPE_FREEVIP then
-                local currviplv = getplayedef(actor, CommonDefine.VAR_U_FREEVIP_LEVEL)
+                local currviplv = getplaydef(actor, CommonDefine.VAR_U_FREEVIP_LEVEL)
                 if currviplv >= singletask.tasktargparam then
                     TaskManager.FinishTask(actor, tasklineid)
                 end
@@ -483,13 +486,14 @@ function TaskManager.OnLevelChange(actor)
 		return
 	end	
 
+    local currlv = Player.GetLevel(actor) 
     for tasklineid, lineconfig in pairs(TaskLineConfig) do
         if lineconfig and lineconfig.taskDataList then
             local taskid, status = TaskManager.GetCurrTaskLineInfo(actor, tasklineid) 
             if taskid > 0 and status == CommonDefine.TASK_STATUS_ACCEPT then
                 local singletask = lineconfig.taskDataList[taskid]                
-                if singletask and (singletask.tasktype == CommonDefine.TASK_TYPE_LEVEL) and singletask.tasktargparam then
-                    local currlv = Player.GetLevel(actor)               
+                if singletask and (singletask.tasktype == CommonDefine.TASK_TYPE_LEVEL) and singletask.tasktargparam then                                
+                    currlv = Player.GetLevel(actor) 
                     if currlv >= singletask.tasktargparam then
                         TaskManager.FinishTask(actor, tasklineid)
                     else
@@ -498,7 +502,16 @@ function TaskManager.OnLevelChange(actor)
                 end            
             end
         end
-    end  
+    end
+
+    if currlv >= 20 then
+        local taskid, status = TaskManager.GetCurrTaskLineInfo(actor, CommonDefine.TASK_LINE_ID_BRANCH) 
+        if status == CommonDefine.TASK_STATUS_NONE then
+            TaskManager.AddNewTask(actor, CommonDefine.TASK_LINE_ID_BRANCH, 0)
+            --接任务的时候触发一下检测免费VIP的逻辑
+            TaskManager.OnFreeVIPChange(actor)
+        end
+    end
 end
 
 --玩家战力变化
@@ -594,9 +607,7 @@ function TaskManager.OnPlayerClickTask(actor, clicktaskidstr)
                         end
                     elseif status == CommonDefine.TASK_STATUS_ACCEPT then
                         if singletask.tasktype == CommonDefine.TASK_TYPE_FREEVIP then
-                            if singletask.acceptnpcid then
-                                opennpcshowex(actor, singletask.acceptnpcid, 3, 3)
-                            end
+                            Player.QuickGoTo(actor, CommonDefine.QUICK_GOTO_FREEVIP)
                         elseif singletask.tasktype == CommonDefine.TASK_TYPE_LEVEL then
                             Player.QuickGoTo(actor, CommonDefine.QUICK_GOTO_UPGRADE_LEVEL)
                         elseif singletask.tasktype == CommonDefine.TASK_TYPE_POWERSCORE then
