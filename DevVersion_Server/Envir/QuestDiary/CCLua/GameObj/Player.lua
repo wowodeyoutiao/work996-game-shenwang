@@ -756,7 +756,7 @@ function Player.QuickGoTo(actor, gotoid)
         local makeindex = OpenSuperBoxManager.GetOpenBoxDiceMakeIndex(actor)
         if makeindex > 0 then
             openhyperlink(actor, 7)
-            navigation(actor, 1, makeindex, '使用骰子增加开箱数量')
+            navigation(actor, 1, makeindex, '双击获取开箱次数')
         else
             Player.SendSelfMsg(actor, '暂无可用于增加开箱次数的道具', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
         end                    

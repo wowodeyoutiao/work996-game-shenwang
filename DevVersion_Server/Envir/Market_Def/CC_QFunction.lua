@@ -520,6 +520,8 @@ function show_rule_panel(actor)
         FreeVIPManager.ShowRulePanel(actor)
     elseif currfuncid == CommonDefine.FUNC_ID_JUMPAREA_BASE then
         JumpAreaManager.ShowRulePanel(actor)
+    elseif currfuncid == CommonDefine.FUNC_ID_BAOZHU then
+        BaoZhuManagerNew.ShowRulePanel(actor)
     end
 end
 
@@ -568,6 +570,8 @@ function function_button(actor, sid, sparam)
         FreeVIPManager.DoOperButton(actor, sid, sparam)
     elseif currfuncid == CommonDefine.FUNC_ID_JUMPAREA_BASE then
         JumpAreaManager.DoOperButton(actor, sid, sparam)
+    elseif currfuncid == CommonDefine.FUNC_ID_BAOZHU then
+        BaoZhuManagerNew.DoOperButton(actor, sid, sparam)
     end
 end
 

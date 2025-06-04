@@ -70,6 +70,7 @@ function GMHelper.OpenPanel(actor)
         '<Button|x=40|y=180|nimg=public/bg_hhzy_01_3.png|text=1000w金币|link=@gmhelper_button#sid1=35>'..
         '<Button|x=40|y=210|nimg=public/bg_hhzy_01_3.png|text=10w元宝,绑元|link=@gmhelper_button#sid1=36>'..
         '<Button|x=40|y=240|nimg=public/bg_hhzy_01_3.png|text=100点跨服积分|link=@gmhelper_button#sid1=1010>'..
+        '<Button|x=40|y=270|nimg=public/bg_hhzy_01_3.png|text=给粉色灵玉|link=@gmhelper_button#sid1=6>'..
         
         '<Button|x=200|y=30|nimg=public/bg_hhzy_01_3.png|text=等级设置10|link=@gmhelper_button#sid1=1007>'..
         '<Button|x=200|y=60|nimg=public/bg_hhzy_01_3.png|text=清空装备位强化|link=@gmhelper_button#sid1=1008>'..
@@ -99,7 +100,7 @@ function GMHelper.OpenPanel(actor)
         '<Button|x=500|y=240|nimg=public/bg_hhzy_01_3.png|text=临时测试|link=@gmhelper_button#sid1=1999>'
     --[[                                      
         '<Button|x=40|y=120|nimg=public/bg_hhzy_01_3.png|text=无敌|link=@gmhelper_button,4>'..        
-        '<Button|x=40|y=180|nimg=public/bg_hhzy_01_3.png|text=给粉色灵玉|link=@gmhelper_button,6>'..
+        
         '<Button|x=40|y=210|nimg=public/bg_hhzy_01_3.png|text=学习职业技能|link=@gmhelper_button,13>'..                      
         '<Button|x=40|y=240|nimg=public/bg_hhzy_01_3.png|text=赠送洗炼测试装备|color=253|link=@gmhelper_button,999>'..
         

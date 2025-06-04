@@ -51,8 +51,10 @@ function NewMainUIBase.OpenPanel(actor, sid)
             return
         end
         setplaydef(actor, CommonDefine.VAR_N_CURR_FUNCTION_ID, CommonDefine.FUNC_ID_BAOZHU)
+        setplaydef(actor, CommonDefine.VAR_N_CURR_NPC_DATA_PAGE1, 0)
        
-        BaoZhuManager.DoOperButton(actor, '1')
+        --BaoZhuManager.DoOperButton(actor, '1')
+        BaoZhuManagerNew.ShowBasePanel(actor)
     elseif sid == NewMainUIBase.UI_ICON_SOULSTONE then
         if not Player.IsFunctionOpen(actor, CommonDefine.FUNC_ID_SOUL_STONE, true) then
             return
