@@ -175,8 +175,8 @@ function BaoZhuManager.OnPlayerEnterGame(actor)
 	setsndaitembox(actor, 1)
 end
 
-GameEventManager.AddListener(CommonDefine.EVENT_NAME_PLAYER_ENTERGAME, BaoZhuManager.OnPlayerEnterGame, CommonDefine.FUNC_ID_BAOZHU)
-GameEventManager.AddListener(CommonDefine.EVENT_NAME_PLAYER_ADDBAGITEM, BaoZhuManager.DoAutoRecycleBaoZhu, CommonDefine.FUNC_ID_BAOZHU)
+--GameEventManager.AddListener(CommonDefine.EVENT_NAME_PLAYER_ENTERGAME, BaoZhuManager.OnPlayerEnterGame, CommonDefine.FUNC_ID_BAOZHU)
+--GameEventManager.AddListener(CommonDefine.EVENT_NAME_PLAYER_ADDBAGITEM, BaoZhuManager.DoAutoRecycleBaoZhu, CommonDefine.FUNC_ID_BAOZHU)
 
 
 ---------------------------------------------------------------界面显示相关--------------------------------------------

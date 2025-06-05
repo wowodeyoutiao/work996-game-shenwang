@@ -370,6 +370,7 @@ CommonDefine = {
     VAR_S_SELECT_MENUITEM_1 = 'S53',             --下拉菜单1
     VAR_S_SELECT_MENUITEM_2 = 'S54',             --下拉菜单2
     VAR_S_SELECT_MENUITEM_3 = 'S55',             --下拉菜单3
+    VAR_S_SELECT_DECOMPOSE_ITEMS = 'S56',        --选择的所有待分解的灵玉 唯一ID ,分割 
 
     --玩家数字变量，下线保存   U0 - U254  lua脚本使用从130开始
 

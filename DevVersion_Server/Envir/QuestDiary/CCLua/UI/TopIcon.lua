@@ -222,7 +222,8 @@ local function FillRedPointFunctionInfoList(actor, infolist)
     if SoulStoneManager.IsHaveQuickTip(actor) then
         infolist[#infolist+1] = {id=CommonDefine.QUICK_GOTO_SOULSTONE, name='ªÍ Øœ‚«∂'}
     end
-    if BaoZhuManager.IsHaveQuickTip(actor) then
+    --if BaoZhuManager.IsHaveQuickTip(actor) then
+    if BaoZhuManagerNew.IsHaveQuickTip(actor) then
         infolist[#infolist+1] = {id=CommonDefine.QUICK_GOTO_BAOZHU, name='¡È”ÒÃ·…˝'}
     end
     if YunBiaoManager.IsHaveQuickTip(actor) then
@@ -292,7 +293,8 @@ function TopIcon.CheckQuickInfoTip(actor)
     delbutton(actor, 108, CommonDefine.ADD_BUTTON_ID_32)
     if EquipPosStrengthManager.IsHaveQuickTip(actor) or 
         SoulStoneManager.IsHaveQuickTip(actor) or 
-        BaoZhuManager.IsHaveQuickTip(actor) or
+        --BaoZhuManager.IsHaveQuickTip(actor) or
+        BaoZhuManagerNew.IsHaveQuickTip(actor) or
         YunBiaoManager.IsHaveQuickTip(actor) or
         SingleBossManager.IsHaveQuickTip(actor) or
         BaoZhuBossManager.IsHaveQuickTip(actor) or

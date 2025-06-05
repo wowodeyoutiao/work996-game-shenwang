@@ -496,7 +496,7 @@ end
 -------------------------------------------------------新逻辑还是从原来的NPC脚本走--------------------------------------------
 --灵玉功能相关
 function baozhu_button_function(actor, sid, sparam)
-    BaoZhuManager.DoOperButton(actor, sid, sparam)
+    --BaoZhuManager.DoOperButton(actor, sid, sparam)
 end
 
 --规则说明面板

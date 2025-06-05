@@ -43,6 +43,7 @@ local function _Includes()
     cfgSuperBoxLevel = require("Envir/QuestDiary/CCLua/GameConfig/cfgSuperBoxLevel")
     cfgSuperBoxRewardPool = require("Envir/QuestDiary/CCLua/GameConfig/cfgSuperBoxRewardPool")
     cfgJumpAreaShop = require("Envir/QuestDiary/CCLua/GameConfig/cfgJumpAreaShop")
+    cfgItemSimpleRecycle = require("Envir/QuestDiary/CCLua/GameConfig/cfgItemSimpleRecycle")
 
 
     --通用定义
@@ -189,8 +190,15 @@ local function _Includes()
         else
             value.itemidlist_tab = {}
         end        
-    end        
+    end            
 
+    for _, value in pairs(cfgItemSimpleRecycle) do
+        if (value.giveitems ~= nil) and (value.giveitems ~= '') then
+            value.giveitems_tab = BF_Json2Table(value.giveitems)
+        else
+            value.giveitems_tab = {}
+        end   
+    end 
 
     --装备位强化表
     for _, value in pairs(cfgEquipPosStrength) do

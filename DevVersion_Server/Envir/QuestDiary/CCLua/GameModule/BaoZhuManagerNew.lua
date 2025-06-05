@@ -3,22 +3,25 @@ BaoZhuManagerNew = {}
 local DO_FUNCTION_ID_1 = 1      --显示灵玉宝盒  穿戴
 local DO_FUNCTION_ID_2 = 2      --灵玉的规则说明面板
 local DO_FUNCTION_ID_3 = 3      --灵玉强化面板
-
-
 local DO_FUNCTION_ID_4 = 4      --灵玉回收面板
+local DO_FUNCTION_ID_5 = 5      --快捷穿戴
+local DO_FUNCTION_ID_6 = 6      --全部脱下
+local DO_FUNCTION_ID_7 = 7      --选择要分解的灵玉
+local DO_FUNCTION_ID_8 = 8      --手动分解灵玉
+local DO_FUNCTION_ID_9 = 9      --打开自动分解的面板
 
-local DO_FUNCTION_ID_6 = 6      --快捷穿戴
-local DO_FUNCTION_ID_7 = 7      --全部脱下
-local DO_FUNCTION_ID_8 = 8      --打开回收灵玉界面
 local DO_FUNCTION_ID_10 = 10    --灵玉回收设置品质
 local DO_FUNCTION_ID_11 = 11    --设置保留更好的宝珠
 local DO_FUNCTION_ID_12 = 12    --灵玉单件单次强化
 local DO_FUNCTION_ID_13 = 13    --穿戴单件灵玉
 local DO_FUNCTION_ID_14 = 14    --脱下单件灵玉
-local DO_FUNCTION_ID_15 = 15    --灵玉的背包   上一页
-local DO_FUNCTION_ID_16 = 16    --灵玉的背包   下一页
+local DO_FUNCTION_ID_15 = 15    --灵玉宝盒的背包   上一页
+local DO_FUNCTION_ID_16 = 16    --灵玉宝盒的背包   下一页
 local DO_FUNCTION_ID_17 = 17    --灵玉宝盒里选择灵玉的槽位
 local DO_FUNCTION_ID_18 = 18    --灵玉强化里选择灵玉的槽位
+local DO_FUNCTION_ID_19 = 19    --灵玉分解里选择灵玉的槽位
+local DO_FUNCTION_ID_20 = 20    --灵玉分解的背包   上一页
+local DO_FUNCTION_ID_21 = 21    --灵玉分解的背包   下一页
 
 local RecycleSettingPanelCfg = {
     {id=1, tip='白色灵玉', qualitylv=CommonDefine.ITEM_QUALITY_WHITE, tempvar=CommonDefine.VAR_N_NPC_CHECKBOX_1, flagvar=CommonDefine.VAR_HUM_BITFLAG_RECYCLE_BAOZHU_1},
@@ -44,9 +47,9 @@ local BAOZHU_BASE_CFG = {
     [12] = {stdmode = 111, pos=CommonDefine.EQUIPPOS_SSH_12, posname = '猪灵玉位'},
 }
 
-
 --每页的格子数量
-local BAG_ITEM_COUNT_PER_PAGE = 21
+local BAG_ITEM_COUNT_PER_PAGE1 = 21
+local BAG_ITEM_COUNT_PER_PAGE2 = 24
 
 local function GetRecycleCfg(id)
     for _, value in ipairs(RecycleSettingPanelCfg) do
@@ -194,21 +197,29 @@ end
 
 --返回回收宝珠的复选框和信息
 function BaoZhuManagerNew.GetRecycleCheckBoxInfo(actor, nStartX, nStartY)
-    local msg = ''
+    local strPanelInfo = ''
     local srcStartY = nStartY
+    local currid = 40
+    local stridlist = ''
+    local keepflag = getflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_RECYCLE_BAOZHU_KEEPBETTER)
+    strPanelInfo = strPanelInfo..'<CheckBox|x='..(nStartX+210)..'|y='..(srcStartY+50)..'|id='..(currid+1)..'|nimg=private/cc_common/checkbox_1.png|pimg=private/cc_common/checkbox_2.png|checkboxid='..CommonDefine.VAR_N_NPC_CHECKBOX_10..
+        '|default='..keepflag..'|delay=0|count=1|link=@function_button,'..DO_FUNCTION_ID_11..'>'..
+        '<Text|id='..(currid+2)..'|text=保留比当前穿戴灵玉更好的|x='..(nStartX+240)..'|y='..(srcStartY+55)..'|color='..CSS.NPC_WHITE..'>'  
+    stridlist = stridlist..','..(currid+1)..','..(currid+2)
+    currid = currid + 2
     for _, cfginfo in ipairs(RecycleSettingPanelCfg) do
         local flag = getflagstatus(actor, cfginfo.flagvar)
-        local color = CSS.GetQualityColor(cfginfo.qualitylv)
-        msg = msg..'<CheckBox|x='..nStartX..'|y='..nStartY..'|id='..cfginfo.id..'|nimg=private/cc_common/checkbox_1.png|pimg=private/cc_common/checkbox_2.png|checkboxid='..
-            cfginfo.tempvar..'|default='..flag..'|delay=0|count=1|link=@baozhu_button_function,'..DO_FUNCTION_ID_10..','..cfginfo.id..'>'..
-            '<Text|text=自动回收'..cfginfo.tip..'|x='..(nStartX+30)..'|y='..(nStartY+5)..'|color='..color..'>'            
+        local color = CSS.GetQualityColor(cfginfo.qualitylv)        
+        strPanelInfo = strPanelInfo..'<CheckBox|x='..nStartX..'|y='..nStartY..'|id='..(currid+1)..'|nimg=private/cc_common/checkbox_1.png|pimg=private/cc_common/checkbox_2.png|checkboxid='..
+            cfginfo.tempvar..'|default='..flag..'|delay=0|count=1|link=@function_button,'..DO_FUNCTION_ID_10..','..cfginfo.id..'>'..
+            '<Text|id='..(currid+2)..'|text=自动回收'..cfginfo.tip..'|x='..(nStartX+30)..'|y='..(nStartY+5)..'|color='..color..'>'            
+        stridlist = stridlist..','..(currid+1)..','..(currid+2)
+        currid = currid + 2
         nStartY = nStartY + 25
     end    
-    local keepflag = getflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_RECYCLE_BAOZHU_KEEPBETTER)
-    msg = msg..'<CheckBox|x='..(nStartX+230)..'|y='..(srcStartY+50)..'|id=10|nimg=private/cc_common/checkbox_1.png|pimg=private/cc_common/checkbox_2.png|checkboxid='..CommonDefine.VAR_N_NPC_CHECKBOX_10..
-        '|default='..keepflag..'|delay=0|count=1|link=@baozhu_button_function,'..DO_FUNCTION_ID_11..'>'..
-        '<Text|text=保留比当前穿戴灵玉更好的|x='..(nStartX+260)..'|y='..(srcStartY+55)..'|color='..CSS.NPC_WHITE..'>'  
-    return msg
+
+    strPanelInfo = strPanelInfo..'<Layout|id=22|children={'..stridlist..'}|x=20.0|y=80.0|width=480|height=200>'
+    return strPanelInfo
 end
 
 --设置玩家回收宝珠的品质
@@ -244,6 +255,11 @@ function BaoZhuManagerNew.DoAutoRecycleBaoZhu(actor, itemobj, makeindex)
     if cfgItem == nil then
         return
     end
+    local cfgSimpleRecycle = cfgItemSimpleRecycle[itemidx]
+    if cfgSimpleRecycle == nil then
+        return
+    end
+
     if (cfgItem.StdMode >= BAOZHU_BASE_CFG[1].stdmode) and (cfgItem.StdMode <= BAOZHU_BASE_CFG[#BAOZHU_BASE_CFG].stdmode) then
         for _, recycleCfg in ipairs(RecycleSettingPanelCfg) do
             if recycleCfg.qualitylv == cfgItem.QualityLv then                
@@ -269,7 +285,8 @@ function BaoZhuManagerNew.DoAutoRecycleBaoZhu(actor, itemobj, makeindex)
                     local itemcount = getiteminfo(actor, itemobj, CommonDefine.ITEMINFO_OVERLAP)
                     itemcount = math.max(1, itemcount)
                     delitembymakeindex(actor, makeindex, itemcount, 'autorecycle')
-                    giveitem(actor, '金币', 1000 * itemcount)
+                    local givebackitems = BF_GetItemTabMulti(cfgSimpleRecycle.giveitems_tab, itemcount)
+                    Player.GiveItemsToBagOrMail(actor, givebackitems, '灵玉自动分解')
                 end
                 break     
             end
@@ -338,11 +355,11 @@ function BaoZhuManagerNew.ShowBasePanel(actor)
         setplaydef(actor, CommonDefine.VAR_N_CURR_NPC_DATA_PAGE1, currPageNo)
     end
 
-    local nTempMin = (currPageNo - 1) * BAG_ITEM_COUNT_PER_PAGE + 1
-    local nTempMax = currPageNo * BAG_ITEM_COUNT_PER_PAGE
+    local nTempMin = (currPageNo - 1) * BAG_ITEM_COUNT_PER_PAGE1 + 1
+    local nTempMax = currPageNo * BAG_ITEM_COUNT_PER_PAGE1
     local targstdmode = BAOZHU_BASE_CFG[chooseid].stdmode
     local sValidItemIDList, bDataFinished = Bag.GetBagItemIDInStdmodeStr(actor, targstdmode, 0, nTempMin, nTempMax)
-    strPanelInfo = strPanelInfo..'<BAGITEMS|id=31|x=18|y=8|select=|filter3='..sValidItemIDList..'|count='..BAG_ITEM_COUNT_PER_PAGE..
+    strPanelInfo = strPanelInfo..'<BAGITEMS|id=31|x=18|y=8|select=|filter3='..sValidItemIDList..'|count='..BAG_ITEM_COUNT_PER_PAGE1..
         '|showtips=1|selecttype=1|row=7|iwidth=50|iheight=50|dblink=@function_button,'..DO_FUNCTION_ID_13..'>'
 
     if currPageNo > 1 then
@@ -358,8 +375,8 @@ function BaoZhuManagerNew.ShowBasePanel(actor)
     strPanelInfo = strPanelInfo..'<EquipShow|id=91|x=102.0|y=110.0|showtips=1|reload=1|index='..BAOZHU_BASE_CFG[chooseid].pos..'>'
     strPanelInfo = strPanelInfo..'<Text|id=92|text='..BAOZHU_BASE_CFG[chooseid].posname..'|x=86|y=20|size=25|color='..CSS.NPC_YELLOW..'>'
     strPanelInfo = strPanelInfo..'<Button|id=93|x=80.0|y=290.0|size=18|color=255|text=单件脱下|nimg=private/cc_common/button_up.png|pimg=private/cc_common/button_down.png|mimg=private/cc_common/button_down.png|link=@function_button,'..DO_FUNCTION_ID_14..'>'
-    strPanelInfo = strPanelInfo..'<Button|id=94|x=80.0|y=340.0|size=18|color=255|text=一键穿戴|nimg=private/cc_common/button_up.png|pimg=private/cc_common/button_down.png|mimg=private/cc_common/button_down.png|link=@function_button,'..DO_FUNCTION_ID_6..'>'
-    strPanelInfo = strPanelInfo..'<Button|id=95|x=80.0|y=390.0|size=18|color=255|text=全部脱下|nimg=private/cc_common/button_up.png|pimg=private/cc_common/button_down.png|mimg=private/cc_common/button_down.png|link=@function_button,'..DO_FUNCTION_ID_7..'>'
+    strPanelInfo = strPanelInfo..'<Button|id=94|x=80.0|y=340.0|size=18|color=255|text=一键穿戴|nimg=private/cc_common/button_up.png|pimg=private/cc_common/button_down.png|mimg=private/cc_common/button_down.png|link=@function_button,'..DO_FUNCTION_ID_5..'>'
+    strPanelInfo = strPanelInfo..'<Button|id=95|x=80.0|y=390.0|size=18|color=255|text=全部脱下|nimg=private/cc_common/button_up.png|pimg=private/cc_common/button_down.png|mimg=private/cc_common/button_down.png|link=@function_button,'..DO_FUNCTION_ID_6..'>'
     strPanelInfo = strPanelInfo..'<Layout|id=22|children={91,92,93,94,95}|x=320.0|y=56.0|width=270|height=440>'    
 
     BF_ShowSpecialUI(actor, strPanelInfo)
@@ -605,17 +622,158 @@ local function DoEquipPosStrengthUpgradeOnce(actor)
     EquipPosStrengthManager.UpdateEquipStrengthLvInPos(actor, equippos)  
 end
 
---回收宝珠
+--回收宝珠面板
+local function ShowPanel4(actor)
+    local strPanelInfo = '<Img|id=10|children={11,12,13,20,21,25,26,27}|x=20.0|y=16.0|img=private/cc_baozhu/13.png|move=0|show=0|reset=1|esc=1|bg=1|loadDelay=0>'..
+        '<Layout|id=11|x=813.0|y=14.0|width=80|height=80|link=@exit>'..
+        '<Button|id=12|x=814.0|y=14.0|nimg=public/1900000510.png|pimg=public/1900000511.png|link=@exit>'..
+		'<Button|id=13|x=700.0|y=14.0|esc=0|nimg=private/cc_common/button_help.png|pimg=private/cc_common/button_help.png|link=@function_button,'..DO_FUNCTION_ID_2..'>'..
+        '<Button|id=25|x=16.0|children={221,222}|y=133.0|pimg=private/cc_baozhu/1.png|color=255|nimg=private/cc_baozhu/2.png|size=18|mimg=private/cc_baozhu/1.png|link=@function_button,'..DO_FUNCTION_ID_1..'>'..
+        '<Button|id=26|x=16.0|children={231,232}|y=222.0|width=30|height=96|nimg=private/cc_baozhu/2.png|size=18|mimg=private/cc_baozhu/2.png|pimg=private/cc_baozhu/1.png|color=255|link=@function_button,'..DO_FUNCTION_ID_3..'>'..
+        '<Button|id=27|ax=0|x=16.0|y=310.0|children={241,242}|width=30|height=96|nimg=private/cc_baozhu/1.png|pimg=private/cc_baozhu/2.png|size=18|color=255|mimg=private/cc_baozhu/1.png>'..
+        '<Text|id=221|x=9.0|y=9.0|color=161|size=20|text=宝>'..
+        '<Text|id=222|x=9.0|y=45.0|color=161|size=20|text=盒>'..
+        '<Text|id=231|x=9.0|y=9.0|color=161|size=20|text=强>'..
+        '<Text|id=232|x=9.0|y=45.0|color=161|size=20|text=化>'..
+        '<Text|id=241|x=9.0|y=9.0|color=161|size=20|text=回>'..
+        '<Text|id=242|x=9.0|y=45.0|color=161|size=20|text=收>'        
+
+    local chooseid = getplaydef(actor, CommonDefine.VAR_N_LAST_NPC_CHOOSEID)
+    if (chooseid < 1) or (chooseid > #BAOZHU_BASE_CFG) then
+        chooseid = 1
+        setplaydef(actor, CommonDefine.VAR_N_LAST_NPC_CHOOSEID, chooseid)
+    end
+
+    local equipshowid = 40
+    local equipshowidstr = ''
+    for i = 1, #BAOZHU_BASE_CFG, 1 do
+        local tempid = equipshowid + i
+        if equipshowidstr ~= '' then
+            equipshowidstr = equipshowidstr..','
+        end
+        equipshowidstr = equipshowidstr..tempid
+        local tempx = 6 + 83 * ((i-1) % 3)
+        local tempy = 4 + 88 * math.floor((i-1) / 3)
+        if chooseid == i then
+            strPanelInfo = strPanelInfo..'<Img|id=40|x=0|y=0|img=private/cc_baozhu/3.png>'
+            strPanelInfo = strPanelInfo..'<Layout|id='..tempid..'|children={40}|x='..tempx..'|y='..tempy..'|width=70|height=70|link=@function_button,'..DO_FUNCTION_ID_19..','..i..'>'
+        else
+            strPanelInfo = strPanelInfo..'<Layout|id='..tempid..'|x='..tempx..'|y='..tempy..'|width=70|height=70|link=@function_button,'..DO_FUNCTION_ID_19..','..i..'>'
+        end        
+    end
+    strPanelInfo = strPanelInfo..'<Text|id=29|text=单击选择灵玉位|x=50|y=400|size=20|color='..CSS.NPC_YELLOW..'>'
+    strPanelInfo = strPanelInfo..'<Layout|id=20|children={29,'..equipshowidstr..'}|x=66.0|y=56.0|width=248|height=440>'
+
+    --背包道具
+    local currPageNo = getplaydef(actor, CommonDefine.VAR_N_CURR_NPC_DATA_PAGE1)
+    if currPageNo <= 0 then
+        currPageNo = 1
+        setplaydef(actor, CommonDefine.VAR_N_CURR_NPC_DATA_PAGE1, currPageNo)
+    end
+
+    local strSelectItem1 = getplaydef(actor, CommonDefine.VAR_S_SELECT_DECOMPOSE_ITEMS)
+    local nTempMin = (currPageNo - 1) * BAG_ITEM_COUNT_PER_PAGE2 + 1
+    local nTempMax = currPageNo * BAG_ITEM_COUNT_PER_PAGE2
+    local targstdmode = BAOZHU_BASE_CFG[chooseid].stdmode
+    local sValidItemIDList, bDataFinished = Bag.GetBagItemIDInStdmodeStr(actor, targstdmode, 0, nTempMin, nTempMax)
+    strPanelInfo = strPanelInfo..'<BAGITEMS|id=31|x=30|y=30|select='..strSelectItem1..'|filter3='..sValidItemIDList..'|count='..BAG_ITEM_COUNT_PER_PAGE2..
+        '|showtips=0|selecttype=0|row=4|dblink=@function_button,'..DO_FUNCTION_ID_7..'>'
+
+    if currPageNo > 1 then
+        strPanelInfo = strPanelInfo..'<Button|id=32|x=30.0|y=340|nimg=private/cc_rank_ui/6.png|link=@function_button,'..DO_FUNCTION_ID_20..'>'
+    end
+    if not bDataFinished then
+        strPanelInfo = strPanelInfo..'<Button|id=33|x=420.0|y=340|nimg=private/cc_rank_ui/7.png|link=@function_button,'..DO_FUNCTION_ID_21..'>'
+    end
+    strPanelInfo = strPanelInfo..'<Text|id=34|text=双击选择要分解的灵玉|x=160|y=340|size=18|color='..CSS.NPC_YELLOW..'>'
+    strPanelInfo = strPanelInfo..'<Button|id=93|x=60.0|y=390.0|size=18|color=255|text=设置自动分解|nimg=private/cc_common/button_up.png|pimg=private/cc_common/button_down.png|mimg=private/cc_common/button_down.png|link=@function_button,'..DO_FUNCTION_ID_9..'>'
+    strPanelInfo = strPanelInfo..'<Button|id=94|x=300.0|y=390.0|size=18|color=255|text=进行分解|nimg=private/cc_common/button_up.png|pimg=private/cc_common/button_down.png|mimg=private/cc_common/button_down.png|link=@function_button,'..DO_FUNCTION_ID_8..'>'
+    strPanelInfo = strPanelInfo..'<Layout|id=21|children={31,32,33,34,93,94}|x=320.0|y=56.0|width=470|height=440>'
+
+    BF_ShowSpecialUI(actor, strPanelInfo)
+end
+
+local function DoSelectDecomposeItem(actor)
+    if BF_IsNullObj(actor) then
+        return
+    end
+    local strNewSelectItem = getplaydef(actor, CommonDefine.VAR_S_SELECT_ITEM) 
+    local nSelectItemMakeIndex = tonumber(strNewSelectItem)
+    local selectItemObj = Bag.GetItemByMakeindex(actor, nSelectItemMakeIndex)
+    if BF_IsNullObj(selectItemObj) then
+        return
+    end
+    local strOldSelectItemList = getplaydef(actor, CommonDefine.VAR_S_SELECT_DECOMPOSE_ITEMS)
+    local tabStrTempList = string.split(strOldSelectItemList, ',')
+    local strFinalSelectStr = ''
+    local bFind = false
+    if tabStrTempList ~= false then
+        if #tabStrTempList > 10 then
+            Player.SendSelfMsg(actor, '单次不超过10种灵玉！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+            return
+        end        
+        for _, value in ipairs(tabStrTempList) do
+            if BF_IsNumberStr(value) then
+                local makeindex = tonumber(value)
+                if makeindex == nSelectItemMakeIndex then
+                    bFind = true
+                else
+                    if strFinalSelectStr ~= '' then
+                        strFinalSelectStr = strFinalSelectStr..','
+                    end
+                    strFinalSelectStr = strFinalSelectStr..makeindex
+                end                
+            end
+        end
+        if bFind == false then
+            if strFinalSelectStr ~= '' then
+                strFinalSelectStr = strFinalSelectStr..','
+            end
+            strFinalSelectStr = strFinalSelectStr..nSelectItemMakeIndex        
+        end
+    end    
+    setplaydef(actor, CommonDefine.VAR_S_SELECT_DECOMPOSE_ITEMS, strFinalSelectStr)
+end
+
+--手动批量回收宝珠
+local function DoDecomposeSelectItems(actor)
+    if BF_IsNullObj(actor) then
+        return
+    end
+    local strOldSelectItemList = getplaydef(actor, CommonDefine.VAR_S_SELECT_DECOMPOSE_ITEMS)
+    local tabStrTempList = string.split(strOldSelectItemList, ',')
+    if tabStrTempList ~= false then
+        for _, value in ipairs(tabStrTempList) do
+            if BF_IsNumberStr(value) then
+                local makeindex = tonumber(value)
+                local itemobj = Bag.GetItemByMakeindex(actor, makeindex)
+                if not BF_IsNullObj(itemobj) then
+                    local itemidx = getiteminfo(actor, itemobj, CommonDefine.ITEMINFO_ITEMIDX)
+                    local cfgSimpleRecycle = cfgItemSimpleRecycle[itemidx]
+                    if cfgSimpleRecycle ~= nil then
+                        local itemcount = getiteminfo(actor, itemobj, CommonDefine.ITEMINFO_OVERLAP)
+                        itemcount = math.max(1, itemcount)
+                        delitembymakeindex(actor, makeindex, itemcount, '灵玉手动分解')
+                        local tempitems = BF_GetItemTabMulti(cfgSimpleRecycle.giveitems_tab, itemcount)
+                        Player.GiveItemsToBagOrMail(actor, tempitems, '灵玉手动分解')                    
+                    end                                
+                end                
+            end
+        end
+    end    
+    setplaydef(actor, CommonDefine.VAR_S_SELECT_DECOMPOSE_ITEMS, '')
+end
+
+--设置自动回收宝珠
 local function ShowPanel5(actor)
-    local tempCurrX = CSS.NPC_LEFT_START_X
-    local tempCurrY = CSS.NPC_TOP_START_Y
-    local msg = '<Text|text=灵玉尊者:|x='..tempCurrX..'|y='..tempCurrY..'|color='..CSS.NPC_LIGHTGREEN..'>'..
-                '<Text|text=你可以在这里进行灵玉的自动回收设置！|x='..(tempCurrX+100)..'|y='..tempCurrY..'|color='..CSS.NPC_WHITE..'>'
-    msg = msg..'<Text|text= - —— - —— - —— - —— - —— - —— - —— - —— - —— - —— - —— - |x=15|y='..(tempCurrY+20)..'|color='..CSS.NPC_BLUE_LINE..'>'
-    msg = msg..BaoZhuManagerNew.GetRecycleCheckBoxInfo(actor, tempCurrX, tempCurrY+40)
-    msg = msg..'<Text|text= - —— - —— - —— - —— - —— - —— - —— - —— - —— - —— - —— - |x=15|y='..(CSS.NPC_TOP_START_Y+200)..'|color='..CSS.NPC_BLUE_LINE..'>'    
-    msg = msg..'<Text|text=返回上一层|x='..(CSS.NPC_LEFT_START_X+400)..'|y='..(CSS.NPC_TOP_START_Y+220)..'|color='..CSS.NPC_ORANGE..'|link=@baozhu_button_function,'..DO_FUNCTION_ID_3..'>'
-    BF_NPCSayExt(actor,msg)
+    local strPanelInfo = '<Img|id=10|children={11,12,21,22}|x=268.0|y=69.0|show=0|esc=1|reset=1|img=private/cc_common/rule_panel.png|bg=1|move=0>'..
+        '<Layout|id=11|x=525.0|y=-1.0|width=80|height=80|link=@function_button,'..DO_FUNCTION_ID_4..'>'..
+        '<Button|id=12|x=528.0|y=0.0|nimg=public/1900000510.png|pimg=public/1900000511.png|link=@function_button,'..DO_FUNCTION_ID_4..'>'
+
+    strPanelInfo = strPanelInfo..'<Text|id=21|text=灵玉自动回收|x=200|y=50|size=20|color='..CSS.NPC_LIGHTGREEN..'>'
+    strPanelInfo = strPanelInfo..BaoZhuManagerNew.GetRecycleCheckBoxInfo(actor, 20, 20)
+
+    BF_ShowSpecialUI(actor, strPanelInfo)
 end
 
 local function IsValidRecycleID(sid)
@@ -672,14 +830,21 @@ function BaoZhuManagerNew.DoOperButton(actor, sid, sparam)
     elseif funcid == DO_FUNCTION_ID_3 then
         ShowPanel3(actor)
     elseif funcid == DO_FUNCTION_ID_4 then
-        
-    elseif funcid == DO_FUNCTION_ID_6 then
+        setplaydef(actor, CommonDefine.VAR_S_SELECT_DECOMPOSE_ITEMS, '')
+        ShowPanel4(actor)
+    elseif funcid == DO_FUNCTION_ID_5 then
         BaoZhuManagerNew.QuickTakeOn(actor)
         BaoZhuManagerNew.ShowBasePanel(actor)
-    elseif funcid == DO_FUNCTION_ID_7 then
+    elseif funcid == DO_FUNCTION_ID_6 then
         BaoZhuManagerNew.QuickTakeOff(actor)
         BaoZhuManagerNew.ShowBasePanel(actor)
+    elseif funcid == DO_FUNCTION_ID_7 then      
+		DoSelectDecomposeItem(actor)
+		ShowPanel4(actor)
     elseif funcid == DO_FUNCTION_ID_8 then
+        DoDecomposeSelectItems(actor)
+        ShowPanel4(actor)
+    elseif funcid == DO_FUNCTION_ID_9 then
         ShowPanel5(actor)
     elseif funcid == DO_FUNCTION_ID_10 then
         DoSetRecycleQuality(actor, sparam)
@@ -716,6 +881,22 @@ function BaoZhuManagerNew.DoOperButton(actor, sid, sparam)
             setplaydef(actor, CommonDefine.VAR_N_LAST_NPC_CHOOSEID, chooseid)
             ShowPanel3(actor)
         end
+    elseif funcid == DO_FUNCTION_ID_19 then
+        if BF_IsNumberStr(sparam) then
+            local chooseid = tonumber(sparam)
+            setplaydef(actor, CommonDefine.VAR_N_LAST_NPC_CHOOSEID, chooseid)
+            ShowPanel4(actor)
+        end        
+    elseif funcid == DO_FUNCTION_ID_20 then
+        local currpage = getplaydef(actor, CommonDefine.VAR_N_CURR_NPC_DATA_PAGE1)       
+        if currpage > 0 then
+            setplaydef(actor, CommonDefine.VAR_N_CURR_NPC_DATA_PAGE1, currpage - 1)
+            ShowPanel4(actor)
+        end
+    elseif funcid == DO_FUNCTION_ID_21 then
+        local currpage = getplaydef(actor, CommonDefine.VAR_N_CURR_NPC_DATA_PAGE1)       
+        setplaydef(actor, CommonDefine.VAR_N_CURR_NPC_DATA_PAGE1, currpage + 1)        
+        ShowPanel4(actor)
     end    
 end
 
