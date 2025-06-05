@@ -362,6 +362,8 @@ local function GetSingleShowInfo(actor, viplevel)
                             '|mimg=private/cc_common/button_2.png|nimg=private/cc_common/button_2.png|size=18|text=领奖|link=@function_button,'..NPCPANEL_BUTTONFUNC_ID_3..','..i..'>'
                     end
                 end
+            elseif currVIPLv >= viplevel then
+                strPanelInfo = strPanelInfo..'<Text|id='..textid4..'|text=已完成|size=20|x='..(tempCurrX+270)..'|y='..(tempCurrY-30)..'|color='..CSS.NPC_LIGHTGREEN..'>'
             end
         end
         tempCurrY = tempCurrY + 40

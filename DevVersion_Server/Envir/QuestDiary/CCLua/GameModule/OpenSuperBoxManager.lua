@@ -1035,8 +1035,10 @@ function OpenSuperBoxManager.DoOperButton(actor, sid, sparam)
     elseif funcid == OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_3 then
         DecOnceOpenBoxNum(actor)
     elseif funcid == OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_4 then
+        setflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_AUTO_OPEN_SUPERBOX_PAUSE, 1)
         OpenUpgradeBoxLevelPanel(actor)
     elseif funcid == OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_5 then
+        setflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_AUTO_OPEN_SUPERBOX_PAUSE, 0)
         CloseUpgradeBoxLevelPanel(actor)
     elseif funcid == OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_6 then
         if getflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_AUTO_OPEN_SUPERBOX) == 1 then
