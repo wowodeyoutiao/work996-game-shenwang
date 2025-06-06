@@ -101,7 +101,7 @@ function playlevelup(actor)
     --触发经验泡点状态更新
     Player.UpdateAutoAddExp(actor)
     
-    --SkillUpgrade.CheckAutoLearnSkill(actor)
+    SkillUpgrade.CheckAutoLearnSkill(actor)
     TaskManager.OnLevelChange(actor)    
     --延迟展现战力变化，防止短时间触发多次
     --delaygoto(actor, 100, "update_power_callback", 0)    

@@ -149,7 +149,8 @@ function Item.GetNeedItemsShowInfo(actor, needitems_tab, basex, basey, imgbaseid
             if bNoBagItemFlag==nil or bNoBagItemFlag~=true then
                 strNeedItemInfo = strNeedItemInfo..'/'..BF_NumToShowStr(Player.GetItemNumInBag(actor, reward.name))
             end
-            sInfo = sInfo..'<Img|id='..itemimgid..'|x='..(itemgrid_x+90)..'|y='..(itemgrid_y-4)..'|width=24|height=24|img='..imgpath..'>'
+            --sInfo = sInfo..'<Img|id='..itemimgid..'|x='..(itemgrid_x+90)..'|y='..(itemgrid_y-4)..'|width=24|height=24|img='..imgpath..'>'
+            sInfo = sInfo..'<ItemShow|id='..itemimgid..'|itemid='..itemidx..'|num=1|x='..(itemgrid_x+70)..'|y='..(itemgrid_y-26)..'|scale=0.6|showtips=1|bgtype=0>'
             sInfo = sInfo..'<Text|id='..itemtextid..'|text=X'..strNeedItemInfo..'|x='..(itemgrid_x+120)..'|y='..itemgrid_y..'|color='..color..'>'
             if sIdstr ~= '' then
                 sIdstr = sIdstr..','

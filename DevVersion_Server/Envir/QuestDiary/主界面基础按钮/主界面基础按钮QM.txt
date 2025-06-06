@@ -46,9 +46,9 @@ ADDBUTTON 109 7 <$STR(S$主界面按钮)>
 Mov S$挂机0 <Button|x=-180|y=-375|mimg=private/main/Skill/1900012708.png|nimg=private/main/Skill/1900012708.png|link=@开始挂机>
 ADDBUTTON 104 1 <$STR(S$挂机0)>
 ; 充值比例提示
-MOV S$充值界面提示 <Text|x=260|y=90|outline=1|color=250|size=18|text=充值元宝1:10赠送积分（可在商城兑换道具等）>
-INC S$充值界面提示 <RText|x=10|y=250|color=255|outline=1|size=18|text=充值100-999额外赠送10%\充值1000-5000额外赠送15%\充值5000+额外赠送20%>
-INC S$充值界面提示 <RText|x=10|y=340|color=007|outline=1|size=18|text=*额外赠送金额不可领取冠名称号>
+;MOV S$充值界面提示 <Text|x=260|y=90|outline=1|color=250|size=18|text=充值元宝1:10赠送积分（可在商城兑换道具等）>
+;INC S$充值界面提示 <RText|x=10|y=250|color=255|outline=1|size=18|text=充值100-999额外赠送10%\充值1000-5000额外赠送15%\充值5000+额外赠送20%>
+;INC S$充值界面提示 <RText|x=10|y=340|color=007|outline=1|size=18|text=*额外赠送金额不可领取冠名称号>
 ADDBUTTON 40 40 <$STR(S$充值界面提示)>
 
 ; 界面左上

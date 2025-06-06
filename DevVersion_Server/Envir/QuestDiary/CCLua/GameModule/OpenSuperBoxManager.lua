@@ -50,6 +50,26 @@ local RECYCLE_CHECKBOX_INFO = {
     {seq=6, checkvar=CommonDefine.CHECK_BOX_VAR[15], bitflag=CommonDefine.VAR_HUM_BITFLAG_SUPERBOX_RECYCLE_CHECK6},
 }
 
+--宝箱升级时显示用的装备概率
+local BOX_SHOW_PROP = {
+    [0] = {0, 0, 0, 0, 0, 0, 0, 0},
+    [1] = {5, 5, 5, 5, 5, 5, 5, 5},
+    [2] = {5, 5, 5, 5, 5, 5, 5, 5},
+    [3] = {5, 5, 5, 5, 5, 5, 5, 5},
+    [4] = {5, 5, 5, 5, 5, 5, 5, 5},
+    [5] = {5, 5, 5, 5, 5, 5, 5, 5},
+    [6] = {5, 5, 5, 5, 5, 5, 5, 5},
+    [7] = {5, 5, 5, 5, 5, 5, 5, 5},
+    [8] = {5, 5, 5, 5, 5, 5, 5, 5},
+    [9] = {5, 5, 5, 5, 5, 5, 5, 5},
+    [10] = {5, 5, 5, 5, 5, 5, 5, 5},
+    [11] = {5, 5, 5, 5, 5, 5, 5, 5},
+    [12] = {5, 5, 5, 5, 5, 5, 5, 5},
+    [13] = {5, 5, 5, 5, 5, 5, 5, 5},
+    [14] = {5, 5, 5, 5, 5, 5, 5, 5},
+    [15] = {5, 5, 5, 5, 5, 5, 5, 5},
+}
+
 
 --返回每天最大可以获得的宝箱数量
 local function GetDayMaxAddBoxNum(actor)
@@ -464,10 +484,12 @@ local function OpenUpgradeBoxLevelPanel(actor)
         sNeedItemStr = BF_GetSimpleItemTableDescStr(levelConfig.upgradeneeditems_tab)
     end
 
-    local strPanel = '<Img|id=2100|children={2112,2113,2114,2115}|x=-300|y=-660|img=private/cc_superbox_1/bg_frame_upgrade.png|move=0|reset=1|bg=1|esc=1|show=0>'..
+    local strPanel = '<Img|id=2100|children={2112,2113,2114,2115,2116,2117}|x=-300|y=-660|img=private/cc_superbox_1/bg_frame_upgrade.png|move=0|reset=1|bg=1|esc=1|show=0>'..
         '<Button|id=2113|x=524.0|y=56.0|nimg=private/cc_superbox_1/btn_fanhui.png|color=255|size=18|mimg=private/cc_superbox_1/btn_fanhui.png|link=@opensuperboxmanager_button#sid='..
         OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_5..'>'..
-        '<Layout|id=2115|x=524.0|y=56.0|width=80|height=80|link=@opensuperboxmanager_button#sid='..OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_5..'>'
+        '<Layout|id=2115|x=524.0|y=56.0|width=80|height=80|link=@opensuperboxmanager_button#sid='..OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_5..'>'..
+        '<Text|id=2116|x=340|y=90|color='..CSS.NPC_LIGHTGREEN..'|size=18|text='..(nBoxCurrLv)..'>'..
+        '<Text|id=2117|x=508|y=90|color='..CSS.NPC_LIGHTGREEN..'|size=18|text='..(nBoxCurrLv+1)..'>'
 
     local strItems = ''
     local nStartID = 2120
@@ -486,9 +508,9 @@ local function OpenUpgradeBoxLevelPanel(actor)
         strPanel = strPanel..'<Layout|id='..nLayoutID..'|children={'..strTextIDs..'}|width=320|height=40>'..
             --'<Img|id='..nImgID1..'|width=220|height=20|img='..QUALITY_PIC[seq]..'>'..
             --'<Text|id='..nTextID1..'|x=10|y=0|color='..CSS.QUALITY_COLOR[seq]..'|size=16|text='..value..'品质:>'..
-            '<Text|id='..nTextID2..'|x=90|y=0|color=255|size=16|text=15%>'
+            '<Text|id='..nTextID2..'|x=90|y=0|color=255|size=16|text='..BOX_SHOW_PROP[nBoxCurrLv][seq]..'%>'
         if nextLevelConfig ~= nil then
-            strPanel = strPanel..'<Text|id='..nTextID3..'|x=260|y=0|color=255|size=16|text=25%>'
+            strPanel = strPanel..'<Text|id='..nTextID3..'|x=260|y=0|color=255|size=16|text='..BOX_SHOW_PROP[nBoxCurrLv+1][seq]..'%>'
         end
     end
 

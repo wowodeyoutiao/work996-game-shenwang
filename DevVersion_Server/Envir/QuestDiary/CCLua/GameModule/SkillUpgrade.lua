@@ -12,11 +12,36 @@ local UPGRADE_TYPE_UPLEVEL = 1          --升阶
 --升级自动学习的技能
 local UPGRADE_LEVEL_AUTO_LEARN_SKILL = {
 	[CommonDefine.JOB_Z] = {
+        {magicid=1, minlevel = 5},
 		{magicid=3, minlevel = 1},
-		{magicid=7, minlevel = 1},
-        {magicid=12, minlevel = 1},
-        {magicid=26, minlevel = 1},
-        {magicid=27, minlevel = 1},
+        {magicid=13, minlevel = 4},
+        {magicid=5, minlevel = 8},
+		{magicid=7, minlevel = 2},
+        {magicid=12, minlevel = 3},
+        {magicid=6, minlevel = 7},
+        {magicid=9, minlevel = 17},
+        {magicid=25, minlevel = 12},
+        {magicid=10, minlevel = 19},
+        {magicid=26, minlevel = 20},
+        {magicid=11, minlevel = 10},
+        {magicid=56, minlevel = 30},
+        {magicid=22, minlevel = 15},
+        {magicid=50, minlevel = 53},
+        {magicid=66, minlevel = 42},
+        {magicid=23, minlevel = 27},        
+        {magicid=57, minlevel = 22},
+        {magicid=82, minlevel = 60},
+        {magicid=24, minlevel = 25},
+        {magicid=38, minlevel = 37},
+        {magicid=81, minlevel = 65},
+        {magicid=51, minlevel = 32},
+        {magicid=52, minlevel = 45},
+        {magicid=33, minlevel = 24},
+        {magicid=44, minlevel = 39},
+        {magicid=85, minlevel = 50},
+        {magicid=45, minlevel = 40},
+        {magicid=58, minlevel = 35},
+        {magicid=86, minlevel = 55},
 	},
 	[CommonDefine.JOB_F] = {
 		{magicid=1, minlevel = 1},
@@ -466,7 +491,7 @@ local function DoSkillAdvanceUpgradeOnce(actor, targSkillID)
 
     if magicCfgInfo.AdvanceLevelVarID and (type(magicCfgInfo.AdvanceLevelVarID) == "number") then
         local id = magicCfgInfo.AdvanceLevelVarID
-        if (id < 51) or (id > 80) then
+        if (id < 151) or (id > 180) then
             BF_ExceptionOut('do_skill_advance_upgrade_once: AdvanceLevelVarID error:'..id)
             Player.SendSelfMsg(actor, '技能进阶失败 111', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
             return

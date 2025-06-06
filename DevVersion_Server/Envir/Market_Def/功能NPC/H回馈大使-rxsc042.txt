@@ -1,0 +1,268 @@
+[@MAIN]
+;10000以下回馈按配置读取；一次全部显示14条
+;10000以上回馈，每充值1000元可领取1280万元宝；每页显示4条
+
+#IF
+#ACT
+MOV S$NPCUI
+MOV S$IDLIST
+MOV S$IDLISTs
+GetDBItemFieldValue 元宝 idx N$元宝IDX
+GetDBItemFieldValue 黑铁矿 idx N$附加IDX1
+GetDBItemFieldValue 幸运矿石礼盒 idx N$附加IDX2
+GetDBItemFieldValue 天外飞石 idx N$天外飞石IDX
+
+
+; 修复部分玩家回馈问题
+#IF
+EQUAL T33
+LARGE U100 0
+#ACT
+VAR_CHECK <$STR(U100)> < 14 <$STR(U100)> 14 N$最高遍历
+INC N$最高遍历 1
+MOV N1 1
+while N1 < <$STR(N$最高遍历)>
+ADDSTRVALUE T33 <$cfg_充值回馈配置(<$STR(N1)>_1)> 1
+INC N1 1
+endwhile
+GOTO @修复领取超过14次部分
+
+
+
+
+
+
+
+#IF
+SMALL U100 14
+#ACT
+MOV N1 1
+WHILE N1 < <$Getcsv(cfg_充值回馈配置,Row)>
+
+FORMULATION <$STR(N1)>*1000 N$1
+INC S$IDLIST <$STR(N$1)>,
+MOV S$IDLISTs <$STR(N$1)>121,<$STR(N$1)>122,<$STR(N$1)>123,<$STR(N$1)>124,<$STR(N$1)>125,<$STR(N$1)>126,<$STR(N$1)>127,<$STR(N$1)>128
+
+; 满1000给幸运矿石其他金额给黑铁矿
+FORMULATION <$cfg_充值回馈配置(<$STR(N1)>_1)>%1000 N$整除运算
+VAR_CHECK <$STR(N$整除运算)> = 0 <$STR(N$附加IDX2)> <$STR(N$附加IDX1)> N$附加IDX
+FORMULATION <$STR(N1)>%2 N$ZSS
+VAR_CHECK <$STR(N$ZSS)> = 0 bt11 bt21 S$IMG
+
+INC S$NPCUI <Layout|id=<$STR(N$1)>|children={<$STR(N$1)>1}|x=0|y=0|width=78|height=78|color=X>
+INC S$NPCUI <Img|id=<$STR(N$1)>1|x=0|y=0|children={<$STR(S$IDLISTs)>}|img=public/wz/92233812_186332.png|scale9r=40|scale9l=40|scale9b=40|scale9t=40|width=590|height=78>
+INC S$NPCUI <RText|id=<$STR(N$1)>121|x=10|y=10|color=222|outline=1|size=20|text=累计充值达到<【<$cfg_充值回馈配置(<$STR(N1)>_1)>】/FCOLOR=116>元>
+INC S$NPCUI <RText|id=<$STR(N$1)>122|x=10|y=40|color=7|outline=1|size=16|text=额外<[<$cfg_充值回馈配置(<$STR(N1)>_2)>]/FCOLOR=151>元宝|simplenum=1>
+INC S$NPCUI <ItemShow|id=<$STR(N$1)>123|x=300|y=5|width=70|height=70|itemid=<$STR(N$元宝IDX)>|itemcount=<$cfg_充值回馈配置(<$STR(N1)>_2)>|showtips=0|bgtype=1|scale=0.8>
+INC S$NPCUI <ItemShow|id=<$STR(N$1)>124|x=360|y=5|width=70|height=70|itemid=<$STR(N$附加IDX)>|itemcount=1|showtips=1|bgtype=1|scale=0.8>
+MOV S$领取按钮 <Button|id=<$STR(N$1)>128|x=468|y=20|nimg=public/wz/<$STR(S$IMG)>.png|color=151|clickInterval=1268|text=领取回馈|size=18|link=@领取返利EX#领取等级=<$STR(N1)>>
+MOV S$领取按钮1 <Img|id=<$STR(N$1)>128|x=487|y=23|img=public/wz/cb08c71f_173839.png>
+MOV N$领取标识 <$GETSTRVALUE(T33,<$cfg_充值回馈配置(<$STR(N1)>_1)>)>
+VAR_CHECK <$STR(N$领取标识)> = 1 <$STR(S$领取按钮1)> <$STR(S$领取按钮)> S$领取按钮
+
+INC S$NPCUI <$STR(S$领取按钮)>
+INC N1 1
+ENDWHILE
+
+
+
+; 超过10000每充值1000可领取一次
+#IF
+NOT SMALL U100 14
+#ACT
+MOV N$附加IDX <$STR(N$附加IDX2)>
+
+FORMULATION <$STR(U100)>-14 N$领取开始
+DIV N$领取开始 4
+
+MOV N1 1
+WHILE N1 < 5
+
+FORMULATION <$STR(N1)>*1000 N$1
+INC S$IDLIST <$STR(N$1)>,
+MOV S$IDLISTs <$STR(N$1)>121,<$STR(N$1)>122,<$STR(N$1)>123,<$STR(N$1)>124,<$STR(N$1)>125,<$STR(N$1)>126,<$STR(N$1)>127,<$STR(N$1)>128
+
+FORMULATION <$STR(N$领取开始)>*4+14+<$STR(N1)> N$领取等级
+FORMULATION <$STR(N$领取开始)>*4000+<$STR(N1)>*1000+10000 N$累计金额
+FORMULATION <$STR(N1)>%2 N$ZSS
+VAR_CHECK <$STR(N$ZSS)> > 0 bt11 bt21 S$IMG
+
+INC S$NPCUI <Layout|id=<$STR(N$1)>|children={<$STR(N$1)>1}|x=0|y=0|width=78|height=78|color=X>
+INC S$NPCUI <Img|id=<$STR(N$1)>1|x=0|y=0|children={<$STR(S$IDLISTs)>}|img=public/wz/92233812_186332.png|scale9r=40|scale9l=40|scale9b=40|scale9t=40|width=590|height=78>
+INC S$NPCUI <RText|id=<$STR(N$1)>121|x=10|y=10|color=222|outline=1|size=20|text=累计充值达到<【<$STR(N$累计金额)>】/FCOLOR=116>元>
+INC S$NPCUI <RText|id=<$STR(N$1)>122|x=10|y=40|color=7|outline=1|size=16|text=额外<[12800000]/FCOLOR=151>元宝|simplenum=1>
+INC S$NPCUI <ItemShow|id=<$STR(N$1)>123|x=300|y=5|width=70|height=70|itemid=<$STR(N$元宝IDX)>|itemcount=<$STR(N$回馈数量1)>|showtips=0|bgtype=1|scale=0.8>
+INC S$NPCUI <ItemShow|id=<$STR(N$1)>124|x=360|y=5|width=70|height=70|itemid=<$STR(N$附加IDX)>|itemcount=1|showtips=1|bgtype=1|scale=0.8>
+MOV S$领取按钮 <Button|id=<$STR(N$1)>128|x=468|y=20|nimg=public/wz/<$STR(S$IMG)>.png|color=151|clickInterval=1268|text=领取回馈|size=18|link=@领取返利EX#领取等级=<$STR(N$领取等级)>>
+MOV S$领取按钮1 <Img|id=<$STR(N$1)>128|x=487|y=23|img=public/wz/cb08c71f_173839.png>
+MOV N$领取标识 <$GETSTRVALUE(T33,<$STR(N$累计金额)>)>
+VAR_CHECK <$STR(N$领取标识)> = 1 <$STR(S$领取按钮1)> <$STR(S$领取按钮)> S$领取按钮
+
+INC S$NPCUI <$STR(S$领取按钮)>
+INC N1 1
+ENDWHILE
+
+#IF
+EQUAL <$GAMEID> 1
+#ACT
+SENDMSG 6 <$STR(U100)>:<$STR(T33)>
+
+#IF
+#SAY
+<Img|width=730|rotate=0|show=4|reset=1|loadDelay=0|bg=1|img=public/wz/92233812_186329.png|move=0|esc=1>
+<Layout|x=672.0|y=43.0|width=80|height=80|link=@exit>
+<Button|x=676.0|y=49.0|color=255|size=18|pimg=public/1900000510_2.png|nimg=public/1900000510_1.png|link=@exit>
+<Img|x=65.0|y=94.0|img=public/wz/9848a216_177466.jpg|esc=0>
+<Text|x=337.0|y=59.0|color=116|outline=2|size=18|text=回馈大使>
+<Text|x=70|y=100|color=161|size=18|outline=1|text=累计充值包括实充、首爆等奖励充值\均可领取奖励>
+<RText|x=70.0|y=155.0|color=254|outline=1|size=18|text=当前充值金额：<<$MONEY(充值)>元/FCOLOR=250>>
+
+<ListView|children={<$STR(S$IDLIST)>}|x=67|y=190|width=600|height=340|direction=1|bounce=0|margin=1|color=X|reload=0>
+<$STR(S$NPCUI)>
+
+#IF
+LARGE U100 13
+#SAY
+<Text|a=0|x=70|y=510|color=250|size=18|outline=1|text=累计充值金额大于10000，每增加1000即可领取1次奖励。>
+; 领取1500奖励后展示天外领取
+#IF
+LARGE U100 7
+#ACT
+FORMULATION <$STR(U40)>+1 N$天外飞石金额
+#SAY
+<ItemShow|children={72,73,74,75}|x=400|y=100|width=70|height=70|itemid=<$STR(N$天外飞石IDX)>|itemcount=1|showtips=1|bgtype=1|scale=0.8>
+<Button|id=72|x=35|y=67|nimg=public/alpha_1px.png|color=151|size=16|text=累积<$STR(N$天外飞石金额)>万领取>
+<Button|id=73|x=140|y=20|nimg=public/wz/bt11.png|color=151|clickInterval=1268|size=18|text=领取回馈|link=@领取10000回馈EX>
+
+
+#IF
+NOT SMALL U40 5
+#SAY
+<Button|id=72|x=35|y=67|nimg=public/alpha_1px.png|color=151|size=16|text=累积5万领取>
+<Img|id=73|x=160|y=20|img=public/wz/cb08c71f_173839.png>
+
+
+#IF
+EQUAL <$GAMEID> 1
+#SAY
+<Button|x=0|y=0|nimg=public/anniu.png|color=151|size=18|clickInterval=268|text=清理领取|link=@清理领取>
+
+[@修复领取超过14次部分]
+#IF
+LARGE U100 14
+#ACT
+FORMULATION <$STR(U100)>-14+1 N$当前挡位
+MOV N1 1
+while N1 < <$STR(N$当前挡位)>
+FORMULATION <$STR(N1)>*1000+10000 N$当前金额
+ADDSTRVALUE T33 <$STR(N$当前金额)> 1
+INC N1 1
+endwhile
+
+[@清理领取]
+#IF
+EQUAL <$GAMEID> 1
+#ACT
+MOV T33
+MOV U40 0
+MOV U100 0
+GOTO @MAIN
+BREAK
+
+
+[@领取返利EX]
+#IF
+#ACT
+FORMULATION <$STR(U100)>+1 N$次数检测
+MOV N$检测充值 <$cfg_充值回馈配置(<$STR(S$领取等级)>_1)>
+MOV N$回馈数量 <$cfg_充值回馈配置(<$STR(S$领取等级)>_2)>
+
+#IF
+LARGE S$领取等级 14
+#ACT
+FORMULATION (<$STR(S$领取等级)>-14)*1000+10000 N$检测充值
+FORMULATION 1280*10000 N$回馈数量
+
+#IF
+NOT EQUAL N$次数检测 <$STR(S$领取等级)>
+#ACT
+MOV T33 
+SENDMSG 9 请依次领取奖励|<$STR(N$次数检测)>,<$STR(S$领取等级)>
+BREAK
+
+#IF
+CHECKMONEY 充值 < <$STR(N$检测充值)>
+#ACT
+SENDMSG 9 当前充值金额未达到领取条件，无法领取。
+BREAK
+
+
+
+#IF
+EQUAL <$GETSTRVALUE(T33,<$STR(N$检测充值)>)> 1
+#ACT
+SENDMSG 9 此奖励已领取过了...
+BREAK
+
+#IF
+#ACT
+FORMULATION <$STR(N$检测充值)>%1000 N$整除运算
+VAR_CHECK <$STR(N$整除运算)> = 0 幸运矿石礼盒 黑铁矿 S$附加奖励
+
+#IF
+NOT EQUAL N$回馈数量 0
+CHECKMONEY 充值 ? <$STR(N$检测充值)>
+#ACT
+INC U100 1
+ADDSTRVALUE T33 <$STR(N$检测充值)> 1
+SETNPCMSG 回馈<$STR(S$领取等级)>|<$STR(N$回馈数量)>
+MONEY 元宝 + <$STR(N$回馈数量)>
+GIVE <$STR(S$附加奖励)> 1
+SENDMSG 9 成功领取【<$STR(N$回馈数量)>】元返利元宝。
+get_post_data S$上报数据 {"gevent":"累充回馈","gvalue":"<$STR(N$检测充值)>","desc":"U100：<$STR(U100)>|<$STR(S$附加奖励)>"}
+HTTPPOST http://211.149.241.27:4473/api/api996/get_log 0 <$STR(S$上报数据)>
+
+GOTO @MAIN
+BREAK
+
+
+[@领取10000回馈EX]
+#IF
+NOT SMALL U40 5
+#ACT
+SENDMSG 9 无法领取
+BREAK
+
+#IF
+#ACT
+FORMULATION (<$STR(U40)>+1)*10000 N$天外飞石金额
+
+#IF
+CHECKMONEY 充值 < <$STR(N$天外飞石金额)>
+#ACT
+SENDMSG 9 累积充值未满<$STR(N$天外飞石金额)>，无法领取。
+BREAK
+
+#IF
+SMALL U40 5
+#ACT
+INC U40 1
+SETNPCMSG 领取累积充值天外飞石
+GIVE 天外飞石 1
+SENDMSG 9 成功领取累积回馈，获得的[天外飞石]
+get_post_data S$上报数据 {"gevent":"天外飞石","gvalue":"1","desc":"回馈领取"}
+HTTPPOST http://211.149.241.27:4473/api/api996/get_log 0 <$STR(S$上报数据)>
+GOTO @MAIN
+BREAK
+
+
+
+
+
+
+
+
+
+
+
+

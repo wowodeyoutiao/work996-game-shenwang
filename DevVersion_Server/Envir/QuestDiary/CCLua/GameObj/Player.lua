@@ -707,7 +707,8 @@ function Player.QuickGoTo(actor, gotoid)
         --装备强化
         NewMainUIBase.OpenPanel(actor, NewMainUIBase.UI_ICON_POSSTRENGTH)
     elseif gotoid == CommonDefine.QUICK_GOTO_EQUIP_QUALITY then
-        --装备品质        
+        --装备品质  
+        openhyperlink(actor, 1)
     elseif gotoid == CommonDefine.QUICK_GOTO_EQUIP_RANDOMAB then
         --装备洗炼        
     elseif gotoid == CommonDefine.QUICK_GOTO_EQUIP_COMPOSE then
