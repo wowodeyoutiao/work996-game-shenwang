@@ -27,7 +27,16 @@ function login(actor)
 ]]--
 
     --玩家是否进行新手初始化
-    Player.InitNewPlayer(actor)   
+    Player.InitNewPlayer(actor)       
+
+    --重连的时候清理残留界面
+    if Player.IsReconnectLogin(actor) then
+        delbutton(actor, 1101, CommonDefine.ADD_BUTTON_ID_4)    
+        delbutton(actor, 108, CommonDefine.ADD_BUTTON_ID_5) 
+        delbutton(actor, 108, CommonDefine.ADD_BUTTON_ID_31)
+        delbutton(actor, 108, CommonDefine.ADD_BUTTON_ID_32)
+    end
+
     --触发玩家上线的事件监听
     GameEventManager.DoTriggerEvent(CommonDefine.EVENT_NAME_PLAYER_ENTERGAME, actor)    
     --激活玩家的上线称号
@@ -37,11 +46,6 @@ function login(actor)
     --检测加速状态
     Player.CheckSpeedUpStatus(actor)        
     recalcabilitys(actor)
-    
-    if Player.IsReconnectLogin(actor) then
-        delbutton(actor, 1101, CommonDefine.ADD_BUTTON_ID_4)    
-        delbutton(actor, 108, CommonDefine.ADD_BUTTON_ID_5) 
-    end
 
     --更新战力信息
     -- local currpower = Player.GetPlayerPower(actor);

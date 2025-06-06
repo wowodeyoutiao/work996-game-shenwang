@@ -272,6 +272,7 @@ CommonDefine = {
     OPEN_SUPERBOX_SPEEDUP_ONCE_ADDSECONDS = 60,                          --超级宝箱升级加速一次对应的秒数
     NEW_PLAYER_EMAIL_ITEMS = {{name='元宝', num=5000}},                   --新玩家登录给与的邮件奖励
     AUTO_ADDEXP_MAX_LEVEL = 200,                                          --泡点自动得经验的最大等级
+    RECHARGE_YB_RATE = 100,                                               --充值转元宝的比率
 
     --需要离开按钮的地图
     NEED_LEAVEBUTTON_MAPS = {

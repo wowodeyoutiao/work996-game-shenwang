@@ -530,7 +530,7 @@ local config = {
 	},
 	["AbilInfoEx"] = { 
 		k = "AbilInfoEx",
-		value = "元宝#<$MONEY(元宝)>|金刚石#<$MONEY(金刚石)>|积分#<$MONEY(积分)>|充值#<$MONEY(充值)>|神力值#<$MONEY(神力值)>|战斗力#<$HUMAN(战斗力)>|刀魂#<$HUMAN(刀魂数)>|活跃值#<$MONEY(活跃)>|荣誉点#<$MONEY(荣誉)>|个人爆率#<$HUMAN(爆率数)>%|渡劫#<$STR(U37)>重<$STR(U38)>星|不屈天赋#<$STR(U61)>重|无畏天赋#<$STR(U62)>重",
+		value = "元宝#<$MONEY(元宝)>|充值#<$MONEY(充值)>|战斗力#<$HUMAN(战斗力)>|功勋#<$MONEY(功勋)>|个人爆率#<$HUMAN(爆率数)>%",
 		notice = "属性栏自定义标题?每行标题用|分割,支持变量",
 	},
 	["bangdingguize"] = { 

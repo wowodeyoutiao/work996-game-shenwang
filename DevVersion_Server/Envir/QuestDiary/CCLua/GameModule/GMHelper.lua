@@ -413,14 +413,17 @@ function GMHelper.DoGmOper(actor, sid)
     elseif sid == '155' then
         setplaydef(actor, CommonDefine.VAR_M_ID_0, 1)
         RechargeManager.DoRecharge(actor)
+        changemoney(actor, CommonDefine.ITEMID_YB, '+', 1 * CommonDefine.RECHARGE_YB_RATE, 'GMDoRecharge', true)
         setplaydef(actor, CommonDefine.VAR_M_ID_0, 0)
     elseif sid == '156' then
         setplaydef(actor, CommonDefine.VAR_M_ID_0, 10)
         RechargeManager.DoRecharge(actor)
+        changemoney(actor, CommonDefine.ITEMID_YB, '+', 10 * CommonDefine.RECHARGE_YB_RATE, 'GMDoRecharge', true)
         setplaydef(actor, CommonDefine.VAR_M_ID_0, 0)
     elseif sid == '157' then
         setplaydef(actor, CommonDefine.VAR_M_ID_0, 100)
         RechargeManager.DoRecharge(actor)
+        changemoney(actor, CommonDefine.ITEMID_YB, '+', 100 * CommonDefine.RECHARGE_YB_RATE, 'GMDoRecharge', true)
         setplaydef(actor, CommonDefine.VAR_M_ID_0, 0)
     elseif sid == '158' then
         setplaydef(actor, CommonDefine.VAR_J_DAY_BIAOCHE_ACCEPT_TIMES, 0)
