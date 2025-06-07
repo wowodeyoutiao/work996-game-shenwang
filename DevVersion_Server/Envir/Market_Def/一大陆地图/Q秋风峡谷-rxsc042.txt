@@ -40,9 +40,9 @@ ReadConfigFileItem ..\QuestDiary\01配置项\打怪地图配置.ini <$STR(S$地图名称)> 条
 
 [@进入地图]
 #IF
-CHECKLEVELEX < 20
+CHECKLEVELEX < 60
 #ACT
-SENDMSG 9 进入失败！需要等级20或以上。
+SENDMSG 9 进入失败！需要等级60或以上。
 BREAK
 
 #IF

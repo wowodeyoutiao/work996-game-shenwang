@@ -132,10 +132,12 @@ function RandomBossManager.DoMapButton(actor, sid)
             realive(actor)                       
         end        
         Player.GoHome(actor)
+		delbutton(actor, 108, CommonDefine.ADD_BUTTON_ID_38)
 	elseif funcid == INNER_BUTTONFUNC_ID_4 then
         if Player.IsDead(actor) then
             realive(actor)                       
         end		
+		delbutton(actor, 108, CommonDefine.ADD_BUTTON_ID_38)
     end
 end
 
@@ -145,8 +147,8 @@ function RandomBossManager.TriggerRandomBossTip(actor)
         '<Layout|id=0|width=348|height=200>'..
         '<Text|id=1|x=30|y=25|size=18|color='..CSS.NPC_WHITE..'|text=意外发现了战力首领，是否>'..
         '<Text|id=2|x=60|y=55|size=16|color='..CSS.NPC_WHITE..'|text=立即进入挑战?>'..        
-        '<Button|id=3|x=45|y=90|pimg=public/1900000652.png|nimg=public/1900000653.png|color='..CSS.NPC_WHITE..'|size=17|text=取消|link=@randomboss_button#sid='..INNER_BUTTONFUNC_ID_1..'>'..
-        '<Button|id=4|x=170|y=90|pimg=public/1900000652.png|nimg=public/1900000653.png|color='..CSS.NPC_WHITE..'|size=17|text=确定|link=@randomboss_button#sid='..INNER_BUTTONFUNC_ID_2..'>'
+        '<Button|id=3|x=45|y=90|pimg=private/cc_common/button_1.png|nimg=private/cc_common/button_1.png|color='..CSS.NPC_WHITE..'|size=17|text=取消|link=@randomboss_button#sid='..INNER_BUTTONFUNC_ID_1..'>'..
+        '<Button|id=4|x=170|y=90|pimg=private/cc_common/button_1.png|nimg=private/cc_common/button_1.png|color='..CSS.NPC_WHITE..'|size=17|text=确定|link=@randomboss_button#sid='..INNER_BUTTONFUNC_ID_2..'>'
     say(actor, msg)
 end
 
@@ -304,6 +306,9 @@ function RandomBossManager.OnKillMon(actor, mon, killtype, mapidstr)
 	local ncolor = getbaseinfo(mon, CommonDefine.INFO_NAMECOLOR)
 	for _, value in ipairs(KILL_MON_TRIGGER_RANDOMBOSS) do
 		if value.moncolor == ncolor then
+
+			value.rate = 2000
+
 			if math.random(1, 10000) <= value.rate then				
 				if RandomBossManager.CreateNewRandomBoss(actor) > 0 then
 					setplaydef(actor, CommonDefine.VAR_J_DAY_RANDOMBOSS_TRIGGERTIMES, triggertimes+1)
@@ -410,12 +415,12 @@ function RandomBossManager.OnPlayerDie(actor, killername)
         killername = ''
     end	
 
-    local msg = '<Img|children={0,1,2,3,4,5}|a=1|x=737|y=201|reset=1|move=1|img=private/revive/bg_swfh_1.png|bg=1>'..
+    local msg = '<Img|children={0,1,2,3,4,5}|a=1|x=120|y=-450|reset=1|move=1|img=private/revive/bg_swfh_1.png|bg=1>'..
         '<Layout|id=0|width=348|height=200>'..
         '<Text|id=1|x=110|y=15|size=18|color='..CSS.NPC_WHITE..'|text=死亡复活>'..
         '<Text|id=2|x=77|y=45|size=16|color='..CSS.NPC_WHITE..'|text=你被 '..killername..' 杀死了！>'..        
-        '<Button|id=3|x=45|y=75|pimg=public/1900000652.png|nimg=public/1900000653.png|color='..CSS.NPC_WHITE..'|size=17|text=退出副本|link=@randomboss_button#sid='..INNER_BUTTONFUNC_ID_3..'>'..
-        '<Button|id=4|x=170|y=75|pimg=public/1900000652.png|nimg=public/1900000653.png|color='..CSS.NPC_WHITE..'|size=17|text=原地复活|link=@randomboss_button#sid='..INNER_BUTTONFUNC_ID_4..'>'..
+        '<Button|id=3|x=45|y=75|pimg=private/cc_common/button_up1.png|nimg=private/cc_common/button_down1.png|color='..CSS.NPC_WHITE..'|size=17|text=退出副本|link=@randomboss_button#sid='..INNER_BUTTONFUNC_ID_3..'>'..
+        '<Button|id=4|x=170|y=75|pimg=private/cc_common/button_up1.png|nimg=private/cc_common/button_down1.png|color='..CSS.NPC_WHITE..'|size=17|text=原地复活|link=@randomboss_button#sid='..INNER_BUTTONFUNC_ID_4..'>'..
         '<COUNTDOWN|id=5|x=70|y=110|time=30|count=1|size=16|color='..CSS.NPC_RED..'|link=@randomboss_button#sid='..INNER_BUTTONFUNC_ID_3..'>'
 	Player.ShowReliveDialogue(actor, msg)
 end

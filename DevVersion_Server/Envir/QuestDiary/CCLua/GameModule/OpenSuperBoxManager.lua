@@ -52,22 +52,37 @@ local RECYCLE_CHECKBOX_INFO = {
 
 --宝箱升级时显示用的装备概率
 local BOX_SHOW_PROP = {
-    [0] = {0, 0, 0, 0, 0, 0, 0, 0},
-    [1] = {5, 5, 5, 5, 5, 5, 5, 5},
-    [2] = {5, 5, 5, 5, 5, 5, 5, 5},
-    [3] = {5, 5, 5, 5, 5, 5, 5, 5},
-    [4] = {5, 5, 5, 5, 5, 5, 5, 5},
-    [5] = {5, 5, 5, 5, 5, 5, 5, 5},
-    [6] = {5, 5, 5, 5, 5, 5, 5, 5},
-    [7] = {5, 5, 5, 5, 5, 5, 5, 5},
-    [8] = {5, 5, 5, 5, 5, 5, 5, 5},
-    [9] = {5, 5, 5, 5, 5, 5, 5, 5},
-    [10] = {5, 5, 5, 5, 5, 5, 5, 5},
-    [11] = {5, 5, 5, 5, 5, 5, 5, 5},
-    [12] = {5, 5, 5, 5, 5, 5, 5, 5},
-    [13] = {5, 5, 5, 5, 5, 5, 5, 5},
-    [14] = {5, 5, 5, 5, 5, 5, 5, 5},
-    [15] = {5, 5, 5, 5, 5, 5, 5, 5},
+    [0] = {0,0,0,0,0,0,0,0},
+    [1] = {0.3125,0.2813,0.2188,0.1563,0.0313,0,0,0},
+    [2] = {0.2687,0.2836,0.2239,0.1642,0.0448,0.0149,0,0},
+    [3] = {0.2254,0.2817,0.2254,0.169,0.0563,0.0282,0.0141,0},
+    [4] = {0.1892,0.2703,0.2297,0.1757,0.0676,0.0405,0.027,0},
+    [5] = {0.1558,0.2597,0.2338,0.1818,0.0779,0.0519,0.039,0},
+    [6] = {0.125,0.25,0.2375,0.1875,0.0875,0.0625,0.05,0},
+    [7] = {0.0964,0.241,0.241,0.1928,0.0964,0.0723,0.0602,0},
+    [8] = {0.0698,0.2326,0.2326,0.1977,0.1047,0.0814,0.0698,0.0116},
+    [9] = {0.0449,0.2247,0.2247,0.2022,0.1124,0.0899,0.0787,0.0225},
+    [10] = {0.0217,0.2174,0.2174,0.2065,0.1196,0.0978,0.087,0.0326},
+    [11] = {0,0.2105,0.2105,0.2105,0.1263,0.1053,0.0947,0.0421},
+    [12] = {0,0.202,0.202,0.202,0.1313,0.1111,0.101,0.0505},
+    [13] = {0,0.1942,0.1942,0.1942,0.1359,0.1165,0.1068,0.0583},
+    [14] = {0,0.1869,0.1869,0.1869,0.1402,0.1215,0.1121,0.0654},
+    [15] = {0,0.1802,0.1802,0.1802,0.1441,0.1261,0.1171,0.0721},
+    [16] = {0,0.1739,0.1739,0.1739,0.1478,0.1304,0.1217,0.0783},
+    [17] = {0,0.1681,0.1681,0.1681,0.1513,0.1345,0.1261,0.084},
+    [18] = {0,0.1626,0.1626,0.1626,0.1545,0.1382,0.1301,0.0894},
+    [19] = {0,0.1575,0.1575,0.1575,0.1575,0.1417,0.1339,0.0945},
+    [20] = {0,0.1538,0.1538,0.1538,0.1538,0.1462,0.1385,0.1},
+    [21] = {0,0.1504,0.1504,0.1504,0.1504,0.1504,0.1429,0.1053},
+    [22] = {0,0.1481,0.1481,0.1481,0.1481,0.1481,0.1481,0.1111},
+    [23] = {0,0.1429,0.1429,0.1504,0.1504,0.1504,0.1504,0.1128},
+    [24] = {0,0.1385,0.1385,0.1462,0.1538,0.1538,0.1538,0.1154},
+    [25] = {0,0.1395,0.1395,0.1473,0.1473,0.155,0.155,0.1163},
+    [26] = {0,0.136,0.136,0.144,0.144,0.16,0.16,0.12},
+    [27] = {0,0.1333,0.1333,0.1417,0.1417,0.1583,0.1667,0.125},
+    [28] = {0,0.1304,0.1304,0.1391,0.1391,0.1565,0.1739,0.1304},
+    [29] = {0,0.1339,0.1339,0.1339,0.1339,0.1518,0.1786,0.1339},
+    [30] = {0,0.1321,0.1321,0.1321,0.1321,0.1509,0.1792,0.1415},
 }
 
 
@@ -505,12 +520,12 @@ local function OpenUpgradeBoxLevelPanel(actor)
         local nTextID3 = nStartID + 30 + seq
         local nImgID1 = nStartID + 40 + seq
         local strTextIDs = nImgID1..','..nTextID1..','..nTextID2..','..nTextID3
+        local boxrate = BOX_SHOW_PROP[nBoxCurrLv][seq] * 100
         strPanel = strPanel..'<Layout|id='..nLayoutID..'|children={'..strTextIDs..'}|width=320|height=40>'..
-            --'<Img|id='..nImgID1..'|width=220|height=20|img='..QUALITY_PIC[seq]..'>'..
-            --'<Text|id='..nTextID1..'|x=10|y=0|color='..CSS.QUALITY_COLOR[seq]..'|size=16|text='..value..'品质:>'..
-            '<Text|id='..nTextID2..'|x=90|y=0|color=255|size=16|text='..BOX_SHOW_PROP[nBoxCurrLv][seq]..'%>'
+            '<Text|id='..nTextID2..'|x=90|y=0|color=255|size=16|text='..boxrate..'%>'
         if nextLevelConfig ~= nil then
-            strPanel = strPanel..'<Text|id='..nTextID3..'|x=260|y=0|color=255|size=16|text='..BOX_SHOW_PROP[nBoxCurrLv+1][seq]..'%>'
+            boxrate = BOX_SHOW_PROP[nBoxCurrLv+1][seq] * 100
+            strPanel = strPanel..'<Text|id='..nTextID3..'|x=260|y=0|color=255|size=16|text='..boxrate..'%>'
         end
     end
 
@@ -534,17 +549,22 @@ local function OpenUpgradeBoxLevelPanel(actor)
         end
     end
 
-    strPanel = strPanel..'<ListView|id=2112|children={'..strItems..'}|x=188.0|y=126.0|width=320|height=360|margin=0|direction=1>'
-    strPanel = strPanel..'<Layout|id=2114|children={2105,2106,2107,2108,2109}|x=180.0|y=480.0|width=220|height=90>'
-
+    strPanel = strPanel..'<ListView|id=2112|children={'..strItems..'}|x=188.0|y=126.0|width=320|height=360|margin=0|direction=1>'    
+    local plusidstr = ''
     if nextLevelConfig ~= nil then
         local nStartUpgradeTime = getplaydef(actor, CommonDefine.VAR_U_SUPER_BOX_START_UPGRADE_TIME)
         if nStartUpgradeTime <= 0 then
             local timestr = BF_ConvertSecondsToTimeStr(levelConfig.upgradeneedseconds)
             strPanel = strPanel..'<Text|id=2105|x=24.0|y=0.0|color=255|size=18|text=升级耗时：'..timestr..'>'..
-                '<Text|id=2106|x=54.0|y=70.0|color=255|size=18|text='..sNeedItemStr..'>'..
+                --'<Text|id=2106|x=54.0|y=70.0|color=255|size=18|text='..sNeedItemStr..'>'..
                 '<Button|id=2107|x=54.0|y=24.0|mimg=private/cc_common/button_1.png|nimg=private/cc_superbox_1/button_1.png|color=255|size=18|text=升  级|link=@opensuperboxmanager_button#sid='..
                 OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_8..'>'
+
+                local sTempStr = ''
+                sTempStr, plusidstr = Item.GetNeedItemsShowInfo(actor, levelConfig.upgradeneeditems_tab, -60, 70, 170, 180, CSS.NPC_WHITE)
+                if sTempStr ~= '' then
+                    strPanel = strPanel..sTempStr
+                end                
         else
             local leftseconds = 0
             local currtime = os.time()
@@ -566,12 +586,19 @@ local function OpenUpgradeBoxLevelPanel(actor)
                     '<COUNTDOWN|id=2105|x=120.0|y=0.0|color=255|size=18|showWay=1|time='..leftseconds..'|link=@opensuperboxmanager_button#sid='..
                     OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_4..'>'..
                     '<Text|id=2106|x=24.0|y=70.0|color=255|size=18|text=加速消耗：>'..
-                    '<Text|id=2109|x=120.0|y=70.0|color='..tempcolor..'|size=18|text='..sNeedItemStr..'>'..
+                    --'<Text|id=2109|x=120.0|y=70.0|color='..tempcolor..'|size=18|text='..sNeedItemStr..'>'..
                     '<Button|id=2107|x=54.0|y=24.0|mimg=private/cc_common/button_1.png|nimg=private/cc_superbox_1/button_1.png|color=255|size=18|text=加速|link=@opensuperboxmanager_button#sid='..
                     OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_9..'>'
+
+                    local sTempStr = ''
+                    sTempStr, plusidstr = Item.GetNeedItemsShowInfo(actor, totalneeditems, 24, 70, 170, 180, CSS.NPC_WHITE)
+                    if sTempStr ~= '' then
+                        strPanel = strPanel..sTempStr
+                    end                    
             end
         end
     end
+    strPanel = strPanel..'<Layout|id=2114|children={2105,2106,2107,2108,2109,'..plusidstr..'}|x=180.0|y=480.0|width=220|height=90>'
 
     delbutton(actor, 108, CommonDefine.ADD_BUTTON_ID_5)
     addbutton(actor, 108, CommonDefine.ADD_BUTTON_ID_5, strPanel)   

@@ -75,6 +75,7 @@ function SingleBossManager.DoMapButton(actor, sid)
             realive(actor)                       
         end        
         Player.GoHome(actor)
+        delbutton(actor, 108, CommonDefine.ADD_BUTTON_ID_38)
     elseif funcid == SINGLEBOSS_BUTTONFUNC_ID_4 then
         --原地复活        
         if not Player.IsDead(actor) then
@@ -84,12 +85,14 @@ function SingleBossManager.DoMapButton(actor, sid)
         local relivetimes = getplaydef(actor, CommonDefine.VAR_N_COMMON_LOCAL_RELIVE_TIMES) + 1
         local needitems = Player.GetCommonLocalReliveNeedItems(relivetimes)
         if not Player.CheckItemsEnough(actor, needitems, '复活') then
+            delbutton(actor, 108, CommonDefine.ADD_BUTTON_ID_38)
             return
         end        
         --扣除消耗
         Player.TakeItems(actor, needitems, '个人首领地图复活')
         setplaydef(actor, CommonDefine.VAR_N_COMMON_LOCAL_RELIVE_TIMES, relivetimes + 1)        
         realive(actor)
+        delbutton(actor, 108, CommonDefine.ADD_BUTTON_ID_38)
     end
 end
 
@@ -132,12 +135,12 @@ function SingleBossManager.OnPlayerDie(actor, killername)
     local relivetimes = getplaydef(actor, CommonDefine.VAR_N_COMMON_LOCAL_RELIVE_TIMES)
     local needitems = Player.GetCommonLocalReliveNeedItems(relivetimes+1)
     local needitemstr = BF_GetItemTableDescStr(nil, needitems)
-    local msg = '<Img|children={0,1,2,3,4,5,6}|a=1|x=737|y=201|reset=1|move=1|img=private/revive/bg_swfh_1.png|bg=1>'..
+    local msg = '<Img|children={0,1,2,3,4,5,6}|a=1|x=120|y=-450|reset=1|move=1|img=private/revive/bg_swfh_1.png|bg=1>'..
         '<Layout|id=0|width=348|height=200>'..
         '<Text|id=1|x=110|y=15|size=18|color='..CSS.NPC_WHITE..'|text=死亡复活>'..
         '<Text|id=2|x=77|y=45|size=16|color='..CSS.NPC_WHITE..'|text=你被 '..killername..' 杀死了！>'..        
-        '<Button|id=3|x=45|y=75|pimg=public/1900000652.png|nimg=public/1900000653.png|color='..CSS.NPC_WHITE..'|size=17|text=立即返回|link=@singleboss_button#sid='..SINGLEBOSS_BUTTONFUNC_ID_3..'>'..
-        '<Button|id=4|x=170|y=75|pimg=public/1900000652.png|nimg=public/1900000653.png|color='..CSS.NPC_WHITE..'|size=17|text=原地复活|link=@singleboss_button#sid='..SINGLEBOSS_BUTTONFUNC_ID_4..'>'..
+        '<Button|id=3|x=45|y=75|pimg=private/cc_common/button_up1.png|nimg=private/cc_common/button_down1.png|color='..CSS.NPC_WHITE..'|size=17|text=立即返回|link=@singleboss_button#sid='..SINGLEBOSS_BUTTONFUNC_ID_3..'>'..
+        '<Button|id=4|x=170|y=75|pimg=private/cc_common/button_up1.png|nimg=private/cc_common/button_down1.png|color='..CSS.NPC_WHITE..'|size=17|text=原地复活|link=@singleboss_button#sid='..SINGLEBOSS_BUTTONFUNC_ID_4..'>'..
         '<COUNTDOWN|id=5|x=70|y=110|time=30|count=1|size=16|color='..CSS.NPC_RED..'|link=@singleboss_button#sid='..SINGLEBOSS_BUTTONFUNC_ID_3..'>'..
         '<Text|id=6|x=170|y=110|size=16|color='..CSS.NPC_WHITE..'|text='..needitemstr..'>'
     Player.ShowReliveDialogue(actor, msg)

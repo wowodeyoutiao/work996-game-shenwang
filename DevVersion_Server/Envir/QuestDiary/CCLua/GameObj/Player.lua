@@ -208,8 +208,9 @@ function Player.FilterTable(actor, srctab)
 end
 
 --µ¯³öÍæ¼Ò¸´»î¿ò
-function Player.ShowReliveDialogue(actor, msg)    
-    say(actor, msg)
+function Player.ShowReliveDialogue(actor, msg)
+    delbutton(actor, 108, CommonDefine.ADD_BUTTON_ID_38)
+    addbutton(actor, 108, CommonDefine.ADD_BUTTON_ID_38, msg)
     setflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_RELIVE_DIALOGUE_FLAG, 1)
 end
 

@@ -35,6 +35,10 @@ function login(actor)
         delbutton(actor, 108, CommonDefine.ADD_BUTTON_ID_5) 
         delbutton(actor, 108, CommonDefine.ADD_BUTTON_ID_31)
         delbutton(actor, 108, CommonDefine.ADD_BUTTON_ID_32)
+        delbutton(actor, 108, CommonDefine.ADD_BUTTON_ID_37)
+        delbutton(actor, 108, CommonDefine.ADD_BUTTON_ID_38)
+        delbutton(actor, 101, CommonDefine.ADD_BUTTON_ID_8)
+        delbutton(actor, 101, CommonDefine.ADD_BUTTON_ID_35)        
     end
 
     --触发玩家上线的事件监听

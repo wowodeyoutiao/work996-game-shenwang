@@ -42,6 +42,12 @@ ReadConfigFileItem ..\QuestDiary\01配置项\打怪地图配置.ini <$STR(S$地图名称)> 条
 
 [@进入地图]
 #IF
+CHECKLEVELEX < 40
+#ACT
+SENDMSG 9 进入失败！需要等级40或以上。
+BREAK
+
+#IF
 NOT EQUAL S$地图名称
 #ACT
 MAPMOVE fmg 246 102

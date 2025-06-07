@@ -3282,11 +3282,11 @@ BREAK
 #ACT
 ; SendMail 1 死亡提示： 你在<[<$MapTitle>-<$X>.<$Y>]/FCOLOR=222>被<<$CURRRTARGETNAME>/FCOLOR=222>杀死了！\<$STR(S$死亡装备掉落)>
 SendMail 1 死亡提示： 你在<[<$MapTitle>-<$X>.<$Y>]/FCOLOR=222>被<<$CURRRTARGETNAME>/FCOLOR=222>杀死了！
-#SAY
-<Img|show=4|children={2,3,4,5,6}|bg=1|loadDelay=1|move=0|esc=1|img=private/revive/bg_swfh_1.png|reset=1>
-<RText|id=3|x=40.0|y=30.0|size=16|color=250|text=你被<<$CURRRTARGETNAME>>杀死了！>
-<COUNTDOWN|id=5|x=129.0|y=70.0|time=10|count=1|size=16|color=249|link=@复活1>
-<Button|id=6|x=100.0|y=100.0|pimg=public/1900000652.png|nimg=public/1900000653.png|color=255|size=17|text=回城复活|link=@复活1>
+;#SAY
+;<Img|show=4|children={2,3,4,5,6}|bg=1|loadDelay=1|move=0|esc=1|img=private/revive/bg_swfh_1.png|reset=1>
+;<RText|id=3|x=40.0|y=30.0|size=16|color=250|text=你被<<$CURRRTARGETNAME>>杀死了！>
+;<COUNTDOWN|id=5|x=129.0|y=70.0|time=10|count=1|size=16|color=249|link=@复活1>
+;<Button|id=6|x=100.0|y=100.0|pimg=public/1900000652.png|nimg=public/1900000653.png|color=255|size=17|text=回城复活|link=@复活1>
 
 ; 调用lua的死亡回调
 #IF
@@ -5826,6 +5826,18 @@ BREAK
 #IF
 #ACT
 CALLLUA CC_QFunction @singleboss_button,<$STR(S$sid)>
+BREAK
+
+[@randomboss_button]
+#IF
+#ACT
+CALLLUA CC_QFunction @randomboss_button,<$STR(S$sid)>
+BREAK
+
+[@common_relive_button]
+#IF
+#ACT
+CALLLUA CC_QFunction @common_relive_button
 BREAK
 
 ;回调类的

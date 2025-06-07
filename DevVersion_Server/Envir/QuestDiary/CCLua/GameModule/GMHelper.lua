@@ -89,7 +89,8 @@ function GMHelper.OpenPanel(actor)
         '<Button|x=350|y=150|nimg=public/bg_hhzy_01_3.png|text=开服天数+1|link=@gmhelper_button#sid1=1902>'..        
         '<Button|x=350|y=180|nimg=public/bg_hhzy_01_3.png|text=开服分钟+10|link=@gmhelper_button#sid1=1903>'..
         '<Button|x=350|y=210|nimg=public/bg_hhzy_01_3.png|text=开服分钟+1|link=@gmhelper_button#sid1=1904>'..
-        '<Button|x=350|y=240|nimg=public/bg_hhzy_01_3.png|text='..strPaoKuMenu..'|link=@gmhelper_button#sid1=1905>'..
+        --'<Button|x=350|y=240|nimg=public/bg_hhzy_01_3.png|text='..strPaoKuMenu..'|link=@gmhelper_button#sid1=1905>'..
+        '<Button|x=350|y=240|nimg=public/bg_hhzy_01_3.png|text=重置VIP等级|link=@gmhelper_button#sid1=38>'..
         
 
         '<Button|x=500|y=30|nimg=public/bg_hhzy_01_3.png|text=清空首充|link=@gmhelper_button#sid1=154>'..
@@ -375,6 +376,9 @@ function GMHelper.DoGmOper(actor, sid)
         changemoney(actor, CommonDefine.ITEMID_BINDYB, '+', 100000, 'DoGmOper', true)
     elseif sid == '37' then
         TaskManager.DeleteTask(actor, CommonDefine.TASK_LINE_ID_BRANCH)
+    elseif sid == '38' then
+        setplaydef(actor, CommonDefine.VAR_U_FREEVIP_LEVEL, 0)
+        Player.SendSelfMsg(actor, 'VIP回到'..0, CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)    
     elseif sid == '101' then
         TaskManager.AddNewTask(actor, CommonDefine.TASK_LINE_ID_MAIN, 0)
     elseif sid == '102' then

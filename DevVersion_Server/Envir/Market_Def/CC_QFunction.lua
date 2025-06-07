@@ -229,23 +229,23 @@ end
 
 --人物死亡触发
 function playdie(actor, killername)
-    GameEventManager.DoTriggerEvent(CommonDefine.EVENT_NAME_PLAYER_DIE, actor, killername)
-
-    --[[
     setflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_RELIVE_DIALOGUE_FLAG, 0)    
+
+    if killername == nil then
+        killername = ''
+    end
+
+    GameEventManager.DoTriggerEvent(CommonDefine.EVENT_NAME_PLAYER_DIE, actor, killername)    
+
     if getflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_RELIVE_DIALOGUE_FLAG) == 0 then
-        local killername = ''
-        if not BF_IsNullObj(killer) then
-            killername = Player.GetName(killer)
-        end
-        local msg = '<Img|children={0,1,2,3}|a=1|x=737|y=201|reset=1|move=1|img=private/revive/bg_swfh_1.png|bg=1>'..
+        local msg = '<Img|children={0,1,2,3,4}|a=1|x=120|y=-450|reset=1|move=1|img=private/revive/bg_swfh_1.png|bg=1>'..
         '<Layout|id=0|width=348|height=200>'..
         '<Text|id=1|x=110|y=15|size=18|color='..CSS.NPC_WHITE..'|text=死亡复活>'..
         '<Text|id=2|x=85|y=55|size=16|color='..CSS.NPC_WHITE..'|text=你被 '..killername..' 杀死了！>'..        
-        '<Button|id=3|x=110|y=90|pimg=public/1900000652.png|nimg=public/1900000653.png|color='..CSS.NPC_WHITE..'|size=17|text=回城复活|link=@common_relive_button>'
+        '<Button|id=3|x=110|y=90|pimg=private/cc_common/button_up1.png|nimg=private/cc_common/button_down1.png|color='..CSS.NPC_WHITE..'|size=17|text=回城复活|link=@common_relive_button>'..
+        '<COUNTDOWN|id=4|x=200|y=92|time=30|count=1|size=16|color='..CSS.NPC_RED..'|link=@common_relive_button>'
         Player.ShowReliveDialogue(actor, msg)
     end
-    ]]--
 end
 
 --怪物被击杀触发  mapinfo对应地图要配置onkillmon才可以哦
@@ -376,17 +376,8 @@ function mofangzhen_button(actor, sid)
     MoFangZhenManager.DoMapButton(actor, sid)
 end
 
-function randomboss_button(actor, sid)
-    RandomBossManager.DoMapButton(actor, sid)
-end
-
 function zcdmap_button(actor, sid)
     OfflineHuWeiManager.DoMapButton(actor, sid)
-end
-
-function common_relive_button(actor)
-    realive(actor)
-    Player.GoHome(actor)
 end
 
 function firstrecharge_button(actor, sid)
@@ -411,6 +402,16 @@ end
 
 function set_recycle_option(actor, sid)
     RecycleManager.SetRecycleOption(actor, sid)
+end
+
+function common_relive_button(actor)
+    realive(actor)
+    Player.GoHome(actor)
+    delbutton(actor, 108, CommonDefine.ADD_BUTTON_ID_38)
+end
+
+function randomboss_button(actor, sid)
+    RandomBossManager.DoMapButton(actor, sid)
 end
 
 function publicboss_button(actor, sid)

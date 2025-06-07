@@ -277,7 +277,7 @@ CommonDefine = {
     --需要离开按钮的地图
     NEED_LEAVEBUTTON_MAPS = {
         'em000', 'fmg', 'hero1', 'rxsc1891', 'rxsc014', 'rxsc001', 'slzs', 'jxd', 'lhzd', 'dyhj', 
-        'zwd', 'xbsd', 'sszj', 'sczs', 'e404', 'zzzd'
+        'zwd', 'xbsd', 'sszj', 'sczs', 'e404', 'zzzd', 'huiyuan1', 'huiyuan2', 'huiyuan3', 'huiyuan4'
     },
 
     --等级升级对应的地图，快捷前往的
@@ -520,9 +520,7 @@ CommonDefine = {
     VAR_HUM_BITFLAG_USE_XYF = 201,                --祝福是否使用幸运符
     VAR_HUM_BITFLAG_USE_BDF = 202,                --祝福是否使用保底符   
     VAR_HUM_BITFLAG_MFZ_ADDTIME_FLAG1 = 210,         --魔方阵 增加时间标记1 确认后用1次换增加30分钟
-    VAR_HUM_BITFLAG_MFZ_ADDTIME_FLAG2 = 211,         --魔方阵 增加时间标记2 确认后时间不足自动用次数换时间
-    
-    VAR_HUM_BITFLAG_RELIVE_DIALOGUE_FLAG = 301,     --玩家是否当前已有复活框弹出
+    VAR_HUM_BITFLAG_MFZ_ADDTIME_FLAG2 = 211,         --魔方阵 增加时间标记2 确认后时间不足自动用次数换时间    
     ]]--
 
     --200-299 作为临时标记，上线后会清0，现在在QManage.txt的login里面处理的
@@ -534,6 +532,8 @@ CommonDefine = {
     VAR_HUM_BITFLAG_AUTO_EQUIPSTAR_FLAG = 205,       --自动升星标记
     VAR_HUM_BITFLAG_AUTO_OPEN_SUPERBOX_PAUSE = 206,  --暂停自动开启超级宝箱   
     VAR_HUM_BITFLAG_SUPERBOX_NOCHECK_TAKEON = 207,   --开宝箱时不触发穿戴检测的状态【一键穿戴不触发】
+
+    VAR_HUM_BITFLAG_RELIVE_DIALOGUE_FLAG = 301,     --玩家是否当前已有复活框弹出
 
     --300-800 都是可以下线保存的
     VAR_HUM_BITFLAG_AUTORECYCLE_ITEM1 = 300,         --勾选装备自动回收    
@@ -774,6 +774,7 @@ CommonDefine = {
     ADD_BUTTON_ID_35 = 9035,                      --地图内功能按钮1
     ADD_BUTTON_ID_36 = 9036,                      --地图内功能按钮2
     ADD_BUTTON_ID_37 = 9037,                      --快捷物品栏上中央提示    
+    ADD_BUTTON_ID_38 = 9038,                      --复活框
 }
 
 --装备位对应的名称
