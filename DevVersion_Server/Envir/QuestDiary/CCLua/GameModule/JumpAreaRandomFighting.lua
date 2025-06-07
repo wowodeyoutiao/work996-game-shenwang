@@ -256,7 +256,7 @@ local function UpdateKMScoreShow(actor)
         delbutton(actor, 108, CommonDefine.ADD_BUTTON_ID_37)
         local score = getplaydef(actor, CommonDefine.VAR_U_JUMPAREA_FIGHTING_KMVALUE)
         addbutton(actor, 108, CommonDefine.ADD_BUTTON_ID_37, '<Text|x=-100|y=-210|color='..CSS.NPC_LIGHTGREEN..
-            '|size=20|text=当前抗魔值:'..score..'>')         
+            '|size=20|text=当前抗魔值:'..score..'>')
     end
 end
 

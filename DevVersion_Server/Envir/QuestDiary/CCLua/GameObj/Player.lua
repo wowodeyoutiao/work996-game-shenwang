@@ -798,22 +798,6 @@ function Player.CheckSpeedUpStatus(actor)
     changespeedex(actor, 3, nSpeedUp)
 end
 
---自定义的道具描述显示
-function Player.ShowItemEx(actor, makeindex)
-    if BF_IsNullObj(actor) or (makeindex==nil) or (makeindex==0) then
-        return
-    end
-
-    local itemobj = getitembymakeindex(actor, makeindex)
-    if BF_IsNullObj(itemobj) then
-        return
-    end
-
-    local itemjson = getitemjsonex(itemobj)
-    local tempstr = [[<ItemShow|x=0.0|y=0.0|width=70|height=70|itemdata=]]..itemjson..[[|showtips=1|bgtype=1|color=250>]]
-    say(actor, tempstr)
-end
-
 --玩家当前所在地图是否有离开按钮
 function Player.IsCurrMapHaveLeaveButton(actor)
     if not BF_IsNullObj(actor) then

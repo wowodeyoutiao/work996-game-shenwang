@@ -215,10 +215,6 @@ function OpenSuperBoxManager.UpdateSuperBoxInfo(actor)
                     strPanel = strPanel..'<Text|id='..textid..'|x='..currx..'|y='..curry..'|width=70|color='..itemcolor..'|size=12|text='..itemshowname..'>'
                     strPanel = strPanel..'<DBItemShow|id='..itemshowid..'|children={'..picid..','..picid2..'}|x='..(currx+4)..'|y='..(curry+20)..'|width=70|height=70|makeindex='..value..
                         '|showtips=0|bgtype=1|link=@opensuperboxmanager_button#sid='..OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_13..'#sparam='..value..'>'                        
-                    --[[
-                    strPanel = strPanel..'<MKItemShow|id='..itemshowid..'|children={'..picid..'}|x='..(currx+4)..'|y='..(curry+20)..'|width=70|height=70|makeindex='..
-                        value..'|showtips=0|bgtype=1|link=@cc_showitemex#makeindex='..value..'>'                        
-                    ]]--
                     if flag == 1 then
                         strPanel = strPanel..'<Img|id='..picid..'|x=50|y=10|move=0|img=private/cc_superbox_1/cmp_up.png>'
                         bHaveBetterFlag = true

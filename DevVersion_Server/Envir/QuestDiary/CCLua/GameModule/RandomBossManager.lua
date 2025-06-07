@@ -121,7 +121,6 @@ function RandomBossManager.DoMapButton(actor, sid)
     local funcid = tonumber(sid)
     if funcid == INNER_BUTTONFUNC_ID_1 then
         --关闭对话框
-        close(actor)
     elseif funcid == INNER_BUTTONFUNC_ID_2 then
         --传送进玩家触发随机BOSS的地图中
 		local fightingid = getplaydef(actor, CommonDefine.VAR_N_CURR_RANDOMBOSS_FIGHTING_ID)
@@ -139,6 +138,7 @@ function RandomBossManager.DoMapButton(actor, sid)
         end		
 		delbutton(actor, 108, CommonDefine.ADD_BUTTON_ID_38)
     end
+	delbutton(actor, 1101, CommonDefine.ADD_BUTTON_ID_4)
 end
 
 --触发随机BOSS的提示框
@@ -149,7 +149,7 @@ function RandomBossManager.TriggerRandomBossTip(actor)
         '<Text|id=2|x=60|y=55|size=16|color='..CSS.NPC_WHITE..'|text=立即进入挑战?>'..        
         '<Button|id=3|x=45|y=90|pimg=private/cc_common/button_1.png|nimg=private/cc_common/button_1.png|color='..CSS.NPC_WHITE..'|size=17|text=取消|link=@randomboss_button#sid='..INNER_BUTTONFUNC_ID_1..'>'..
         '<Button|id=4|x=170|y=90|pimg=private/cc_common/button_1.png|nimg=private/cc_common/button_1.png|color='..CSS.NPC_WHITE..'|size=17|text=确定|link=@randomboss_button#sid='..INNER_BUTTONFUNC_ID_2..'>'
-    say(actor, msg)
+	BF_ShowSpecialUI(actor, msg, 1)
 end
 
 --进入触发的随机boss地图
@@ -306,9 +306,6 @@ function RandomBossManager.OnKillMon(actor, mon, killtype, mapidstr)
 	local ncolor = getbaseinfo(mon, CommonDefine.INFO_NAMECOLOR)
 	for _, value in ipairs(KILL_MON_TRIGGER_RANDOMBOSS) do
 		if value.moncolor == ncolor then
-
-			value.rate = 2000
-
 			if math.random(1, 10000) <= value.rate then				
 				if RandomBossManager.CreateNewRandomBoss(actor) > 0 then
 					setplaydef(actor, CommonDefine.VAR_J_DAY_RANDOMBOSS_TRIGGERTIMES, triggertimes+1)
@@ -351,7 +348,7 @@ local function SendSuccessDialogue(actor, rewarditems)
 	currY = currY + 60
     msg = msg..'<Img|children={'..idstr..'}|a=1|x=800|y=200|width=400|height='..currY..'|scale9t=10|scale9b=10|reset=1|move=1|img=public/1900000605.png|bg=1>'..
         '<Layout|id=0|width=400|height='..currY..'>'
-	BF_ShowSpecialUI(actor, msg)	
+	BF_ShowSpecialUI(actor, msg, 1)	
 end
 
 --怪物被击杀回调

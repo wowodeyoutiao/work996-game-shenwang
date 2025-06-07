@@ -26,10 +26,6 @@ local function InitMapUI(actor)
             BAOZHUBOSS_BUTTONFUNC_ID_1..'>')
         addbutton(actor, 101, CommonDefine.ADD_BUTTON_ID_35, '<Button|text=ÐÐ»áÇóÖú|x=260|y=86|color='..CSS.NPC_WHITE..'|pimg=public/1900000662.png|nimg=public/1900000663.png|link=@baozhuboss_button#sid='..
             BAOZHUBOSS_BUTTONFUNC_ID_2..'>')
-        --[[
-        local msg = '<Img|x=0|y=100|bg=1|move=1|reset=0|img=public/bg_npc_05.png>'
-        say(actor, msg)
-        ]]--
     end
 end
 

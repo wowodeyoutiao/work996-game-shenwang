@@ -446,10 +446,6 @@ function newrecycle_openpanel(actor)
     RecycleManager.ShowRecycleEnterUI(actor)
 end
 
-function cc_showitemex(actor, makeindex)
-    Player.ShowItemEx(actor, makeindex)
-end
-
 function newmainuibase_openpanel(actor, sid)
     NewMainUIBase.OpenPanel(actor, sid)
 end
