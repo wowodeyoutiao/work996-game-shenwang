@@ -253,7 +253,7 @@ function OpenSuperBoxManager.UpdateSuperBoxInfo(actor)
         if getflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_AUTO_OPEN_SUPERBOX) == 1 then
             if getflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_AUTO_OPEN_SUPERBOX_PAUSE) == 1 then
                 setflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_AUTO_OPEN_SUPERBOX_PAUSE, 0)
-                delaygoto(actor, 2000, 'superbox_delay_checkrecycle', 0)
+                delaygoto(actor, 2000, 'superbox_delay_checkrecycle', 0)    
             end
         end        
     end
