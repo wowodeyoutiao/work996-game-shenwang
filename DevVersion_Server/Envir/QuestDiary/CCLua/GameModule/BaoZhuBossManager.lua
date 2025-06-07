@@ -74,7 +74,7 @@ local function SendSuccessDialogue(actor, rewarditems)
     currY = currY + 40
     msg = msg..'<Img|children={'..idstr..'}|a=1|x=800|y=200|width=400|height='..currY..'|scale9t=10|scale9b=10|reset=1|move=1|img=public/1900000605.png|bg=1>'..
         '<Layout|id=0|width=400|height='..currY..'>'
-    BF_ShowSpecialUI(actor, msg)
+    BF_ShowSpecialUI(actor, msg, 1)
 end
 
 local function SendFailDialogue(actor)
@@ -84,7 +84,7 @@ local function SendFailDialogue(actor)
         '<Text|id=2|x=35|y=60|size=16|color='..CSS.NPC_WHITE..'|text=很遗憾，您未能获得灵玉奖励，请再接再厉吧！>'..        
         '<Button|id=3|x=150|y=100|pimg=public/btn_bbgm_01.png|nimg=public/btn_bbgm_02.png|color='..CSS.NPC_WHITE..'|link=@baozhuboss_button#sid='..BAOZHUBOSS_BUTTONFUNC_ID_1..'>'..
         '<COUNTDOWN|id=4|x=170|y=140|time=15|count=1|size=16|color='..CSS.NPC_RED..'|link=@baozhuboss_button#sid='..BAOZHUBOSS_BUTTONFUNC_ID_1..'>';
-    BF_ShowSpecialUI(actor, msg)
+    BF_ShowSpecialUI(actor, msg, 1)
 end
 
 function BaoZhuBossManager.DoMapButton(actor, sid)
@@ -95,6 +95,7 @@ function BaoZhuBossManager.DoMapButton(actor, sid)
     if funcid == BAOZHUBOSS_BUTTONFUNC_ID_1 then
         --返回安全区
         Player.GoHome(actor)
+        delbutton(actor, 1101, CommonDefine.ADD_BUTTON_ID_4)
     elseif funcid == BAOZHUBOSS_BUTTONFUNC_ID_2 then
         --行会求助
         local mapidstr = Player.GetMapIDStr(actor)
