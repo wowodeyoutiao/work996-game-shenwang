@@ -91,6 +91,7 @@ function GMHelper.OpenPanel(actor)
         '<Button|x=350|y=210|nimg=public/bg_hhzy_01_3.png|text=开服分钟+1|link=@gmhelper_button#sid1=1904>'..
         --'<Button|x=350|y=240|nimg=public/bg_hhzy_01_3.png|text='..strPaoKuMenu..'|link=@gmhelper_button#sid1=1905>'..
         '<Button|x=350|y=240|nimg=public/bg_hhzy_01_3.png|text=重置VIP等级|link=@gmhelper_button#sid1=38>'..
+        '<Button|x=350|y=270|nimg=public/bg_hhzy_01_3.png|text=刷出战力首领|link=@gmhelper_button#sid1=18>'..
         
 
         '<Button|x=500|y=30|nimg=public/bg_hhzy_01_3.png|text=清空首充|link=@gmhelper_button#sid1=154>'..
@@ -118,7 +119,7 @@ function GMHelper.OpenPanel(actor)
         '<Button|x=350|y=30|nimg=public/bg_hhzy_01_3.png|text=3次魔方阵|link=@gmhelper_button,15>'..                      
         
         '<Button|x=350|y=90|nimg=public/bg_hhzy_01_3.png|text=恢复灵玉副本|link=@gmhelper_button,17>'..
-        '<Button|x=350|y=120|nimg=public/bg_hhzy_01_3.png|text=刷出战力首领|link=@gmhelper_button,18>'..
+        
         '<Button|x=350|y=150|nimg=public/bg_hhzy_01_3.png|text=设置空血|link=@gmhelper_button,31>'..
         '<Button|x=350|y=180|nimg=public/bg_hhzy_01_3.png|text=未激活回收|link=@gmhelper_button,32>'..
         '<Button|x=350|y=210|nimg=public/bg_hhzy_01_3.png|text=回主城|link=@gmhelper_button,9>'..

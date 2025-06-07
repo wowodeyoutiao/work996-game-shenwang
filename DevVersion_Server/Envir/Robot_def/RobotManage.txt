@@ -142,7 +142,7 @@ GmexecuTe StartQuest @副本数量统计
 ;#ACT
 ;BREAK
 
-；活动全部关闭
+; 活动全部关闭
 #IF
 #ACT
 BREAK
