@@ -742,6 +742,9 @@ function Player.QuickGoTo(actor, gotoid)
     elseif gotoid == CommonDefine.QUICK_GOTO_YUNBIAO then
         --运镖
         opennpcshowex(actor, CommonDefine.NPC_ID_BIAOCHE_START, 3, 3)
+    elseif gotoid == CommonDefine.QUICK_GOTO_SKILL_UPGRADE then
+        --技能升级
+        NewMainUIBase.OpenPanel(actor, NewMainUIBase.UI_ICON_SKILL)
     elseif gotoid == CommonDefine.QUICK_GOTO_TREASUREMAP then
         --藏宝图
         --????
@@ -759,7 +762,9 @@ function Player.QuickGoTo(actor, gotoid)
         --OpenSuperBoxManager.AutoOpenSuperBox(actor)
 
         navigation(actor,108,2001,"点击开宝箱")
-
+    elseif gotoid == CommonDefine.QUICK_GOTO_SUPERBOX_UPGRADE then
+        --升级开宝箱
+        OpenSuperBoxManager.DoOperButton(actor, '4', '')
     elseif gotoid == CommonDefine.QUICK_GOTO_BAG_USEDICE then
         --背包使用骰子
         local makeindex = OpenSuperBoxManager.GetOpenBoxDiceMakeIndex(actor)

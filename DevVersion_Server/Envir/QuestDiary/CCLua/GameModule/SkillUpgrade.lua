@@ -469,6 +469,9 @@ local function DoSkillUpgradeOnce(actor, targSkillID)
     --升级
     setskillinfo(actor, targSkillID, 1, skillNextLv)
     Player.SendSelfMsg(actor, '技能【'..magicCfgInfo.MagName..'】已成功升到'..skillNextLv..'级！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)    
+
+    --任务触发
+    TaskManager.OnSkillUpgrade(actor)
 end
 
 --技能进阶一次
@@ -545,6 +548,35 @@ function SkillUpgrade.DoOperButton(actor, sid, sparam)
         DoSkillAdvanceUpgradeOnce(actor, nparam)
     end
     SkillUpgrade.ShowBasePanel(actor)
+end
+
+--返回技能的最大等级，普通等级
+function SkillUpgrade.GetAllSkillsMaxLevel(actor)
+	local maxlv = 0
+	if BF_IsNullObj(actor) then
+		return 0
+	end
+
+    local infoStr = getplaydef(actor, CommonDefine.VAR_T_EQUIPPOS_STRENGTH_INFO)
+    if infoStr == '' then
+		return 0     
+    end
+	local infoTab = json2tbl(infoStr)
+	if (infoTab == nil) or table.isempty(infoTab) then
+		return 0
+	end
+
+    for i = 1, #CommonDefine.BASE_EQUIPMENT_POS, 1 do
+		local sid = ''..CommonDefine.BASE_EQUIPMENT_POS[i]
+		local curPosLevel = 0
+		if infoTab[sid] ~= nil then
+			curPosLevel = infoTab[sid]
+		end	
+        if curPosLevel > maxlv then
+            maxlv = curPosLevel
+        end
+    end
+	return maxlv
 end
 
 function SkillUpgrade.IsTopIconHaveRedPoint(actor)    

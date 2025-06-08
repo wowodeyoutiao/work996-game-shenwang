@@ -691,6 +691,9 @@ function OpenSuperBoxManager.DoUpgradeBoxLevel(actor)
     setplaydef(actor, CommonDefine.VAR_U_SUPER_BOX_ONCE_OPEN_NUM, nextLevelConfig.maxopennum)
     OpenSuperBoxManager.UpdateSuperBoxInfo(actor)
     OpenUpgradeBoxLevelPanel(actor)
+
+    --任务触发
+    TaskManager.OnSuperBoxUpgrade(actor)
 end
 
 --关闭升级宝箱的界面

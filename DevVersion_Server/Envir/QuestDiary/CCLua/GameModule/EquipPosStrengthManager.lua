@@ -168,6 +168,34 @@ function EquipPosStrengthManager.GetAllCommonEquipPosMinLevel(actor)
 	return minlv
 end
 
+--返回全身装备位的最大强化等级，普通装备位
+function EquipPosStrengthManager.GetAllCommonEquipPosMaxLevel(actor)
+	local maxlv = 0
+	if BF_IsNullObj(actor) then
+		return 0
+	end
+
+    local infoStr = getplaydef(actor, CommonDefine.VAR_T_EQUIPPOS_STRENGTH_INFO)
+    if infoStr == '' then
+		return 0     
+    end
+	local infoTab = json2tbl(infoStr)
+	if (infoTab == nil) or table.isempty(infoTab) then
+		return 0
+	end
+
+    for i = 1, #CommonDefine.BASE_EQUIPMENT_POS, 1 do
+		local sid = ''..CommonDefine.BASE_EQUIPMENT_POS[i]
+		local curPosLevel = 0
+		if infoTab[sid] ~= nil then
+			curPosLevel = infoTab[sid]
+		end	
+        if curPosLevel > maxlv then
+            maxlv = curPosLevel
+        end
+    end
+	return maxlv
+end
 
 --显示规则面板
 function EquipPosStrengthManager.ShowRulePanel(actor)
@@ -467,6 +495,8 @@ local function EquipPosStrengthUpgradeOnce(actor)
     EquipPosStrengthManager.UpdateEquipStrengthLvInPos(actor, equippos)  
     --更新当前装备位的升星加成属性
     EquipPosStarManager.UpdateEquipStarLvInPos(actor, equippos)
+    --任务触发
+    TaskManager.OnEquipStrength(actor)
 
     --每日必做计数       
     --[[
@@ -546,6 +576,8 @@ local function EquipPosStrengthUpgradeTenTimes(actor)
         EquipPosStrengthManager.UpdateEquipStrengthLvInPos(actor, equippos)  
         --更新当前装备位的升星加成属性
         EquipPosStarManager.UpdateEquipStarLvInPos(actor, equippos)  
+        --任务触发
+        TaskManager.OnEquipStrength(actor)        
         
         --每日必做计数  
         --[[

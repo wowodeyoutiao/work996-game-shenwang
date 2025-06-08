@@ -703,6 +703,8 @@ CommonDefine = {
     QUICK_GOTO_ZCD = 20,                        --紫宸殿 离线护卫
     QUICK_GOTO_AUTO_OPENBOX = 21,               --自动开宝箱
     QUICK_GOTO_BAG_USEDICE = 22,                --背包开骰子得宝箱
+    QUICK_GOTO_SKILL_UPGRADE = 23,              --技能升级
+    QUICK_GOTO_SUPERBOX_UPGRADE = 24,           --开宝箱升级
 
     --脚本创建的动态npcid    最终的npcid是 系统组编号*10000+动态id
     --[[
@@ -734,6 +736,9 @@ CommonDefine = {
     TASK_TYPE_LEVEL = 3,                          --玩家等级
     TASK_TYPE_POWERSCORE = 4,                     --玩家战力
     TASK_TYPE_OPENBOXNUM = 5,                     --玩家开箱数量
+    TASK_TYPE_EQUIPPOS_STRENGTH = 6,              --装备槽位强化
+    TASK_TYPE_SKILL_UPGRADE = 7,                  --技能升级
+    TASK_TYPE_SUPERBOX_UPGRADE = 8,               --宝箱升级
 
 
     --任务线状态

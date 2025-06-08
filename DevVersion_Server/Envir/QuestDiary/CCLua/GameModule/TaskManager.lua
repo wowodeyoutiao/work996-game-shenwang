@@ -38,24 +38,7 @@ function TaskManager.AddNewTask(actor, tasklineid, newtaskid)
             if tasklineid == CommonDefine.TASK_LINE_ID_MAIN then
                 tasktopshow(actor, newtaskid)
             end
-            if singletask.autoaccept and (singletask.autoaccept == 1) then
-                -- if singletask.tasktype == CommonDefine.TASK_TYPE_FREEVIP then
-                --     local currlv = getplaydef(actor, CommonDefine.VAR_U_FREEVIP_LEVEL)
-                --     newchangetask(actor, taskid, currlv..'')             
-                -- elseif singletask.tasktype == CommonDefine.TASK_TYPE_LEVEL then
-                --     local currlv = Player.GetLevel(actor)
-                --     newchangetask(actor, taskid, currlv..'')     
-                -- elseif singletask.tasktype == CommonDefine.TASK_TYPE_POWERSCORE then
-                --     local currlv = Player.GetPlayerPower(actor)
-                --     newchangetask(actor, taskid, currlv..'') 
-                -- elseif singletask.tasktype == CommonDefine.TASK_TYPE_OPENBOXNUM then
-                --     local currlv = getplaydef(actor, config.taskSingleCounterVar)
-                --     newchangetask(actor, taskid, currlv..'')                                     
-                -- else
-                --     newchangetask(actor, taskid, '0', '0', '0')                
-                -- end  
-                -- setplaydef(actor, config.taskStatusVar, CommonDefine.TASK_STATUS_ACCEPT) 
-                
+            if singletask.autoaccept and (singletask.autoaccept == 1) then                
                 TaskManager.AcceptTask(actor, tasklineid)
             end
         end
@@ -87,10 +70,19 @@ function TaskManager.AcceptTask(actor, tasklineid)
                 newchangetask(actor, taskid, currlv..'')
             elseif singletask.tasktype == CommonDefine.TASK_TYPE_POWERSCORE then
                 local currlv = Player.GetPlayerPower(actor)
-                newchangetask(actor, taskid, currlv..'') 
+                newchangetask(actor, taskid, currlv..'')
             elseif singletask.tasktype == CommonDefine.TASK_TYPE_OPENBOXNUM then
                 local currlv = getplaydef(actor, config.taskSingleCounterVar)
-                newchangetask(actor, taskid, currlv..'')                      
+                newchangetask(actor, taskid, currlv..'')
+            elseif singletask.tasktype == CommonDefine.TASK_TYPE_EQUIPPOS_STRENGTH then
+                local currlv = EquipPosStrengthManager.GetAllCommonEquipPosMaxLevel(actor)
+                newchangetask(actor, taskid, currlv..'')
+            elseif singletask.tasktype == CommonDefine.TASK_TYPE_SKILL_UPGRADE then
+                local currlv = SkillUpgrade.GetAllSkillsMaxLevel(actor)
+                newchangetask(actor, taskid, currlv..'')
+            elseif singletask.tasktype == CommonDefine.TASK_TYPE_SUPERBOX_UPGRADE then
+                local currlv = getplaydef(actor, CommonDefine.VAR_U_SUPER_BOX_CURR_LV)
+                newchangetask(actor, taskid, currlv..'')
             else
                 newchangetask(actor, taskid, '0', '0', '0')                
             end            
@@ -113,7 +105,22 @@ function TaskManager.AcceptTask(actor, tasklineid)
                 local currlv = Player.GetPlayerPower(actor)
                 if currlv >= singletask.tasktargparam then
                     TaskManager.FinishTask(actor, tasklineid)
-                end                
+                end
+            elseif singletask.tasktype == CommonDefine.TASK_TYPE_EQUIPPOS_STRENGTH then
+                local currlv = EquipPosStrengthManager.GetAllCommonEquipPosMaxLevel(actor)
+                if currlv >= singletask.tasktargparam then
+                    TaskManager.FinishTask(actor, tasklineid)
+                end
+            elseif singletask.tasktype == CommonDefine.TASK_TYPE_SKILL_UPGRADE then
+                local currlv = SkillUpgrade.GetAllSkillsMaxLevel(actor)
+                if currlv >= singletask.tasktargparam then
+                    TaskManager.FinishTask(actor, tasklineid)
+                end      
+            elseif singletask.tasktype == CommonDefine.TASK_TYPE_SUPERBOX_UPGRADE then
+                local currlv = getplaydef(actor, CommonDefine.VAR_U_SUPER_BOX_CURR_LV)
+                if currlv >= singletask.tasktargparam then
+                    TaskManager.FinishTask(actor, tasklineid)
+                end
             end
 
             --刷怪任务 直接飞目标地
@@ -563,6 +570,77 @@ function TaskManager.OnAddOpenBoxNum(actor, addnum)
     end
 end
 
+--玩家装备槽位强化
+function TaskManager.OnEquipStrength(actor) 
+	if BF_IsNullObj(actor) then
+		return
+	end	
+
+    for tasklineid, lineconfig in pairs(TaskLineConfig) do
+        if lineconfig and lineconfig.taskDataList then
+            local taskid, status = TaskManager.GetCurrTaskLineInfo(actor, tasklineid) 
+            if taskid > 0 and status == CommonDefine.TASK_STATUS_ACCEPT then
+                local singletask = lineconfig.taskDataList[taskid]                
+                if singletask and (singletask.tasktype == CommonDefine.TASK_TYPE_EQUIPPOS_STRENGTH) and singletask.tasktargparam then
+                    local currnum = EquipPosStrengthManager.GetAllCommonEquipPosMaxLevel(actor)               
+                    if currnum >= singletask.tasktargparam then
+                        TaskManager.FinishTask(actor, tasklineid)
+                    else
+                        newchangetask(actor, taskid, currnum..'')
+                    end
+                end            
+            end
+        end
+    end  
+end
+
+--玩家开宝箱升级
+function TaskManager.OnSuperBoxUpgrade(actor) 
+	if BF_IsNullObj(actor) then
+		return
+	end	
+
+    for tasklineid, lineconfig in pairs(TaskLineConfig) do
+        if lineconfig and lineconfig.taskDataList then
+            local taskid, status = TaskManager.GetCurrTaskLineInfo(actor, tasklineid) 
+            if taskid > 0 and status == CommonDefine.TASK_STATUS_ACCEPT then
+                local singletask = lineconfig.taskDataList[taskid]                
+                if singletask and (singletask.tasktype == CommonDefine.TASK_TYPE_SUPERBOX_UPGRADE) and singletask.tasktargparam then
+                    local currnum = getplaydef(actor, CommonDefine.VAR_U_SUPER_BOX_CURR_LV)
+                    if currnum >= singletask.tasktargparam then
+                        TaskManager.FinishTask(actor, tasklineid)
+                    else
+                        newchangetask(actor, taskid, currnum..'')
+                    end
+                end            
+            end
+        end
+    end  
+end
+
+--玩家技能升级
+function TaskManager.OnSkillUpgrade(actor) 
+	if BF_IsNullObj(actor) then
+		return
+	end	
+
+    for tasklineid, lineconfig in pairs(TaskLineConfig) do
+        if lineconfig and lineconfig.taskDataList then
+            local taskid, status = TaskManager.GetCurrTaskLineInfo(actor, tasklineid) 
+            if taskid > 0 and status == CommonDefine.TASK_STATUS_ACCEPT then
+                local singletask = lineconfig.taskDataList[taskid]                
+                if singletask and (singletask.tasktype == CommonDefine.TASK_TYPE_SKILL_UPGRADE) and singletask.tasktargparam then
+                    local currnum = SkillUpgrade.GetAllSkillsMaxLevel(actor)
+                    if currnum >= singletask.tasktargparam then
+                        TaskManager.FinishTask(actor, tasklineid)
+                    else
+                        newchangetask(actor, taskid, currnum..'')
+                    end
+                end            
+            end
+        end
+    end  
+end
 
 --玩家登录时触发
 function TaskManager.OnPlayerEnterGame(actor)
@@ -620,6 +698,12 @@ function TaskManager.OnPlayerClickTask(actor, clicktaskidstr)
                             --OpenSuperBoxManager.DoOpenBoxOnce(actor, false, nil)
                             --快捷引导开箱
                             Player.QuickGoTo(actor, CommonDefine.QUICK_GOTO_AUTO_OPENBOX)
+                        elseif singletask.tasktype == CommonDefine.TASK_TYPE_EQUIPPOS_STRENGTH then
+                            Player.QuickGoTo(actor, CommonDefine.QUICK_GOTO_EQUIP_STRENGTH)
+                        elseif singletask.tasktype == CommonDefine.TASK_TYPE_SKILL_UPGRADE then
+                            Player.QuickGoTo(actor, CommonDefine.QUICK_GOTO_SKILL_UPGRADE)
+                        elseif singletask.tasktype == CommonDefine.TASK_TYPE_SUPERBOX_UPGRADE then
+                            Player.QuickGoTo(actor, CommonDefine.QUICK_GOTO_SUPERBOX_UPGRADE)
                         else
                             if singletask.targpos then                
                                 if BF_GetDistanceFromMapPoint(actor, singletask.targpos.mapid, singletask.targpos.x, singletask.targpos.y) < 5 then
@@ -646,10 +730,6 @@ end
 
 GameEventManager.AddListener(CommonDefine.EVENT_NAME_PLAYER_ENTERGAME, TaskManager.OnPlayerEnterGame, CommonDefine.FUNC_ID_GAMETASK)
 GameEventManager.AddListener(CommonDefine.EVENT_NAME_CLICK_TASK, TaskManager.OnPlayerClickTask, CommonDefine.FUNC_ID_GAMETASK)
--------杀怪的触发还需要处理！！！！！！！！！！！！！！！！！！！！！！
--------杀怪的触发还需要处理！！！！！！！！！！！！！！！！！！！！！！
--------杀怪的触发还需要处理！！！！！！！！！！！！！！！！！！！！！！
----现在去掉杀怪任务
---GameEventManager.AddListener(CommonDefine.EVENT_NAME_KILL_MON, TaskManager.OnKillMon, CommonDefine.FUNC_ID_GAMETASK)
+GameEventManager.AddListener(CommonDefine.EVENT_NAME_KILL_MON, TaskManager.OnKillMon, CommonDefine.FUNC_ID_GAMETASK)
 
 return TaskManager
