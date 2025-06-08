@@ -25,7 +25,7 @@ local VALID_TRIGGER_RANDOMBOSS_MAPIDSTR = {
 local FIRST_TRIGGER_RANDOMBOSS_MONNAME = '战力首领0'
 
 --玩家第一次击杀随机boss获得的奖励
-local FIRST_KILL_RANDOMBOSS_REWARD = {{name='绑定元宝',num=100},{name='金币',num=200000},{name='强化石',num=100},{name='小型经验珠',num=10},{name='30级装备随机箱',num=10}}
+local FIRST_KILL_RANDOMBOSS_REWARD = {{name='绑定元宝',num=100},{name='沉默水晶',num=1},{name='强化石',num=100},{name='小型经验珠',num=10},{name='4级筛子',num=3}}
 
 --杀怪触发随机boss的怪物几率，万分比分子，按照怪物颜色区分
 local KILL_MON_TRIGGER_RANDOMBOSS = {
@@ -53,6 +53,11 @@ local RANDOM_BOSS_FIGHTING_MAPINFO = {
 	{id=13, mapidstr='randboss_13', posx=10, posy=10, maxplayer=5},
 	{id=14, mapidstr='randboss_14', posx=10, posy=10, maxplayer=5},
 	{id=15, mapidstr='randboss_15', posx=10, posy=10, maxplayer=5},
+}
+
+--随机BOSS的展示奖励
+local RANDOM_BOSS_SHOW_REWARD = {
+	{name='沉默水晶', num=1}, {name='7星直升宝石', num=1},{name='升星石', num=1},{name='强化石', num=1},{name='书页', num=1},
 }
 
 function RandomBossManager.TestClearAllFightingMapInfo()
@@ -501,17 +506,26 @@ function RandomBossManager.ShowBasePanel(actor)
 	else
 		local baseid = 400
 		for seq, info in ipairs(currFightingInfoList) do
-			local picid = baseid + seq * 10			
+			local picid = baseid + seq * 20			
 			if itemidstr ~= '' then
 				itemidstr = itemidstr..','
 			end
 			itemidstr = itemidstr..picid
 			local childstr = (picid+1)..','..(picid+2)..','..(picid+3)..','..(picid+4)..','..(picid+5)..','..(picid+6)..','..(picid+7)
+
+			for seq1, value1 in ipairs(RANDOM_BOSS_SHOW_REWARD) do
+				local itemidx = getstditeminfo(value1.name, CommonDefine.STDITEMINFO_IDX)
+				local tempx1 = 30 + seq1 * 50
+				local tempid = picid + 10 + seq1
+				childstr = childstr..','..tempid
+				strPanelInfo = strPanelInfo..'<ItemShow|id='..tempid..'|ay=1|x='..tempx1..'|y=24|scale=0.6|itemid='..itemidx..'|itemcount='..value1.num..'|bgtype=1|showtips=1>'
+			end				
+
 			strPanelInfo = strPanelInfo..'<Img|id='..picid..'|children={'..childstr..'}|x=0.0|y=0.0|reset=1|img=private/cc_bosslist_ex/2.png>'..
 				'<Text|id='..(picid+1)..'|text='..info.bossname..'|size=18|x=10|y=10|color='..CSS.NPC_RED..'>'..
 				'<Text|id='..(picid+2)..'|text=(血量剩余:'..info.bosshppercent..'%)|size=18|x=150|y=10|color='..CSS.NPC_LIGHTGREEN..'>'..
-                '<Text|id='..(picid+3)..'|text=(发现者:'..info.triggername..')|size=15|x=300|y=12|color='..CSS.NPC_YELLOW..'>'..                
-                '<Text|id='..(picid+4)..'|text=奖励介绍:可获得各等级的直升宝石和稀有材料!|size=18|x=10|y=50|color='..CSS.NPC_WHITE..'>'
+                '<Text|id='..(picid+3)..'|text=(发现者:'..info.triggername..')|size=15|x=300|y=12|color='..CSS.NPC_YELLOW..'>'..
+                '<Text|id='..(picid+4)..'|text=奖励介绍:|size=18|x=10|y=50|color='..CSS.NPC_WHITE..'>'			
 
 			strPanelInfo = strPanelInfo..'<Text|id='..(picid+5)..'|text=副本人数:|size=18|x=470|y=10|color='..CSS.NPC_WHITE..'>'..                
                 '<Text|id='..(picid+6)..'|text='..info.currcount..'/'..info.maxcount..'|size=18|x=560|y=10|color='..CSS.NPC_WHITE..'>'

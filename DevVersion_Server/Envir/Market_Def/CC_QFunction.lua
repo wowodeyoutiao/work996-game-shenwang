@@ -353,7 +353,7 @@ function attackdamage(actor, damagevalue)
         return
     end
     damagevalue = GuanZhiManager.DoAttackDamage(actor, currtarg, damagevalue)
-    damagevalue = JumpAreaBossDamageRank.DoAttackDamage(actor, currtarg, damagevalue)
+    damagevalue = JumpAreaBossDamageRank.DoAttackDamage(actor, currtarg, damagevalue) 
     callscriptex(actor, "ChangeDamageValue", 0, "=", damagevalue)
 end
 

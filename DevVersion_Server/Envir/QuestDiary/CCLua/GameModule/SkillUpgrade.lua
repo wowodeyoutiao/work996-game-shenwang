@@ -12,6 +12,7 @@ local UPGRADE_TYPE_UPLEVEL = 1          --升阶
 --升级自动学习的技能
 local UPGRADE_LEVEL_AUTO_LEARN_SKILL = {
 	[CommonDefine.JOB_Z] = {
+        --[[
         {magicid=1, minlevel = 5},
 		{magicid=3, minlevel = 1},
         {magicid=13, minlevel = 4},
@@ -42,7 +43,20 @@ local UPGRADE_LEVEL_AUTO_LEARN_SKILL = {
         {magicid=45, minlevel = 40},
         {magicid=58, minlevel = 35},
         {magicid=86, minlevel = 55},
+        ]]--
+
+        {magicid=3, minlevel = 1},
+        {magicid=7, minlevel = 2},
+        {magicid=12, minlevel = 3},
+        {magicid=25, minlevel = 12},
+        {magicid=26, minlevel = 20},
+        {magicid=56, minlevel = 30},
+        {magicid=66, minlevel = 42},
+        {magicid=82, minlevel = 60},
+        {magicid=81, minlevel = 65},
+        {magicid=86, minlevel = 55},
 	},
+
 	[CommonDefine.JOB_F] = {
 		{magicid=1, minlevel = 1},
 	},

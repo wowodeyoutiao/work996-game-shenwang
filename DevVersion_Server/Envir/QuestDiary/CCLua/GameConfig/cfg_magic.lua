@@ -68,7 +68,7 @@ local config = {
 		NeedL10 = 28,
 		L10Train = 0,
 		Delay = 17,
-		formula = "(<$DC>+(<$MAXDC>-<$DC>)/(10-<RAN>*9))*(<SKILLLV>+1)/100*(1+(<$Str(U152)>+1)/10)",
+		formula = "(<$DC>+(<$MAXDC>-<$DC>)/(10-<RAN>*9))*(<SKILLLV>/100+1)*(1+(<$Str(U152)>+1)/10)",
 		AdvanceLevelVarID = 152,
 	},
 	[13] = { 
@@ -210,7 +210,7 @@ local config = {
 		NeedL10 = 46,
 		L10Train = 0,
 		Delay = 26,
-		formula = "(<$DC>+(<$MAXDC>-<$DC>)/(10-<RAN>*9))*(<SKILLLV>+2)/100*(1+(<$Str(U155)>+1)/10)",
+		formula = "(<$DC>+(<$MAXDC>-<$DC>)/(10-<RAN>*9))*(<SKILLLV>/100+2)*(1+(<$Str(U155)>+1)/10)",
 		AdvanceLevelVarID = 155,
 	},
 	[4] = { 
@@ -315,7 +315,7 @@ local config = {
 		L10Train = 0,
 		Delay = 75,
 		QSkill = "1#101#1|2#102#1|3#103#1|4#104#1|5#105#1|6#106#1|7#107#1|8#108#1|9#109#1|10#110#1",
-		formula = "(<$DC>+(<$MAXDC>-<$DC>)/(10-<RAN>*9))*(<SKILLLV>+3)/100*(1+(<$Str(U156)>+1)/10)",
+		formula = "(<$DC>+(<$MAXDC>-<$DC>)/(10-<RAN>*9))*(<SKILLLV>/100+3)*(1+(<$Str(U156)>+1)/10)",
 		AdvanceLevelVarID = 156,
 	},
 	[6] = { 
@@ -457,7 +457,7 @@ local config = {
 		NeedL10 = 68,
 		L10Train = 0,
 		Delay = 37,
-		formula = "(<$DC>+(<$MAXDC>-<$DC>)/(10-<RAN>*9))*(<SKILLLV>+3)/100*(1+(<$Str(U159)>+1)/10)",
+		formula = "(<$DC>+(<$MAXDC>-<$DC>)/(10-<RAN>*9))*(<SKILLLV>/100+3)*(1+(<$Str(U159)>+1)/10)",
 		AdvanceLevelVarID = 159,
 	},
 	[15] = { 
@@ -599,7 +599,7 @@ local config = {
 		Delay = 44,
 		SkillCD = 7000,
 		QSkill = "1#102#1|2#104#2|3#106#3|4#108#3|5#110#3|6#112#3|7#114#3|8#116#3|9#118#3|10#120#3",
-		formula = "(<$DC>+(<$MAXDC>-<$DC>)/(10-<RAN>*9))*(<SKILLLV>+4)/100*(1+(<$Str(U161)>+1)/10)",
+		formula = "(<$DC>+(<$MAXDC>-<$DC>)/(10-<RAN>*9))*(<SKILLLV>/100+4)*(1+(<$Str(U161)>+1)/10)",
 		AdvanceLevelVarID = 161,
 	},
 	[16] = { 
@@ -1014,7 +1014,7 @@ local config = {
 		Delay = 56,
 		SkillCD = 12000,
 		QSkill = "1#102#1|2#104#2|3#106#3|4#108#3|5#110#3|6#112#3|7#114#3|8#116#3|9#118#3|10#120#3",
-		formula = "(<$DC>+(<$MAXDC>-<$DC>)/(10-<RAN>*9))*(<SKILLLV>+5)/100*(1+(<$Str(U163)>+1)/10)",
+		formula = "(<$DC>+(<$MAXDC>-<$DC>)/(10-<RAN>*9))*(<SKILLLV>/100+5)*(1+(<$Str(U163)>+1)/10)",
 		AdvanceLevelVarID = 163,
 	},
 	[48] = { 
@@ -1160,7 +1160,7 @@ local config = {
 		Delay = 1,
 		SkillCD = 10000,
 		QSkill = "1#102#1|2#104#1|3#106#1|4#108#1|5#110#1|6#112#1|7#114#1|8#116#1|9#118#1|10#120#1",
-		formula = "(<$DC>+(<$MAXDC>-<$DC>)/(10-<RAN>*9))*(<SKILLLV>+6)/100*(1+(<$Str(U166)>+1)/10)",
+		formula = "(<$DC>+(<$MAXDC>-<$DC>)/(10-<RAN>*9))*(<SKILLLV>/100+6)*(1+(<$Str(U166)>+1)/10)",
 		AdvanceLevelVarID = 166,
 	},
 	[55] = { 
@@ -1303,7 +1303,7 @@ local config = {
 		L10Train = 0,
 		Delay = 71,
 		SkillCD = 25000,
-		formula = "(<$DC>+(<$MAXDC>-<$DC>)/(10-<RAN>*9))*(<SKILLLV>+7)/100*(1+(<$Str(U169)>+1)/10)",
+		formula = "(<$DC>+(<$MAXDC>-<$DC>)/(10-<RAN>*9))*(<SKILLLV>/100+7)*(1+(<$Str(U169)>+1)/10)",
 		AdvanceLevelVarID = 169,
 	},
 	[24] = { 
@@ -1412,7 +1412,7 @@ local config = {
 		L10Train = 0,
 		Delay = 71,
 		QSkill = "1#110#1|2#220#2|3#330#3|4#440#4|5#550#5",
-		formula = "(<$DC>+(<$MAXDC>-<$DC>)/(10-<RAN>*9))*(<SKILLLV>+8)/100*(1+(<$Str(U172)>+1)/10)",
+		formula = "(<$DC>+(<$MAXDC>-<$DC>)/(10-<RAN>*9))*(<SKILLLV>/100+8)*(1+(<$Str(U172)>+1)/10)",
 		AdvanceLevelVarID = 172,
 	},
 	[31] = { 

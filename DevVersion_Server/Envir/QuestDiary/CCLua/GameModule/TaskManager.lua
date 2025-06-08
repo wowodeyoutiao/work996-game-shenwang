@@ -617,7 +617,9 @@ function TaskManager.OnPlayerClickTask(actor, clicktaskidstr)
                             Player.QuickGoTo(actor, CommonDefine.QUICK_GOTO_INCREASE_POWER)
                         elseif singletask.tasktype == CommonDefine.TASK_TYPE_OPENBOXNUM then
                             --触发开一次宝箱
-                            OpenSuperBoxManager.DoOpenBoxOnce(actor, false, nil)
+                            --OpenSuperBoxManager.DoOpenBoxOnce(actor, false, nil)
+                            --快捷引导开箱
+                            Player.QuickGoTo(actor, CommonDefine.QUICK_GOTO_AUTO_OPENBOX)
                         else
                             if singletask.targpos then                
                                 if BF_GetDistanceFromMapPoint(actor, singletask.targpos.mapid, singletask.targpos.x, singletask.targpos.y) < 5 then

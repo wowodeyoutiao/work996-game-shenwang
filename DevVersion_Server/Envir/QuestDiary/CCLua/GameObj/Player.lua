@@ -752,11 +752,14 @@ function Player.QuickGoTo(actor, gotoid)
         --紫宸殿 离线护卫
         NewMainUIBase.OpenPanel(actor, NewMainUIBase.UI_ICON_HUWEI)
     elseif gotoid == CommonDefine.QUICK_GOTO_AUTO_OPENBOX then
-        --自动开宝箱
+        --引导开宝箱
         close(actor)
-        setflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_AUTO_OPEN_SUPERBOX, 1)
-        setflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_AUTO_OPEN_SUPERBOX_PAUSE, 0)
-        OpenSuperBoxManager.AutoOpenSuperBox(actor)
+        --setflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_AUTO_OPEN_SUPERBOX, 1)
+        --setflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_AUTO_OPEN_SUPERBOX_PAUSE, 0)
+        --OpenSuperBoxManager.AutoOpenSuperBox(actor)
+
+        navigation(actor,108,2001,"点击开宝箱")
+
     elseif gotoid == CommonDefine.QUICK_GOTO_BAG_USEDICE then
         --背包使用骰子
         local makeindex = OpenSuperBoxManager.GetOpenBoxDiceMakeIndex(actor)

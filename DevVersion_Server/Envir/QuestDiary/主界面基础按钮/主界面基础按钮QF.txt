@@ -356,15 +356,15 @@ StopAutoPlayGame
 SENDMSG 9 战斗状态无法挂机。
 BREAK
 
-#OR
-ISONMAP dgfx
-ISONMAP rxsc807
-ISONMAP rxsc042
-ISONMAP kuafu03
-#ACT
-StopAutoPlayGame
-SENDMSG 9 当前地图不能自动挂机
-BREAK
+;#OR
+;ISONMAP dgfx
+;ISONMAP rxsc807
+;ISONMAP rxsc042
+;ISONMAP kuafu03
+;#ACT
+;StopAutoPlayGame
+;SENDMSG 9 当前地图不能自动挂机
+;BREAK
 
 #IF
 #Act
