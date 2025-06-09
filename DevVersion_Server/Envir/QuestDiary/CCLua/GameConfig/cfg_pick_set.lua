@@ -51,9 +51,5 @@ local config = {
 		group = 13,
 		name = "时装系列",
 	},
-	[14] = { 
-		group = 14,
-		name = "1至10阶装备1",
-	},
 }
 return config
