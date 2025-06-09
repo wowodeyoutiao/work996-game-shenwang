@@ -557,25 +557,13 @@ function SkillUpgrade.GetAllSkillsMaxLevel(actor)
 		return 0
 	end
 
-    local infoStr = getplaydef(actor, CommonDefine.VAR_T_EQUIPPOS_STRENGTH_INFO)
-    if infoStr == '' then
-		return 0     
-    end
-	local infoTab = json2tbl(infoStr)
-	if (infoTab == nil) or table.isempty(infoTab) then
-		return 0
-	end
-
-    for i = 1, #CommonDefine.BASE_EQUIPMENT_POS, 1 do
-		local sid = ''..CommonDefine.BASE_EQUIPMENT_POS[i]
-		local curPosLevel = 0
-		if infoTab[sid] ~= nil then
-			curPosLevel = infoTab[sid]
-		end	
-        if curPosLevel > maxlv then
-            maxlv = curPosLevel
+    local skill_list = getallskills(actor)
+    for _, skillID in ipairs(skill_list or {}) do
+        local skilllv = getskilllevel(actor, skillID)
+        if skilllv >= maxlv then
+            maxlv = skilllv
         end
-    end
+    end    
 	return maxlv
 end
 
