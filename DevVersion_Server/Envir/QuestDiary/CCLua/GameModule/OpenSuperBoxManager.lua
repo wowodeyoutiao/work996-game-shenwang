@@ -470,6 +470,9 @@ function OpenSuperBoxManager.GMUpgradeBaoXiangLevel(actor)
     setplaydef(actor, CommonDefine.VAR_U_SUPER_BOX_CURR_LV, nBoxCurrLv + 1)
     setplaydef(actor, CommonDefine.VAR_U_SUPER_BOX_ONCE_OPEN_NUM, nextLevelConfig.maxopennum)
     OpenSuperBoxManager.UpdateSuperBoxInfo(actor) 
+
+    --任务触发
+    TaskManager.OnSuperBoxUpgrade(actor)    
 end
 
 --GM重置宝箱等级

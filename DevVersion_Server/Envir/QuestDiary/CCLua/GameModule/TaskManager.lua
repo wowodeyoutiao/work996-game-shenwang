@@ -383,6 +383,15 @@ local function UpdateTaskProgress(actor, taskid, tasktype, counterlist, counterv
             local currlv = getplaydef(actor, countervar)
             s1 = currlv..''
         end
+    elseif tasktype == CommonDefine.TASK_TYPE_EQUIPPOS_STRENGTH then
+        local currlv = EquipPosStrengthManager.GetAllCommonEquipPosMaxLevel(actor)
+        s1 = currlv..''
+    elseif tasktype == CommonDefine.TASK_TYPE_SKILL_UPGRADE then
+        local currlv = SkillUpgrade.GetAllSkillsMaxLevel(actor)
+        s1 = currlv..''
+    elseif tasktype == CommonDefine.TASK_TYPE_SUPERBOX_UPGRADE then
+        local currlv = getplaydef(actor, CommonDefine.VAR_U_SUPER_BOX_CURR_LV)
+        s1 = currlv..''
     end    
     newchangetask(actor, taskid, s1, s2, s3) 
 end

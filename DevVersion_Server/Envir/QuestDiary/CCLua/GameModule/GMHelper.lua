@@ -71,6 +71,7 @@ function GMHelper.OpenPanel(actor)
         '<Button|x=40|y=210|nimg=public/bg_hhzy_01_3.png|text=10w元宝,绑元|link=@gmhelper_button#sid1=36>'..
         '<Button|x=40|y=240|nimg=public/bg_hhzy_01_3.png|text=100点跨服积分|link=@gmhelper_button#sid1=1010>'..
         '<Button|x=40|y=270|nimg=public/bg_hhzy_01_3.png|text=给粉色灵玉|link=@gmhelper_button#sid1=6>'..
+        '<Button|x=40|y=300|nimg=public/bg_hhzy_01_3.png|text=等级加1级|link=@gmhelper_button#sid1=39>'..
         
         '<Button|x=200|y=30|nimg=public/bg_hhzy_01_3.png|text=等级设置10|link=@gmhelper_button#sid1=1007>'..
         '<Button|x=200|y=60|nimg=public/bg_hhzy_01_3.png|text=清空装备位强化|link=@gmhelper_button#sid1=1008>'..
@@ -380,6 +381,9 @@ function GMHelper.DoGmOper(actor, sid)
     elseif sid == '38' then
         setplaydef(actor, CommonDefine.VAR_U_FREEVIP_LEVEL, 0)
         Player.SendSelfMsg(actor, 'VIP回到'..0, CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)    
+    elseif sid == '39' then
+        changelevel(actor, '+', 1)
+        Player.FullHPMP(actor)        
     elseif sid == '101' then
         TaskManager.AddNewTask(actor, CommonDefine.TASK_LINE_ID_MAIN, 0)
     elseif sid == '102' then
