@@ -267,7 +267,7 @@ CommonDefine = {
     EXTEND_STORAGE_ONCE_NEEDITEMS = {{name='绑定元宝', num=800}},     --扩展一次仓库所需的道具消耗
     SHOW_QUICK_TIP_MIN_LEVEL = 20,                                   --显示快捷提示的最小等级
     DAY_SUPER_BOX_MAX_ADD_NUM = 1000000,                                 --每天可以获得的超级宝箱的基础最大数量
-    DAY_SUPER_BOX_MAX_OPEN_NUM = 100,                                    --每天可以开启的超级宝箱的基础最大数量
+    DAY_SUPER_BOX_MAX_OPEN_NUM = 200,                                    --每天可以开启的超级宝箱的基础最大数量
     OPEN_SUPERBOX_SPEEDUP_ONCE_NEEDITEMS = {{name='加速卷轴', num=1}},    --超级宝箱升级加速一次需要的道具
     OPEN_SUPERBOX_SPEEDUP_ONCE_ADDSECONDS = 60,                          --超级宝箱升级加速一次对应的秒数
     NEW_PLAYER_EMAIL_ITEMS = {{name='元宝', num=5000}},                   --新玩家登录给与的邮件奖励

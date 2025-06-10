@@ -25,6 +25,14 @@ local DAY_BUTTON_PIC = {
 local MIN_FIRST_RECHARGE_GOLDNUM = 6                        --最小首充金额
 local DOUBLE_REWARD_NEEDITEMS = {{name='元宝', num=300}}     --领取双倍需要的消耗
 
+function FirstRecharge.HasFirstRecharge(actor)
+    local bFlag = false
+    if not BF_IsNullObj(actor) then
+        bFlag = getplaydef(actor, CommonDefine.VAR_U_FIRST_RECHARGE_DAY) > 0
+    end
+    return bFlag
+end
+
 --返回当前的首充天数
 function FirstRecharge.GetCurrRechargeDay(actor)
     local currRechargeDay = 0

@@ -45,6 +45,14 @@ function FreeVIPManager.GetVIPTaskCfgKey(level, taskseq)
     return level * 100 + taskseq
 end
 
+function FreeVIPManager.GetDayOpenBoxAddNumByVipLevel(viplv)
+    local addnum = 0
+    if viplv >= 0 and viplv <= FreeVIPManager.MAX_LEVEL then
+        addnum = viplv * 100
+    end
+    return addnum
+end
+
 function FreeVIPManager.QuickGoTo(actor, tasktype)
     if BF_IsNullObj(actor) then
         return
@@ -395,6 +403,14 @@ local function GetSingleShowInfo(actor, viplevel)
             local showexpaddstr = '自动泡点加成:'..totalrate..'%'
             strPanelInfo = strPanelInfo..'<Text|id='..textid..'|text='..showexpaddstr..'|size=15|x='..tempLeftX..'|y='..tempLeftY..'|color='..CSS.NPC_WHITE..'>'            
             tempLeftY = tempLeftY + 25
+
+            local maxopennum = CommonDefine.DAY_SUPER_BOX_MAX_OPEN_NUM + FreeVIPManager.GetDayOpenBoxAddNumByVipLevel(viplevel)
+            if maxopennum > 0 then
+                textid = textid + 1
+                idstr = idstr..','..textid   
+                strPanelInfo = strPanelInfo..'<Text|id='..textid..'|text=每日开箱上限:'..maxopennum..'|size=15|x='..tempLeftX..'|y='..tempLeftY..'|color='..CSS.NPC_LIGHTGREEN..'>'            
+                tempLeftY = tempLeftY + 25                                
+            end
 
             if currLvConfig.extendprivilege and currLvConfig.extendprivilege~='' then
                 textid = textid + 1

@@ -7,7 +7,7 @@ local OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_3 = 3    --减少一次性打开宝箱数量
 local OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_4 = 4    --打开升级宝箱界面
 local OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_5 = 5    --关闭升级宝箱界面
 local OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_6 = 6    --打开设置宝箱自动的界面 【打开该界面状态下不自动开】    切换自动开宝箱状态  
-local OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_7 = 7    --关闭设置宝箱自动的界面
+local OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_7 = 7    --关闭设置宝箱自动的界面  首充则开启自动 无首充则提示
 local OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_8 = 8    --进行宝箱升级
 local OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_9 = 9    --加速宝箱升级
 local OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_10 = 10  --一键回收
@@ -15,6 +15,8 @@ local OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_11 = 11  --关闭宝箱列表界面
 local OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_12 = 12  --一键穿戴
 local OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_13 = 13  --查看比较装备
 local OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_14 = 14  --前往商城引导购买
+local OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_15 = 15  --关闭设置宝箱自动的界面  仅关闭
+local OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_16 = 16  --关闭设置宝箱自动的界面  跳转到首充界面
 
 
 local OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_21 = 21  --勾选 保留的品质条件
@@ -94,7 +96,9 @@ end
 
 --返回每天最大可以开箱的数量
 local function GetDayMaxOpenBoxNum(actor)
-    return CommonDefine.DAY_SUPER_BOX_MAX_OPEN_NUM
+    local viplv = getplaydef(actor, CommonDefine.VAR_U_FREEVIP_LEVEL)
+    local maxopencount = CommonDefine.DAY_SUPER_BOX_MAX_OPEN_NUM + FreeVIPManager.GetDayOpenBoxAddNumByVipLevel(viplv)    
+    return maxopencount
 end
 
 --隐藏宝箱界面
@@ -278,7 +282,7 @@ function OpenSuperBoxManager.DoOpenBoxOnce(actor, autoflag, openitemlist)
     local DAY_MAX_OPEN_NUM = GetDayMaxOpenBoxNum(actor)
     local nDayOpenNum = getplaydef(actor, CommonDefine.VAR_J_DAY_SUPERBOX_OPENNUM)
     if nDayOpenNum >= DAY_MAX_OPEN_NUM then
-        Player.SendSelfMsg(actor, '已达到今日开箱上限！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+        Player.SendSelfMsg(actor, '已达到今日开箱上限，升级VIP可以增加开箱次数！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
         return false
     end
 
@@ -713,7 +717,7 @@ local function CloseUpgradeBoxLevelPanel(actor)
 end
 
 --打开设置自动开宝箱的界面
-local function OpenAutoOpenBoxPanel(actor)
+local function OpenAutoOpenBoxPanel(actor, bShowRechargeTipFlag)
     delbutton(actor, 108, CommonDefine.ADD_BUTTON_ID_5)
 
     local strItemList1 = ''
@@ -751,7 +755,7 @@ local function OpenAutoOpenBoxPanel(actor)
         flaglist[#flaglist+1] = info
     end    
 
-    local strPanel = '<Img|id=2200|children={2203,2204,2205,2206}|x=-300|y=-660|img=private/cc_superbox_1/bg_frame_autosetting.png|esc=1|move=0|bg=1|reset=1|loadDelay=0|show=0>'..        
+    local strPanel = '<Img|id=2200|children={2203,2204,2205,2206,2207}|x=-300|y=-660|img=private/cc_superbox_1/bg_frame_autosetting.png|esc=1|move=0|bg=1|reset=1|loadDelay=0|show=0>'..        
         '<Button|id=2204|x=523.0|y=57.0|color=255|mimg=private/cc_superbox_1/btn_fanhui.png|nimg=private/cc_superbox_1/btn_fanhui.png|size=18|link=@opensuperboxmanager_button#sid='..
         OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_7..'>'..
         '<Button|id=2206|x=240.0|y=540.0|color=255|text=开启自动|mimg=private/cc_common/button_1.png|nimg=private/cc_common/button_1.png|size=18|link=@opensuperboxmanager_button#sid='..
@@ -759,7 +763,6 @@ local function OpenAutoOpenBoxPanel(actor)
         '<Layout|id=2203|x=524.0|y=56.0|width=80|height=80|link=@opensuperboxmanager_button#sid='..OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_7..'>'
 
     strPanel = strPanel..'<Layout|id=2205|children={2211,2212,2213,2214,2215,2216,2253,2252}|x=70.0|y=110.0|width=270|height=440>'..
-
         '<CheckBox|id=2211|x=18.0|y=46.0|count=1|default='..flaglist[1].flag..'|checkboxid='..flaglist[1].checkvar..'|nimg=private/cc_superbox_1/checkbox_1.png|pimg=private/cc_superbox_1/checkbox_2.png|link=@opensuperboxmanager_button#sid='..
         OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_21..'>'..
         '<CheckBox|id=2212|x=18.0|y=110.0|count=1|default='..flaglist[2].flag..'|checkboxid='..flaglist[2].checkvar..'|nimg=private/cc_superbox_1/checkbox_1.png|pimg=private/cc_superbox_1/checkbox_2.png|link=@opensuperboxmanager_button#sid='..
@@ -772,14 +775,20 @@ local function OpenAutoOpenBoxPanel(actor)
         OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_27..'>'..
         '<CheckBox|id=2216|x=18.0|y=386.0|count=1|default='..flaglist[6].flag..'|checkboxid='..flaglist[6].checkvar..'|nimg=private/cc_superbox_1/checkbox_1.png|pimg=private/cc_superbox_1/checkbox_2.png|link=@opensuperboxmanager_button#sid='..
         OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_28..'>'..
-
         '<MenuItem|id=2252|a=2|x=60.0|y=73.0|itemname='..strItemList1..'|select='..currSelectStr1..
         '|fontsize=18|img=private/cc_superbox_1/xlk_1.png|arrowimg=private/cc_superbox_1/btn_1.png|itemhei=20|menuid='..CommonDefine.VAR_S_SELECT_MENUITEM_1..
         '|selectcolor=254|fontcolor=250|direction=0|link=@opensuperboxmanager_button#sid='..OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_22..'>'..  
-
         '<MenuItem|id=2253|a=2|x=60.0|y=136.0|itemname='..strItemList2..'|select='..currSelectStr2..
         '|fontsize=18|img=private/cc_superbox_1/xlk_1.png|arrowimg=private/cc_superbox_1/btn_1.png|itemhei=20|menuid='..CommonDefine.VAR_S_SELECT_MENUITEM_2..
         '|selectcolor=254|fontcolor=250|direction=0|link=@opensuperboxmanager_button#sid='..OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_24..'>'
+
+    if bShowRechargeTipFlag~=nil and bShowRechargeTipFlag==true then
+        strPanel = strPanel..'<Img|id=2207|children={2301,2302,2303,2304}|a=1|x=450|y=200|reset=1|move=1|img=private/revive/bg_swfh_1.png|bg=1>'..
+            '<Layout|id=2301|width=348|height=200>'..
+            '<Text|id=2302|x=50|y=20|size=18|color='..CSS.NPC_WHITE..'|text=小充一笔，自动开箱！>'..
+            '<Button|id=2303|x=45|y=75|pimg=private/cc_common/button_up1.png|nimg=private/cc_common/button_down1.png|color='..CSS.NPC_WHITE..'|size=17|text=关  闭|link=@opensuperboxmanager_button#sid='..OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_15..'>'..
+            '<Button|id=2304|x=170|y=75|pimg=private/cc_common/button_up1.png|nimg=private/cc_common/button_down1.png|color='..CSS.NPC_WHITE..'|size=17|text=前  往|link=@opensuperboxmanager_button#sid='..OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_16..'>'                 
+    end
 
     delbutton(actor, 108, CommonDefine.ADD_BUTTON_ID_5)
     addbutton(actor, 108, CommonDefine.ADD_BUTTON_ID_5, strPanel)
@@ -789,9 +798,13 @@ end
 local function CloseAutoOpenBoxPanel(actor)
     delbutton(actor, 108, CommonDefine.ADD_BUTTON_ID_5)
     if getflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_AUTO_OPEN_SUPERBOX) == 0 then
-        setflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_AUTO_OPEN_SUPERBOX, 1)
-        setflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_AUTO_OPEN_SUPERBOX_PAUSE, 0)
-        OpenSuperBoxManager.AutoOpenSuperBox(actor)  
+        if FirstRecharge.HasFirstRecharge(actor) then
+            setflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_AUTO_OPEN_SUPERBOX, 1)
+            setflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_AUTO_OPEN_SUPERBOX_PAUSE, 0)
+            OpenSuperBoxManager.AutoOpenSuperBox(actor)  
+        else
+            OpenAutoOpenBoxPanel(actor, true)
+        end
     end
 end
 
@@ -1139,6 +1152,11 @@ function OpenSuperBoxManager.DoOperButton(actor, sid, sparam)
     elseif funcid == OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_14 then
         openhyperlink(actor, 10)
         navigation(actor, 10, 19, "点击购买")   
+    elseif funcid == OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_15 then
+        delbutton(actor, 108, CommonDefine.ADD_BUTTON_ID_5)
+    elseif funcid == OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_16 then
+        delbutton(actor, 108, CommonDefine.ADD_BUTTON_ID_5)
+        FirstRecharge.OpenPanel(actor)
     end
 end
 
