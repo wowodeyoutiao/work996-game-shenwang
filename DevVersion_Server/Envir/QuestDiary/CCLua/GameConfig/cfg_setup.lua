@@ -652,14 +652,6 @@ local config = {
 		platform = 0,
 		order = 4580,
 	},
-	[63] = { 
-		idx = 112,
-		id = 63,
-		content = "低等级不显名字",
-		default = 1,
-		platform = 0,
-		order = 3333,
-	},
 	[1002] = { 
 		idx = 113,
 		id = 1002,

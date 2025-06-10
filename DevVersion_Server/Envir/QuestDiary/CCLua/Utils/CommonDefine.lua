@@ -705,6 +705,7 @@ CommonDefine = {
     QUICK_GOTO_BAG_USEDICE = 22,                --背包开骰子得宝箱
     QUICK_GOTO_SKILL_UPGRADE = 23,              --技能升级
     QUICK_GOTO_SUPERBOX_UPGRADE = 24,           --开宝箱升级
+    QUICK_GOTO_COMMON_NAVIGATION = 25,          --通用引导
 
     --脚本创建的动态npcid    最终的npcid是 系统组编号*10000+动态id
     --[[

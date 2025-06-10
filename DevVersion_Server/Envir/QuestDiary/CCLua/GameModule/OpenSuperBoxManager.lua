@@ -14,6 +14,7 @@ local OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_10 = 10  --一键回收
 local OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_11 = 11  --关闭宝箱列表界面
 local OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_12 = 12  --一键穿戴
 local OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_13 = 13  --查看比较装备
+local OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_14 = 14  --前往商城引导购买
 
 
 local OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_21 = 21  --勾选 保留的品质条件
@@ -487,7 +488,7 @@ function OpenSuperBoxManager.GMResetBaoXiangLevel(actor)
 end
 
 --打开升级宝箱的界面
-local function OpenUpgradeBoxLevelPanel(actor)
+local function OpenUpgradeBoxLevelPanel(actor, bShowBuySpeedupTip)
     delbutton(actor, 108, CommonDefine.ADD_BUTTON_ID_5)
 
     local nBoxCurrLv = getplaydef(actor, CommonDefine.VAR_U_SUPER_BOX_CURR_LV)
@@ -498,7 +499,7 @@ local function OpenUpgradeBoxLevelPanel(actor)
         sNeedItemStr = BF_GetSimpleItemTableDescStr(levelConfig.upgradeneeditems_tab)
     end
 
-    local strPanel = '<Img|id=2100|children={2112,2113,2114,2115,2116,2117}|x=-300|y=-660|img=private/cc_superbox_1/bg_frame_upgrade.png|move=0|reset=1|bg=1|esc=1|show=0>'..
+    local strPanel = '<Img|id=2100|children={2112,2113,2114,2115,2116,2117,2118}|x=-300|y=-660|img=private/cc_superbox_1/bg_frame_upgrade.png|move=0|reset=1|bg=1|esc=1|show=0>'..
         '<Button|id=2113|x=524.0|y=56.0|nimg=private/cc_superbox_1/btn_fanhui.png|color=255|size=18|mimg=private/cc_superbox_1/btn_fanhui.png|link=@opensuperboxmanager_button#sid='..
         OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_5..'>'..
         '<Layout|id=2115|x=524.0|y=56.0|width=80|height=80|link=@opensuperboxmanager_button#sid='..OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_5..'>'..
@@ -585,20 +586,26 @@ local function OpenUpgradeBoxLevelPanel(actor)
                     '<COUNTDOWN|id=2105|x=120.0|y=0.0|color=255|size=18|showWay=1|time='..leftseconds..'|link=@opensuperboxmanager_button#sid='..
                     OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_4..'>'..
                     '<Text|id=2106|x=24.0|y=70.0|color=255|size=18|text=加速消耗：>'..
-                    --'<Text|id=2109|x=120.0|y=70.0|color='..tempcolor..'|size=18|text='..sNeedItemStr..'>'..
                     '<Button|id=2107|x=54.0|y=24.0|mimg=private/cc_common/button_1.png|nimg=private/cc_superbox_1/button_1.png|color=255|size=18|text=加速|link=@opensuperboxmanager_button#sid='..
                     OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_9..'>'
 
-                    local sTempStr = ''
-                    sTempStr, plusidstr = Item.GetNeedItemsShowInfo(actor, totalneeditems, 24, 70, 170, 180, CSS.NPC_WHITE)
-                    if sTempStr ~= '' then
-                        strPanel = strPanel..sTempStr
-                    end                    
+                local sTempStr = ''
+                sTempStr, plusidstr = Item.GetNeedItemsShowInfo(actor, totalneeditems, 24, 70, 170, 180, CSS.NPC_WHITE)
+                if sTempStr ~= '' then
+                    strPanel = strPanel..sTempStr
+                end
+
+                if bShowBuySpeedupTip~=nil and bShowBuySpeedupTip==true then
+                    strPanel = strPanel..'<Img|id=2118|children={2301,2302,2303,2304}|a=1|x=450|y=200|reset=1|move=1|img=private/revive/bg_swfh_1.png|bg=1>'..
+                    '<Layout|id=2301|width=348|height=200>'..
+                    '<Text|id=2302|x=50|y=20|size=18|color='..CSS.NPC_WHITE..'|text=前往商城购买加速卷轴？>'..
+                    '<Button|id=2303|x=45|y=75|pimg=private/cc_common/button_up1.png|nimg=private/cc_common/button_down1.png|color='..CSS.NPC_WHITE..'|size=17|text=取  消|link=@opensuperboxmanager_button#sid='..OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_4..'>'..
+                    '<Button|id=2304|x=170|y=75|pimg=private/cc_common/button_up1.png|nimg=private/cc_common/button_down1.png|color='..CSS.NPC_WHITE..'|size=17|text=确  定|link=@opensuperboxmanager_button#sid='..OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_14..'>'                 
+                end
             end
         end
     end
     strPanel = strPanel..'<Layout|id=2114|children={2105,2106,2107,2108,2109,'..plusidstr..'}|x=180.0|y=480.0|width=220|height=90>'
-
     delbutton(actor, 108, CommonDefine.ADD_BUTTON_ID_5)
     addbutton(actor, 108, CommonDefine.ADD_BUTTON_ID_5, strPanel)   
 end
@@ -663,7 +670,8 @@ local function SpeedupUpgradeBoxLevel(actor)
     else
         --如果加速的材料不足
         if not Player.CheckItemsEnough(actor, CommonDefine.OPEN_SUPERBOX_SPEEDUP_ONCE_NEEDITEMS, '') then
-            Player.SendSelfMsg(actor, '材料不足加速'..CommonDefine.OPEN_SUPERBOX_SPEEDUP_ONCE_ADDSECONDS..'秒！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+            Player.SendSelfMsg(actor, '材料不足加速'..CommonDefine.OPEN_SUPERBOX_SPEEDUP_ONCE_ADDSECONDS..'秒！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)            
+            OpenUpgradeBoxLevelPanel(actor, true)
             return
         end
         
@@ -1128,6 +1136,9 @@ function OpenSuperBoxManager.DoOperButton(actor, sid, sparam)
         SelectRecycleCheckBox(actor, 6)
     elseif funcid == OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_13 then
         SendEquipItemCompareRequest(actor, sparam)
+    elseif funcid == OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_14 then
+        openhyperlink(actor, 10)
+        navigation(actor, 10, 19, "点击购买")   
     end
 end
 

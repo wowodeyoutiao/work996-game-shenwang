@@ -773,8 +773,8 @@ function Player.QuickGoTo(actor, gotoid)
             navigation(actor, 1, makeindex, '双击获取开箱次数')
         else
             Player.SendSelfMsg(actor, '暂无可用于增加开箱次数的道具', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
-        end                    
-    end          
+        end
+    end
 end
 
 --检测玩家装备，设置玩家的加速状态
