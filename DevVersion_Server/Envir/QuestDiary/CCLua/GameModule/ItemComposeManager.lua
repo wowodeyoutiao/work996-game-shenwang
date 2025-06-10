@@ -167,6 +167,10 @@ local function DoFinalEquipCompose(actor, cfgComposeTab)
 			--合成后的装备绑定属性怎么定义？？？？？？？？？？
 			local newitemobj = giveitem(actor, cfg_equip[targInfo.id].Name, 1, 0, '装备合成')
 			if not BF_IsNullObj(newitemobj) then
+				--设置来源
+				local srcinfostr = '{source: 8, mon:"合成获取",player:"'..Player.GetName(actor)..'"}'
+				setthrowitemly2(actor, newitemobj, srcinfostr)
+
 				--生成装备的初始洗炼属性
 				EquipRandomABManager.InitEquipRandomAB(actor, newitemobj)
 				--装备的天赋属性
@@ -195,6 +199,9 @@ local function DoFinalPiledItemCompose(actor, cfgComposeTab)
 		local targInfo = BF_GetRandomTab(cfgComposeTab.composetarginfo_tab, -1)
 		if (targInfo ~= nil) and (targInfo.id ~= nil) and (cfg_item[targInfo.id] ~= nil) then
 			nothintitem(actor, 2, targInfo.id)
+			--设置来源
+			local srcinfostr = '{source: 8, mon:"合成获取",player:"'..Player.GetName(actor)..'"}'
+			setthrowitemly(srcinfostr)
 			giveitem(actor, cfg_item[targInfo.id].Name, 1, 0, '道具合成')
 			bSuccessFlag = true	
 			newitemid = targInfo.id

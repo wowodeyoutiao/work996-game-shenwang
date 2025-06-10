@@ -354,12 +354,17 @@ function OpenSuperBoxManager.DoOpenBoxOnce(actor, autoflag, openitemlist)
     local strItemUniqueIDs = ''
     local showFirstItemMakeIdx = 0
     setflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_NO_BAG_AUTORECYCLE, 1)
+    local strPlayerName = Player.GetName(actor)
     for _, itemid in ipairs(newItemIDTab) do
         --屏蔽当前装备的对比提示和自动使用
         nothintitem(actor, 2, itemid)                
         local sItemName = getstditeminfo(itemid, CommonDefine.STDITEMINFO_NAME)                
         local newitemobj = giveitem(actor, sItemName, 1, 0, '超级宝箱')        
         if not BF_IsNullObj(newitemobj) then
+            --设置装备来源
+            local srcinfostr = '{source: 9, mon:"开启宝箱",player:"'..strPlayerName..'"}'
+            setthrowitemly2(actor, newitemobj, srcinfostr)
+
             local infotab = {itemobj=newitemobj, randabflag=0, giftabflag=0}
             --生成装备的初始洗炼属性
             if EquipRandomABManager.InitEquipRandomAB(actor, newitemobj) == true then
