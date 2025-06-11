@@ -40,6 +40,10 @@ CSS = {
     NPC_LEFT_START_X = 30,    
     NPC_TOP_START_Y = 20,    
     NPC_CENTER_START_X = 220,
+
+    --面板的通用大小位置
+    BASE_PANEL_START_X = 60,        --基础面板的初始X
+    BASE_PANEL_START_Y = 40,        --基础面板的初始Y
 }
 
 CSS.QUALITY_COLOR = {

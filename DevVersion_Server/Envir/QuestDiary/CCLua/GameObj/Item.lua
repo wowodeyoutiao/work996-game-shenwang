@@ -170,6 +170,33 @@ function Item.GetNeedItemsShowInfo(actor, needitems_tab, basex, basey, imgbaseid
     return sInfo, sIdstr
 end
 
+function Item.GetNeedItemsGridShowInfo(actor, needitems_tab, basex, basey, imgbaseid)
+    local sInfo = ''
+    local sIdstr = ''
+    if BF_IsNullObj(actor) or (needitems_tab==nil) or (table.isempty(needitems_tab)) then
+        return sInfo, sIdstr
+    end
+
+    if needitems_tab then
+        local itemgrid_x = basex
+        local itemgrid_y = basey
+        local itemimgid = imgbaseid
+        local finalrewardtab = Player.FilterTable(actor, needitems_tab)  
+        for _, reward in ipairs(finalrewardtab) do  
+            local itemidx = getstditeminfo(reward.name, CommonDefine.STDITEMINFO_IDX)
+            sInfo = sInfo..'<ItemShow|id='..itemimgid..'|itemid='..itemidx..'|itemcount='..reward.num..'|x='..(itemgrid_x+70)..'|y='..(itemgrid_y-26)..'|showtips=1|bgtype=1>'
+            if sIdstr ~= '' then
+                sIdstr = sIdstr..','
+            end
+            sIdstr = sIdstr..itemimgid
+            itemgrid_x = itemgrid_x + 70
+            itemimgid = itemimgid + 1
+        end
+    end    
+
+    return sInfo, sIdstr
+end
+
 function Item.GetEquipposByStdmode(stdmode)
     if stdmode == CommonDefine.ITEM_STDMODE_WEAPON then
         return CommonDefine.EQUIPPOS_WEAPON, -1

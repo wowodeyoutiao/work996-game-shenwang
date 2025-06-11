@@ -248,81 +248,75 @@ local function GetSingleEquipPosShowInfo(actor, equippos)
             bCurrIsMaxLv = true
         end        
         
-        sPanelStr = sPanelStr..'<Layout|id=15|children={101,102,120,140,160,500}|x=200.0|y=65.0|width=580|height=420>'..
-            '<Img|id=101|x=-4.0|y=200.0|height=5|img=private/cc_common/pic_line_1.png>'..
-            '<Img|id=102|x=-4.0|y=300.0|height=5|img=private/cc_common/pic_line_1.png>'
+        sPanelStr = sPanelStr..'<Layout|id=15|children={102,120,140,160,500,101}|x=280.0|y=60.0|width=510|height=430>'..
+            '<Img|id=102|x=0.0|y=38.0|width=500|img=private/cc_equip_strength/7.png>'..
+            '<EquipShow|id=101|x=226.0|y=92.0|scale=1.2|showtips=0|effectshow=0|reload=1|index='..equippos..'>'
 
         --当前强化等级
         local startid = 120
         local idstr = startid..','..(startid+1)..','..(startid+2)..','..(startid+3)
-        local tempLeftX = 40
-        local tempLeftY = 20
-        sPanelStr = sPanelStr..'<Text|id='..(startid+1)..'|text=当前等级：|size=20|x='..tempLeftX..'|y='..tempLeftY..'|color='..CSS.NPC_YELLOW..'>'..
-                               '<Text|id='..(startid+2)..'|text='..curPosLevel..'级|size=20|x='..(tempLeftX+100)..'|y='..tempLeftY..'|color='..CSS.NPC_WHITE..'>'
-        tempLeftY = tempLeftY + 40
-        sPanelStr = sPanelStr..'<Text|id='..(startid+3)..'|x='..tempLeftX..'|y='..tempLeftY..'|color='..CSS.NPC_WHITE..'|size=18|text=属性加成：>'
+        local tempLeftX = 30
+        local tempLeftY = 10
+        sPanelStr = sPanelStr..'<Text|id='..(startid+1)..'|text=当前等级：|size=18|x='..tempLeftX..'|y='..tempLeftY..'|color='..CSS.NPC_YELLOW..'>'..
+                               '<Text|id='..(startid+2)..'|text='..curPosLevel..'级|size=18|x='..(tempLeftX+80)..'|y='..tempLeftY..'|color='..CSS.NPC_WHITE..'>'        
         local currPropDescTable = cfgEquipPosStrength[cfgCurrKey].addprop_desctab
         for seq, descItem in ipairs(currPropDescTable) do
             local textid = startid + 10 + seq
             idstr = idstr..','..textid
             tempLeftY = tempLeftY + 30
-            sPanelStr = sPanelStr..'<Text|id='..textid..'|text='..descItem.desc..'|size=18|x='..tempLeftX..'|y='..tempLeftY..'|color='..CSS.NPC_WHITE..'>'
+            sPanelStr = sPanelStr..'<Text|id='..textid..'|text='..descItem.desc..'|size=16|x='..tempLeftX..'|y='..tempLeftY..'|color='..CSS.NPC_WHITE..'>'
         end
-        sPanelStr = sPanelStr..'<Layout|id='..startid..'|children={'..idstr..'}|x=30.0|y=0|width=240|height=180>'                    
+        sPanelStr = sPanelStr..'<Layout|id='..startid..'|children={'..idstr..'}|x=0.0|y=40|width=180|height=180>'                    
 
         --下一强化等级
         startid = 140
         idstr =  startid..','..(startid+1)..','..(startid+2)..','..(startid+3)
-        local tempRightX = 40
-        local tempRightY = 20
+        local tempRightX = 30
+        local tempRightY = 10
         if bCurrIsMaxLv then
-            sPanelStr = sPanelStr..'<Text|id='..(startid+1)..'|text=已达到等级上限|size=20|x='..tempRightX..'|y='..tempRightY..'|color='..CSS.NPC_YELLOW..'>'
+            sPanelStr = sPanelStr..'<Text|id='..(startid+1)..'|text=已达到等级上限|size=18|x='..tempRightX..'|y='..tempRightY..'|color='..CSS.NPC_YELLOW..'>'
             tempRightY = tempRightY + 30
         else
-            sPanelStr = sPanelStr..'<Text|id='..(startid+1)..'|text=下一等级：|size=20|x='..tempRightX..'|y='..tempRightY..'|color='..CSS.NPC_YELLOW..'>'..
-                                   '<Text|id='..(startid+2)..'|text='..nextPosLevel..'级|size=20|x='..(tempRightX+100)..'|y='..tempRightY..'|color='..CSS.NPC_WHITE..'>'
-            tempRightY = tempRightY + 40
-            sPanelStr = sPanelStr..'<Text|id='..(startid+3)..'|x='..tempRightX..'|y='..tempRightY..'|color='..CSS.NPC_WHITE..'|size=18|text=属性加成：>'         
+            sPanelStr = sPanelStr..'<Text|id='..(startid+1)..'|text=下阶等级：|size=18|x='..tempRightX..'|y='..tempRightY..'|color='..CSS.NPC_YELLOW..'>'..
+                                   '<Text|id='..(startid+2)..'|text='..nextPosLevel..'级|size=18|x='..(tempRightX+80)..'|y='..tempRightY..'|color='..CSS.NPC_WHITE..'>'
             local nextPropDescTable =  cfgEquipPosStrength[cfgNextKey].addprop_desctab
             for seq, descItem in ipairs(nextPropDescTable) do
                 local textid = startid + 10 + seq
                 idstr = idstr..','..textid
                 tempRightY = tempRightY + 30
-                sPanelStr = sPanelStr..'<Text|id='..textid..'|size=18|text='..descItem.desc..'|x='..tempRightX..'|y='..tempRightY..'|color='..CSS.NPC_WHITE..'>'
+                sPanelStr = sPanelStr..'<Text|id='..textid..'|size=16|text='..descItem.desc..'|x='..tempRightX..'|y='..tempRightY..'|color='..CSS.NPC_WHITE..'>'
             end
         end
-        sPanelStr = sPanelStr..'<Layout|id='..startid..'|children={'..idstr..'}|x=330.0|y=0|width=240|height=180>'       
+        sPanelStr = sPanelStr..'<Layout|id='..startid..'|children={'..idstr..'}|x=330.0|y=40|width=180|height=180>'       
 
         --消耗
-        local tempX = 70
+        local tempX = 30
         local tempY = 10
-        local currPlayerLv = Player.GetLevel(actor)
         local itemidstr = ''
         if not bCurrIsMaxLv then            
-            sPanelStr = sPanelStr..'<Text|id=161|text=等级限制：'..cfgEquipPosStrength[cfgCurrKey].needlv..'级|x='..tempX..'|y='..tempY..'|color='..CSS.NPC_YELLOW..'>'
-            tempY = tempY + 50
-            --local sConsumeInfo = BF_GetItemTableDescStr(actor, cfgEquipPosStrength[cfgCurrKey].needitems_tab)
-            --sPanelStr = sPanelStr..'<Text|id=162|text=强化消耗：'..sConsumeInfo..'|x='..tempX..'|y='..tempY..'|color='..CSS.NPC_YELLOW..'>'
-            sPanelStr = sPanelStr..'<Text|id=162|text=强化消耗：|x='..tempX..'|y='..tempY..'|color='..CSS.NPC_YELLOW..'>'
+            sPanelStr = sPanelStr..'<Text|id=161|text=等级限制'..cfgEquipPosStrength[cfgCurrKey].needlv..'级|size=18|x='..tempX..'|y='..(tempY+6)..'|color='..CSS.NPC_YELLOW..'>'         
+            sPanelStr = sPanelStr..'<Img|id=162|x='..(tempX+116)..'|y='..tempY..'|img=private/cc_equip_strength/5.png>'..
+                '<Text|id=164|text=强化消耗|x='..(tempX+190)..'|y='..(tempY+6)..'|color='..CSS.NPC_GRAY..'>'
+
             local sTempStr = ''
-            sTempStr, itemidstr = Item.GetNeedItemsShowInfo(actor, cfgEquipPosStrength[cfgCurrKey].needitems_tab, tempX, tempY, 170, 180, CSS.NPC_WHITE)
+            sTempStr, itemidstr = Item.GetNeedItemsGridShowInfo(actor, cfgEquipPosStrength[cfgCurrKey].needitems_tab, (tempX+80), (tempY+70), 180)
             if sTempStr ~= '' then
                 sPanelStr = sPanelStr..sTempStr
             end
         end
-        sPanelStr = sPanelStr..'<Layout|id=160|children={161,162,'..itemidstr..'}|x=0|y=200.0|width=580|height=110>'        
+        sPanelStr = sPanelStr..'<Layout|id=160|children={161,162,163,164,'..itemidstr..'}|x=0|y=214.0|width=500|height=150>'        
 
         --强化按钮
         idstr = '501,502'
         if bCurrIsMaxLv then
-            sPanelStr = sPanelStr..'<Text|id=501|text=已达到最高强化等级！|x=200|y=30|color='..CSS.NPC_LIGHTGREEN..'>'
+            sPanelStr = sPanelStr..'<Text|id=501|text=已达到最高强化等级！|x=200|y=20|color='..CSS.NPC_LIGHTGREEN..'>'
         else
-            sPanelStr = sPanelStr..'<Button|id=501|x=120|y=20|text=强化一次|size=18|color='..CSS.NPC_WHITE..'|mimg=private/cc_equip_strength/3.png|nimg=private/cc_equip_strength/3.png|link=@function_button,'..            
+            sPanelStr = sPanelStr..'<Button|id=501|x=100|y=20|text=强化一次|size=18|color='..CSS.NPC_WHITE..'|mimg=private/cc_equip_strength/3.png|nimg=private/cc_equip_strength/3.png|link=@function_button,'..            
                 EQUIPPOS_STRENGTH_BUTTONFUNC_ID_2..'>'
-            sPanelStr = sPanelStr..'<Button|id=502|x=350|y=20|text=强化十次|size=18|color='..CSS.NPC_WHITE..'|mimg=private/cc_equip_strength/3.png|nimg=private/cc_equip_strength/3.png|link=@function_button,'..            
+            sPanelStr = sPanelStr..'<Button|id=502|x=320|y=20|text=强化十次|size=18|color='..CSS.NPC_WHITE..'|mimg=private/cc_equip_strength/3.png|nimg=private/cc_equip_strength/3.png|link=@function_button,'..            
                 EQUIPPOS_STRENGTH_BUTTONFUNC_ID_3..'>'
         end
-        sPanelStr = sPanelStr..'<Layout|id=500|children={'..idstr..'}|x=0|y=310.0|width=580|height=110>'
+        sPanelStr = sPanelStr..'<Layout|id=500|children={'..idstr..'}|x=0|y=350.0|width=500|height=70>'
     end
     return sPanelStr
 end
@@ -383,7 +377,7 @@ function EquipPosStrengthManager.ShowBasePanel(actor)
         setplaydef(actor, CommonDefine.VAR_T_EQUIPPOS_STRENGTH_INFO, infoStr)
     end
 
-    local strPanelInfo = '<Img|id=10|children={11,12,13,14,15,16}|x=20.0|y=16.0|reset=1|img=private/cc_equip_strength/8.png|show=0|esc=1|move=0|bg=1|loadDelay=0>'..
+    local strPanelInfo = '<Img|id=10|children={11,12,13,14,15,16}|x='..CSS.BASE_PANEL_START_X..'|y='..CSS.BASE_PANEL_START_Y..'|reset=1|img=private/cc_equip_strength/8.png|show=0|esc=1|move=0|bg=1|loadDelay=0>'..
         '<Layout|id=11|x=813.0|y=14.0|width=80|height=80|link=@exit>'..
         '<Button|id=12|x=814.0|y=14.0|nimg=public/1900000510.png|pimg=public/1900000511.png|link=@exit>'..
         --'<Text|id=13|x=84.0|y=70.0|size=18|color=151|text=选择槽位>'..
@@ -396,30 +390,38 @@ function EquipPosStrengthManager.ShowBasePanel(actor)
         end
         idstr1 = idstr1..(30+seq)
     end
-    strPanelInfo = strPanelInfo..'<ListView|id=14|children={'..idstr1..'}|x=65.0|y=70.0|width=130|height=400|margin=0|direction=1>'
+    strPanelInfo = strPanelInfo..'<ListView|id=14|children={'..idstr1..'}|x=65.0|y=56.0|width=210|height=440|margin=0|direction=1>'
     local choosepos = getplaydef(actor, CommonDefine.VAR_N_LAST_NPC_CHOOSEID)   
 
     for seq, value in ipairs(posTab) do
         local baseid = 30 + seq
         local textid1 = baseid * 10 + 1
         local textid2 = baseid * 10 + 2
+        local equipshowid = baseid * 10 + 3
+        local tempidstr = textid1..','..textid2..','..equipshowid
         if choosepos == -1 then          
             choosepos = value.pos         
             setplaydef(actor, CommonDefine.VAR_N_LAST_NPC_CHOOSEID, choosepos)
         end
+        local equipname = ''
+        local equipcolor = CSS.QUALITY_WHITE
+        local equipobj = linkbodyitem(actor, value.pos)
+        if not BF_IsNullObj(equipobj) then
+            equipname = getiteminfo(actor, equipobj, CommonDefine.ITEMINFO_SRCNAME) 
+            equipcolor = Item.GetItemQualityColor(actor, equipobj)
+        end
+        
+        strPanelInfo = strPanelInfo..'<Img|id='..baseid..'|children={'..tempidstr..'}x=-6.0|y=0.0|img=private/cc_equip_strength/2.png|link=@function_button,'..
+            EQUIPPOS_STRENGTH_BUTTONFUNC_ID_1..','..value.pos..'>'
+        strPanelInfo = strPanelInfo..'<Text|id='..textid1..'|x=80.0|y=14.0|size=18|color='..equipcolor..'|text='..equipname..'>'
+            ..'<Text|id='..textid2..'|x=80.0|y=44.0|size=18|color='..CSS.NPC_WHITE..'|text='..value.level..'级>'
+        strPanelInfo = strPanelInfo..'<EquipShow|id='..equipshowid..'|x=6.0|y=6.0|showtips=0|effectshow=0|reload=1|index='..value.pos..'>'
+
         if choosepos == value.pos then
-            strPanelInfo = strPanelInfo..'<Img|id='..baseid..'|children={'..textid1..','..textid2..'}x=-6.0|y=0.0|img=private/cc_equip_strength/5.png|link=@function_button,'..
-                EQUIPPOS_STRENGTH_BUTTONFUNC_ID_1..','..value.pos..'>'
-            strPanelInfo = strPanelInfo..'<Text|id='..textid1..'|x=20.0|y=5.0|size=18|color='..CSS.NPC_YELLOW..'|text='..value.name..'槽位>'
-                ..'<Text|id='..textid2..'|x=50.0|y=25.0|size=18|color='..CSS.NPC_YELLOW..'|text='..value.level..'级>'
             --对应当前选中的装备槽位
             strPanelInfo = strPanelInfo..GetSingleEquipPosShowInfo(actor, value.pos)                
-        else
-            strPanelInfo = strPanelInfo..'<Img|id='..baseid..'|children={'..textid1..','..textid2..'}x=-6.0|y=0.0|img=private/cc_equip_strength/6.png|link=@function_button,'..
-                EQUIPPOS_STRENGTH_BUTTONFUNC_ID_1..','..value.pos..'>'
-            strPanelInfo = strPanelInfo..'<Text|id='..textid1..'|x=20.0|y=5.0|size=18|color='..CSS.NPC_WHITE..'|text='..value.name..'槽位>'
-                ..'<Text|id='..textid2..'|x=50.0|y=25.0|size=18|color='..CSS.NPC_WHITE..'|text='..value.level..'级>'
-        end        
+        end              
+      
         if IsPosCanUpgradeOnce(actor, value.pos, infoTab) then
             Player.AddRedPoint(actor, 0, baseid, 10, 10)
         else
