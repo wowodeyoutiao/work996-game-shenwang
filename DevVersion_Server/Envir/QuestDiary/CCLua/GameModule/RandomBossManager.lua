@@ -250,7 +250,9 @@ end
 
 local function InitMapUI(actor)
     if not Player.IsPCClient(actor) then
-        --手机端
+        addbutton(actor, 101, CommonDefine.ADD_BUTTON_ID_8, '<Button|text=离开地图|x=260|y=36|color='..CSS.NPC_WHITE..'|pimg=public/1900000662.png|nimg=public/1900000663.png|link=@randomboss_button#sid='..
+            INNER_BUTTONFUNC_ID_3..'>')
+	else
         addbutton(actor, 101, CommonDefine.ADD_BUTTON_ID_8, '<Button|text=离开地图|x=260|y=36|color='..CSS.NPC_WHITE..'|pimg=public/1900000662.png|nimg=public/1900000663.png|link=@randomboss_button#sid='..
             INNER_BUTTONFUNC_ID_3..'>')
     end

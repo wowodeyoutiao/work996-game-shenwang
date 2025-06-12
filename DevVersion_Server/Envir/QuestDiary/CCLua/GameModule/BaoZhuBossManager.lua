@@ -26,6 +26,11 @@ local function InitMapUI(actor)
             BAOZHUBOSS_BUTTONFUNC_ID_1..'>')
         addbutton(actor, 101, CommonDefine.ADD_BUTTON_ID_35, '<Button|text=行会求助|x=260|y=86|color='..CSS.NPC_WHITE..'|pimg=public/1900000662.png|nimg=public/1900000663.png|link=@baozhuboss_button#sid='..
             BAOZHUBOSS_BUTTONFUNC_ID_2..'>')
+    else
+        addbutton(actor, 101, CommonDefine.ADD_BUTTON_ID_8, '<Button|text=离开地图|x=260|y=36|color='..CSS.NPC_WHITE..'|pimg=public/1900000662.png|nimg=public/1900000663.png|link=@baozhuboss_button#sid='..
+            BAOZHUBOSS_BUTTONFUNC_ID_1..'>')
+        addbutton(actor, 101, CommonDefine.ADD_BUTTON_ID_35, '<Button|text=行会求助|x=260|y=86|color='..CSS.NPC_WHITE..'|pimg=public/1900000662.png|nimg=public/1900000663.png|link=@baozhuboss_button#sid='..
+            BAOZHUBOSS_BUTTONFUNC_ID_2..'>')        
     end
 end
 

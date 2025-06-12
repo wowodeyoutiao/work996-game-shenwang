@@ -127,19 +127,19 @@ INC S$³äÖµ½çÃæÌáÊ¾ <RText|x=10|y=310|color=007|outline=1|size=13|text=*¶îÍâÔùËÍ½
 ADDBUTTON 40 40 <$STR(S$³äÖµ½çÃæÌáÊ¾)>
 
 
-#IF
-Equal <$CLIENTFLAG> 1
-NOT SMALL <$UTCNOW8> $´º½Ú¿ªÊ¼
-NOT LARGE <$UTCNOW8> $´º½Ú½áÊø
-#ACT
-; ±³°ü
-MOV S$»î¶¯UI <Img|x=0|y=5|img=public/hd_ui/bag_biankuang_xue.png>
-ADDBUTTON 7 2023 <$STR(S$»î¶¯UI)>
-; Ö÷½çÃæÁÄÌì¿òÑ©¶Ñ
-MOV S$»î¶¯UI <Img|x=240|y=-165|img=public/hd_ui/main_xue04.png>
-ADDBUTTON 103 2024 <$STR(S$»î¶¯UI)>
-INC S$»î¶¯UI <Img|x=-330|y=-165|img=public/hd_ui/main_xue03.png>
-ADDBUTTON 104 2025 <$STR(S$»î¶¯UI)>
+;#IF
+;Equal <$CLIENTFLAG> 1
+;NOT SMALL <$UTCNOW8> $´º½Ú¿ªÊ¼
+;NOT LARGE <$UTCNOW8> $´º½Ú½áÊø
+;#ACT
+;; ±³°ü
+;MOV S$»î¶¯UI <Img|x=0|y=5|img=public/hd_ui/bag_biankuang_xue.png>
+;ADDBUTTON 7 2023 <$STR(S$»î¶¯UI)>
+;; Ö÷½çÃæÁÄÌì¿òÑ©¶Ñ
+;MOV S$»î¶¯UI <Img|x=240|y=-165|img=public/hd_ui/main_xue04.png>
+;ADDBUTTON 103 2024 <$STR(S$»î¶¯UI)>
+;INC S$»î¶¯UI <Img|x=-330|y=-165|img=public/hd_ui/main_xue03.png>
+;ADDBUTTON 104 2025 <$STR(S$»î¶¯UI)>
 
 
 }
