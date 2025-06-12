@@ -308,7 +308,7 @@ GameEventManager.AddListener(CommonDefine.EVENT_NAME_PLAYER_ADDBAGITEM, BaoZhuMa
 
 --初始面板 灵玉宝盒
 function BaoZhuManagerNew.ShowBasePanel(actor)
-    local strPanelInfo = '<Img|id=10|children={11,12,13,20,21,22,25,26,27}|x=20.0|y=16.0|img=private/cc_baozhu/7.png|move=0|show=0|reset=1|esc=1|bg=1|loadDelay=0>'..
+    local strPanelInfo = '<Img|id=10|children={11,12,13,20,21,22,25,26,27}|x='..CSS.BASE_PANEL_START_X..'|y='..CSS.BASE_PANEL_START_Y..'|img=private/cc_baozhu/7.png|move=0|show=0|reset=1|esc=1|bg=1|loadDelay=0>'..
         '<Layout|id=11|x=813.0|y=14.0|width=80|height=80|link=@exit>'..
         '<Button|id=12|x=814.0|y=14.0|nimg=public/1900000510.png|pimg=public/1900000511.png|link=@exit>'..
 		'<Button|id=13|x=700.0|y=14.0|esc=0|nimg=private/cc_common/button_help.png|pimg=private/cc_common/button_help.png|link=@function_button,'..DO_FUNCTION_ID_2..'>'..
@@ -409,7 +409,7 @@ end
 
 --灵玉强化的面板
 local function ShowPanel3(actor)
-    local strPanelInfo = '<Img|id=10|children={11,12,13,20,21,25,26,27}|x=20.0|y=16.0|img=private/cc_baozhu/9.png|move=0|show=0|reset=1|esc=1|bg=1|loadDelay=0>'..
+    local strPanelInfo = '<Img|id=10|children={11,12,13,20,21,25,26,27}|x='..CSS.BASE_PANEL_START_X..'|y='..CSS.BASE_PANEL_START_Y..'|img=private/cc_baozhu/9.png|move=0|show=0|reset=1|esc=1|bg=1|loadDelay=0>'..
         '<Layout|id=11|x=813.0|y=14.0|width=80|height=80|link=@exit>'..
         '<Button|id=12|x=814.0|y=14.0|nimg=public/1900000510.png|pimg=public/1900000511.png|link=@exit>'..
 		'<Button|id=13|x=700.0|y=14.0|esc=0|nimg=private/cc_common/button_help.png|pimg=private/cc_common/button_help.png|link=@function_button,'..DO_FUNCTION_ID_2..'>'..
@@ -624,7 +624,7 @@ end
 
 --回收宝珠面板
 local function ShowPanel4(actor)
-    local strPanelInfo = '<Img|id=10|children={11,12,13,20,21,25,26,27}|x=20.0|y=16.0|img=private/cc_baozhu/13.png|move=0|show=0|reset=1|esc=1|bg=1|loadDelay=0>'..
+    local strPanelInfo = '<Img|id=10|children={11,12,13,20,21,25,26,27}|x='..CSS.BASE_PANEL_START_X..'|y='..CSS.BASE_PANEL_START_Y..'|img=private/cc_baozhu/13.png|move=0|show=0|reset=1|esc=1|bg=1|loadDelay=0>'..
         '<Layout|id=11|x=813.0|y=14.0|width=80|height=80|link=@exit>'..
         '<Button|id=12|x=814.0|y=14.0|nimg=public/1900000510.png|pimg=public/1900000511.png|link=@exit>'..
 		'<Button|id=13|x=700.0|y=14.0|esc=0|nimg=private/cc_common/button_help.png|pimg=private/cc_common/button_help.png|link=@function_button,'..DO_FUNCTION_ID_2..'>'..

@@ -211,7 +211,7 @@ local function DoFinalPiledItemCompose(actor, cfgComposeTab)
 end
 
 function ItemComposeManager.ShowBasePanel(actor, makeindex, itemlist)
-    local strPanelInfo = '<Img|id=10|children={11,12,13,21,22,23,24,25,26,40,51,52,53,61,62,63,71,72,80}|x=31.0|y=19.0|img=private/cc_compose/12.png|move=0|show=0|reset=1|esc=1|bg=1|loadDelay=0>'..
+    local strPanelInfo = '<Img|id=10|children={11,12,13,21,22,23,24,25,26,40,51,52,53,61,62,63,71,72,80}|x='..CSS.BASE_PANEL_START_X..'|y='..CSS.BASE_PANEL_START_Y..'|img=private/cc_compose/12.png|move=0|show=0|reset=1|esc=1|bg=1|loadDelay=0>'..
         '<Layout|id=11|x=813.0|y=14.0|width=80|height=80|link=@exit>'..
         '<Button|id=12|x=814.0|y=14.0|nimg=public/1900000510.png|pimg=public/1900000511.png|link=@exit>'..
 		'<Button|id=13|x=700.0|y=14.0|esc=0|nimg=private/cc_common/button_help.png|pimg=private/cc_common/button_help.png|link=@show_rule_panel>'
@@ -330,7 +330,7 @@ function ItemComposeManager.ChooseOtherItemPanel(actor)
         return
     end	
 
-    local strPanelInfo = '<Img|id=10|children={11,12,13,21,22,23,24,25,26,40,51,52,53,61,62,63,80}|x=31.0|y=19.0|img=private/cc_compose/12.png|move=0|show=0|reset=1|esc=1|bg=1|loadDelay=0>'..
+    local strPanelInfo = '<Img|id=10|children={11,12,13,21,22,23,24,25,26,40,51,52,53,61,62,63,80}|x='..CSS.BASE_PANEL_START_X..'|y='..CSS.BASE_PANEL_START_Y..'|img=private/cc_compose/12.png|move=0|show=0|reset=1|esc=1|bg=1|loadDelay=0>'..
         '<Layout|id=11|x=813.0|y=14.0|width=80|height=80|link=@exit>'..
         '<Button|id=12|x=814.0|y=14.0|nimg=public/1900000510.png|pimg=public/1900000511.png|link=@exit>'..
 		'<Button|id=13|x=700.0|y=14.0|esc=0|nimg=private/cc_common/button_help.png|pimg=private/cc_common/button_help.png|link=@show_rule_panel>'

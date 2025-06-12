@@ -474,7 +474,7 @@ local function GetSingleShowInfo(actor, viplevel)
 end
 
 function FreeVIPManager.ShowBasePanel(actor)    
-    local strPanelInfo = '<Img|id=10|children={11,12,15,13,14,16,17}|x=80.0|y=50.0|height=448|esc=1|bg=1|img=private/cc_freevip/5.png|loadDelay=0|reset=1|show=0|move=0>'..
+    local strPanelInfo = '<Img|id=10|children={11,12,15,13,14,16,17}|x='..CSS.BASE_PANEL_START_X..'|y='..CSS.BASE_PANEL_START_Y..'|height=448|esc=1|bg=1|img=private/cc_freevip/5.png|loadDelay=0|reset=1|show=0|move=0>'..
         '<Layout|id=11|x=812.0|y=12.0|width=80|height=80|link=@exit>'..
         '<Button|id=12|x=813.0|y=13.0|pimg=public/1900000511.png|nimg=public/1900000510.png|link=@exit>'..
         '<Button|id=17|x=700.0|y=14.0|esc=0|nimg=private/cc_common/button_help.png|pimg=private/cc_common/button_help.png|link=@show_rule_panel>'

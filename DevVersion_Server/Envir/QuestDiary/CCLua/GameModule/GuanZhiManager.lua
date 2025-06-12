@@ -151,7 +151,7 @@ function GuanZhiManager.ShowBasePanel(actor)
     local playerjob = Player.GetJob(actor)
 
 
-    local strPanelInfo = '<Img|id=10|children={11,12,13,14,15,16}|x=105.0|y=50.0|height=448|show=0|bg=1|move=0|reset=1|esc=1|loadDelay=0|img=private/cc_guanzhi/2.png>'..
+    local strPanelInfo = '<Img|id=10|children={11,12,13,14,15,16}|x='..CSS.BASE_PANEL_START_X..'|y='..CSS.BASE_PANEL_START_Y..'|height=448|show=0|bg=1|move=0|reset=1|esc=1|loadDelay=0|img=private/cc_guanzhi/2.png>'..
         '<Layout|id=11|x=812.0|y=12.0|width=80|height=80|link=@exit>'..
         '<Button|id=12|x=813.0|y=13.0|pimg=public/1900000511.png|nimg=public/1900000510.png|link=@exit>'..
         '<Button|id=16|x=700.0|y=14.0|esc=0|nimg=private/cc_common/button_help.png|pimg=private/cc_common/button_help.png|link=@show_rule_panel>'

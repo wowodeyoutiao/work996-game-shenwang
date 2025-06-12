@@ -408,7 +408,7 @@ function EquipRandomABManager.ShowBasePanel(actor)
 
     local strPanelInfo = ''
     if table.isempty(posTab) then
-        strPanelInfo = strPanelInfo..'<Img|id=10|children={11,12,13,14,15,16}|x=20.0|y=16.0|bg=1|img=private/cc_equip_randomab/11.png|reset=1|loadDelay=0|esc=1|move=0|show=0>'..
+        strPanelInfo = strPanelInfo..'<Img|id=10|children={11,12,13,14,15,16}|x='..CSS.BASE_PANEL_START_X..'|y='..CSS.BASE_PANEL_START_Y..'|bg=1|img=private/cc_equip_randomab/11.png|reset=1|loadDelay=0|esc=1|move=0|show=0>'..
             '<Layout|id=11|x=813.0|y=14.0|width=80|height=80|link=@exit>'..
             '<Button|id=12|x=814.0|y=14.0|pimg=public/1900000511.png|nimg=public/1900000510.png|link=@exit>'..
             '<Text|id=13|x=80.0|y=70.0|color=151|size=20|text=可洗炼装备>'..
@@ -416,7 +416,7 @@ function EquipRandomABManager.ShowBasePanel(actor)
             '<Text|id=15|x=256.0|y=256.0|size=22|color=255|text=只有已穿戴且带有极品属性的装备才可洗炼！>'..
             '<Button|id=16|x=700.0|y=14.0|esc=0|nimg=private/cc_common/button_help.png|pimg=private/cc_common/button_help.png|link=@show_rule_panel>'
     else
-        strPanelInfo = strPanelInfo..'<Img|id=10|children={11,12,13,14,15,16}|x=20.0|y=16.0|bg=1|img=private/cc_equip_randomab/11.png|reset=1|loadDelay=0|esc=1|move=0|show=0>'..
+        strPanelInfo = strPanelInfo..'<Img|id=10|children={11,12,13,14,15,16}|x='..CSS.BASE_PANEL_START_X..'|y='..CSS.BASE_PANEL_START_Y..'|bg=1|img=private/cc_equip_randomab/11.png|reset=1|loadDelay=0|esc=1|move=0|show=0>'..
             '<Layout|id=11|x=813.0|y=14.0|width=80|height=80|link=@exit>'..
             '<Button|id=12|x=814.0|y=14.0|pimg=public/1900000511.png|nimg=public/1900000510.png|link=@exit>'..
             '<Text|id=13|x=72.0|y=70.0|color=151|size=18|text=双击选择装备>'..
