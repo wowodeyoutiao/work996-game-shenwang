@@ -44,6 +44,10 @@ CSS = {
     --面板的通用大小位置
     BASE_PANEL_START_X = 60,        --基础面板的初始X
     BASE_PANEL_START_Y = 40,        --基础面板的初始Y
+    BAG_ITEMSHOW_PANEL_X = 340,     --背包持有材料的panel X
+    BAG_ITEMSHOW_PANEL_Y = 20,       --背包持有材料的panel Y
+    BAG_ITEMSHOW_PANEL_WIDTH = 300, --背包持有材料的panel宽
+    BAG_ITEMSHOW_PANEL_HEIGHT = 30, --背包持有材料的panel高
 }
 
 CSS.QUALITY_COLOR = {

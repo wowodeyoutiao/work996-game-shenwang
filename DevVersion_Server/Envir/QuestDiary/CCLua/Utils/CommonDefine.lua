@@ -753,6 +753,10 @@ CommonDefine = {
     WINDOWS_ID_EQUIPMENT = 3,                     --装备的窗口ID
     WINDOWS_ID_BAG = 7,                           --背包的窗口ID
 
+    --组件ID通用定义
+    COMPONENT_ID_BAGITEMSHOW_IMG_BASE = 39100,    --界面上显示持有道具的图片基础ID
+    COMPONENT_ID_BAGITEMSHOW_TEXT_BASE = 39200,   --界面上显示持有道具的数字基础ID
+
     --addbutton 里面对应的buttonid
     ADD_BUTTON_ID_1 = 9001,                       --超级宝箱界面对应的buttonid
     ADD_BUTTON_ID_2 = 9002,                       --GMHelper的buttonid

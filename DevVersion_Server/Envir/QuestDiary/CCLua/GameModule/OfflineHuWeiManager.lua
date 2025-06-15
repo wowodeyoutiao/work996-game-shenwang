@@ -6,11 +6,11 @@ local NPCPANEL_BUTTONFUNC_ID_2 = 2      --领取离线奖励
 
 local ZCD_NPC_NAME_LIST = {'武卫', '御卫', '虎卫', '禁卫', '宿卫'}
 local ZCD_NPC_LIST = {
-    {hwtype=1, npcname=ZCD_NPC_NAME_LIST[1], levelvar=CommonDefine.VAR_U_ZCDHW_LEVEL1, abilitygroup=CommonDefine.ABIL_GROUP_HUWEI1},
-    {hwtype=2, npcname=ZCD_NPC_NAME_LIST[2], levelvar=CommonDefine.VAR_U_ZCDHW_LEVEL2, abilitygroup=CommonDefine.ABIL_GROUP_HUWEI2},
-    {hwtype=3, npcname=ZCD_NPC_NAME_LIST[3], levelvar=CommonDefine.VAR_U_ZCDHW_LEVEL3, abilitygroup=CommonDefine.ABIL_GROUP_HUWEI3},
-    {hwtype=4, npcname=ZCD_NPC_NAME_LIST[4], levelvar=CommonDefine.VAR_U_ZCDHW_LEVEL4, abilitygroup=CommonDefine.ABIL_GROUP_HUWEI4},
-    {hwtype=5, npcname=ZCD_NPC_NAME_LIST[5], levelvar=CommonDefine.VAR_U_ZCDHW_LEVEL5, abilitygroup=CommonDefine.ABIL_GROUP_HUWEI5},
+    {hwtype=1, npcname=ZCD_NPC_NAME_LIST[1], levelvar=CommonDefine.VAR_U_ZCDHW_LEVEL1, abilitygroup=CommonDefine.ABIL_GROUP_HUWEI1, showbagitems={'武卫精魄','金币'}},
+    {hwtype=2, npcname=ZCD_NPC_NAME_LIST[2], levelvar=CommonDefine.VAR_U_ZCDHW_LEVEL2, abilitygroup=CommonDefine.ABIL_GROUP_HUWEI2, showbagitems={'御卫精魄','金币'}},
+    {hwtype=3, npcname=ZCD_NPC_NAME_LIST[3], levelvar=CommonDefine.VAR_U_ZCDHW_LEVEL3, abilitygroup=CommonDefine.ABIL_GROUP_HUWEI3, showbagitems={'虎卫精魄','金币'}},
+    {hwtype=4, npcname=ZCD_NPC_NAME_LIST[4], levelvar=CommonDefine.VAR_U_ZCDHW_LEVEL4, abilitygroup=CommonDefine.ABIL_GROUP_HUWEI4, showbagitems={'禁卫精魄','金币'}},
+    {hwtype=5, npcname=ZCD_NPC_NAME_LIST[5], levelvar=CommonDefine.VAR_U_ZCDHW_LEVEL5, abilitygroup=CommonDefine.ABIL_GROUP_HUWEI5, showbagitems={'宿卫精魄','金币'}},
 }
 
 local function GetHuWeiNpcCfg(huweitype)
@@ -147,12 +147,14 @@ local function GetConditionDescStr(actor, conditionstr)
                 local conditionvalue = tonumber(strParamList[2])
                 if conditionid == 0 then
                     local currlv = Player.GetLevel(actor)
-                    tempconstr = '角色'..conditionvalue..'级/'..currlv..'级'
+                    --tempconstr = '角色'..conditionvalue..'级/'..currlv..'级'
+                    tempconstr = '角色'..conditionvalue..'级'
                 else
                     local cfgNpc = GetHuWeiNpcCfg(conditionid)
                     if cfgNpc ~= nil then
                         local huweilevel = getplaydef(actor, cfgNpc.levelvar)  
-                        tempconstr = ZCD_NPC_NAME_LIST[conditionid]..conditionvalue..'级/'..huweilevel..'级'
+                        --tempconstr = ZCD_NPC_NAME_LIST[conditionid]..conditionvalue..'级/'..huweilevel..'级'
+                        tempconstr = ZCD_NPC_NAME_LIST[conditionid]..conditionvalue..'级'
                     end                    
                 end
                 if descstr ~= '' then
@@ -192,103 +194,120 @@ function OfflineHuWeiManager.ShowBasePanel(actor, sparam)
         bCurrIsMaxLv = true
     end        
 
-    local strPanelInfo = '<Img|id=10|children={11,12,13,14,15,16,17,18,101,102,103,104,105}|x=150.0|y=50.0|height=448|show=0|move=0|reset=1|bg=1|img=private/cc_offline/1.png|esc=1|loadDelay=0>'..
+    local strPanelInfo = '<Img|id=10|children={11,12,13,14,15,16,17,18,19,100}|x=150.0|y=50.0|height=448|show=0|move=0|reset=1|bg=1|img=private/cc_offline/1.png|esc=1|loadDelay=0>'..
         '<Layout|id=11|x=812.0|y=12.0|width=80|height=80|link=@exit>'..
         '<Button|id=12|x=813.0|y=13.0|pimg=public/1900000511.png|nimg=public/1900000510.png|link=@exit>'..        
-        '<Text|id=13|x=380.0|y=18.0|size=20|color=161|text='..cfgHuWeiNpc.npcname..'>'..
+        '<Text|id=13|x=190.0|y=18.0|size=20|color=161|text='..cfgHuWeiNpc.npcname..'>'..
         '<Button|id=18|x=700.0|y=14.0|esc=0|nimg=private/cc_common/button_help.png|pimg=private/cc_common/button_help.png|link=@show_rule_panel>'
+
+    strPanelInfo = strPanelInfo..Item.GetBagItemsShowInfo(actor, cfgHuWeiNpc.showbagitems, 19)
+        
+    --左侧列表
+    local idstr1 = ''
     for i = 1, #ZCD_NPC_LIST, 1 do
         local ctype = ZCD_NPC_LIST[i].hwtype
         local showname = ZCD_NPC_LIST[i].npcname
-        local currx = -20
-        local curry = 40 + (i - 1) * 40
-        local currid = 100 + i
-        strPanelInfo = strPanelInfo..'<Button|id='..currid..'|x='..currx..'|y='..curry..'|text='..showname..'|nimg=private/cc_common/button_2.png|mimg=private/cc_common/button_2.png|link=@show_base_panel,'..ctype..'>'
-    end        
+        local baseid = 100 + i*5
+        local imgid1 = baseid + 1
+        local textid1 = baseid + 2
+        local imgid2 = baseid + 3
+        idstr1 = idstr1..','..baseid
+        strPanelInfo = strPanelInfo..'<Layout|id='..baseid..'|children={'..imgid1..','..imgid2..','..textid1..'}|x=0|y=0|width=120|height=106>'..
+            '<Img|id='..imgid1..'|x=10.0|y=0.0|img=private/cc_offline/2.png|link=@show_base_panel,'..ctype..'>'..
+            '<Text|id='..textid1..'|x=44|y=56|size=16|color='..CSS.NPC_WHITE..'|text='..showname..'>'
+        if i == huweitype then
+            strPanelInfo = strPanelInfo..'<Img|id='..imgid2..'|x=10.0|y=0.0|img=private/cc_offline/3.png>'
+        end
+    end 
+    
+    strPanelInfo = strPanelInfo..'<ListView|id=100|children={'..idstr1..'}|x=65.0|y=56.0|width=120|height=370|margin=0|direction=1>'
     
     --当前等级属性
-    local tempLeftX = 20
-    local tempLeftY = 15
-    local idstr = '21,22,23,24,25,26'
-    strPanelInfo = strPanelInfo..'<Text|id=21|text=当前等级：|size=20|x='..tempLeftX..'|y='..tempLeftY..'|color='..CSS.NPC_YELLOW..'>'..
-                           '<Text|id=22|text='..currlv..'|size=20|x='..(tempLeftX+100)..'|y='..tempLeftY..'|color='..CSS.NPC_YELLOW..'>'
+    local tempLeftX = 68
+    local tempLeftY = 30
+    local idstr = '21,22,23'
+    strPanelInfo = strPanelInfo..'<Text|id=21|text=当前等级：|size=16|x='..tempLeftX..'|y='..tempLeftY..'|color='..CSS.NPC_YELLOW..'>'..
+                           '<Text|id=22|text='..currlv..'|size=16|x='..(tempLeftX+80)..'|y='..tempLeftY..'|color='..CSS.NPC_YELLOW..'>'
     tempLeftY = tempLeftY + 30
     local currPropDescTable = cfgCurrLv.addprop_desctab
     if #currPropDescTable == 0 then
-        strPanelInfo = strPanelInfo..'<Text|id=23|text=无|size=18|x='..tempLeftX..'|y='..tempLeftY..'|color='..CSS.NPC_WHITE..'>'
+        strPanelInfo = strPanelInfo..'<Text|id=23|text=无|size=16|x='..tempLeftX..'|y='..tempLeftY..'|color='..CSS.NPC_WHITE..'>'
         tempLeftY = tempLeftY + 25
     else
         local currid = 30
         for _, descItem in ipairs(currPropDescTable) do
             currid = currid + 1
             idstr = idstr..','..currid
-            strPanelInfo = strPanelInfo..'<Text|id='..currid..'|text='..descItem.desc..'|size=18|x='..tempLeftX..'|y='..tempLeftY..'|color='..CSS.NPC_WHITE..'>'
+            strPanelInfo = strPanelInfo..'<Text|id='..currid..'|text='..descItem.desc..'|size=16|x='..tempLeftX..'|y='..tempLeftY..'|color='..CSS.NPC_WHITE..'>'
             tempLeftY = tempLeftY + 25
         end
         if cfgCurrLv.offlineitemname and cfgCurrLv.offlineitemnum then
             currid = currid + 1
             idstr = idstr..','..currid
             strPanelInfo = strPanelInfo..'<Text|id='..currid..'|text=离线收益:'..cfgCurrLv.offlineitemname..'+'..cfgCurrLv.offlineitemnum..'/分钟'..
-                '|size=18|x='..tempLeftX..'|y='..tempLeftY..'|color='..CSS.NPC_LIGHTGREEN..'>'            
+                '|size=16|x='..(tempLeftX-40)..'|y='..tempLeftY..'|color='..CSS.NPC_LIGHTGREEN..'>'            
         end
         tempLeftY = tempLeftY + 25
     end
+    strPanelInfo = strPanelInfo..'<Img|id=91|children={'..idstr..'}|x=20.0|y=60.0|img=private/cc_offline/5.png>'
 
     --下一等级属性
-    local tempRightX = 250
-    local tempRightY = 15
+    local tempRightX = 68
+    local tempRightY = 30
+    idstr = '24,25,26'
     if bCurrIsMaxLv then
-        strPanelInfo = strPanelInfo..'<Text|id=24|text=已达到最高等级|size=20|x='..tempRightX..'|y='..tempRightY..'|color='..CSS.NPC_YELLOW..'>'
+        strPanelInfo = strPanelInfo..'<Text|id=24|text=已达到最高等级|size=16|x='..tempRightX..'|y='..tempRightY..'|color='..CSS.NPC_YELLOW..'>'
         tempRightY = tempRightY + 30
     else
-        strPanelInfo = strPanelInfo..'<Text|id=25|text=下一等级：|size=20|x='..tempRightX..'|y='..tempRightY..'|color='..CSS.NPC_YELLOW..'>'..
-                               '<Text|id=26|text='..nextlv..'|size=20|x='..(tempRightX+100)..'|y='..tempRightY..'|color='..CSS.NPC_YELLOW..'>'
+        strPanelInfo = strPanelInfo..'<Text|id=25|text=下一等级：|size=16|x='..tempRightX..'|y='..tempRightY..'|color='..CSS.NPC_YELLOW..'>'..
+                               '<Text|id=26|text='..nextlv..'|size=16|x='..(tempRightX+80)..'|y='..tempRightY..'|color='..CSS.NPC_YELLOW..'>'
         tempRightY = tempRightY + 30
         local nextPropDescTable = cfgNextLv.addprop_desctab
         local currid = 40
         for _, descItem in ipairs(nextPropDescTable) do
             currid = currid + 1
             idstr = idstr..','..currid
-            strPanelInfo = strPanelInfo..'<Text|id='..currid..'|text='..descItem.desc..'|size=18|x='..tempRightX..'|y='..tempRightY..'|color='..CSS.NPC_WHITE..'>'
+            strPanelInfo = strPanelInfo..'<Text|id='..currid..'|text='..descItem.desc..'|size=16|x='..tempRightX..'|y='..tempRightY..'|color='..CSS.NPC_WHITE..'>'
             tempRightY = tempRightY + 25
         end
         currid = currid + 1
         idstr = idstr..','..currid        
         strPanelInfo = strPanelInfo..'<Text|id='..currid..'|text=离线收益:'..cfgNextLv.offlineitemname..'+'..cfgNextLv.offlineitemnum..'/分钟'..
-            '|size=18|x='..tempRightX..'|y='..tempRightY..'|color='..CSS.NPC_LIGHTGREEN..'>'        
+            '|size=16|x='..(tempRightX-40)..'|y='..tempRightY..'|color='..CSS.NPC_LIGHTGREEN..'>'        
         tempRightY = tempRightY + 25
     end       
-    strPanelInfo = strPanelInfo..'<Layout|id=15|children={'..idstr..'}|x=72.0|y=100.0|width=480|height=180>'
-
+    strPanelInfo = strPanelInfo..'<Img|id=92|children={'..idstr..'}|x=360.0|y=60.0|img=private/cc_offline/5.png>'
+    strPanelInfo = strPanelInfo..'<Img|id=93|children={94}|x=180.0|y=10.0|img=private/cc_offline/4.png>'..
+        '<Text|id=94|text='..cfgHuWeiNpc.npcname..'|size=20|x=100|y=8|color='..CSS.NPC_YELLOW..'>'
+    strPanelInfo = strPanelInfo..'<Layout|id=15|children={91,92,93,94}|x=200.0|y=56.0|width=580|height=240>'
 
 
     idstr = '51,52,53'
-    local tempCurrX = 0
+    local tempCurrX = 20
     local tempCurrY = 0
     local itemidstr = ''
     if bCurrIsMaxLv then
-        strPanelInfo = strPanelInfo..'<Text|id=51|text=已达到最高等级|size=20|x='..(tempCurrX+200)..'|y='..(tempCurrY+80)..'|color='..CSS.NPC_YELLOW..'>'
+        strPanelInfo = strPanelInfo..'<Text|id=51|text=已达到最高等级|size=18|x='..(tempCurrX+20)..'|y='..(tempCurrY+40)..'|color='..CSS.NPC_YELLOW..'>'
     else
         local sConditionDesc = GetConditionDescStr(actor, cfgCurrLv.condition)
-        strPanelInfo = strPanelInfo..'<Text|id=51|text=升级条件:  '..sConditionDesc..'|size=18|x='..(tempCurrX+20)..'|y='..tempCurrY..'|color='..CSS.NPC_WHITE..'>'
+        strPanelInfo = strPanelInfo..'<Text|id=51|text=升级条件:  '..sConditionDesc..'|size=16|x='..(tempCurrX+20)..'|y='..tempCurrY..'|color='..CSS.NPC_WHITE..'>'
         tempCurrY = tempCurrY + 30
-        --local sConsumeInfo = BF_GetItemTableDescStr(actor, cfgCurrLv.needitems_tab)
-        --strPanelInfo = strPanelInfo..'<Text|id=52|text=升级消耗:  '..sConsumeInfo..'|size=18|x='..(tempCurrX+80)..'|y='..tempCurrY..'|color='..CSS.NPC_WHITE..'>'
-        strPanelInfo = strPanelInfo..'<Text|id=52|text=升级消耗:|size=18|x='..(tempCurrX+20)..'|y='..tempCurrY..'|color='..CSS.NPC_WHITE..'>'
+        strPanelInfo = strPanelInfo..'<Text|id=52|text=升级消耗:|size=16|x='..(tempCurrX+20)..'|y='..tempCurrY..'|color='..CSS.NPC_WHITE..'>'
+
         local sTempStr = ''
-        sTempStr, itemidstr = Item.GetNeedItemsShowInfo(actor, cfgCurrLv.needitems_tab, tempCurrX + 20, tempCurrY, 170, 180, CSS.NPC_WHITE)
+        sTempStr, itemidstr = Item.GetNeedItemsGridShowInfo(actor, cfgCurrLv.needitems_tab, tempCurrX + 18, tempCurrY + 8, 180, 0.8)
         if sTempStr ~= '' then
             strPanelInfo = strPanelInfo..sTempStr
         end
+
         tempCurrY = tempCurrY + 50
-        strPanelInfo = strPanelInfo..'<Button|id=53|x='..(tempCurrX+200)..'|y='..tempCurrY..'|color='..CSS.NPC_WHITE..'|mimg=private/cc_common/button_1.png|nimg=private/cc_common/button_1.png|size=18|text=升    级|link=@function_button,'..
+        strPanelInfo = strPanelInfo..'<Button|id=53|x='..(tempCurrX+60)..'|y='..tempCurrY..'|color='..CSS.NPC_WHITE..'|mimg=private/cc_common/button_1.png|nimg=private/cc_common/button_1.png|size=18|text=升    级|link=@function_button,'..
             NPCPANEL_BUTTONFUNC_ID_1..','..huweitype..'>'
     end
-    strPanelInfo = strPanelInfo..'<Layout|id=17|children={'..idstr..','..itemidstr..'}|x=72.0|y=290.0|width=480|height=120>'
+    strPanelInfo = strPanelInfo..'<Layout|id=17|children={'..idstr..','..itemidstr..'}|x=200.0|y=300.0|width=350|height=120>'
 
 
-
-    idstr = '61,62,63,64,65'
+    idstr = '61,62,63,64,65,'
     local offlineitemdesc = ''
     if cfgCurrLv.offlineitemname and (cfgCurrLv.offlineitemname ~= '') then    
         local infoTab = GetOfflineRewardInfoTab(actor)
@@ -302,21 +321,23 @@ function OfflineHuWeiManager.ShowBasePanel(actor, sparam)
         end
     end
 
-    tempCurrX = 5
-    tempCurrY = 30
+    tempCurrX = 30
+    tempCurrY = 0
     if offlineitemdesc ~= '' then
         local itemidx = getstditeminfo(cfgCurrLv.offlineitemname, CommonDefine.STDITEMINFO_IDX)
         local imgpath = Item.GetItemImgPath(itemidx)        
-        strPanelInfo = strPanelInfo..'<Text|id=61|text=当前离线收益:|size=18|x='..tempCurrX..'|y='..(tempCurrY+20)..'|color='..CSS.NPC_WHITE..'>'
-        strPanelInfo = strPanelInfo..'<Img|id=62|x='..(tempCurrX)..'|y='..(tempCurrY+46)..'|width=24|height=24|img='..imgpath..'>'
-        strPanelInfo = strPanelInfo..'<Text|id=63|text='..offlineitemdesc..' |size=18|x='..(tempCurrX+30)..'|y='..(tempCurrY+50)..'|color='..CSS.NPC_WHITE..'>'
-        strPanelInfo = strPanelInfo..'<Text|id=64|text=(收益达到上限后不再累计)|size=15|x='..tempCurrX..'|y='..(tempCurrY+80)..'|color='..CSS.NPC_LIGHTGREEN..'>'       
-        strPanelInfo = strPanelInfo..'<Button|id=65|x='..(tempCurrX+40)..'|y='..(tempCurrY+120)..'|color='..CSS.NPC_WHITE..'|mimg=private/cc_common/button_1.png|nimg=private/cc_common/button_1.png|size=18|text=收    取|link=@function_button,'..
+        strPanelInfo = strPanelInfo..'<Text|id=61|text=离线收益:|size=16|x='..(tempCurrX+10)..'|y='..(tempCurrY+30)..'|color='..CSS.NPC_WHITE..'>'
+
+        strPanelInfo = strPanelInfo..'<Img|id=62|x='..(tempCurrX+90)..'|y='..(tempCurrY+30)..'|width=24|height=24|img='..imgpath..'>'
+        strPanelInfo = strPanelInfo..'<Text|id=63|text='..offlineitemdesc..' |size=16|x='..(tempCurrX+120)..'|y='..(tempCurrY+30)..'|color='..CSS.NPC_WHITE..'>'
+
+        --strPanelInfo = strPanelInfo..'<Text|id=64|text=(收益达到上限后不再累计)|size=16|x='..tempCurrX..'|y='..(tempCurrY+80)..'|color='..CSS.NPC_LIGHTGREEN..'>'       
+        strPanelInfo = strPanelInfo..'<Button|id=65|x='..(tempCurrX+40)..'|y='..(tempCurrY+80)..'|color='..CSS.NPC_WHITE..'|mimg=private/cc_common/button_1.png|nimg=private/cc_common/button_1.png|size=18|text=收    取|link=@function_button,'..
             NPCPANEL_BUTTONFUNC_ID_2..','..huweitype..'>'
     else
-        strPanelInfo = strPanelInfo..'<Text|id=61|text=升级后领取离线收益|size=18|x='..tempCurrX..'|y='..(tempCurrY+100)..'|color='..CSS.NPC_LIGHTGREEN..'>'
+        strPanelInfo = strPanelInfo..'<Text|id=61|text=升级后领取离线收益|size=16|x='..(tempCurrX+10)..'|y='..(tempCurrY+50)..'|color='..CSS.NPC_LIGHTGREEN..'>'
     end
-    strPanelInfo = strPanelInfo..'<Layout|id=16|children={'..idstr..'}|x=580.0|y=100.0|width=200|height=300>'
+    strPanelInfo = strPanelInfo..'<Layout|id=16|children={'..idstr..'}|x=550.0|y=300.0|width=240|height=120>'
 
     
     BF_ShowSpecialUI(actor, strPanelInfo)

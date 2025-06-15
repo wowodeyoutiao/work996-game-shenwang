@@ -8,8 +8,13 @@ local EQUIPPOS_STAR_BUTTONFUNC_ID_4 = 4           --停止升星
 --local EQUIPPOS_STAR_BUTTONFUNC_ID_5 = 5           --设置自动升星的目标星级
 local EQUIPPOS_STAR_BUTTONFUNC_ID_6 = 6           --设置自动升星的目标星级 menu
 
-EquipPosStarManager.AUTO_UPGRADESTAR_TARG_MIN = 4      --自动升星的最小目标
-EquipPosStarManager.AUTO_UPGRADESTAR_TARG_MAX = 15     --自动升星的最大目标
+local MAX_STAR_NUM = 15                           --最大升星数  
+
+local SHOW_BAG_ITEMS = {'升星石', '金币'}
+
+EquipPosStarManager.AUTO_UPGRADESTAR_TARG_MIN = 4                --自动升星的最小目标
+EquipPosStarManager.AUTO_UPGRADESTAR_TARG_MAX = MAX_STAR_NUM     --自动升星的最大目标
+
 
 local SELECT_AUTO_STAR_LIST = {
     {showstr='4星', targstar=4},
@@ -278,85 +283,87 @@ local function GetSingleEquipPosShowInfo(actor, equippos)
         local cfgNextKey = EquipPosStarManager.GetUpgradeStarCfgKey(bJob, equippos, nextPosLevel)
         if cfgEquipPosUpgradeStar[cfgNextKey] == nil then
             bCurrIsMaxLv = true
+        end   
+        
+        local equipname = ''
+        local equipcolor = CSS.QUALITY_WHITE
+        local equipobj = linkbodyitem(actor, equippos)
+        if not BF_IsNullObj(equipobj) then
+            equipname = getiteminfo(actor, equipobj, CommonDefine.ITEMINFO_SRCNAME) 
+            equipcolor = Item.GetItemQualityColor(actor, equipobj)
         end        
         
-        sPanelStr = sPanelStr..'<Layout|id=15|children={101,102,120,140,160,500}|x=200.0|y=65.0|width=580|height=420>'..
-            '<Img|id=101|x=-4.0|y=200.0|height=5|img=private/cc_common/pic_line_1.png>'..
-            '<Img|id=102|x=-4.0|y=300.0|height=5|img=private/cc_common/pic_line_1.png>'
+        sPanelStr = sPanelStr..'<Layout|id=15|children={101,110,160,500}|x=280.0|y=60.0|width=510|height=430>'
 
+        local starid = 900
+        local staridstr = ''
+        local starx = 10
+        local stary = 110
+        for i = 1, MAX_STAR_NUM, 1 do
+            starid = starid + 1
+            staridstr = staridstr..','..starid
+            starx = starx + 30
+            if curPosLevel >= i then
+                sPanelStr = sPanelStr..'<Img|id='..starid..'|x='..starx..'|y='..stary..'|img=private/cc_equip_star/star_1.png>'
+            else
+                sPanelStr = sPanelStr..'<Img|id='..starid..'|x='..starx..'|y='..stary..'|img=private/cc_equip_star/star_2.png>'
+            end
+        end
+
+        sPanelStr = sPanelStr..'<Layout|id=101|children={102,104'..staridstr..'}|x=0.0|y=0.0|width=510|height=150>'..
+            '<Img|id=102|children={103}|x=228.0|y=20.0|img=private/cc_common/itemframe_1.png>'..
+            '<EquipShow|id=103|x=-2.0|y=-4.0|showtips=1|effectshow=0|reload=1|index='..equippos..'>'..
+            '<Text|id=104|x=210.0|y=90.0|size=16|color='..equipcolor..'|text='..equipname..'>'
+
+        --sPanelStr = sPanelStr..'<Layout|id=110|children={120,140}|x=0|y=150|width=510|height=120|color=244>'                
+        sPanelStr = sPanelStr..'<Layout|id=110|children={119,120,140}|x=0|y=150|width=510|height=120>'..
+            '<Img|id=119|x=210.0|y=36.0|img=private/cc_equip_star/1.png>'
         --当前星级
         local startid = 120
-        local idstr = startid..','..(startid+1)..','..(startid+2)..','..(startid+3)
-        local tempLeftX = 40
+        
+        local tempLeftX = 20
         local tempLeftY = 20
-        sPanelStr = sPanelStr..'<Text|id='..(startid+1)..'|text=当前星级：|size=20|x='..tempLeftX..'|y='..tempLeftY..'|color='..CSS.NPC_YELLOW..'>'..
-                               '<Text|id='..(startid+2)..'|text='..curPosLevel..'星|size=20|x='..(tempLeftX+100)..'|y='..tempLeftY..'|color='..CSS.NPC_WHITE..'>'
-        tempLeftY = tempLeftY + 40
-        sPanelStr = sPanelStr..'<Text|id='..(startid+3)..'|x='..tempLeftX..'|y='..tempLeftY..'|color='..CSS.NPC_WHITE..'|size=18|text=属性加成：>'
+        local idstr = ''
         local currPropDescTable = cfgEquipPosUpgradeStar[cfgCurrKey].addprop_desctab
         for seq, descItem in ipairs(currPropDescTable) do
             local textid = startid + 10 + seq
             idstr = idstr..','..textid
             tempLeftY = tempLeftY + 30
-            sPanelStr = sPanelStr..'<Text|id='..textid..'|text='..descItem.desc..'|size=18|x='..tempLeftX..'|y='..tempLeftY..'|color='..CSS.NPC_WHITE..'>'
+            sPanelStr = sPanelStr..'<Text|id='..textid..'|text='..descItem.desc..'|size=16|x='..tempLeftX..'|y='..tempLeftY..'|color='..CSS.NPC_WHITE..'>'
         end
-        sPanelStr = sPanelStr..'<Layout|id='..startid..'|children={'..idstr..'}|x=30.0|y=0|width=240|height=180>'                    
+        sPanelStr = sPanelStr..'<Img|id='..startid..'|children={'..idstr..'}|x=30|y=0|img=private/cc_equip_star/panel_1.png>'
 
         --下一星级
         startid = 140
-        idstr =  startid..','..(startid+1)..','..(startid+2)..','..(startid+3)
-        local tempRightX = 40
+        local tempRightX = 20
         local tempRightY = 20
         if bCurrIsMaxLv then
-            sPanelStr = sPanelStr..'<Text|id='..(startid+1)..'|text=已达到星级上限|size=20|x='..tempRightX..'|y='..tempRightY..'|color='..CSS.NPC_YELLOW..'>'
+            idstr = idstr..','..(startid+1)
             tempRightY = tempRightY + 30
-        else
-            sPanelStr = sPanelStr..'<Text|id='..(startid+1)..'|text=下一星级：|size=20|x='..tempRightX..'|y='..tempRightY..'|color='..CSS.NPC_YELLOW..'>'..
-                                   '<Text|id='..(startid+2)..'|text='..nextPosLevel..'星|size=20|x='..(tempRightX+100)..'|y='..tempRightY..'|color='..CSS.NPC_WHITE..'>'
-            tempRightY = tempRightY + 40
-            sPanelStr = sPanelStr..'<Text|id='..(startid+3)..'|x='..tempRightX..'|y='..tempRightY..'|color='..CSS.NPC_WHITE..'|size=18|text=属性加成：>'         
+            sPanelStr = sPanelStr..'<Text|id='..(startid+1)..'|text=已达到星级上限|size=16|x='..tempRightX..'|y='..tempRightY..'|color='..CSS.NPC_YELLOW..'>'
+        else            
             local nextPropDescTable =  cfgEquipPosUpgradeStar[cfgNextKey].addprop_desctab
             for seq, descItem in ipairs(nextPropDescTable) do
                 local textid = startid + 10 + seq
                 idstr = idstr..','..textid
                 tempRightY = tempRightY + 30
-                sPanelStr = sPanelStr..'<Text|id='..textid..'|size=18|text='..descItem.desc..'|x='..tempRightX..'|y='..tempRightY..'|color='..CSS.NPC_WHITE..'>'
+                sPanelStr = sPanelStr..'<Text|id='..textid..'|size=16|text='..descItem.desc..'|x='..tempRightX..'|y='..tempRightY..'|color='..CSS.NPC_WHITE..'>'
             end
         end
-        sPanelStr = sPanelStr..'<Layout|id='..startid..'|children={'..idstr..'}|x=330.0|y=0|width=240|height=180>'       
+        sPanelStr = sPanelStr..'<Img|id='..startid..'|children={'..idstr..'}|x=300|y=0|img=private/cc_equip_star/panel_2.png>'
 
         --消耗
-        local tempX = 70
-        local tempY = 30        
+        local tempX = 120
+        local tempY = 10        
         local itemidstr = ''
         if not bCurrIsMaxLv then            
-            sPanelStr = sPanelStr..'<Text|id=161|text=成功概率：'..cfgEquipPosUpgradeStar[cfgCurrKey].successrate ..'%|x='..tempX..'|y='..tempY..'|color='..CSS.NPC_YELLOW..'>'
-            tempY = tempY + 50
-            --local sConsumeInfo = BF_GetItemTableDescStr(actor, cfgEquipPosUpgradeStar[cfgCurrKey].needitems_tab)
-            --sPanelStr = sPanelStr..'<Text|id=162|text=升星消耗：'..sConsumeInfo..'|x='..tempX..'|y='..tempY..'|color='..CSS.NPC_YELLOW..'>'
-            sPanelStr = sPanelStr..'<Text|id=162|text=升星消耗：|x='..tempX..'|y='..tempY..'|color='..CSS.NPC_YELLOW..'>'
+            sPanelStr = sPanelStr..'<Text|id=161|text=成功概率：'..cfgEquipPosUpgradeStar[cfgCurrKey].successrate ..'%|size=16|x='..tempX..'|y='..tempY..'|color='..CSS.NPC_YELLOW..'>'
+            tempY = tempY + 30
+            sPanelStr = sPanelStr..'<Text|id=162|text=升星消耗：|x='..tempX..'|y='..tempY..'|size=16|color='..CSS.NPC_YELLOW..'>'
             local sTempStr = ''
-            sTempStr, itemidstr = Item.GetNeedItemsShowInfo(actor, cfgEquipPosUpgradeStar[cfgCurrKey].needitems_tab, tempX, tempY, 170, 180, CSS.NPC_WHITE)
+            sTempStr, itemidstr = Item.GetNeedItemsGridShowInfo(actor, cfgEquipPosUpgradeStar[cfgCurrKey].needitems_tab, tempX+10, tempY+20, 180)
             if sTempStr ~= '' then
                 sPanelStr = sPanelStr..sTempStr
-            end
-        end
-        sPanelStr = sPanelStr..'<Layout|id=160|children={161,162,'..itemidstr..'}|x=0|y=150.0|width=580|height=110>'
-
-        --升星按钮
-        idstr = '501,502,503'
-        if bCurrIsMaxLv then
-            sPanelStr = sPanelStr..'<Text|id=501|text=已升至满星状态！|x=200|y=30|color='..CSS.NPC_LIGHTGREEN..'>'
-        else
-            local tempCurrY = 10
-            sPanelStr = sPanelStr..'<Button|id=501|x=120|y='..tempCurrY..'|mimg=private/cc_equip_star/1.png|nimg=private/cc_equip_star/1.png|link=@function_button,'..            
-                EQUIPPOS_STAR_BUTTONFUNC_ID_2..'>'
-            if getflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_AUTO_EQUIPSTAR_FLAG) == 0 then
-                sPanelStr = sPanelStr..'<Button|id=502|x=350|y='..tempCurrY..'|mimg=private/cc_equip_star/2.png|nimg=private/cc_equip_star/2.png|link=@function_button,'..
-                    EQUIPPOS_STAR_BUTTONFUNC_ID_3..'>'
-            else
-                sPanelStr = sPanelStr..'<Button|id=502|x=350|y='..tempCurrY..'|mimg=private/cc_equip_star/4.png|nimg=private/cc_equip_star/4.png|link=@function_button,'..
-                    EQUIPPOS_STAR_BUTTONFUNC_ID_4..'>'
             end
 
             local strItemList1 = ''
@@ -373,32 +380,29 @@ local function GetSingleEquipPosShowInfo(actor, equippos)
                 currSelectStr1 = SELECT_AUTO_STAR_LIST[chooseseq].showstr
             end
 
-            sPanelStr = sPanelStr..'<MenuItem|id=503|x=488.0|y='..tempCurrY..'|width=80|height=30|itemname='..strItemList1..'|select='..currSelectStr1..'|fontsize=16|itemhei=20|menuid='..CommonDefine.VAR_S_SELECT_MENUITEM_3..
-                '|selectcolor=254|fontcolor=250|direction=0|link=@function_button,'..EQUIPPOS_STAR_BUTTONFUNC_ID_6..'>'
-
---[[
-            local nStartX = 80    
-            local nStartY = tempCurrY + 40      
-            local startid = 510
-            for i = EquipPosStarManager.AUTO_UPGRADESTAR_TARG_MIN, EquipPosStarManager.AUTO_UPGRADESTAR_TARG_MAX, 1 do
-                local seq = i - EquipPosStarManager.AUTO_UPGRADESTAR_TARG_MIN + 1
-                if i == 10 then
-                    nStartX = 80
-                    nStartY = nStartY + 30
-                end
-                local boxid = startid + (2 * seq)
-                local textid = startid + (2 * seq) + 1
-                idstr = idstr..','..boxid..','..textid
-                local checkvar = CommonDefine.CHECK_BOX_VAR[seq]
-                local flag = getplaydef(actor, checkvar)
-                sPanelStr = sPanelStr..'<CheckBox|id='..boxid..'|x='..nStartX..'|y='..nStartY..'|nimg=private/cc_common/checkbox_1.png|pimg=private/cc_common/checkbox_2.png|checkboxid='..
-                    checkvar..'|default='..flag..'|delay=0|count=1|link=@function_button,'..EQUIPPOS_STAR_BUTTONFUNC_ID_5..','..i..'>'..
-                    '<Text|id='..textid..'|text='..i..'星|x='..(nStartX+30)..'|y='..(nStartY+5)..'|color='..CSS.NPC_YELLOW..'>'                                
-                nStartX = nStartX + 80
-            end
-]]--            
+            sPanelStr = sPanelStr..'<MenuItem|id=503|x=430.0|y='..tempY..'|width=60|height=30|itemname='..strItemList1..'|select='..currSelectStr1..'|fontsize=16|itemhei=16|menuid='..CommonDefine.VAR_S_SELECT_MENUITEM_3..
+                '|selectcolor=254|fontcolor=250|direction=0|link=@function_button,'..EQUIPPOS_STAR_BUTTONFUNC_ID_6..'>'                
         end
-        sPanelStr = sPanelStr..'<Layout|id=500|children={'..idstr..'}|x=0|y=260.0|width=580|height=110>'
+        sPanelStr = sPanelStr..'<Layout|id=160|children={161,162,503,'..itemidstr..'}|x=0|y=270.0|width=510|height=110>'
+
+        --升星按钮
+        idstr = '501,502'
+        if bCurrIsMaxLv then
+            sPanelStr = sPanelStr..'<Text|id=501|text=已升至满星状态！|x=200|y=10|color='..CSS.NPC_LIGHTGREEN..'>'
+        else
+            local tempCurrY = 10
+            sPanelStr = sPanelStr..'<Button|id=501|x=110|y='..tempCurrY..'|mimg=private/cc_equip_star/11.png|nimg=private/cc_equip_star/11.png|link=@function_button,'..            
+                EQUIPPOS_STAR_BUTTONFUNC_ID_2..'>'
+            if getflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_AUTO_EQUIPSTAR_FLAG) == 0 then
+                sPanelStr = sPanelStr..'<Button|id=502|x=302|y='..tempCurrY..'|mimg=private/cc_equip_star/12.png|nimg=private/cc_equip_star/12.png|link=@function_button,'..
+                    EQUIPPOS_STAR_BUTTONFUNC_ID_3..'>'
+            else
+                sPanelStr = sPanelStr..'<Button|id=502|x=302|y='..tempCurrY..'|mimg=private/cc_equip_star/13.png|nimg=private/cc_equip_star/13.png|link=@function_button,'..
+                    EQUIPPOS_STAR_BUTTONFUNC_ID_4..'>'
+            end      
+        end
+        sPanelStr = sPanelStr..'<Layout|id=500|children={'..idstr..'}|x=0|y=380.0|width=510|height=52>'
+
     end
     return sPanelStr
 end
@@ -430,11 +434,12 @@ function EquipPosStarManager.ShowBasePanel(actor)
         setplaydef(actor, CommonDefine.VAR_T_EQUIPPOS_UPGRADESTAR_INFO, infoStr)
     end
 
-    local strPanelInfo = '<Img|id=10|children={11,12,13,14,15,16}|x='..CSS.BASE_PANEL_START_X..'|y='..CSS.BASE_PANEL_START_Y..'|reset=1|img=private/cc_equip_star/8.png|show=0|esc=1|move=0|bg=1|loadDelay=0>'..
+    local strPanelInfo = '<Img|id=10|children={11,12,13,14,15,16,17}|x='..CSS.BASE_PANEL_START_X..'|y='..CSS.BASE_PANEL_START_Y..'|reset=1|img=private/cc_equip_star/8.png|show=0|esc=1|move=0|bg=1|loadDelay=0>'..
         '<Layout|id=11|x=813.0|y=14.0|width=80|height=80|link=@exit>'..
         '<Button|id=12|x=814.0|y=14.0|nimg=public/1900000510.png|pimg=public/1900000511.png|link=@exit>'..
-        --'<Text|id=13|x=72.0|y=70.0|size=18|color=151|text=选择槽位>'..
         '<Button|id=16|x=700.0|y=14.0|esc=0|nimg=private/cc_common/button_help.png|pimg=private/cc_common/button_help.png|link=@show_rule_panel>'
+
+    strPanelInfo = strPanelInfo..Item.GetBagItemsShowInfo(actor, SHOW_BAG_ITEMS, 17)        
 
     local idstr1 = ''
     for seq, _ in ipairs(posTab) do
@@ -443,29 +448,38 @@ function EquipPosStarManager.ShowBasePanel(actor)
         end
         idstr1 = idstr1..(30+seq)
     end
-    strPanelInfo = strPanelInfo..'<ListView|id=14|children={'..idstr1..'}|x=65.0|y=70.0|width=130|height=400|margin=0|direction=1>'
+    strPanelInfo = strPanelInfo..'<ListView|id=14|children={'..idstr1..'}|x=65.0|y=56.0|width=210|height=440|margin=0|direction=1>'
     local choosepos = getplaydef(actor, CommonDefine.VAR_N_LAST_NPC_CHOOSEID)   
 
     for seq, value in ipairs(posTab) do
         local baseid = 30 + seq
         local textid1 = baseid * 10 + 1
         local textid2 = baseid * 10 + 2
+        local equipshowid = baseid * 10 + 3        
+        local picid2 = baseid * 10 + 4
+        local tempidstr = textid1..','..textid2..','..equipshowid..','..picid2
         if choosepos == -1 then          
             choosepos = value.pos         
             setplaydef(actor, CommonDefine.VAR_N_LAST_NPC_CHOOSEID, choosepos)
         end
+        local equipname = ''
+        local equipcolor = CSS.QUALITY_WHITE
+        local equipobj = linkbodyitem(actor, value.pos)
+        if not BF_IsNullObj(equipobj) then
+            equipname = getiteminfo(actor, equipobj, CommonDefine.ITEMINFO_SRCNAME) 
+            equipcolor = Item.GetItemQualityColor(actor, equipobj)
+        end
+        
+        strPanelInfo = strPanelInfo..'<Img|id='..baseid..'|children={'..tempidstr..'}|x=-6.0|y=0.0|img=private/cc_common/listviewitem_1.png|link=@function_button,'..
+            EQUIPPOS_STAR_BUTTONFUNC_ID_1..','..value.pos..'>'
+        strPanelInfo = strPanelInfo..'<Text|id='..textid1..'|x=80.0|y=14.0|size=18|color='..equipcolor..'|text='..equipname..'>'
+            ..'<Text|id='..textid2..'|x=80.0|y=44.0|size=18|color='..CSS.NPC_WHITE..'|text='..value.level..'星>'
+        strPanelInfo = strPanelInfo..'<EquipShow|id='..equipshowid..'|x=6.0|y=6.0|showtips=0|effectshow=0|reload=1|index='..value.pos..'>'
+
         if choosepos == value.pos then
-            strPanelInfo = strPanelInfo..'<Img|id='..baseid..'|children={'..textid1..','..textid2..'}x=-6.0|y=0.0|img=private/cc_equip_star/5.png|link=@function_button,'..
-                EQUIPPOS_STAR_BUTTONFUNC_ID_1..','..value.pos..'>'
-            strPanelInfo = strPanelInfo..'<Text|id='..textid1..'|x=20.0|y=5.0|size=18|color='..CSS.NPC_YELLOW..'|text='..value.name..'槽位>'
-                ..'<Text|id='..textid2..'|x=50.0|y=25.0|size=18|color='..CSS.NPC_YELLOW..'|text='..value.level..'星>'
             --对应当前选中的装备槽位
+            strPanelInfo = strPanelInfo..'<Img|id='..picid2..'|x=0|y=0|img=private/cc_common/listviewitem_2.png>'
             strPanelInfo = strPanelInfo..GetSingleEquipPosShowInfo(actor, value.pos)                
-        else
-            strPanelInfo = strPanelInfo..'<Img|id='..baseid..'|children={'..textid1..','..textid2..'}x=-6.0|y=0.0|img=private/cc_equip_star/6.png|link=@function_button,'..
-                EQUIPPOS_STAR_BUTTONFUNC_ID_1..','..value.pos..'>'
-            strPanelInfo = strPanelInfo..'<Text|id='..textid1..'|x=20.0|y=5.0|size=18|color='..CSS.NPC_WHITE..'|text='..value.name..'槽位>'
-                ..'<Text|id='..textid2..'|x=50.0|y=25.0|size=18|color='..CSS.NPC_WHITE..'|text='..value.level..'星>'
         end
     end
 

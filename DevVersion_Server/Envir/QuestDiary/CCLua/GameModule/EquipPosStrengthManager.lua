@@ -5,6 +5,8 @@ local EQUIPPOS_STRENGTH_BUTTONFUNC_ID_1 = 1           --切换强化的装备位
 local EQUIPPOS_STRENGTH_BUTTONFUNC_ID_2 = 2           --强化一次
 local EQUIPPOS_STRENGTH_BUTTONFUNC_ID_3 = 3           --强化十次
 
+local SHOW_BAG_ITEMS = {'强化石', '金币'}
+
 --是否为有效的强化装备位
 function EquipPosStrengthManager.IsValidEquipPosForStrength(pos, postype)
     if pos == nil then
@@ -250,7 +252,7 @@ local function GetSingleEquipPosShowInfo(actor, equippos)
         
         sPanelStr = sPanelStr..'<Layout|id=15|children={102,120,140,160,500,101}|x=280.0|y=60.0|width=510|height=430>'..
             '<Img|id=102|x=0.0|y=38.0|width=500|img=private/cc_equip_strength/7.png>'..
-            '<EquipShow|id=101|x=226.0|y=92.0|scale=1.2|showtips=0|effectshow=0|reload=1|index='..equippos..'>'
+            '<EquipShow|id=101|x=226.0|y=92.0|scale=1.2|showtips=1|effectshow=0|reload=1|index='..equippos..'>'
 
         --当前强化等级
         local startid = 120
@@ -299,7 +301,7 @@ local function GetSingleEquipPosShowInfo(actor, equippos)
                 '<Text|id=164|text=强化消耗|x='..(tempX+190)..'|y='..(tempY+6)..'|color='..CSS.NPC_GRAY..'>'
 
             local sTempStr = ''
-            sTempStr, itemidstr = Item.GetNeedItemsGridShowInfo(actor, cfgEquipPosStrength[cfgCurrKey].needitems_tab, (tempX+80), (tempY+70), 180)
+            sTempStr, itemidstr = Item.GetNeedItemsGridShowInfo(actor, cfgEquipPosStrength[cfgCurrKey].needitems_tab, (tempX+86), (tempY+80), 180)
             if sTempStr ~= '' then
                 sPanelStr = sPanelStr..sTempStr
             end
@@ -377,11 +379,12 @@ function EquipPosStrengthManager.ShowBasePanel(actor)
         setplaydef(actor, CommonDefine.VAR_T_EQUIPPOS_STRENGTH_INFO, infoStr)
     end
 
-    local strPanelInfo = '<Img|id=10|children={11,12,13,14,15,16}|x='..CSS.BASE_PANEL_START_X..'|y='..CSS.BASE_PANEL_START_Y..'|reset=1|img=private/cc_equip_strength/8.png|show=0|esc=1|move=0|bg=1|loadDelay=0>'..
+    local strPanelInfo = '<Img|id=10|children={11,12,13,14,15,16,17}|x='..CSS.BASE_PANEL_START_X..'|y='..CSS.BASE_PANEL_START_Y..'|reset=1|img=private/cc_equip_strength/8.png|show=0|esc=1|move=0|bg=1|loadDelay=0>'..
         '<Layout|id=11|x=813.0|y=14.0|width=80|height=80|link=@exit>'..
         '<Button|id=12|x=814.0|y=14.0|nimg=public/1900000510.png|pimg=public/1900000511.png|link=@exit>'..
-        --'<Text|id=13|x=84.0|y=70.0|size=18|color=151|text=选择槽位>'..
         '<Button|id=16|x=700.0|y=14.0|esc=0|nimg=private/cc_common/button_help.png|pimg=private/cc_common/button_help.png|link=@show_rule_panel>'
+
+    strPanelInfo = strPanelInfo..Item.GetBagItemsShowInfo(actor, SHOW_BAG_ITEMS, 17)
 
     local idstr1 = ''
     for seq, _ in ipairs(posTab) do
@@ -398,7 +401,8 @@ function EquipPosStrengthManager.ShowBasePanel(actor)
         local textid1 = baseid * 10 + 1
         local textid2 = baseid * 10 + 2
         local equipshowid = baseid * 10 + 3
-        local tempidstr = textid1..','..textid2..','..equipshowid
+        local picid2 = baseid * 10 + 4
+        local tempidstr = textid1..','..textid2..','..equipshowid..','..picid2
         if choosepos == -1 then          
             choosepos = value.pos         
             setplaydef(actor, CommonDefine.VAR_N_LAST_NPC_CHOOSEID, choosepos)
@@ -411,7 +415,7 @@ function EquipPosStrengthManager.ShowBasePanel(actor)
             equipcolor = Item.GetItemQualityColor(actor, equipobj)
         end
         
-        strPanelInfo = strPanelInfo..'<Img|id='..baseid..'|children={'..tempidstr..'}x=-6.0|y=0.0|img=private/cc_equip_strength/2.png|link=@function_button,'..
+        strPanelInfo = strPanelInfo..'<Img|id='..baseid..'|children={'..tempidstr..'}|x=-6.0|y=0.0|img=private/cc_common/listviewitem_1.png|link=@function_button,'..
             EQUIPPOS_STRENGTH_BUTTONFUNC_ID_1..','..value.pos..'>'
         strPanelInfo = strPanelInfo..'<Text|id='..textid1..'|x=80.0|y=14.0|size=18|color='..equipcolor..'|text='..equipname..'>'
             ..'<Text|id='..textid2..'|x=80.0|y=44.0|size=18|color='..CSS.NPC_WHITE..'|text='..value.level..'级>'
@@ -419,6 +423,7 @@ function EquipPosStrengthManager.ShowBasePanel(actor)
 
         if choosepos == value.pos then
             --对应当前选中的装备槽位
+            strPanelInfo = strPanelInfo..'<Img|id='..picid2..'|x=0|y=0|img=private/cc_common/listviewitem_2.png>'
             strPanelInfo = strPanelInfo..GetSingleEquipPosShowInfo(actor, value.pos)                
         end              
       
