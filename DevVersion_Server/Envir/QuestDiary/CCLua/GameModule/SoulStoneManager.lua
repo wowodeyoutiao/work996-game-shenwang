@@ -681,14 +681,14 @@ function SoulStoneManager.ShowBasePanel(actor)
             setplaydef(actor, CommonDefine.VAR_N_LAST_NPC_CHOOSEID, chooseid)
         end        
         if chooseid == value.id then
-            strPanelInfo = strPanelInfo..'<Img|id='..baseid..'|children={'..textid1..','..textid2..'}x=-6.0|y=0.0|img=private/cc_soulstone/7.png|link=@function_button,'..
+            strPanelInfo = strPanelInfo..'<Img|id='..baseid..'|children={'..textid1..','..textid2..'}|x=-6.0|y=0.0|img=private/cc_soulstone/7.png|link=@function_button,'..
                 SOULSTONE_BUTTONFUNC_ID_3..','..value.id..'>'
             strPanelInfo = strPanelInfo..'<Text|id='..textid1..'|x=10.0|y=5.0|size=18|color='..CSS.NPC_YELLOW..'|text='..value.name..'>'
                 ..'<Text|id='..textid2..'|x=40.0|y=25.0|size=18|color='..CSS.NPC_YELLOW..'|text=('..stonenum..'/4)>'
             --对应当前选中的装备槽位
             strPanelInfo = strPanelInfo..GetSingleSoulStoneShowInfo(actor, value.id)                
         else
-            strPanelInfo = strPanelInfo..'<Img|id='..baseid..'|children={'..textid1..','..textid2..'}x=-6.0|y=0.0|img=private/cc_soulstone/8.png|link=@function_button,'..
+            strPanelInfo = strPanelInfo..'<Img|id='..baseid..'|children={'..textid1..','..textid2..'}|x=-6.0|y=0.0|img=private/cc_soulstone/8.png|link=@function_button,'..
                 SOULSTONE_BUTTONFUNC_ID_3..','..value.id..'>'
             strPanelInfo = strPanelInfo..'<Text|id='..textid1..'|x=10.0|y=5.0|size=18|color='..CSS.NPC_WHITE..'|text='..value.name..'>'
                 ..'<Text|id='..textid2..'|x=40.0|y=25.0|size=18|color='..CSS.NPC_WHITE..'|text=('..stonenum..'/4)>'

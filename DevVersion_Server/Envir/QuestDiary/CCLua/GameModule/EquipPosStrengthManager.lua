@@ -313,9 +313,9 @@ local function GetSingleEquipPosShowInfo(actor, equippos)
         if bCurrIsMaxLv then
             sPanelStr = sPanelStr..'<Text|id=501|text=已达到最高强化等级！|x=200|y=20|color='..CSS.NPC_LIGHTGREEN..'>'
         else
-            sPanelStr = sPanelStr..'<Button|id=501|x=100|y=20|text=强化一次|size=18|color='..CSS.NPC_WHITE..'|mimg=private/cc_equip_strength/3.png|nimg=private/cc_equip_strength/3.png|link=@function_button,'..            
+            sPanelStr = sPanelStr..'<Button|id=501|x=100|y=20|text=强化一次|size=18|color='..CSS.NPC_WHITE..'|pimg=private/cc_common/button_down.png|mimg=private/cc_common/button_up.png|nimg=private/cc_common/button_up.png|link=@function_button,'..            
                 EQUIPPOS_STRENGTH_BUTTONFUNC_ID_2..'>'
-            sPanelStr = sPanelStr..'<Button|id=502|x=320|y=20|text=强化十次|size=18|color='..CSS.NPC_WHITE..'|mimg=private/cc_equip_strength/3.png|nimg=private/cc_equip_strength/3.png|link=@function_button,'..            
+            sPanelStr = sPanelStr..'<Button|id=502|x=320|y=20|text=强化十次|size=18|color='..CSS.NPC_WHITE..'|pimg=private/cc_common/button_down.png|mimg=private/cc_common/button_up.png|nimg=private/cc_common/button_up.png|link=@function_button,'..            
                 EQUIPPOS_STRENGTH_BUTTONFUNC_ID_3..'>'
         end
         sPanelStr = sPanelStr..'<Layout|id=500|children={'..idstr..'}|x=0|y=350.0|width=500|height=70>'

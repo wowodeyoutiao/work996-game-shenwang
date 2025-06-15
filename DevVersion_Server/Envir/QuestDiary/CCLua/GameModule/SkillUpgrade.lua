@@ -9,6 +9,8 @@ local NPCPANEL_BUTTONFUNC_ID_4 = 4      --进行一次技能强化
 local UPGRADE_TYPE_LEVEL = 0            --升级
 local UPGRADE_TYPE_UPLEVEL = 1          --升阶
 
+local SHOW_BAG_ITEMS = {{'书页'}, {'技能秘籍'}}
+
 --升级自动学习的技能
 local UPGRADE_LEVEL_AUTO_LEARN_SKILL = {
 	[CommonDefine.JOB_Z] = {
@@ -194,45 +196,50 @@ local function GetSingleShowInfo(actor, targSkillID)
         upgradeNextInfo = cfgSkillAdvanceUpgrade[cfgNextKey]
     end
 
-    local sPanelStr = '<Text|id=17|text='..magicCfgInfo.MagName..'|x=440|y=56|size=25|color='..CSS.NPC_ORANGE..'>'
-    local idstr = '31,32,33,34,35,36,37,38,39'
-    local tempCurrX = 40
-    local tempCurrY = 10    
+    local sPanelStr = ''
+    if choosetype == UPGRADE_TYPE_LEVEL then
+        sPanelStr = sPanelStr..'<Img|id=40|x=180|y=10|move=0|img=private/cc_skill/7.png>'
+    else
+        sPanelStr = sPanelStr..'<Img|id=40|x=100|y=10|move=0|img=private/cc_skill/8.png>'
+    end
+    
+    local idstr = '41,42,31,32,33,34,35,36,37,38,39,40,'
     local sLvName = '等级'
     if choosetype == UPGRADE_TYPE_UPLEVEL then
         sLvName = '等阶'
     end
-    sPanelStr = sPanelStr..'<Text|id=31|text=当前'..sLvName..'：'..skillLv..'|size=20|x='..tempCurrX..'|y='..tempCurrY..'|color='..CSS.NPC_WHITE..'>'    
+    
+    local tempCurrX = 10
+    local tempCurrY = 54    
+    sPanelStr = sPanelStr..'<Text|id=31|text='..skillLv..'|size=20|x='..(tempCurrX+160)..'|y='..(tempCurrY+4)..'|color='..CSS.NPC_WHITE..'>'..
+        '<Img|id=41|x='..(tempCurrX)..'|y='..(tempCurrY)..'|img=private/cc_skill/9.png>'
     tempCurrY = tempCurrY + 50    
     local effectdesc = ''
     if upgradeInfo.effectdesc then
         effectdesc = upgradeInfo.effectdesc
     end
-    sPanelStr = sPanelStr..'<Text|id=32|text=效果：'..effectdesc..'|size=16|x='..tempCurrX..'|y='..tempCurrY..'|color='..CSS.NPC_LIGHTGREEN..'>'
+    sPanelStr = sPanelStr..'<Text|id=32|text='..effectdesc..'|size=16|x='..(tempCurrX+40)..'|y='..(tempCurrY+50)..'|color='..CSS.NPC_LIGHTGREEN..'>'
 
-    tempCurrX = 350
-    tempCurrY = 10
+    tempCurrX = 262
+    tempCurrY = 54
     if upgradeNextInfo ~= nil then
-        sPanelStr = sPanelStr..'<Text|id=33|text=下一'..sLvName..'：'..skillNextLv..'|size=20|x='..tempCurrX..'|y='..tempCurrY..'|color='..CSS.NPC_WHITE..'>'
+        sPanelStr = sPanelStr..'<Text|id=33|text='..skillNextLv..'|size=20|x='..(tempCurrX+160)..'|y='..(tempCurrY+4)..'|color='..CSS.NPC_WHITE..'>'..
+            '<Img|id=42|x='..(tempCurrX)..'|y='..(tempCurrY)..'|img=private/cc_skill/10.png>'
         tempCurrY = tempCurrY + 50
         local effectdesc = ''
         if upgradeNextInfo.effectdesc then
             effectdesc = upgradeNextInfo.effectdesc
         end
-        sPanelStr = sPanelStr..'<Text|id=34|text=效果：'..effectdesc..'|size=16|x='..tempCurrX..'|y='..tempCurrY..'|color='..CSS.NPC_LIGHTGREEN..'>'
+        sPanelStr = sPanelStr..'<Text|id=34|text='..effectdesc..'|size=16|x='..(tempCurrX+40)..'|y='..(tempCurrY+50)..'|color='..CSS.NPC_LIGHTGREEN..'>'
     end
 
-    tempCurrX = 0
-    tempCurrY = 150
-    sPanelStr = sPanelStr..'<Img|id=35|x='..tempCurrX..'|y='..tempCurrY..'|move=0|img=private/cc_skill/5.png>'
-    tempCurrX = 40
-    tempCurrY = tempCurrY + 10
-    local currPlayerLv = Player.GetLevel(actor)
+    tempCurrX = 180
+    tempCurrY = 260
     if upgradeNextInfo ~= nil then
         if choosetype == UPGRADE_TYPE_LEVEL then
-            sPanelStr = sPanelStr..'<Text|id=36|text=角色等级限制：达到'..upgradeInfo.needlv..'级/'..currPlayerLv..'级|x='..tempCurrX..'|y='..tempCurrY..'|color='..CSS.NPC_WHITE..'>'
+            sPanelStr = sPanelStr..'<Text|id=36|text=角色等级：达到'..upgradeInfo.needlv..'级|x='..tempCurrX..'|y='..tempCurrY..'|color='..CSS.NPC_WHITE..'>'
         else
-            sPanelStr = sPanelStr..'<Text|id=36|text=技能等级限制：达到'..upgradeInfo.needlv..'级/'..skillCommonLv..'级|x='..tempCurrX..'|y='..tempCurrY..'|color='..CSS.NPC_WHITE..'>'
+            sPanelStr = sPanelStr..'<Text|id=36|text=技能等级：达到'..upgradeInfo.needlv..'级|x='..tempCurrX..'|y='..tempCurrY..'|color='..CSS.NPC_WHITE..'>'
         end        
     end
     tempCurrY = tempCurrY + 30
@@ -245,32 +252,30 @@ local function GetSingleShowInfo(actor, targSkillID)
         else
             --sPanelStr = sPanelStr..'<Text|id=37|text=进阶消耗：'..sConsumeInfo..'|x='..tempCurrX..'|y='..tempCurrY..'|color='..CSS.NPC_WHITE..'>'
             sPanelStr = sPanelStr..'<Text|id=37|text=进阶消耗：|x='..tempCurrX..'|y='..tempCurrY..'|color='..CSS.NPC_WHITE..'>'
-        end        
+        end   
         local sTempStr = ''
-        sTempStr, itemidstr = Item.GetNeedItemsShowInfo(actor, upgradeInfo.needitems_tab, tempCurrX, tempCurrY, 170, 180, CSS.NPC_WHITE)
+        sTempStr, itemidstr = Item.GetNeedItemsGridShowInfo(actor, upgradeInfo.needitems_tab, tempCurrX+10, tempCurrY+10, 180, 0.9)
         if sTempStr ~= '' then
             sPanelStr = sPanelStr..sTempStr
         end        
     end    
-    tempCurrX = 0
-    tempCurrY = tempCurrY + 30   
-    sPanelStr = sPanelStr..'<Img|id=38|x='..tempCurrX..'|y='..tempCurrY..'|move=0|img=private/cc_skill/5.png>'
-    tempCurrY = tempCurrY + 50
 
     --升级按钮
+    tempCurrX = 0
+    tempCurrY = tempCurrY + 50   
     if upgradeNextInfo ~= nil then
         if choosetype == UPGRADE_TYPE_LEVEL then
-            sPanelStr = sPanelStr..'<Button|id=39|x='..(tempCurrX+240)..'|y='..tempCurrY..'|text=升    级|size=18|color=255|mimg=private/cc_common/button_1.png|nimg=private/cc_common/button_1.png|link=@function_button,'..
+            sPanelStr = sPanelStr..'<Button|id=39|x='..(tempCurrX+200)..'|y='..tempCurrY..'|text=升    级|size=18|color=255|pimg=private/cc_common/button_down.png|nimg=private/cc_common/button_up.png|link=@function_button,'..
                 NPCPANEL_BUTTONFUNC_ID_3..','..targSkillID..'>'
         else
-            sPanelStr = sPanelStr..'<Button|id=39|x='..(tempCurrX+240)..'|y='..tempCurrY..'|text=进    阶|size=18|color=255|mimg=private/cc_common/button_1.png|nimg=private/cc_common/button_1.png|link=@function_button,'..
+            sPanelStr = sPanelStr..'<Button|id=39|x='..(tempCurrX+200)..'|y='..tempCurrY..'|text=进    阶|size=18|color=255|pimg=private/cc_common/button_down.png|nimg=private/cc_common/button_up.png|link=@function_button,'..
                 NPCPANEL_BUTTONFUNC_ID_4..','..targSkillID..'>'
         end
     else
-        sPanelStr = sPanelStr..'<Text|id=39|text=已达到最高技能'..sLvName..'！|x='..(tempCurrX+240)..'|y='..tempCurrY..'|color='..CSS.NPC_LIGHTGREEN..'>'
+        sPanelStr = sPanelStr..'<Text|id=39|text=已达到最高技能'..sLvName..'！|x='..(tempCurrX+200)..'|y='..tempCurrY..'|color='..CSS.NPC_LIGHTGREEN..'>'
     end
 
-    sPanelStr = sPanelStr..'<Layout|id=13|children={'..idstr..','..itemidstr..'}|x=200.0|y=100.0|width=580|height=320>'
+    sPanelStr = sPanelStr..'<Layout|id=13|children={'..idstr..','..itemidstr..'}|x=280.0|y=48.0|width=512|height=374>'
 
     return sPanelStr
 end
@@ -349,27 +354,30 @@ local function IsSkillCanUpgradeOnce(actor, targSkillID, upgradetype)
 end
 
 function SkillUpgrade.ShowBasePanel(actor)    
-    local strPanelInfo = '<Img|id=10|children={11,12,14,13,15,16,17,18}|x='..CSS.BASE_PANEL_START_X..'|y='..CSS.BASE_PANEL_START_Y..'|height=448|esc=1|move=0|reset=1|img=private/cc_skill/6.png|show=0|loadDelay=0|bg=1>'..
-        '<Layout|id=11|x=812.0|y=12.0|width=80|height=80|link=@exit>'..
+    local strPanelInfo = '<Layout|id=11|x=812.0|y=12.0|width=80|height=80|link=@exit>'..
         '<Button|id=12|x=813.0|y=13.0|pimg=public/1900000511.png|nimg=public/1900000510.png|link=@exit>'..
-        '<Button|id=18|x=700.0|y=14.0|esc=0|nimg=private/cc_common/button_help.png|pimg=private/cc_common/button_help.png|link=@show_rule_panel>'..
+        '<Button|id=17|x=700.0|y=14.0|esc=0|nimg=private/cc_common/button_help.png|pimg=private/cc_common/button_help.png|link=@show_rule_panel>'..
         '<Text|id=21|x=9.0|y=9.0|color=161|size=20|text=升>'..
         '<Text|id=22|x=9.0|y=45.0|color=161|size=20|text=级>'..
         '<Text|id=23|x=9.0|y=9.0|color=161|size=20|text=进>'..
-        '<Text|id=24|x=9.0|y=45.0|color=161|size=20|text=阶>'
+        '<Text|id=24|x=9.0|y=45.0|color=161|size=20|text=阶>'    
 
     local chooseid = getplaydef(actor, CommonDefine.VAR_N_LAST_NPC_CHOOSEID)
     local choosetype = getplaydef(actor, CommonDefine.VAR_N_CHOOSE_OPER_TYPE)
     if choosetype == UPGRADE_TYPE_LEVEL then
-        strPanelInfo = strPanelInfo..'<Button|id=15|children={21,22}|x=16.0|y=114.0|size=18|color=255|mimg=private/cc_skill/1.png|nimg=private/cc_skill/1.png|link=@function_button,'..
+        strPanelInfo = strPanelInfo..'<Button|id=15|children={21,22}|x=810.0|y=90.0|size=18|color=255|mimg=private/cc_skill/1.png|nimg=private/cc_skill/1.png|link=@function_button,'..
             NPCPANEL_BUTTONFUNC_ID_1..',0>'..
-            '<Button|id=16|children={23,24}|x=16.0|y=212.0|size=18|color=255|mimg=private/cc_skill/2.png|nimg=private/cc_skill/2.png|link=@function_button,'..
+            '<Button|id=16|children={23,24}|x=810.0|y=170.0|size=18|color=255|mimg=private/cc_skill/2.png|nimg=private/cc_skill/2.png|link=@function_button,'..
             NPCPANEL_BUTTONFUNC_ID_1..',1>'
+        strPanelInfo = strPanelInfo..Item.GetBagItemsShowInfo(actor, SHOW_BAG_ITEMS[1], 18, CSS.BAG_ITEMSHOW_PANEL_X, CSS.BAG_ITEMSHOW_PANEL_Y - 4)
+        strPanelInfo = strPanelInfo..'<Img|id=10|children={11,12,14,13,16,15,17,18}|x='..CSS.BASE_PANEL_START_X..'|y='..CSS.BASE_PANEL_START_Y..'|height=448|esc=1|move=0|reset=1|img=private/cc_skill/6.png|show=0|loadDelay=0|bg=1>'
     else
-        strPanelInfo = strPanelInfo..'<Button|id=15|children={21,22}|x=16.0|y=114.0|size=18|color=255|mimg=private/cc_skill/2.png|nimg=private/cc_skill/2.png|link=@function_button,'..
+        strPanelInfo = strPanelInfo..'<Button|id=15|children={21,22}|x=810.0|y=90.0|size=18|color=255|mimg=private/cc_skill/2.png|nimg=private/cc_skill/2.png|link=@function_button,'..
             NPCPANEL_BUTTONFUNC_ID_1..',0>'..
-            '<Button|id=16|children={23,24}|x=16.0|y=212.0|size=18|color=255|mimg=private/cc_skill/1.png|nimg=private/cc_skill/1.png|link=@function_button,'..
+            '<Button|id=16|children={23,24}|x=810.0|y=170.0|size=18|color=255|mimg=private/cc_skill/1.png|nimg=private/cc_skill/1.png|link=@function_button,'..
             NPCPANEL_BUTTONFUNC_ID_1..',1>'
+        strPanelInfo = strPanelInfo..Item.GetBagItemsShowInfo(actor, SHOW_BAG_ITEMS[2], 18, CSS.BAG_ITEMSHOW_PANEL_X, CSS.BAG_ITEMSHOW_PANEL_Y - 4)
+        strPanelInfo = strPanelInfo..'<Img|id=10|children={11,12,14,13,15,16,17,18}|x='..CSS.BASE_PANEL_START_X..'|y='..CSS.BASE_PANEL_START_Y..'|height=448|esc=1|move=0|reset=1|img=private/cc_skill/6.png|show=0|loadDelay=0|bg=1>'
     end
 
     local listitemidstr = ''
@@ -380,35 +388,30 @@ function SkillUpgrade.ShowBasePanel(actor)
             local magicInfo = cfg_magic[skillID]            
             if magicInfo ~= nil then
                 seq = seq + 1
-                local picid = 40 + seq * 3
-                local textid1 = 40 + seq * 3 + 1
-                local textid2 = 40 + seq * 3 + 2
+                local picid = 40 + seq * 4
+                local textid1 = 40 + seq * 4 + 1
+                local textid2 = 40 + seq * 4 + 2
+                local picid2 = 40 + seq * 4 + 3
                 if chooseid == -1 then          
                     chooseid = skillID
                     setplaydef(actor, CommonDefine.VAR_N_LAST_NPC_CHOOSEID, chooseid)
                 end
         
-                local tabpic = 'private/cc_skill/3.png'
-                if chooseid == skillID then
-                    tabpic = 'private/cc_skill/4.png'
-                end
-
+                strPanelInfo = strPanelInfo..'<Img|id='..picid..'|children={'..textid1..','..textid2..','..picid2..'}|x=0.0|y=0.0|img=private/cc_skill/3.png|link=@function_button,'..
+                    NPCPANEL_BUTTONFUNC_ID_2..','..skillID..'>'
                 if choosetype == UPGRADE_TYPE_LEVEL then
                     local nSkillLv = getskilllevel(actor, skillID)                    
-                    strPanelInfo = strPanelInfo..'<Img|id='..picid..'|children={'..textid1..','..textid2..'}x=0.0|y=0.0|img='..tabpic..'|link=@function_button,'..
-                        NPCPANEL_BUTTONFUNC_ID_2..','..skillID..'>'..
-                        '<Text|id='..textid1..'|x=6.0|y=12.0|size=18|color='..CSS.NPC_YELLOW..'|text='..magicInfo.MagName..'>'..
-                        '<Text|id='..textid2..'|x=80.0|y=14.0|size=15|color='..CSS.NPC_LIGHTGREEN..'|text=('..nSkillLv..'级)>'
+                    strPanelInfo = strPanelInfo..'<Text|id='..textid1..'|x=76.0|y=16.0|size=16|color='..CSS.NPC_YELLOW..'|text='..magicInfo.MagName..'>'..
+                        '<Text|id='..textid2..'|x=130.0|y=40.0|size=16|color='..CSS.NPC_LIGHTGREEN..'|text=技能'..nSkillLv..'级>'
                 else
                     local nSkillUpLv = getskilllevelup(actor, skillID)
-                    strPanelInfo = strPanelInfo..'<Img|id='..picid..'|children={'..textid1..','..textid2..'}x=0.0|y=0.0|img='..tabpic..'|link=@function_button,'..
-                        NPCPANEL_BUTTONFUNC_ID_2..','..skillID..'>'..
-                        '<Text|id='..textid1..'|x=6.0|y=12.0|size=18|color='..CSS.NPC_YELLOW..'|text='..magicInfo.MagName..'>'..
-                        '<Text|id='..textid2..'|x=80.0|y=14.0|size=15|color='..CSS.NPC_LIGHTGREEN..'|text=('..nSkillUpLv..'阶)>'
+                    strPanelInfo = strPanelInfo..'<Text|id='..textid1..'|x=76.0|y=16.0|size=16|color='..CSS.NPC_YELLOW..'|text='..magicInfo.MagName..'>'..
+                        '<Text|id='..textid2..'|x=130.0|y=40.0|size=16|color='..CSS.NPC_LIGHTGREEN..'|text=技能'..nSkillUpLv..'阶>'
                 end
 
                 --对应当前选中的页签
                 if chooseid == skillID then
+                    strPanelInfo = strPanelInfo..'<Img|id='..picid2..'|x=0.0|y=0.0|img=private/cc_skill/4.png>'
                     strPanelInfo = strPanelInfo..GetSingleShowInfo(actor, chooseid)
                 end
         
@@ -425,7 +428,7 @@ function SkillUpgrade.ShowBasePanel(actor)
             end
         end
     end    
-    strPanelInfo = strPanelInfo..'<ListView|id=14|children={'..listitemidstr..'}|x=64.0|y=60.0|width=130|height=360|margin=0|direction=1>'
+    strPanelInfo = strPanelInfo..'<ListView|id=14|children={'..listitemidstr..'}|x=64.0|y=52.0|width=210|height=380|margin=0|direction=1>'
 
     BF_ShowSpecialUI(actor, strPanelInfo)
 end

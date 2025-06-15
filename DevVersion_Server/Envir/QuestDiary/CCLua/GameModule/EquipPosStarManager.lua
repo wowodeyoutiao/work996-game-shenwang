@@ -391,13 +391,13 @@ local function GetSingleEquipPosShowInfo(actor, equippos)
             sPanelStr = sPanelStr..'<Text|id=501|text=ÒÑÉýÖÁÂúÐÇ×´Ì¬£¡|x=200|y=10|color='..CSS.NPC_LIGHTGREEN..'>'
         else
             local tempCurrY = 10
-            sPanelStr = sPanelStr..'<Button|id=501|x=110|y='..tempCurrY..'|mimg=private/cc_equip_star/11.png|nimg=private/cc_equip_star/11.png|link=@function_button,'..            
+            sPanelStr = sPanelStr..'<Button|id=501|x=110|y='..tempCurrY..'|text=ÉýÐÇÒ»´Î|size=18|color='..CSS.NPC_WHITE..'|pimg=private/cc_common/button_down.png|mimg=private/cc_common/button_up.png|nimg=private/cc_common/button_up.png|link=@function_button,'..            
                 EQUIPPOS_STAR_BUTTONFUNC_ID_2..'>'
             if getflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_AUTO_EQUIPSTAR_FLAG) == 0 then
-                sPanelStr = sPanelStr..'<Button|id=502|x=302|y='..tempCurrY..'|mimg=private/cc_equip_star/12.png|nimg=private/cc_equip_star/12.png|link=@function_button,'..
+                sPanelStr = sPanelStr..'<Button|id=502|x=302|y='..tempCurrY..'|text=×Ô¶¯ÉýÐÇ|size=18|color='..CSS.NPC_WHITE..'|pimg=private/cc_common/button_down.png|mimg=private/cc_common/button_up.png|nimg=private/cc_common/button_up.png|link=@function_button,'..
                     EQUIPPOS_STAR_BUTTONFUNC_ID_3..'>'
             else
-                sPanelStr = sPanelStr..'<Button|id=502|x=302|y='..tempCurrY..'|mimg=private/cc_equip_star/13.png|nimg=private/cc_equip_star/13.png|link=@function_button,'..
+                sPanelStr = sPanelStr..'<Button|id=502|x=302|y='..tempCurrY..'|text=Í£Ö¹ÉýÐÇ|size=18|color='..CSS.NPC_WHITE..'|pimg=private/cc_common/button_down.png|mimg=private/cc_common/button_up.png|nimg=private/cc_common/button_up.png|link=@function_button,'..
                     EQUIPPOS_STAR_BUTTONFUNC_ID_4..'>'
             end      
         end

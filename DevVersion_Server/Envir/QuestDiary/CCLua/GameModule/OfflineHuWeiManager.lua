@@ -301,7 +301,8 @@ function OfflineHuWeiManager.ShowBasePanel(actor, sparam)
         end
 
         tempCurrY = tempCurrY + 50
-        strPanelInfo = strPanelInfo..'<Button|id=53|x='..(tempCurrX+60)..'|y='..tempCurrY..'|color='..CSS.NPC_WHITE..'|mimg=private/cc_common/button_1.png|nimg=private/cc_common/button_1.png|size=18|text=升    级|link=@function_button,'..
+        strPanelInfo = strPanelInfo..'<Button|id=53|x='..(tempCurrX+60)..'|y='..tempCurrY..'|color='..CSS.NPC_WHITE..
+            '|pimg=private/cc_common/button_down.png|mimg=private/cc_common/button_up.png|nimg=private/cc_common/button_up.png|size=18|text=升    级|link=@function_button,'..
             NPCPANEL_BUTTONFUNC_ID_1..','..huweitype..'>'
     end
     strPanelInfo = strPanelInfo..'<Layout|id=17|children={'..idstr..','..itemidstr..'}|x=200.0|y=300.0|width=350|height=120>'
@@ -332,7 +333,8 @@ function OfflineHuWeiManager.ShowBasePanel(actor, sparam)
         strPanelInfo = strPanelInfo..'<Text|id=63|text='..offlineitemdesc..' |size=16|x='..(tempCurrX+120)..'|y='..(tempCurrY+30)..'|color='..CSS.NPC_WHITE..'>'
 
         --strPanelInfo = strPanelInfo..'<Text|id=64|text=(收益达到上限后不再累计)|size=16|x='..tempCurrX..'|y='..(tempCurrY+80)..'|color='..CSS.NPC_LIGHTGREEN..'>'       
-        strPanelInfo = strPanelInfo..'<Button|id=65|x='..(tempCurrX+40)..'|y='..(tempCurrY+80)..'|color='..CSS.NPC_WHITE..'|mimg=private/cc_common/button_1.png|nimg=private/cc_common/button_1.png|size=18|text=收    取|link=@function_button,'..
+        strPanelInfo = strPanelInfo..'<Button|id=65|x='..(tempCurrX+40)..'|y='..(tempCurrY+80)..'|color='..CSS.NPC_WHITE..
+            '|pimg=private/cc_common/button_down.png|mimg=private/cc_common/button_up.png|nimg=private/cc_common/button_up.png|size=18|text=收    取|link=@function_button,'..
             NPCPANEL_BUTTONFUNC_ID_2..','..huweitype..'>'
     else
         strPanelInfo = strPanelInfo..'<Text|id=61|text=升级后领取离线收益|size=16|x='..(tempCurrX+10)..'|y='..(tempCurrY+50)..'|color='..CSS.NPC_LIGHTGREEN..'>'

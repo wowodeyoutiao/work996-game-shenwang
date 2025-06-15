@@ -113,13 +113,13 @@ function JumpAreaManager.ShowBasePanel(actor)
             setplaydef(actor, CommonDefine.VAR_N_LAST_NPC_CHOOSEID, choosepos)
         end
         if choosepos == value.id then
-            strPanelInfo = strPanelInfo..'<Img|id='..baseid..'|children={'..textid..'}x=-6.0|y=0.0|img=private/cc_jumparea/1.png|link=@function_button,'..
+            strPanelInfo = strPanelInfo..'<Img|id='..baseid..'|children={'..textid..'}|x=-6.0|y=0.0|img=private/cc_jumparea/1.png|link=@function_button,'..
                 JumpAreaManager.BUTTONFUNC_ID_1..','..value.id..'>'
             strPanelInfo = strPanelInfo..'<Text|id='..textid..'|x=10.0|y=10.0|size=20|color='..CSS.NPC_YELLOW..'|text='..value.name..'>'
             --对应当前选中的活动项目
             strPanelInfo = strPanelInfo..GetJumpAreaActivityShowInfo(actor, value.id)
         else
-            strPanelInfo = strPanelInfo..'<Img|id='..baseid..'|children={'..textid..'}x=-6.0|y=0.0|img=private/cc_jumparea/2.png|link=@function_button,'..
+            strPanelInfo = strPanelInfo..'<Img|id='..baseid..'|children={'..textid..'}|x=-6.0|y=0.0|img=private/cc_jumparea/2.png|link=@function_button,'..
                 JumpAreaManager.BUTTONFUNC_ID_1..','..value.id..'>'
             strPanelInfo = strPanelInfo..'<Text|id='..textid..'|x=10.0|y=10.0|size=20|color='..CSS.NPC_WHITE..'|text='..value.name..'>'
         end

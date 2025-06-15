@@ -498,7 +498,7 @@ function FreeVIPManager.ShowBasePanel(actor)
         if chooseid == i then
             tabpic = 'private/cc_freevip/3.png'
         end
-        strPanelInfo = strPanelInfo..'<Img|id='..picid..'|children={'..textid..'}x=0.0|y=0.0|img='..tabpic..'|link=@function_button,'..
+        strPanelInfo = strPanelInfo..'<Img|id='..picid..'|children={'..textid..'}|x=0.0|y=0.0|img='..tabpic..'|link=@function_button,'..
             NPCPANEL_BUTTONFUNC_ID_1..','..i..'>'        
         if i < currVIPLv + 1 then
             strPanelInfo = strPanelInfo..'<Text|id='..textid..'|x=10.0|y=12.0|size=18|color='..CSS.NPC_YELLOW..'|text=VIP'..i..'[ÒÑ½âËø]>'    
