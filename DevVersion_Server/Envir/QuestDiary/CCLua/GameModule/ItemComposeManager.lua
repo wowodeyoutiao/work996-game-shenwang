@@ -21,12 +21,12 @@ local COMPOSE_TYPE_5 = 5 	--材料
 local COMPOSE_TYPE_6 = 6 	--其他
 
 local COMPOSE_TYPE_INFO = {
-	{ctype=COMPOSE_TYPE_2, showname='升星宝石'},
+	{ctype=COMPOSE_TYPE_2, showname='宝石'},
 	{ctype=COMPOSE_TYPE_3, showname='魂石'},
 }
 
 --每页的格子数量
-local BAG_ITEM_COUNT_PER_PAGE = 25
+local BAG_ITEM_COUNT_PER_PAGE = 20
 --叠加物品每次最多合成数量
 local PILED_ITEM_COMPOSE_MAX_ONCE = 10
 
@@ -211,21 +211,21 @@ local function DoFinalPiledItemCompose(actor, cfgComposeTab)
 end
 
 function ItemComposeManager.ShowBasePanel(actor, makeindex, itemlist)
-    local strPanelInfo = '<Img|id=10|children={11,12,13,21,22,23,24,25,26,40,51,52,53,61,62,63,71,72,80}|x='..CSS.BASE_PANEL_START_X..'|y='..CSS.BASE_PANEL_START_Y..'|img=private/cc_compose/12.png|move=0|show=0|reset=1|esc=1|bg=1|loadDelay=0>'..
+    local strPanelInfo = '<Img|id=10|children={11,12,13,21,22,23,24,25,26,40,51,52,53,54,55,61,62,63,71,72,80}|x='..CSS.BASE_PANEL_START_X..'|y='..CSS.BASE_PANEL_START_Y..'|img=private/cc_compose/12.png|move=0|show=0|reset=1|esc=1|bg=1|loadDelay=0>'..
         '<Layout|id=11|x=813.0|y=14.0|width=80|height=80|link=@exit>'..
         '<Button|id=12|x=814.0|y=14.0|nimg=public/1900000510.png|pimg=public/1900000511.png|link=@exit>'..
 		'<Button|id=13|x=700.0|y=14.0|esc=0|nimg=private/cc_common/button_help.png|pimg=private/cc_common/button_help.png|link=@show_rule_panel>'
 
 	local composetype = getplaydef(actor, CommonDefine.VAR_N_LAST_NPC_CHOOSEID)
-	if composetype == 0 then
-		composetype = COMPOSE_TYPE_1
+	if composetype <= 0  then
+		composetype = COMPOSE_TYPE_2
 		setplaydef(actor, CommonDefine.VAR_N_LAST_NPC_CHOOSEID, composetype)
 	end
 	local startid = 20
 	for seq, value in ipairs(COMPOSE_TYPE_INFO) do
 		local currid = startid + seq
-		local currx = 67
-		local curry = 86 + (seq - 1) * 50
+		local currx = -16
+		local curry = 160 + (seq - 1) * 90
 		if value.ctype == composetype then
 			strPanelInfo = strPanelInfo..'<Button|id='..currid..'|x='..currx..'|y='..curry..'|mimg=private/cc_compose/2.png|nimg=private/cc_compose/2.png|size=20|color=255|text='..value.showname..
 				'|link=@function_button,'..COMPOSE_BUTTONFUNC_ID_1..','..value.ctype..'>'
@@ -246,34 +246,37 @@ function ItemComposeManager.ShowBasePanel(actor, makeindex, itemlist)
     local nTempMax = currPageNo * BAG_ITEM_COUNT_PER_PAGE
     local sValidItemIDList, bDataFinished = GetBagItemIDCanComposeStr(actor, composetype, nTempMin, nTempMax)
     if sValidItemIDList ~= '' then
-    	strPanelInfo = strPanelInfo..'<BAGITEMS|id=40|x=195|y=90|select='..strSelectItem1..'|filter3='..sValidItemIDList..'|count='..BAG_ITEM_COUNT_PER_PAGE..
-			'|showtips=1|selecttype=1|row=5|dblink=@function_button,'..COMPOSE_BUTTONFUNC_ID_4..'>'
-    else
-        strPanelInfo = strPanelInfo..'<Text|text=暂无对应可合成的道具！|x=250|y=120|color='..CSS.NPC_WHITE..'>'
+    	strPanelInfo = strPanelInfo..'<BAGITEMS|id=40|x=530|y=70|select='..strSelectItem1..'|filter3='..sValidItemIDList..'|count='..BAG_ITEM_COUNT_PER_PAGE..
+			'|showtips=1|selecttype=1|iwidth=60|iheight=60|row=5|dblink=@function_button,'..COMPOSE_BUTTONFUNC_ID_4..'>'			
     end
 
 	local itemmakeidx1 = getplaydef(actor, CommonDefine.VAR_N_ITEM_COMPOSE_CHOOSE_ITEM1)
 	if itemmakeidx1 > 0 then
 		local itemidx = Bag.GetItemidxByMakeindex(actor, itemmakeidx1)
-		strPanelInfo = strPanelInfo..'<ItemShow|id=51|x=637.0|y=94.0|width=70|height=70|itemid='..itemidx..'|itemcount=1|bgtype=1|showtips=1>'..
-			'<ItemShow|id=52|x=559.0|y=227.0|width=70|height=70|itemid=0|itemcount=1|bgtype=1|showtips=1>'..
-			'<ItemShow|id=53|x=717.0|y=227.0|width=70|height=70|itemid=0|itemcount=1|bgtype=1|showtips=1>'
+		strPanelInfo = strPanelInfo..'<ItemShow|id=51|x=248.0|y=72.0|width=70|height=70|itemid='..itemidx..'|itemcount=1|bgtype=1|showtips=1>'..
+			'<ItemShow|id=52|x=130.0|y=352.0|width=70|height=70|itemid=0|itemcount=1|bgtype=1|showtips=1>'..
+			'<ItemShow|id=53|x=365.0|y=352.0|width=70|height=70|itemid=0|itemcount=1|bgtype=1|showtips=1>'
 
 		if IsPiledItemComposeType(composetype) then
 			strPanelInfo = strPanelInfo..'<Text|id=61|text=批量放入将自动放满道具|x=570|y=420|size=18|color='..CSS.NPC_WHITE..'>'..
-				'<Button|id=62|x=560|y=370|mimg=private/cc_compose/3.png|nimg=private/cc_compose/3.png|text=放入一个|size=18|color='..CSS.NPC_WHITE..
+				'<Button|id=62|x=550|y=450|mimg=private/cc_compose/3.png|nimg=private/cc_compose/3.png|text=放入一个|size=18|color='..CSS.NPC_WHITE..
 				'|link=@function_button,'..COMPOSE_BUTTONFUNC_ID_11..'>'..
-				'<Button|id=63|x=680|y=370|mimg=private/cc_compose/3.png|nimg=private/cc_compose/3.png|text=批量放入|size=18|color='..CSS.NPC_WHITE..
+				'<Button|id=63|x=680|y=450|mimg=private/cc_compose/3.png|nimg=private/cc_compose/3.png|text=批量放入|size=18|color='..CSS.NPC_WHITE..
 				'|link=@function_button,'..COMPOSE_BUTTONFUNC_ID_12..'>'
 		else
 			strPanelInfo = strPanelInfo..'<Text|id=61|text=自动放入可合成道具！|x=570|y=420|size=20|color='..CSS.NPC_WHITE..'>'..
 				'<Button|id=62|x=620|y=370|mimg=private/cc_compose/7.png|nimg=private/cc_compose/7.png|link=@function_button,'..COMPOSE_BUTTONFUNC_ID_5..'>'
 		end
 	else
-		strPanelInfo = strPanelInfo..'<ItemShow|id=51|x=637.0|y=94.0|width=70|height=70|itemid=0|itemcount=1|bgtype=1|showtips=1>'..
-			'<ItemShow|id=52|x=559.0|y=227.0|width=70|height=70|itemid=0|itemcount=1|bgtype=1|showtips=1>'..
-			'<ItemShow|id=53|x=717.0|y=227.0|width=70|height=70|itemid=0|itemcount=1|bgtype=1|showtips=1>'		
-		strPanelInfo = strPanelInfo..'<Text|id=61|text=双击选择要合成的物品！|x=570|y=420|size=20|color='..CSS.NPC_YELLOW..'>'
+		strPanelInfo = strPanelInfo..'<ItemShow|id=51|x=248.0|y=72.0|width=70|height=70|itemid=0|itemcount=1|bgtype=1|showtips=1>'..
+			'<ItemShow|id=52|x=130.0|y=352.0|width=70|height=70|itemid=0|itemcount=1|bgtype=1|showtips=1>'..
+			'<ItemShow|id=53|x=365.0|y=352.0|width=70|height=70|itemid=0|itemcount=1|bgtype=1|showtips=1>'
+
+		if sValidItemIDList == '' then	
+			strPanelInfo = strPanelInfo..'<Text|id=61|text=暂无对应可合成的道具！|x=550|y=420|size=20|color='..CSS.NPC_YELLOW..'>'
+		else			
+			strPanelInfo = strPanelInfo..'<Text|id=61|text=双击选择要合成的物品！|x=550|y=420|size=20|color='..CSS.NPC_YELLOW..'>'
+		end
 	end	
 
     if currPageNo > 1 then
@@ -300,17 +303,24 @@ function ItemComposeManager.ShowBasePanel(actor, makeindex, itemlist)
 	elseif tempparam == 2 then
 		if itemlist ~= nil then
 			local idstr = ''
-			for key, _ in ipairs(itemlist) do
-				idstr = idstr..','..(90+key)
-			end
-			strPanelInfo = strPanelInfo..'<Img|id=80|children={81,82,83'..idstr..'}|x=300.0|y=180.0|img=private/cc_compose/11.png|move=0|show=0|reset=1|esc=1|bg=1|loadDelay=0>'..
-				'<Text|id=81|x=160.0|y=15.0|color=151|size=20|text=合成结果>'..
-				'<Text|id=82|x=40.0|y=60.0|color=255|size=18|text=恭喜获得：>'..
-				'<Button|id=83|x=150.0|y=155.0|color=255|mimg=private/cc_compose/3.png|nimg=private/cc_compose/3.png|size=18|text=确定|link=@function_button,'..COMPOSE_BUTTONFUNC_ID_1..'>'
-			for key, value in ipairs(itemlist) do
-				local currx = 40 + 70 * (key-1)
-				strPanelInfo = strPanelInfo..'<ItemShow|id='..(90+key)..'|x='..currx..'|y=80|itemid='..value.id..'|itemcount='..value.num..'|bgtype=1|showtips=1>'
-			end							
+			if #itemlist == 1 then
+				--单类物品
+				strPanelInfo = strPanelInfo..'<ItemShow|id=54|x=248.0|y=236.0|width=70|height=70|itemid='..itemlist[1].id..'|itemcount='..itemlist[1].num..'|bgtype=1|showtips=1>'..
+					'<Text|id=55|x=220.0|y=460.0|color='..CSS.NPC_LIGHTGREEN..'|size=20|text=恭喜合成成功！>'
+			else
+				--多个物品
+				for key, _ in ipairs(itemlist) do
+					idstr = idstr..','..(90+key)
+				end
+				strPanelInfo = strPanelInfo..'<Img|id=80|children={81,82,83'..idstr..'}|x=300.0|y=180.0|img=private/cc_compose/11.png|move=0|show=0|reset=1|esc=1|bg=1|loadDelay=0>'..
+					'<Text|id=81|x=160.0|y=15.0|color=151|size=20|text=合成结果>'..
+					'<Text|id=82|x=40.0|y=60.0|color=255|size=18|text=恭喜获得：>'..
+					'<Button|id=83|x=150.0|y=155.0|color=255|mimg=private/cc_compose/3.png|nimg=private/cc_compose/3.png|size=18|text=确定|link=@function_button,'..COMPOSE_BUTTONFUNC_ID_1..'>'
+				for key, value in ipairs(itemlist) do
+					local currx = 40 + 70 * (key-1)
+					strPanelInfo = strPanelInfo..'<ItemShow|id='..(90+key)..'|x='..currx..'|y=80|itemid='..value.id..'|itemcount='..value.num..'|bgtype=1|showtips=1>'
+				end	
+			end						
 		end
 	end
 
@@ -344,8 +354,8 @@ function ItemComposeManager.ChooseOtherItemPanel(actor)
 	local startid = 20
 	for seq, value in ipairs(COMPOSE_TYPE_INFO) do
 		local currid = startid + seq
-		local currx = 67
-		local curry = 86 + (seq - 1) * 50
+		local currx = -16
+		local curry = 160 + (seq - 1) * 90
 		if value.ctype == composetype then
 			strPanelInfo = strPanelInfo..'<Button|id='..currid..'|x='..currx..'|y='..curry..'|mimg=private/cc_compose/2.png|nimg=private/cc_compose/2.png|size=20|color=255|text='..value.showname..
 				'|link=@function_button,'..COMPOSE_BUTTONFUNC_ID_1..','..value.ctype..'>'
@@ -357,7 +367,7 @@ function ItemComposeManager.ChooseOtherItemPanel(actor)
 
     local sValidItemIDList, cfgCurrComposeTab, _ = GetBagItemIDCanComposeStr2(firstitemid)
     local strSelectItemList = getplaydef(actor, CommonDefine.VAR_S_SELECT_COMPOSE_ITEMS)
-    strPanelInfo = strPanelInfo..'<BAGITEMS|id=40|x=195|y=90|select='..strSelectItemList..'|filter3='..sValidItemIDList..'|count='..BAG_ITEM_COUNT_PER_PAGE..'|showtips=1|selecttype=1|row=5>'
+    strPanelInfo = strPanelInfo..'<BAGITEMS|id=40|x=530|y=70|iwidth=60|iheight=60|select='..strSelectItemList..'|filter3='..sValidItemIDList..'|count='..BAG_ITEM_COUNT_PER_PAGE..'|showtips=1|selecttype=1|row=5>'
 
     local strMakeIdxTab = string.split(strSelectItemList, ',')
     if strMakeIdxTab and (#strMakeIdxTab == CommonDefine.ITEM_COMPOSE_NEED_NUM) then
@@ -371,37 +381,37 @@ function ItemComposeManager.ChooseOtherItemPanel(actor)
 		end				
 
 		if strMakeIdxTab and strMakeIdxTab[2] and strMakeIdxTab[3] then
-			strPanelInfo = strPanelInfo..'<ItemShow|id=51|x=637.0|y=94.0|width=70|height=70|itemid='..firstitemid..'|itemcount=1|bgtype=1|showtips=1>'..
-				'<ItemShow|id=52|x=559.0|y=227.0|width=70|height=70|itemid='..itemidx2..'|itemcount=1|bgtype=1|showtips=1>'..
-				'<ItemShow|id=53|x=717.0|y=227.0|width=70|height=70|itemid='..itemidx3..'|itemcount=1|bgtype=1|showtips=1>'
+			strPanelInfo = strPanelInfo..'<ItemShow|id=51|x=248.0|y=72.0|width=70|height=70|itemid='..firstitemid..'|itemcount=1|bgtype=1|showtips=1>'..
+				'<ItemShow|id=52|x=130.0|y=352.0|width=70|height=70|itemid='..itemidx2..'|itemcount=1|bgtype=1|showtips=1>'..
+				'<ItemShow|id=53|x=365.0|y=352.0|width=70|height=70|itemid='..itemidx3..'|itemcount=1|bgtype=1|showtips=1>'
 		end
 
 		if sValidItemIDList ~= '' then
 			local sConsumeInfo = BF_GetSimpleItemTableDescStr(cfgCurrComposeTab.needitems_tab)
 			local showrate = math.floor(cfgCurrComposeTab.successrate / 100)
-			strPanelInfo = strPanelInfo..'<Text|id=61|text=成功概率：'..showrate..'%|x=590|y=360|color='..CSS.NPC_WHITE..'>'..
-				'<Text|id=62|text=合成消耗：'..sConsumeInfo..'|x=590|y=390|color='..CSS.NPC_WHITE..'>'..
-				'<Button|id=63|x=620|y=420|mimg=private/cc_compose/3.png|nimg=private/cc_compose/3.png|text=开始合成|size=18|color='..CSS.NPC_WHITE..
+			strPanelInfo = strPanelInfo..'<Text|id=61|text=成功概率：'..showrate..'%|x=590|y=380|color='..CSS.NPC_WHITE..'>'..
+				'<Text|id=62|text=合成消耗：'..sConsumeInfo..'|x=590|y=410|color='..CSS.NPC_WHITE..'>'..
+				'<Button|id=63|x=620|y=450|mimg=private/cc_compose/3.png|nimg=private/cc_compose/3.png|text=开始合成|size=18|color='..CSS.NPC_WHITE..
 				'|link=@function_button,'..COMPOSE_BUTTONFUNC_ID_6..'>'
 		end	
 	else	
 		local pilenum = getplaydef(actor, CommonDefine.VAR_N_SELECT_COMPOSE_PILE_NUM)	
 		if IsPiledItemComposeType(composetype) and (pilenum > 0) then			
-			strPanelInfo = strPanelInfo..'<ItemShow|id=51|x=637.0|y=94.0|width=70|height=70|itemid='..firstitemid..'|itemcount='..pilenum..'|bgtype=1|showtips=1>'..
-				'<ItemShow|id=52|x=559.0|y=227.0|width=70|height=70|itemid='..firstitemid..'|itemcount='..pilenum..'|bgtype=1|showtips=1>'..
-				'<ItemShow|id=53|x=717.0|y=227.0|width=70|height=70|itemid='..firstitemid..'|itemcount='..pilenum..'|bgtype=1|showtips=1>'
+			strPanelInfo = strPanelInfo..'<ItemShow|id=51|x=248.0|y=72.0|width=70|height=70|itemid='..firstitemid..'|itemcount='..pilenum..'|bgtype=1|showtips=1>'..
+				'<ItemShow|id=52|x=130.0|y=352.0|width=70|height=70|itemid='..firstitemid..'|itemcount='..pilenum..'|bgtype=1|showtips=1>'..
+				'<ItemShow|id=53|x=365.0|y=352.0|width=70|height=70|itemid='..firstitemid..'|itemcount='..pilenum..'|bgtype=1|showtips=1>'
 
 			local needitems = BF_GetItemTabMulti(cfgCurrComposeTab.needitems_tab, pilenum)
 			local sConsumeInfo = BF_GetSimpleItemTableDescStr(needitems)
 			local showrate = math.floor(cfgCurrComposeTab.successrate / 100)
-			strPanelInfo = strPanelInfo..'<Text|id=61|text=成功概率：'..showrate..'%|x=590|y=360|color='..CSS.NPC_WHITE..'>'..
-				'<Text|id=62|text=合成消耗：'..sConsumeInfo..'|x=590|y=390|color='..CSS.NPC_WHITE..'>'..
-				'<Button|id=63|x=620|y=420|mimg=private/cc_compose/3.png|nimg=private/cc_compose/3.png|text=开始合成|size=18|color='..CSS.NPC_WHITE..
+			strPanelInfo = strPanelInfo..'<Text|id=61|text=成功概率：'..showrate..'%|x=590|y=380|color='..CSS.NPC_WHITE..'>'..
+				'<Text|id=62|text=合成消耗：'..sConsumeInfo..'|x=590|y=410|color='..CSS.NPC_WHITE..'>'..
+				'<Button|id=63|x=620|y=450|mimg=private/cc_compose/3.png|nimg=private/cc_compose/3.png|text=开始合成|size=18|color='..CSS.NPC_WHITE..
 				'|link=@function_button,'..COMPOSE_BUTTONFUNC_ID_13..'>'				
 		else
-			strPanelInfo = strPanelInfo..'<ItemShow|id=51|x=637.0|y=94.0|width=70|height=70|itemid='..firstitemid..'|itemcount=1|bgtype=1|showtips=1>'..
-				'<ItemShow|id=52|x=559.0|y=227.0|width=70|height=70|itemid=0|itemcount=1|bgtype=1|showtips=1>'..
-				'<ItemShow|id=53|x=717.0|y=227.0|width=70|height=70|itemid=0|itemcount=1|bgtype=1|showtips=1>'
+			strPanelInfo = strPanelInfo..'<ItemShow|id=51|x=248.0|y=72.0|width=70|height=70|itemid='..firstitemid..'|itemcount=1|bgtype=1|showtips=1>'..
+				'<ItemShow|id=52|x=130.0|y=352.0|width=70|height=70|itemid=0|itemcount=1|bgtype=1|showtips=1>'..
+				'<ItemShow|id=53|x=365.0|y=352.0|width=70|height=70|itemid=0|itemcount=1|bgtype=1|showtips=1>'
 		end
     end
 

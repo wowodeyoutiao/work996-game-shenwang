@@ -402,7 +402,8 @@ function EquipPosStrengthManager.ShowBasePanel(actor)
         local textid2 = baseid * 10 + 2
         local equipshowid = baseid * 10 + 3
         local picid2 = baseid * 10 + 4
-        local tempidstr = textid1..','..textid2..','..equipshowid..','..picid2
+        local picid3 = baseid * 10 + 5
+        local tempidstr = textid1..','..textid2..','..equipshowid..','..picid2..','..picid3
         if choosepos == -1 then          
             choosepos = value.pos         
             setplaydef(actor, CommonDefine.VAR_N_LAST_NPC_CHOOSEID, choosepos)
@@ -415,11 +416,14 @@ function EquipPosStrengthManager.ShowBasePanel(actor)
             equipcolor = Item.GetItemQualityColor(actor, equipobj)
         end
         
+        local strPosIconImg = 'private/cc_common/pos_icon_'..value.pos..'.png'
+
         strPanelInfo = strPanelInfo..'<Img|id='..baseid..'|children={'..tempidstr..'}|x=-6.0|y=0.0|img=private/cc_common/listviewitem_1.png|link=@function_button,'..
             EQUIPPOS_STRENGTH_BUTTONFUNC_ID_1..','..value.pos..'>'
         strPanelInfo = strPanelInfo..'<Text|id='..textid1..'|x=80.0|y=14.0|size=18|color='..equipcolor..'|text='..equipname..'>'
             ..'<Text|id='..textid2..'|x=80.0|y=44.0|size=18|color='..CSS.NPC_WHITE..'|text='..value.level..'级>'
-        strPanelInfo = strPanelInfo..'<EquipShow|id='..equipshowid..'|x=6.0|y=6.0|showtips=0|effectshow=0|reload=1|index='..value.pos..'>'
+        strPanelInfo = strPanelInfo..'<EquipShow|id='..equipshowid..'|x=6.0|y=6.0|showtips=0|effectshow=0|reload=1|index='..value.pos..'>'..
+            '<Img|id='..picid3..'|x=8|y=12|img='..strPosIconImg..'>'
 
         if choosepos == value.pos then
             --对应当前选中的装备槽位

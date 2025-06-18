@@ -46,16 +46,16 @@ SoulStoneManager.SLOT_ID = {
 } 
 
 SoulStoneManager.SLOT_CFG_INFO = {
-    [SoulStoneManager.SLOT_ID.SLOT_RED_1] = {id = SoulStoneManager.SLOT_ID.SLOT_RED_1, name = '红魂石槽位Ⅰ', shape = SoulStoneManager.STONE_SHAPE.RED, color = CSS.QUALITY_RED},
-    [SoulStoneManager.SLOT_ID.SLOT_RED_2] = {id = SoulStoneManager.SLOT_ID.SLOT_RED_2, name = '红魂石槽位Ⅱ', shape = SoulStoneManager.STONE_SHAPE.RED, color = CSS.QUALITY_RED},
-    [SoulStoneManager.SLOT_ID.SLOT_RED_3] = {id = SoulStoneManager.SLOT_ID.SLOT_RED_3, name = '红魂石槽位Ⅲ', shape = SoulStoneManager.STONE_SHAPE.RED, color = CSS.QUALITY_RED},
-    [SoulStoneManager.SLOT_ID.SLOT_BLUE_1] = {id = SoulStoneManager.SLOT_ID.SLOT_BLUE_1, name = '蓝魂石槽位Ⅰ', shape = SoulStoneManager.STONE_SHAPE.BLUE, color = CSS.QUALITY_BLUE},
-    [SoulStoneManager.SLOT_ID.SLOT_BLUE_2] = {id = SoulStoneManager.SLOT_ID.SLOT_BLUE_2, name = '蓝魂石槽位Ⅱ', shape = SoulStoneManager.STONE_SHAPE.BLUE, color = CSS.QUALITY_BLUE},
-    [SoulStoneManager.SLOT_ID.SLOT_GREEN_1] = {id = SoulStoneManager.SLOT_ID.SLOT_GREEN_1, name = '绿魂石槽位Ⅰ', shape = SoulStoneManager.STONE_SHAPE.GREEN, color = CSS.QUALITY_GREEN},
-    [SoulStoneManager.SLOT_ID.SLOT_GREEN_2] = {id = SoulStoneManager.SLOT_ID.SLOT_GREEN_2, name = '绿魂石槽位Ⅱ', shape = SoulStoneManager.STONE_SHAPE.GREEN, color = CSS.QUALITY_GREEN},
-    [SoulStoneManager.SLOT_ID.SLOT_YELLOW_1] = {id = SoulStoneManager.SLOT_ID.SLOT_YELLOW_1, name = '黄魂石槽位Ⅰ', shape = SoulStoneManager.STONE_SHAPE.YELLOW, color = CSS.QUALITY_ORANGE},
-    [SoulStoneManager.SLOT_ID.SLOT_YELLOW_2] = {id = SoulStoneManager.SLOT_ID.SLOT_YELLOW_2, name = '黄魂石槽位Ⅱ', shape = SoulStoneManager.STONE_SHAPE.YELLOW, color = CSS.QUALITY_ORANGE},
-    [SoulStoneManager.SLOT_ID.SLOT_YELLOW_3] = {id = SoulStoneManager.SLOT_ID.SLOT_YELLOW_3, name = '黄魂石槽位Ⅲ', shape = SoulStoneManager.STONE_SHAPE.YELLOW, color = CSS.QUALITY_ORANGE},    
+    [SoulStoneManager.SLOT_ID.SLOT_RED_1] = {id = SoulStoneManager.SLOT_ID.SLOT_RED_1, name = '红槽Ⅰ', shape = SoulStoneManager.STONE_SHAPE.RED, color = CSS.QUALITY_RED},
+    [SoulStoneManager.SLOT_ID.SLOT_RED_2] = {id = SoulStoneManager.SLOT_ID.SLOT_RED_2, name = '红槽Ⅱ', shape = SoulStoneManager.STONE_SHAPE.RED, color = CSS.QUALITY_RED},
+    [SoulStoneManager.SLOT_ID.SLOT_RED_3] = {id = SoulStoneManager.SLOT_ID.SLOT_RED_3, name = '红槽Ⅲ', shape = SoulStoneManager.STONE_SHAPE.RED, color = CSS.QUALITY_RED},
+    [SoulStoneManager.SLOT_ID.SLOT_BLUE_1] = {id = SoulStoneManager.SLOT_ID.SLOT_BLUE_1, name = '蓝槽Ⅰ', shape = SoulStoneManager.STONE_SHAPE.BLUE, color = CSS.QUALITY_BLUE},
+    [SoulStoneManager.SLOT_ID.SLOT_BLUE_2] = {id = SoulStoneManager.SLOT_ID.SLOT_BLUE_2, name = '蓝槽Ⅱ', shape = SoulStoneManager.STONE_SHAPE.BLUE, color = CSS.QUALITY_BLUE},
+    [SoulStoneManager.SLOT_ID.SLOT_GREEN_1] = {id = SoulStoneManager.SLOT_ID.SLOT_GREEN_1, name = '绿槽Ⅰ', shape = SoulStoneManager.STONE_SHAPE.GREEN, color = CSS.QUALITY_GREEN},
+    [SoulStoneManager.SLOT_ID.SLOT_GREEN_2] = {id = SoulStoneManager.SLOT_ID.SLOT_GREEN_2, name = '绿槽Ⅱ', shape = SoulStoneManager.STONE_SHAPE.GREEN, color = CSS.QUALITY_GREEN},
+    [SoulStoneManager.SLOT_ID.SLOT_YELLOW_1] = {id = SoulStoneManager.SLOT_ID.SLOT_YELLOW_1, name = '黄槽Ⅰ', shape = SoulStoneManager.STONE_SHAPE.YELLOW, color = CSS.QUALITY_ORANGE},
+    [SoulStoneManager.SLOT_ID.SLOT_YELLOW_2] = {id = SoulStoneManager.SLOT_ID.SLOT_YELLOW_2, name = '黄槽Ⅱ', shape = SoulStoneManager.STONE_SHAPE.YELLOW, color = CSS.QUALITY_ORANGE},
+    [SoulStoneManager.SLOT_ID.SLOT_YELLOW_3] = {id = SoulStoneManager.SLOT_ID.SLOT_YELLOW_3, name = '黄槽Ⅲ', shape = SoulStoneManager.STONE_SHAPE.YELLOW, color = CSS.QUALITY_ORANGE},    
 }
 
 --魂石羁绊配置
@@ -521,13 +521,11 @@ local function GetSingleSoulStoneShowInfo(actor, slotid)
         return strPanelInfo
     end    
 
-    strPanelInfo = strPanelInfo..'<Layout|id=15|children={501,502,503,504}|x=200.0|y=65.0|width=580|height=420>'..
-        '<Text|id=501|x=240.0|y=10.0|size=22|color='..CSS.NPC_YELLOW..'|text='..config.name..'>'..
-        '<Layout|id=502|children={511,512,513,514}|x=0|y=60|width=580|height=120>'..
-        '<Layout|id=503|children={521,522,523,524,525}|x=0|y=180|width=580|height=240>'..
-        '<Button|id=504|x=450|y=10|mimg=private/cc_soulstone/2.png|nimg=private/cc_soulstone/2.png|link=@function_button,'..SOULSTONE_BUTTONFUNC_ID_10..'>'
+    strPanelInfo = strPanelInfo..'<Layout|id=501|children={511,512,513,514}|x=150|y=112|width=300|height=300>'..
+        '<Layout|id=502|children={521,522,523,524,525}|x=530|y=54|width=264|height=440>'
      
     --已镶嵌的魂石
+    local LOCAL_GRID_POS = {{x=100, y=0}, {x=0, y=100}, {x=200, y=100}, {x=100, y=200}}
     for i = 1, CommonDefine.SOUL_STONE_SLOT_MAX_HOLE_NUM, 1 do
         local stoneidx = infoTab[sid].holelist[i]    
         local cfgstoneitem = nil
@@ -540,17 +538,17 @@ local function GetSingleSoulStoneShowInfo(actor, slotid)
         local showid = 510 + 20 + i
         local textid = 510 + 40 + i
         if cfgstoneitem == nil then
-            strPanelInfo = strPanelInfo..'<Img|id='..imgid..'|x='..tempx..'|y='..tempy..'|move=0|show=0|bg=1|esc=1|reset=1|img=private/cc_soulstone/13.png|link=@function_button,'..            
+            strPanelInfo = strPanelInfo..'<Img|id='..imgid..'|x='..LOCAL_GRID_POS[i].x..'|y='..LOCAL_GRID_POS[i].y..'|move=0|show=0|bg=1|esc=1|reset=1|img=private/cc_soulstone/13.png|link=@function_button,'..            
                 SOULSTONE_BUTTONFUNC_ID_4..','..i..'>'
         else
-            strPanelInfo = strPanelInfo..'<Img|id='..imgid..'|children={'..showid..','..textid..'}|x='..tempx..'|y='..tempy..'|move=0|show=0|bg=1|esc=1|reset=1|img=private/cc_soulstone/13.png>'            
+            strPanelInfo = strPanelInfo..'<Img|id='..imgid..'|children={'..showid..','..textid..'}|x='..LOCAL_GRID_POS[i].x..'|y='..LOCAL_GRID_POS[i].y..'|move=0|show=0|bg=1|esc=1|reset=1|img=private/cc_soulstone/13.png>'            
             strPanelInfo = strPanelInfo..'<ItemShow|id='..showid..'|x=15|y=15|itemid='..stoneidx..'|itemcount=1|showtips=1|dblink=@function_button,'..            
                 SOULSTONE_BUTTONFUNC_ID_4..','..i..'>'
 
             local wxtype = infoTab[sid].wxlist[i]
             if wxtype > 0 then
                 local wxname = SoulStoneManager.WU_XING_CFG_INFO[wxtype].wxname
-                strPanelInfo = strPanelInfo..'<Text|id='..textid..'|text=['..wxname..']|size=18|x=96|y=70|color='..CSS.NPC_LIGHTGREEN..'>'
+                strPanelInfo = strPanelInfo..'<Text|id='..textid..'|text=['..wxname..']|size=18|x=58|y=84|color='..CSS.NPC_LIGHTGREEN..'>'
             end                
         end
     end
@@ -562,13 +560,13 @@ local function GetSingleSoulStoneShowInfo(actor, slotid)
         setplaydef(actor, CommonDefine.VAR_N_CURR_NPC_DATA_PAGE1, currPageNo)
     end
 
-    local nBagItemCountPerPage = 12
+    local nBagItemCountPerPage = 15
     local strSelect = getplaydef(actor, CommonDefine.VAR_S_SELECT_ITEM)
     local nTempMin = (currPageNo - 1) * nBagItemCountPerPage + 1
     local nTempMax = currPageNo * nBagItemCountPerPage    
     local sValidItemIDList, bDataFinished = Bag.GetBagItemIDInStdmodeStr(actor, CommonDefine.ITEM_STDMODE_SOULSTONE, config.shape, nTempMin, nTempMax)
-    strPanelInfo = strPanelInfo..'<BAGITEMS|id=521|x=80|y=20|select='..strSelect..'|filter3='..sValidItemIDList..
-        '|count='..nBagItemCountPerPage..'|showtips=1|selecttype=1|row=2|dblink=@function_button,'..SOULSTONE_BUTTONFUNC_ID_5..'>'      
+    strPanelInfo = strPanelInfo..'<BAGITEMS|id=521|x=24|y=10|select='..strSelect..'|filter3='..sValidItemIDList..
+        '|count='..nBagItemCountPerPage..'|showtips=1|selecttype=1|row=5|dblink=@function_button,'..SOULSTONE_BUTTONFUNC_ID_5..'>'      
  
     if currPageNo > 1 then
         strPanelInfo = strPanelInfo..'<Text|id=522|text=上一页|size=18|x=20|y=130|color='..CSS.NPC_YELLOW..'|link=@function_button,'..SOULSTONE_BUTTONFUNC_ID_6..'>'
@@ -577,9 +575,9 @@ local function GetSingleSoulStoneShowInfo(actor, slotid)
         strPanelInfo = strPanelInfo..'<Text|id=523|text=下一页|size=18|x=510|y=130|color='..CSS.NPC_YELLOW..'|link=@function_button,'..SOULSTONE_BUTTONFUNC_ID_7..'>'
     end
 
-    strPanelInfo = strPanelInfo..'<Button|id=524|x=110|y=190|mimg=private/cc_soulstone/3.png|nimg=private/cc_soulstone/3.png|link=@function_button,'..            
+    strPanelInfo = strPanelInfo..'<Button|id=524|x=8|y=400|mimg=private/cc_soulstone/3.png|nimg=private/cc_soulstone/3.png|link=@function_button,'..            
         SOULSTONE_BUTTONFUNC_ID_8..'>'..
-        '<Button|id=525|x=380|y=190|mimg=private/cc_soulstone/4.png|nimg=private/cc_soulstone/4.png|link=@function_button,'..            
+        '<Button|id=525|x=160|y=400|mimg=private/cc_soulstone/4.png|nimg=private/cc_soulstone/4.png|link=@function_button,'..            
         SOULSTONE_BUTTONFUNC_ID_9..'>'    
 
     return strPanelInfo
@@ -635,12 +633,12 @@ end
 
 --显示初始面板
 function SoulStoneManager.ShowBasePanel(actor)
-    local strPanelInfo = '<Img|id=10|children={11,12,13,14,15,16}|x='..CSS.BASE_PANEL_START_X..'|y='..CSS.BASE_PANEL_START_Y..'|reset=1|img=private/cc_soulstone/9.png|show=0|esc=1|move=0|bg=1|loadDelay=0>'..
+    local strPanelInfo = '<Img|id=10|children={11,12,400,13,14,15,501,502}|x='..CSS.BASE_PANEL_START_X..'|y='..CSS.BASE_PANEL_START_Y..'|reset=1|img=private/cc_soulstone/9.png|show=0|esc=1|move=0|bg=1|loadDelay=0>'..
         '<Layout|id=11|x=813.0|y=14.0|width=80|height=80|link=@exit>'..
         '<Button|id=12|x=814.0|y=14.0|nimg=public/1900000510.png|pimg=public/1900000511.png|link=@exit>'..
-        '<Button|id=13|x=72|y=70|mimg=private/cc_soulstone/1.png|nimg=private/cc_soulstone/1.png|link=@function_button,'..            
-        SOULSTONE_BUTTONFUNC_ID_1..'>'..
-        '<Button|id=16|x=700.0|y=14.0|esc=0|nimg=private/cc_common/button_help.png|pimg=private/cc_common/button_help.png|link=@show_rule_panel>'
+        '<Button|id=13|x=700.0|y=14.0|esc=0|nimg=private/cc_common/button_help.png|pimg=private/cc_common/button_help.png|link=@show_rule_panel>'..
+        '<Button|id=14|x=180|y=60|mimg=private/cc_soulstone/1.png|nimg=private/cc_soulstone/1.png|link=@function_button,'..SOULSTONE_BUTTONFUNC_ID_1..'>'..
+        '<Button|id=15|x=320|y=60|mimg=private/cc_soulstone/2.png|nimg=private/cc_soulstone/2.png|link=@function_button,'..SOULSTONE_BUTTONFUNC_ID_10..'>'
 
     local infoStr = getplaydef(actor, CommonDefine.VAR_T_SOULSTONE_SLOT_INFO)
     local infoTab = {}
@@ -655,9 +653,10 @@ function SoulStoneManager.ShowBasePanel(actor)
         end
         idstr1 = idstr1..(30+seq)
     end
-    strPanelInfo = strPanelInfo..'<ListView|id=14|children={'..idstr1..'}|x=65.0|y=110.0|width=130|height=350|margin=0|direction=1>'
     local chooseid = getplaydef(actor, CommonDefine.VAR_N_LAST_NPC_CHOOSEID)   
     local bDataChg = false
+    local gridx = 10
+    local gridy = 50
     for seq, value in ipairs(SoulStoneManager.SLOT_CFG_INFO) do
         local sid = value.id..''
         if infoTab[sid] == nil then
@@ -676,23 +675,29 @@ function SoulStoneManager.ShowBasePanel(actor)
         local baseid = 30 + seq
         local textid1 = baseid * 10 + 1
         local textid2 = baseid * 10 + 2
+        local picid2 = baseid * 10 + 3
         if chooseid == -1 then          
             chooseid = value.id         
             setplaydef(actor, CommonDefine.VAR_N_LAST_NPC_CHOOSEID, chooseid)
-        end        
+        end                
+
+        strPanelInfo = strPanelInfo..'<Img|id='..baseid..'|children={'..textid1..','..textid2..','..picid2..'}|x='..gridx..'|y='..gridy..'|img=private/cc_soulstone/14.png|link=@function_button,'..
+            SOULSTONE_BUTTONFUNC_ID_3..','..value.id..'>'
+        strPanelInfo = strPanelInfo..'<Text|id='..textid1..'|x=10.0|y=10.0|size=18|color='..CSS.NPC_WHITE..'|text='..value.name..'>'
+            ..'<Text|id='..textid2..'|x=10.0|y=30.0|size=18|color='..CSS.NPC_WHITE..'|text=('..stonenum..'/4)>'                 
+
         if chooseid == value.id then
-            strPanelInfo = strPanelInfo..'<Img|id='..baseid..'|children={'..textid1..','..textid2..'}|x=-6.0|y=0.0|img=private/cc_soulstone/7.png|link=@function_button,'..
-                SOULSTONE_BUTTONFUNC_ID_3..','..value.id..'>'
-            strPanelInfo = strPanelInfo..'<Text|id='..textid1..'|x=10.0|y=5.0|size=18|color='..CSS.NPC_YELLOW..'|text='..value.name..'>'
-                ..'<Text|id='..textid2..'|x=40.0|y=25.0|size=18|color='..CSS.NPC_YELLOW..'|text=('..stonenum..'/4)>'
             --对应当前选中的装备槽位
-            strPanelInfo = strPanelInfo..GetSingleSoulStoneShowInfo(actor, value.id)                
-        else
-            strPanelInfo = strPanelInfo..'<Img|id='..baseid..'|children={'..textid1..','..textid2..'}|x=-6.0|y=0.0|img=private/cc_soulstone/8.png|link=@function_button,'..
-                SOULSTONE_BUTTONFUNC_ID_3..','..value.id..'>'
-            strPanelInfo = strPanelInfo..'<Text|id='..textid1..'|x=10.0|y=5.0|size=18|color='..CSS.NPC_WHITE..'|text='..value.name..'>'
-                ..'<Text|id='..textid2..'|x=40.0|y=25.0|size=18|color='..CSS.NPC_WHITE..'|text=('..stonenum..'/4)>'
+            strPanelInfo = strPanelInfo..GetSingleSoulStoneShowInfo(actor, value.id)
+            strPanelInfo = strPanelInfo..'<Img|id='..picid2..'|x=0|y=0|img=private/cc_soulstone/15.png|link=@function_button,'..
+                SOULSTONE_BUTTONFUNC_ID_3..','..value.id..'>'            
         end
+
+        gridy = gridy + 80
+        if seq == 5 then
+            gridx = 390
+            gridy = 50
+        end           
 
         if IsSlotHaveBetterStone(actor, value.id, infoTab) then
             Player.AddRedPoint(actor, 0, baseid, 10, 10)
@@ -710,6 +715,7 @@ function SoulStoneManager.ShowBasePanel(actor)
         infoStr = tbl2json(infoTab)
         setplaydef(actor, CommonDefine.VAR_T_SOULSTONE_SLOT_INFO, infoStr)
     end
+    strPanelInfo = strPanelInfo..'<Layout|id=400|children={'..idstr1..'}|x=66|y=54|width=460|height=440>'
 
     local tempparam1 = getplaydef(actor, CommonDefine.VAR_N_NPC_TEMPPARAM1)
     if tempparam1 == 1 then
