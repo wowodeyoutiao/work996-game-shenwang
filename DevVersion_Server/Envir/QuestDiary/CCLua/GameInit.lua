@@ -11,6 +11,7 @@ local function _Includes()
     cfg_equip = require("Envir/QuestDiary/CCLua/GameConfig/cfg_equip")
     cfg_item = require("Envir/QuestDiary/CCLua/GameConfig/cfg_item")
     cfg_magic= require("Envir/QuestDiary/CCLua/GameConfig/cfg_magic")
+    cfg_magicinfo= require("Envir/QuestDiary/CCLua/GameConfig/cfg_magicinfo")
     -- cfg_game_data = require("Envir/QuestDiary/CCLua/GameConfig/cfg_game_data")
 
     cfgEquipPosStrength = require("Envir/QuestDiary/CCLua/GameConfig/cfgEquipPosStrength")

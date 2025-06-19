@@ -420,8 +420,8 @@ function EquipPosStrengthManager.ShowBasePanel(actor)
 
         strPanelInfo = strPanelInfo..'<Img|id='..baseid..'|children={'..tempidstr..'}|x=-6.0|y=0.0|img=private/cc_common/listviewitem_1.png|link=@function_button,'..
             EQUIPPOS_STRENGTH_BUTTONFUNC_ID_1..','..value.pos..'>'
-        strPanelInfo = strPanelInfo..'<Text|id='..textid1..'|x=80.0|y=14.0|size=18|color='..equipcolor..'|text='..equipname..'>'
-            ..'<Text|id='..textid2..'|x=80.0|y=44.0|size=18|color='..CSS.NPC_WHITE..'|text='..value.level..'¼¶>'
+        strPanelInfo = strPanelInfo..'<Text|id='..textid1..'|x=85.0|y=14.0|size=18|color='..equipcolor..'|text='..equipname..'>'
+            ..'<Text|id='..textid2..'|x=85.0|y=44.0|size=18|color='..CSS.NPC_WHITE..'|text='..value.level..'¼¶>'
         strPanelInfo = strPanelInfo..'<EquipShow|id='..equipshowid..'|x=6.0|y=6.0|showtips=0|effectshow=0|reload=1|index='..value.pos..'>'..
             '<Img|id='..picid3..'|x=8|y=12|img='..strPosIconImg..'>'
 

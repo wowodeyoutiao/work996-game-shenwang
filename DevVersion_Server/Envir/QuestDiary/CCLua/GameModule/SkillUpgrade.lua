@@ -67,7 +67,6 @@ local UPGRADE_LEVEL_AUTO_LEARN_SKILL = {
 	},
 }
 
-
 --玩家根据当前等级，自动学习技能
 function SkillUpgrade.CheckAutoLearnSkill(actor)
 	local job = Player.GetJob(actor)
@@ -388,16 +387,17 @@ function SkillUpgrade.ShowBasePanel(actor)
             local magicInfo = cfg_magic[skillID]            
             if magicInfo ~= nil then
                 seq = seq + 1
-                local picid = 40 + seq * 4
-                local textid1 = 40 + seq * 4 + 1
-                local textid2 = 40 + seq * 4 + 2
-                local picid2 = 40 + seq * 4 + 3
+                local picid = 40 + seq * 5
+                local textid1 = 40 + seq * 5 + 1
+                local textid2 = 40 + seq * 5 + 2                
+                local picid1 = 40 + seq * 5 + 3
+                local picid2 = 40 + seq * 5 + 4
                 if chooseid == -1 then          
                     chooseid = skillID
                     setplaydef(actor, CommonDefine.VAR_N_LAST_NPC_CHOOSEID, chooseid)
                 end
         
-                strPanelInfo = strPanelInfo..'<Img|id='..picid..'|children={'..textid1..','..textid2..','..picid2..'}|x=0.0|y=0.0|img=private/cc_skill/3.png|link=@function_button,'..
+                strPanelInfo = strPanelInfo..'<Img|id='..picid..'|children={'..textid1..','..textid2..','..picid1..','..picid2..'}|x=0.0|y=0.0|img=private/cc_skill/3.png|link=@function_button,'..
                     NPCPANEL_BUTTONFUNC_ID_2..','..skillID..'>'
                 if choosetype == UPGRADE_TYPE_LEVEL then
                     local nSkillLv = getskilllevel(actor, skillID)                    
@@ -409,6 +409,11 @@ function SkillUpgrade.ShowBasePanel(actor)
                         '<Text|id='..textid2..'|x=130.0|y=40.0|size=16|color='..CSS.NPC_LIGHTGREEN..'|text=技能'..nSkillUpLv..'阶>'
                 end
 
+                local magicInfoEx = cfg_magicinfo[skillID]
+                if magicInfoEx ~= nil then
+                    strPanelInfo = strPanelInfo..'<Img|id='..picid1..'|x=8.0|y=8.0|img=skill_icon/'..magicInfoEx.icon..'.jpg>'
+                end
+                
                 --对应当前选中的页签
                 if chooseid == skillID then
                     strPanelInfo = strPanelInfo..'<Img|id='..picid2..'|x=0.0|y=0.0|img=private/cc_skill/4.png>'
