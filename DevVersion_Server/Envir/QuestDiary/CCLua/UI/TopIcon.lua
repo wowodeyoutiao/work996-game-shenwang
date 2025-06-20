@@ -70,7 +70,11 @@ function TopIcon.OpenPanel(actor, sid, sparam)
         ActivityExtendGift.OpenPanel(actor)
     elseif sid == ICON_EVERYDAY_TASK then
         --每日必做
-        --EverydayTask.OpenPanel(actor)
+        if not Player.IsFunctionOpen(actor, CommonDefine.FUNC_ID_EVERYDAY_TASK, true) then
+            return
+        end
+        setplaydef(actor, CommonDefine.VAR_N_CURR_FUNCTION_ID, CommonDefine.FUNC_ID_EVERYDAY_TASK)        
+        EverydayTask.OpenPanel(actor)
     elseif sid == ICON_FREEVIP then
         --免费VIP
         if not Player.IsFunctionOpen(actor, CommonDefine.FUNC_ID_FREEVIP, true) then
@@ -129,12 +133,10 @@ function TopIcon.InnerExtendPanel(actor)
     end
     currIconX = currIconX - 80
     buttonstr = buttonstr..'<Button|id='..MAINICON_ID_6..'|x='..currIconX..'|y=10|nimg=private/cc_func_icon/9.png|link=@topicon_openpanel#sid='..ICON_FREEVIP..'>'
---[[
     if EverydayTask.CanShowIcon(actor) then
         currIconX = currIconX - 80
-        buttonstr = buttonstr..'<Button|id='..MAINICON_ID_5..'|x='..currIconX..'|y=35|nimg=private/cc_func_icon/5.png|link=@topicon_openpanel#sid='..ICON_EVERYDAY_TASK..'>'        
+        buttonstr = buttonstr..'<Button|id='..MAINICON_ID_5..'|x='..currIconX..'|y=10|nimg=private/cc_func_icon/10.png|link=@topicon_openpanel#sid='..ICON_EVERYDAY_TASK..'>'        
     end
-]]--
     addbutton(actor, 102, CommonDefine.ADD_BUTTON_ID_33, buttonstr)
 
     if curlv >= 40 then

@@ -233,7 +233,7 @@ function BaoZhuBossManager.OnMonKilled(hitter, mon)
                 SendSuccessDialogue(player, rewarditems)
 
                 --每日必做计数        
-                --EverydayTask.AddTaskCounter(player, CommonDefine.FUNC_ID_BAOZHU_BOSS, 1)  
+                EverydayTask.AddTaskCounter(player, CommonDefine.FUNC_ID_BAOZHU_BOSS, 1)  
             end            
         else
             --失败不结算 不加次数

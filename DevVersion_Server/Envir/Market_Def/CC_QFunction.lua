@@ -422,10 +422,6 @@ function singleboss_button(actor, sid)
     SingleBossManager.DoMapButton(actor, sid)
 end
 
-function everyday_task_button(actor, sid, sparam)
-    --EverydayTask.DoOperButton(actor, sid, sparam)
-end
-
 function treasuremap_button(actor, sid)
     --TreasureMap.DoOperButton(actor, sid)
 end
@@ -569,6 +565,8 @@ function function_button(actor, sid, sparam)
         JumpAreaManager.DoOperButton(actor, sid, sparam)
     elseif currfuncid == CommonDefine.FUNC_ID_BAOZHU then
         BaoZhuManagerNew.DoOperButton(actor, sid, sparam)
+    elseif currfuncid == CommonDefine.FUNC_ID_EVERYDAY_TASK then
+        EverydayTask.DoOperButton(actor, sid, sparam)
     end
 end
 

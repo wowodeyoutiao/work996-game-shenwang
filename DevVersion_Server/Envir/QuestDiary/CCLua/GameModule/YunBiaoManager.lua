@@ -223,7 +223,7 @@ function YunBiaoManager.AcceptBiaoChe(actor)
 
     
     --每日必做计数        
-    --EverydayTask.AddTaskCounter(actor, CommonDefine.FUNC_ID_YUNBIAO, 1)       
+    EverydayTask.AddTaskCounter(actor, CommonDefine.FUNC_ID_YUNBIAO, 1)       
 end
 
 function YunBiaoManager.RefreshBiaoChe(actor)

@@ -574,10 +574,7 @@ local function EquipPosUpgradeStarOnce(actor)
     end 
     
     --每日必做计数        
-    --[[
-    -----------------------------------------------------todo    
     EverydayTask.AddTaskCounter(actor, CommonDefine.FUNC_ID_EQUIPPOS_STAR, 1)          
-    ]]--
 end
 
 local function EquipPosStopAutoUpgradeStar(actor)
