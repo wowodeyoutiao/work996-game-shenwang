@@ -151,12 +151,12 @@ function GuanZhiManager.ShowBasePanel(actor)
     local playerjob = Player.GetJob(actor)
 
 
-    local strPanelInfo = '<Img|id=10|children={11,12,13,14,15,16}|x='..CSS.BASE_PANEL_START_X..'|y='..CSS.BASE_PANEL_START_Y..'|height=448|show=0|bg=1|move=0|reset=1|esc=1|loadDelay=0|img=private/cc_guanzhi/2.png>'..
+    local strPanelInfo = '<Img|id=10|children={11,12,15,16,90}|x='..CSS.BASE_PANEL_START_X..'|y='..CSS.BASE_PANEL_START_Y..'|height=448|show=0|bg=1|move=0|reset=1|esc=1|loadDelay=0|img=private/cc_guanzhi/2.png>'..
         '<Layout|id=11|x=812.0|y=12.0|width=80|height=80|link=@exit>'..
         '<Button|id=12|x=813.0|y=13.0|pimg=public/1900000511.png|nimg=public/1900000510.png|link=@exit>'..
         '<Button|id=16|x=700.0|y=14.0|esc=0|nimg=private/cc_common/button_help.png|pimg=private/cc_common/button_help.png|link=@show_rule_panel>'
 
-    local tempLeftX = 20
+    local tempLeftX = 10
     local tempLeftY = 10
     local idstr = '21,22,23'
     strPanelInfo = strPanelInfo..'<Text|id=21|text=当前官阶：|size=20|x='..tempLeftX..'|y='..tempLeftY..'|color='..CSS.NPC_YELLOW..'>'..
@@ -171,16 +171,16 @@ function GuanZhiManager.ShowBasePanel(actor)
         for _, descItem in ipairs(currPropDescTable) do
             currid = currid + 1
             idstr = idstr..','..currid
-            strPanelInfo = strPanelInfo..'<Text|id='..currid..'|text='..descItem.desc..'|size=15|x='..tempLeftX..'|y='..tempLeftY..'|color='..CSS.NPC_WHITE..'>'
+            strPanelInfo = strPanelInfo..'<Text|id='..currid..'|text='..descItem.desc..'|size=15|x='..(tempLeftX+40)..'|y='..tempLeftY..'|color='..CSS.NPC_WHITE..'>'
             tempLeftY = tempLeftY + 20
         end
-        strPanelInfo = strPanelInfo..'<Text|id=23|text=对低于自己官阶的目标增伤10%|size=15|x='..tempLeftX..'|y='..tempLeftY..'|color='..CSS.NPC_LIGHTGREEN..'>'
+        strPanelInfo = strPanelInfo..'<Text|id=23|text=对低于自己官阶的目标增伤10%|size=15|x='..(tempLeftX-20)..'|y='..tempLeftY..'|color='..CSS.NPC_LIGHTGREEN..'>'
         tempLeftY = tempLeftY + 20
     end
-    strPanelInfo = strPanelInfo..'<Layout|id=13|children={'..idstr..'}|x=80.0|y=100.0|width=180|height=200>'
+    strPanelInfo = strPanelInfo..'<Layout|id=13|children={'..idstr..'}|x=60.0|y=-16.0|width=180|height=200>'
 
 
-    local tempRightX = 20
+    local tempRightX = 10
     local tempRightY = 10
     local idstr = '41,42,43'
     if bCurrIsMaxLv then
@@ -201,13 +201,16 @@ function GuanZhiManager.ShowBasePanel(actor)
         strPanelInfo = strPanelInfo..'<Text|id=43|text=对低于自己官阶的目标增伤10%|size=15|x='..(tempRightX-20)..'|y='..tempRightY..'|color='..CSS.NPC_LIGHTGREEN..'>'
         tempRightY = tempRightY + 20
     end    
-    strPanelInfo = strPanelInfo..'<Layout|id=14|children={'..idstr..'}|x=580.0|y=100.0|width=180|height=200>'
+    strPanelInfo = strPanelInfo..'<Layout|id=14|children={'..idstr..'}|x=420.0|y=-16.0|width=180|height=200>'
 
+    strPanelInfo = strPanelInfo..'<Img|id=90|children={91,92,13,14}|x=112|y=90|img=private/cc_guanzhi/4.png>'..
+        '<Img|id=91|x=40|y=-20|img=private/cc_guanzhi/3.png>'..
+        '<Img|id=92|x=400|y=-20|img=private/cc_guanzhi/3.png>'
 
 
     local currexp = getplaydef(actor, CommonDefine.VAR_U_GUANZHI_CURREXP)
-    local tempCurrX = 20
-    local tempCurrY = 10
+    local tempCurrX = 36
+    local tempCurrY = 0
     idstr = '61,62,63,64,65,66,71,72'
     if bCurrIsMaxLv then
         strPanelInfo = strPanelInfo..'<Text|id=61|text=您已达到最高官阶|size=20|x='..(tempCurrX+200)..'|y='..(tempCurrY+20)..'|color='..CSS.NPC_YELLOW..'>'
@@ -228,16 +231,23 @@ function GuanZhiManager.ShowBasePanel(actor)
     if rewarditemdesc ~= '' then
         local getrewardflag = getplaydef(actor, CommonDefine.VAR_J_DAY_GUAZHI_GETREWARD)
         if getrewardflag == 1 then
-            tempCurrX = tempCurrX - 40
-            strPanelInfo = strPanelInfo..'<Text|id=71|text=今日官俸已领|size=20|x='..(tempCurrX-20)..'|y='..tempCurrY..'|color='..CSS.NPC_LIGHTGREEN..'>'..
-                    '<Text|id=72|text=('..rewarditemdesc..')|size=20|x='..(tempCurrX+120)..'|y='..tempCurrY..'|color='..CSS.NPC_YELLOW..'>'
+            tempCurrX = tempCurrX - 20
+            strPanelInfo = strPanelInfo..'<Text|id=71|text=今日官俸已领|size=20|x='..tempCurrX..'|y='..tempCurrY..'|color='..CSS.NPC_LIGHTGREEN..'>'
         else
-            tempCurrX = tempCurrX - 40
+            tempCurrX = tempCurrX - 20
             strPanelInfo = strPanelInfo..'<Button|id=71|x='..tempCurrX..'|y='..tempCurrY..'|color='..CSS.NPC_WHITE..
-                '|mimg=private/cc_common/button_1.png|nimg=private/cc_common/button_1.png|size=18|text=领取官俸|link=@function_button,'..NPCPANEL_BUTTONFUNC_ID_1..'>'..
-                '<Text|id=72|text=('..rewarditemdesc..')|x='..(tempCurrX+120)..'|y='..(tempCurrY+6)..'|size=20|color='..CSS.NPC_YELLOW..'>'
+                '|pimg=private/cc_common/button_down.png|mimg=private/cc_common/button_up.png|nimg=private/cc_common/button_up.png|size=18|text=领取官俸|link=@function_button,'
+                ..NPCPANEL_BUTTONFUNC_ID_1..'>'
             Player.AddRedPoint(actor, 0, 71, 10, 10)
         end
+
+        local sTempStr = ''
+        local itemidstr = ''
+        sTempStr, itemidstr = Item.GetNeedItemsGridShowInfo(actor, cfgGuanZhi[currlv].dayrewards_tab, tempCurrX+80, (tempCurrY+6), 80, 0.9)
+        if sTempStr ~= '' then
+            strPanelInfo = strPanelInfo..sTempStr
+            idstr = idstr..','..itemidstr
+        end        
     else
         strPanelInfo = strPanelInfo..'<Text|id=71|text=升阶后每日可领取官俸|x='..(tempCurrX-50)..'|y='..tempCurrY..'|color='..CSS.NPC_LIGHTGREEN..'>'
     end    
@@ -266,7 +276,6 @@ local function GetDayReward(actor)
     Player.GiveItemsToBagOrMail(actor, cfgGuanZhi[currlv].dayrewards_tab, '官俸每日奖励')
     setplaydef(actor, CommonDefine.VAR_J_DAY_GUAZHI_GETREWARD, 1)
 
-    main(actor)
 end
 
 --处理button回调

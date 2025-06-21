@@ -129,11 +129,16 @@ function Item.GetItemImgPath(itemid)
     return imgpath
 end
 
-function Item.GetNeedItemsShowInfo(actor, needitems_tab, basex, basey, imgbaseid, textbaseid, color, bNoBagItemFlag)
+function Item.GetNeedItemsShowInfo(actor, needitems_tab, basex, basey, imgbaseid, textbaseid, color, bNoBagItemFlag, textsize)
     local sInfo = ''
     local sIdstr = ''
     if BF_IsNullObj(actor) or (needitems_tab==nil) or (table.isempty(needitems_tab)) then
         return sInfo, sIdstr
+    end
+
+    local fontsize = 18
+    if textsize ~= nil then
+        fontsize = textsize
     end
 
     if needitems_tab then
@@ -151,7 +156,7 @@ function Item.GetNeedItemsShowInfo(actor, needitems_tab, basex, basey, imgbaseid
             end
             --sInfo = sInfo..'<Img|id='..itemimgid..'|x='..(itemgrid_x+90)..'|y='..(itemgrid_y-4)..'|width=24|height=24|img='..imgpath..'>'
             sInfo = sInfo..'<ItemShow|id='..itemimgid..'|itemid='..itemidx..'|num=1|x='..(itemgrid_x+70)..'|y='..(itemgrid_y-26)..'|scale=0.6|showtips=1|bgtype=0>'
-            sInfo = sInfo..'<Text|id='..itemtextid..'|text=X'..strNeedItemInfo..'|x='..(itemgrid_x+120)..'|y='..itemgrid_y..'|color='..color..'>'
+            sInfo = sInfo..'<Text|id='..itemtextid..'|text=X'..strNeedItemInfo..'|x='..(itemgrid_x+120)..'|y='..itemgrid_y..'|size='..fontsize..'|color='..color..'>'
             if sIdstr ~= '' then
                 sIdstr = sIdstr..','
             end
