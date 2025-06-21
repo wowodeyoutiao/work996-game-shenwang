@@ -46,16 +46,16 @@ SoulStoneManager.SLOT_ID = {
 } 
 
 SoulStoneManager.SLOT_CFG_INFO = {
-    [SoulStoneManager.SLOT_ID.SLOT_RED_1] = {id = SoulStoneManager.SLOT_ID.SLOT_RED_1, name = 'ºì²Û¢ñ', shape = SoulStoneManager.STONE_SHAPE.RED, color = CSS.QUALITY_RED},
-    [SoulStoneManager.SLOT_ID.SLOT_RED_2] = {id = SoulStoneManager.SLOT_ID.SLOT_RED_2, name = 'ºì²Û¢ò', shape = SoulStoneManager.STONE_SHAPE.RED, color = CSS.QUALITY_RED},
-    [SoulStoneManager.SLOT_ID.SLOT_RED_3] = {id = SoulStoneManager.SLOT_ID.SLOT_RED_3, name = 'ºì²Û¢ó', shape = SoulStoneManager.STONE_SHAPE.RED, color = CSS.QUALITY_RED},
-    [SoulStoneManager.SLOT_ID.SLOT_BLUE_1] = {id = SoulStoneManager.SLOT_ID.SLOT_BLUE_1, name = 'À¶²Û¢ñ', shape = SoulStoneManager.STONE_SHAPE.BLUE, color = CSS.QUALITY_BLUE},
-    [SoulStoneManager.SLOT_ID.SLOT_BLUE_2] = {id = SoulStoneManager.SLOT_ID.SLOT_BLUE_2, name = 'À¶²Û¢ò', shape = SoulStoneManager.STONE_SHAPE.BLUE, color = CSS.QUALITY_BLUE},
-    [SoulStoneManager.SLOT_ID.SLOT_GREEN_1] = {id = SoulStoneManager.SLOT_ID.SLOT_GREEN_1, name = 'ÂÌ²Û¢ñ', shape = SoulStoneManager.STONE_SHAPE.GREEN, color = CSS.QUALITY_GREEN},
-    [SoulStoneManager.SLOT_ID.SLOT_GREEN_2] = {id = SoulStoneManager.SLOT_ID.SLOT_GREEN_2, name = 'ÂÌ²Û¢ò', shape = SoulStoneManager.STONE_SHAPE.GREEN, color = CSS.QUALITY_GREEN},
-    [SoulStoneManager.SLOT_ID.SLOT_YELLOW_1] = {id = SoulStoneManager.SLOT_ID.SLOT_YELLOW_1, name = '»Æ²Û¢ñ', shape = SoulStoneManager.STONE_SHAPE.YELLOW, color = CSS.QUALITY_ORANGE},
-    [SoulStoneManager.SLOT_ID.SLOT_YELLOW_2] = {id = SoulStoneManager.SLOT_ID.SLOT_YELLOW_2, name = '»Æ²Û¢ò', shape = SoulStoneManager.STONE_SHAPE.YELLOW, color = CSS.QUALITY_ORANGE},
-    [SoulStoneManager.SLOT_ID.SLOT_YELLOW_3] = {id = SoulStoneManager.SLOT_ID.SLOT_YELLOW_3, name = '»Æ²Û¢ó', shape = SoulStoneManager.STONE_SHAPE.YELLOW, color = CSS.QUALITY_ORANGE},    
+    [SoulStoneManager.SLOT_ID.SLOT_RED_1] = {id = SoulStoneManager.SLOT_ID.SLOT_RED_1, name = 'ºì', shape = SoulStoneManager.STONE_SHAPE.RED, color = CSS.QUALITY_RED},
+    [SoulStoneManager.SLOT_ID.SLOT_RED_2] = {id = SoulStoneManager.SLOT_ID.SLOT_RED_2, name = 'ºì', shape = SoulStoneManager.STONE_SHAPE.RED, color = CSS.QUALITY_RED},
+    [SoulStoneManager.SLOT_ID.SLOT_RED_3] = {id = SoulStoneManager.SLOT_ID.SLOT_RED_3, name = 'ºì', shape = SoulStoneManager.STONE_SHAPE.RED, color = CSS.QUALITY_RED},
+    [SoulStoneManager.SLOT_ID.SLOT_BLUE_1] = {id = SoulStoneManager.SLOT_ID.SLOT_BLUE_1, name = 'À¶', shape = SoulStoneManager.STONE_SHAPE.BLUE, color = CSS.QUALITY_BLUE},
+    [SoulStoneManager.SLOT_ID.SLOT_BLUE_2] = {id = SoulStoneManager.SLOT_ID.SLOT_BLUE_2, name = 'À¶', shape = SoulStoneManager.STONE_SHAPE.BLUE, color = CSS.QUALITY_BLUE},
+    [SoulStoneManager.SLOT_ID.SLOT_GREEN_1] = {id = SoulStoneManager.SLOT_ID.SLOT_GREEN_1, name = 'ÂÌ', shape = SoulStoneManager.STONE_SHAPE.GREEN, color = CSS.QUALITY_GREEN},
+    [SoulStoneManager.SLOT_ID.SLOT_GREEN_2] = {id = SoulStoneManager.SLOT_ID.SLOT_GREEN_2, name = 'ÂÌ', shape = SoulStoneManager.STONE_SHAPE.GREEN, color = CSS.QUALITY_GREEN},
+    [SoulStoneManager.SLOT_ID.SLOT_YELLOW_1] = {id = SoulStoneManager.SLOT_ID.SLOT_YELLOW_1, name = '»Æ', shape = SoulStoneManager.STONE_SHAPE.YELLOW, color = CSS.QUALITY_ORANGE},
+    [SoulStoneManager.SLOT_ID.SLOT_YELLOW_2] = {id = SoulStoneManager.SLOT_ID.SLOT_YELLOW_2, name = '»Æ', shape = SoulStoneManager.STONE_SHAPE.YELLOW, color = CSS.QUALITY_ORANGE},
+    [SoulStoneManager.SLOT_ID.SLOT_YELLOW_3] = {id = SoulStoneManager.SLOT_ID.SLOT_YELLOW_3, name = '»Æ', shape = SoulStoneManager.STONE_SHAPE.YELLOW, color = CSS.QUALITY_ORANGE},    
 }
 
 --»êÊ¯î¿°íÅäÖÃ
@@ -683,8 +683,8 @@ function SoulStoneManager.ShowBasePanel(actor)
 
         strPanelInfo = strPanelInfo..'<Img|id='..baseid..'|children={'..textid1..','..textid2..','..picid2..'}|x='..gridx..'|y='..gridy..'|img=private/cc_soulstone/14.png|link=@function_button,'..
             SOULSTONE_BUTTONFUNC_ID_3..','..value.id..'>'
-        strPanelInfo = strPanelInfo..'<Text|id='..textid1..'|x=10.0|y=10.0|size=18|color='..CSS.NPC_WHITE..'|text='..value.name..'>'
-            ..'<Text|id='..textid2..'|x=10.0|y=30.0|size=18|color='..CSS.NPC_WHITE..'|text=('..stonenum..'/4)>'                 
+        strPanelInfo = strPanelInfo..'<Text|id='..textid1..'|x=18.0|y=10.0|size=18|color='..CSS.NPC_WHITE..'|text='..value.name..'>'
+            ..'<Text|id='..textid2..'|x=10.0|y=30.0|size=16|color='..CSS.NPC_WHITE..'|text=('..stonenum..'/4)>'                 
 
         if chooseid == value.id then
             --¶ÔÓ¦µ±Ç°Ñ¡ÖÐµÄ×°±¸²ÛÎ»

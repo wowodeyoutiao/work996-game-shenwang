@@ -393,9 +393,9 @@ function EquipPosStrengthManager.ShowBasePanel(actor)
         end
         idstr1 = idstr1..(30+seq)
     end
-    strPanelInfo = strPanelInfo..'<ListView|id=14|children={'..idstr1..'}|x=65.0|y=56.0|width=210|height=440|margin=0|direction=1>'
-    local choosepos = getplaydef(actor, CommonDefine.VAR_N_LAST_NPC_CHOOSEID)   
-
+    
+    local defaultseq = 1
+    local choosepos = getplaydef(actor, CommonDefine.VAR_N_LAST_NPC_CHOOSEID)       
     for seq, value in ipairs(posTab) do
         local baseid = 30 + seq
         local textid1 = baseid * 10 + 1
@@ -429,6 +429,7 @@ function EquipPosStrengthManager.ShowBasePanel(actor)
             --对应当前选中的装备槽位
             strPanelInfo = strPanelInfo..'<Img|id='..picid2..'|x=0|y=0|img=private/cc_common/listviewitem_2.png>'
             strPanelInfo = strPanelInfo..GetSingleEquipPosShowInfo(actor, value.pos)                
+            defaultseq = seq
         end              
       
         if IsPosCanUpgradeOnce(actor, value.pos, infoTab) then
@@ -437,6 +438,8 @@ function EquipPosStrengthManager.ShowBasePanel(actor)
             Player.DelRedPoint(actor, 0, baseid)
         end
     end
+    strPanelInfo = strPanelInfo..'<ListView|id=14|children={'..idstr1..'}|x=65.0|y=56.0|width=210|height=440|margin=0|reload=1|default='..defaultseq..'|direction=1>'
+release_print('defaultseq:'..defaultseq)
 
     BF_ShowSpecialUI(actor, strPanelInfo)        
 end
