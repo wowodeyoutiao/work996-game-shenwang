@@ -73,7 +73,7 @@ function PublicBossManager.OnEnterMap(actor, mapidstr, x, y)
     setplaydef(actor, CommonDefine.VAR_N_COMMON_LOCAL_RELIVE_TIMES, 0)
 
     --每日必做计数        
-    --EverydayTask.AddTaskCounter(actor, CommonDefine.FUNC_ID_PUBLIC_BOSS, 1)    
+    EverydayTask.AddTaskCounter(actor, CommonDefine.FUNC_ID_PUBLIC_BOSS, 1)    
 end
 
 --离开地图的回调

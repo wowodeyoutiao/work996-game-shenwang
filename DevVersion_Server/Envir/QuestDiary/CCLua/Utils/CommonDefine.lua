@@ -485,9 +485,7 @@ CommonDefine = {
     VAR_J_DAY_MOFANG_BUYTIMES = 'J5',           --玩家今日魔方阵购买次数
     VAR_J_DAY_MOFANG_ENTER_TIME = 'J6',         --玩家今日魔方阵进入时间
     VAR_J_DAY_MOFANG_STAY_SECONDS = 'J7',       --玩家今日魔方阵可待时间（秒）
-    
-
-    VAR_J_DAY_EVERYDAYTASK_FINALREWARD_IDX = 'J15',     --玩家 每日任务累计领奖编号     
+       
     VAR_J_DAY_TREASUREMAP_USETIMES = 'J16',             --玩家 今日使用藏宝图次数
     VAR_J_DAY_TREASUREMAP_NO_PANELTIP_FLAG = 'J17',     --玩家 今日不再显示藏宝图的提示面板
     ]]--
@@ -507,7 +505,7 @@ CommonDefine = {
     VAR_J_DAY_SINGLEBOSS_BUYTIMES = 'J112',             --玩家今日购买单人首领的次数    
     VAR_J_DAY_BIAOCHE_ACCEPT_TIMES = 'J113',            --玩家 今日接镖次数    
     VAR_J_DAY_JUMPAREA_BOSS_LAST_ENTERTIME = 'J114',    --玩家今日上次进入跨服boss的时间
-
+    VAR_J_DAY_EVERYDAYTASK_FINALREWARD_IDX = 'J115',     --玩家 每日任务累计领奖编号  
 
     
     --玩家字符变量，下线保存，0点重置 Z0 - Z499

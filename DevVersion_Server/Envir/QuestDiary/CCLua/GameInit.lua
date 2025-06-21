@@ -11,6 +11,7 @@ local function _Includes()
     cfg_equip = require("Envir/QuestDiary/CCLua/GameConfig/cfg_equip")
     cfg_item = require("Envir/QuestDiary/CCLua/GameConfig/cfg_item")
     cfg_magic= require("Envir/QuestDiary/CCLua/GameConfig/cfg_magic")
+    cfg_magicinfo= require("Envir/QuestDiary/CCLua/GameConfig/cfg_magicinfo")
     -- cfg_game_data = require("Envir/QuestDiary/CCLua/GameConfig/cfg_game_data")
 
     cfgEquipPosStrength = require("Envir/QuestDiary/CCLua/GameConfig/cfgEquipPosStrength")
@@ -36,7 +37,7 @@ local function _Includes()
     cfgRecycleSetting = require("Envir/QuestDiary/CCLua/GameConfig/cfgRecycleSetting")
     cfgPublicBossInfo = require("Envir/QuestDiary/CCLua/GameConfig/cfgPublicBossInfo")
     cfgSingleBossInfo = require("Envir/QuestDiary/CCLua/GameConfig/cfgSingleBossInfo")
-    -- cfgEverydayTask = require("Envir/QuestDiary/CCLua/GameConfig/cfgEverydayTask")
+    cfgEverydayTask = require("Envir/QuestDiary/CCLua/GameConfig/cfgEverydayTask")
     cfgItemCompose = require("Envir/QuestDiary/CCLua/GameConfig/cfgItemCompose")
     cfgItemValidComposeList = {}
     cfgUnpackItem = require("Envir/QuestDiary/CCLua/GameConfig/cfgUnpackItem")    
@@ -95,7 +96,7 @@ local function _Includes()
     require("Envir/QuestDiary/CCLua/GameModule/ActivityExtendGift")
     require("Envir/QuestDiary/CCLua/GameModule/PublicBossManager")
     require("Envir/QuestDiary/CCLua/GameModule/SingleBossManager")
-    -- require("Envir/QuestDiary/CCLua/GameModule/EverydayTask")
+    require("Envir/QuestDiary/CCLua/GameModule/EverydayTask")
     -- require("Envir/QuestDiary/CCLua/GameModule/TreasureMap")
     require("Envir/QuestDiary/CCLua/GameModule/YunBiaoManager")    
     require("Envir/QuestDiary/CCLua/GameModule/OpenSuperBoxManager")
@@ -502,14 +503,14 @@ local function _Includes()
         end
     end
 
-    -- --EverydayTask
-    -- for _, value in pairs(cfgEverydayTask) do
-    --     if (value.finishrewards ~= nil) and (value.finishrewards ~= '') then
-    --         value.finishrewards_tab = BF_Json2Table(value.finishrewards)
-    --     else
-    --         value.finishrewards_tab = {}
-    --     end     
-    -- end
+    --EverydayTask
+    for _, value in pairs(cfgEverydayTask) do
+        if (value.finishrewards ~= nil) and (value.finishrewards ~= '') then
+            value.finishrewards_tab = BF_Json2Table(value.finishrewards)
+        else
+            value.finishrewards_tab = {}
+        end     
+    end
 
     --UnpackItem
     for _, value in pairs(cfgUnpackItem) do

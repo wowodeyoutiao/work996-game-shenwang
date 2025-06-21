@@ -420,8 +420,8 @@ function EquipPosStrengthManager.ShowBasePanel(actor)
 
         strPanelInfo = strPanelInfo..'<Img|id='..baseid..'|children={'..tempidstr..'}|x=-6.0|y=0.0|img=private/cc_common/listviewitem_1.png|link=@function_button,'..
             EQUIPPOS_STRENGTH_BUTTONFUNC_ID_1..','..value.pos..'>'
-        strPanelInfo = strPanelInfo..'<Text|id='..textid1..'|x=80.0|y=14.0|size=18|color='..equipcolor..'|text='..equipname..'>'
-            ..'<Text|id='..textid2..'|x=80.0|y=44.0|size=18|color='..CSS.NPC_WHITE..'|text='..value.level..'级>'
+        strPanelInfo = strPanelInfo..'<Text|id='..textid1..'|x=85.0|y=14.0|size=18|color='..equipcolor..'|text='..equipname..'>'
+            ..'<Text|id='..textid2..'|x=85.0|y=44.0|size=18|color='..CSS.NPC_WHITE..'|text='..value.level..'级>'
         strPanelInfo = strPanelInfo..'<EquipShow|id='..equipshowid..'|x=6.0|y=6.0|showtips=0|effectshow=0|reload=1|index='..value.pos..'>'..
             '<Img|id='..picid3..'|x=8|y=12|img='..strPosIconImg..'>'
 
@@ -510,10 +510,7 @@ local function EquipPosStrengthUpgradeOnce(actor)
     TaskManager.OnEquipStrength(actor)
 
     --每日必做计数       
-    --[[
-    ------------------------------------------------todo    
     EverydayTask.AddTaskCounter(actor, CommonDefine.FUNC_ID_EQUIPPOS_STRENGTH, 1)      
-    ]]--
 end
 
 --装备位 升级十次
@@ -548,6 +545,7 @@ local function EquipPosStrengthUpgradeTenTimes(actor)
     end
 
     local bLevelChanged = false
+    local nFinalUpgradeLevel = 0
     for i = 1, 10, 1 do
         local nextPosLevel = curPosLevel + 1
         local bJob = Player.GetJob(actor)        
@@ -576,6 +574,7 @@ local function EquipPosStrengthUpgradeTenTimes(actor)
         infoTab[sid] = nextPosLevel
         curPosLevel = nextPosLevel
         bLevelChanged = true
+        nFinalUpgradeLevel = nFinalUpgradeLevel + 1
     end
 
     if bLevelChanged then
@@ -591,10 +590,7 @@ local function EquipPosStrengthUpgradeTenTimes(actor)
         TaskManager.OnEquipStrength(actor)        
         
         --每日必做计数  
-        --[[
-        ------------------------------------------------todo
-        EverydayTask.AddTaskCounter(actor, CommonDefine.FUNC_ID_EQUIPPOS_STRENGTH, 10)              
-        ]]--
+        EverydayTask.AddTaskCounter(actor, CommonDefine.FUNC_ID_EQUIPPOS_STRENGTH, nFinalUpgradeLevel)              
     end
 end
 

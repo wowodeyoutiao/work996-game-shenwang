@@ -82,6 +82,7 @@ function GMHelper.OpenPanel(actor)
         '<Button|x=200|y=210|nimg=public/bg_hhzy_01_3.png|text=各种升级材料加2000|link=@gmhelper_button#sid1=5>'..
         '<Button|x=200|y=240|nimg=public/bg_hhzy_01_3.png|text=免费VIP升级|link=@gmhelper_button#sid1=30>'..
         '<Button|x=200|y=270|nimg=public/bg_hhzy_01_3.png|text=删除支线任务|link=@gmhelper_button#sid1=37>'..
+        '<Button|x=200|y=300|nimg=public/bg_hhzy_01_3.png|text=增加500功勋|link=@gmhelper_button#sid1=14>'..
 
         '<Button|x=350|y=30|nimg=public/bg_hhzy_01_3.png|text=重置跨服活动配置|link=@gmhelper_button#sid1=1996>'..
         '<Button|x=350|y=60|nimg=public/bg_hhzy_01_3.png|text=设置跨服boss配置|link=@gmhelper_button#sid1=1997>'..
@@ -140,8 +141,7 @@ function GMHelper.OpenPanel(actor)
         '<Button|x=40|y=240|nimg=public/bg_hhzy_01_3.png|text=穿戴装备可洗炼|link=@gmhelper_button,10>'..
         
         '<Button|x=200|y=60|nimg=public/bg_hhzy_01_3.png|text=清空装备小极品|link=@gmhelper_button,11>'..
-        '<Button|x=200|y=90|nimg=public/bg_hhzy_01_3.png|text=测试自定义属性|link=@gmhelper_button,12>'..                      
-        '<Button|x=200|y=150|nimg=public/bg_hhzy_01_3.png|text=增加500功勋|link=@gmhelper_button,14>'..                      
+        '<Button|x=200|y=90|nimg=public/bg_hhzy_01_3.png|text=测试自定义属性|link=@gmhelper_button,12>'..                                                    
         '<Button|x=350|y=60|nimg=public/bg_hhzy_01_3.png|text=增加八格背包|link=@gmhelper_button,16>'..                      
         
         '<Button|x=350|y=150|nimg=public/bg_hhzy_01_3.png|text=随机清空地图|link=@gmhelper_button,19>'..

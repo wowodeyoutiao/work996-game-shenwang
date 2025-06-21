@@ -97,6 +97,7 @@ function NewMainUIBase.OpenPanel(actor, sid)
 
         setplaydef(actor, CommonDefine.VAR_N_LAST_NPC_CHOOSEID, 0)
         setplaydef(actor, CommonDefine.VAR_N_NPC_TEMPPARAM1, 0)
+        setplaydef(actor, CommonDefine.VAR_N_ITEM_COMPOSE_CHOOSE_ITEM1, 0)
         ItemComposeManager.ShowBasePanel(actor)
     end
 end
