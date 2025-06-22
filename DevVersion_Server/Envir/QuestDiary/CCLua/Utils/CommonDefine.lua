@@ -73,6 +73,7 @@ CommonDefine = {
     EQUIPPOS_SSH_10 = 39,
     EQUIPPOS_SSH_11 = 40,
     EQUIPPOS_SSH_12 = 41,
+    EQUIPPOS_MAX = 41,   --等于最后一个装备位
 
     --装备位对应的名称
     EQUIPPOS_NAME = {},

@@ -362,6 +362,25 @@ function EquipPosStrengthManager.ShowBasePanel(actor)
     end
     local posTab = {}
     local bChanged = false
+  
+    for i = 0, CommonDefine.EQUIPPOS_MAX, 1 do
+        local pos = i
+        local posname = CommonDefine.EQUIPPOS_NAME[i]
+        if (posname ~= nil) and (posname ~= '') then
+            if EquipPosStrengthManager.IsValidEquipPosForStrength(pos, 1) then
+                local sid = pos..''
+                if infoTab[sid] == nil then
+                    infoTab[sid] = 0
+                    bChanged = true
+                end
+                local tab = {pos=pos, name=posname, level=infoTab[sid]}
+                posTab[#posTab + 1] = tab  
+                release_print('pos:'..posname)                            
+            end
+        end
+    end
+    
+    --[[
     for pos, posname in pairs(CommonDefine.EQUIPPOS_NAME) do
         if EquipPosStrengthManager.IsValidEquipPosForStrength(pos, 1) then
             local sid = pos..''
@@ -370,9 +389,10 @@ function EquipPosStrengthManager.ShowBasePanel(actor)
                 bChanged = true
             end
             local tab = {pos=pos, name=posname, level=infoTab[sid]}
-            posTab[#posTab + 1] = tab                                                
+            posTab[#posTab + 1] = tab           
         end   
     end
+    ]]--
 
     if bChanged == true then
         infoStr = tbl2json(infoTab)
@@ -439,7 +459,6 @@ function EquipPosStrengthManager.ShowBasePanel(actor)
         end
     end
     strPanelInfo = strPanelInfo..'<ListView|id=14|children={'..idstr1..'}|x=65.0|y=56.0|width=210|height=440|margin=0|reload=1|default='..defaultseq..'|direction=1>'
-release_print('defaultseq:'..defaultseq)
 
     BF_ShowSpecialUI(actor, strPanelInfo)        
 end

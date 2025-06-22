@@ -417,6 +417,24 @@ function EquipPosStarManager.ShowBasePanel(actor)
 
     local posTab = {}
     local bChanged = false
+
+    for i = 0, CommonDefine.EQUIPPOS_MAX, 1 do
+        local pos = i
+        local posname = CommonDefine.EQUIPPOS_NAME[i]
+        if (posname ~= nil) and (posname ~= '') then
+            if EquipPosStarManager.IsValidEquipPosForUpgradeStar(pos) then
+                local sid = pos..''
+                if infoTab[sid] == nil then
+                    infoTab[sid] = 0
+                    bChanged = true
+                end
+                local tab = {pos=pos, name=posname, level=infoTab[sid]}
+                posTab[#posTab + 1] = tab                                                
+            end  
+        end
+    end    
+
+    --[[
     for pos, posname in pairs(CommonDefine.EQUIPPOS_NAME) do
         if EquipPosStarManager.IsValidEquipPosForUpgradeStar(pos) then
             local sid = pos..''
@@ -428,6 +446,7 @@ function EquipPosStarManager.ShowBasePanel(actor)
             posTab[#posTab + 1] = tab                                                
         end   
     end
+    ]]--
 
     if bChanged == true then
         infoStr = tbl2json(infoTab)
