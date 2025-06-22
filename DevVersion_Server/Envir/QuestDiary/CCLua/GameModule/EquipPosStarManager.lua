@@ -506,7 +506,12 @@ function EquipPosStarManager.ShowBasePanel(actor)
             defaultseq = seq
         end
     end
-    strPanelInfo = strPanelInfo..'<ListView|id=14|children={'..idstr1..'}|x=65.0|y=56.0|width=210|height=440|margin=0|reload=1|default='..defaultseq..'|direction=1>'
+
+    if defaultseq <= 5 then
+        strPanelInfo = strPanelInfo..'<ListView|id=14|children={'..idstr1..'}|x=65.0|y=56.0|width=210|height=440|margin=0|reload=1|direction=1>'
+    else
+        strPanelInfo = strPanelInfo..'<ListView|id=14|children={'..idstr1..'}|x=65.0|y=56.0|width=210|height=440|margin=0|reload=1|default='..defaultseq..'|direction=1>'
+    end
 
     BF_ShowSpecialUI(actor, strPanelInfo)
 end
