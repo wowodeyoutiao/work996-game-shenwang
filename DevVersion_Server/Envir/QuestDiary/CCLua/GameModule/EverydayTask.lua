@@ -52,14 +52,11 @@ local function GetSingleTaskStatus(actor, taskid, countertab, rewardtab)
         if countertab[sid] then
             currnum = countertab[sid]
         end
-        --[[
         if currnum >= singletask.tasktargnum then
             return TASK_STATUS_FINISHED, 0
         else
             return TASK_STATUS_NOT_FINISH, 0
         end
-        ]]--
-        return TASK_STATUS_FINISHED, 0
     end
 end
 
