@@ -197,7 +197,7 @@ function OfflineHuWeiManager.ShowBasePanel(actor, sparam)
     local strPanelInfo = '<Img|id=10|children={11,12,13,14,15,16,17,18,19,100}|x=150.0|y=50.0|height=448|show=0|move=0|reset=1|bg=1|img=private/cc_offline/1.png|esc=1|loadDelay=0>'..
         '<Layout|id=11|x=812.0|y=12.0|width=80|height=80|link=@exit>'..
         '<Button|id=12|x=813.0|y=13.0|pimg=public/1900000511.png|nimg=public/1900000510.png|link=@exit>'..        
-        '<Text|id=13|x=190.0|y=18.0|size=20|color=161|text='..cfgHuWeiNpc.npcname..'>'..
+        --'<Text|id=13|x=190.0|y=18.0|size=20|color=161|text='..cfgHuWeiNpc.npcname..'>'..
         '<Button|id=18|x=700.0|y=14.0|esc=0|nimg=private/cc_common/button_help.png|pimg=private/cc_common/button_help.png|link=@show_rule_panel>'
 
     strPanelInfo = strPanelInfo..Item.GetBagItemsShowInfo(actor, cfgHuWeiNpc.showbagitems, 19)
@@ -213,8 +213,8 @@ function OfflineHuWeiManager.ShowBasePanel(actor, sparam)
         local imgid2 = baseid + 3
         idstr1 = idstr1..','..baseid
         strPanelInfo = strPanelInfo..'<Layout|id='..baseid..'|children={'..imgid1..','..imgid2..','..textid1..'}|x=0|y=0|width=120|height=106>'..
-            '<Img|id='..imgid1..'|x=10.0|y=0.0|img=private/cc_offline/2.png|link=@show_base_panel,'..ctype..'>'..
-            '<Text|id='..textid1..'|x=44|y=56|size=16|color='..CSS.NPC_WHITE..'|text='..showname..'>'
+            '<Img|id='..imgid1..'|x=10.0|y=0.0|img=private/cc_offline/headicon_'..ctype..'.png|link=@show_base_panel,'..ctype..'>'..
+            '<Text|id='..textid1..'|x=90|y=80|size=16|color='..CSS.NPC_WHITE..'|text='..showname..'>'
         if i == huweitype then
             strPanelInfo = strPanelInfo..'<Img|id='..imgid2..'|x=10.0|y=0.0|img=private/cc_offline/3.png>'
         end
@@ -279,7 +279,8 @@ function OfflineHuWeiManager.ShowBasePanel(actor, sparam)
     strPanelInfo = strPanelInfo..'<Img|id=92|children={'..idstr..'}|x=360.0|y=60.0|img=private/cc_offline/5.png>'
     strPanelInfo = strPanelInfo..'<Img|id=93|children={94}|x=180.0|y=10.0|img=private/cc_offline/4.png>'..
         '<Text|id=94|text='..cfgHuWeiNpc.npcname..'|size=20|x=100|y=8|color='..CSS.NPC_YELLOW..'>'
-    strPanelInfo = strPanelInfo..'<Layout|id=15|children={91,92,93,94}|x=200.0|y=56.0|width=580|height=240>'
+    strPanelInfo = strPanelInfo..'<Img|id=95|x=210.0|y=60.0|img=private/cc_offline/body_'..huweitype..'.png>'
+    strPanelInfo = strPanelInfo..'<Layout|id=15|children={91,92,93,95}|x=200.0|y=56.0|width=580|height=240>'    
 
 
     idstr = '51,52,53'

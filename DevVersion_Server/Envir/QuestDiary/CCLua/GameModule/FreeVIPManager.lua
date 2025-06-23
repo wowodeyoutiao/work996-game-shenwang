@@ -344,7 +344,7 @@ local function GetSingleShowInfo(actor, viplevel)
             strPanelInfo = strPanelInfo..'<Text|id='..textid1..'|text=任务内容:'..taskdesc..
                 '|size=15|x='..tempCurrX..'|y='..tempCurrY..'|color='..CSS.NPC_YELLOW..'>'                
 
-            tempCurrY = tempCurrY + 20
+            tempCurrY = tempCurrY + 25
             --local sRewardInfo = BF_GetItemTableDescStr(nil, taskconfig.finishrewards_tab)
             --strPanelInfo = strPanelInfo..'<Text|id='..textid3..'|text=  任务奖励: '..sRewardInfo..'|size=15|x='..tempCurrX..'|y='..tempCurrY..'|color='..CSS.NPC_WHITE..'>'
             strPanelInfo = strPanelInfo..'<Text|id='..textid3..'|text=  任务奖励: |size=15|x='..tempCurrX..'|y='..tempCurrY..'|color='..CSS.NPC_WHITE..'>'
@@ -356,7 +356,7 @@ local function GetSingleShowInfo(actor, viplevel)
                 itemidstr = itemidstr..','..sTempIdStr              
             end
 
-            tempCurrY = tempCurrY + 20
+            tempCurrY = tempCurrY + 25
             local color1 = CSS.NPC_WHITE
             if currcounter >= taskconfig.tasktargnum then
                 color1 = CSS.NPC_LIGHTGREEN                
@@ -368,14 +368,14 @@ local function GetSingleShowInfo(actor, viplevel)
 
             if currVIPLv + 1 == viplevel then
                 if currcounter < taskconfig.tasktargnum then
-                    strPanelInfo = strPanelInfo..'<Button|id='..textid4..'|x='..(tempCurrX+100)..'|y='..tempCurrY..'|color='..CSS.NPC_WHITE..
+                    strPanelInfo = strPanelInfo..'<Button|id='..textid4..'|x='..(tempCurrX+120)..'|y='..tempCurrY..'|width=60|color='..CSS.NPC_WHITE..
                         '|pimg=private/cc_common/button_down1.png|mimg=private/cc_common/button_up1.png|nimg=private/cc_common/button_up1.png|size=15|text=前往|link=@function_button,'..NPCPANEL_BUTTONFUNC_ID_2..','..taskconfig.tasktype..'>'
                 else 
                     if getflagstatus(actor, FreeVIPManager.TASK_DRAWREWARD_FLAGLIST[i]) == 1 then
                         strPanelInfo = strPanelInfo..'<Text|id='..textid4..'|text=已完成|size=15|x='..(tempCurrX+100)..'|y='..tempCurrY..'|color='..CSS.NPC_LIGHTGREEN..'>'
                         finishtasknum = finishtasknum + 1
                     else
-                        strPanelInfo = strPanelInfo..'<Button|id='..textid4..'|x='..(tempCurrX+100)..'|y='..tempCurrY..'|color='..CSS.NPC_WHITE..
+                        strPanelInfo = strPanelInfo..'<Button|id='..textid4..'|x='..(tempCurrX+120)..'|y='..tempCurrY..'|width=60|color='..CSS.NPC_WHITE..
                             '|pimg=private/cc_common/button_down1.png|mimg=private/cc_common/button_up1.png|nimg=private/cc_common/button_up1.png|size=15|text=领奖|link=@function_button,'..NPCPANEL_BUTTONFUNC_ID_3..','..i..'>'
                     end
                 end
@@ -385,15 +385,15 @@ local function GetSingleShowInfo(actor, viplevel)
         end
         tempCurrY = tempCurrY + 40
         
-        strPanelInfo = strPanelInfo..'<Img|id='..baseid..'|children={'..idstr..','..itemidstr..'}|x='..basex..'|y='..basey..'|img=private/cc_freevip/6.png>'
+        strPanelInfo = strPanelInfo..'<Img|id='..baseid..'|children={'..idstr..','..itemidstr..'}|x='..basex..'|y='..basey..'|height=88|img=private/cc_freevip/6.png>'
         if i == 3 then
-            basex = 200
+            basex = 198
             basey = 0
         else
-            basey = basey + 80
+            basey = basey + 90
         end                  
     end
-    strPanelInfo = strPanelInfo..'<Layout|id=13|children={'..panelstr..'}|x=400.0|y=150.0|width=390|height=180>'
+    strPanelInfo = strPanelInfo..'<Layout|id=13|children={'..panelstr..'}|x=396.0|y=150.0|width=390|height=180>'
 
     
     local currLvConfig = cfgFreeVIP[viplevel]
@@ -453,7 +453,7 @@ local function GetSingleShowInfo(actor, viplevel)
         else
             local sTempStr = ''
             local itemidstr = ''
-            sTempStr, itemidstr = Item.GetNeedItemsGridShowInfo(actor, rewardtab, (tempLeftX-80), tempLeftY, 90)
+            sTempStr, itemidstr = Item.GetNeedItemsGridShowInfo(actor, rewardtab, (tempLeftX-90), tempLeftY-20, 90, 0.9)
             if sTempStr ~= '' then
                 strPanelInfo = strPanelInfo..sTempStr
                 idstr = idstr..','..itemidstr
@@ -461,8 +461,8 @@ local function GetSingleShowInfo(actor, viplevel)
         end
     end 
 
-    local tempCurrX = 320
-    local tempCurrY = 15
+    local tempCurrX = 24
+    local tempCurrY = 12
     if idstr ~= '' then
         idstr = idstr..','
     end
@@ -472,14 +472,14 @@ local function GetSingleShowInfo(actor, viplevel)
         if getplaydef(actor, CommonDefine.VAR_J_DAY_FREEVIP_REWARDTIMES) == 0 then
             if currVIPLv > 0 then
                 strPanelInfo = strPanelInfo..'<Button|id=351|x='..(tempCurrX+30)..'|y='..tempCurrY..'|color='..CSS.NPC_WHITE..
-                '|pimg=private/cc_common/button_down.png|mimg=private/cc_common/button_up.png|nimg=private/cc_common/button_up.png|size=18|text=领取福利|link=@function_button,'..
+                '|pimg=private/cc_common/button_down1.png|mimg=private/cc_common/button_up1.png|nimg=private/cc_common/button_up1.png|size=18|text=领取|link=@function_button,'..
                 NPCPANEL_BUTTONFUNC_ID_4..'>'
             end
         else
-            strPanelInfo = strPanelInfo..'<Text|id=352|text=已领取|size=20|x='..(tempCurrX+30)..'|y='..tempCurrY..'|color='..CSS.NPC_LIGHTGREEN..'>'
+            strPanelInfo = strPanelInfo..'<Text|id=352|text=已领取|size=15|x='..(tempCurrX+30)..'|y='..tempCurrY..'|color='..CSS.NPC_LIGHTGREEN..'>'
         end
-        tempCurrY = tempCurrY + 40
-        strPanelInfo = strPanelInfo..'<Text|id=353|text=提示：每日仅能领取一次！|size=15|x='..tempCurrX..'|y='..tempCurrY..'|color='..CSS.NPC_WHITE..'>'
+        tempCurrY = tempCurrY + 36
+        strPanelInfo = strPanelInfo..'<Text|id=353|text=每日仅能领取一次！|size=15|x='..(tempCurrX-30)..'|y='..tempCurrY..'|color='..CSS.NPC_WHITE..'>'
     end
     strPanelInfo = strPanelInfo..'<Layout|id=16|children={'..idstr..'}|x=260.0|y=350.0|width=480|height=72>'
 
