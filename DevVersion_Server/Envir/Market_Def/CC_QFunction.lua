@@ -619,6 +619,11 @@ function equippos_star_auto_upgrade_callback(actor)
     EquipPosStarManager.ShowBasePanel(actor)
 end
 
+function weapon_auto_addluck_callback(actor)
+    WeaponAddLuckManager.AutoAddLuck(actor)
+    WeaponAddLuckManager.ShowBasePanel(actor)
+end
+
 --lua直接回调
 function equippos_star_auto_upgrade(actor)
     EquipPosStarManager.EquipPosAutoUpgradeStar(actor)

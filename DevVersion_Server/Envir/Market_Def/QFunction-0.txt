@@ -5847,6 +5847,18 @@ BREAK
 CALLLUA CC_QFunction @equippos_star_auto_upgrade_callback
 BREAK
 
+[@weapon_auto_addluck]
+#IF
+#ACT
+DELAYGOTO 1000 @weapon_auto_addluck_callback
+BREAK
+
+[@weapon_auto_addluck_callback]
+#IF
+#ACT
+CALLLUA CC_QFunction @weapon_auto_addluck_callback
+BREAK
+
 ;实际回调刷新战力
 [@update_power_callback]
 #IF

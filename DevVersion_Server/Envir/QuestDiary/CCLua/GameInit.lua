@@ -16,7 +16,7 @@ local function _Includes()
 
     cfgEquipPosStrength = require("Envir/QuestDiary/CCLua/GameConfig/cfgEquipPosStrength")
     cfgEquipPosUpgradeStar = require("Envir/QuestDiary/CCLua/GameConfig/cfgEquipPosStar")
-    -- cfgWeaponLuck = require("Envir/QuestDiary/CCLua/GameConfig/cfgWeaponLuck")
+    cfgWeaponLuck = require("Envir/QuestDiary/CCLua/GameConfig/cfgWeaponLuck")
     cfgRandomABCreate = require("Envir/QuestDiary/CCLua/GameConfig/cfgRandomABCreate")
     cfgRandomABPool = require("Envir/QuestDiary/CCLua/GameConfig/cfgRandomABPool")
     cfgSkillUpgrade = require("Envir/QuestDiary/CCLua/GameConfig/cfgSkillUpgrade")
@@ -108,6 +108,7 @@ local function _Includes()
     require("Envir/QuestDiary/CCLua/GameModule/JumpAreaBossDamageRank")
     require("Envir/QuestDiary/CCLua/GameModule/JumpAreaScoreShop")
     require("Envir/QuestDiary/CCLua/GameModule/JumpAreaRandomFighting")
+    require("Envir/QuestDiary/CCLua/GameModule/WeaponAddLuckManager")
 
 
     -- --调试日志
@@ -234,14 +235,14 @@ local function _Includes()
         end        
     end 
     
-    -- --装备祝福表
-    -- for _, value in pairs(cfgWeaponLuck) do
-    --     if (value.needitems ~= nil) and (value.needitems ~= '') then
-    --         value.needitems_tab = BF_Json2Table(value.needitems)
-    --     else
-    --         value.needitems_tab = {}
-    --     end        
-    -- end 
+    --装备祝福表
+    for _, value in pairs(cfgWeaponLuck) do
+        if (value.needitems ~= nil) and (value.needitems ~= '') then
+            value.needitems_tab = BF_Json2Table(value.needitems)
+        else
+            value.needitems_tab = {}
+        end        
+    end 
 
     --技能升级
     for _, value in pairs(cfgSkillUpgrade) do

@@ -8,6 +8,7 @@ NewMainUIBase.UI_ICON_GUANZHI = '5'         --官职
 NewMainUIBase.UI_ICON_HUWEI = '6'           --护卫
 NewMainUIBase.UI_ICON_SKILL = '7'           --技能
 NewMainUIBase.UI_ICON_COMPOSE = '8'         --合成
+NewMainUIBase.UI_ICON_WEAPONADDLUCK = '9'   --祝福
 
 
 function NewMainUIBase.InitUI(actor)
@@ -19,6 +20,7 @@ function NewMainUIBase.InitUI(actor)
     addbutton(actor, 109, 16, '<Button|id='..NewMainUIBase.UI_ICON_HUWEI..'|x=22|y=240|mimg=private/cc_functionicon/icon_huwei.png|nimg=private/cc_functionicon/icon_huwei.png|link=@newmainuibase_openpanel#sid='..NewMainUIBase.UI_ICON_HUWEI..'>')
     addbutton(actor, 109, 17, '<Button|id='..NewMainUIBase.UI_ICON_SKILL..'|x=-52|y=30|mimg=private/cc_functionicon/icon_skill.png|nimg=private/cc_functionicon/icon_skill.png|link=@newmainuibase_openpanel#sid='..NewMainUIBase.UI_ICON_SKILL..'>')
     addbutton(actor, 109, 18, '<Button|id='..NewMainUIBase.UI_ICON_COMPOSE..'|x=-52|y=100|mimg=private/cc_functionicon/icon_compose.png|nimg=private/cc_functionicon/icon_compose.png|link=@newmainuibase_openpanel#sid='..NewMainUIBase.UI_ICON_COMPOSE..'>')
+    addbutton(actor, 109, 19, '<Button|id='..NewMainUIBase.UI_ICON_WEAPONADDLUCK..'|x=-52|y=170|mimg=private/cc_functionicon/icon_addluck.png|nimg=private/cc_functionicon/icon_addluck.png|link=@newmainuibase_openpanel#sid='..NewMainUIBase.UI_ICON_WEAPONADDLUCK..'>')
 end
 
 function NewMainUIBase.OpenPanel(actor, sid)
@@ -99,6 +101,14 @@ function NewMainUIBase.OpenPanel(actor, sid)
         setplaydef(actor, CommonDefine.VAR_N_NPC_TEMPPARAM1, 0)
         setplaydef(actor, CommonDefine.VAR_N_ITEM_COMPOSE_CHOOSE_ITEM1, 0)
         ItemComposeManager.ShowBasePanel(actor)
+    elseif sid == NewMainUIBase.UI_ICON_WEAPONADDLUCK then
+        if not Player.IsFunctionOpen(actor, CommonDefine.FUNC_ID_WEAPON_ADDLUCK, true) then
+            return
+        end
+        setplaydef(actor, CommonDefine.VAR_N_CURR_FUNCTION_ID, CommonDefine.FUNC_ID_WEAPON_ADDLUCK)
+
+        setplaydef(actor, CommonDefine.VAR_N_LAST_NPC_CHOOSEID, 0)     
+        WeaponAddLuckManager.ShowBasePanel(actor)
     end
 end
 
