@@ -6,11 +6,26 @@ local NPCPANEL_BUTTONFUNC_ID_2 = 2      --ÁìÈ¡ÀëÏß½±Àø
 
 local ZCD_NPC_NAME_LIST = {'ÎäÎÀ', 'ÓùÎÀ', '»¢ÎÀ', '½ûÎÀ', 'ËÞÎÀ'}
 local ZCD_NPC_LIST = {
-    {hwtype=1, npcname=ZCD_NPC_NAME_LIST[1], levelvar=CommonDefine.VAR_U_ZCDHW_LEVEL1, abilitygroup=CommonDefine.ABIL_GROUP_HUWEI1, showbagitems={'ÎäÎÀ¾«ÆÇ','½ð±Ò'}},
-    {hwtype=2, npcname=ZCD_NPC_NAME_LIST[2], levelvar=CommonDefine.VAR_U_ZCDHW_LEVEL2, abilitygroup=CommonDefine.ABIL_GROUP_HUWEI2, showbagitems={'ÓùÎÀ¾«ÆÇ','½ð±Ò'}},
-    {hwtype=3, npcname=ZCD_NPC_NAME_LIST[3], levelvar=CommonDefine.VAR_U_ZCDHW_LEVEL3, abilitygroup=CommonDefine.ABIL_GROUP_HUWEI3, showbagitems={'»¢ÎÀ¾«ÆÇ','½ð±Ò'}},
-    {hwtype=4, npcname=ZCD_NPC_NAME_LIST[4], levelvar=CommonDefine.VAR_U_ZCDHW_LEVEL4, abilitygroup=CommonDefine.ABIL_GROUP_HUWEI4, showbagitems={'½ûÎÀ¾«ÆÇ','½ð±Ò'}},
-    {hwtype=5, npcname=ZCD_NPC_NAME_LIST[5], levelvar=CommonDefine.VAR_U_ZCDHW_LEVEL5, abilitygroup=CommonDefine.ABIL_GROUP_HUWEI5, showbagitems={'ËÞÎÀ¾«ÆÇ','½ð±Ò'}},
+    {
+        hwtype=1, npcname=ZCD_NPC_NAME_LIST[1], levelvar=CommonDefine.VAR_U_ZCDHW_LEVEL1, abilitygroup=CommonDefine.ABIL_GROUP_HUWEI1, 
+        showbagitems={'ÎäÎÀ¾«ÆÇ','½ð±Ò'}, imgx=226, imgy=40, imgwidth=120, imgheight=180,
+    },
+    {
+        hwtype=2, npcname=ZCD_NPC_NAME_LIST[2], levelvar=CommonDefine.VAR_U_ZCDHW_LEVEL2, abilitygroup=CommonDefine.ABIL_GROUP_HUWEI2, 
+        showbagitems={'ÓùÎÀ¾«ÆÇ','½ð±Ò'}, imgx=220, imgy=40, imgwidth=180, imgheight=180,
+    },
+    {
+        hwtype=3, npcname=ZCD_NPC_NAME_LIST[3], levelvar=CommonDefine.VAR_U_ZCDHW_LEVEL3, abilitygroup=CommonDefine.ABIL_GROUP_HUWEI3,
+        showbagitems={'»¢ÎÀ¾«ÆÇ','½ð±Ò'}, imgx=210, imgy=40, imgwidth=150, imgheight=180,
+    },
+    {
+        hwtype=4, npcname=ZCD_NPC_NAME_LIST[4], levelvar=CommonDefine.VAR_U_ZCDHW_LEVEL4, abilitygroup=CommonDefine.ABIL_GROUP_HUWEI4, 
+        showbagitems={'½ûÎÀ¾«ÆÇ','½ð±Ò'}, imgx=190, imgy=36, imgwidth=175, imgheight=190,
+    },
+    {
+        hwtype=5, npcname=ZCD_NPC_NAME_LIST[5], levelvar=CommonDefine.VAR_U_ZCDHW_LEVEL5, abilitygroup=CommonDefine.ABIL_GROUP_HUWEI5, 
+        showbagitems={'ËÞÎÀ¾«ÆÇ','½ð±Ò'}, imgx=230, imgy=30, imgwidth=145, imgheight=200,
+    },
 }
 
 local function GetHuWeiNpcCfg(huweitype)
@@ -277,9 +292,10 @@ function OfflineHuWeiManager.ShowBasePanel(actor, sparam)
         tempRightY = tempRightY + 25
     end       
     strPanelInfo = strPanelInfo..'<Img|id=92|children={'..idstr..'}|x=360.0|y=60.0|img=private/cc_offline/5.png>'
-    strPanelInfo = strPanelInfo..'<Img|id=93|children={94}|x=180.0|y=10.0|img=private/cc_offline/4.png>'..
+    strPanelInfo = strPanelInfo..'<Img|id=93|children={94}|x=172.0|y=0.0|img=private/cc_offline/4.png>'..
         '<Text|id=94|text='..cfgHuWeiNpc.npcname..'|size=20|x=100|y=8|color='..CSS.NPC_YELLOW..'>'
-    strPanelInfo = strPanelInfo..'<Img|id=95|x=210.0|y=60.0|img=private/cc_offline/body_'..huweitype..'.png>'
+    strPanelInfo = strPanelInfo..'<Img|id=95|x='..ZCD_NPC_LIST[huweitype].imgx..'|y='..ZCD_NPC_LIST[huweitype].imgy..
+        '|width='..ZCD_NPC_LIST[huweitype].imgwidth..'|height='..ZCD_NPC_LIST[huweitype].imgheight..'|img=private/cc_offline/body_'..huweitype..'.png>'
     strPanelInfo = strPanelInfo..'<Layout|id=15|children={91,92,93,95}|x=200.0|y=56.0|width=580|height=240>'    
 
 

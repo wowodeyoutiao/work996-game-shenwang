@@ -399,6 +399,8 @@ function OpenSuperBoxManager.DoOpenBoxOnce(actor, autoflag, openitemlist)
     TaskManager.OnAddOpenBoxNum(actor, nOnceOpenNum) 
     --触发免费VIP
 	FreeVIPManager.TriggerChgTaskCounter(actor, FreeVIPManager.TASK_TYPE_OPEN_SUPERBOX_TIMES, '+', nOnceOpenNum)
+    --每日必做计数        
+    EverydayTask.AddTaskCounter(actor, CommonDefine.FUNC_ID_SUPERBOX, nOnceOpenNum)        
     return true
 end
 
