@@ -14,9 +14,10 @@ local OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_10 = 10  --一键回收
 local OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_11 = 11  --关闭宝箱列表界面
 local OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_12 = 12  --一键穿戴
 local OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_13 = 13  --查看比较装备
-local OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_14 = 14  --前往商城引导购买
+local OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_14 = 14  --前往商城引导购买升级卷轴
 local OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_15 = 15  --关闭设置宝箱自动的界面  仅关闭
 local OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_16 = 16  --关闭设置宝箱自动的界面  跳转到首充界面
+local OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_17 = 17  --一键补足升级卷轴
 
 
 local OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_21 = 21  --勾选 保留的品质条件
@@ -107,6 +108,17 @@ function OpenSuperBoxManager.HideUI(actor)
         return
     end
     delbutton(actor, 108, CommonDefine.ADD_BUTTON_ID_1)
+    delbutton(actor, 108, CommonDefine.ADD_BUTTON_ID_39)
+end
+
+function OpenSuperBoxManager.ShowBaseInvisiblePanel(actor)
+    if BF_IsNullObj(actor) then
+        return
+    end
+    delbutton(actor, 108, CommonDefine.ADD_BUTTON_ID_39)
+    
+    local strPanel = '<Layout|id=2011|x=-130|y=-300|width=200|height=100|bg=1|move=0|show=0|clickInterval=500|link=@idleclick>'
+    addbutton(actor, 108, CommonDefine.ADD_BUTTON_ID_39, strPanel)
 end
 
 --增加当前的宝箱累计数量
@@ -149,8 +161,6 @@ end
 
 --更新超级宝箱界面
 function OpenSuperBoxManager.UpdateSuperBoxInfo(actor)
-    delbutton(actor, 108, CommonDefine.ADD_BUTTON_ID_1)
-
     local sText1 = '开启'
     if getflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_AUTO_OPEN_SUPERBOX) == 1 then
         sText1 = '停止'
@@ -260,7 +270,7 @@ function OpenSuperBoxManager.UpdateSuperBoxInfo(actor)
     end
 
     delbutton(actor, 108, CommonDefine.ADD_BUTTON_ID_1)
-    addbutton(actor, 108, CommonDefine.ADD_BUTTON_ID_1, strPanel)   
+    addbutton(actor, 108, CommonDefine.ADD_BUTTON_ID_1, strPanel)    
 end
 
 local function CloseOpenBoxItemListPanel(actor)
@@ -373,6 +383,7 @@ function OpenSuperBoxManager.DoOpenBoxOnce(actor, autoflag, openitemlist)
             --装备的天赋属性
             if EquipInitGift.InitEquipGiftAB(actor, newitemobj) == true then
                 infotab.giftabflag = 1
+                sendmovemsg(actor, 1, 251, 0, 270, 1, '玩家 '..Player.GetName(actor)..' 开箱获得了 '..Item.GetItemShowName(actor, newitemobj)..'！')
             end
             refreshitem(actor, newitemobj)
             local nNewMakeIndex = getiteminfo(actor, newitemobj, CommonDefine.ITEMINFO_UNIQUEID)            
@@ -588,11 +599,8 @@ local function OpenUpgradeBoxLevelPanel(actor, bShowBuySpeedupTip)
             else
                 local totaltimes = math.ceil(leftseconds / CommonDefine.OPEN_SUPERBOX_SPEEDUP_ONCE_ADDSECONDS)
                 local totalneeditems = BF_GetItemTabMulti(CommonDefine.OPEN_SUPERBOX_SPEEDUP_ONCE_NEEDITEMS, totaltimes)
-                local sNeedItemStr = BF_GetSimpleItemTableDescStr(totalneeditems)
-                local tempcolor = CSS.NPC_LIGHTGREEN
-                if not Player.CheckItemsEnough(actor, totalneeditems, '') then
-                    tempcolor = CSS.NPC_RED
-                end                
+                local quickbuyneedyb = BF_GetComplementNeedYBNum(actor, totalneeditems)                             
+              
                 strPanel = strPanel..'<Text|id=2108|x=24.0|y=0.0|color=255|size=18|text=升级耗时：>'..
                     '<COUNTDOWN|id=2105|x=120.0|y=0.0|color=255|size=18|showWay=1|time='..leftseconds..'|link=@opensuperboxmanager_button#sid='..
                     OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_4..'>'..
@@ -607,11 +615,16 @@ local function OpenUpgradeBoxLevelPanel(actor, bShowBuySpeedupTip)
                 end
 
                 if bShowBuySpeedupTip~=nil and bShowBuySpeedupTip==true then
-                    strPanel = strPanel..'<Img|id=2118|children={2301,2302,2303,2304}|a=1|x=450|y=200|reset=1|move=1|img=private/revive/bg_swfh_1.png|bg=1>'..
+                    strPanel = strPanel..'<Img|id=2118|children={2301,2302,2303,2304,2305,2311,2312,2313}|a=1|x=450|y=200|reset=1|move=1|img=private/revive/bg_swfh_1.png|bg=1>'..
                     '<Layout|id=2301|width=348|height=200>'..
-                    '<Text|id=2302|x=50|y=20|size=18|color='..CSS.NPC_WHITE..'|text=前往商城购买加速卷轴？>'..
-                    '<Button|id=2303|x=45|y=75|pimg=private/cc_common/button_up1.png|nimg=private/cc_common/button_down1.png|color='..CSS.NPC_WHITE..'|size=17|text=取  消|link=@opensuperboxmanager_button#sid='..OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_4..'>'..
-                    '<Button|id=2304|x=170|y=75|pimg=private/cc_common/button_up1.png|nimg=private/cc_common/button_down1.png|color='..CSS.NPC_WHITE..'|size=17|text=确  定|link=@opensuperboxmanager_button#sid='..OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_14..'>'                 
+                    '<Layout|id=2302|x=292.0|y=4.0|width=40|height=40|link=@opensuperboxmanager_button#sid='..OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_4..'>'..                    
+                    '<Button|id=2303|x=292.0|y=4.0|nimg=private/cc_superbox_1/btn_fanhui.png|color=255|size=18|mimg=private/cc_superbox_1/btn_fanhui.png|link=@opensuperboxmanager_button#sid='..
+                    OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_4..'>'..
+                    '<Button|id=2304|x=45|y=104|pimg=private/cc_common/button_up1.png|nimg=private/cc_common/button_down1.png|color='..CSS.NPC_WHITE..'|size=17|text=商城购买|link=@opensuperboxmanager_button#sid='..OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_14..'>'..
+                    '<Button|id=2305|x=170|y=104|pimg=private/cc_common/button_up1.png|nimg=private/cc_common/button_down1.png|color='..CSS.NPC_WHITE..'|size=17|text=一键补足|link=@opensuperboxmanager_button#sid='..OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_17..'>'..
+                    '<Text|id=2311|x=20|y=20|size=16|color='..CSS.NPC_WHITE..'|text=加速卷轴数量不足，您可以直接消耗>'..
+                    '<Text|id=2312|x=20|y=45|size=16|color='..CSS.NPC_WHITE..'|text=['..quickbuyneedyb..'元宝]进行一键补足，>'..
+                    '<Text|id=2313|x=20|y=70|size=16|color='..CSS.NPC_WHITE..'|text=也可前往商城自行购买！>'
                 end
             end
         end
@@ -645,7 +658,7 @@ local function StartUpgradeBoxLevel(actor)
 end
 
 --加速超级宝箱升级
-local function SpeedupUpgradeBoxLevel(actor)
+local function SpeedupUpgradeBoxLevel(actor, quickbuyflag)
     local nBoxCurrLv = getplaydef(actor, CommonDefine.VAR_U_SUPER_BOX_CURR_LV)
     local levelConfig = cfgSuperBoxLevel[nBoxCurrLv]
     local nextLevelConfig = cfgSuperBoxLevel[nBoxCurrLv+1]
@@ -674,26 +687,51 @@ local function SpeedupUpgradeBoxLevel(actor)
 
     local totaltimes = math.ceil(leftseconds / CommonDefine.OPEN_SUPERBOX_SPEEDUP_ONCE_ADDSECONDS)
     local totalneeditems = BF_GetItemTabMulti(CommonDefine.OPEN_SUPERBOX_SPEEDUP_ONCE_NEEDITEMS, totaltimes)
+
     if Player.CheckItemsEnough(actor, totalneeditems, '') then
         --如果加速的材料满足
         Player.TakeItems(actor, totalneeditems, '加速升级超级宝箱1')
         OpenSuperBoxManager.DoUpgradeBoxLevel(actor)
     else
         --如果加速的材料不足
-        if not Player.CheckItemsEnough(actor, CommonDefine.OPEN_SUPERBOX_SPEEDUP_ONCE_NEEDITEMS, '') then
-            Player.SendSelfMsg(actor, '材料不足加速'..CommonDefine.OPEN_SUPERBOX_SPEEDUP_ONCE_ADDSECONDS..'秒！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)            
-            OpenUpgradeBoxLevelPanel(actor, true)
-            return
+        local quickbuyneedyb = 0
+        if quickbuyflag~=nil and quickbuyflag==true then
+            quickbuyneedyb = BF_GetComplementNeedYBNum(actor, totalneeditems)         
+            local checkquickitems = {{id=CommonDefine.ITEMID_YB, num=quickbuyneedyb}}
+            if not Player.CheckItemsEnough(actor, checkquickitems, '') then
+                Player.SendSelfMsg(actor, '一键补足所需元宝不足！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)            
+                OpenUpgradeBoxLevelPanel(actor, true)
+                return
+            end
+        else    
+            if not Player.CheckItemsEnough(actor, CommonDefine.OPEN_SUPERBOX_SPEEDUP_ONCE_NEEDITEMS, '') then
+                Player.SendSelfMsg(actor, '材料不足加速'..CommonDefine.OPEN_SUPERBOX_SPEEDUP_ONCE_ADDSECONDS..'秒！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)            
+                OpenUpgradeBoxLevelPanel(actor, true)
+                return
+            end
         end
-        
-        local bagitemcount = Player.GetItemNumInBag(actor, CommonDefine.OPEN_SUPERBOX_SPEEDUP_ONCE_NEEDITEMS[1].name)
-        totaltimes = math.floor(bagitemcount / CommonDefine.OPEN_SUPERBOX_SPEEDUP_ONCE_NEEDITEMS[1].num)
-        totalneeditems = BF_GetItemTabMulti(CommonDefine.OPEN_SUPERBOX_SPEEDUP_ONCE_NEEDITEMS, totaltimes)
-        Player.TakeItems(actor, totalneeditems, '加速升级超级宝箱2')
-        local addseconds = CommonDefine.OPEN_SUPERBOX_SPEEDUP_ONCE_ADDSECONDS * totaltimes        
-        setplaydef(actor, CommonDefine.VAR_U_SUPER_BOX_START_UPGRADE_TIME, nStartUpgradeTime - addseconds)        
-        Player.SendSelfMsg(actor, '升级加速'..addseconds..'秒！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
-        OpenUpgradeBoxLevelPanel(actor)
+
+        if quickbuyflag~=nil and quickbuyflag==true then
+            local bagitemcount = Player.GetItemNumInBag(actor, CommonDefine.OPEN_SUPERBOX_SPEEDUP_ONCE_NEEDITEMS[1].name)
+            local tempneeditems = {}
+            if bagitemcount > 0 then
+                tempneeditems[#tempneeditems+1] = {name=CommonDefine.OPEN_SUPERBOX_SPEEDUP_ONCE_NEEDITEMS[1].name, num=bagitemcount}
+            end
+            if quickbuyneedyb > 0 then
+                tempneeditems[#tempneeditems+1] = {id=CommonDefine.ITEMID_YB, num=quickbuyneedyb}
+            end
+            Player.TakeItems(actor, tempneeditems, '加速升级超级宝箱2_一键补齐')
+            OpenSuperBoxManager.DoUpgradeBoxLevel(actor)
+        else
+            local bagitemcount = Player.GetItemNumInBag(actor, CommonDefine.OPEN_SUPERBOX_SPEEDUP_ONCE_NEEDITEMS[1].name)
+            totaltimes = math.floor(bagitemcount / CommonDefine.OPEN_SUPERBOX_SPEEDUP_ONCE_NEEDITEMS[1].num)
+            totalneeditems = BF_GetItemTabMulti(CommonDefine.OPEN_SUPERBOX_SPEEDUP_ONCE_NEEDITEMS, totaltimes)
+            Player.TakeItems(actor, totalneeditems, '加速升级超级宝箱2')
+            local addseconds = CommonDefine.OPEN_SUPERBOX_SPEEDUP_ONCE_ADDSECONDS * totaltimes        
+            setplaydef(actor, CommonDefine.VAR_U_SUPER_BOX_START_UPGRADE_TIME, nStartUpgradeTime - addseconds)        
+            Player.SendSelfMsg(actor, '升级加速'..addseconds..'秒！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+            OpenUpgradeBoxLevelPanel(actor)
+        end        
     end
 end
 
@@ -1131,7 +1169,7 @@ function OpenSuperBoxManager.DoOperButton(actor, sid, sparam)
     elseif funcid == OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_8 then
         StartUpgradeBoxLevel(actor)
     elseif funcid == OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_9 then
-        SpeedupUpgradeBoxLevel(actor)
+        SpeedupUpgradeBoxLevel(actor, nil)
     elseif funcid == OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_10 then
         QuickRecycleOpenItemList(actor)
     elseif funcid == OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_11 then
@@ -1164,6 +1202,8 @@ function OpenSuperBoxManager.DoOperButton(actor, sid, sparam)
     elseif funcid == OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_16 then
         delbutton(actor, 108, CommonDefine.ADD_BUTTON_ID_5)
         FirstRecharge.OpenPanel(actor)
+    elseif funcid == OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_17 then
+        SpeedupUpgradeBoxLevel(actor, true)
     end
 end
 
@@ -1215,6 +1255,7 @@ function OpenSuperBoxManager.OnPlayerEnterGame(actor)
     --每次上线都把除保留的都自动回收的这个选项勾选
     setflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_SUPERBOX_RECYCLE_CHECK3, 1)
     setflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_SUPERBOX_RECYCLE_CHECK6, 1)
+    OpenSuperBoxManager.ShowBaseInvisiblePanel(actor)
     OpenSuperBoxManager.UpdateSuperBoxInfo(actor)
 end
 

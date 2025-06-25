@@ -426,9 +426,9 @@ function SkillUpgrade.ShowBasePanel(actor)
                 listitemidstr = listitemidstr..picid
 
                 if IsSkillCanUpgradeOnce(actor, skillID, choosetype) then
-                    Player.AddRedPoint(actor, 0, picid, 10, 10)
+                    Player.AddRedPoint(actor, 0, picid1, 0, 0)
                 else
-                    Player.DelRedPoint(actor, 0, picid)
+                    Player.DelRedPoint(actor, 0, picid1)
                 end
             end
         end

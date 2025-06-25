@@ -9,7 +9,7 @@ local config = {
 		showlaber = 1,
 		condisId = 100,
 		requestID = 100,
-		OnceCount = "20#20",
+		OnceCount = "1#20",
 	},
 	[2] = { 
 		id = 2,
@@ -21,7 +21,7 @@ local config = {
 		showlaber = 1,
 		condisId = 100,
 		requestID = 100,
-		OnceCount = "10#10",
+		OnceCount = "1#10",
 	},
 	[3] = { 
 		id = 3,
@@ -33,7 +33,7 @@ local config = {
 		showlaber = 1,
 		condisId = 100,
 		requestID = 100,
-		OnceCount = "20#20",
+		OnceCount = "1#20",
 	},
 	[4] = { 
 		id = 4,
@@ -45,7 +45,7 @@ local config = {
 		showlaber = 1,
 		condisId = 100,
 		requestID = 100,
-		OnceCount = "10#10",
+		OnceCount = "1#10",
 	},
 	[5] = { 
 		id = 5,
@@ -57,7 +57,7 @@ local config = {
 		showlaber = 1,
 		condisId = 100,
 		requestID = 100,
-		OnceCount = "1#1",
+		OnceCount = "1#10",
 	},
 	[6] = { 
 		id = 6,
@@ -69,7 +69,7 @@ local config = {
 		showlaber = 1,
 		condisId = 100,
 		requestID = 100,
-		OnceCount = "1#1",
+		OnceCount = "1#10",
 	},
 	[7] = { 
 		id = 7,
@@ -81,7 +81,7 @@ local config = {
 		showlaber = 1,
 		condisId = 100,
 		requestID = 100,
-		OnceCount = "1#1",
+		OnceCount = "1#10",
 	},
 	[8] = { 
 		id = 8,
@@ -93,7 +93,7 @@ local config = {
 		showlaber = 1,
 		condisId = 100,
 		requestID = 100,
-		OnceCount = "10#10",
+		OnceCount = "1#10",
 	},
 	[9] = { 
 		id = 9,
@@ -105,7 +105,7 @@ local config = {
 		showlaber = 1,
 		condisId = 100,
 		requestID = 100,
-		OnceCount = "5#5",
+		OnceCount = "1#50",
 	},
 	[10] = { 
 		id = 10,
@@ -117,7 +117,7 @@ local config = {
 		showlaber = 1,
 		condisId = 100,
 		requestID = 100,
-		OnceCount = "5#5",
+		OnceCount = "1#50",
 	},
 	[11] = { 
 		id = 11,
@@ -129,7 +129,7 @@ local config = {
 		showlaber = 1,
 		condisId = 100,
 		requestID = 100,
-		OnceCount = "1#1",
+		OnceCount = "1#10",
 	},
 	[12] = { 
 		id = 12,
@@ -142,7 +142,7 @@ local config = {
 		condisId = 100,
 		limitbuy = "1#99",
 		requestID = 100,
-		OnceCount = "1#1",
+		OnceCount = "1#99",
 	},
 	[13] = { 
 		id = 13,
@@ -155,7 +155,7 @@ local config = {
 		condisId = 100,
 		limitbuy = "1#99",
 		requestID = 100,
-		OnceCount = "1#1",
+		OnceCount = "1#99",
 	},
 	[14] = { 
 		id = 14,
@@ -168,7 +168,7 @@ local config = {
 		condisId = 100,
 		limitbuy = "1#50",
 		requestID = 100,
-		OnceCount = "1#1",
+		OnceCount = "1#50",
 	},
 	[15] = { 
 		id = 15,
@@ -181,7 +181,7 @@ local config = {
 		condisId = 100,
 		limitbuy = "1#20",
 		requestID = 100,
-		OnceCount = "1#1",
+		OnceCount = "1#20",
 	},
 	[16] = { 
 		id = 16,
@@ -194,7 +194,7 @@ local config = {
 		condisId = 100,
 		limitbuy = "1#10",
 		requestID = 100,
-		OnceCount = "1#1",
+		OnceCount = "1#10",
 	},
 	[17] = { 
 		id = 17,
@@ -207,7 +207,7 @@ local config = {
 		condisId = 100,
 		limitbuy = "1#6",
 		requestID = 100,
-		OnceCount = "1#1",
+		OnceCount = "1#6",
 	},
 	[18] = { 
 		id = 18,
@@ -220,7 +220,7 @@ local config = {
 		condisId = 100,
 		limitbuy = "1#6",
 		requestID = 100,
-		OnceCount = "1#1",
+		OnceCount = "1#6",
 	},
 	[19] = { 
 		id = 19,
@@ -233,7 +233,7 @@ local config = {
 		condisId = 100,
 		limitbuy = "1#1000",
 		requestID = 100,
-		OnceCount = "10#10",
+		OnceCount = "1#1000",
 	},
 	[20] = { 
 		id = 20,
@@ -246,7 +246,7 @@ local config = {
 		condisId = 100,
 		limitbuy = "1#3",
 		requestID = 100,
-		OnceCount = "1#1",
+		OnceCount = "1#3",
 	},
 	[21] = { 
 		id = 21,
@@ -258,7 +258,7 @@ local config = {
 		showlaber = 3,
 		condisId = 100,
 		requestID = 100,
-		OnceCount = "1#1",
+		OnceCount = "1#10",
 	},
 	[22] = { 
 		id = 22,
@@ -270,7 +270,7 @@ local config = {
 		showlaber = 3,
 		condisId = 100,
 		requestID = 100,
-		OnceCount = "1#1",
+		OnceCount = "1#10",
 	},
 	[23] = { 
 		id = 23,
@@ -282,7 +282,7 @@ local config = {
 		showlaber = 3,
 		condisId = 100,
 		requestID = 100,
-		OnceCount = "1#1",
+		OnceCount = "1#10",
 	},
 	[24] = { 
 		id = 24,
@@ -294,7 +294,7 @@ local config = {
 		showlaber = 3,
 		condisId = 100,
 		requestID = 100,
-		OnceCount = "1#1",
+		OnceCount = "1#10",
 	},
 	[25] = { 
 		id = 25,
@@ -306,7 +306,7 @@ local config = {
 		showlaber = 3,
 		condisId = 100,
 		requestID = 100,
-		OnceCount = "5#5",
+		OnceCount = "1#10",
 	},
 	[26] = { 
 		id = 26,
@@ -318,7 +318,7 @@ local config = {
 		showlaber = 3,
 		condisId = 100,
 		requestID = 100,
-		OnceCount = "5#5",
+		OnceCount = "1#10",
 	},
 	[27] = { 
 		id = 27,
@@ -330,7 +330,7 @@ local config = {
 		showlaber = 3,
 		condisId = 100,
 		requestID = 100,
-		OnceCount = "5#5",
+		OnceCount = "1#10",
 	},
 	[28] = { 
 		id = 28,
@@ -342,7 +342,7 @@ local config = {
 		showlaber = 3,
 		condisId = 100,
 		requestID = 100,
-		OnceCount = "5#5",
+		OnceCount = "1#10",
 	},
 	[29] = { 
 		id = 29,
@@ -354,7 +354,7 @@ local config = {
 		showlaber = 3,
 		condisId = 100,
 		requestID = 100,
-		OnceCount = "5#5",
+		OnceCount = "1#10",
 	},
 	[30] = { 
 		id = 30,
@@ -367,7 +367,7 @@ local config = {
 		showlaber = 4,
 		condisId = 100,
 		requestID = 100,
-		OnceCount = "1#1",
+		OnceCount = "1#10",
 	},
 	[31] = { 
 		id = 31,
@@ -380,7 +380,7 @@ local config = {
 		showlaber = 4,
 		condisId = 100,
 		requestID = 100,
-		OnceCount = "1#1",
+		OnceCount = "1#10",
 	},
 	[32] = { 
 		id = 32,
@@ -393,7 +393,7 @@ local config = {
 		showlaber = 4,
 		condisId = 100,
 		requestID = 100,
-		OnceCount = "1#1",
+		OnceCount = "1#10",
 	},
 	[33] = { 
 		id = 33,
@@ -406,7 +406,7 @@ local config = {
 		showlaber = 4,
 		condisId = 100,
 		requestID = 100,
-		OnceCount = "1#1",
+		OnceCount = "1#10",
 	},
 	[34] = { 
 		id = 34,
@@ -419,7 +419,7 @@ local config = {
 		showlaber = 4,
 		condisId = 100,
 		requestID = 100,
-		OnceCount = "1#1",
+		OnceCount = "1#10",
 	},
 	[35] = { 
 		id = 35,
@@ -432,7 +432,7 @@ local config = {
 		showlaber = 4,
 		condisId = 100,
 		requestID = 100,
-		OnceCount = "1#1",
+		OnceCount = "1#10",
 	},
 	[36] = { 
 		id = 36,
@@ -445,7 +445,7 @@ local config = {
 		showlaber = 4,
 		condisId = 100,
 		requestID = 100,
-		OnceCount = "1#1",
+		OnceCount = "1#10",
 	},
 	[37] = { 
 		id = 37,
@@ -458,7 +458,7 @@ local config = {
 		showlaber = 4,
 		condisId = 100,
 		requestID = 100,
-		OnceCount = "1#1",
+		OnceCount = "1#10",
 	},
 	[38] = { 
 		id = 38,
@@ -471,7 +471,7 @@ local config = {
 		showlaber = 4,
 		condisId = 100,
 		requestID = 100,
-		OnceCount = "1#1",
+		OnceCount = "1#10",
 	},
 	[39] = { 
 		id = 39,
@@ -484,7 +484,7 @@ local config = {
 		showlaber = 4,
 		condisId = 100,
 		requestID = 100,
-		OnceCount = "10#10",
+		OnceCount = "1#10",
 	},
 	[41] = { 
 		id = 41,
@@ -497,7 +497,7 @@ local config = {
 		showlaber = 4,
 		condisId = 100,
 		requestID = 100,
-		OnceCount = "1#1",
+		OnceCount = "1#10",
 	},
 }
 return config

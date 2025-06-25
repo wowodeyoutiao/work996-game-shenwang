@@ -622,6 +622,21 @@ function BF_GetItemTableDescStr(actor, itemsTab)
     return sDescStr
 end
 
+--返回玩家指定道具tab中，补充不足道具所需要的元宝数量
+function BF_GetComplementNeedYBNum(actor, itemsTab)
+    local supplynum = 0
+    for _, item in pairs(itemsTab) do        
+        local currNum = Player.GetItemNumInBag(actor, item.name)
+        if currNum < item.num then
+            local singleyb = CommonDefine.ITEM_EXCHANGE_YB[item.name]
+            if singleyb ~= nil then
+                supplynum = supplynum + singleyb * item.num - currNum
+            end
+        end
+    end    
+    return supplynum
+end
+
 --按通用随机奖励配置结构，生成一次随机奖励
 function BF_GetRandomRewardItems(rewardItemsTab)
     local itemstab = {}

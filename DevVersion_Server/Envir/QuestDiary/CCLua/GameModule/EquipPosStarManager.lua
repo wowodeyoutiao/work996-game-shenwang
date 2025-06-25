@@ -579,10 +579,11 @@ local function EquipPosUpgradeStarOnce(actor)
         EquipPosStarManager.UpdateEquipStarLvInPos(actor, equippos)
 
         --触发装备位升星
-        --[[
-        -----------------------------------------------------todo
         FreeVIPManager.TriggerChgTaskCounter(actor, FreeVIPManager.TASK_TYPE_UPGRADE_EQUIPSTAR, 'max', nextPosLevel)        
-        ]]--
+
+        if (nextPosLevel > 0) and (nextPosLevel % 5 == 0) then
+            sendmovemsg(actor, 1, 251, 0, 270, 1, '玩家 '..Player.GetName(actor)..' 将'..CommonDefine.EQUIPPOS_NAME[equippos]..'槽位升至'..nextPosLevel..'星！')
+        end
     else
         --升星失败
         Player.SendSelfMsg(actor, '升星失败！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
@@ -817,10 +818,8 @@ function EquipPosStarManager.RandomUpgradePosToTargStarNum(actor, targstarnum)
     infoStr = tbl2json(infoTab)
     setplaydef(actor, CommonDefine.VAR_T_EQUIPPOS_UPGRADESTAR_INFO, infoStr)
     EquipPosStarManager.UpdateEquipStarLvInPos(actor, poslist[rand])
-    --[[
-    -----------------------------------------------------todo    
+
     FreeVIPManager.TriggerChgTaskCounter(actor, FreeVIPManager.TASK_TYPE_UPGRADE_EQUIPSTAR, 'max', targstarnum) 
-    ]]--
     Player.SendSelfMsg(actor, CommonDefine.EQUIPPOS_NAME[currpos]..'槽位星级升至'..targstarnum, CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
     return true
 end

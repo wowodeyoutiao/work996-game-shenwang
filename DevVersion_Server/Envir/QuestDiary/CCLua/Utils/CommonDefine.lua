@@ -275,6 +275,11 @@ CommonDefine = {
     AUTO_ADDEXP_MAX_LEVEL = 200,                                          --泡点自动得经验的最大等级
     RECHARGE_YB_RATE = 100,                                               --充值转元宝的比率
 
+    --道具用元宝快捷补充的对应关系
+    ITEM_EXCHANGE_YB = {
+        ["加速卷轴"] = 600,
+    },
+
     --需要离开按钮的地图
     NEED_LEAVEBUTTON_MAPS = {
         'em000', 'fmg', 'hero1', 'rxsc1891', 'rxsc014', 'rxsc001', 'slzs', 'jxd', 'lhzd', 'dyhj', 
@@ -779,11 +784,11 @@ CommonDefine = {
     ADD_BUTTON_ID_32 = 9032,                      --成长快捷提示 接触界面
     ADD_BUTTON_ID_33 = 9033,                      --topicon 第一列
     ADD_BUTTON_ID_34 = 9034,                      --topicon 第二列
-
     ADD_BUTTON_ID_35 = 9035,                      --地图内功能按钮1
     ADD_BUTTON_ID_36 = 9036,                      --地图内功能按钮2
     ADD_BUTTON_ID_37 = 9037,                      --快捷物品栏上中央提示    
     ADD_BUTTON_ID_38 = 9038,                      --复活框
+    ADD_BUTTON_ID_39 = 9039,                      --超级宝箱界面对应防穿透底板的buttonid
 }
 
 --装备位对应的名称

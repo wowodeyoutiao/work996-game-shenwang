@@ -27,19 +27,20 @@ function login(actor)
 ]]--
 
     --玩家是否进行新手初始化
-    Player.InitNewPlayer(actor)       
+    Player.InitNewPlayer(actor)
 
     --重连的时候清理残留界面
     if Player.IsReconnectLogin(actor) then
         delbutton(actor, 1101, CommonDefine.ADD_BUTTON_ID_4)    
         delbutton(actor, 108, CommonDefine.ADD_BUTTON_ID_1)
+        delbutton(actor, 108, CommonDefine.ADD_BUTTON_ID_39)
         delbutton(actor, 108, CommonDefine.ADD_BUTTON_ID_5) 
         delbutton(actor, 108, CommonDefine.ADD_BUTTON_ID_31)
         delbutton(actor, 108, CommonDefine.ADD_BUTTON_ID_32)
         delbutton(actor, 108, CommonDefine.ADD_BUTTON_ID_37)
         delbutton(actor, 108, CommonDefine.ADD_BUTTON_ID_38)
         delbutton(actor, 101, CommonDefine.ADD_BUTTON_ID_8)
-        delbutton(actor, 101, CommonDefine.ADD_BUTTON_ID_35)                
+        delbutton(actor, 101, CommonDefine.ADD_BUTTON_ID_35)
     end
 
     --触发玩家上线的事件监听

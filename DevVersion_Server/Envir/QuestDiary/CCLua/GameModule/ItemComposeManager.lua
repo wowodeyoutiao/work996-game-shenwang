@@ -639,20 +639,14 @@ local function DoCompose(actor)
     local bComposeFlag, newItemMakeIdx = DoFinalEquipCompose(actor, cfgCurrComposeTab)
     if bComposeFlag then
         --触发装备合成成功
-		--[[
-		-----------------------------------------todo
         FreeVIPManager.TriggerChgTaskCounter(actor, FreeVIPManager.TASK_TYPE_COMPOSE_EQUIP_SUCCESSTIMES, '+', 1)       
-		]]--
 		show_success_panel(actor, newItemMakeIdx)
     else
 		show_fail_panel(actor)
     end
 
     --每日必做计数        
-	--[[
-	-----------------------------------------todo	
     EverydayTask.AddTaskCounter(actor, CommonDefine.FUNC_ID_COMPOSE, 1)       	
-	]]--
 end
 
 --合成可叠加道具
@@ -732,10 +726,7 @@ local function DoComposeEx(actor)
 	end
 
     --每日必做计数   
-	--[[
-	-----------------------------------------todo	
     EverydayTask.AddTaskCounter(actor, CommonDefine.FUNC_ID_COMPOSE, pilecount)       	
-	]]--
 end
 
 --处理button回调

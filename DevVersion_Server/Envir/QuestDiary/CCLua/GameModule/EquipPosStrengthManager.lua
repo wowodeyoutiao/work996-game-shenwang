@@ -452,9 +452,9 @@ function EquipPosStrengthManager.ShowBasePanel(actor)
         end              
       
         if IsPosCanUpgradeOnce(actor, value.pos, infoTab) then
-            Player.AddRedPoint(actor, 0, baseid, 10, 10)
+            Player.AddRedPoint(actor, 0, picid3, 0, 0)
         else
-            Player.DelRedPoint(actor, 0, baseid)
+            Player.DelRedPoint(actor, 0, picid3)
         end
     end
 

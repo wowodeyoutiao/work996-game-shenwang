@@ -341,7 +341,7 @@ local function GetSingleShowInfo(actor, viplevel)
                 taskdesc = string.format(taskconfig.taskdesc, str1)
             end
             
-            strPanelInfo = strPanelInfo..'<Text|id='..textid1..'|text=ÈÎÎñÄÚÈÝ:'..taskdesc..
+            strPanelInfo = strPanelInfo..'<Text|id='..textid1..'|text='..taskdesc..
                 '|size=15|x='..tempCurrX..'|y='..tempCurrY..'|color='..CSS.NPC_YELLOW..'>'                
 
             tempCurrY = tempCurrY + 25

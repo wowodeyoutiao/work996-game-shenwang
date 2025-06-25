@@ -396,16 +396,15 @@ local function DoUpgrade(actor, huweitype)
     Player.TakeItems(actor, cfgCurrLv.needitems_tab, '护卫升级')
 
     --每日必做计数      
-    --[[
-    ----------------------------------------
-    -------------------------------------------
-    -------------------------------------------todo
     EverydayTask.AddTaskCounter(actor, CommonDefine.FUNC_ID_OFFLINE, 1)      
-    ]]--
 
     setplaydef(actor, cfgHuWeiNpc.levelvar, nextlv)
     addattlist(actor, cfgHuWeiNpc.abilitygroup, "=", cfgGuanZhi[nextlv].addprop_abstr)
-    recalcabilitys(actor)    
+    recalcabilitys(actor)  
+    
+    if (nextlv==3) or (nextlv==6) or (nextlv==9) or (nextlv==10) then
+        sendmovemsg(actor, 1, 251, 0, 270, 1, '玩家 '..Player.GetName(actor)..' 将'..cfgHuWeiNpc.npcname..'提升至'..nextlv..'级，海量资源坐享其成！')
+    end
 
     --升1级开启记录
     if nextlv == 1 then

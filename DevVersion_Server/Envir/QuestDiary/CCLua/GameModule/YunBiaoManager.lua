@@ -220,7 +220,6 @@ function YunBiaoManager.AcceptBiaoChe(actor)
     setplaydef(actor, CommonDefine.VAR_U_BIAOCHE_REFRESH_TIMES, 0)
     Player.SendSelfMsg(actor, '镖车已刷出！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
     close(actor)
-
     
     --每日必做计数        
     EverydayTask.AddTaskCounter(actor, CommonDefine.FUNC_ID_YUNBIAO, 1)       
@@ -253,6 +252,11 @@ function YunBiaoManager.RefreshBiaoChe(actor)
             setplaydef(actor, CommonDefine.VAR_U_BIAOCHE_CURRID, id)
         end
     end
+
+    if getplaydef(actor, CommonDefine.VAR_U_BIAOCHE_CURRID) == #RANDOM_BIAOCHE_CONFIG then
+        sendmovemsg(actor, 1, 251, 0, 270, 1, '玩家 '..Player.GetName(actor)..' 幸运的接到了一辆 '..RANDOM_BIAOCHE_CONFIG[#RANDOM_BIAOCHE_CONFIG].showname..'！')
+    end
+
     setplaydef(actor, CommonDefine.VAR_U_BIAOCHE_REFRESH_TIMES, refreshtimes)
     Player.SendSelfMsg(actor, '镖车已刷新！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
     YunBiaoManager.ShowAcceptBiaoChePanel(actor)

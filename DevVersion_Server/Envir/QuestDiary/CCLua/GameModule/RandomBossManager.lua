@@ -229,7 +229,7 @@ function RandomBossManager.CreateNewRandomBoss(actor)
 			break
 		end
 	end
-	return nPoolIdx
+	return nPoolIdx, monname
 end
 
 --清理随机BOSS指定的战斗地图
@@ -313,9 +313,11 @@ function RandomBossManager.OnKillMon(actor, mon, killtype, mapidstr)
 	local ncolor = getbaseinfo(mon, CommonDefine.INFO_NAMECOLOR)
 	for _, value in ipairs(KILL_MON_TRIGGER_RANDOMBOSS) do
 		if value.moncolor == ncolor then
-			if math.random(1, 10000) <= value.rate then				
-				if RandomBossManager.CreateNewRandomBoss(actor) > 0 then
+			if math.random(1, 10000) <= value.rate then			
+				local poolid, monname = RandomBossManager.CreateNewRandomBoss(actor)
+				if poolid > 0 then
 					setplaydef(actor, CommonDefine.VAR_J_DAY_RANDOMBOSS_TRIGGERTIMES, triggertimes+1)
+					sendmovemsg(actor, 1, 251, 0, 270, 1, '玩家 '..Player.GetName(actor)..' 偶然发现了战力首领 '..monname..'！')
 				end
 			end 
 			break
