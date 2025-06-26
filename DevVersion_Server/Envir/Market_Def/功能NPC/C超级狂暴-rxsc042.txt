@@ -1,0 +1,48 @@
+[@Main]
+#IF
+Check [2] 1
+#ACT
+MOV N$按钮灰化 1
+#ELSEACT
+MOV N$按钮灰化 0
+
+
+#IF
+#SAY
+<Img|x=-90.0|y=-10.0|esc=1|show=4|bg=1|move=0|img=public/wz/50fabb28_65678.png|loadDelay=1|reset=1>
+<Layout|x=720.0|y=0.0|width=60|height=60|link=@exit>
+<Button|x=720.0|y=0.0|height=30|color=255|pimg=public/1900000510_2.png|nimg=public/1900000510_1.png|size=18|link=@exit>
+<Text|x=80.0|y=10.0|outline=2|color=82|size=22|text=超级狂暴>
+
+<Text|x=400|y=100.0|color=103|size=18|outline=1|text=消耗：元宝×10万(击杀者获得2万)>
+<Text|x=400|y=130.0|color=7|size=18|outline=1|text=只有被人物击杀此状态才会丢失>
+<Text|x=400|y=160.0|color=7|size=18|outline=1|text=5分钟内只能获得1次狂暴奖励>
+<Button|id=60|x=500|y=190|nimg=public/wz/bt21.png|text=开启狂暴|color=251|size=18|link=@开启狂暴|grey=<$STR(N$按钮灰化)>>
+
+<Text|x=480|y=320.0|color=250|size=18|outline=1|text=★人物倍攻1.2倍\★打怪爆率1.3倍\★人物体力50%\攻击附带毒素效果>
+
+
+[@开启狂暴]
+#IF
+Check [2] 1
+#Act
+SendMsg 9 您已经开启超级狂暴了！
+Break
+
+#IF
+CheckMoney 元宝 ? 100000
+#Act
+SETNPCMSG 超级狂暴
+Set [2] 1
+CONFERTITLE 超级狂暴
+Money 元宝 - 100000
+SendMsg 9 恭喜您，开启超级狂暴！
+#Call [\04人物属性\人物倍攻.txt] @人物倍攻
+#Call [\04人物属性\称号刷新.txt] @刷新称号
+SENDMOVEMSG 0 250 0 80 1 恭喜玩家：【<<$UserName>/FCOLOR=251>】成功开启超级狂暴，击杀他可获得：<20000元宝/FCOLOR=249>！！！
+SENDMSG 0 恭喜玩家：{【<$UserName>】|250:0:1}成功开启超级狂暴，击杀他可获得{20000元宝|250:0:1}
+GOTO @main
+Break
+#ElseAct
+SendMsg 9 您的元宝不足10万，请核对！
+Break
