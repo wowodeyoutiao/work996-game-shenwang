@@ -18,8 +18,11 @@ CommonDefine = {
     ITEMID_RECHARGE = 3,                --充值【只记录】
     ITEMID_BINDYB = 4,                  --绑定元宝
     ITEMID_EXP = 6,                     --经验        
-           
+               
     ITEMID_KUAFU_SCORE = 32,            --跨服积分
+
+    ITEMID_XINYUNFU = 208,              --幸运符
+    ITEMID_BAODIFU = 209,               --保底符    
 
     --[[
     ITEMID_YB = 1,                      --元宝
@@ -30,8 +33,6 @@ CommonDefine = {
     ITEMID_GOLD = 28,                   --金币    
     --ITEMID_MOFANGZHEN_JIFEN = 20,     --魔方阵积分
     ITEMID_KUAFU_SCORE = 32,            --跨服积分
-    --ITEMID_XINYUNFU = 208,            --幸运符
-    --ITEMID_BAODIFU = 209,             --保底符
     ]]--
 
 
@@ -520,9 +521,7 @@ CommonDefine = {
     
 
     --玩家的位标记，下线保存  索引【1~800】  
-    --[[
-    VAR_HUM_BITFLAG_USE_XYF = 201,                --祝福是否使用幸运符
-    VAR_HUM_BITFLAG_USE_BDF = 202,                --祝福是否使用保底符   
+    --[[ 
     VAR_HUM_BITFLAG_MFZ_ADDTIME_FLAG1 = 210,         --魔方阵 增加时间标记1 确认后用1次换增加30分钟
     VAR_HUM_BITFLAG_MFZ_ADDTIME_FLAG2 = 211,         --魔方阵 增加时间标记2 确认后时间不足自动用次数换时间    
     ]]--
@@ -543,6 +542,8 @@ CommonDefine = {
     VAR_HUM_BITFLAG_AUTORECYCLE_ITEM1 = 300,         --勾选装备自动回收    
     VAR_HUM_BITFLAG_AUTORECYCLE_ITEM2 = 301,         --勾选直升宝石自动回收
     VAR_HUM_BITFLAG_NEW_PLAYER_INIT_FLAG = 302,      --玩家是否进行新手初始化
+    VAR_HUM_BITFLAG_USE_XYF = 303,                   --祝福是否使用幸运符
+    VAR_HUM_BITFLAG_USE_BDF = 304,                   --祝福是否使用保底符      
 
     VAR_HUM_BITFLAG_SUPERBOX_RECYCLE_CHECK1 = 310,  --超级宝箱自动回收 保留满足品质的条件
     VAR_HUM_BITFLAG_SUPERBOX_RECYCLE_CHECK2 = 311,  --超级宝箱自动回收 保留满足等级的条件

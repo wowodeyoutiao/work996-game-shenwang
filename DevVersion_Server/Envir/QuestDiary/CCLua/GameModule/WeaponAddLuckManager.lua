@@ -4,6 +4,9 @@ local AUTO_ADDLUCK_TARG_MIN = 5     --自动祝福的最小目标
 local AUTO_ADDLUCK_TARG_MAX = 9     --自动祝福的最大目标
 local FAIL_DECLUCK_RATE = 90        --祝福失败扣等级的概率 百分比分子
 
+local EXT_ADDLUCK_ITEM = {{'幸运符'}, {'保底符'}}
+local EXT_ADDLUCK_CHECKBOXVAR = {CommonDefine.CHECK_BOX_VAR[14], CommonDefine.CHECK_BOX_VAR[15]}
+
 --武器的祝福面板信息
 local function weapon_addluck_str(actor, weaponitem)
     local currLuckLevel = getitemintparam(actor, CommonDefine.EQUIPPOS_WEAPON, CommonDefine.ITEM_INTVAR_ADDLUCK_LV)
@@ -24,81 +27,77 @@ local function weapon_addluck_str(actor, weaponitem)
 
     local weaponname = getiteminfo(actor, weaponitem, CommonDefine.ITEMINFO_SRCNAME)
     local weaponcolor = Item.GetItemQualityColor(actor, weaponitem)
-    local sPanelStr = '<Img|id=10|children={11,12,13,14,15,16,17}|x=4.0|y=5.0|show=0|loadDelay=0|move=0|img=private/cc_weaponaddluck/1.png|esc=1|reset=1|bg=1>'..
+    local sPanelStr = '<Img|id=10|children={11,12,13,14,15,16,17,18}|x=4.0|y=5.0|show=0|loadDelay=0|move=0|img=private/cc_weaponaddluck/1.png|esc=1|reset=1|bg=1>'..
         '<Layout|id=11|x=813.0|y=14.0|width=80|height=80|link=@exit>'..
-        '<Button|id=12|x=814.0|y=14.0|nimg=public/1900000510.png|pimg=public/1900000511.png|link=@exit>'..
-        '<Layout|id=13|children={30,31,32,33,35,36,37,41,42,43,45,46,47}|x=64.0|y=56.0|width=728|height=240>'
+        '<Button|id=12|x=814.0|y=14.0|nimg=public/1900000510.png|pimg=public/1900000511.png|link=@exit>'
         
-    sPanelStr = sPanelStr..'<Text|id=17|text='..weaponname..'|size=22|x=360|y=60|color='..weaponcolor..'>'
+    sPanelStr = sPanelStr..'<Text|id=17|text='..weaponname..'|size=22|x=450|y=320|color='..weaponcolor..'>'..
+        '<EquipShow|id=18|x=516.0|y=238.0|showtips=1|effectshow=0|reload=1|index='..CommonDefine.EQUIPPOS_WEAPON..'>'
+
     --当前祝福等级的属性    
-    local tempLeftX = 120
-    local tempLeftY = 50
-    sPanelStr = sPanelStr..'<Text|id=31|text=当前祝福等级：|x='..tempLeftX..'|y='..tempLeftY..'|color='..CSS.NPC_YELLOW..'>'..
-                           '<Text|id=32|text='..currLuckLevel..'|x='..(tempLeftX+120)..'|y='..tempLeftY..'|color='..CSS.NPC_WHITE..'>'
-    tempLeftY = tempLeftY + 30
-    sPanelStr = sPanelStr..'<Text|id=33|text=幸运值:'..currLuckLevel..'|x='..tempLeftX..'|y='..tempLeftY..'|color='..CSS.NPC_WHITE..'>'
+    local tempLeftX = 20
+    local tempLeftY = 20
+    sPanelStr = sPanelStr..'<Text|id=31|text=当前祝福等级：|size=16|x='..tempLeftX..'|y='..tempLeftY..'|color='..CSS.NPC_YELLOW..'>'..
+                           '<Text|id=32|text='..currLuckLevel..'|size=16|x='..(tempLeftX+110)..'|y='..tempLeftY..'|color='..CSS.NPC_WHITE..'>'
+    tempLeftY = tempLeftY + 20
+    sPanelStr = sPanelStr..'<Text|id=33|text=幸运值+'..currLuckLevel..'|size=16|x='..tempLeftX..'|y='..tempLeftY..'|color='..CSS.NPC_WHITE..'>'
     --下一祝福等级的属性
-    local tempRightX = 460
-    local tempRightY = 50
+    local tempRightX = 20
+    local tempRightY = 80
     if bCurrIsMaxLv then
-        sPanelStr = sPanelStr..'<Text|text=已达到上限|x='..tempRightX..'|y='..tempRightY..'|color='..CSS.NPC_YELLOW..'>'
-        tempRightY = tempRightY + 30
+        sPanelStr = sPanelStr..'<Text|text=已达到上限|size=16|x='..tempRightX..'|y='..tempRightY..'|color='..CSS.NPC_YELLOW..'>'
+        tempRightY = tempRightY + 20
     else
-        sPanelStr = sPanelStr..'<Text|id=35|text=下一祝福等级：|x='..tempRightX..'|y='..tempRightY..'|color='..CSS.NPC_YELLOW..'>'..
-                               '<Text|id=36|text='..nextLuckLevel..'|x='..(tempRightX+120)..'|y='..tempRightY..'|color='..CSS.NPC_WHITE..'>'    
-        tempRightY = tempRightY + 30
-        sPanelStr = sPanelStr..'<Text|id=37|text=幸运值:'..nextLuckLevel..'|x='..tempRightX..'|y='..tempRightY..'|color='..CSS.NPC_WHITE..'>'
+        sPanelStr = sPanelStr..'<Text|id=35|text=下一祝福等级：|size=16|x='..tempRightX..'|y='..tempRightY..'|color='..CSS.NPC_YELLOW..'>'..
+                               '<Text|id=36|text='..nextLuckLevel..'|size=16|x='..(tempRightX+110)..'|y='..tempRightY..'|color='..CSS.NPC_WHITE..'>'    
+        tempRightY = tempRightY + 20
+        sPanelStr = sPanelStr..'<Text|id=37|text=幸运值+'..nextLuckLevel..'|size=16|x='..tempRightX..'|y='..tempRightY..'|color='..CSS.NPC_WHITE..'>'
     end
 
     --等级限制和强化消耗
     local tempCurrY = math.max(tempLeftY, tempRightY)
-    tempCurrY = tempCurrY + 40    
-    sPanelStr = sPanelStr..'<Img|id=30|x=15|y='..tempCurrY..'|width=700|height=4|esc=0|img=private/cc_common/line_1.png>'
-    local tempCurrX = 100    
+    tempCurrY = tempCurrY + 60    
+    sPanelStr = sPanelStr..'<Img|id=30|x=0|y='..tempCurrY..'|width=220|height=4|esc=0|img=private/cc_common/line_1.png>'
+    local tempCurrX = 20    
     tempCurrY = tempCurrY + 30  
+    local sidstr = ''
     if not bCurrIsMaxLv then
-        local sConsumeInfo = BF_GetItemTableDescStr(actor, cfgWeaponLuck[cfgCurrKey].needitems_tab)
-        sPanelStr = sPanelStr..'<Text|id=41|text=祝福消耗：'..sConsumeInfo..'|x='..tempCurrX..'|y='..tempCurrY..'|color='..CSS.NPC_YELLOW..'>'
+        sPanelStr = sPanelStr..'<Text|id=45|text=成功几率： '..cfgWeaponLuck[cfgCurrKey].successrate ..'% |size=16|x='..tempCurrX..'|y='..tempCurrY..'|color='..CSS.NPC_YELLOW..'>'        
+        tempCurrY = tempCurrY + 30
+        sPanelStr = sPanelStr..'<Text|id=41|text=祝福消耗：|x='..tempCurrX..'|y='..tempCurrY..'|size=16|color='..CSS.NPC_YELLOW..'>'
 
-        local currNum = Player.GetItemNumInBag(actor, CommonDefine.ITEMID_XINYUNFU)
-        local strTemp1 = ''
-        local strTemp2 = ''
-        if getflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_USE_XYF) == 1 then
-            strTemp1 = '启用中'
-            strTemp2 = '停用'
-        else
-            strTemp1 = '停用中'
-            strTemp2 = '启用'
-        end
-        sPanelStr = sPanelStr..'<Text|id=42|text=幸运符('..CommonDefine.ADDLUCK_USE_XYF_NUM..'/'..currNum..') '..strTemp1..'|x='..(tempCurrX+350)..'|y='..tempCurrY..'|color='..CSS.NPC_WHITE..'>'..
-                    '<Button|id=43|text='..strTemp2..'|x='..(tempCurrX+550)..'|y='..(tempCurrY-6)..'|mimg=private/cc_common/button_2.png|nimg=private/cc_common/button_2.png|color='..
-                    CSS.NPC_LIGHTGREEN..'|link=@switch_xyf_flag>'
-    end
+        local sTempStr, s1 = Item.GetNeedItemsShowInfo(actor, cfgWeaponLuck[cfgCurrKey].needitems_tab, tempCurrX-10, tempCurrY, 310, 320, CSS.NPC_YELLOW, true,16)
+        if sTempStr ~= '' then
+            sPanelStr = sPanelStr..sTempStr
+        end 
+        sidstr = sidstr..','..s1
+
+        tempCurrY = tempCurrY + 30
+    end    
+    sPanelStr = sPanelStr..'<Img|id=38|x=0|y='..tempCurrY..'|width=220|height=4|esc=0|img=private/cc_common/line_1.png>'
+
+    tempCurrX = 40
     tempCurrY = tempCurrY + 40
-
     if not bCurrIsMaxLv then
-        sPanelStr = sPanelStr..'<Text|id=45|text=成功几率：'..cfgWeaponLuck[cfgCurrKey].successrate ..'% |x='..tempCurrX..'|y='..tempCurrY..'|color='..CSS.NPC_YELLOW..'>'
-
-        local currNum = Player.GetItemNumInBag(actor, CommonDefine.ITEMID_BAODIFU)
-        local strTemp1 = ''
-        local strTemp2 = ''
-        if getflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_USE_BDF) == 1 then
-            strTemp1 = '启用中'
-            strTemp2 = '停用'
-        else
-            strTemp1 = '停用中'
-            strTemp2 = '启用'
-        end
-        sPanelStr = sPanelStr..'<Text|id=46|text=保底符('..CommonDefine.ADDLUCK_USE_BDF_NUM..'/'..currNum..') '..strTemp1..'|x='..(tempCurrX+350)..'|y='..tempCurrY..'|color='..CSS.NPC_WHITE..'>'..
-                    '<Button|id=47|text='..strTemp2..'|x='..(tempCurrX+550)..'|y='..(tempCurrY-6)..'|mimg=private/cc_common/button_2.png|nimg=private/cc_common/button_2.png|color='..
-                    CSS.NPC_LIGHTGREEN..'|link=@switch_bdf_flag>'        
+        local iflag = getflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_USE_XYF)
+        sPanelStr = sPanelStr..Item.GetBagItemsGridShowInfo(actor, EXT_ADDLUCK_ITEM[1], 42, tempCurrX-10, tempCurrY+40, 1)
+        sPanelStr = sPanelStr..'<CheckBox|id=43|x='..(tempCurrX-30)..'|y='..(tempCurrY+20)..'|nimg=private/cc_common/checkbox_1.png|pimg=private/cc_common/checkbox_2.png|checkboxid='..
+            EXT_ADDLUCK_CHECKBOXVAR[1]..'|default='..iflag..'|delay=0|count=1|link=@switch_xyf_flag>'
     end
+    tempCurrX = 150
+    if not bCurrIsMaxLv then               
+        local iflag = getflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_USE_BDF)
+        sPanelStr = sPanelStr..Item.GetBagItemsGridShowInfo(actor, EXT_ADDLUCK_ITEM[2], 46, tempCurrX-10, tempCurrY+40, 1)
+        sPanelStr = sPanelStr..'<CheckBox|id=47|x='..(tempCurrX-30)..'|y='..(tempCurrY+20)..'|nimg=private/cc_common/checkbox_1.png|pimg=private/cc_common/checkbox_2.png|checkboxid='..
+            EXT_ADDLUCK_CHECKBOXVAR[2]..'|default='..iflag..'|delay=0|count=1|link=@switch_bdf_flag>'        
+    end
+    sPanelStr = sPanelStr..'<Layout|id=13|children={30,31,32,33,35,36,37,38,41,42,43,45,46,47,'..sidstr..'}|x=64.0|y=56.0|width=230|height=440|color=233>'
     tempCurrY = tempCurrY + 20
 
     --检测按钮
     tempCurrY = 30
-    local nStartX = 80    
-    local nStartY = tempCurrY + 25
+    local nStartX = 10    
+    local nStartY = tempCurrY + 10
     for i = AUTO_ADDLUCK_TARG_MIN, AUTO_ADDLUCK_TARG_MAX, 1 do
         local seq = i - AUTO_ADDLUCK_TARG_MIN + 1
         local checkvar = CommonDefine.CHECK_BOX_VAR[seq]
@@ -107,23 +106,23 @@ local function weapon_addluck_str(actor, weaponitem)
         local textid = 60 + seq
         sPanelStr = sPanelStr..'<CheckBox|id='..checkboxid..'|x='..nStartX..'|y='..nStartY..'|nimg=private/cc_common/checkbox_1.png|pimg=private/cc_common/checkbox_2.png|checkboxid='..
             checkvar..'|default='..flag..'|delay=0|count=1|link=@set_autoaddluck_targ,'..i..'>'..
-            '<Text|id='..textid..'|text=幸运+'..i..'|x='..(nStartX+30)..'|y='..(nStartY+5)..'|color='..CSS.NPC_YELLOW..'>'
-        nStartX = nStartX + 120
+            '<Text|id='..textid..'|text=幸运+'..i..'|x='..(nStartX+30)..'|y='..(nStartY+5)..'|size=16|color='..CSS.NPC_YELLOW..'>'
+        nStartX = nStartX + 100
     end
-    sPanelStr = sPanelStr..'<Text|id=50|text=自动祝福选项：|x=30|y=10|size=20|color='..CSS.NPC_WHITE..'>'
-    sPanelStr = sPanelStr..'<Img|id=14|children={50,51,52,53,54,55,61,62,63,64,65}|x=64.0|y=296.0|width=728|esc=0|img=private/cc_weaponaddluck/5.png>'
+    sPanelStr = sPanelStr..'<Text|id=50|text=自动祝福选项：|x=20|y=10|size=16|color='..CSS.NPC_WHITE..'>'
+    sPanelStr = sPanelStr..'<Img|id=14|children={50,51,52,53,54,55,61,62,63,64,65}|x=302.0|y=360.0|width=494|height=80|esc=0|img=private/cc_weaponaddluck/5.png>'
 
     --升级按钮
-    tempCurrY = 430
+    tempCurrY = 460
     if bCurrIsMaxLv then
         sPanelStr = sPanelStr..'<Text|id=15|text=已达到最高祝福等级！|x=300|y='..tempCurrY..'|color='..CSS.NPC_LIGHTGREEN..'>'
     else
-        sPanelStr = sPanelStr..'<Button|id=15|x=200|y='..tempCurrY..'|mimg=private/cc_common/button_1.png|color=255|nimg=private/cc_common/button_1.png|size=18|text=祝福一次|link=@weapon_addluck_once>'        
+        sPanelStr = sPanelStr..'<Button|id=15|x=350|y='..tempCurrY..'|mimg=private/cc_common/button_1.png|color=255|nimg=private/cc_common/button_1.png|size=18|text=祝福一次|link=@weapon_addluck_once>'        
         
         if getflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_NPC_TEMP_CHOOSE_FLAG) == 0 then
-            sPanelStr = sPanelStr..'<Button|id=16|x=500|y='..tempCurrY..'|mimg=private/cc_common/button_1.png|color=255|nimg=private/cc_common/button_1.png|size=18|text=自动祝福|link=@weapon_auto_addluck>'
+            sPanelStr = sPanelStr..'<Button|id=16|x=650|y='..tempCurrY..'|mimg=private/cc_common/button_1.png|color=255|nimg=private/cc_common/button_1.png|size=18|text=自动祝福|link=@weapon_auto_addluck>'
         else
-            sPanelStr = sPanelStr..'<Button|id=16|x=500|y='..tempCurrY..'|mimg=private/cc_common/button_1.png|color=255|nimg=private/cc_common/button_1.png|size=18|text=停止祝福|link=@weapon_auto_addluck_stop>'
+            sPanelStr = sPanelStr..'<Button|id=16|x=650|y='..tempCurrY..'|mimg=private/cc_common/button_1.png|color=255|nimg=private/cc_common/button_1.png|size=18|text=停止祝福|link=@weapon_auto_addluck_stop>'
         end
     end
 
@@ -137,7 +136,7 @@ local function inner_show_page(actor)
         strPanelInfo = '<Img|id=10|children={11,12,13}|x=4.0|y=5.0|show=0|loadDelay=0|move=0|img=private/cc_weaponaddluck/1.png|esc=1|reset=1|bg=1>'..
             '<Layout|id=11|x=813.0|y=14.0|width=80|height=80|link=@exit>'..
             '<Button|id=12|x=814.0|y=14.0|nimg=public/1900000510.png|pimg=public/1900000511.png|link=@exit>'..
-            '<Text|id=13|text=提    示:   只有穿戴武器才能进行祝福|x=200|y=240|size=22|color='..CSS.NPC_WHITE..'>'        
+            '<Text|id=13|text=提    示:   只有穿戴武器才能进行祝福|x=350|y=440|size=22|color='..CSS.NPC_WHITE..'>'        
     else
         strPanelInfo = weapon_addluck_str(actor, weaponitem)
     end
