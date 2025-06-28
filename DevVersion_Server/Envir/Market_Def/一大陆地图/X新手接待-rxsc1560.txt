@@ -3,8 +3,8 @@
 ; SMALL G0 30
 #SAY
 <Img|x=0|y=-60|reset=1|show=4|bg=1|move=0|img=public/bg_shouchong_00.png|loadDelay=1|esc=1>
-<Text|x=316.0|y=187.0|color=250|size=18|text=尊敬的勇士，你好！\本服开创传奇游戏开箱玩法之先河，\让装备获取不再困难！>                                                            
-<Button|x=371.0|y=291.0|width=168|height=50|color=116|size=22|nimg=public/wz/bt21.png|text=起  飞|link=@传送训练营>
+<Text|x=220.0|y=120.0|color=250|size=22|text=尊敬的勇士，你好！\本服开创传奇游戏开箱玩法之先河，\让装备获取不再困难！>                                                            
+<Button|x=260.0|y=230.0|width=168|height=50|color=116|size=22|nimg=public/wz/bt21.png|text=起  飞|link=@传送训练营>
 #ELSESAY
 <Img|x=0|y=-60|reset=1|show=4|bg=1|move=0|img=public/bg_shouchong_00.png|loadDelay=1|esc=1>
 <RText|x=316.0|y=187.0|color=103|size=18|text=<尊敬的勇士，你好！/FCOLOR=250>\开服超30天区建立新角色需要使用邀\请码>

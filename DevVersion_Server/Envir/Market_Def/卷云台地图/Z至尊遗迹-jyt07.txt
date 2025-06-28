@@ -1,0 +1,38 @@
+[@MAIN]
+#IF
+#ACT
+MOV S$地图名称 至尊遗迹
+ReadConfigFileItem ..\QuestDiary\01配置项\打怪地图配置.ini <$STR(S$地图名称)> 地图类型 S$地图类型
+ReadConfigFileItem ..\QuestDiary\01配置项\打怪地图配置.ini <$STR(S$地图名称)> 地图预览 S$地图预览
+ReadConfigFileItem ..\QuestDiary\01配置项\打怪地图配置.ini <$STR(S$地图名称)> 地图等级 N$地图等级
+ReadConfigFileItem ..\QuestDiary\01配置项\打怪地图配置.ini <$STR(S$地图名称)> 条件描述 S$条件描述
+
+#CALL [\03自定义按钮\通用游戏地图.txt] @显示面板
+
+
+[@进入地图]
+#IF
+LARGE <$MINUTE> 5
+#ACT
+SENDMSG 9 入口已关闭，星界旅行者遗迹仅在整点前5分钟开放！
+BREAK
+
+; #IF
+; SMALL u2 100
+; #ACT
+; SENDMSG 9 传送失败，等您的神石达到100级再来吧！
+; BREAK
+
+#or
+equal <$drum> 源石+7
+equal <$drum> 源石+8
+equal <$drum> 源石+9
+equal <$drum> 源石+10
+#ACT
+MAPMOVE zzyj  17 18
+#ELSEACT
+SENDMSG 9 传送失败，进入此地图需要源石+7以上！
+BREAK
+[@自动打怪]
+#ACT
+StartAutoPlayGame
