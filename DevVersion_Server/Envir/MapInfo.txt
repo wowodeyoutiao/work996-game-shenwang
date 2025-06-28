@@ -107,13 +107,13 @@ rxsc806     634,271    ->  rxsc807     19,14
 [sxjz|e703              四象剑阵] noreconnect(tjp) runmon(1) nodeal  NOMANNOMON(120)
 [wjtg1|d2052     十转之地] noreconnect(tjp) runmon(1) nodeal  NOMANNOMON(120)
 ;──────── 新的征程─────────────────────
-[sszj|d616  生死之间]	 noreconnect(tjp) runmon(1) nodeal  NOMANNOMON(120)
-[jxd|l002    寂玄道] noreconnect(tjp) runmon(1) nodeal  NOMANNOMON(120)
-[lhzd|e602    轮回之地]	noreconnect(tjp) runmon(1) nodeal  NOMANNOMON(120)
+[sszj|d616  白驹过隙]	 noreconnect(tjp) runmon(1) nodeal  NOMANNOMON(120)
+[jxd|l002    空灵之境] noreconnect(tjp) runmon(1) nodeal  NOMANNOMON(120)
+[lhzd|e602    六道轮回]	noreconnect(tjp) runmon(1) nodeal  NOMANNOMON(120)
 ;──────── 宿命的羁绊─────────────────────
-[dyhj|d617    地狱幻境]	noreconnect(tjp) runmon(1) nodeal  NOMANNOMON(120)
-[zwd|e605    紫薇道]    noreconnect(tjp) runmon(1) nodeal  NOMANNOMON(120)
-[xbsd|e703  玄冰神殿]	noreconnect(tjp) runmon(1) nodeal  NOMANNOMON(120)
+[dyhj|d617    炼狱之地]	noreconnect(tjp) runmon(1) nodeal  NOMANNOMON(120)
+[zwd|e605    仙灵福地]    noreconnect(tjp) runmon(1) nodeal  NOMANNOMON(120)
+[xbsd|e703  苦寒之地]	noreconnect(tjp) runmon(1) nodeal  NOMANNOMON(120)
 ;─────────────────────────────
 [cczd1|613 传承之地(勋章)]  noreconnect(tjp) runmon(1) noallowuseitems(随机传送石|风雷召唤令)  NOMANNOMON(120)
 [cczd2|613 传承之地(盾牌)]  noreconnect(tjp) runmon(1) noallowuseitems(随机传送石|风雷召唤令)  NOMANNOMON(120)
