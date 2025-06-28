@@ -1,0 +1,23 @@
+[@MAIN]
+<Img|show=0|bg=1|loadDelay=1|move=0|reset=1|img=public/bg_npc_01.png|esc=1>
+<Layout|x=521.0|y=-2.0|width=80|height=80|link=@exit>
+<Button|x=524.0|y=-1.0|nimg=public/1900000510.png|pimg=public/1900000511.png|link=@exit>
+<Text|x=36.0|y=16.0|color=116|size=22|text=◆月光神庙◆（源石）>
+<Text|x=40.0|y=49.0|color=7|size=18|text=本服百种BUFF、千件装备，爆率全开。\小怪一样出终极！真正不花一分钱也能到终极的良心服！>
+<RText|x=19.0|y=105.0|color=250|size=18|text=---------------------------复刻经典，超级好玩--------------------------->
+<Text|x=171.0|y=155.0|color=250|size=18|text=★源石+8以上★可进入>
+<Button|x=37.0|y=140.0|color=251|nimg=public/wz/bt11.png|size=18|text=进入地图|link=@进入月光神庙>
+
+[@进入月光神庙]
+#or
+equal <$drum> 源石+8
+equal <$drum> 源石+9
+equal <$drum> 源石+10
+#ACT
+MAPMOVE ygsm
+#ELSEACT
+SENDMSG 9 传送失败，进入此地图源石+8以上！
+BREAK
+[@自动打怪]
+#ACT
+StartAutoPlayGame

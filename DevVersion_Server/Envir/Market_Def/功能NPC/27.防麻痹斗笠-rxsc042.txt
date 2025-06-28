@@ -20,15 +20,14 @@ MOV S$升级斗笠 沉默斗笠(Lv100)
 #Act
 GetDBItemFieldValue <$STR(S$升级斗笠)> idx N$升级IDX
 #Say
-<Img|x=0.0|y=0.0|reset=1|show=4|bg=1|move=0|img=public/wz/92233812_286330.png|loadDelay=1|esc=1>
+<Img|x=0.0|y=0.0|reset=1|show=4|bg=1|move=0|img=public/cc_new/douli_panel.png|loadDelay=1|esc=1>
 <Layout|x=773.0|y=17.0|width=80|height=80|link=@exit>
 <Button|x=775.0|y=19.0|color=255|pimg=public/1900000510_2.png|nimg=public/1900000510_1.png|size=18|link=@exit>
-<Img|x=26.0|y=57.0|img=public/wz/7c1a9d40_64297.jpg|esc=0>
-<Text|x=367.0|y=25.0|color=116|size=18|outline=2|text=防麻斗笠>
-<Text|x=344|y=153|color=250|size=18|outline=1|text=<$STR(S$升级斗笠)>>
-<ItemShow|x=360.0|y=193.0|width=70|height=70|itemid=<$Str(N$升级IDX)>|itemcount=1|showtips=1|bgtype=1>
-<Button|x=390.0|y=420.0|nimg=public/alpha_1px.png|color=250|size=18|text=<$STR(S$升级费用)>>
-<Button|x=340.0|y=438.0|color=251|size=18|nimg=public/wz/bt21.png|text=确定升级|link=@开始锻造>
+<Text|x=180.0|y=22.0|color=116|size=20|outline=2|text=斗笠>
+<Text|x=380|y=120|color=250|size=18|outline=1|text=<$STR(S$升级斗笠)>>
+<ItemShow|x=402.0|y=162.0|width=80|height=80|itemid=<$Str(N$升级IDX)>|itemcount=1|showtips=1|bgtype=1>
+<Text|x=386.0|y=420.0|color=250|size=18|text=<$STR(S$升级费用)>>
+<Button|x=380.0|y=440.0|color=251|size=18|nimg=public/wz/bt21.png|text=确定升级|link=@开始锻造>
 
 
 [@开始锻造]

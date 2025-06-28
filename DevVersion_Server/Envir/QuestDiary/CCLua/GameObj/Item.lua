@@ -229,9 +229,11 @@ function Item.GetBagItemsShowInfo(actor, itemnamelist, basepanelid, basex, basey
 
     local itemgrid_x = 0
     local itemgrid_y = 0
-    local itemimgid = CommonDefine.COMPONENT_ID_BAGITEMSHOW_IMG_BASE
-    local itemtextid = CommonDefine.COMPONENT_ID_BAGITEMSHOW_TEXT_BASE
-    local sIdstr = ''
+    local itemimgid = CommonDefine.COMPONENT_ID_BAGITEMSHOW_IMG_BASE + basepanelid * 100
+    local itemtextid = CommonDefine.COMPONENT_ID_BAGITEMSHOW_TEXT_BASE + basepanelid * 100        
+    sInfo = sInfo..'<Text|id='..itemtextid..'|text=³ÖÓÐ£º|x='..(itemgrid_x-20)..'|y='..(itemgrid_y+2)..'|color='..CSS.NPC_WHITE..'>'
+    local sIdstr = itemtextid
+    itemtextid = itemtextid + 10
     for i = 1, #itemnamelist, 1 do
         local itemname = itemnamelist[i]
         local itemidx = getstditeminfo(itemname, CommonDefine.STDITEMINFO_IDX)

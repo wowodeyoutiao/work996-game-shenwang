@@ -1,57 +1,25 @@
 [@MAIN]
 #IF
-CHECKUNDERWAR 沙巴克
-equal <$HOUR> 21
 #ACT
-SENDMSG 9 沙巴克攻城期间，禁止入图
-BREAK
-
-#IF
-LARGE <$HFCOUNT> 0
-#ACT
-SENDMSG 9 合区后禁止进入该地图！
-BREAK
-
-#IF
-#ACT
-MOV S$地图名称 兽人古战场
+MOV S$地图名称 修罗大殿
+MOV S$称号条件 暴走·极限突破
 ReadConfigFileItem ..\QuestDiary\01配置项\打怪地图配置.ini <$STR(S$地图名称)> 地图类型 S$地图类型
 ReadConfigFileItem ..\QuestDiary\01配置项\打怪地图配置.ini <$STR(S$地图名称)> 地图预览 S$地图预览
 ReadConfigFileItem ..\QuestDiary\01配置项\打怪地图配置.ini <$STR(S$地图名称)> 地图等级 N$地图等级
 ReadConfigFileItem ..\QuestDiary\01配置项\打怪地图配置.ini <$STR(S$地图名称)> 条件描述 S$条件描述
+
 #CALL [\03自定义按钮\通用游戏地图.txt] @显示面板
 
 
 [@进入地图]
 #IF
-CHECKLEVELEX < 1
+LARGE u1 23
 #ACT
-SENDMSG 9 进入失败！需要等级1或以上。
-BREAK
-
-#IF
-NOT EQUAL S$地图名称
-#ACT
-MAPMOVE fmg 246 102
+MAPMOVE rxsc1880
 DELAYGOTO 100 @自动打怪
+#ELSEACT
+SENDMSG 9 你没有[<$STR(S$称号条件)>]称号无法进入该地图！
 BREAK
-
-
 [@自动打怪]
-#IF
 #ACT
-STARTAUTOPLAYGAME
-
-#IF
-EQUAL <$GETSTRVALUE(T20,44730)> 0
-#ACT
-NAVIGATION 102 10555 领取礼包码
-BREAK
-
-#IF
-SMALL U3 1
-CHECKMONEY 充值 ? 18
-#ACT
-REDDOT 0 16 100 5
-NAVIGATION 102 6003 领取会员
-BREAK
+StartAutoPlayGame

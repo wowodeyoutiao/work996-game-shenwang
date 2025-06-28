@@ -4,6 +4,7 @@ local AUTO_ADDLUCK_TARG_MIN = 5     --自动祝福的最小目标
 local AUTO_ADDLUCK_TARG_MAX = 9     --自动祝福的最大目标
 local FAIL_DECLUCK_RATE = 90        --祝福失败扣等级的概率 百分比分子
 
+local SHOW_BAG_ITEMS = {'祝福油'}
 local EXT_ADDLUCK_ITEM = {{'幸运符'}, {'保底符'}}
 local EXT_ADDLUCK_CHECKBOXVAR = {CommonDefine.CHECK_BOX_VAR[14], CommonDefine.CHECK_BOX_VAR[15]}
 
@@ -27,12 +28,13 @@ local function weapon_addluck_str(actor, weaponitem)
 
     local weaponname = getiteminfo(actor, weaponitem, CommonDefine.ITEMINFO_SRCNAME)
     local weaponcolor = Item.GetItemQualityColor(actor, weaponitem)
-    local sPanelStr = '<Img|id=10|children={11,12,13,14,15,16,17,18}|x=4.0|y=5.0|show=0|loadDelay=0|move=0|img=private/cc_weaponaddluck/1.png|esc=1|reset=1|bg=1>'..
+    local sPanelStr = '<Img|id=10|children={11,12,13,14,15,16,17,18,19}|x=4.0|y=5.0|show=0|loadDelay=0|move=0|img=private/cc_weaponaddluck/1.png|esc=1|reset=1|bg=1>'..
         '<Layout|id=11|x=813.0|y=14.0|width=80|height=80|link=@exit>'..
         '<Button|id=12|x=814.0|y=14.0|nimg=public/1900000510.png|pimg=public/1900000511.png|link=@exit>'
         
     sPanelStr = sPanelStr..'<Text|id=17|text='..weaponname..'|size=22|x=450|y=320|color='..weaponcolor..'>'..
         '<EquipShow|id=18|x=516.0|y=238.0|showtips=1|effectshow=0|reload=1|index='..CommonDefine.EQUIPPOS_WEAPON..'>'
+    sPanelStr = sPanelStr..Item.GetBagItemsShowInfo(actor, SHOW_BAG_ITEMS, 19)
 
     --当前祝福等级的属性    
     local tempLeftX = 20

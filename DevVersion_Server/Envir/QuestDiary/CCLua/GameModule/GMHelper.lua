@@ -512,8 +512,9 @@ function GMHelper.DoGmOper(actor, sid)
         --changeexp(actor, '+', 500, true)
         --delbutton(actor, 108, CommonDefine.ADD_BUTTON_ID_5)
         --setplaydef(actor, CommonDefine.VAR_J_DAY_SUPERBOX_OPENNUM, 0)
-        addattlist(actor, CommonDefine.ABILITY_GROUP_TEMPTEST, "+", "3#72#1")      
-        recalcabilitys(actor)        
+        --addattlist(actor, CommonDefine.ABILITY_GROUP_TEMPTEST, "+", "3#72#1")      
+        --recalcabilitys(actor)        
+        mapmove(actor, 'rxsc1560', 648, 622, 3)
     else
         --³¬¼¶Ìø×ª
         for index, value in ipairs(TEST_SUPER_JUMP_CFG) do

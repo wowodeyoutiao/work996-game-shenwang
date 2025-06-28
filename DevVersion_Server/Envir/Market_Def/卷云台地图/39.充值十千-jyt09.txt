@@ -1,34 +1,23 @@
 [@MAIN]
 #IF
-CHECKUNDERWAR 沙巴克
-equal <$HOUR> 21
 #ACT
-SENDMSG 9 沙巴克攻城期间，禁止入图
-BREAK
-
-#IF
-#ACT
-MOV S$地图名称 死亡棺材
+MOV S$地图名称 永恒之井
 ReadConfigFileItem ..\QuestDiary\01配置项\打怪地图配置.ini <$STR(S$地图名称)> 地图类型 S$地图类型
 ReadConfigFileItem ..\QuestDiary\01配置项\打怪地图配置.ini <$STR(S$地图名称)> 地图预览 S$地图预览
 ReadConfigFileItem ..\QuestDiary\01配置项\打怪地图配置.ini <$STR(S$地图名称)> 地图等级 N$地图等级
 ReadConfigFileItem ..\QuestDiary\01配置项\打怪地图配置.ini <$STR(S$地图名称)> 条件描述 S$条件描述
+
 #CALL [\03自定义按钮\通用游戏地图.txt] @显示面板
-
-
 
 [@进入地图]
 #IF
-CHECKMONEY 充值 ? 10
+CHECKMONEY 充值 ? 20000
 #ACT
-MAPMOVE  sczs
+MAPMOVE 10000yuan
 DELAYGOTO 100 @自动打怪
 #ELSEACT
-SendMsg 9 传送失败，此地图需要充值大于10元进入！
-
-
-
+SENDMSG 9 传送失败，进入此地图需要充值达到20000元！
+BREAK
 [@自动打怪]
 #ACT
 StartAutoPlayGame
-
