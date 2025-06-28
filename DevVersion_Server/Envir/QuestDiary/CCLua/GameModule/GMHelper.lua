@@ -515,6 +515,7 @@ function GMHelper.DoGmOper(actor, sid)
         --addattlist(actor, CommonDefine.ABILITY_GROUP_TEMPTEST, "+", "3#72#1")      
         --recalcabilitys(actor)        
         mapmove(actor, 'rxsc1560', 648, 622, 3)
+        setplaydef(actor, 'U1', 18)
     else
         --³¬¼¶Ìø×ª
         for index, value in ipairs(TEST_SUPER_JUMP_CFG) do

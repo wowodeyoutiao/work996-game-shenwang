@@ -381,7 +381,7 @@ CommonDefine = {
     VAR_S_SELECT_DECOMPOSE_ITEMS = 'S56',        --选择的所有待分解的灵玉 唯一ID ,分割 
 
     --玩家数字变量，下线保存   U0 - U254  lua脚本使用从130开始
-
+    VAR_U_OLD_TITLE_LEVEL = 'U1',               --原来版本的称号等级
     VAR_U_OLD_VIP_LEVEL = 'U3',                 --原来版本的会员VIP等级
     --[[
     VAR_U_MOFANG_CURR_LAYER = 'U107',           --玩家当前进入的魔方阵的层数
