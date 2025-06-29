@@ -1,7 +1,7 @@
 [@MAIN]
 #IF
 #ACT
-MOV S$称号 史诗·超越征程
+MOV S$称号 破天轩辕
 #SAY
 <Img|width=350|height=450|reset=1|show=4|loadDelay=1|bg=1|img=custom/40.png|move=0|esc=1>
 <Layout|x=334.0|y=-17.0|width=80|height=80|link=@exit>

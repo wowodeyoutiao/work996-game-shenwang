@@ -1,7 +1,7 @@
 [@MAIN]
 #IF
 #ACT
-MOV S$称号 勇士的荣耀·最终幻想
+MOV S$称号 一念三千
 MOV S$地图编号 rxsc010
 #SAY
 <Img|width=350|height=450|reset=1|show=4|loadDelay=1|bg=1|img=custom/40.png|move=0|esc=1>

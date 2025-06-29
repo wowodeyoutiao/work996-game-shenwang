@@ -2,7 +2,7 @@
 #IF
 #ACT
 MOV S$地图名称 混沌世界
-MOV S$称号条件 毕方之炎·夜空魅影
+MOV S$称号条件 玛法主宰
 ReadConfigFileItem ..\QuestDiary\01配置项\打怪地图配置.ini <$STR(S$地图名称)> 地图类型 S$地图类型
 ReadConfigFileItem ..\QuestDiary\01配置项\打怪地图配置.ini <$STR(S$地图名称)> 地图预览 S$地图预览
 ReadConfigFileItem ..\QuestDiary\01配置项\打怪地图配置.ini <$STR(S$地图名称)> 地图等级 N$地图等级

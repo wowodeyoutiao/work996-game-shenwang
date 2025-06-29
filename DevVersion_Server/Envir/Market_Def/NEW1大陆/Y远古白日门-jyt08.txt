@@ -1,0 +1,34 @@
+[@MAIN]
+
+#IF
+#SAY
+<Img|show=0|bg=1|loadDelay=1|move=0|reset=1|img=public/bg_npc_01.png|esc=1>
+<Layout|x=521.0|y=-2.0|width=80|height=80|link=@exit>
+<Button|x=524.0|y=-1.0|nimg=public/1900000510.png|pimg=public/1900000511.png|link=@exit>
+<Text|x=190.0|y=16.0|color=116|size=22|text=◆远古封魔谷◆>
+<Text|x=40.0|y=49.0|color=7|size=18|text=本服百种BUFF、千件装备，爆率全开。\小怪一样出终极！真正不花一分钱也能到终极的良心服！>
+<RText|x=19.0|y=105.0|color=250|size=18|text=---------------------------麒麟玉兔，专属神器--------------------------->
+<Text|x=171.0|y=150.0|color=251|size=18|text=★战力达到：150万战斗力★>
+<Button|x=37.0|y=140.0|color=251|nimg=public/wz/bt11.png|clickInterval=666|size=18|text=进入地图|link=@进入地图>
+
+
+[@进入地图]
+;#IF
+;SMALL u1 30
+;#ACT
+;SENDMSG 9 传送失败，进入此地图需要【问鼎诛仙】及以上称号！
+;Break
+
+#IF
+SMALL U120 1500000
+#ACT
+SENDMSG 9 传送失败，进入此地图需要战斗力达到1500000！当前战斗力为<$human(战斗力)>！
+Break
+
+#IF
+#ACT
+mapmove jyt09  179 322
+#ELSEACT
+SendMsg	1	恭喜玩家：“<$UserName>”进入远古封魔谷！
+Break
+
