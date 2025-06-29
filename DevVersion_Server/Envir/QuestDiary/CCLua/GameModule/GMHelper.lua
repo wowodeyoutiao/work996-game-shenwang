@@ -102,7 +102,7 @@ function GMHelper.OpenPanel(actor)
         '<Button|x=500|y=120|nimg=public/bg_hhzy_01_3.png|text=模拟充值100元|link=@gmhelper_button#sid1=157>'..        
         '<Button|x=500|y=150|nimg=public/bg_hhzy_01_3.png|text=清空跨天变量|link=@gmhelper_button#sid1=158>'..        
         '<Button|x=500|y=180|nimg=public/bg_hhzy_01_3.png|text=功能NPC面板|color=252|link=@gmhelper_button#sid1=1995>'..
-        '<Button|x=500|y=240|nimg=public/bg_hhzy_01_3.png|text=临时测试|link=@gmhelper_button#sid1=1999>'
+        '<Button|x=500|y=210|nimg=public/bg_hhzy_01_3.png|text=临时测试|link=@gmhelper_button#sid1=1999>'
     --[[                                      
         '<Button|x=40|y=120|nimg=public/bg_hhzy_01_3.png|text=无敌|link=@gmhelper_button,4>'..        
         
@@ -438,7 +438,7 @@ function GMHelper.DoGmOper(actor, sid)
         setplaydef(actor, CommonDefine.VAR_J_DAY_BIAOCHE_ACCEPT_TIMES, 0)
         setplaydef(actor, CommonDefine.VAR_U_BIAOCHE_REFRESH_TIMES, 0)
         setplaydef(actor, CommonDefine.VAR_J_DAY_SUPERBOX_OPENNUM, 0)
-        setplaydef(actor, CommonDefine.VAR_J_DAY_RANDOMBOSS_TRIGGERTIMES, 0)
+        setplaydef(actor, CommonDefine.VAR_J_DAY_RANDOMBOSS_TRIGGERTIMES, 0)     
     elseif sid == '999' then
         Player.TestSuperInitPlayer(actor)
     elseif sid == '1001' then

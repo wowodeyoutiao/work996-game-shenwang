@@ -1,0 +1,229 @@
+[@刷新称号]
+{
+#IF
+#ACT
+MOV N$角色ICON_XX -68
+
+; 冠名ICON
+#IF
+Check [20] 1
+#Act
+SetIcon 3 1 55026 <$STR(N$角色ICON_XX)> 20 1 0 0
+INC N$角色ICON_XX 30
+
+; 狂暴ICON
+#IF
+Check [2] 1
+#Act
+SetIcon 2 1 12043 <$STR(N$角色ICON_XX)> 18 1 0 0
+#ELSEACT
+SetIcon 2 -1
+
+#IF
+CheckTitLe 初入江湖
+#Act
+SetIcon 1 1 10002 -100 -75 0 0
+
+#IF
+CheckTitLe 展露头角
+#Act
+SetIcon 1 1 10003 -100 -75 0 0
+
+#IF
+CheckTitLe 江湖少侠
+#Act
+SetIcon 1 1 10001 -100 -75 0 0
+
+#IF
+CheckTitLe 武林豪杰
+#Act
+SetIcon 1 1 10004 -100 -75 0 0
+
+#IF
+CheckTitLe 侠骨柔情
+#Act
+SetIcon 1 1 10005 -100 -75 0 0
+
+#IF
+CheckTitLe 名动江湖
+#Act
+SetIcon 1 1 10006 -100 -75 0 0
+
+#IF
+CheckTitLe 叱诧风云
+#Act
+SetIcon 1 1 10007 -100 -75 0 0
+
+#IF
+CheckTitLe 赤胆雄心
+#Act
+SetIcon 1 1 10008 -100 -75 0 0
+
+#IF
+CheckTitLe 威震八方
+#Act
+SetIcon 1 1 10009 -100 -75 0 0
+
+#IF
+CheckTitLe 一代宗师
+#Act
+SetIcon 1 1 10010 -100 -75 0 0
+
+#IF
+CheckTitLe 横扫千军
+#Act
+SetIcon 1 1 10011 -100 -75 0 0
+
+#IF
+CheckTitLe 剑舞风行
+#Act
+SetIcon 1 1 10012 -100 -75 0 0
+
+#IF
+CheckTitLe 傲视群雄
+#Act
+SetIcon 1 1 10013 -100 -75 0 0
+
+#IF
+CheckTitLe 独领风骚
+#Act
+SetIcon 1 1 10014 -100 -75 0 0
+
+#IF
+CheckTitLe 笑傲江湖
+#Act
+SetIcon 1 1 10015 -100 -75 0 0
+
+#IF
+CheckTitLe 天下无双
+#Act
+SetIcon 1 1 10016 -100 -75 0 0
+
+#IF
+CheckTitLe 雄霸天下
+#Act
+SetIcon 1 1 10017 -100 -75 0 0
+
+#IF
+CheckTitLe 战神归来
+#Act
+SetIcon 1 1 10018 -100 -75 0 0
+
+#IF
+CheckTitLe 独孤求败
+#Act
+SetIcon 1 1 10019 -100 -75 0 0
+
+#IF
+CheckTitLe 永恒霸主
+#Act
+SetIcon 1 1 10020 -100 -75 0 0
+
+#IF
+CheckTitLe 天煞孤星
+#Act
+SetIcon 1 1 10021 -100 -75 0 0
+
+#IF
+CheckTitLe 逆天改命
+#Act
+SetIcon 1 1 10022 -100 -75 0 0
+
+#IF
+CheckTitLe 武定乾坤
+#Act
+SetIcon 1 1 10023 -100 -75 0 0
+
+#IF
+CheckTitLe 修罗万象
+#Act
+SetIcon 1 1 10024 -100 -75 0 0
+
+#IF
+CheckTitLe 剑指苍穹
+#Act
+SetIcon 1 1 10025 -100 -75 0 0
+
+#IF
+CheckTitLe 破天轩辕
+#Act
+SetIcon 1 1 10026 -100 -75 0 0
+
+#IF
+CheckTitLe 出神入化
+#Act
+SetIcon 1 1 10027 -100 -75 0 0
+
+#IF
+CheckTitLe 毁天灭地
+#Act
+SetIcon 1 1 10028 -100 -75 0 0
+
+#IF
+CheckTitLe 玛法主宰
+#Act
+SetIcon 1 1 10029 -100 -75 0 0
+
+#IF
+CheckTitLe 问鼎诛仙
+#Act
+SetIcon 1 1 10030 -100 -75 0 0
+
+#IF
+CheckTitLe 众生俯仰
+#Act
+SetIcon 1 1 10031 -100 -75 0 0
+
+#IF
+CheckTitLe 一念三千
+#Act
+SetIcon 1 1 10032 -100 -75 0 0
+
+; 使用成就顶戴
+#IF
+NOT EQUAL U67 0
+#ACT
+SetIcon 1 1 <$STR(U67)> -100 -75 0 0
+
+
+; 叠加角色封号
+#IF
+#ACT
+MOV S$角色封号
+
+
+#IF
+EQUAL A6 <$USERNAME>
+#ACT
+INC S$角色封号 ︿花魁榜首︿\
+#IF
+EQUAL A7 <$USERNAME>
+#ACT
+INC S$角色封号 [花魁榜二]\
+#IF
+EQUAL A8 <$USERNAME>
+#ACT
+INC S$角色封号 [花魁榜三]\
+
+#IF
+CHECK [20] 1
+#ACT
+INC S$角色封号 ┈━═☆┣▇◆本区冠名◆▇▆▅▃▂▁\
+
+#IF
+CHECKTITLE 盖世豪侠
+#ACT
+INC S$角色封号 [盖世豪侠]\
+#IF
+CHECKTITLE 无畏王者
+#ACT
+INC S$角色封号 [无畏王者]\
+
+
+#IF
+CHECKLEVELEX ? 40
+#ACT
+SETRANKLEVELNAME %s\<$STR(S$角色封号)>
+
+
+}

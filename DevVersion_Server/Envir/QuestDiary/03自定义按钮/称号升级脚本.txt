@@ -27,6 +27,7 @@ GetDBItemFieldValue 元宝 idx N$元宝IDX
 <Img|x=200|y=112|img=public/bg_hhzy_01_3.png>
 <Effect|x=<$STR(N$偏移X)>|y=<$STR(N$偏移Y)>|effectid=<$STR(N$称号特效ID)>|effecttype=0|scale=1>
 
+
 <RText|id=10|x=500|y=100|outline=1|color=103|size=16|text=
 获得倍攻    <+<$STR(N$称号倍功)>%/FCOLOR=250>\
 攻击暴涨    <+<$STR(N$称号攻击)>%/FCOLOR=250>\
@@ -68,7 +69,7 @@ BREAK
 #IF
 CHECKMONEY 元宝 < <$STR(N$称号元宝)>
 #ACT
-SENDMSG	9 您的元宝不足<$STR(N$称号元宝)>万，请核对！
+SENDMSG	9 您的元宝不足<$STR(N$称号元宝)>，请核对！
 BREAK
 
 ; 当前地图上限检测

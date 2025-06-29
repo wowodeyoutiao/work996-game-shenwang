@@ -250962,7 +250962,7 @@ local config = {
 	},
 	[29988] = { 
 		Idx = 29988,
-		Name = "新的征程",
+		Name = "初入江湖",
 		StdMode = 70,
 		Shape = 666,
 		Weight = 0,
@@ -250976,7 +250976,7 @@ local config = {
 	},
 	[29989] = { 
 		Idx = 29989,
-		Name = "宿命的羁绊",
+		Name = "展露头角",
 		StdMode = 70,
 		Shape = 666,
 		Weight = 0,
@@ -250990,7 +250990,7 @@ local config = {
 	},
 	[29990] = { 
 		Idx = 29990,
-		Name = "命运的抉择",
+		Name = "江湖少侠",
 		StdMode = 70,
 		Shape = 666,
 		Weight = 0,
@@ -251004,7 +251004,7 @@ local config = {
 	},
 	[29991] = { 
 		Idx = 29991,
-		Name = "黎明的前夕",
+		Name = "武林豪杰",
 		StdMode = 70,
 		Shape = 666,
 		Weight = 0,
@@ -251018,7 +251018,7 @@ local config = {
 	},
 	[29992] = { 
 		Idx = 29992,
-		Name = "无尽的挑战",
+		Name = "侠骨柔情",
 		StdMode = 70,
 		Shape = 666,
 		Weight = 0,
@@ -251032,7 +251032,7 @@ local config = {
 	},
 	[29993] = { 
 		Idx = 29993,
-		Name = "极限的突破",
+		Name = "名动江湖",
 		StdMode = 70,
 		Shape = 666,
 		Weight = 0,
@@ -251046,7 +251046,7 @@ local config = {
 	},
 	[29994] = { 
 		Idx = 29994,
-		Name = "魔法追寻者",
+		Name = "叱诧风云",
 		StdMode = 70,
 		Shape = 666,
 		Weight = 0,
@@ -251060,7 +251060,7 @@ local config = {
 	},
 	[29995] = { 
 		Idx = 29995,
-		Name = "冰河踏破者",
+		Name = "赤胆雄心",
 		StdMode = 70,
 		Shape = 666,
 		Weight = 0,
@@ -251074,7 +251074,7 @@ local config = {
 	},
 	[29996] = { 
 		Idx = 29996,
-		Name = "星界旅行者",
+		Name = "威震八方",
 		StdMode = 70,
 		Shape = 666,
 		Weight = 0,
@@ -251088,7 +251088,7 @@ local config = {
 	},
 	[29997] = { 
 		Idx = 29997,
-		Name = "暮光征服者",
+		Name = "一代宗师",
 		StdMode = 70,
 		Shape = 666,
 		Weight = 0,
@@ -251102,7 +251102,7 @@ local config = {
 	},
 	[29998] = { 
 		Idx = 29998,
-		Name = "黑曜石杀手",
+		Name = "横扫千军",
 		StdMode = 70,
 		Shape = 666,
 		Weight = 0,
@@ -251116,7 +251116,7 @@ local config = {
 	},
 	[29999] = { 
 		Idx = 29999,
-		Name = "灰烬审判军",
+		Name = "?剑舞风行",
 		StdMode = 70,
 		Shape = 666,
 		Weight = 0,
@@ -251130,7 +251130,7 @@ local config = {
 	},
 	[30000] = { 
 		Idx = 30000,
-		Name = "灭世终结者",
+		Name = "傲视群雄",
 		StdMode = 70,
 		Shape = 666,
 		Weight = 0,
@@ -251144,7 +251144,7 @@ local config = {
 	},
 	[30001] = { 
 		Idx = 30001,
-		Name = "海加尔复仇者",
+		Name = "独领风骚",
 		StdMode = 70,
 		Shape = 666,
 		Weight = 0,
@@ -251158,7 +251158,7 @@ local config = {
 	},
 	[30002] = { 
 		Idx = 30002,
-		Name = "地狱咆哮终结者",
+		Name = "笑傲江湖",
 		StdMode = 70,
 		Shape = 666,
 		Weight = 0,
@@ -251172,7 +251172,7 @@ local config = {
 	},
 	[30003] = { 
 		Idx = 30003,
-		Name = "奥格瑞玛解放者",
+		Name = "天下无双",
 		StdMode = 70,
 		Shape = 666,
 		Weight = 0,
@@ -251186,7 +251186,7 @@ local config = {
 	},
 	[30004] = { 
 		Idx = 30004,
-		Name = "奥格瑞玛征服者",
+		Name = "雄霸天下",
 		StdMode = 70,
 		Shape = 666,
 		Weight = 0,
@@ -251200,7 +251200,7 @@ local config = {
 	},
 	[30005] = { 
 		Idx = 30005,
-		Name = "破碎世界的守护者",
+		Name = "战神归来",
 		StdMode = 70,
 		Shape = 666,
 		Weight = 0,
@@ -251214,7 +251214,7 @@ local config = {
 	},
 	[30006] = { 
 		Idx = 30006,
-		Name = "艾泽拉斯的救世主",
+		Name = "独孤求败",
 		StdMode = 70,
 		Shape = 666,
 		Weight = 0,
@@ -251228,7 +251228,7 @@ local config = {
 	},
 	[30007] = { 
 		Idx = 30007,
-		Name = "光年之外之守护者",
+		Name = "永恒霸主",
 		StdMode = 70,
 		Shape = 666,
 		Weight = 0,
@@ -251242,7 +251242,7 @@ local config = {
 	},
 	[30008] = { 
 		Idx = 30008,
-		Name = "光年之外之追随者",
+		Name = "天煞孤星",
 		StdMode = 70,
 		Shape = 666,
 		Weight = 0,
@@ -251256,7 +251256,7 @@ local config = {
 	},
 	[30009] = { 
 		Idx = 30009,
-		Name = "觉醒之热血之魂",
+		Name = "逆天改命",
 		StdMode = 70,
 		Shape = 666,
 		Weight = 0,
@@ -251270,7 +251270,7 @@ local config = {
 	},
 	[30010] = { 
 		Idx = 30010,
-		Name = "集结之战斗号角",
+		Name = "武定乾坤",
 		StdMode = 70,
 		Shape = 666,
 		Weight = 0,
@@ -251284,7 +251284,7 @@ local config = {
 	},
 	[30011] = { 
 		Idx = 30011,
-		Name = "暴走之极限突破",
+		Name = "修罗万象",
 		StdMode = 70,
 		Shape = 666,
 		Weight = 0,
@@ -251298,7 +251298,7 @@ local config = {
 	},
 	[30012] = { 
 		Idx = 30012,
-		Name = "天启之信仰之歌",
+		Name = "剑指苍穹",
 		StdMode = 70,
 		Shape = 666,
 		Weight = 0,
@@ -251312,7 +251312,7 @@ local config = {
 	},
 	[30013] = { 
 		Idx = 30013,
-		Name = "史诗之超越征程",
+		Name = "破天轩辕",
 		StdMode = 70,
 		Shape = 666,
 		Weight = 0,
@@ -251326,7 +251326,7 @@ local config = {
 	},
 	[30014] = { 
 		Idx = 30014,
-		Name = "起源之涅槃重生",
+		Name = "出神入化",
 		StdMode = 70,
 		Shape = 666,
 		Weight = 0,
@@ -251340,7 +251340,7 @@ local config = {
 	},
 	[30015] = { 
 		Idx = 30015,
-		Name = "觉醒之毕方之炎",
+		Name = "毁天灭地",
 		StdMode = 70,
 		Shape = 666,
 		Weight = 0,
@@ -251354,7 +251354,7 @@ local config = {
 	},
 	[30016] = { 
 		Idx = 30016,
-		Name = "毕方之炎之夜空魅影",
+		Name = "玛法主宰",
 		StdMode = 70,
 		Shape = 666,
 		Weight = 0,
@@ -251368,7 +251368,7 @@ local config = {
 	},
 	[30017] = { 
 		Idx = 30017,
-		Name = "进化之光之混沌开天",
+		Name = "问鼎诛仙",
 		StdMode = 70,
 		Shape = 666,
 		Weight = 0,
@@ -251382,7 +251382,7 @@ local config = {
 	},
 	[30018] = { 
 		Idx = 30018,
-		Name = "战鼓震天之异界战歌",
+		Name = "众生俯仰",
 		StdMode = 70,
 		Shape = 666,
 		Weight = 0,
@@ -251396,7 +251396,7 @@ local config = {
 	},
 	[30019] = { 
 		Idx = 30019,
-		Name = "勇士的荣耀之最终幻想",
+		Name = "一念三千",
 		StdMode = 70,
 		Shape = 666,
 		Weight = 0,

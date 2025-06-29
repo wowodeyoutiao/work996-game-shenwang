@@ -44337,7 +44337,7 @@ local config = {
 	},
 	[2664] = { 
 		index = 2664,
-		id = 12010,
+		id = 10001,
 		type = 4,
 		sex = 0,
 		dir = 1,
@@ -44348,7 +44348,7 @@ local config = {
 	},
 	[2665] = { 
 		index = 2665,
-		id = 12011,
+		id = 10002,
 		type = 4,
 		sex = 0,
 		dir = 1,
@@ -44359,7 +44359,7 @@ local config = {
 	},
 	[2666] = { 
 		index = 2666,
-		id = 12012,
+		id = 10003,
 		type = 4,
 		sex = 0,
 		dir = 1,
@@ -44370,7 +44370,7 @@ local config = {
 	},
 	[2667] = { 
 		index = 2667,
-		id = 12013,
+		id = 10004,
 		type = 4,
 		sex = 0,
 		dir = 1,
@@ -44381,7 +44381,7 @@ local config = {
 	},
 	[2668] = { 
 		index = 2668,
-		id = 12014,
+		id = 10005,
 		type = 4,
 		sex = 0,
 		dir = 1,
@@ -44392,7 +44392,7 @@ local config = {
 	},
 	[2669] = { 
 		index = 2669,
-		id = 12015,
+		id = 10006,
 		type = 4,
 		sex = 0,
 		dir = 1,
@@ -44403,7 +44403,7 @@ local config = {
 	},
 	[2670] = { 
 		index = 2670,
-		id = 12016,
+		id = 10007,
 		type = 4,
 		sex = 0,
 		dir = 1,
@@ -44414,7 +44414,7 @@ local config = {
 	},
 	[2671] = { 
 		index = 2671,
-		id = 12017,
+		id = 10008,
 		type = 4,
 		sex = 0,
 		dir = 1,
@@ -44425,7 +44425,7 @@ local config = {
 	},
 	[2672] = { 
 		index = 2672,
-		id = 12018,
+		id = 10009,
 		type = 4,
 		sex = 0,
 		dir = 1,
@@ -44436,7 +44436,7 @@ local config = {
 	},
 	[2673] = { 
 		index = 2673,
-		id = 12019,
+		id = 10010,
 		type = 4,
 		sex = 0,
 		dir = 1,
@@ -44447,7 +44447,7 @@ local config = {
 	},
 	[2674] = { 
 		index = 2674,
-		id = 12020,
+		id = 10011,
 		type = 4,
 		sex = 0,
 		dir = 1,
@@ -44458,7 +44458,7 @@ local config = {
 	},
 	[2675] = { 
 		index = 2675,
-		id = 12021,
+		id = 10012,
 		type = 4,
 		sex = 0,
 		dir = 1,
@@ -44469,7 +44469,7 @@ local config = {
 	},
 	[2676] = { 
 		index = 2676,
-		id = 12022,
+		id = 10013,
 		type = 4,
 		sex = 0,
 		dir = 1,
@@ -44480,7 +44480,7 @@ local config = {
 	},
 	[2677] = { 
 		index = 2677,
-		id = 12023,
+		id = 10014,
 		type = 4,
 		sex = 0,
 		dir = 1,
@@ -44491,7 +44491,7 @@ local config = {
 	},
 	[2678] = { 
 		index = 2678,
-		id = 12024,
+		id = 10015,
 		type = 4,
 		sex = 0,
 		dir = 1,
@@ -44502,7 +44502,7 @@ local config = {
 	},
 	[2679] = { 
 		index = 2679,
-		id = 12025,
+		id = 10016,
 		type = 4,
 		sex = 0,
 		dir = 1,
@@ -44513,7 +44513,7 @@ local config = {
 	},
 	[2680] = { 
 		index = 2680,
-		id = 12026,
+		id = 10017,
 		type = 4,
 		sex = 0,
 		dir = 1,
@@ -44524,7 +44524,7 @@ local config = {
 	},
 	[2681] = { 
 		index = 2681,
-		id = 12027,
+		id = 10018,
 		type = 4,
 		sex = 0,
 		dir = 1,
@@ -44535,7 +44535,7 @@ local config = {
 	},
 	[2682] = { 
 		index = 2682,
-		id = 12028,
+		id = 10019,
 		type = 4,
 		sex = 0,
 		dir = 1,
@@ -44546,7 +44546,7 @@ local config = {
 	},
 	[2683] = { 
 		index = 2683,
-		id = 12029,
+		id = 10020,
 		type = 4,
 		sex = 0,
 		dir = 1,
@@ -44557,7 +44557,7 @@ local config = {
 	},
 	[2684] = { 
 		index = 2684,
-		id = 12030,
+		id = 10021,
 		type = 4,
 		sex = 0,
 		dir = 1,
@@ -44568,7 +44568,7 @@ local config = {
 	},
 	[2685] = { 
 		index = 2685,
-		id = 12031,
+		id = 10022,
 		type = 4,
 		sex = 0,
 		dir = 1,
@@ -44579,7 +44579,7 @@ local config = {
 	},
 	[2686] = { 
 		index = 2686,
-		id = 12032,
+		id = 10023,
 		type = 4,
 		sex = 0,
 		dir = 1,
@@ -44590,7 +44590,7 @@ local config = {
 	},
 	[2687] = { 
 		index = 2687,
-		id = 12033,
+		id = 10024,
 		type = 4,
 		sex = 0,
 		dir = 1,
@@ -44601,7 +44601,7 @@ local config = {
 	},
 	[2688] = { 
 		index = 2688,
-		id = 12034,
+		id = 10025,
 		type = 4,
 		sex = 0,
 		dir = 1,
@@ -44612,7 +44612,7 @@ local config = {
 	},
 	[2689] = { 
 		index = 2689,
-		id = 12035,
+		id = 10026,
 		type = 4,
 		sex = 0,
 		dir = 1,
@@ -44623,7 +44623,7 @@ local config = {
 	},
 	[2690] = { 
 		index = 2690,
-		id = 12036,
+		id = 10027,
 		type = 4,
 		sex = 0,
 		dir = 1,
@@ -44634,7 +44634,7 @@ local config = {
 	},
 	[2691] = { 
 		index = 2691,
-		id = 12037,
+		id = 10028,
 		type = 4,
 		sex = 0,
 		dir = 1,
@@ -44645,7 +44645,7 @@ local config = {
 	},
 	[2692] = { 
 		index = 2692,
-		id = 12038,
+		id = 10029,
 		type = 4,
 		sex = 0,
 		dir = 1,
@@ -44656,7 +44656,7 @@ local config = {
 	},
 	[2693] = { 
 		index = 2693,
-		id = 12039,
+		id = 10030,
 		type = 4,
 		sex = 0,
 		dir = 1,
@@ -44667,7 +44667,7 @@ local config = {
 	},
 	[2694] = { 
 		index = 2694,
-		id = 12040,
+		id = 10031,
 		type = 4,
 		sex = 0,
 		dir = 1,
@@ -44678,7 +44678,7 @@ local config = {
 	},
 	[2695] = { 
 		index = 2695,
-		id = 12041,
+		id = 10032,
 		type = 4,
 		sex = 0,
 		dir = 1,
@@ -44689,7 +44689,7 @@ local config = {
 	},
 	[2696] = { 
 		index = 2696,
-		id = 12042,
+		id = 10033,
 		type = 4,
 		sex = 0,
 		dir = 1,
@@ -44700,7 +44700,7 @@ local config = {
 	},
 	[2697] = { 
 		index = 2697,
-		id = 12043,
+		id = 10033,
 		type = 4,
 		sex = 0,
 		dir = 1,
