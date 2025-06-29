@@ -2,7 +2,7 @@
 #IF
 CHECKLEVELEX ? 1
 #ACT
-GETDBITEMFIELDVALUE 元宝 IDX N$元宝IDX
+GETDBITEMFIELDVALUE 绑定元宝 IDX N$绑定元宝IDX
 GETDBITEMFIELDVALUE 升星石 IDX N$技能IDX
 GETDBITEMFIELDVALUE 沉默水晶 IDX N$水晶IDX
 #SAY
@@ -13,39 +13,39 @@ GETDBITEMFIELDVALUE 沉默水晶 IDX N$水晶IDX
 
 <RText|x=450.0|y=100.0|outline=1|color=222|size=16|text=沙巴克首次奖励<[城主]/FCOLOR=249>>
 <RText|x=450.0|y=120.0|outline=1|color=222|size=16|text=沙巴克城主<[全属性+88 爆率+100%]/FCOLOR=249>>
-<ItemShow|scale=0.8|x=470|y=150|children={231}|width=70|height=70|itemid=<$STR(N$元宝IDX)>|itemcount=2000000|showtips=1|bgtype=1>
+<ItemShow|scale=0.8|x=470|y=150|children={231}|width=70|height=70|itemid=<$STR(N$绑定元宝IDX)>|itemcount=2000000|showtips=1|bgtype=1>
 <ItemShow|scale=0.8|x=540|y=150|children={232}|width=70|height=70|itemid=<$STR(N$技能IDX)>|itemcount=2|showtips=1|bgtype=1>
 <ItemShow|scale=0.8|x=610|y=150|children={233}|width=70|height=70|itemid=<$STR(N$水晶IDX)>|itemcount=50|showtips=1|bgtype=1>
-;<Button|id=231|nimg=public/alpha_1px.png|x=32|y=68|color=250|size=16|text=元宝*200万>
-;<Button|id=232|nimg=public/alpha_1px.png|x=32|y=68|color=250|size=16|text=升星石*2>
-;<Button|id=233|nimg=public/alpha_1px.png|x=32|y=68|color=250|size=16|text=沉默水晶*50>
+;<Button|id=231|nimg=public/alpha_1px.png|x=32|y=68|color=250|size=16|text=绑定元宝*10万>
+;<Button|id=232|nimg=public/alpha_1px.png|x=32|y=68|color=250|size=16|text=升星石*5000>
+;<Button|id=233|nimg=public/alpha_1px.png|x=32|y=68|color=250|size=16|text=沉默水晶*10>
 
 <RText|x=450.0|y=230.0|outline=1|color=151|size=16|text=沙巴克老区奖励<[城主]/FCOLOR=249>>
 <RText|x=450.0|y=250.0|outline=1|color=151|size=16|text=沙巴克城主<[全属性+88 爆率+100%]/FCOLOR=249>>
-<ItemShow|scale=0.8|x=470|y=280|children={251}|width=70|height=70|itemid=<$STR(N$元宝IDX)>|itemcount=1000000|showtips=1|bgtype=1>
+<ItemShow|scale=0.8|x=470|y=280|children={251}|width=70|height=70|itemid=<$STR(N$绑定元宝IDX)>|itemcount=1000000|showtips=1|bgtype=1>
 <ItemShow|scale=0.8|x=540|y=280|children={252}|width=70|height=70|itemid=<$STR(N$技能IDX)>|itemcount=2|showtips=1|bgtype=1>
 <ItemShow|scale=0.8|x=610|y=280|children={253}|width=70|height=70|itemid=<$STR(N$水晶IDX)>|itemcount=50|showtips=1|bgtype=1>
-;<Button|id=251|nimg=public/alpha_1px.png|x=32|y=68|color=116|size=16|text=元宝*100万>
-;<Button|id=252|nimg=public/alpha_1px.png|x=32|y=68|color=116|size=16|text=升星石*2>
-;<Button|id=253|nimg=public/alpha_1px.png|x=32|y=68|color=116|size=16|text=沉默水晶*50>
+;<Button|id=251|nimg=public/alpha_1px.png|x=32|y=68|color=116|size=16|text=绑定元宝*5万>
+;<Button|id=252|nimg=public/alpha_1px.png|x=32|y=68|color=116|size=16|text=升星石*2500>
+;<Button|id=253|nimg=public/alpha_1px.png|x=32|y=68|color=116|size=16|text=沉默水晶*5>
 
 <RText|x=60.0|y=390.0|outline=1|color=222|size=16|text=沙巴克首次奖励<[成员]/FCOLOR=249>>
 <RText|x=60.0|y=410.0|outline=1|color=222|size=16|text=沙巴克成员<[全属性+44 爆率+50%]/FCOLOR=249>>
-<ItemShow|scale=0.8|x=54|y=430|children={241}|width=70|height=70|itemid=<$STR(N$元宝IDX)>|itemcount=1000000|showtips=1|bgtype=1>
+<ItemShow|scale=0.8|x=54|y=430|children={241}|width=70|height=70|itemid=<$STR(N$绑定元宝IDX)>|itemcount=1000000|showtips=1|bgtype=1>
 <ItemShow|scale=0.8|x=124|y=430|children={242}|width=70|height=70|itemid=<$STR(N$技能IDX)>|itemcount=1|showtips=1|bgtype=1>
 <ItemShow|scale=0.8|x=194|y=430|children={243}|width=70|height=70|itemid=<$STR(N$水晶IDX)>|itemcount=20|showtips=1|bgtype=1>
-;<Button|id=241|nimg=public/alpha_1px.png|x=32|y=68|color=250|size=16|text=元宝*100万>
-;<Button|id=242|nimg=public/alpha_1px.png|x=32|y=68|color=250|size=16|text=升星石*1>
-;<Button|id=243|nimg=public/alpha_1px.png|x=32|y=68|color=250|size=16|text=沉默水晶*20>
+;<Button|id=241|nimg=public/alpha_1px.png|x=32|y=68|color=250|size=16|text=绑定元宝*1万>
+;<Button|id=242|nimg=public/alpha_1px.png|x=32|y=68|color=250|size=16|text=升星石*500>
+;<Button|id=243|nimg=public/alpha_1px.png|x=32|y=68|color=250|size=16|text=沉默水晶*2>
 
 <RText|x=320.0|y=390.0|outline=1|color=151|size=16|text=沙巴克老区奖励<[成员]/FCOLOR=249>>
 <RText|x=320.0|y=410.0|outline=1|color=151|size=16|text=沙巴克成员<[全属性+44 爆率+50%]/FCOLOR=249>>
-<ItemShow|scale=0.8|x=308|y=430|children={261}|width=70|height=70|itemid=<$STR(N$元宝IDX)>|itemcount=300000|showtips=1|bgtype=1>
+<ItemShow|scale=0.8|x=308|y=430|children={261}|width=70|height=70|itemid=<$STR(N$绑定元宝IDX)>|itemcount=300000|showtips=1|bgtype=1>
 <ItemShow|scale=0.8|x=378|y=430|children={262}|width=70|height=70|itemid=<$STR(N$技能IDX)>|itemcount=1|showtips=1|bgtype=1>
 <ItemShow|scale=0.8|x=448|y=430|children={263}|width=70|height=70|itemid=<$STR(N$水晶IDX)>|itemcount=20|showtips=1|bgtype=1>
-;<Button|id=261|nimg=public/alpha_1px.png|x=32|y=68|color=116|size=16|text=元宝*30万>
-;<Button|id=262|nimg=public/alpha_1px.png|x=32|y=68|color=116|size=16|text=升星石*1>
-;<Button|id=263|nimg=public/alpha_1px.png|x=32|y=68|color=116|size=16|text=沉默水晶*20>
+;<Button|id=261|nimg=public/alpha_1px.png|x=32|y=68|color=116|size=16|text=绑定元宝*5000>
+;<Button|id=262|nimg=public/alpha_1px.png|x=32|y=68|color=116|size=16|text=升星石*300>
+;<Button|id=263|nimg=public/alpha_1px.png|x=32|y=68|color=116|size=16|text=沉默水晶*1>
 
 <Button|id=332|x=580|y=450|nimg=public/wz/bt21.png|color=251|size=18|text=领取奖励|link=@领取奖励>
 
@@ -104,12 +104,12 @@ ISCASTLEMASTER
 Set [22] 1
 Mov A34 已领取
 SETNPCMSG 沙城奖励[城主]
-Money 元宝 + 2000000
-GIVE 升星石 2
-GiveStateItem 沉默水晶 50 1 1 0 0 1 1 1 1
+Money 绑定元宝 + 100000
+GIVE 升星石 5000
+GiveStateItem 沉默水晶 10 1 1 0 0 1 1 1 1
 addbuff 60007
 MessAgeBox 恭喜您，成功领取今日沙巴克城主奖励！
-SendMsgNew 250 0 恭喜：【<<$UserName>/FCOLOR=251>】成功领取今日沙巴克奖励，获得：<城主称号+元宝*200万+升星石*2+沉默水晶*50/FCOLOR=251> 1 3
+SendMsgNew 250 0 恭喜：【<<$UserName>/FCOLOR=251>】成功领取今日沙巴克奖励，获得：<城主称号+绑定元宝*10万+升星石*5000+沉默水晶*10/FCOLOR=251> 1 3
 Break
 
 #IF
@@ -118,12 +118,12 @@ ISCASTLEGUILD
 #Act
 Set [22] 1
 SETNPCMSG 沙城奖励[成员]
-Money 元宝 + 1000000
-GIVE 升星石 1
-GiveStateItem 沉默水晶 20 1 1 0 0 1 1 1 1
+Money 绑定元宝 + 10000
+GIVE 升星石 500
+GiveStateItem 沉默水晶 2 1 1 0 0 1 1 1 1
 addbuff 60008
 MessAgeBox 恭喜您，成功领取今日沙巴克奖励！
-SendMsgNew 250 0 恭喜：【<<$UserName>/FCOLOR=251>】成功领取今日沙巴克奖励，获得：<元宝*100万+升星石*1+沉默水晶*20/FCOLOR=251> 1 3
+SendMsgNew 250 0 恭喜：【<<$UserName>/FCOLOR=251>】成功领取今日沙巴克奖励，获得：<绑定元宝*1万+升星石*500+沉默水晶*2/FCOLOR=251> 1 3
 Break
 
 #IF
@@ -132,12 +132,12 @@ ISCASTLEMASTER
 Set [22] 1
 Mov A34 已领取
 SETNPCMSG 沙城奖励老区城主
-Money 元宝 + 1000000
-GIVE 升星石 2
-GiveStateItem 沉默水晶 50 1 1 0 0 1 1 1 1
+Money 绑定元宝 + 50000
+GIVE 升星石 2500
+GiveStateItem 沉默水晶 5 1 1 0 0 1 1 1 1
 addbuff 60007
 MessAgeBox 恭喜您，成功领取今日沙巴克城主奖励！
-SendMsgNew 250 0 恭喜沙巴克城主：【<<$UserName>/FCOLOR=251>】成功领取今日沙巴克奖励，获得：<城主称号+元宝*100万+升星石*2+沉默水晶*50/FCOLOR=251> 1 3
+SendMsgNew 250 0 恭喜沙巴克城主：【<<$UserName>/FCOLOR=251>】成功领取今日沙巴克奖励，获得：<城主称号+绑定元宝*5万+升星石*2500+沉默水晶*5/FCOLOR=251> 1 3
 Break
 
 #IF
@@ -145,12 +145,12 @@ ISCASTLEGUILD
 #Act
 Set [22] 1
 SETNPCMSG 沙城奖励老区成员
-Money 元宝 + 300000
-GIVE 升星石 1
-GiveStateItem 沉默水晶 20 1 1 0 0 1 1 1 1
+Money 绑定元宝 + 5000
+GIVE 升星石 300
+GiveStateItem 沉默水晶 1 1 1 0 0 1 1 1 1
 addbuff 60008
 MessAgeBox 恭喜您，成功领取今日沙巴克奖励！
-SendMsgNew 250 0 恭喜：【<<$UserName>/FCOLOR=251>】成功领取今日沙巴克奖励，获得：<元宝*30万+升星石*1+沉默水晶*20/FCOLOR=251> 1 3
+SendMsgNew 250 0 恭喜：【<<$UserName>/FCOLOR=251>】成功领取今日沙巴克奖励，获得：<绑定元宝*5000+升星石*300+沉默水晶*1/FCOLOR=251> 1 3
 Break
 
 
