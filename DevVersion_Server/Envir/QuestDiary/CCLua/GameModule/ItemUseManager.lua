@@ -101,11 +101,15 @@ function ItemUseManager.DoUse(actor, smakeindex)
         if not BF_IsNumberStr(sparam) then
             return false
         end
-        local nAddTimes = tonumber(sparam)
-        if nAddTimes > 0 then
-            if OpenSuperBoxManager.AddNewBoxNum(actor, nAddTimes) then
+        local nSingleAddTimes = tonumber(sparam)
+        local nPileCount = getiteminfo(actor, itemobj, CommonDefine.ITEMINFO_OVERLAP)
+        local nTotalAddTimes = nSingleAddTimes * nPileCount
+        if nTotalAddTimes > 0 then        
+            if OpenSuperBoxManager.AddNewBoxNum(actor, nTotalAddTimes) then
                 setflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_ITEMUSE, 1)
-                return true
+                --删除道具
+                delitembymakeindex(actor, smakeindex, nil, '使用筛子 id:'..itemid..' num:'..nPileCount)
+                return false
             else
                 Player.SendSelfMsg(actor, '已经达到了今日的最大可用次数！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)                
                 return false
