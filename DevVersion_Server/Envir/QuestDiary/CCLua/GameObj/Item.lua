@@ -100,6 +100,14 @@ function Item.IsEquipment(stdmode)
     end
 end
 
+function Item.IsSpeedUpEquipItem(itemid)
+    local equipcfg = cfg_equip[itemid]
+    if equipcfg and equipcfg.SpeedUpRate and equipcfg.SpeedUpRate>0 then
+        return true
+    end    
+    return false
+end
+
 function Item.GetItemShowName(actor, itemobj)
     local itemshowname = getiteminfo(actor, itemobj, CommonDefine.ITEMINFO_CHGEDNAME) 
     if itemshowname == '' then
