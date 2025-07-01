@@ -544,8 +544,8 @@ local function ShowPanel3(actor)
     if bCurrIsMaxLv then
         strPanelInfo = strPanelInfo..'<Text|id=93|text=已达到最高强化等级！|x=150|y=350|color='..CSS.NPC_LIGHTGREEN..'>'    
     else
-        strPanelInfo = strPanelInfo..'<Button|id=93|x=50.0|y=350.0|size=18|color=255|text=强化一次|nimg=private/cc_common/button_up.png|pimg=private/cc_common/button_down.png|mimg=private/cc_common/button_down.png|link=@function_button,'..DO_FUNCTION_ID_12..'>'
-        strPanelInfo = strPanelInfo..'<Button|id=94|x=300.0|y=350.0|size=18|color=255|text=强化十次|nimg=private/cc_common/button_up.png|pimg=private/cc_common/button_down.png|mimg=private/cc_common/button_down.png|link=@function_button,'..DO_FUNCTION_ID_12..'>'
+        strPanelInfo = strPanelInfo..'<Button|id=93|x=170.0|y=350.0|size=18|color=255|text=强化一次|nimg=private/cc_common/button_up.png|pimg=private/cc_common/button_down.png|mimg=private/cc_common/button_down.png|link=@function_button,'..DO_FUNCTION_ID_12..'>'
+        --strPanelInfo = strPanelInfo..'<Button|id=94|x=300.0|y=350.0|size=18|color=255|text=强化十次|nimg=private/cc_common/button_up.png|pimg=private/cc_common/button_down.png|mimg=private/cc_common/button_down.png|link=@function_button,'..DO_FUNCTION_ID_12..'>'
     end
     strPanelInfo = strPanelInfo..'<Layout|id=21|children={'..tempidstr..'}|x=320.0|y=56.0|width=470|height=440>'
 
@@ -618,6 +618,8 @@ local function DoEquipPosStrengthUpgradeOnce(actor)
     setplaydef(actor, CommonDefine.VAR_T_EQUIPPOS_STRENGTH_INFO, infoStr)
     Player.SendSelfMsg(actor, '强化成功！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
 
+    --每日必做计数      
+    EverydayTask.AddTaskCounter(actor, CommonDefine.FUNC_ID_BAOZHU, 1)       
     --更新当前装备位的强化状态
     EquipPosStrengthManager.UpdateEquipStrengthLvInPos(actor, equippos)  
 end

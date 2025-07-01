@@ -447,7 +447,7 @@ local function DoEquipPosStrengthUpgradeOnce(actor)
     ShowPanel6(actor, sid)
     Player.SendSelfMsg(actor, '强化成功！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
 
-    --每日必做计数        
+    --每日必做计数      
     EverydayTask.AddTaskCounter(actor, CommonDefine.FUNC_ID_BAOZHU, 1)              
 
     --更新当前装备位的强化状态

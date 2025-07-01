@@ -180,6 +180,12 @@ function TopIcon.CheckRedPoint(actor)
     else
         Player.DelRedPoint(actor, 102, MAINICON_ID_4)
     end
+
+    if EverydayTask.IsTopIconHaveRedPoint(actor) then
+        Player.AddRedPoint(actor, 102, MAINICON_ID_5, 10, 10)    
+    else
+        Player.DelRedPoint(actor, 102, MAINICON_ID_5)
+    end
     
 
     if EquipPosStrengthManager.IsTopIconHaveRedPoint(actor) then
