@@ -5891,6 +5891,11 @@ BREAK
 CALLLUA CC_QFunction @jumparea_button,<$STR(S$sid)>
 BREAK
 
+[@treasuremap_dig_callback]
+#IF
+#ACT
+CALLLUA CC_QFunction @treasuremap_dig_callback
+BREAK
 
 ;===========================================跨服相关回调=======================================
 [@KFSYSCALL101]

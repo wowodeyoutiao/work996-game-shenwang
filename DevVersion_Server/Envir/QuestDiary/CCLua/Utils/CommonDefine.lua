@@ -387,7 +387,6 @@ CommonDefine = {
     VAR_U_MOFANG_CURR_LAYER = 'U107',           --玩家当前进入的魔方阵的层数
     VAR_U_MOFANG_LEFT_BUYTIMES = 'U108',        --玩家当前剩余购买的进入魔方地图的次数
     VAR_U_MOFANGZHEN_ID = 'U109',               --玩家魔方阵当前进入的ID
-    VAR_U_TREASUREMAP_CURRID = 'U126',          --当前对应的藏宝图配置id
     ]]--
 
     VAR_U_SUPER_BOX_TOTAL_NUM = 'U130',         --超级宝箱  保有总数量
@@ -468,6 +467,7 @@ CommonDefine = {
     VAR_U_JUMPAREA_BOSS_DAMAGE_HIGH = 'U214',   --玩家今日    对跨服boss造成伤害 万位以上
     VAR_U_JUMPAREA_BOSS_DAMAGE_LOW = 'U215',    --玩家今日    对跨服boss造成伤害 万位以下
     VAR_U_JUMPAREA_FIGHTING_KMVALUE = 'U216',   --玩家今日    跨服大乱斗抗魔值
+    VAR_U_TREASUREMAP_CURRID = 'U217',          --当前对应的藏宝图配置id
     
     --玩家字符型变量，下线保存 T0 - T254
     VAR_T_EQUIPPOS_STRENGTH_INFO = 'T41',        --玩家的装备位强化信息
@@ -491,10 +491,7 @@ CommonDefine = {
     VAR_J_DAY_MOFANG_LEFT_FREETIMES = 'J4',     --玩家今日剩余可免费进入魔方地图的次数
     VAR_J_DAY_MOFANG_BUYTIMES = 'J5',           --玩家今日魔方阵购买次数
     VAR_J_DAY_MOFANG_ENTER_TIME = 'J6',         --玩家今日魔方阵进入时间
-    VAR_J_DAY_MOFANG_STAY_SECONDS = 'J7',       --玩家今日魔方阵可待时间（秒）
-       
-    VAR_J_DAY_TREASUREMAP_USETIMES = 'J16',             --玩家 今日使用藏宝图次数
-    VAR_J_DAY_TREASUREMAP_NO_PANELTIP_FLAG = 'J17',     --玩家 今日不再显示藏宝图的提示面板
+    VAR_J_DAY_MOFANG_STAY_SECONDS = 'J7',       --玩家今日魔方阵可待时间（秒）       
     ]]--
     VAR_J_DAY_RECHARGE_TOTAL_OLDVERSION = 'J9',         --玩家今日的总充值  原来版本中的记录
 
@@ -513,6 +510,8 @@ CommonDefine = {
     VAR_J_DAY_BIAOCHE_ACCEPT_TIMES = 'J113',            --玩家 今日接镖次数    
     VAR_J_DAY_JUMPAREA_BOSS_LAST_ENTERTIME = 'J114',    --玩家今日上次进入跨服boss的时间
     VAR_J_DAY_EVERYDAYTASK_FINALREWARD_IDX = 'J115',     --玩家 每日任务累计领奖编号  
+    VAR_J_DAY_TREASUREMAP_USETIMES = 'J116',             --玩家 今日使用藏宝图次数
+    VAR_J_DAY_TREASUREMAP_NO_PANELTIP_FLAG = 'J117',     --玩家 今日不再显示藏宝图的提示面板    
 
     
     --玩家字符变量，下线保存，0点重置 Z0 - Z499

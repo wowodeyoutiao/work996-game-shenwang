@@ -1196,7 +1196,7 @@ function OpenSuperBoxManager.DoOperButton(actor, sid, sparam)
         SendEquipItemCompareRequest(actor, sparam)
     elseif funcid == OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_14 then
         openhyperlink(actor, 10)
-        navigation(actor, 10, 19, "µã»÷¹ºÂò")   
+        navigation(actor, 10, 20, "µã»÷¹ºÂò")   
     elseif funcid == OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_15 then
         delbutton(actor, 108, CommonDefine.ADD_BUTTON_ID_5)
     elseif funcid == OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_16 then

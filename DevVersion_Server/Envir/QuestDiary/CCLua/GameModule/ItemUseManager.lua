@@ -31,9 +31,9 @@ function ItemUseManager.DoUse(actor, smakeindex)
         --盟重回城石
         Player.GoMZHome(actor)
         return true
-    -- elseif anicount == 201 then
-    --     --使用藏宝图
-    --     return TreasureMap.DoUseItem(actor)
+    elseif anicount == 201 then
+        --使用藏宝图
+        return TreasureMap.DoUseItem(actor)
     elseif anicount == 202 then
         --使用道具后获得对应的道具，支持固定奖励 和 随机奖励
         local itemname = getstditeminfo(itemid, CommonDefine.STDITEMINFO_NAME)
@@ -106,7 +106,7 @@ function ItemUseManager.DoUse(actor, smakeindex)
         local nTotalAddTimes = nSingleAddTimes * nPileCount
         if nTotalAddTimes > 0 then        
             if OpenSuperBoxManager.AddNewBoxNum(actor, nTotalAddTimes) then
-                setflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_ITEMUSE, 1)
+                setflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_ITEMUSE, 0)
                 --删除道具
                 delitembymakeindex(actor, smakeindex, nil, '使用筛子 id:'..itemid..' num:'..nPileCount)
                 return false
