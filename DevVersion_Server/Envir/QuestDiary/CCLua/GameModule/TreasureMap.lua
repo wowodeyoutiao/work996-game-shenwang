@@ -65,13 +65,33 @@ local function ShowAutoGotoPanel(actor)
     BF_ShowSpecialUI(actor, strPanelInfo)
 end
 
+--返回背包中藏宝图的makeindex
+function TreasureMap.GetBagTreasureMapMakeIndex(actor)
+    local makeindex = 0
+    if not BF_IsNullObj(actor) then
+        local item_num = getbaseinfo(actor, CommonDefine.INFO_HUMBAGITEMNUM)
+        for i=0, item_num-1 do
+            local itemobj = getiteminfobyindex(actor, i)
+            if not BF_IsNullObj(itemobj) then
+                local itemidx = getiteminfo(actor, itemobj, CommonDefine.ITEMINFO_ITEMIDX)
+                if itemidx ~= nil then
+                    local anicount = getstditeminfo(itemidx, CommonDefine.STDITEMINFO_ANICOUNT)
+                    if (anicount == 201) then
+                        --藏宝图
+                        makeindex = getiteminfo(actor, itemobj, CommonDefine.ITEMINFO_UNIQUEID)
+                    end
+                end
+            end
+        end
+    end
+	return makeindex
+end
+
 --处理button回调
 function TreasureMap.DoOperButton(actor, sid)
     if BF_IsNullObj(actor) or not BF_IsNumberStr(sid) then
         return
     end
-
-release_print('TreasureMap.DoOperButton')
 
     local funcid = tonumber(sid)
     if funcid == TREASUREMAP_BUTTONFUNC_ID_1 then    

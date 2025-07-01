@@ -747,8 +747,14 @@ function Player.QuickGoTo(actor, gotoid)
         --¼¼ÄÜÉý¼¶
         NewMainUIBase.OpenPanel(actor, NewMainUIBase.UI_ICON_SKILL)
     elseif gotoid == CommonDefine.QUICK_GOTO_TREASUREMAP then
-        --²Ø±¦Í¼
-        --????
+        --±³°üÊ¹ÓÃ²Ø±¦Í¼
+        local makeindex = TreasureMap.GetBagTreasureMapMakeIndex(actor)
+        if makeindex > 0 then
+            openhyperlink(actor, 7)
+            navigation(actor, 1, makeindex, 'Ë«»÷Ê¹ÓÃ²Ø±¦Í¼')
+        else
+            Player.SendSelfMsg(actor, 'ÔÝÎÞ²Ø±¦Í¼', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+        end
     elseif gotoid == CommonDefine.QUICK_GOTO_GUANZHI then
         --¹ÙÖ°
         NewMainUIBase.OpenPanel(actor, NewMainUIBase.UI_ICON_GUANZHI)

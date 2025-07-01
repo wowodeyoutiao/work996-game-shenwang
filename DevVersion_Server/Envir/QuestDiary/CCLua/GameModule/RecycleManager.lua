@@ -170,7 +170,6 @@ end
 function RecycleManager.ShowActivatedAutoRecyclePanel(actor)
     local sPanelStr = '<Img|x=173.0|y=154.0|reset=1|loadDelay=1|img=private/cc_recycle/24.png|esc=1|show=0|move=0|bg=1>'..
         '<Button|x=566.0|y=156.0|pimg=public/1900000511.png|nimg=public/1900000510.png|link=@cc_exit_specialui_ex#winid='..CommonDefine.WINDOWS_ID_BAG..'#buttonid='..CommonDefine.ADD_BUTTON_ID_4..'>'..        
-        '<Button|x=566.0|y=156.0|pimg=public/1900000511.png|nimg=public/1900000510.png|link=@cc_exit_specialui_ex#winid='..CommonDefine.WINDOWS_ID_BAG..'#buttonid='..CommonDefine.ADD_BUTTON_ID_4..'>'..
         '<Button|x=235.0|y=295.0|nimg=private/cc_common/button_1.png|pimg=private/cc_common/button_1.png|color=255|size=18|mimg=private/cc_common/button_1.png|text=100元宝购买|link=@recyclemanager_button#sid='..RECYCLEMANAGER_BUTTONFUNC_ID_15..'>'..
         '<Button|x=405.0|y=295.0|nimg=private/cc_common/button_1.png|pimg=private/cc_common/button_1.png|color=255|size=18|mimg=private/cc_common/button_1.png|text=前往提升|link=@recyclemanager_button#sid='..RECYCLEMANAGER_BUTTONFUNC_ID_14..'>'..
         '<Text|x=196.0|y=221.0|color=255|size=18|text=角色达到VIP2即可开启自动回收，完成任务>'..
@@ -204,8 +203,8 @@ function RecycleManager.DoOperButton(actor, sid)
     elseif funcid == RECYCLEMANAGER_BUTTONFUNC_ID_12 then
         RecycleManager.ShowRecyclePanelInfo(actor)
     elseif funcid == RECYCLEMANAGER_BUTTONFUNC_ID_14 then
-        Player.QuickGoTo(actor, CommonDefine.QUICK_GOTO_FREEVIP)
-        close(actor)
+        delbutton(actor, CommonDefine.WINDOWS_ID_BAG, CommonDefine.ADD_BUTTON_ID_4)
+        Player.QuickGoTo(actor, CommonDefine.QUICK_GOTO_FREEVIP)        
     elseif funcid == RECYCLEMANAGER_BUTTONFUNC_ID_15 then
         RecycleManager.ActivatedAutoRecycle(actor)
     end
@@ -231,13 +230,11 @@ function RecycleManager.SetAutoRecycleOption(actor)
         return
     end
 
-    --[[
-    --取消自动回收的激活逻辑
+    --自动回收的激活逻辑
     if getflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_ACTIVATED_AUTORECYCLE) ~= 1 then
         RecycleManager.ShowActivatedAutoRecyclePanel(actor)
         return
     end
-    ]]--
 
     local recycletype = getplaydef(actor, CommonDefine.VAR_N_CHOOSE_RECYCLE_TYPE)
 
