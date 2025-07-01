@@ -516,8 +516,8 @@ CommonDefine = {
 
     
     --玩家字符变量，下线保存，0点重置 Z0 - Z499
-    VAR_Z_DAY_EVERYDAYTASK_COUNTER_DATA = 'Z1',         --玩家 每日任务 子任务计数
-    VAR_Z_DAY_EVERYDAYTASK_REWARD_DATA = 'Z2',          --玩家 每日任务 子任务领奖记录
+    VAR_Z_DAY_EVERYDAYTASK_COUNTER_DATA = 'Z40',         --玩家 每日任务 子任务计数
+    VAR_Z_DAY_EVERYDAYTASK_REWARD_DATA = 'Z41',          --玩家 每日任务 子任务领奖记录
     
 
     --玩家的位标记，下线保存  索引【1~800】  

@@ -10,7 +10,7 @@ local config = {
 		level = 2,
 		upgradeneeditems = "[{\"name\":\"绑定元宝\", \"num\":1000}]",
 		upgradeneedseconds = 10000,
-		maxopennum = 1,
+		maxopennum = 2,
 		rewardpool = "[{\"poolid\":1, \"prop\":900},{\"poolid\":2, \"prop\":950},{\"poolid\":3, \"prop\":750},{\"poolid\":4, \"prop\":550},{\"poolid\":5, \"prop\":150},{\"poolid\":6, \"prop\":50},{\"poolid\":7, \"prop\":0},{\"poolid\":8, \"prop\":0}]",
 	},
 	[3] = { 
@@ -24,7 +24,7 @@ local config = {
 		level = 4,
 		upgradeneeditems = "[{\"name\":\"绑定元宝\", \"num\":3000}]",
 		upgradeneedseconds = 30000,
-		maxopennum = 2,
+		maxopennum = 3,
 		rewardpool = "[{\"poolid\":1, \"prop\":700},{\"poolid\":2, \"prop\":1000},{\"poolid\":3, \"prop\":850},{\"poolid\":4, \"prop\":650},{\"poolid\":5, \"prop\":250},{\"poolid\":6, \"prop\":150},{\"poolid\":7, \"prop\":100},{\"poolid\":8, \"prop\":0}]",
 	},
 	[5] = { 
@@ -38,7 +38,7 @@ local config = {
 		level = 6,
 		upgradeneeditems = "[{\"name\":\"绑定元宝\", \"num\":8000}]",
 		upgradeneedseconds = 80000,
-		maxopennum = 3,
+		maxopennum = 4,
 		rewardpool = "[{\"poolid\":1, \"prop\":500},{\"poolid\":2, \"prop\":1000},{\"poolid\":3, \"prop\":950},{\"poolid\":4, \"prop\":750},{\"poolid\":5, \"prop\":350},{\"poolid\":6, \"prop\":250},{\"poolid\":7, \"prop\":200},{\"poolid\":8, \"prop\":0}]",
 	},
 	[7] = { 
@@ -52,7 +52,7 @@ local config = {
 		level = 8,
 		upgradeneeditems = "[{\"name\":\"绑定元宝\", \"num\":17000}]",
 		upgradeneedseconds = 170000,
-		maxopennum = 4,
+		maxopennum = 5,
 		rewardpool = "[{\"poolid\":1, \"prop\":300},{\"poolid\":2, \"prop\":1000},{\"poolid\":3, \"prop\":1000},{\"poolid\":4, \"prop\":850},{\"poolid\":5, \"prop\":450},{\"poolid\":6, \"prop\":350},{\"poolid\":7, \"prop\":300},{\"poolid\":8, \"prop\":50}]",
 	},
 	[9] = { 
@@ -66,7 +66,7 @@ local config = {
 		level = 10,
 		upgradeneeditems = "[{\"name\":\"绑定元宝\", \"num\":30000}]",
 		upgradeneedseconds = 300000,
-		maxopennum = 5,
+		maxopennum = 6,
 		rewardpool = "[{\"poolid\":1, \"prop\":100},{\"poolid\":2, \"prop\":1000},{\"poolid\":3, \"prop\":1000},{\"poolid\":4, \"prop\":950},{\"poolid\":5, \"prop\":550},{\"poolid\":6, \"prop\":450},{\"poolid\":7, \"prop\":400},{\"poolid\":8, \"prop\":150}]",
 	},
 	[11] = { 
@@ -80,7 +80,7 @@ local config = {
 		level = 12,
 		upgradeneeditems = "[{\"name\":\"绑定元宝\", \"num\":47000}]",
 		upgradeneedseconds = 470000,
-		maxopennum = 6,
+		maxopennum = 7,
 		rewardpool = "[{\"poolid\":1, \"prop\":0},{\"poolid\":2, \"prop\":1000},{\"poolid\":3, \"prop\":1000},{\"poolid\":4, \"prop\":1000},{\"poolid\":5, \"prop\":650},{\"poolid\":6, \"prop\":550},{\"poolid\":7, \"prop\":500},{\"poolid\":8, \"prop\":250}]",
 	},
 	[13] = { 
@@ -94,7 +94,7 @@ local config = {
 		level = 14,
 		upgradeneeditems = "[{\"name\":\"绑定元宝\", \"num\":68000}]",
 		upgradeneedseconds = 680000,
-		maxopennum = 7,
+		maxopennum = 8,
 		rewardpool = "[{\"poolid\":1, \"prop\":0},{\"poolid\":2, \"prop\":1000},{\"poolid\":3, \"prop\":1000},{\"poolid\":4, \"prop\":1000},{\"poolid\":5, \"prop\":750},{\"poolid\":6, \"prop\":650},{\"poolid\":7, \"prop\":600},{\"poolid\":8, \"prop\":350}]",
 	},
 	[15] = { 
@@ -108,7 +108,7 @@ local config = {
 		level = 16,
 		upgradeneeditems = "[{\"name\":\"绑定元宝\", \"num\":93000}]",
 		upgradeneedseconds = 930000,
-		maxopennum = 8,
+		maxopennum = 9,
 		rewardpool = "[{\"poolid\":1, \"prop\":0},{\"poolid\":2, \"prop\":1000},{\"poolid\":3, \"prop\":1000},{\"poolid\":4, \"prop\":1000},{\"poolid\":5, \"prop\":850},{\"poolid\":6, \"prop\":750},{\"poolid\":7, \"prop\":700},{\"poolid\":8, \"prop\":450}]",
 	},
 	[17] = { 
@@ -122,7 +122,7 @@ local config = {
 		level = 18,
 		upgradeneeditems = "[{\"name\":\"绑定元宝\", \"num\":122000}]",
 		upgradeneedseconds = 1220000,
-		maxopennum = 9,
+		maxopennum = 10,
 		rewardpool = "[{\"poolid\":1, \"prop\":0},{\"poolid\":2, \"prop\":1000},{\"poolid\":3, \"prop\":1000},{\"poolid\":4, \"prop\":1000},{\"poolid\":5, \"prop\":950},{\"poolid\":6, \"prop\":850},{\"poolid\":7, \"prop\":800},{\"poolid\":8, \"prop\":550}]",
 	},
 	[19] = { 
@@ -136,7 +136,7 @@ local config = {
 		level = 20,
 		upgradeneeditems = "[{\"name\":\"绑定元宝\", \"num\":155000}]",
 		upgradeneedseconds = 1550000,
-		maxopennum = 10,
+		maxopennum = 11,
 		rewardpool = "[{\"poolid\":1, \"prop\":0},{\"poolid\":2, \"prop\":1000},{\"poolid\":3, \"prop\":1000},{\"poolid\":4, \"prop\":1000},{\"poolid\":5, \"prop\":1000},{\"poolid\":6, \"prop\":950},{\"poolid\":7, \"prop\":900},{\"poolid\":8, \"prop\":650}]",
 	},
 	[21] = { 
@@ -150,7 +150,7 @@ local config = {
 		level = 22,
 		upgradeneeditems = "[{\"name\":\"绑定元宝\", \"num\":192000}]",
 		upgradeneedseconds = 1920000,
-		maxopennum = 11,
+		maxopennum = 12,
 		rewardpool = "[{\"poolid\":1, \"prop\":0},{\"poolid\":2, \"prop\":1000},{\"poolid\":3, \"prop\":1000},{\"poolid\":4, \"prop\":1000},{\"poolid\":5, \"prop\":1000},{\"poolid\":6, \"prop\":1000},{\"poolid\":7, \"prop\":1000},{\"poolid\":8, \"prop\":750}]",
 	},
 	[23] = { 
@@ -164,7 +164,7 @@ local config = {
 		level = 24,
 		upgradeneeditems = "[{\"name\":\"绑定元宝\", \"num\":233000}]",
 		upgradeneedseconds = 2330000,
-		maxopennum = 12,
+		maxopennum = 13,
 		rewardpool = "[{\"poolid\":1, \"prop\":0},{\"poolid\":2, \"prop\":900},{\"poolid\":3, \"prop\":900},{\"poolid\":4, \"prop\":950},{\"poolid\":5, \"prop\":1000},{\"poolid\":6, \"prop\":1000},{\"poolid\":7, \"prop\":1000},{\"poolid\":8, \"prop\":750}]",
 	},
 	[25] = { 
@@ -178,7 +178,7 @@ local config = {
 		level = 26,
 		upgradeneeditems = "[{\"name\":\"绑定元宝\", \"num\":278000}]",
 		upgradeneedseconds = 2780000,
-		maxopennum = 13,
+		maxopennum = 14,
 		rewardpool = "[{\"poolid\":1, \"prop\":0},{\"poolid\":2, \"prop\":850},{\"poolid\":3, \"prop\":850},{\"poolid\":4, \"prop\":900},{\"poolid\":5, \"prop\":900},{\"poolid\":6, \"prop\":1000},{\"poolid\":7, \"prop\":1000},{\"poolid\":8, \"prop\":750}]",
 	},
 	[27] = { 
@@ -192,7 +192,7 @@ local config = {
 		level = 28,
 		upgradeneeditems = "[{\"name\":\"绑定元宝\", \"num\":327000}]",
 		upgradeneedseconds = 3270000,
-		maxopennum = 14,
+		maxopennum = 15,
 		rewardpool = "[{\"poolid\":1, \"prop\":0},{\"poolid\":2, \"prop\":750},{\"poolid\":3, \"prop\":750},{\"poolid\":4, \"prop\":800},{\"poolid\":5, \"prop\":800},{\"poolid\":6, \"prop\":900},{\"poolid\":7, \"prop\":1000},{\"poolid\":8, \"prop\":750}]",
 	},
 	[29] = { 
