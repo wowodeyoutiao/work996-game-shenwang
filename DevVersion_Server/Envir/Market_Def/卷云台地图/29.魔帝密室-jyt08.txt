@@ -1,0 +1,33 @@
+[@MAIN]
+#IF
+#ACT
+MOV S$称号 众生俯仰
+#SAY
+<Img|width=350|height=450|reset=1|show=4|loadDelay=1|bg=1|img=custom/40.png|move=0|esc=1>
+<Layout|x=334.0|y=-17.0|width=80|height=80|link=@exit>
+<Button|x=352.0|y=2.0|nimg=public/1900000510.png|pimg=public/1900000511.png|link=@exit>
+<Img|x=1.0|y=33.0|img=custom/43.png|esc=0>
+<Img|x=0.0|y=216.0|img=custom/43.png|esc=0>
+<Text|x=22.0|y=38.0|color=250|size=18|text=◆魔王密室>
+<Text|x=22.0|y=221.0|color=250|size=18|text=◆进入条件>
+<Text|x=23.0|y=80.0|color=7|size=18|text=本服百种BUFF、千件装备，爆率全开，>
+<Text|x=29.0|y=279.0|color=7|size=18|text=★<$STR(S$称号)>★称号>
+<Button|x=115.0|y=366.0|color=255|size=18|nimg=custom/6.png|link=@进入魔王图>
+<Text|x=23.0|y=107.0|size=18|color=7|text=小怪一样出终极！>
+<Text|x=22.0|y=136.0|color=7|size=18|text=真正不花一分钱也能到终极的良心服！>
+
+
+
+
+[@进入魔王图]
+#IF
+LARGE u1 30
+#ACT
+MAPMOVE rxsc1890
+DELAYGOTO 100 @自动打怪
+#ELSEACT
+SENDMSG 9 你没有[<$STR(S$称号)>]称号无法进入该地图！
+BREAK
+[@自动打怪]
+#ACT
+StartAutoPlayGame

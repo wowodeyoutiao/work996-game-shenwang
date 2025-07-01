@@ -8,14 +8,16 @@ BREAK
 
 #IF
 #SAY
-<Img|show=0|bg=1|loadDelay=1|move=0|reset=1|img=public/bg_npc_01.png|esc=1>
-<Layout|x=521.0|y=-2.0|width=80|height=80|link=@exit>
-<Button|x=524.0|y=-1.0|nimg=public/1900000510.png|pimg=public/1900000511.png|link=@exit>
-<Text|x=36.0|y=16.0|color=116|size=22|text=◆会员之家◆（VIP）>
-<Text|x=40.0|y=49.0|color=7|size=18|text=本服百种BUFF、千件装备，爆率全开。\小怪一样出终极！真正不花一分钱也能到终极的良心服！>
-<RText|x=19.0|y=105.0|color=250|size=18|text=---------------------------复刻经典，超级好玩--------------------------->
-<Text|x=171.0|y=155.0|color=250|size=18|text=★VIP2★可进入>
-<Button|x=37.0|y=140.0|color=251|nimg=public/wz/bt11.png|size=18|clickInterval=666|text=进入地图|link=@进入地图>
+<Img|id=10|children={11,12,13,14,15,16,17,18,19}|show=0|bg=1|loadDelay=1|x=60|y=40|move=0|reset=1|img=public/cc_new/huiyuan_panel.png|esc=1>
+<Layout|id=11|x=600.0|y=20.0|width=80|height=80|link=@exit>
+<Button|id=12|x=600.0|y=20.0|nimg=public/1900000510.png|pimg=public/1900000511.png|link=@exit>
+<Text|id=13|x=350.0|y=120.0|color=255|size=18|text=本服百种BUFF、千件装备，>
+<Text|id=14|x=350.0|y=150.0|color=255|size=18|text=爆率全开。>
+<Text|id=15|x=350.0|y=180.0|color=255|size=18|text=小怪一样出终极！真正不花>
+<Text|id=16|x=350.0|y=210.0|color=255|size=18|text=一分钱也能到终极的良心服！>
+<Text|id=17|x=350.0|y=240.0|color=250|size=18|text=-----复刻经典，超级好玩----->
+<Text|id=18|x=400.0|y=360.0|color=250|size=18|text=★VIP2★可进入>
+<Button|id=19|x=400.0|y=300.0|color=251|nimg=public/wz/bt11.png|size=18|clickInterval=666|text=进入地图|link=@进入地图>
 
 
 

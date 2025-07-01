@@ -1,0 +1,30 @@
+
+[@main]
+#IF
+#SAY
+<Img|show=0|bg=1|loadDelay=1|move=0|reset=1|img=public/bg_npc_01.png|esc=1>
+<Layout|x=521.0|y=-2.0|width=80|height=80|link=@exit>
+<Button|x=524.0|y=-1.0|nimg=public/1900000510.png|pimg=public/1900000511.png|link=@exit>
+<Text|x=190.0|y=16.0|color=116|size=22|text=◆封魔老兵◆>
+<RText|x=30.0|y=49.0|color=7|size=18|text=少年郎，你知道拜月族吗，我可以送你过去\不过要收取点路费！当然你也可以选择腿着过去。>
+<RText|x=19.0|y=105.0|color=250|size=18|text=---------------------------复刻经典，超级好玩--------------------------->
+<Text|x=250.0|y=150.0|color=251|size=18|text=★消耗18积分★>
+<Button|x=37.0|y=140.0|color=251|nimg=public/wz/bt11.png|size=18|clickInterval=666|text=送我过去|link=@进入地图>
+
+
+
+
+
+
+
+[@进入地图]
+#IF
+CheckMoney 积分 ? 18
+#Act
+Money 积分 - 18
+mapmove jyt08 124 396
+Break
+#ElseAct
+SendMsg 9 滚开！连18积分都没有，你个老六！
+Break
+

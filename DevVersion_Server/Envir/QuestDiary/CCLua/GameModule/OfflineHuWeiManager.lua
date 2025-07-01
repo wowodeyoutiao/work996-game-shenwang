@@ -73,6 +73,27 @@ function OfflineHuWeiManager.OnResetDay(actor)
     end
 end
 
+function OfflineHuWeiManager.OnPlayerEnterGame(actor)
+    local bRecal = false
+    for _, value in ipairs(ZCD_NPC_LIST) do
+        local hwtype = value.hwtype
+        local hwlevel = getplaydef(actor, value.levelvar)
+        local cfgHuWeiNpc = GetHuWeiNpcCfg(hwtype)
+        if cfgHuWeiNpc~=nil and hwlevel > 0 then
+            local cfgKey = GetOfflineHuWeiCfgKey(hwtype, hwlevel)       
+            if cfgOfflineHuWei[cfgKey] and (cfgOfflineHuWei[cfgKey].abilitygroup~='') and (cfgOfflineHuWei[cfgKey].addprop_abstr~='') then
+                addattlist(actor, cfgHuWeiNpc.abilitygroup, "=", cfgOfflineHuWei[cfgKey].addprop_abstr)
+                bRecal = true                
+            end
+        end
+    end
+
+    if bRecal == true then
+        recalcabilitys(actor)  
+    end
+end
+
+GameEventManager.AddListener(CommonDefine.EVENT_NAME_PLAYER_ENTERGAME, OfflineHuWeiManager.OnPlayerEnterGame, CommonDefine.FUNC_ID_OFFLINE)
 GameEventManager.AddListener(CommonDefine.EVENT_NAME_PLAYER_RESETDAY, OfflineHuWeiManager.OnResetDay, CommonDefine.FUNC_ID_OFFLINE)
 
 
@@ -399,7 +420,7 @@ local function DoUpgrade(actor, huweitype)
     EverydayTask.AddTaskCounter(actor, CommonDefine.FUNC_ID_OFFLINE, 1)      
 
     setplaydef(actor, cfgHuWeiNpc.levelvar, nextlv)
-    addattlist(actor, cfgHuWeiNpc.abilitygroup, "=", cfgGuanZhi[nextlv].addprop_abstr)
+    addattlist(actor, cfgHuWeiNpc.abilitygroup, "=", cfgNextLv.addprop_abstr)
     recalcabilitys(actor)  
     
     if (nextlv==3) or (nextlv==6) or (nextlv==9) or (nextlv==10) then

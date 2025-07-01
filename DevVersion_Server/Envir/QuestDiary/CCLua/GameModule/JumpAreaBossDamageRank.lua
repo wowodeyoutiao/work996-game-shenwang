@@ -14,14 +14,19 @@ local ACTIVITY_BASE_CONFIG = {
     --enterintervalseconds = 10,        
     mapstayseconds = 90,
     giverewarddelaymin = 10,        --活动结束后，延迟几分钟发奖励
-    showreward = {{name='元宝', num=100}, {name='元宝', num=101}, {name='元宝', num=102}, {name='元宝', num=103}},
+    showreward = {{name='跨服积分', num=10000}, {name='无双经验珠', num=50}, {name='功勋', num=5000}},
     rankrewardlist = {
         --单独一列奖励不要超过7个
-        {rankhigh=1, ranklow=1, showrank='1', rewardlist={{name='元宝', num=100}, {name='金币', num=10000},{name='元宝', num=100}, {name='金币', num=10000}}},
-        {rankhigh=2, ranklow=2, showrank='2', rewardlist={{name='元宝', num=101}, {name='金币', num=10000},{name='元宝', num=100}, {name='金币', num=10000}}},
-        {rankhigh=3, ranklow=3, showrank='3', rewardlist={{name='元宝', num=102}, {name='金币', num=10000},{name='元宝', num=100}, {name='金币', num=10000}}},
-        {rankhigh=4, ranklow=10, showrank='4-10', rewardlist={{name='元宝', num=103}, {name='金币', num=10000},{name='元宝', num=100}, {name='金币', num=10000}}},
-        {rankhigh=11, ranklow=50, showrank='11-50', rewardlist={{name='元宝', num=104}, {name='金币', num=10000},{name='元宝', num=100}, {name='金币', num=10000}}},
+         {rankhigh=1, ranklow=1, showrank='1', rewardlist={{name='跨服积分', num=10000}, {name='无双经验珠', num=50},{name='功勋', num=5000}}},
+        {rankhigh=2, ranklow=2, showrank='2', rewardlist={{name='跨服积分', num=7000}, {name='无双经验珠', num=30},{name='功勋', num=3000}}},
+        {rankhigh=3, ranklow=3, showrank='3', rewardlist={{name='跨服积分', num=5000}, {name='无双经验珠', num=20},{name='功勋', num=2000}}},
+        {rankhigh=4, ranklow=4, showrank='4', rewardlist={{name='跨服积分', num=3000}, {name='无双经验珠', num=10},{name='功勋', num=1000}}},
+	{rankhigh=5, ranklow=5, showrank='5', rewardlist={{name='跨服积分', num=1000}, {name='无双经验珠', num=5},{name='功勋', num=500}}},
+	{rankhigh=6, ranklow=10, showrank='6-10', rewardlist={{name='跨服积分', num=800}, {name='无双经验珠', num=4},{name='功勋', num=400}}},
+	{rankhigh=11, ranklow=20, showrank='11-20', rewardlist={{name='跨服积分', num=700}, {name='无双经验珠', num=3},{name='功勋', num=300}}},
+	{rankhigh=21, ranklow=40, showrank='21-40', rewardlist={{name='跨服积分', num=600}, {name='无双经验珠', num=2},{name='功勋', num=200}}},
+	{rankhigh=41, ranklow=50, showrank='41-50', rewardlist={{name='跨服积分', num=500}, {name='无双经验珠', num=1},{name='功勋', num=100}}},
+
     },
 }
 

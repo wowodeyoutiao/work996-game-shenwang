@@ -307,6 +307,8 @@ function RecycleManager.InvertAll(actor)
     RecycleManager.ShowRecyclePanelInfo(actor)
 end
 
+
+
 function RecycleManager.IsItemNeedRecycle(actor, singleitem, forceflag)
     local bFlag = false
     local targitems = {}
@@ -321,6 +323,11 @@ function RecycleManager.IsItemNeedRecycle(actor, singleitem, forceflag)
     local stdmode = getstditeminfo(itemidx, CommonDefine.STDITEMINFO_STDMODE) 
     local qualitylv = Item.GetItemQualityLv(actor, singleitem)    
 
+    --基础属性有加速的装备不能分解
+    if Item.IsSpeedUpEquipItem(itemidx) then
+        return bFlag, targitems
+    end
+    
     for _, value in pairs(cfgRecycleSetting) do
         if ((value.checktype == CHECK_TYPE_QUALITYLV) and (value.checkparam == qualitylv)) or
             (value.checktype == CHECK_TYPE_NONE) then
@@ -350,6 +357,11 @@ function RecycleManager.IsItemNeedAutoRecycle(actor, itemobj)
     itemnum = math.max(1, itemnum)
     local stdmode = getstditeminfo(itemidx, CommonDefine.STDITEMINFO_STDMODE) 
     local qualitylv = Item.GetItemQualityLv(actor, itemobj)    
+
+    --基础属性有加速的装备不能分解
+    if Item.IsSpeedUpEquipItem(itemidx) then
+        return bFlag, targitems
+    end    
 
     --自动回收的玩家标记
     local autorecycleflag1 = getflagstatus(actor, AUTO_RECYCLE_BITFLAGVAR[RECYCLE_TYPE_1])

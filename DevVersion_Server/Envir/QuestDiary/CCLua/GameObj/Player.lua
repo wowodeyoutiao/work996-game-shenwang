@@ -552,6 +552,7 @@ function Player.InitNewPlayer(actor)
     if getflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_NEW_PLAYER_INIT_FLAG) == 0 then
         setplaydef(actor, CommonDefine.VAR_J_DAY_MOFANG_LEFT_FREETIMES, CommonDefine.DAY_FREE_ENTER_MOFANGZHEN_TIMES)        
         setflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_NEW_PLAYER_INIT_FLAG, 1)
+        setplaydef(actor, CommonDefine.VAR_U_LOGINDAYS_IN_WEEK, 1)
 
         --设置首次登录日期
         local currday = BF_GetDay(os.time())

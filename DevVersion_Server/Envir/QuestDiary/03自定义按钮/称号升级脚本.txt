@@ -20,30 +20,26 @@ GetDBItemFieldValue <$WEAPON> sEffect S$weaponEffectID
 GetDBItemFieldValue 元宝 idx N$元宝IDX
 
 #SAY
-<Img|x=0.0|y=-2.0|bg=1|show=4|move=0|img=public/wz/92233812_186329.png|esc=1|reset=1>
-<Layout|x=812.0|y=-1.0|width=80|height=80|link=@exit>
-<Button|x=816.0|y=41.0|height=33|nimg=public/1900000510_1.png|pimg=public/1900000510_2.png|link=@exit>
-<Img|x=73.0|y=93.0|img=public/wz/6edf3836_45488.jpg>
-<Text|x=411.0|y=57.0|outline=2|color=116|size=18|text=称号提升>
-<UIModel|x=440|y=350|scale=1|sex=<$GENDER>|clothID=<$STR(N$clothID)>|weaponID=<$STR(N$weaponID)>|clothEffectID=<$STR(S$clothEffectID)>|weaponEffectID=<$STR(S$weaponEffectID)>>
-<Img|x=360|y=170|img=public/bg_hhzy_01_3.png>
+<Img|x=0.0|y=-2.0|bg=1|show=4|move=0|img=public/cc_new/title_panel.png|esc=1|reset=1>
+<Layout|x=812.0|y=22.0|width=80|height=80|link=@exit>
+<Button|x=812.0|y=20.0|height=33|nimg=public/1900000510_1.png|pimg=public/1900000510_2.png|link=@exit>
+<UIModel|x=270|y=250|scale=0.8|sex=<$GENDER>|clothID=<$STR(N$clothID)>|weaponID=<$STR(N$weaponID)>|clothEffectID=<$STR(S$clothEffectID)>|weaponEffectID=<$STR(S$weaponEffectID)>>
+<Img|x=200|y=112|img=public/bg_hhzy_01_3.png>
 <Effect|x=<$STR(N$偏移X)>|y=<$STR(N$偏移Y)>|effectid=<$STR(N$称号特效ID)>|effecttype=0|scale=1>
 
-<Img|x=80|y=100|img=public/bg_yxui_2.png|height=420|width=200|scale9r=10|scale9l=10|scale9b=10|scale9t=10>
-<RText|id=10|x=90|y=125|outline=1|color=103|size=18|text=
-获得倍攻<+<$STR(N$称号倍功)>%/FCOLOR=250>\
-攻击暴涨<+<$STR(N$称号攻击)>%/FCOLOR=250>\
-打怪爆率<+<$STR(N$称号爆率)>%/FCOLOR=250>\
-最大生命<+<$STR(N$称号生命)>%/FCOLOR=250>\　\
-额外奖励\
-<跨服积分+<$STR(N$奖励跨服积分)>/FCOLOR=250>>
 
-<Img|x=620|y=305|img=public/bg_yxui_2.png|height=210|width=180|scale9r=10|scale9l=10|scale9b=10|scale9t=10>
-<RText|x=675|y=335|outline=1|color=250|size=18|text=升级条件>
-<ItemShow|id=11|x=680.0|y=370|width=70|height=70|itemid=<$STR(N$元宝IDX)>|itemcount=<$STR(N$称号元宝)>|showtips=0|bgtype=1>
+<RText|id=10|x=500|y=100|outline=1|color=103|size=16|text=
+获得倍攻    <+<$STR(N$称号倍功)>%/FCOLOR=250>\
+攻击暴涨    <+<$STR(N$称号攻击)>%/FCOLOR=250>\
+打怪爆率    <+<$STR(N$称号爆率)>%/FCOLOR=250>\
+最大生命    <+<$STR(N$称号生命)>%/FCOLOR=250>\
+额外奖励    <跨服积分+<$STR(N$奖励跨服积分)>/FCOLOR=250>>
 
-<Button|id=660|x=660|y=450|nimg=public/wz/bt11.png|color=251|size=18|text=提升称号|link=@升级称号>
-<RText|x=90|y=390|color=7|size=16|text=提示：优先使用元宝提升\称号等级可增加<大量人物>\<属性>和<专属地图>\元宝作为本服充值唯一货\币，可通过<回收装备获得>>
+<RText|x=500|y=224|color=7|size=14|text=提示：优先使用元宝提升称号等级可增加<大量>\<人物属性>和<专属地图>元宝作为本服充值唯一货\币，可通过<回收装备获得>>
+
+<ItemShow|id=11|x=610.0|y=350|width=70|height=70|itemid=<$STR(N$元宝IDX)>|itemcount=<$STR(N$称号元宝)>|showtips=0|bgtype=1>
+<Button|id=660|x=590|y=430|nimg=public/wz/bt11.png|color=251|size=18|text=提升称号|link=@升级称号>
+
 
 #IF
 NOT SMALL U1 32
@@ -73,7 +69,7 @@ BREAK
 #IF
 CHECKMONEY 元宝 < <$STR(N$称号元宝)>
 #ACT
-SENDMSG	9 您的元宝不足<$STR(N$称号元宝)>万，请核对！
+SENDMSG	9 您的元宝不足<$STR(N$称号元宝)>，请核对！
 BREAK
 
 ; 当前地图上限检测

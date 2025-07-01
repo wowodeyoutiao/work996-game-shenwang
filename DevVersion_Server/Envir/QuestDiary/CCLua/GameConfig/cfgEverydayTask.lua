@@ -1,10 +1,10 @@
 local config = { 
 	[1] = { 
 		id = 1,
-		tasktype = 10,
+		tasktype = 26,
 		tasktargnum = 100,
 		taskparam = 0,
-		gotoid = 26,
+		gotoid = 21,
 		tasktitle = "开箱换装",
 		taskdesc = "累计开箱100次",
 		finishrewards = "[{\"name\":\"绑定元宝\", \"num\":100},{\"name\":\"3级筛子\", \"num\":1}]",

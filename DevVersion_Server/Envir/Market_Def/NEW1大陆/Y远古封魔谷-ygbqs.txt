@@ -1,0 +1,13 @@
+
+[@main]
+#IF
+;LARGE u1 25
+#ACT
+mapmove ygfmg  241 203
+#ELSEACT
+SENDMSG 9 传送失败，进入此地图需要【破天轩辕】及以上称号！
+
+
+
+
+

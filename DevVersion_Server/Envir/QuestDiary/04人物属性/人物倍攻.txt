@@ -1,0 +1,271 @@
+[@人物倍攻]
+{
+
+#IF
+CHECKTITLE 天下第一
+NOT EQUAL A51 <$username>
+#ACT
+MOV U52 0
+DEPRIVETITLE 天下第一
+
+#IF
+CHECKTITLE 天下第二
+NOT EQUAL A52 <$username>
+#ACT
+MOV U52 0
+DEPRIVETITLE 天下第二
+
+#IF
+CHECKTITLE 天下第三
+NOT EQUAL A53 <$username>
+#ACT
+MOV U52 0
+DEPRIVETITLE 天下第三
+
+#IF
+CHECKTITLE 天下第四
+NOT EQUAL A54 <$username>
+#ACT
+MOV U52 0
+DEPRIVETITLE 天下第四
+
+#IF
+CHECKTITLE 天下第五
+NOT EQUAL A55 <$username>
+#ACT
+MOV U52 0
+DEPRIVETITLE 天下第五
+
+
+
+#IF
+#Act
+Mov	N$转生倍攻 0
+Mov	N$狂暴倍攻 0
+Mov	N$称号倍攻 0
+Mov	N$龙虎倍攻 0
+Mov	N$天下第一倍攻 0
+;--------------------------------------------------------------------------------------------------------
+;----------------------------------------------↓转生倍攻↓------------------------------------------------
+;--------------------------------------------------------------------------------------------------------
+#IF
+checkrenewlevel ? 0
+#Act
+MUL N$转生倍攻 <$relevel> 5
+
+;--------------------------------------------------------------------------------------------------------
+;----------------------------------------------↓狂暴倍攻↓------------------------------------------------
+;--------------------------------------------------------------------------------------------------------
+#IF
+Check [2] 1
+#Act
+Mov	N$狂暴倍攻	10
+
+
+;--------------------------------------------------------------------------------------------------------
+;----------------------------------------------↓称号倍攻↓------------------------------------------------
+;--------------------------------------------------------------------------------------------------------
+#IF
+CheckTitLe	初入江湖
+#Act
+Mov	N$称号倍攻	1
+
+#IF
+CheckTitLe	展露头角
+#Act
+Mov	N$称号倍攻	2
+
+#IF
+CheckTitLe	江湖少侠
+#Act
+Mov	N$称号倍攻	3
+
+#IF
+CheckTitLe	武林豪杰
+#Act
+Mov	N$称号倍攻	4
+
+#IF
+CheckTitLe	侠骨柔情
+#Act
+Mov	N$称号倍攻	5
+#IF
+CheckTitLe	名动江湖
+#Act
+Mov	N$称号倍攻	6
+
+#IF
+CheckTitLe	叱诧风云
+#Act
+Mov	N$称号倍攻	7
+
+#IF
+CheckTitLe	赤胆雄心
+#Act
+Mov	N$称号倍攻	8
+
+#IF
+CheckTitLe	威震八方
+#Act
+Mov	N$称号倍攻	9
+
+#IF
+CheckTitLe	一代宗师
+#Act
+Mov	N$称号倍攻	10
+
+#IF
+CheckTitLe	横扫千军
+#Act
+Mov	N$称号倍攻	11
+
+#IF
+CheckTitLe	剑舞风行
+#Act
+Mov	N$称号倍攻	12
+
+#IF
+CheckTitLe	傲视群雄
+#Act
+Mov	N$称号倍攻	13
+
+#IF
+CheckTitLe	独领风骚
+#Act
+Mov	N$称号倍攻	14
+
+#IF
+CheckTitLe	笑傲江湖
+#Act
+Mov	N$称号倍攻	15
+
+#IF
+CheckTitLe	天下无双
+#Act
+Mov	N$称号倍攻	16
+
+#IF
+CheckTitLe	雄霸天下
+#Act
+Mov	N$称号倍攻	17
+
+#IF
+CheckTitLe	战神归来
+#Act
+Mov	N$称号倍攻	18
+
+#IF
+CheckTitLe	独孤求败
+#Act
+Mov	N$称号倍攻	19
+
+#IF
+CheckTitLe	永恒霸主
+#Act
+Mov	N$称号倍攻	20
+
+#IF
+CheckTitLe	天煞孤星
+#Act
+Mov	N$称号倍攻	21
+
+#IF
+CheckTitLe	逆天改命
+#Act
+Mov	N$称号倍攻	22
+
+#IF
+CheckTitLe	武定乾坤
+#Act
+Mov	N$称号倍攻	23
+
+#IF
+CheckTitLe	修罗万象
+#Act
+Mov	N$称号倍攻	24
+
+#IF
+CheckTitLe	剑指苍穹
+#Act
+Mov	N$称号倍攻	25
+
+#IF
+CheckTitLe	破天轩辕
+#Act
+Mov	N$称号倍攻	26
+
+#IF
+CheckTitLe	出神入化
+#Act
+Mov	N$称号倍攻	27
+
+#IF
+CheckTitLe	毁天灭地
+#Act
+Mov	N$称号倍攻	28
+
+#IF
+CheckTitLe	玛法主宰
+#Act
+Mov	N$称号倍攻	29
+
+#IF
+CheckTitLe	问鼎诛仙
+#Act
+Mov	N$称号倍攻	30
+
+#IF
+CheckTitLe	众生俯仰
+#Act
+Mov	N$称号倍攻	31
+
+#IF
+CheckTitLe	一念三千
+#Act
+Mov	N$称号倍攻	32
+
+;天下排名
+#IF
+CHECKTITLE 天下第一
+#Act
+MOV N$龙虎倍攻 80
+seticon 0 1 15094 -53 -5 1 0 0
+#ELSEACT
+seticon 0 -1
+
+#IF
+CHECKTITLE 天下第二
+#Act
+MOV N$龙虎倍攻 60
+
+#IF
+CHECKTITLE 天下第三
+#Act
+MOV N$龙虎倍攻 40
+
+#IF
+CHECKTITLE 天下第四
+#Act
+MOV N$龙虎倍攻 20
+
+#IF
+CHECKTITLE 天下第五
+#Act
+MOV N$龙虎倍攻 10
+
+#IF
+#Act
+MOV N$人物倍攻 100
+INC	N$人物倍攻	<$Str(N$转生倍攻)>
+Inc	N$人物倍攻	<$Str(N$狂暴倍攻)>
+Inc	N$人物倍攻	<$Str(N$称号倍攻)>
+Inc	N$人物倍攻	<$Str(N$龙虎倍攻)>
+
+#IF
+LARGE N$人物倍攻 100
+#ACT
+POWERRATE <$Str(N$人物倍攻)> 65535
+SENDMSG 6 当前人物倍攻:<$Str(N$人物倍攻)>%
+
+
+}

@@ -1,0 +1,67 @@
+[@MAIN]
+#IF
+CHECKUNDERWAR 沙巴克
+equal <$HOUR> 21
+#ACT
+SENDMSG 9 沙巴克攻城期间，禁止入图
+BREAK
+
+#IF
+EQUAL S$地图名
+#ACT
+MOV S$选中ID 23
+MOV s$检测 0
+MOV s$地图名 jxd
+MOV s$地图名称 空灵之境
+
+
+#IF
+#SAY
+<Img|x=60|y=40|reset=1|show=0|bg=1|move=0|img=public/cc_new/maptrans_panel_2.png|loadDelay=0|esc=1>
+<Layout|x=616.0|y=54.0|width=80|height=80|link=@exit>
+<Button|x=616.0|y=54.0|nimg=public/1900000510.png|pimg=public/1900000511.png|link=@exit>
+<Text|x=380.0|y=60.0|color=116|size=20|text=◆新的征程专属（称号）>
+<Text|x=145.0|y=250.0|color=250|size=18|text=◆<$STR(S$地图名称)>>
+
+<ListView|children={2,3,4,5,6,7,8,9}|x=478|y=96|width=125|height=360|direction=1|bounce=1|margin=1|reload=0>
+<Layout|id=2|children={21,22}|x=0|y=0|width=120|height=30>
+<Layout|id=3|children={31,32}|x=0|y=0|width=120|height=30>
+<Layout|id=4|children={41,42}|x=0|y=0|width=120|height=30>
+<Layout|id=5|children={51,52}|x=0|y=0|width=120|height=30>
+<Layout|id=6|children={61,62}|x=0|y=0|width=120|height=30>
+<Layout|id=7|children={71,72}|x=0|y=0|width=120|height=30>
+<Button|id=21|children={23}|x=0|y=0|nimg=public/start_10/h2_001.png|width=120|height=30|color=116|size=18|text=虚空幻境|link=@main#检测=0#地图名=jxd#地图名称=虚空幻境#选中ID=23>
+<Button|id=31|children={33}|x=0|y=0|nimg=public/start_10/h2_002.png|width=120|height=30|color=116|size=18|text=六道轮回|link=@main#检测=0#地图名=lhzd#地图名称=六道轮回#选中ID=33>
+<Button|id=41|children={43}|x=0|y=0|nimg=public/start_10/h2_003.png|width=120|height=30|color=116|size=18|text=十重地狱|link=@main#检测=0#地图名=dyhj#地图名称=十重地狱#选中ID=43>
+;<Button|id=51|children={53}|x=0|y=0|nimg=public/start_10/h2_004.png|width=120|height=30|color=253|text=风水宝地|link=@main#检测=1#地图名=zwd#地图名称=风水宝地#选中ID=53>
+;<Button|id=61|children={63}|x=0|y=0|nimg=public/start_10/h2_005.png|width=120|height=30|color=253|text=贫瘠之地|link=@main#检测=1#地图名=xbsd#地图名称=贫瘠之地#选中ID=63>
+;<Button|id=71|children={73}|x=0|y=0|nimg=public/start_10/h2_006.png|width=120|height=30|color=253|text=刹那芳华|link=@main#检测=1#地图名=sszj#地图名称=刹那芳华#选中ID=73>
+<Img|id=<$STR(S$选中ID)>|x=-2|y=-2|img=public/1900000678_1.png|height=33|width=123|scale9r=10|scale9l=10|scale9b=10|scale9t=10>
+
+<RText|x=145.0|y=280.0|size=16|color=7|text=提示：装备轻松开箱得\货币元宝材料全靠打\人人都能到终极！>
+<Button|x=300|y=390|nimg=public/wz/bt21.png|color=251|text=进入地图|size=18|link=@进入新的征程图#地图名=<$STR(S$地图名)>>
+
+
+
+;#IF
+;EQUAL S$检测 0
+;#SAY
+;<Button|x=230|y=320|nimg=public/alpha_1px.png|color=250|size=18|text=★新的征程★称号>
+;#ELSESAY
+;<Button|x=230|y=320|nimg=public/alpha_1px.png|color=250|size=18|text=★宿命的羁绊★称号>
+
+
+[@进入新的征程图]
+#IF
+LARGE u1 <$STR(S$检测)>
+#ACT
+mapMOVE <$STR(S$地图名)>
+DELAYGOTO 100 @自动打怪
+#ELSEACT
+SENDMSG 9 您没有对应的称号，进入失败！
+
+[@自动打怪]
+#ACT
+StartAutoPlayGame
+
+

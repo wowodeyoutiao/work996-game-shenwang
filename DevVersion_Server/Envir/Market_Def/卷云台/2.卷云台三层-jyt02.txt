@@ -1,0 +1,7 @@
+[@main]
+#IF
+LARGE u1 5
+#ACT
+  mapmove jyt03 20 22 2
+#ELSEACT
+SENDMSG 9 传送失败，进入此地图需要【名动江湖】及以上称号！

@@ -1,0 +1,37 @@
+[@main]
+<Img|show=4|bg=1|loadDelay=1|move=0|esc=1|img=public/cc_new/sbk_maptrans_panel.png|reset=1>
+<Layout|x=810.0|y=16.0|width=80|height=80|link=@exit>
+<Button|x=810.0|y=16.0|color=255|size=18|pimg=public/1900000510_2.png|nimg=public/1900000510_1.png|link=@exit>
+
+<Text|x=492.0|y=90.00|outline=1|color=255|size=18|text=攻沙开启后，可以选择从正面入口进\攻，也可以抄小路进行偷袭！>
+<Text|x=492.0|y=180.00|outline=1|color=116|size=18|text=可从下方入口选择偷袭传送>
+
+<Button|x=580.0|y=220.0|nimg=public/wz/bt21.png|color=151|size=18|text=沙城影之道|link=@沙城影之道>
+<Text|x=540.0|y=270.0|color=255|size=18|text=该入口每天晚上9:50关闭。>
+
+<Button|x=100.0|y=420.0|color=151|nimg=public/wz/bt11.png|size=18|text=沙城大门口|link=@沙城传送#XXXX=675#YYYY=332>
+<Button|x=280.0|y=420.0|color=151|nimg=public/wz/bt11.png|size=18|text=沙城衣服店|link=@沙城传送#XXXX=670#YYYY=280>
+<Button|x=460.0|y=420.0|color=151|nimg=public/wz/bt11.png|size=18|text=沙城武器店|link=@沙城传送#XXXX=635#YYYY=315>
+<Button|x=640.0|y=420.0|color=151|nimg=public/wz/bt21.png|size=18|text=沙城复活点|link=@沙城传送#XXXX=650#YYYY=293>
+<Img|x=60|y=70|width=450|height=45|img=public/cc_new/sbk_text_1.png>
+;<Img|x=240|y=300|img=public/cc_new/sbk_text_2.png>
+
+
+[@沙城传送]
+#IF
+#ACT
+SetIcon 10 -1
+mapmove rxsc806 <$STR(S$XXXX)> <$STR(S$YYYY)> 2
+GuildNoticeMsg 249 11 玩家{[<$username>]|70:1:0}已前往{沙巴克|250:1:0}支援。
+#Call [\悬浮按钮\悬浮按钮展开.txt] @悬浮按钮隐藏
+BREAK
+
+
+
+[@沙城影之道]
+#IF
+#ACT
+SetIcon 10 -1
+MAPMOVE d701 19 102 2
+#Call [\悬浮按钮\悬浮按钮展开.txt] @悬浮按钮隐藏
+BREAK

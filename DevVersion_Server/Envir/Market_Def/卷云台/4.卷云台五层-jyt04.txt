@@ -1,0 +1,7 @@
+[@main]
+#IF
+LARGE u1 11
+#ACT
+  mapmove jyt05 26 25 2
+#ELSEACT
+SENDMSG 9 传送失败，进入此地图需要【剑舞风行】及以上称号！

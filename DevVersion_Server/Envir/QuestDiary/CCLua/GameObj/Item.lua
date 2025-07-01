@@ -100,6 +100,14 @@ function Item.IsEquipment(stdmode)
     end
 end
 
+function Item.IsSpeedUpEquipItem(itemid)
+    local equipcfg = cfg_equip[itemid]
+    if equipcfg and equipcfg.SpeedUpRate and equipcfg.SpeedUpRate>0 then
+        return true
+    end    
+    return false
+end
+
 function Item.GetItemShowName(actor, itemobj)
     local itemshowname = getiteminfo(actor, itemobj, CommonDefine.ITEMINFO_CHGEDNAME) 
     if itemshowname == '' then
@@ -229,14 +237,16 @@ function Item.GetBagItemsShowInfo(actor, itemnamelist, basepanelid, basex, basey
 
     local itemgrid_x = 0
     local itemgrid_y = 0
-    local itemimgid = CommonDefine.COMPONENT_ID_BAGITEMSHOW_IMG_BASE
-    local itemtextid = CommonDefine.COMPONENT_ID_BAGITEMSHOW_TEXT_BASE
-    local sIdstr = ''
+    local itemimgid = CommonDefine.COMPONENT_ID_BAGITEMSHOW_IMG_BASE + basepanelid * 100
+    local itemtextid = CommonDefine.COMPONENT_ID_BAGITEMSHOW_TEXT_BASE + basepanelid * 100        
+    sInfo = sInfo..'<Text|id='..itemtextid..'|text=³ÖÓÐ£º|x='..(itemgrid_x-20)..'|y='..(itemgrid_y+2)..'|color='..CSS.NPC_WHITE..'>'
+    local sIdstr = itemtextid
+    itemtextid = itemtextid + 10
     for i = 1, #itemnamelist, 1 do
         local itemname = itemnamelist[i]
         local itemidx = getstditeminfo(itemname, CommonDefine.STDITEMINFO_IDX)
         local strItemCount = BF_NumToShowStr(Player.GetItemNumInBag(actor, itemname))
-        sInfo = sInfo..'<ItemShow|id='..itemimgid..'|itemid='..itemidx..'|num=1|x='..(itemgrid_x+10)..'|y='..(itemgrid_y-20)..'|scale=0.6|showtips=1|bgtype=0>'
+        sInfo = sInfo..'<ItemShow|id='..itemimgid..'|itemid='..itemidx..'|itemcount=1|x='..(itemgrid_x+10)..'|y='..(itemgrid_y-20)..'|scale=0.6|showtips=1|bgtype=0>'
         sInfo = sInfo..'<Text|id='..itemtextid..'|text=X'..strItemCount..'|x='..(itemgrid_x+60)..'|y='..(itemgrid_y+2)..'|color='..textcolor..'>'
         if sIdstr ~= '' then
             sIdstr = sIdstr..','
@@ -252,6 +262,50 @@ function Item.GetBagItemsShowInfo(actor, itemnamelist, basepanelid, basex, basey
         itemtextid = itemtextid + 1       
     end
     sInfo = sInfo..'<Layout|id='..basepanelid..'|children={'..sIdstr..'}|x='..basex..'|y='..basey..'|width='..basewidth..'|height='..baseheight..'>'
+
+    return sInfo
+end
+
+function Item.GetBagItemsGridShowInfo(actor, itemnamelist, panelid, basex, basey, scale, withnameflag)
+    local sInfo = ''
+    if BF_IsNullObj(actor) or itemnamelist==nil or table.isempty(itemnamelist) or panelid==nil then
+        return sInfo
+    end
+
+    if basex == nil then
+        basex = CSS.BAG_ITEMSHOW_PANEL_X
+    end
+    if basey == nil then
+        basey = CSS.BAG_ITEMSHOW_PANEL_Y
+    end   
+    if scale == nil then
+        scale = 1
+    end
+    if withnameflag == nil then
+        withnameflag = false
+    end
+
+    local itemgrid_x = 0
+    local itemgrid_y = 0
+    local itemimgid = CommonDefine.COMPONENT_ID_BAGITEMSHOW_IMG_BASE + panelid * 100
+    local itemtextid = CommonDefine.COMPONENT_ID_BAGITEMSHOW_TEXT_BASE + panelid * 100
+    local sIdstr = ''
+    for i = 1, #itemnamelist, 1 do
+        local itemname = itemnamelist[i]
+        local itemidx = getstditeminfo(itemname, CommonDefine.STDITEMINFO_IDX)
+        local itemnum = Player.GetItemNumInBag(actor, itemname)  
+        sInfo = sInfo..'<ItemShow|id='..itemimgid..'|itemid='..itemidx..'|itemcount='..itemnum..'|x='..(itemgrid_x+10)..'|y='..(itemgrid_y-20)..'|scale='..scale..'|showtips=1|bgtype=1>'
+        sInfo = sInfo..'<Text|id='..itemtextid..'|text='..itemname..'|x='..(itemgrid_x+10)..'|y='..(itemgrid_y+50)..'>'
+        if sIdstr ~= '' then
+            sIdstr = sIdstr..','
+        end
+        sIdstr = sIdstr..itemimgid
+        sIdstr = sIdstr..','..itemtextid
+        itemgrid_x = itemgrid_x + 40
+        itemimgid = itemimgid + 1
+        itemtextid = itemtextid + 1
+    end
+    sInfo = sInfo..'<Layout|id='..panelid..'|children={'..sIdstr..'}|x='..basex..'|y='..basey..'>'
 
     return sInfo
 end

@@ -17,18 +17,18 @@ sbgtjp 18 10 -> rxsc806 634 312
 sbgtjp 18 11 -> rxsc806 634 313
 
 
-[tianjie|dujietai	天劫台]
+[tianjie|dujietai	渡劫台]
 
 
-[mld|t118	魔龙殿]  nodeal 
+[mld|t118	巨龙殿]  nodeal 
 jyt10 95 155 ->  mld 14 17
-[hwt|1002	虎卫堂]  nodeal 
+[hwt|1002	老虎堂]  nodeal 
 jyt09 228 268 ->  hwt 9 18
 jyt09 228 269 ->  hwt 9 18
 hwt 9 18 -> jyt09 228 268
-[b341 		封魔皇宫]  nodeal 
-[m101	    比奇皇宫]  nodeal 
-[qhlm|yehongwei33	    秦皇陵墓]  nodeal 
+[b341 		封魔王宫]  nodeal 
+[m101	    比奇王宫]  nodeal 
+[qhlm|yehongwei33	    始皇陵墓]  nodeal 
 rxsc1893 165 34 -> qhlm 30 28
 qhlm 30 28 -> rxsc1893 165 34
 jyt07 347 187 ->  m101 12 42
@@ -43,12 +43,12 @@ b341 26 30  -> jyt08 219 198
 ; rxsc042 330 314 -> 0159 
 ; 0159   -> rxsc042 330 314
 [e404|h003 尸王殿]  nodeal noreconnect(tjp)  runmon(1) noallowuseitems(随机传送石|风雷召唤令)  nodeal 
-[zzzd|d717 重装之地] noreconnect(tjp)  runmon(1) noallowuseitems(随机传送石|风雷召唤令)  nodeal 
+[zzzd|d717 重装领地] noreconnect(tjp)  runmon(1) noallowuseitems(随机传送石|风雷召唤令)  nodeal 
  
 
 [ddyz|yehongwei32 等待验证] safe saylevel(65535) noshop nodeal noreconnect(ddyz) nodrug quiz nopositionmove norecall nodearrecall noguildrecall nomasterrecall norandommove mission notallowusemagic(瞬息移动) notallowuseitems(回城卷|行会回城卷|地牢逃脱卷|随机传送卷|盟重回城石|随机传送石|风雷召唤令)
-[rxsc1560|0          比起省] safe saylevel(65535) noshop  nodeal nodrug quiz nopositionmove norecall nodearrecall noguildrecall nomasterrecall norandommove mission notallowusemagic(瞬息移动) notallowuseitems(回城卷|行会回城卷|地牢逃脱卷|随机传送卷|盟重回城石|随机传送石|风雷召唤令) NOMANNOMON(120)
-[em000|g003           新手训练营] safe noreconnect(tjp) runmon(1) noallowuseitems(盟重传送石|随机传送石|风雷召唤令)
+[rxsc1560|0          比奇省] safe saylevel(65535) noshop  nodeal nodrug quiz nopositionmove norecall nodearrecall noguildrecall nomasterrecall norandommove mission notallowusemagic(瞬息移动) notallowuseitems(回城卷|行会回城卷|地牢逃脱卷|随机传送卷|盟重回城石|随机传送石|风雷召唤令) NOMANNOMON(120)
+[em000|g003           新手泡点] safe noreconnect(tjp) runmon(1) noallowuseitems(盟重传送石|随机传送石|风雷召唤令)
 
 ;攻城区域-----
 [rxsc806|3 沙巴克·攻城区]  fight3(1)   noreconnect(tjp)  runmon(1) nodeal
@@ -64,56 +64,56 @@ rxsc806     624,278    ->  rxsc807     6,21
 rxsc806     627,278    ->  rxsc807     11,22
 rxsc806     634,271    ->  rxsc807     19,14
 
-[sbkslf|d2079 黄金藏宝殿] noreconnect(tjp)  runmon(1) noallowuseitems(随机传送石|风雷召唤令)  nodeal 
-[sbksbf|d2079 白银藏宝殿] noreconnect(tjp)  runmon(1) noallowuseitems(随机传送石|风雷召唤令)  nodeal 
+[sbkslf|d2079 黄金宝殿] noreconnect(tjp)  runmon(1) noallowuseitems(随机传送石|风雷召唤令)  nodeal 
+[sbksbf|d2079 白银宝殿] noreconnect(tjp)  runmon(1) noallowuseitems(随机传送石|风雷召唤令)  nodeal 
 
-[d701|d403		    沙影之道]  fight  noreconnect(tjp)   noallowuseitems(随机传送石) nodeal
+[d701|d403		    暗影之道]  fight  noreconnect(tjp)   noallowuseitems(随机传送石) nodeal
 [cfzl|yehongwei34	 新区狂欢]  noreconnect(tjp)   noallowuseitems(随机传送石|风雷召唤令) nodeal
 [rydt|yehongwei37    福利大殿]  noreconnect(tjp)   noallowuseitems(随机传送石|盟重传送石|风雷召唤令) nodeal
 [rxsc051|yehongwei33 天降福利(活动区)]  noreconnect(tjp)  safe saylevel(65535) norunhuman quiz norecall nodearrecall noguildrecall nomasterrecall notallowusemagic(瞬息移动) notallowuseitems(行会回城卷|地牢逃脱卷|风雷召唤令) nodeal
 
 ;━━━━━━━━━━━━盟重图━━━━━━━━━━━━
 [slzs|d2001   不归路] noreconnect(tjp)  runmon(1) nodeal  NOMANNOMON(120)
-[sczs|h004   死亡棺材] noreconnect(tjp)  runmon(1) nodeal  NOMANNOMON(120)
-[huiyuan1|h204 会员之家1层] noreconnect(tjp)  runmon(1) nodeal  NOMANNOMON(120)
-[huiyuan2|h204 会员之家2层] noreconnect(tjp)  runmon(1) nodeal  NOMANNOMON(120)
-[huiyuan3|h204 会员之家3层] noreconnect(tjp)  runmon(1) nodeal  NOMANNOMON(120)
-[huiyuan4|h204 会员之家顶层] noreconnect(tjp)  runmon(1) nodeal  NOMANNOMON(120)
-[fmg|d001 兽人古战场] noreconnect(tjp)  runmon(1) nodeal nodeal  NOMANNOMON(120)
+[sczs|h004   亡灵之地] noreconnect(tjp)  runmon(1) nodeal  NOMANNOMON(120)
+[huiyuan1|h204 VIP之家1层] noreconnect(tjp)  runmon(1) nodeal  NOMANNOMON(120)
+[huiyuan2|h204 VIP之家2层] noreconnect(tjp)  runmon(1) nodeal  NOMANNOMON(120)
+[huiyuan3|h204 VIP之家3层] noreconnect(tjp)  runmon(1) nodeal  NOMANNOMON(120)
+[huiyuan4|h204 VIP之家顶层] noreconnect(tjp)  runmon(1) nodeal  NOMANNOMON(120)
+[fmg|d001 斗兽场] noreconnect(tjp)  runmon(1) nodeal nodeal  NOMANNOMON(120)
 ;──────────────封魔特殊地图─────────────────────
-[622|66		魔龙峡谷] noreconnect(tjp)  runmon(1) nodeal  NOMANNOMON(120)
-[ev003|d2075 	雷炎洞穴] noreconnect(tjp)  runmon(1) nodeal  NOMANNOMON(120)
-[smad|d2078  	神秘暗殿] noreconnect(tjp)  runmon(1) nodeal  NOMANNOMON(120)
+[622|66		巨龙峡谷] noreconnect(tjp)  runmon(1) nodeal  NOMANNOMON(120)
+[ev003|d2075 	炽焰洞穴] noreconnect(tjp)  runmon(1) nodeal  NOMANNOMON(120)
+[smad|d2078  	诡秘之殿] noreconnect(tjp)  runmon(1) nodeal  NOMANNOMON(120)
 
-[hero1|ch001  秋风峡谷] noreconnect(tjp)  runmon(1) nodeal  NOMANNOMON(120)
+[hero1|ch001  秋阳裂谷] noreconnect(tjp)  runmon(1) nodeal  NOMANNOMON(120)
 ;──────────────霸王特殊地图─────────────────────
-[fyzd|d401   	 封印之地] noreconnect(tjp) runmon(1) nodeal  NOMANNOMON(120)
+[fyzd|d401   	 尘封荒野] noreconnect(tjp) runmon(1) nodeal  NOMANNOMON(120)
 [slmj1|631    二转之地] noreconnect(tjp) runmon(1) nodeal  NOMANNOMON(120)
-[fzzd|632           放逐之地]	 noreconnect(tjp) runmon(1) nodeal  NOMANNOMON(120)
-[cqbl|632           苍穹碧落] noreconnect(tjp) runmon(1) nodeal  NOMANNOMON(120)
+[fzzd|632           流放之地]	 noreconnect(tjp) runmon(1) nodeal  NOMANNOMON(120)
+[cqbl|632           长空幻境] noreconnect(tjp) runmon(1) nodeal  NOMANNOMON(120)
 
-[rxsc1891|f007 奴隶山谷] noreconnect(tjp)  runmon(1) nodeal  NOMANNOMON(120)
+[rxsc1891|f007 野蛮部落] noreconnect(tjp)  runmon(1) nodeal  NOMANNOMON(120)
 ;────────寒冰特殊地图─────────────────────
-[mjlf|d601   	 魔界裂缝] noreconnect(tjp) runmon(1) nodeal  NOMANNOMON(120)
+[mjlf|d601   	 魔族领地] noreconnect(tjp) runmon(1) nodeal  NOMANNOMON(120)
 [hlbg1|d603   三转之地] noreconnect(tjp) runmon(1) nodeal  NOMANNOMON(120)
-[hhzj|d602    洪荒战场] noreconnect(tjp) runmon(1) nodeal  NOMANNOMON(120)
-[rxsc014|xinjia123 水上城市]  noreconnect(tjp) runmon(1) nodeal  NOMANNOMON(120)
+[hhzj|d602    洪荒之地] noreconnect(tjp) runmon(1) nodeal  NOMANNOMON(120)
+[rxsc014|xinjia123 海上孤岛]  noreconnect(tjp) runmon(1) nodeal  NOMANNOMON(120)
 ;────────玛雅特殊地图─────────────────────
-[szyj|d2051      	   圣者遗迹]] noreconnect(tjp) runmon(1) nodeal  NOMANNOMON(120)
+[szyj|d2051      	   远古遗迹]] noreconnect(tjp) runmon(1) nodeal  NOMANNOMON(120)
 [hhdt1|d2079       五转之地] noreconnect(tjp) runmon(1) nodeal  NOMANNOMON(120)
 [hhdt2|d2079       七转之地] noreconnect(tjp) runmon(1) nodeal  NOMANNOMON(120)
-[wxj|63        	      伪仙界] noreconnect(tjp) runmon(1) nodeal  NOMANNOMON(120)
+[wxj|63        	      仙界镜像] noreconnect(tjp) runmon(1) nodeal  NOMANNOMON(120)
 ;──────── 玛法特殊地图─────────────────────
-[sxjz|e703              四象剑阵] noreconnect(tjp) runmon(1) nodeal  NOMANNOMON(120)
+[sxjz|e703              剑冢] noreconnect(tjp) runmon(1) nodeal  NOMANNOMON(120)
 [wjtg1|d2052     十转之地] noreconnect(tjp) runmon(1) nodeal  NOMANNOMON(120)
 ;──────── 新的征程─────────────────────
-[sszj|d616  生死之间]	 noreconnect(tjp) runmon(1) nodeal  NOMANNOMON(120)
-[jxd|l002    寂玄道] noreconnect(tjp) runmon(1) nodeal  NOMANNOMON(120)
-[lhzd|e602    轮回之地]	noreconnect(tjp) runmon(1) nodeal  NOMANNOMON(120)
+[sszj|d616  刹那芳华]	 noreconnect(tjp) runmon(1) nodeal  NOMANNOMON(120)
+[jxd|l002    虚空幻境] noreconnect(tjp) runmon(1) nodeal  NOMANNOMON(120)
+[lhzd|e602    六道轮回]	noreconnect(tjp) runmon(1) nodeal  NOMANNOMON(120)
 ;──────── 宿命的羁绊─────────────────────
-[dyhj|d617    地狱幻境]	noreconnect(tjp) runmon(1) nodeal  NOMANNOMON(120)
-[zwd|e605    紫薇道]    noreconnect(tjp) runmon(1) nodeal  NOMANNOMON(120)
-[xbsd|e703  玄冰神殿]	noreconnect(tjp) runmon(1) nodeal  NOMANNOMON(120)
+[dyhj|d617    十重地狱]	noreconnect(tjp) runmon(1) nodeal  NOMANNOMON(120)
+[zwd|e605    风水宝地]    noreconnect(tjp) runmon(1) nodeal  NOMANNOMON(120)
+[xbsd|e703  贫瘠之地]	noreconnect(tjp) runmon(1) nodeal  NOMANNOMON(120)
 ;─────────────────────────────
 [cczd1|613 传承之地(勋章)]  noreconnect(tjp) runmon(1) noallowuseitems(随机传送石|风雷召唤令)  NOMANNOMON(120)
 [cczd2|613 传承之地(盾牌)]  noreconnect(tjp) runmon(1) noallowuseitems(随机传送石|风雷召唤令)  NOMANNOMON(120)
@@ -151,44 +151,44 @@ rxsc806     634,271    ->  rxsc807     19,14
 ;-------------------------------------------------------------- 
 
 [rxsc042|3        盟重土城]  runmon(1)  MINE
-[jyt01|ga0        蓝色庄园]  noreconnect(tjp) noallowuseitems(随机传送石|风雷召唤令) nodeal
-[jyt02|h301       沉默山谷]  noreconnect(tjp) noallowuseitems(随机传送石|风雷召唤令) nodeal
-[jyt03|d5071      寂静神庙]  noreconnect(tjp) noallowuseitems(随机传送石|风雷召唤令) nodeal
-[jyt04|0157       米尔皇宫]  noreconnect(tjp) noallowuseitems(随机传送石|风雷召唤令) nodeal
-[jyt05|d2070      幽冥帝都]  noreconnect(tjp) noallowuseitems(随机传送石|风雷召唤令) nodeal
-[jyt06|d2083      命运之门]  noreconnect(tjp) noallowuseitems(随机传送石|风雷召唤令) nodeal
+[jyt01|ga0        碧湖庄园]  noreconnect(tjp) noallowuseitems(随机传送石|风雷召唤令) nodeal
+[jyt02|h301       幽暗山谷]  noreconnect(tjp) noallowuseitems(随机传送石|风雷召唤令) nodeal
+[jyt03|d5071      上古神庙]  noreconnect(tjp) noallowuseitems(随机传送石|风雷召唤令) nodeal
+[jyt04|0157       落寞皇宫]  noreconnect(tjp) noallowuseitems(随机传送石|风雷召唤令) nodeal
+[jyt05|d2070      冥界大殿]  noreconnect(tjp) noallowuseitems(随机传送石|风雷召唤令) nodeal
+[jyt06|d2083      时光之门]  noreconnect(tjp) noallowuseitems(随机传送石|风雷召唤令) nodeal
 [jyt07|0     	远古比奇省]  noreconnect(tjp) noallowuseitems(随机传送石|风雷召唤令) nodeal
 [jyt08|4        远古封魔谷]  noreconnect(tjp) noallowuseitems(随机传送石|风雷召唤令) nodeal
 [jyt09|11	    远古白日门]	 noreconnect(tjp) noallowuseitems(随机传送石|风雷召唤令) nodeal
 [jyt10|6		远古魔龙城]	 noreconnect(tjp) noallowuseitems(随机传送石|风雷召唤令) nodeal
 
 [ygbqs|0	远古比奇省]
-[t339 地狱烈焰] 
+[t339 地狱之门] 
 [ygfmg|4	远古封魔谷]
-[t218 死亡神殿] 
+[t218 亡灵神殿] 
 [ygbrm|11	远古白日门]
-[t232 钳虫巢穴] 
-[t219 深渊魔域] 
+[t232 钳虫总巢] 
+[t219 极度空间] 
 [ygmlc|6	远古魔龙城]
-[t118 困惑殿堂] 
+[t118 迷乱之地] 
 
 ;────────────────2大陆地图─────────────
-[rxsc800|f008            极限之地]  noreconnect(tjp) runmon(1) noallowuseitems(随机传送石|风雷召唤令) nodeal  NOMANNOMON(120)
+[rxsc800|f008            突破之地]  noreconnect(tjp) runmon(1) noallowuseitems(随机传送石|风雷召唤令) nodeal  NOMANNOMON(120)
 ;────────────────3大陆地图─────────────
-[zlgm|f010 相思墓穴]  noreconnect(tjp) runmon(1) noallowuseitems(随机传送石|风雷召唤令) nodeal  NOMANNOMON(120)
-[rxsc20011|f009      潜龙峡谷]  noreconnect(tjp)  runmon(1)  noallowuseitems(随机传送石|风雷召唤令) nodeal  NOMANNOMON(120)
+[zlgm|f010 怨灵墓穴]  noreconnect(tjp) runmon(1) noallowuseitems(随机传送石|风雷召唤令) nodeal  NOMANNOMON(120)
+[rxsc20011|f009      幽暗密林]  noreconnect(tjp)  runmon(1)  noallowuseitems(随机传送石|风雷召唤令) nodeal  NOMANNOMON(120)
 ;────────────────4大陆地图─────────────
-[swdt001|f007 埋没之城]  noreconnect(tjp) runmon(1) noallowuseitems(随机传送石|风雷召唤令) nodeal  NOMANNOMON(120)
-[zzdt001|l004 封天大殿]  noreconnect(tjp) runmon(1) noallowuseitems(随机传送石|风雷召唤令)  nodeal  NOMANNOMON(120)
+[swdt001|f007 哈姆城堡]  noreconnect(tjp) runmon(1) noallowuseitems(随机传送石|风雷召唤令) nodeal  NOMANNOMON(120)
+[zzdt001|l004 祭天神殿]  noreconnect(tjp) runmon(1) noallowuseitems(随机传送石|风雷召唤令)  nodeal  NOMANNOMON(120)
 [rxsc016|ch001        潘夜岛]  noreconnect(tjp) runmon(1) noallowuseitems(随机传送石|风雷召唤令) nodeal  NOMANNOMON(120)
 ;────────────────5大陆地图─────────────
 [rxsc002|06374 幽灵船]  noreconnect(tjp) runmon(1) noallowuseitems(随机传送石|风雷召唤令) nodeal  NOMANNOMON(120)
-[rxsc081|yehongwei39 青蛙洞穴]  noreconnect(tjp) runmon(1) noallowuseitems(随机传送石|风雷召唤令) nodeal  NOMANNOMON(120)
-[rxsc802|d2079 米尔皇宫遗址]  noreconnect(tjp) runmon(1) noallowuseitems(随机传送石|风雷召唤令) nodeal  NOMANNOMON(120)
+[rxsc081|yehongwei39 爬行洞穴]  noreconnect(tjp) runmon(1) noallowuseitems(随机传送石|风雷召唤令) nodeal  NOMANNOMON(120)
+[rxsc802|d2079 王宫遗址]  noreconnect(tjp) runmon(1) noallowuseitems(随机传送石|风雷召唤令) nodeal  NOMANNOMON(120)
 ;────────────────6大陆地图─────────────
-[rxsc011|hero1 僻世之森]  noreconnect(tjp) runmon(1) noallowuseitems(随机传送石|风雷召唤令) nodeal  NOMANNOMON(120)
-[rxsc012|l001 埋骨之地]  noreconnect(tjp) runmon(1) noallowuseitems(随机传送石|风雷召唤令) nodeal  NOMANNOMON(120)
-[rxsc801|h204 封魔古迹]  noreconnect(tjp) runmon(1) noallowuseitems(随机传送石|风雷召唤令) nodeal  NOMANNOMON(120)
+[rxsc011|hero1 桃花源]  noreconnect(tjp) runmon(1) noallowuseitems(随机传送石|风雷召唤令) nodeal  NOMANNOMON(120)
+[rxsc012|l001 死亡之地]  noreconnect(tjp) runmon(1) noallowuseitems(随机传送石|风雷召唤令) nodeal  NOMANNOMON(120)
+[rxsc801|h204 封魔古城]  noreconnect(tjp) runmon(1) noallowuseitems(随机传送石|风雷召唤令) nodeal  NOMANNOMON(120)
 ;────────────────7大陆地图─────────────
 [rxsc417|f011 真天宫]  noreconnect(tjp) runmon(1) noallowuseitems(随机传送石|风雷召唤令) nodeal  NOMANNOMON(120)
 [rxsc1700|f009 情缘峡谷]  noreconnect(tjp) runmon(1) noallowuseitems(随机传送石|风雷召唤令) nodeal  NOMANNOMON(120)

@@ -1,0 +1,7 @@
+[@main]
+#IF
+LARGE u1 8
+#ACT
+  mapmove jyt04 15 19 2
+#ELSEACT
+SENDMSG 9 传送失败，进入此地图需要【威震八方】及以上称号！

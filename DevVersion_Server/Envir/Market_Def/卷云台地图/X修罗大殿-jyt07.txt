@@ -1,0 +1,25 @@
+[@MAIN]
+#IF
+#ACT
+MOV S$地图名称 修罗大殿
+MOV S$称号条件 修罗万象
+ReadConfigFileItem ..\QuestDiary\01配置项\打怪地图配置.ini <$STR(S$地图名称)> 地图类型 S$地图类型
+ReadConfigFileItem ..\QuestDiary\01配置项\打怪地图配置.ini <$STR(S$地图名称)> 地图预览 S$地图预览
+ReadConfigFileItem ..\QuestDiary\01配置项\打怪地图配置.ini <$STR(S$地图名称)> 地图等级 N$地图等级
+ReadConfigFileItem ..\QuestDiary\01配置项\打怪地图配置.ini <$STR(S$地图名称)> 条件描述 S$条件描述
+
+#CALL [\03自定义按钮\通用游戏地图.txt] @显示面板
+
+
+[@进入地图]
+#IF
+LARGE u1 23
+#ACT
+MAPMOVE rxsc1880
+DELAYGOTO 100 @自动打怪
+#ELSEACT
+SENDMSG 9 你没有[<$STR(S$称号条件)>]称号无法进入该地图！
+BREAK
+[@自动打怪]
+#ACT
+StartAutoPlayGame
