@@ -30,7 +30,7 @@ GetDBItemFieldValue 元宝 idx N$元宝IDX
 
 <RText|id=10|x=500|y=100|outline=1|color=103|size=16|text=
 获得倍攻    <+<$STR(N$称号倍功)>%/FCOLOR=250>\
-攻击暴涨    <+<$STR(N$称号攻击)>%/FCOLOR=250>\
+攻击暴涨    <+<$STR(N$称号攻击)>/FCOLOR=250>\
 打怪爆率    <+<$STR(N$称号爆率)>%/FCOLOR=250>\
 最大生命    <+<$STR(N$称号生命)>%/FCOLOR=250>\
 额外奖励    <跨服积分+<$STR(N$奖励跨服积分)>/FCOLOR=250>>
