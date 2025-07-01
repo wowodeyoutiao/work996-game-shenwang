@@ -80,9 +80,9 @@ function OfflineHuWeiManager.OnPlayerEnterGame(actor)
         local hwlevel = getplaydef(actor, value.levelvar)
         local cfgHuWeiNpc = GetHuWeiNpcCfg(hwtype)
         if cfgHuWeiNpc~=nil and hwlevel > 0 then
-            local cfgKey = GetOfflineHuWeiCfgKey(hwtype, hwlevel)
-            if cfgOfflineHuWei[cfgKey] and (cfgOfflineHuWei[cfgKey].abilitygroup~='') and (cfgOfflineHuWei[cfgKey].addprop_tab>0) then
-                addattlist(actor, cfgHuWeiNpc.abilitygroup, "=", cfgOfflineHuWei[cfgKey].addprop_tab)
+            local cfgKey = GetOfflineHuWeiCfgKey(hwtype, hwlevel)       
+            if cfgOfflineHuWei[cfgKey] and (cfgOfflineHuWei[cfgKey].abilitygroup~='') and (cfgOfflineHuWei[cfgKey].addprop_abstr~='') then
+                addattlist(actor, cfgHuWeiNpc.abilitygroup, "=", cfgOfflineHuWei[cfgKey].addprop_abstr)
                 bRecal = true                
             end
         end
@@ -420,7 +420,7 @@ local function DoUpgrade(actor, huweitype)
     EverydayTask.AddTaskCounter(actor, CommonDefine.FUNC_ID_OFFLINE, 1)      
 
     setplaydef(actor, cfgHuWeiNpc.levelvar, nextlv)
-    addattlist(actor, cfgHuWeiNpc.abilitygroup, "=", cfgNextLv.addprop_tab)
+    addattlist(actor, cfgHuWeiNpc.abilitygroup, "=", cfgNextLv.addprop_abstr)
     recalcabilitys(actor)  
     
     if (nextlv==3) or (nextlv==6) or (nextlv==9) or (nextlv==10) then
