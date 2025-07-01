@@ -67,9 +67,9 @@ SENDMSG 9 参数错误，请重新打开NPC！
 BREAK
 
 #IF
-CHECKMONEY 元宝 < <$STR(N$称号元宝)>
+CHECKBINDMONEY 元宝 < <$STR(N$称号元宝)>
 #ACT
-SENDMSG	9 您的元宝不足<$STR(N$称号元宝)>，请核对！
+SENDMSG	9 您的元宝关联货币不足<$STR(N$称号元宝)>，请核对！
 BREAK
 
 ; 当前地图上限检测
@@ -86,12 +86,13 @@ LARGE U1 0
 DEPRIVETITLE <$STR(S$称号名称_OLD)>
 
 #IF
-CHECKMONEY 元宝 ? <$STR(N$称号元宝)>
+CHECKBINDMONEY 元宝 ? <$STR(N$称号元宝)>
 #ACT
 INC U1 1
 SETNPCMSG 称号升级<$STR(S$称号名称)>
 CONFERTITLE	<$STR(S$称号名称)>
-MONEY 元宝 - <$STR(N$称号元宝)>
+;MONEY 元宝 - <$STR(N$称号元宝)>
+ChangeBindMoney 元宝 <$STR(N$称号元宝)>
 MONEY 跨服积分 + <$STR(N$奖励跨服积分)>
 #Call [\04人物属性\人物倍攻.txt] @人物倍攻
 #Call [\04人物属性\称号刷新.txt] @刷新称号
