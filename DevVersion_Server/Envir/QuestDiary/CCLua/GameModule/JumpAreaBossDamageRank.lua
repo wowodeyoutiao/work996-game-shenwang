@@ -21,12 +21,11 @@ local ACTIVITY_BASE_CONFIG = {
         {rankhigh=2, ranklow=2, showrank='2', rewardlist={{name='跨服积分', num=7000}, {name='无双经验珠', num=30},{name='功勋', num=3000}}},
         {rankhigh=3, ranklow=3, showrank='3', rewardlist={{name='跨服积分', num=5000}, {name='无双经验珠', num=20},{name='功勋', num=2000}}},
         {rankhigh=4, ranklow=4, showrank='4', rewardlist={{name='跨服积分', num=3000}, {name='无双经验珠', num=10},{name='功勋', num=1000}}},
-	{rankhigh=5, ranklow=5, showrank='5', rewardlist={{name='跨服积分', num=1000}, {name='无双经验珠', num=5},{name='功勋', num=500}}},
-	{rankhigh=6, ranklow=10, showrank='6-10', rewardlist={{name='跨服积分', num=800}, {name='无双经验珠', num=4},{name='功勋', num=400}}},
-	{rankhigh=11, ranklow=20, showrank='11-20', rewardlist={{name='跨服积分', num=700}, {name='无双经验珠', num=3},{name='功勋', num=300}}},
-	{rankhigh=21, ranklow=40, showrank='21-40', rewardlist={{name='跨服积分', num=600}, {name='无双经验珠', num=2},{name='功勋', num=200}}},
-	{rankhigh=41, ranklow=50, showrank='41-50', rewardlist={{name='跨服积分', num=500}, {name='无双经验珠', num=1},{name='功勋', num=100}}},
-
+        {rankhigh=5, ranklow=5, showrank='5', rewardlist={{name='跨服积分', num=1000}, {name='无双经验珠', num=5},{name='功勋', num=500}}},
+        {rankhigh=6, ranklow=10, showrank='6-10', rewardlist={{name='跨服积分', num=800}, {name='无双经验珠', num=4},{name='功勋', num=400}}},
+        {rankhigh=11, ranklow=20, showrank='11-20', rewardlist={{name='跨服积分', num=700}, {name='无双经验珠', num=3},{name='功勋', num=300}}},
+        {rankhigh=21, ranklow=40, showrank='21-40', rewardlist={{name='跨服积分', num=600}, {name='无双经验珠', num=2},{name='功勋', num=200}}},
+        {rankhigh=41, ranklow=50, showrank='41-50', rewardlist={{name='跨服积分', num=500}, {name='无双经验珠', num=1},{name='功勋', num=100}}},
     },
 }
 
@@ -152,8 +151,9 @@ function JumpAreaBossDamageRank.GetShowInfo(actor)
         
         local tabBossDamageRank = {}
         local strBossDamageRank = getsysvar(CommonDefine.VAR_A_JUMPAREA_DAMAGE_RANK_DATA)
+     
         if strBossDamageRank~=nil and strBossDamageRank~='' then
-            tabBossDamageRank = json2tbl(strBossDamageRank)
+            tabBossDamageRank = json2tbl(strBossDamageRank)        
             if tabBossDamageRank ~= nil then
                 nStartID = nStartID + 10        
                 for seq, value in ipairs(tabBossDamageRank) do        
@@ -305,7 +305,7 @@ function JumpAreaBossDamageRank.OnLocalServerTimer()
             local localserverid = grobalinfo(11)
             local prename = 'k'..localserverid
             local tabBossDamageRank = json2tbl(strBossDamageRank)
-            if tabBossDamageRank ~= nil then
+            if BF_IsTable(tabBossDamageRank) then
                 for seq, value in ipairs(tabBossDamageRank) do
                     local showname = value.showname
                     local strParamList = string.split(showname, '_')
@@ -338,7 +338,8 @@ local function UpdateRankData(actor, score)
     end
 
     local bFind = false
-    local currplayerid = Player.GetPlayerID(actor)
+    local currplayerid = Player.GetPlayerIDStr(actor)
+    local rec = {playerid = currplayerid, currscore = score, showname = Player.GetName(actor)}
     for _, value in ipairs(JumpAreaBossDamageRank.CurrRankData) do
         if value.playerid == currplayerid then
             value.currscore = score
@@ -346,17 +347,56 @@ local function UpdateRankData(actor, score)
             break
         end
     end
-    if bFind == false then
-        local rec = {playerid = Player.GetPlayerID(actor), currscore = score, showname = Player.GetName(actor)}
+    if bFind == false then        
         JumpAreaBossDamageRank.CurrRankData[#JumpAreaBossDamageRank.CurrRankData+1] = rec
     end
-
+    --排序
     table.sort(JumpAreaBossDamageRank.CurrRankData, function(a, b)
-        return a.score > b.score
+        return a.currscore > b.currscore
     end)
 
-    local sRankData = tbl2json(JumpAreaBossDamageRank.CurrRankData)
-    kfbackcall(CommonDefine.KFBCMSG_UPDATE_JUMPAREA_DAMAGE_RANK, '0', sRankData, '')
+    --更新到本地的信息
+    local sInfo = tbl2json(rec)
+    kfbackcall(CommonDefine.KFBCMSG_UPDATE_JUMPAREA_DAMAGE_RANK, '0', sInfo, '')    
+end
+
+--本地服务器更新收到的单条信息
+function JumpAreaBossDamageRank.LocalServerUpdateInfo(sUpdateInfoStr)
+    if sUpdateInfoStr == '' then
+        return
+    end
+    local updateRec = json2tbl(sUpdateInfoStr)
+    if not BF_IsTable(updateRec) then
+        return
+    end
+    local strBossDamageRank = getsysvar(CommonDefine.VAR_A_JUMPAREA_DAMAGE_RANK_DATA)
+    local tabBossDamageRank = {}
+    if strBossDamageRank~=nil and strBossDamageRank~='' then
+        tabBossDamageRank = json2tbl(strBossDamageRank)
+    end  
+    if not BF_IsTable(tabBossDamageRank) then
+        return
+    end
+    
+    local bFind = false
+    local currplayerid = updateRec.playerid
+    for _, value in ipairs(tabBossDamageRank) do
+        if value.playerid == currplayerid then
+            value.currscore = updateRec.currscore
+            bFind = true
+            break
+        end
+    end
+    if bFind == false then
+        local rec = {playerid = updateRec.playerid, currscore = updateRec.currscore, showname = updateRec.showname}
+        tabBossDamageRank[#tabBossDamageRank+1] = rec
+    end
+    table.sort(tabBossDamageRank, function(a, b)
+        return a.currscore > b.currscore
+    end)
+
+    local sDataStr = tbl2json(tabBossDamageRank)
+    setsysvar(CommonDefine.VAR_A_JUMPAREA_DAMAGE_RANK_DATA, sDataStr)
 end
 
 --玩家攻击时触发 
@@ -388,7 +428,7 @@ function JumpAreaBossDamageRank.DoAttackDamage(actor, target, damage)
             setplaydef(actor, CommonDefine.VAR_U_JUMPAREA_BOSS_DAMAGE_HIGH, damagehigh)
             setplaydef(actor, CommonDefine.VAR_U_JUMPAREA_BOSS_DAMAGE_LOW, damagelow)
             --检测排行榜数据更新
-            if bCheckRank == true then
+            if bCheckRank == true then      
                 UpdateRankData(actor, damagehigh)
             end
         end

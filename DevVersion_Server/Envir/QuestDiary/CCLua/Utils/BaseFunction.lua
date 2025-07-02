@@ -40,6 +40,16 @@ function BF_IsNumberStr(value)
     end
 end
 
+function BF_IsTable(tab)
+    if tab == nil then
+        return false
+    end
+    if type(tab) == 'table' then
+        return true
+    end
+    return false
+end
+
 --判断对象是否为空
 function BF_IsNullObj(obj)
     if (obj == nil) or (obj == '0') then

@@ -7,7 +7,7 @@ function Player.GetName(actor)
 end
 
 --返回playerid
-function Player.GetPlayerID(actor)
+function Player.GetPlayerIDStr(actor)
     local name = getbaseinfo(actor, CommonDefine.INFO_USERID)
     return name
 end
@@ -384,7 +384,7 @@ function Player.GiveItemsToBagOrMail(actor, rewarditems, desc)
         --这里还是测试确认，如果背包满，但道具可以叠加的情况下，是否能给予成功！！！！！！！
         gives(actor, itemstr, desc)
     else
-        local playerid = Player.GetPlayerID(actor)
+        local playerid = Player.GetPlayerIDStr(actor)
         sendmail(playerid, CommonDefine.MAIL_ID_BAGFULL, "背包空间不足", desc, itemstr)
     end    
 end
@@ -409,7 +409,7 @@ function Player.GiveItemsByMail(actor, rewarditems, mailtitle, maildesc)
         itemstr = itemstr..value.name..'#'..value.num
     end 
 
-    local playerid = Player.GetPlayerID(actor)
+    local playerid = Player.GetPlayerIDStr(actor)
     sendmail(playerid, CommonDefine.MAIL_ID_BAGFULL, mailtitle, maildesc, itemstr)    
     Player.SendSelfMsg(actor, '请查收邮件:'..mailtitle, CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
 end

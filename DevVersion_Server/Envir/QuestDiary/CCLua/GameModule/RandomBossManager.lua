@@ -207,7 +207,7 @@ function RandomBossManager.CreateNewRandomBoss(actor)
 						local montab = genmon(info.mapidstr, info.posx, info.posy, monname, 3, 1)						
 						if (montab~=nil) and (#montab > 0) then
 							nPoolIdx = triggerinfo.poolid
-							monuniqueidstr = Player.GetPlayerID(montab[1])
+							monuniqueidstr = Player.GetPlayerIDStr(montab[1])
 						end						
 					end
 					break
@@ -370,7 +370,7 @@ function RandomBossManager.OnMonKilled(hitter, mon)
         return
     end
 	local uniqueidstr = getenvirstrvar(mapidstr, CommonDefine.MAP_STRVAR_RANDOMBOSS_MONUNIQUEID)
-	if uniqueidstr ~= Player.GetPlayerID(mon) then
+	if uniqueidstr ~= Player.GetPlayerIDStr(mon) then
 		return
 	end
 

@@ -655,7 +655,7 @@ end
 ----------------------------------------------------------------跨服相关回调start--------------------------------------------------------------------
 function kfsyscall101(sysobj)
     local str = parsetext('<$PARAM1>', sysobj)
-    setsysvar(CommonDefine.VAR_A_JUMPAREA_DAMAGE_RANK_DATA, str)
+    JumpAreaBossDamageRank.LocalServerUpdateInfo(str)
 end
 
 function kfsyscall102(actor)
@@ -664,7 +664,7 @@ end
 
 function kfsyscall103(sysobj)
     local str = parsetext('<$PARAM1>', sysobj)
-    setsysvar(CommonDefine.VAR_A_JUMPAREA_RANDFIGHTING_RANK_DATA, str)
+    JumpAreaRandomFighting.LocalServerUpdateInfo(str)
 end
 
 ----------------------------------------------------------------跨服相关回调end--------------------------------------------------------------------

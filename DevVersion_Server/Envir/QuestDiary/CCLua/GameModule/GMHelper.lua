@@ -439,6 +439,8 @@ function GMHelper.DoGmOper(actor, sid)
         setplaydef(actor, CommonDefine.VAR_U_BIAOCHE_REFRESH_TIMES, 0)
         setplaydef(actor, CommonDefine.VAR_J_DAY_SUPERBOX_OPENNUM, 0)
         setplaydef(actor, CommonDefine.VAR_J_DAY_RANDOMBOSS_TRIGGERTIMES, 0)     
+        setplaydef(actor, CommonDefine.VAR_U_JUMPAREA_BOSS_DAMAGE_HIGH, 0)
+        setplaydef(actor, CommonDefine.VAR_U_JUMPAREA_BOSS_DAMAGE_LOW, 0)
     elseif sid == '999' then
         Player.TestSuperInitPlayer(actor)
     elseif sid == '1001' then
@@ -503,7 +505,9 @@ function GMHelper.DoGmOper(actor, sid)
         GMHelper.OpenSuperJumpPanel(actor)
     elseif sid == '1996' then
         setsysvar(CommonDefine.VAR_A_JUMPAREA_DAMAGE_TEST_CFG_DATA, '')
-        setsysvar(CommonDefine.VAR_A_JUMPAREA_RANDFIGHTING_TEST_CFG_DATA, '')        
+        setsysvar(CommonDefine.VAR_A_JUMPAREA_RANDFIGHTING_TEST_CFG_DATA, '')    
+        setsysvar(CommonDefine.VAR_A_JUMPAREA_DAMAGE_RANK_DATA, '')
+        setsysvar(CommonDefine.VAR_A_JUMPAREA_RANDFIGHTING_RANK_DATA, '')        
     elseif sid == '1997' then
         JumpAreaBossDamageRank.GMResetCfg(actor)
     elseif sid == '1998' then
