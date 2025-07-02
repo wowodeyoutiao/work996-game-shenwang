@@ -21,11 +21,11 @@ local ACTIVITY_BASE_CONFIG = {
         {rankhigh=2, ranklow=2, showrank='2', rewardlist={{name='跨服积分', num=7000}, {name='6级筛子', num=30},{name='绑定元宝', num=3000}}},
         {rankhigh=3, ranklow=3, showrank='3', rewardlist={{name='跨服积分', num=5000}, {name='6级筛子', num=20},{name='绑定元宝', num=2000}}},
         {rankhigh=4, ranklow=4, showrank='4', rewardlist={{name='跨服积分', num=3000}, {name='6级筛子', num=10},{name='绑定元宝', num=1000}}},
-	{rankhigh=5, ranklow=5, showrank='5', rewardlist={{name='跨服积分', num=1000}, {name='6级筛子', num=5},{name='绑定元宝', num=500}}},
-	{rankhigh=6, ranklow=10, showrank='6-10', rewardlist={{name='跨服积分', num=800}, {name='6级筛子', num=4},{name='绑定元宝', num=400}}},
-	{rankhigh=11, ranklow=20, showrank='11-20', rewardlist={{name='跨服积分', num=700}, {name='6级筛子', num=3},{name='绑定元宝', num=300}}},
-	{rankhigh=21, ranklow=40, showrank='21-40', rewardlist={{name='跨服积分', num=600}, {name='6级筛子', num=2},{name='绑定元宝', num=200}}},
-	{rankhigh=41, ranklow=50, showrank='41-50', rewardlist={{name='跨服积分', num=500}, {name='6级筛子', num=1},{name='绑定元宝', num=100}}},
+        {rankhigh=5, ranklow=5, showrank='5', rewardlist={{name='跨服积分', num=1000}, {name='6级筛子', num=5},{name='绑定元宝', num=500}}},
+        {rankhigh=6, ranklow=10, showrank='6-10', rewardlist={{name='跨服积分', num=800}, {name='6级筛子', num=4},{name='绑定元宝', num=400}}},
+        {rankhigh=11, ranklow=20, showrank='11-20', rewardlist={{name='跨服积分', num=700}, {name='6级筛子', num=3},{name='绑定元宝', num=300}}},
+        {rankhigh=21, ranklow=40, showrank='21-40', rewardlist={{name='跨服积分', num=600}, {name='6级筛子', num=2},{name='绑定元宝', num=200}}},
+        {rankhigh=41, ranklow=50, showrank='41-50', rewardlist={{name='跨服积分', num=500}, {name='6级筛子', num=1},{name='绑定元宝', num=100}}},
     },
 }
 
@@ -337,7 +337,8 @@ local function UpdateRankData(actor, score)
     end
 
     local bFind = false
-    local currplayerid = Player.GetPlayerID(actor)
+    local currplayerid = Player.GetPlayerIDStr(actor)
+    local rec = {playerid = currplayerid, currscore = score, showname = Player.GetName(actor)}
     for _, value in ipairs(JumpAreaRandomFighting.CurrRankData) do
         if value.playerid ==  currplayerid then
             value.currscore = score
@@ -345,17 +346,55 @@ local function UpdateRankData(actor, score)
             break
         end
     end
-    if bFind == false then
-        local rec = {playerid = Player.GetPlayerID(actor), currscore = score, showname = Player.GetName(actor)}
+    if bFind == false then        
         JumpAreaRandomFighting.CurrRankData[#JumpAreaRandomFighting.CurrRankData+1] = rec
     end
 
     table.sort(JumpAreaRandomFighting.CurrRankData, function(a, b)
-        return a.score > b.score
+        return a.currscore > b.currscore
     end)
 
-    local sRankData = tbl2json(JumpAreaRandomFighting.CurrRankData)
-    kfbackcall(CommonDefine.KFBCMSG_UPDATE_JUMPAREA_RANDFIGHTING_RANK, '0', sRankData, '')
+    local sInfo = tbl2json(rec)
+    kfbackcall(CommonDefine.KFBCMSG_UPDATE_JUMPAREA_RANDFIGHTING_RANK, '0', sInfo, '')
+end
+
+--本地服务器更新收到的单条信息
+function JumpAreaRandomFighting.LocalServerUpdateInfo(sUpdateInfoStr)
+    if sUpdateInfoStr == '' then
+        return
+    end
+    local updateRec = json2tbl(sUpdateInfoStr)
+    if not BF_IsTable(updateRec) then
+        return
+    end
+    local strRank = getsysvar(CommonDefine.VAR_A_JUMPAREA_RANDFIGHTING_RANK_DATA)
+    local tabRank = {}
+    if strRank~=nil and strRank~='' then
+        tabRank = json2tbl(strRank)
+    end  
+    if not BF_IsTable(tabRank) then
+        return
+    end
+    
+    local bFind = false
+    local currplayerid = updateRec.playerid
+    for _, value in ipairs(tabRank) do
+        if value.playerid == currplayerid then
+            value.currscore = updateRec.currscore
+            bFind = true
+            break
+        end
+    end
+    if bFind == false then
+        local rec = {playerid = updateRec.playerid, currscore = updateRec.currscore, showname = updateRec.showname}
+        tabRank[#tabRank+1] = rec
+    end
+    table.sort(tabRank, function(a, b)
+        return a.currscore > b.currscore
+    end)
+
+    local sDataStr = tbl2json(tabRank)
+    setsysvar(CommonDefine.VAR_A_JUMPAREA_RANDFIGHTING_RANK_DATA, sDataStr)
 end
 
 local function InitMapUI(actor)

@@ -181,7 +181,7 @@ function JumpAreaManager.DoJumpAreaButton(actor, sid)
         return
     end
     
-    local playerid = Player.GetPlayerID(actor)
+    local playerid = Player.GetPlayerIDStr(actor)
     if sid == JumpAreaManager.JUMPAREA_BUTTONFUNC_ID_1 then
         kfbackcall(CommonDefine.KFBCMSG_GOBACK_MZMAP, playerid, '', '') 
     elseif sid == JumpAreaManager.JUMPAREA_BUTTONFUNC_ID_2 then
