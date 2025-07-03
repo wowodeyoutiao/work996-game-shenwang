@@ -229,9 +229,11 @@ function set_autoaddluck_targ(actor, addluck)
     end
 
     for i = AUTO_ADDLUCK_TARG_MIN, AUTO_ADDLUCK_TARG_MAX, 1 do
-        if i ~= addluck then
-            local checkvar = CommonDefine.CHECK_BOX_VAR[i - AUTO_ADDLUCK_TARG_MIN + 1]
+        local checkvar = CommonDefine.CHECK_BOX_VAR[i - AUTO_ADDLUCK_TARG_MIN + 1]
+        if i ~= addluck then            
             setplaydef(actor, checkvar, 0)
+        else
+            setplaydef(actor, checkvar, 1)
         end
     end
     inner_show_page(actor)
