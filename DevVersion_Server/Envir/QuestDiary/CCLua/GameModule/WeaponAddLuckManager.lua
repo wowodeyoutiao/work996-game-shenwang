@@ -106,8 +106,9 @@ local function weapon_addluck_str(actor, weaponitem)
         local flag = getplaydef(actor, checkvar)
         local checkboxid = 50 + seq
         local textid = 60 + seq
+        local strfuncname = 'set_autoaddluck_targ_'..i
         sPanelStr = sPanelStr..'<CheckBox|id='..checkboxid..'|x='..nStartX..'|y='..nStartY..'|nimg=private/cc_common/checkbox_1.png|pimg=private/cc_common/checkbox_2.png|checkboxid='..
-            checkvar..'|default='..flag..'|delay=0|count=1|link=@set_autoaddluck_targ,'..i..'>'..
+            checkvar..'|default='..flag..'|delay=0|count=1|link=@'..strfuncname..'>'..
             '<Text|id='..textid..'|text=幸运+'..i..'|x='..(nStartX+30)..'|y='..(nStartY+5)..'|size=16|color='..CSS.NPC_YELLOW..'>'
         nStartX = nStartX + 100
     end
@@ -199,19 +200,38 @@ function switch_bdf_flag(actor)
 end
 
 --设置自动祝福的目标
-function set_autoaddluck_targ(actor, sid)
-    if BF_IsNullObj(actor) or not BF_IsNumberStr(sid) then
+function set_autoaddluck_targ_5(actor)
+    set_autoaddluck_targ(actor, 5)
+end
+
+function set_autoaddluck_targ_6(actor)
+    set_autoaddluck_targ(actor, 6)
+end
+
+function set_autoaddluck_targ_7(actor)
+    set_autoaddluck_targ(actor, 7)
+end
+
+function set_autoaddluck_targ_8(actor)
+    set_autoaddluck_targ(actor, 8)
+end
+
+function set_autoaddluck_targ_9(actor)
+    set_autoaddluck_targ(actor, 9)
+end
+
+function set_autoaddluck_targ(actor, addluck)
+    if BF_IsNullObj(actor) then
         return
     end
-    local seq = tonumber(sid)
-    if (seq < AUTO_ADDLUCK_TARG_MIN) or (seq > AUTO_ADDLUCK_TARG_MAX) then
+    if (addluck < AUTO_ADDLUCK_TARG_MIN) or (addluck > AUTO_ADDLUCK_TARG_MAX) then
         return
     end
 
     for i = AUTO_ADDLUCK_TARG_MIN, AUTO_ADDLUCK_TARG_MAX, 1 do
-        if i ~= seq then
+        if i ~= addluck then
             local checkvar = CommonDefine.CHECK_BOX_VAR[i - AUTO_ADDLUCK_TARG_MIN + 1]
-            setplaydef(actor, checkvar, 0)            
+            setplaydef(actor, checkvar, 0)
         end
     end
     inner_show_page(actor)
