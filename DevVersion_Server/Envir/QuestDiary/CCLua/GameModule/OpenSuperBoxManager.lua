@@ -285,14 +285,14 @@ function OpenSuperBoxManager.DoOpenBoxOnce(actor, autoflag, openitemlist)
     end
     local nCurrBoxNum = getplaydef(actor, CommonDefine.VAR_U_SUPER_BOX_TOTAL_NUM)
     if nCurrBoxNum <= 0 then
-        Player.SendSelfMsg(actor, '当前没有可以开启的宝箱！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+        Player.SendSelfMsg(actor, '当前没有可以开启的宝箱！', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
         return false
     end    
 
     local DAY_MAX_OPEN_NUM = GetDayMaxOpenBoxNum(actor)
     local nDayOpenNum = getplaydef(actor, CommonDefine.VAR_J_DAY_SUPERBOX_OPENNUM)
     if nDayOpenNum >= DAY_MAX_OPEN_NUM then
-        Player.SendSelfMsg(actor, '已达到今日开箱上限，升级VIP可以增加开箱次数！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+        Player.SendSelfMsg(actor, '已达到今日开箱上限，升级VIP可以增加开箱次数！', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
         return false
     end
 
@@ -319,14 +319,14 @@ function OpenSuperBoxManager.DoOpenBoxOnce(actor, autoflag, openitemlist)
     nDayOpenNum = nDayOpenNum + nOnceOpenNum           
 
     if nOnceOpenNum > getbagblank(actor) then
-        Player.SendSelfMsg(actor, '空间不足，清先整理背包！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+        Player.SendSelfMsg(actor, '空间不足，清先整理背包！', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
         return false
     end
 
     local nPlayerLv = Player.GetLevel(actor)
     local boxPoolConfig = cfgSuperBoxRewardPool[nPlayerLv]
     if boxPoolConfig == nil then        
-        Player.SendSelfMsg(actor, '当前没有可以开启的宝箱！ '..nPlayerLv, CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+        Player.SendSelfMsg(actor, '当前没有可以开启的宝箱！ '..nPlayerLv, CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
         release_print('DoOpenBoxOnce error 1111 level:'..nPlayerLv)
         return false
     end
@@ -457,7 +457,7 @@ local function AddOnceOpenBoxNum(actor)
     end
     local nOnceOpenNum = getplaydef(actor, CommonDefine.VAR_U_SUPER_BOX_ONCE_OPEN_NUM)
     if nOnceOpenNum >= levelConfig.maxopennum then
-        Player.SendSelfMsg(actor, '当前同时开启数量已达到上限，增加需要提升宝箱等级！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+        Player.SendSelfMsg(actor, '当前同时开启数量已达到上限，增加需要提升宝箱等级！', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
         return
     end
     nOnceOpenNum = nOnceOpenNum + 1
@@ -487,7 +487,7 @@ function OpenSuperBoxManager.GMUpgradeBaoXiangLevel(actor)
     local nBoxCurrLv = getplaydef(actor, CommonDefine.VAR_U_SUPER_BOX_CURR_LV)
     local nextLevelConfig = cfgSuperBoxLevel[nBoxCurrLv+1]
     if nextLevelConfig == nil then
-        Player.SendSelfMsg(actor, '当前宝箱等级已达到上限！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+        Player.SendSelfMsg(actor, '当前宝箱等级已达到上限！', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
         return
     end
     setplaydef(actor, CommonDefine.VAR_U_SUPER_BOX_CURR_LV, nBoxCurrLv + 1)
@@ -641,7 +641,7 @@ local function StartUpgradeBoxLevel(actor)
     local nextLevelConfig = cfgSuperBoxLevel[nBoxCurrLv + 1]
 
     if (levelConfig==nil) or (nextLevelConfig==nil) then
-        Player.SendSelfMsg(actor, '当前宝箱等级已达到上限！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+        Player.SendSelfMsg(actor, '当前宝箱等级已达到上限！', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
         return
     end 
 
@@ -663,14 +663,14 @@ local function SpeedupUpgradeBoxLevel(actor, quickbuyflag)
     local levelConfig = cfgSuperBoxLevel[nBoxCurrLv]
     local nextLevelConfig = cfgSuperBoxLevel[nBoxCurrLv+1]
     if levelConfig==nil or nextLevelConfig==nil then
-        Player.SendSelfMsg(actor, '当前宝箱等级已达到上限！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+        Player.SendSelfMsg(actor, '当前宝箱等级已达到上限！', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
         OpenUpgradeBoxLevelPanel(actor)
         return
     end
 
     local nStartUpgradeTime = getplaydef(actor, CommonDefine.VAR_U_SUPER_BOX_START_UPGRADE_TIME)
     if nStartUpgradeTime <= 0 then
-        Player.SendSelfMsg(actor, '当前宝箱不在升级中！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+        Player.SendSelfMsg(actor, '当前宝箱不在升级中！', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
         OpenUpgradeBoxLevelPanel(actor)
         return
     end
@@ -699,13 +699,13 @@ local function SpeedupUpgradeBoxLevel(actor, quickbuyflag)
             quickbuyneedyb = BF_GetComplementNeedYBNum(actor, totalneeditems)         
             local checkquickitems = {{id=CommonDefine.ITEMID_YB, num=quickbuyneedyb}}
             if not Player.CheckItemsEnough(actor, checkquickitems, '') then
-                Player.SendSelfMsg(actor, '一键补足所需元宝不足！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)            
+                Player.SendSelfMsg(actor, '一键补足所需元宝不足！', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)            
                 OpenUpgradeBoxLevelPanel(actor, true)
                 return
             end
         else    
             if not Player.CheckItemsEnough(actor, CommonDefine.OPEN_SUPERBOX_SPEEDUP_ONCE_NEEDITEMS, '') then
-                Player.SendSelfMsg(actor, '材料不足加速'..CommonDefine.OPEN_SUPERBOX_SPEEDUP_ONCE_ADDSECONDS..'秒！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)            
+                Player.SendSelfMsg(actor, '材料不足加速'..CommonDefine.OPEN_SUPERBOX_SPEEDUP_ONCE_ADDSECONDS..'秒！', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)            
                 OpenUpgradeBoxLevelPanel(actor, true)
                 return
             end
@@ -729,7 +729,7 @@ local function SpeedupUpgradeBoxLevel(actor, quickbuyflag)
             Player.TakeItems(actor, totalneeditems, '加速升级超级宝箱2')
             local addseconds = CommonDefine.OPEN_SUPERBOX_SPEEDUP_ONCE_ADDSECONDS * totaltimes        
             setplaydef(actor, CommonDefine.VAR_U_SUPER_BOX_START_UPGRADE_TIME, nStartUpgradeTime - addseconds)        
-            Player.SendSelfMsg(actor, '升级加速'..addseconds..'秒！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+            Player.SendSelfMsg(actor, '升级加速'..addseconds..'秒！', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
             OpenUpgradeBoxLevelPanel(actor)
         end        
     end
@@ -742,7 +742,7 @@ function OpenSuperBoxManager.DoUpgradeBoxLevel(actor)
     local nextLevelConfig = cfgSuperBoxLevel[nBoxCurrLv + 1]
 
     if (levelConfig==nil) or (nextLevelConfig==nil) then
-        Player.SendSelfMsg(actor, '当前宝箱等级已达到上限！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+        Player.SendSelfMsg(actor, '当前宝箱等级已达到上限！', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
         return
     end
   
@@ -1037,21 +1037,21 @@ function OpenSuperBoxManager.AutoOpenSuperBox(actor)
                 if checkstopflag1 == 1 then
                     if Item.CompareBagItemToEquipment(actor, value.itemobj) == 1 then
                         bNeedPause = true
-                        Player.SendSelfMsg(actor, '请查看装备：'..itemname..' 比身上的评分更高！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+                        Player.SendSelfMsg(actor, '请查看装备：'..itemname..' 比身上的评分更高！', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
                         break
                     end
                 end        
                 if checkstopflag2 == 1 then
                     if value.randabflag == 1 then
                         bNeedPause = true
-                        Player.SendSelfMsg(actor, '请查看装备：'..itemname..' 有极品属性！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+                        Player.SendSelfMsg(actor, '请查看装备：'..itemname..' 有极品属性！', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
                         break                    
                     end
                 end
                 if checkstopflag3 == 1 then
                     if value.giftabflag == 1 then
                         bNeedPause = true
-                        Player.SendSelfMsg(actor, '请查看装备：'..itemname..' 有天赋属性！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+                        Player.SendSelfMsg(actor, '请查看装备：'..itemname..' 有天赋属性！', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
                         break
                     end
                 end
@@ -1143,7 +1143,7 @@ function OpenSuperBoxManager.DoOperButton(actor, sid, sparam)
     local funcid = tonumber(sid)
     if funcid == OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_1 then
         if getflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_AUTO_OPEN_SUPERBOX) == 1 then
-            Player.SendSelfMsg(actor, '正在自动开箱中！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+            Player.SendSelfMsg(actor, '正在自动开箱中！', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
             return
         end
         OpenSuperBoxManager.DoOpenBoxOnce(actor, false, nil) 

@@ -177,7 +177,7 @@ function takeonbefore12(actor, makeindx)
             local itemidx = getiteminfo(actor, itemobj, CommonDefine.ITEMINFO_ITEMIDX)
             local stdmode = getstditeminfo(itemidx, CommonDefine.STDITEMINFO_STDMODE)
             if stdmode == CommonDefine.ITEM_STDMODE_SOULSTONE then
-                Player.SendSelfMsg(actor, '请在魂石系统中穿戴！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+                Player.SendSelfMsg(actor, '请在魂石系统中穿戴！', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
 
                 setplaydef(actor, CommonDefine.VAR_N_CURR_FUNCTION_ID, CommonDefine.FUNC_ID_SOUL_STONE)
                 setplaydef(actor, CommonDefine.VAR_N_LAST_NPC_CHOOSEID, -1)
@@ -464,7 +464,7 @@ function changename_button(actor, sparam)
         local sNewName = parsetext("<$NPCINPUT(1)>", actor)   
         local nNameLen = string.len(sNewName)
         if (nNameLen < 2) or (nNameLen > 14) then
-            Player.SendSelfMsg(actor, '当前名字长度态度', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+            Player.SendSelfMsg(actor, '当前名字长度态度', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
             return
         end
 
@@ -596,7 +596,7 @@ function update_power_callback(actor)
         local diffpower = currpower - lastpower
         setplaydef(actor, CommonDefine.VAR_N_LAST_PLAYERPOWER, currpower)
         setplayvar(actor, "HUMAN", '战斗力', currpower, 1)
-        --Player.SendSelfMsg(actor, '当前战力:'..currpower, CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+        --Player.SendSelfMsg(actor, '当前战力:'..currpower, CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
         InnerUpdatePowerShow(actor)    
         if (diffpower > 0) and (lastpower > 0) then
             local showstr = '+'..diffpower

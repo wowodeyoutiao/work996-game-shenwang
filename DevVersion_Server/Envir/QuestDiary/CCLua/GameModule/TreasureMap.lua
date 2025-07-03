@@ -115,7 +115,7 @@ function TreasureMap.DoUseItem(actor)
     end
     local currtimes = getplaydef(actor, CommonDefine.VAR_J_DAY_TREASUREMAP_USETIMES)
     if currtimes >= TREASURE_MAP_DAY_MAX_TIMES then
-        Player.SendSelfMsg(actor, '藏宝图今日使用次数已达到上限，请明日再来！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+        Player.SendSelfMsg(actor, '藏宝图今日使用次数已达到上限，请明日再来！', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
         return false
     end
 
@@ -124,7 +124,7 @@ function TreasureMap.DoUseItem(actor)
     if posinfo == nil then        
         posinfo, curridx = BF_GetRandomTab(TREASURE_MAP_POSITION_CONFIG, -1)      
         if posinfo == nil then
-            Player.SendSelfMsg(actor, '暂时无法使用，请稍后再试！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+            Player.SendSelfMsg(actor, '暂时无法使用，请稍后再试！', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
             return false
         end
         setplaydef(actor, CommonDefine.VAR_U_TREASUREMAP_CURRID, curridx)
@@ -136,7 +136,7 @@ function TreasureMap.DoUseItem(actor)
         return false
     else
         local mapname = getmapname(posinfo.mapidstr)        
-        Player.SendSelfMsg(actor, '宝藏在['..mapname..', '..posinfo.x..','..posinfo.y..']', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+        Player.SendSelfMsg(actor, '宝藏在['..mapname..', '..posinfo.x..','..posinfo.y..']', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
         if getplaydef(actor, CommonDefine.VAR_J_DAY_TREASUREMAP_NO_PANELTIP_FLAG) == 0 then
             ShowAutoGotoPanel(actor)
         end
@@ -150,7 +150,7 @@ function TreasureMap.DigCallBack(actor)
     end
     local currtimes = getplaydef(actor, CommonDefine.VAR_J_DAY_TREASUREMAP_USETIMES)
     if currtimes >= TREASURE_MAP_DAY_MAX_TIMES then
-        Player.SendSelfMsg(actor, '藏宝图今日使用次数已达到上限，请明日再来！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+        Player.SendSelfMsg(actor, '藏宝图今日使用次数已达到上限，请明日再来！', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
         return
     end
 
@@ -177,19 +177,19 @@ function TreasureMap.DigCallBack(actor)
         if math.random(1, 100) <= TRIGGER_RANDOMBOSS_RATE then
             --触发战力boss
             if RandomBossManager.CreateNewRandomBoss(actor) > 0 then
-                Player.SendSelfMsg(actor, '当前藏宝图中触发战力首领，前往挑战有惊喜！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)        
+                Player.SendSelfMsg(actor, '当前藏宝图中触发战力首领，前往挑战有惊喜！', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)        
                 return
             end
         end
 
         --发放随机奖励        
-        Player.SendSelfMsg(actor, '恭喜你挖到宝藏！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+        Player.SendSelfMsg(actor, '恭喜你挖到宝藏！', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
         local rewardtab = BF_GetRandomTab(TREASURE_MAP_RANDOM_REWARDS, -1)
         if rewardtab ~= nil then
             Player.GiveItemsToBagOrMail(actor, rewardtab.items, '挖取藏宝图奖励')
         end        
     else
-        Player.SendSelfMsg(actor, '当前距离宝藏位置太远！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+        Player.SendSelfMsg(actor, '当前距离宝藏位置太远！', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
     end
 end
 

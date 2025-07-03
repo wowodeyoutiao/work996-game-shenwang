@@ -23,6 +23,7 @@ FreeVIPManager.TASK_TYPE_COMPOSE_SOULSTONE_SUCCESSTIMES = 11    --魂石合成成功次
 FreeVIPManager.TASK_TYPE_COMPOSE_BAOZHU_SUCCESSTIMES = 12       --宝珠(灵玉)合成成功次数
 FreeVIPManager.TASK_TYPE_ALL_EQUIPPOS_MINSTRENGTHLV = 13        --全身装备位的最小强化等级
 FreeVIPManager.TASK_TYPE_OPEN_SUPERBOX_TIMES = 14               --累计开箱次数
+FreeVIPManager.TASK_TYPE_YUNBIAO = 15                           --运镖【接任务后】
 
 
 FreeVIPManager.TASK_COUNTER_VARLIST = {
@@ -84,6 +85,8 @@ function FreeVIPManager.QuickGoTo(actor, tasktype)
         Player.QuickGoTo(actor, CommonDefine.QUICK_GOTO_EQUIP_STRENGTH)
     elseif tasktype == FreeVIPManager.TASK_TYPE_OPEN_SUPERBOX_TIMES then
         Player.QuickGoTo(actor, CommonDefine.QUICK_GOTO_AUTO_OPENBOX)
+    elseif tasktype == FreeVIPManager.TASK_TYPE_YUNBIAO then
+        Player.QuickGoTo(actor, CommonDefine.QUICK_GOTO_YUNBIAO)
     end
 end
 
@@ -131,7 +134,8 @@ function FreeVIPManager.TriggerChgTaskCounter(actor, tasktype, oper, num)
                (tasktype == FreeVIPManager.TASK_TYPE_MOFANGZHEN_ENTERTIMES) or (tasktype == FreeVIPManager.TASK_TYPE_UPGRADE_EQUIPSTAR) or
                (tasktype == FreeVIPManager.TASK_TYPE_EQUIPRANDOMAB_GOLDTIMES) or (tasktype == FreeVIPManager.TASK_TYPE_EQUIPRANDOMAB_YBTIMES) or
                (tasktype == FreeVIPManager.TASK_TYPE_COMPOSE_EQUIP_SUCCESSTIMES) or (tasktype == FreeVIPManager.TASK_TYPE_COMPOSE_SOULSTONE_SUCCESSTIMES) or
-               (tasktype == FreeVIPManager.TASK_TYPE_COMPOSE_BAOZHU_SUCCESSTIMES) or (tasktype == FreeVIPManager.TASK_TYPE_OPEN_SUPERBOX_TIMES) then
+               (tasktype == FreeVIPManager.TASK_TYPE_COMPOSE_BAOZHU_SUCCESSTIMES) or (tasktype == FreeVIPManager.TASK_TYPE_OPEN_SUPERBOX_TIMES) or
+               (tasktype == FreeVIPManager.TASK_TYPE_YUNBIAO) then
                 local currcounter = getplaydef(actor, FreeVIPManager.TASK_COUNTER_VARLIST[i])
                 if oper == '+' then
                     currcounter = currcounter + num
@@ -175,11 +179,11 @@ function FreeVIPManager.FetchTaskReward(actor, taskseq)
         return
     end     
     if getflagstatus(actor, FreeVIPManager.TASK_DRAWREWARD_FLAGLIST[taskseq]) == 1 then
-        Player.SendSelfMsg(actor, '任务奖励已领取过！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+        Player.SendSelfMsg(actor, '任务奖励已领取过！', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
         return 
     end
     if not FreeVIPManager.IsTaskFinished(actor, taskseq) then
-        Player.SendSelfMsg(actor, '任务尚未完成！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+        Player.SendSelfMsg(actor, '任务尚未完成！', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
         return
     end
 
@@ -190,13 +194,13 @@ function FreeVIPManager.FetchTaskReward(actor, taskseq)
         return
     end
     if #taskconfig.finishrewards_tab == 0 then
-        Player.SendSelfMsg(actor, '当前无可领取奖励！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+        Player.SendSelfMsg(actor, '当前无可领取奖励！', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
         return
     end
 
     setflagstatus(actor, FreeVIPManager.TASK_DRAWREWARD_FLAGLIST[taskseq], 1)
     Player.GiveItemsToBagOrMail(actor, taskconfig.finishrewards_tab, '免费VIP任务奖励')
-    Player.SendSelfMsg(actor, '成功领取当前任务奖励！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+    Player.SendSelfMsg(actor, '成功领取当前任务奖励！', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
     FreeVIPManager.CheckUpgradeLevel(actor)
 end
 
@@ -250,7 +254,7 @@ function FreeVIPManager.FetchDayReward(actor)
         return
     end
     if getplaydef(actor, CommonDefine.VAR_J_DAY_FREEVIP_REWARDTIMES) > 0 then
-        Player.SendSelfMsg(actor, '今日奖励已领取过！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+        Player.SendSelfMsg(actor, '今日奖励已领取过！', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
         return 
     end
     local currVIPLv = getplaydef(actor, CommonDefine.VAR_U_FREEVIP_LEVEL)
@@ -258,7 +262,7 @@ function FreeVIPManager.FetchDayReward(actor)
     if cfgCurrVip then
         setplaydef(actor, CommonDefine.VAR_J_DAY_FREEVIP_REWARDTIMES, 1)
         Player.GiveItemsToBagOrMail(actor, cfgCurrVip.dayrewards_tab, '免费VIP每日奖励')        
-        Player.SendSelfMsg(actor, '成功领取每日奖励！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+        Player.SendSelfMsg(actor, '成功领取每日奖励！', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
     end 
 end
 
@@ -550,7 +554,7 @@ function FreeVIPManager.DoOperButton(actor, sid, sparam)
     local currVIPLv = getplaydef(actor, CommonDefine.VAR_U_FREEVIP_LEVEL)
     if funcid == NPCPANEL_BUTTONFUNC_ID_1 then
         if currVIPLv + 1 < nparam then
-            Player.SendSelfMsg(actor, 'VIP等级不足！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+            Player.SendSelfMsg(actor, 'VIP等级不足！', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
             return
         end
         setplaydef(actor, CommonDefine.VAR_N_LAST_NPC_CHOOSEID,  nparam)

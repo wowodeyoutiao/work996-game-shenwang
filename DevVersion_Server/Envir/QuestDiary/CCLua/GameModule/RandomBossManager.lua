@@ -174,10 +174,10 @@ function RandomBossManager.GoToTriggerBossMap(actor, fightingid)
 					if count < info.maxplayer then
 						map(actor, info.mapidstr)
 					else
-						Player.SendSelfMsg(actor, '当前地图中人数已达到上限！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+						Player.SendSelfMsg(actor, '当前地图中人数已达到上限！', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
 					end
 				else
-					Player.SendSelfMsg(actor, '你的战力不符合进入条件！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+					Player.SendSelfMsg(actor, '你的战力不符合进入条件！', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
 				end				
 			end
 			break
@@ -396,7 +396,7 @@ function RandomBossManager.OnMonKilled(hitter, mon)
 			end
 		end	
 	else
-		Player.SendSelfMsg(hitter, '你今日获得奖励次数已达到上限，请明日再来！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+		Player.SendSelfMsg(hitter, '你今日获得奖励次数已达到上限，请明日再来！', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
 	end
 
 	--触发击杀随机BOSS

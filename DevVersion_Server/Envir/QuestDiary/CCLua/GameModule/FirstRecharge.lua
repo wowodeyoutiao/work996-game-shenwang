@@ -218,9 +218,9 @@ function FirstRecharge.GetFirstRechargeFreeReward(actor, chooseday)
     end
     if chooseday > currRechargeDay then
         if chooseday == 2 then
-            Player.SendSelfMsg(actor, '首充后次日0点可领取', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+            Player.SendSelfMsg(actor, '首充后次日0点可领取', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
         else
-            Player.SendSelfMsg(actor, '首充后第三日0点可领取', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+            Player.SendSelfMsg(actor, '首充后第三日0点可领取', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
         end
         return
     end
@@ -228,7 +228,7 @@ function FirstRecharge.GetFirstRechargeFreeReward(actor, chooseday)
     local maildesc = ''
     if chooseday == 2 then
         if getflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_FIRSTRECHARGE_REWARD2) == 1 then
-            Player.SendSelfMsg(actor, '当前奖励已领取', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+            Player.SendSelfMsg(actor, '当前奖励已领取', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
             return
         end
         mailtitle = '首充第二日奖励'
@@ -236,7 +236,7 @@ function FirstRecharge.GetFirstRechargeFreeReward(actor, chooseday)
         setflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_FIRSTRECHARGE_REWARD2, 1)
     else
         if getflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_FIRSTRECHARGE_REWARD3) == 1 then
-            Player.SendSelfMsg(actor, '当前奖励已领取', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+            Player.SendSelfMsg(actor, '当前奖励已领取', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
             return
         end
         mailtitle = '首充第三日奖励'
@@ -273,9 +273,9 @@ function FirstRecharge.GetFirstRechargeDoubleReward(actor, chooseday)
     end
     if chooseday > currRechargeDay then
         if chooseday == 2 then
-            Player.SendSelfMsg(actor, '首充后次日0点可领取', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+            Player.SendSelfMsg(actor, '首充后次日0点可领取', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
         else
-            Player.SendSelfMsg(actor, '首充后第三日0点可领取', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+            Player.SendSelfMsg(actor, '首充后第三日0点可领取', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
         end
         return
     end
@@ -283,7 +283,7 @@ function FirstRecharge.GetFirstRechargeDoubleReward(actor, chooseday)
     local maildesc = ''
     if chooseday == 2 then
         if getflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_FIRSTRECHARGE_REWARD2) == 1 then
-            Player.SendSelfMsg(actor, '当前奖励已领取', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+            Player.SendSelfMsg(actor, '当前奖励已领取', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
             return
         end
         mailtitle = '首充第二日奖励-双倍'
@@ -297,7 +297,7 @@ function FirstRecharge.GetFirstRechargeDoubleReward(actor, chooseday)
         setflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_FIRSTRECHARGE_REWARD2, 1)
     else
         if getflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_FIRSTRECHARGE_REWARD3) == 1 then
-            Player.SendSelfMsg(actor, '当前奖励已领取', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+            Player.SendSelfMsg(actor, '当前奖励已领取', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
             return
         end
         mailtitle = '首充第三日奖励-双倍'

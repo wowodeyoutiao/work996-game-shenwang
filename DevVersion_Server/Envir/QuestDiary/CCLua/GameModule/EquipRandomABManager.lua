@@ -472,7 +472,7 @@ local function ChooseTargABSeq(actor, chooseseq)
         return
     end
     if currStatus ~= 0 then
-        Player.SendSelfMsg(actor, '洗炼结果还未处理，不能继续洗炼！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+        Player.SendSelfMsg(actor, '洗炼结果还未处理，不能继续洗炼！', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
         return
     end    
     local equipitem = linkbodyitem(actor, equippos)
@@ -504,12 +504,12 @@ local function DoRandomABWithGold(actor)
     end
     local currStatus = getitemintparam(actor, -2, CommonDefine.ITEM_INTVAR_RANDOMAB_STATS, equipitem)
     if currStatus ~= 0 then
-        Player.SendSelfMsg(actor, '处理洗炼结果后才可再次洗炼！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+        Player.SendSelfMsg(actor, '处理洗炼结果后才可再次洗炼！', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
         return
     end
     local currChooseSeq = getitemintparam(actor, -2, CommonDefine.ITEM_INTVAR_RANDOMAB_CURR_SEQ, equipitem)
     if currChooseSeq < 1 then
-        Player.SendSelfMsg(actor, '请先选择要洗炼的属性，系统默认选择了第一条，请再确认！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+        Player.SendSelfMsg(actor, '请先选择要洗炼的属性，系统默认选择了第一条，请再确认！', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
         currChooseSeq = 1
         setitemintparam(actor, -2, CommonDefine.ITEM_INTVAR_RANDOMAB_CURR_SEQ, 1, equipitem)
         updatecustitemparam(actor, -2, equipitem)
@@ -554,12 +554,12 @@ local function DoRandomABWithYB(actor)
     end
     local currStatus = getitemintparam(actor, -2, CommonDefine.ITEM_INTVAR_RANDOMAB_STATS, equipitem)
     if currStatus ~= 0 then
-        Player.SendSelfMsg(actor, '处理洗炼结果后才可再次洗炼！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+        Player.SendSelfMsg(actor, '处理洗炼结果后才可再次洗炼！', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
         return
     end
     local currChooseSeq = getitemintparam(actor, -2, CommonDefine.ITEM_INTVAR_RANDOMAB_CURR_SEQ, equipitem)
     if currChooseSeq < 1 then
-        Player.SendSelfMsg(actor, '请先选择要洗炼的属性，系统默认选择了第一条，请再确认！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+        Player.SendSelfMsg(actor, '请先选择要洗炼的属性，系统默认选择了第一条，请再确认！', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
         currChooseSeq = 1
         setitemintparam(actor, -2, CommonDefine.ITEM_INTVAR_RANDOMAB_CURR_SEQ, 1, equipitem)
         updatecustitemparam(actor, -2, equipitem)
@@ -604,7 +604,7 @@ local function DropCurrRandomAB(actor)
     end
     local currStatus = getitemintparam(actor, -2, CommonDefine.ITEM_INTVAR_RANDOMAB_STATS, equipitem)
     if currStatus == 0 then
-        Player.SendSelfMsg(actor, '还未进行洗炼！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+        Player.SendSelfMsg(actor, '还未进行洗炼！', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
         return
     end
     
@@ -627,7 +627,7 @@ local function SaveCurrRandomAB(actor)
     end
     local currStatus = getitemintparam(actor, -2, CommonDefine.ITEM_INTVAR_RANDOMAB_STATS, equipitem)
     if currStatus == 0 then
-        Player.SendSelfMsg(actor, '还未进行洗炼！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+        Player.SendSelfMsg(actor, '还未进行洗炼！', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
         return
     end
 

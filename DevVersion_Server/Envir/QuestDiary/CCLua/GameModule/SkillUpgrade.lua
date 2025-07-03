@@ -177,13 +177,13 @@ local function GetSingleShowInfo(actor, targSkillID)
     if choosetype == UPGRADE_TYPE_LEVEL then
         upgradeInfo = cfgSkillUpgrade[cfgKey]    
         if upgradeInfo == nil then
-            Player.SendSelfMsg(actor, '缺少对应的技能升级配置！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+            Player.SendSelfMsg(actor, '缺少对应的技能升级配置！', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
             return
         end    
     else
         upgradeInfo = cfgSkillAdvanceUpgrade[cfgKey]    
         if upgradeInfo == nil then
-            Player.SendSelfMsg(actor, '缺少对应的技能进阶配置！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+            Player.SendSelfMsg(actor, '缺少对应的技能进阶配置！', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
             return
         end        
     end    
@@ -464,7 +464,7 @@ local function DoSkillUpgradeOnce(actor, targSkillID)
     --条件判断
     local currPlayerLv = Player.GetLevel(actor)
     if currPlayerLv < upgradeInfo.needlv then
-        Player.SendSelfMsg(actor, '技能升级所需角色等级不足！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+        Player.SendSelfMsg(actor, '技能升级所需角色等级不足！', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
         return
     end
     if not Player.CheckItemsEnough(actor, upgradeInfo.needitems_tab, '技能升级') then
@@ -476,7 +476,7 @@ local function DoSkillUpgradeOnce(actor, targSkillID)
 
     --升级
     setskillinfo(actor, targSkillID, 1, skillNextLv)
-    Player.SendSelfMsg(actor, '技能【'..magicCfgInfo.MagName..'】已成功升到'..skillNextLv..'级！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)    
+    Player.SendSelfMsg(actor, '技能【'..magicCfgInfo.MagName..'】已成功升到'..skillNextLv..'级！', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)    
 
     --任务触发
     TaskManager.OnSkillUpgrade(actor)
@@ -507,7 +507,7 @@ local function DoSkillAdvanceUpgradeOnce(actor, targSkillID)
 
     --条件判断
     if skillCommonLv < upgradeInfo.needlv then
-        Player.SendSelfMsg(actor, '技能进阶所需技能等级不足！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+        Player.SendSelfMsg(actor, '技能进阶所需技能等级不足！', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
         return
     end
     if not Player.CheckItemsEnough(actor, upgradeInfo.needitems_tab, '技能进阶') then
@@ -518,7 +518,7 @@ local function DoSkillAdvanceUpgradeOnce(actor, targSkillID)
         local id = magicCfgInfo.AdvanceLevelVarID
         if (id < 151) or (id > 180) then
             BF_ExceptionOut('do_skill_advance_upgrade_once: AdvanceLevelVarID error:'..id)
-            Player.SendSelfMsg(actor, '技能进阶失败 111', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+            Player.SendSelfMsg(actor, '技能进阶失败 111', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
             return
         else
             setplaydef(actor, 'U'..id, skillNextLv)
@@ -531,7 +531,7 @@ local function DoSkillAdvanceUpgradeOnce(actor, targSkillID)
     --进阶
     setskillinfo(actor, targSkillID, 2, skillNextLv)
     
-    Player.SendSelfMsg(actor, '技能【'..magicCfgInfo.MagName..'】已成功进到'..skillNextLv..'阶！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)    
+    Player.SendSelfMsg(actor, '技能【'..magicCfgInfo.MagName..'】已成功进到'..skillNextLv..'阶！', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)    
 end
 
 --处理button回调

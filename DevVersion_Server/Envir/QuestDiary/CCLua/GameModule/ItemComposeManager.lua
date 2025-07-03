@@ -161,7 +161,7 @@ local function DoFinalEquipCompose(actor, cfgComposeTab)
 
     if cfgComposeTab.successrate >= math.random(1, 10000) then
         --合成成功
-        Player.SendSelfMsg(actor, '合成成功！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)        
+        Player.SendSelfMsg(actor, '合成成功！', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)        
 		local targInfo = BF_GetRandomTab(cfgComposeTab.composetarginfo_tab, -1)
 		if (targInfo ~= nil) and (targInfo.id ~= nil) and (cfg_equip[targInfo.id] ~= nil) then
 			--合成后的装备绑定属性怎么定义？？？？？？？？？？
@@ -182,7 +182,7 @@ local function DoFinalEquipCompose(actor, cfgComposeTab)
 		end        
     else
         --合成失败
-        Player.SendSelfMsg(actor, '合成失败！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)        
+        Player.SendSelfMsg(actor, '合成失败！', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)        
     end	
 	return bSuccessFlag, newMakeIndex
 end
@@ -331,7 +331,7 @@ function ItemComposeManager.ChooseOtherItemPanel(actor)
      --展现信息排版后，选择其它两个材料
      local chooseItemMakeIdx = getplaydef(actor, CommonDefine.VAR_N_ITEM_COMPOSE_CHOOSE_ITEM1)
      if chooseItemMakeIdx <= 0 then
-         Player.SendSelfMsg(actor, '请双击选择参与合成的第一件装备！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+         Player.SendSelfMsg(actor, '请双击选择参与合成的第一件装备！', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
          return
      end   
     --效验是否为背包道具
@@ -445,7 +445,7 @@ end
 local function DoSelectItem1(actor)
 	local strSelectItem1 = getplaydef(actor, CommonDefine.VAR_S_SELECT_ITEM)
 	if not BF_IsNumberStr(strSelectItem1) then
-		Player.SendSelfMsg(actor, '请双击选择参与合成的第一件道具！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+		Player.SendSelfMsg(actor, '请双击选择参与合成的第一件道具！', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
 		return
 	end
 	setplaydef(actor, CommonDefine.VAR_N_ITEM_COMPOSE_CHOOSE_ITEM1, tonumber(strSelectItem1))
@@ -460,7 +460,7 @@ local function DoAutoSelectOtherItems(actor)
 
     local chooseItemMakeIdx = getplaydef(actor, CommonDefine.VAR_N_ITEM_COMPOSE_CHOOSE_ITEM1)
     if chooseItemMakeIdx <= 0 then
-        Player.SendSelfMsg(actor, '请双击选择参与合成的第一件道具！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+        Player.SendSelfMsg(actor, '请双击选择参与合成的第一件道具！', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
         return false
     end
     --效验是否为背包道具
@@ -494,12 +494,12 @@ local function DoAutoSelectOtherItems(actor)
 			end
 		end
 	else
-		Player.SendSelfMsg(actor, '当前无充足的道具供合成', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+		Player.SendSelfMsg(actor, '当前无充足的道具供合成', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
 		return false
 	end
 	
 	if chooseCounter< CommonDefine.ITEM_COMPOSE_NEED_NUM-1 then
-		Player.SendSelfMsg(actor, '当前无充足的道具供合成', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+		Player.SendSelfMsg(actor, '当前无充足的道具供合成', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
 		return false
 	end
 
@@ -516,7 +516,7 @@ local function DoAutoSelectOtherPiledItems(actor, selecttype)
 
     local chooseItemMakeIdx = getplaydef(actor, CommonDefine.VAR_N_ITEM_COMPOSE_CHOOSE_ITEM1)
     if chooseItemMakeIdx <= 0 then
-        Player.SendSelfMsg(actor, '请双击选择参与合成的第一件道具！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+        Player.SendSelfMsg(actor, '请双击选择参与合成的第一件道具！', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
         return false
     end	
     --效验是否为背包道具
@@ -531,7 +531,7 @@ local function DoAutoSelectOtherPiledItems(actor, selecttype)
 	--当前 道具叠加数量大于等于3个才可进行合成
 	local pilecount = getiteminfo(actor, chooseitemobj, CommonDefine.ITEMINFO_OVERLAP)
 	if pilecount < CommonDefine.ITEM_COMPOSE_NEED_NUM then
-		Player.SendSelfMsg(actor, '选择的道具数量不足，无法合成', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+		Player.SendSelfMsg(actor, '选择的道具数量不足，无法合成', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
 		return false
 	end
 
@@ -583,7 +583,7 @@ end
 local function DoCompose(actor)
 	local composetype = getplaydef(actor, CommonDefine.VAR_N_LAST_NPC_CHOOSEID)
 	if IsPiledItemComposeType(composetype) then
-		Player.SendSelfMsg(actor, '选择的合成类型不符！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+		Player.SendSelfMsg(actor, '选择的合成类型不符！', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
 		return
 	end
 
@@ -593,7 +593,7 @@ local function DoCompose(actor)
     end
     local strSelectTable = string.split(strSelectItemList, ',')
     if #strSelectTable ~= CommonDefine.ITEM_COMPOSE_NEED_NUM then
-        Player.SendSelfMsg(actor, '选择的合成道具的数量不足'..CommonDefine.ITEM_COMPOSE_NEED_NUM..'个！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+        Player.SendSelfMsg(actor, '选择的合成道具的数量不足'..CommonDefine.ITEM_COMPOSE_NEED_NUM..'个！', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
         return
     end
     local itemMakeidxList = {}
@@ -621,7 +621,7 @@ local function DoCompose(actor)
     end
     local cfgCurrComposeTab = GetCfgComposeTab(actor, chooseItemObjList)
     if cfgCurrComposeTab == nil then
-        Player.SendSelfMsg(actor, '未找到有效的合成配置！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+        Player.SendSelfMsg(actor, '未找到有效的合成配置！', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
         return
     end
 
@@ -653,7 +653,7 @@ end
 local function DoComposeEx(actor)
 	local composetype = getplaydef(actor, CommonDefine.VAR_N_LAST_NPC_CHOOSEID)
 	if not IsPiledItemComposeType(composetype) then
-		Player.SendSelfMsg(actor, '选择的合成类型不符！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+		Player.SendSelfMsg(actor, '选择的合成类型不符！', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
 		return
 	end
 

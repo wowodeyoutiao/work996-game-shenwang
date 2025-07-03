@@ -127,7 +127,7 @@ function JumpAreaScoreShop.ExchangeShopItem(actor, shopseq)
                 buyCounterTab[sKey] = 0
             end
             if buyCounterTab[sKey] >= shopinfo.daymaxtimes then
-                Player.SendSelfMsg(actor, '今日该物品兑换次数已达上限！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+                Player.SendSelfMsg(actor, '今日该物品兑换次数已达上限！', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
                 return
             end
             buyCounterTab[sKey] = buyCounterTab[sKey] + 1

@@ -436,7 +436,7 @@ function SoulStoneManager.RecalJiBan(actor)
             delattlist(actor, CommonDefine.ABILITY_GROUP_STONE_JIBAN)
         else
             addattlist(actor, CommonDefine.ABILITY_GROUP_STONE_JIBAN, '=', abstr)
-            Player.SendSelfMsg(actor, '当前激活'..jibanlevel..'级魂石羁绊', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+            Player.SendSelfMsg(actor, '当前激活'..jibanlevel..'级魂石羁绊', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
         end
     end
     setplaydef(actor, CommonDefine.VAR_N_SOULSTONE_JBLEVEL, jibanlevel)
@@ -835,18 +835,18 @@ local function DoFillHoleStone(actor, sholeseq)
     end
 
     if getbagblank(actor) < 1 then
-        Player.SendSelfMsg(actor, '请整理出至少1个背包空格！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+        Player.SendSelfMsg(actor, '请整理出至少1个背包空格！', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
         return
     end
     local chooseItemMakeIdx = getplaydef(actor, CommonDefine.VAR_N_CHOOSE_ITEM_MAKEIDX)
     if chooseItemMakeIdx <= 0 then
-        Player.SendSelfMsg(actor, '请双击选择魂石！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+        Player.SendSelfMsg(actor, '请双击选择魂石！', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
         return
     end   
     --效验是否为背包道具
     local chooseItemObj = Bag.GetItemByMakeindex(actor, chooseItemMakeIdx)
     if BF_IsNullObj(chooseItemObj) then
-        Player.SendSelfMsg(actor, '请双击选择魂石！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+        Player.SendSelfMsg(actor, '请双击选择魂石！', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
         return
     end    
 
@@ -867,7 +867,7 @@ local function DoFillHoleStone(actor, sholeseq)
     local takeitemstdmode = getstditeminfo(chooseitemidx, CommonDefine.STDITEMINFO_STDMODE)
     local takeitemshape = getstditeminfo(chooseitemidx, CommonDefine.STDITEMINFO_SHAPE)
     if (takeitemstdmode ~= CommonDefine.ITEM_STDMODE_SOULSTONE) or (takeitemshape ~= slotcfg.shape) then
-        Player.SendSelfMsg(actor, '选择的魂石不匹配！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+        Player.SendSelfMsg(actor, '选择的魂石不匹配！', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
         return
     end
 
@@ -923,7 +923,7 @@ local function DoQuickTakeOn(actor)
         return
     end
     if getbagblank(actor) < 4 then
-        Player.SendSelfMsg(actor, '请整理出至少4个背包空格！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+        Player.SendSelfMsg(actor, '请整理出至少4个背包空格！', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
         return
     end
    
@@ -953,7 +953,7 @@ function SoulStoneManager.DoOperButton(actor, sid, sparam)
     elseif funcid == SOULSTONE_BUTTONFUNC_ID_5 then
         local strSelect = getplaydef(actor, CommonDefine.VAR_S_SELECT_ITEM)
         if not BF_IsNumberStr(strSelect) then
-            Player.SendSelfMsg(actor, '请双击选择魂石！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+            Player.SendSelfMsg(actor, '请双击选择魂石！', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
             return
         end
         setplaydef(actor, CommonDefine.VAR_N_CHOOSE_ITEM_MAKEIDX, tonumber(strSelect))

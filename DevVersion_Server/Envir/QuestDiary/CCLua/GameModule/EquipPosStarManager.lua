@@ -555,7 +555,7 @@ local function EquipPosUpgradeStarOnce(actor)
     end
     local cfgNextKey = EquipPosStarManager.GetUpgradeStarCfgKey(bJob, equippos, nextPosLevel)
     if cfgEquipPosUpgradeStar[cfgNextKey] == nil then
-        Player.SendSelfMsg(actor, '当前升星已达到上限！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+        Player.SendSelfMsg(actor, '当前升星已达到上限！', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
         return
     end
 
@@ -569,7 +569,7 @@ local function EquipPosUpgradeStarOnce(actor)
     
     if cfgEquipPosUpgradeStar[cfgCurrKey].successrate >= math.random(1, 100) then
         --升星成功
-        Player.SendSelfMsg(actor, '升星成功！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+        Player.SendSelfMsg(actor, '升星成功！', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
 
         infoTab[sid] = nextPosLevel;
         infoStr = tbl2json(infoTab)
@@ -586,7 +586,7 @@ local function EquipPosUpgradeStarOnce(actor)
         end
     else
         --升星失败
-        Player.SendSelfMsg(actor, '升星失败！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+        Player.SendSelfMsg(actor, '升星失败！', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
         
         if (curPosLevel <= 0) or (cfgEquipPosUpgradeStar[cfgCurrKey].faildeclv <= 0) then
             return
@@ -622,7 +622,7 @@ function EquipPosStarManager.EquipPosAutoUpgradeStar(actor, startflag)
     end
     if startflag==nil or startflag==false then
         if getflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_AUTO_EQUIPSTAR_FLAG) == 0 then
-            Player.SendSelfMsg(actor, '停止自动升星！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+            Player.SendSelfMsg(actor, '停止自动升星！', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
             return
         end
     end
@@ -657,7 +657,7 @@ function EquipPosStarManager.EquipPosAutoUpgradeStar(actor, startflag)
     end
     local cfgNextKey = EquipPosStarManager.GetUpgradeStarCfgKey(bJob, equippos, nextPosLevel)
     if cfgEquipPosUpgradeStar[cfgNextKey] == nil then
-        Player.SendSelfMsg(actor, '当前升星已达到上限！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+        Player.SendSelfMsg(actor, '当前升星已达到上限！', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
         EquipPosStarManager.ShowBasePanel(actor)
         return
     end
@@ -685,9 +685,9 @@ function EquipPosStarManager.EquipPosAutoUpgradeStar(actor, startflag)
     if curPosLevel >= targPosLevel then
         if startflag and startflag==true then
             if targPosLevel == 0 then
-                Player.SendSelfMsg(actor, '未选择的目标星级，系统默认选择了下一级，请再确认！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+                Player.SendSelfMsg(actor, '未选择的目标星级，系统默认选择了下一级，请再确认！', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
             else
-                Player.SendSelfMsg(actor, '选择的目标星级小于当前星级，系统默认选择了下一级，请再确认！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)            
+                Player.SendSelfMsg(actor, '选择的目标星级小于当前星级，系统默认选择了下一级，请再确认！', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)            
             end
             if targPosLevel < EquipPosStarManager.AUTO_UPGRADESTAR_TARG_MAX then
                 targPosLevel = math.max(curPosLevel + 1, EquipPosStarManager.AUTO_UPGRADESTAR_TARG_MIN)
@@ -696,7 +696,7 @@ function EquipPosStarManager.EquipPosAutoUpgradeStar(actor, startflag)
                 setplaydef(actor, CommonDefine.VAR_U_EQUIPPOS_AUTO_STAR_CONDITION, chooseseq+1)
             end
         else
-            Player.SendSelfMsg(actor, '当前已达到目标星级！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+            Player.SendSelfMsg(actor, '当前已达到目标星级！', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
             EquipPosStopAutoUpgradeStar(actor)
             EquipPosStarManager.ShowBasePanel(actor)
         end        
@@ -746,7 +746,7 @@ local function SetAutoUpgradeTargStar(actor, varseq)
         end
         setflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_AUTO_EQUIPSTAR_FLAG, 0)
 
-        Player.SendSelfMsg(actor, '目标星级低于当前星级！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+        Player.SendSelfMsg(actor, '目标星级低于当前星级！', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
         return
     end
 
@@ -820,7 +820,7 @@ function EquipPosStarManager.RandomUpgradePosToTargStarNum(actor, targstarnum)
     EquipPosStarManager.UpdateEquipStarLvInPos(actor, poslist[rand])
 
     FreeVIPManager.TriggerChgTaskCounter(actor, FreeVIPManager.TASK_TYPE_UPGRADE_EQUIPSTAR, 'max', targstarnum) 
-    Player.SendSelfMsg(actor, CommonDefine.EQUIPPOS_NAME[currpos]..'槽位星级升至'..targstarnum, CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+    Player.SendSelfMsg(actor, CommonDefine.EQUIPPOS_NAME[currpos]..'槽位星级升至'..targstarnum, CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
     return true
 end
 

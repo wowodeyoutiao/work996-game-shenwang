@@ -188,26 +188,26 @@ function YunBiaoManager.AcceptBiaoChe(actor)
     local currid = getplaydef(actor, CommonDefine.VAR_U_BIAOCHE_CURRID)
     local biaocheinfo = GetBiaoCheConfig(currid)
     if biaocheinfo == nil then
-        Player.SendSelfMsg(actor, '请先刷新出有效镖车！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+        Player.SendSelfMsg(actor, '请先刷新出有效镖车！', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
         return
     end
 
     local accepttimes = getplaydef(actor, CommonDefine.VAR_J_DAY_BIAOCHE_ACCEPT_TIMES)
     if accepttimes >= DAY_MAX_ACCEPT_BIAOCHE_TIMES then
-        Player.SendSelfMsg(actor, '今日运镖次数已达上限，请明日再来！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+        Player.SendSelfMsg(actor, '今日运镖次数已达上限，请明日再来！', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
         return
     end
     
     local biaochemon = GetCurrBiaoCheMon(actor, currid)
     if biaochemon ~= nil then
-        Player.SendSelfMsg(actor, '你已有镖车，请完成当前运镖后再来！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+        Player.SendSelfMsg(actor, '你已有镖车，请完成当前运镖后再来！', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
         return
     end
 
     local monname = getmonbaseinfo(biaocheinfo.monid, 1)
     biaochemon = recallmob(actor, monname, 0, 3600, 0, 0, 1)
     if biaochemon == nil then
-        Player.SendSelfMsg(actor, '系统繁忙，请稍后再试！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+        Player.SendSelfMsg(actor, '系统繁忙，请稍后再试！', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
         return
     end
     
@@ -218,22 +218,25 @@ function YunBiaoManager.AcceptBiaoChe(actor)
     dartmap(actor, BIAOCHE_TARG_POS.x, BIAOCHE_TARG_POS.y, BIAOCHE_NEED_MASTER_DISTANCE)    
     setplaydef(actor, CommonDefine.VAR_J_DAY_BIAOCHE_ACCEPT_TIMES, accepttimes+1)
     setplaydef(actor, CommonDefine.VAR_U_BIAOCHE_REFRESH_TIMES, 0)
-    Player.SendSelfMsg(actor, '镖车已刷出！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+    Player.SendSelfMsg(actor, '镖车已刷出！', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
     close(actor)
     
     --每日必做计数        
-    EverydayTask.AddTaskCounter(actor, CommonDefine.FUNC_ID_YUNBIAO, 1)       
+    EverydayTask.AddTaskCounter(actor, CommonDefine.FUNC_ID_YUNBIAO, 1)  
+    
+    --免费VIP计数
+	FreeVIPManager.TriggerChgTaskCounter(actor, FreeVIPManager.TASK_TYPE_YUNBIAO, '+', 1)
 end
 
 function YunBiaoManager.RefreshBiaoChe(actor)
     local accepttimes = getplaydef(actor, CommonDefine.VAR_J_DAY_BIAOCHE_ACCEPT_TIMES)
     if accepttimes >= DAY_MAX_ACCEPT_BIAOCHE_TIMES then
-        Player.SendSelfMsg(actor, '今日运镖次数已达上限，请明日再来！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+        Player.SendSelfMsg(actor, '今日运镖次数已达上限，请明日再来！', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
         return
     end
     local currid = getplaydef(actor, CommonDefine.VAR_U_BIAOCHE_CURRID)
     if currid >= #RANDOM_BIAOCHE_CONFIG then
-        Player.SendSelfMsg(actor, '当前镖车等级已是最佳，无需再刷新！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+        Player.SendSelfMsg(actor, '当前镖车等级已是最佳，无需再刷新！', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
         return
     end 
 
@@ -258,7 +261,7 @@ function YunBiaoManager.RefreshBiaoChe(actor)
     end
 
     setplaydef(actor, CommonDefine.VAR_U_BIAOCHE_REFRESH_TIMES, refreshtimes)
-    Player.SendSelfMsg(actor, '镖车已刷新！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+    Player.SendSelfMsg(actor, '镖车已刷新！', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
     YunBiaoManager.ShowAcceptBiaoChePanel(actor)
 end
 
@@ -267,13 +270,13 @@ function YunBiaoManager.GetBiaoCheReward(actor)
     local currid = getplaydef(actor, CommonDefine.VAR_U_BIAOCHE_CURRID)
     local config = GetBiaoCheConfig(currid)
     if config == nil then
-        Player.SendSelfMsg(actor, '当前镖车不存在！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+        Player.SendSelfMsg(actor, '当前镖车不存在！', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
         return
     end
 
     local biaochemon = GetCurrBiaoCheMon(actor, currid)
     if biaochemon == nil then
-        Player.SendSelfMsg(actor, '当前镖车不存在！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+        Player.SendSelfMsg(actor, '当前镖车不存在！', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
         return
     end
 
@@ -286,18 +289,18 @@ function YunBiaoManager.GetBiaoCheReward(actor)
     setplaydef(actor, CommonDefine.VAR_U_BIAOCHE_CURRID, 0)
     killmonbyobj(actor, biaochemon, false, false, false)
     Player.GiveItemsToBagOrMail(actor, rewarditems, '镖车奖励:'..currid)
-    Player.SendSelfMsg(actor, '恭喜你获得镖车奖励！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+    Player.SendSelfMsg(actor, '恭喜你获得镖车奖励！', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
     close(actor)    
 end
 
 --镖车到达当前目标
 function YunBiaoManager.OnArriveTargetPos(actor)
-    Player.SendSelfMsg(actor, '镖车已到达终点，请及时前往交镖！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+    Player.SendSelfMsg(actor, '镖车已到达终点，请及时前往交镖！', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
 end
 
 --玩家丢失镖车触发
 function YunBiaoManager.LostBiaoChe(actor)
-    Player.SendSelfMsg(actor, '很遗憾，你的镖车已丢失！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+    Player.SendSelfMsg(actor, '很遗憾，你的镖车已丢失！', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
     setplaydef(actor, CommonDefine.VAR_U_BIAOCHE_CURRID, 0)
 end
 
@@ -350,7 +353,7 @@ function YunBiaoManager.OnPlayerKillCar(actor, carmonname, monobjidstr)
     for _, value in ipairs(RANDOM_BIAOCHE_CONFIG) do
         if value.monid == biaochemonid then       
             GuanZhiManager.AddExp(actor, value.killaddguanzhiexp, true)
-            Player.SendSelfMsg(actor, '你击杀了'..value.showname..'！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+            Player.SendSelfMsg(actor, '你击杀了'..value.showname..'！', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
             local masterobj = Player.GetMasterObj(carmon)
             if Player.IsPlayer(masterobj) then
                 YunBiaoManager.LostBiaoChe(masterobj)

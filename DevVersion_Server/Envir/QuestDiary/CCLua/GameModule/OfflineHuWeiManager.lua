@@ -398,14 +398,14 @@ local function DoUpgrade(actor, huweitype)
     end
     local cfgNextLv = cfgOfflineHuWei[nextKey]
     if cfgNextLv == nil then
-        Player.SendSelfMsg(actor, cfgHuWeiNpc.npcname..'已达到等级上限！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+        Player.SendSelfMsg(actor, cfgHuWeiNpc.npcname..'已达到等级上限！', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
         return
     end
 
     --条件判断
     local bConditionFlag, sTip = IsFitUpgradeCondition(actor, cfgCurrLv.condition)
     if not bConditionFlag then
-        Player.SendSelfMsg(actor, '升级所需的'..sTip..'不足！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+        Player.SendSelfMsg(actor, '升级所需的'..sTip..'不足！', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
         return
     end
 
@@ -455,7 +455,7 @@ end
 
 local function DoGetOfflineReward(actor, huweitype)
     if getbagblank(actor) < 1 then
-        Player.SendSelfMsg(actor, '请整理出至少1个背包空格！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+        Player.SendSelfMsg(actor, '请整理出至少1个背包空格！', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
         return
     end
 
@@ -482,7 +482,7 @@ local function DoGetOfflineReward(actor, huweitype)
     local difftime = os.time() - infoTab[sHWType].starttime
 
     if math.abs(os.time() - infoTab[sHWType].starttime) < CommonDefine.OFFLINE_FETCH_MIN_INTERVAL then
-        Player.SendSelfMsg(actor, '领取奖励需间隔3分钟！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+        Player.SendSelfMsg(actor, '领取奖励需间隔3分钟！', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
         return
     end
 
@@ -492,7 +492,7 @@ local function DoGetOfflineReward(actor, huweitype)
     currnum = math.min(dayleftnum, currnum)    
 
     if currnum <= 0 then
-        Player.SendSelfMsg(actor, '当前无可领取奖励！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+        Player.SendSelfMsg(actor, '当前无可领取奖励！', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
         return        
     end
 
@@ -501,7 +501,7 @@ local function DoGetOfflineReward(actor, huweitype)
     infoTab[sHWType].starttime = os.time()
     local infoStr = tbl2json(infoTab)
     setplaydef(actor, CommonDefine.VAR_T_OFFLINE_REWARD_INFO, infoStr)
-    Player.SendSelfMsg(actor, '领取离线奖励！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+    Player.SendSelfMsg(actor, '领取离线奖励！', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
 end
 
 --处理button回调

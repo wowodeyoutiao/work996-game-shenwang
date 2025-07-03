@@ -216,7 +216,7 @@ function RecycleManager.ActivatedAutoRecycle(actor)
     end
     
     if Player.GetItemNumInBag(actor, CommonDefine.ITEMID_YB) < CommonDefine.ACTIVATED_AUTORECYCLE_NEEDYB then
-        Player.SendSelfMsg(actor, '你的元宝不足，请先去充值！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+        Player.SendSelfMsg(actor, '你的元宝不足，请先去充值！', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
         return
     end
 

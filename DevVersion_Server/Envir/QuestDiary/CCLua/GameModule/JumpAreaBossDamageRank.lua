@@ -43,7 +43,7 @@ function JumpAreaBossDamageRank.GMResetCfg(actor)
     local tempstr = tbl2json(ACTIVITY_BASE_CONFIG)
     setsysvar(CommonDefine.VAR_A_JUMPAREA_DAMAGE_TEST_CFG_DATA, tempstr)
     setsysvar(CommonDefine.VAR_G_JUMPAREA_DAMAGERANK_REWARD_STATUS, 0) 
-    Player.SendSelfMsg(actor, '跨服boss设置成当前开启，5分钟后结束，进入间隔20秒，结束3分钟后发奖（本服）！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+    Player.SendSelfMsg(actor, '跨服boss设置成当前开启，5分钟后结束，进入间隔20秒，结束3分钟后发奖（本服）！', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
 end
 
 --显示规则面板
@@ -246,19 +246,19 @@ function JumpAreaBossDamageRank.EnterBossMap(actor)
 
     local weekday = os.date("%w")
     if not table.indexof(ACTIVITY_BASE_CONFIG.validweekday, weekday) then
-        Player.SendSelfMsg(actor, '不在活动日，无法进入！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+        Player.SendSelfMsg(actor, '不在活动日，无法进入！', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
         return
     end
 
     if (currhour<ACTIVITY_BASE_CONFIG.starttime.hour) or (currhour==ACTIVITY_BASE_CONFIG.starttime.hour and currmin<ACTIVITY_BASE_CONFIG.starttime.min) or
        (currhour>ACTIVITY_BASE_CONFIG.endtime.hour) or (currhour==ACTIVITY_BASE_CONFIG.endtime.hour and currmin>ACTIVITY_BASE_CONFIG.endtime.min) then
-        Player.SendSelfMsg(actor, '不在活动时间段内，无法进入！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+        Player.SendSelfMsg(actor, '不在活动时间段内，无法进入！', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
         return      
     end
 
     local lastentertime = getplaydef(actor, CommonDefine.VAR_J_DAY_JUMPAREA_BOSS_LAST_ENTERTIME)
     if math.abs(currtime - lastentertime) < ACTIVITY_BASE_CONFIG.enterintervalseconds then
-        Player.SendSelfMsg(actor, '还在间隔CD中，等待进入！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+        Player.SendSelfMsg(actor, '还在间隔CD中，等待进入！', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
         return
     end
     setplaydef(actor, CommonDefine.VAR_J_DAY_JUMPAREA_BOSS_LAST_ENTERTIME, currtime)

@@ -209,7 +209,7 @@ function EverydayTask.DoOperButton(actor, sid, sparam)
             end             
             local status, _ = GetSingleTaskStatus(actor, taskid, countertab, rewardtab)
             if status ~= TASK_STATUS_FINISHED then
-                Player.SendSelfMsg(actor, '无奖励可领取', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+                Player.SendSelfMsg(actor, '无奖励可领取', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
                 EverydayTask.ShowActivityPanel(actor)
                 return
             end
@@ -250,7 +250,7 @@ function EverydayTask.DoOperButton(actor, sid, sparam)
                 setplaydef(actor, CommonDefine.VAR_J_DAY_EVERYDAYTASK_FINALREWARD_IDX, 2)
             end
         elseif nFinalRewardIdx >= 2 then
-            Player.SendSelfMsg(actor, '奖励已领过', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+            Player.SendSelfMsg(actor, '奖励已领过', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
         end
         EverydayTask.ShowActivityPanel(actor)
     end

@@ -189,7 +189,7 @@ function ActivityExtendGift.GetRechargeReward(actor, seq)
 
     local giftstatus = GetGiftStatus(actor, seq, rewardtab)
     if giftstatus ~= GIFT_STATUS_CAN_GET then
-        Player.SendSelfMsg(actor, '礼包当前状态还不可领取！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+        Player.SendSelfMsg(actor, '礼包当前状态还不可领取！', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
         return
     end
 
@@ -213,13 +213,13 @@ function ActivityExtendGift.RechargeBuyGift(actor, seq)
     end    
     local giftstatus = GetGiftStatus(actor, seq, rewardtab)
     if giftstatus ~= GIFT_STATUS_CAN_BUY then
-        Player.SendSelfMsg(actor, '礼包当前状态还不可购买！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+        Player.SendSelfMsg(actor, '礼包当前状态还不可购买！', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
         return
     end
     
     local cfginfo = cfgActivityExtendGift[seq]
     if cfginfo == nil then
-        Player.SendSelfMsg(actor, '礼包不可购买！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+        Player.SendSelfMsg(actor, '礼包不可购买！', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
         return
     end
     
@@ -248,7 +248,7 @@ function ActivityExtendGift.RechargeBuyGiftCallBack(actor, seq)
     end    
     local giftstatus = GetGiftStatus(actor, seq, rewardtab)
     if giftstatus ~= GIFT_STATUS_CAN_BUY then
-        Player.SendSelfMsg(actor, '礼包当前状态不可购买!!!', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+        Player.SendSelfMsg(actor, '礼包当前状态不可购买!!!', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
         return
     end
     

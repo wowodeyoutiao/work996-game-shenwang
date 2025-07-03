@@ -506,14 +506,14 @@ local function EquipPosStrengthUpgradeOnce(actor)
     end
     local cfgNextKey = EquipPosStrengthManager.GetStrengthCfgKey(bJob, equippos, nextPosLevel)
     if cfgEquipPosStrength[cfgNextKey] == nil then
-        Player.SendSelfMsg(actor, '当前强化等级已达到上限！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+        Player.SendSelfMsg(actor, '当前强化等级已达到上限！', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
         return
     end
 
     --条件判断
     local currPlayerLv = Player.GetLevel(actor)
     if currPlayerLv < cfgEquipPosStrength[cfgCurrKey].needlv then
-        Player.SendSelfMsg(actor, '强化所需角色等级不足！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+        Player.SendSelfMsg(actor, '强化所需角色等级不足！', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
         return
     end
     if not Player.CheckItemsEnough(actor, cfgEquipPosStrength[cfgCurrKey].needitems_tab, '强化') then
@@ -526,7 +526,7 @@ local function EquipPosStrengthUpgradeOnce(actor)
     infoTab[sid] = nextPosLevel;
     infoStr = tbl2json(infoTab)
     setplaydef(actor, CommonDefine.VAR_T_EQUIPPOS_STRENGTH_INFO, infoStr)
-    Player.SendSelfMsg(actor, '强化成功！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+    Player.SendSelfMsg(actor, '强化成功！', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
 
     --更新当前装备位的强化状态
     EquipPosStrengthManager.UpdateEquipStrengthLvInPos(actor, equippos)  
@@ -581,13 +581,13 @@ local function EquipPosStrengthUpgradeTenTimes(actor)
         end           
         local cfgNextKey = EquipPosStrengthManager.GetStrengthCfgKey(bJob, equippos, nextPosLevel)        
         if cfgEquipPosStrength[cfgNextKey] == nil then
-            Player.SendSelfMsg(actor, '当前强化等级已达到上限！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+            Player.SendSelfMsg(actor, '当前强化等级已达到上限！', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
             break
         end     
         --条件判断
         local currPlayerLv = Player.GetLevel(actor)
         if currPlayerLv < cfgEquipPosStrength[cfgCurrKey].needlv then
-            Player.SendSelfMsg(actor, '强化所需角色等级不足！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+            Player.SendSelfMsg(actor, '强化所需角色等级不足！', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
             break
         end
         if not Player.CheckItemsEnough(actor, cfgEquipPosStrength[cfgCurrKey].needitems_tab, '强化') then
@@ -606,7 +606,7 @@ local function EquipPosStrengthUpgradeTenTimes(actor)
     if bLevelChanged then
         infoStr = tbl2json(infoTab)
         setplaydef(actor, CommonDefine.VAR_T_EQUIPPOS_STRENGTH_INFO, infoStr)
-        Player.SendSelfMsg(actor, '强化成功！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+        Player.SendSelfMsg(actor, '强化成功！', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
     
         --更新当前装备位的强化状态
         EquipPosStrengthManager.UpdateEquipStrengthLvInPos(actor, equippos)  

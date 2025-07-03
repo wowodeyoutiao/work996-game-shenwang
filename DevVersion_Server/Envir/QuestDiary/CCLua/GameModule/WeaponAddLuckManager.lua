@@ -241,7 +241,7 @@ function weapon_addluck_once(actor)
     end
     local cfgNextKey = nextLuckLevel
     if cfgWeaponLuck[cfgNextKey] == nil then
-        Player.SendSelfMsg(actor, '当前祝福已达到上限！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+        Player.SendSelfMsg(actor, '当前祝福已达到上限！', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
         return
     end
 
@@ -253,7 +253,7 @@ function weapon_addluck_once(actor)
     local bUseXinYunFuFlag = getflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_USE_XYF)
     if bUseXinYunFuFlag == 1 then
         if Player.GetItemNumInBag(actor, CommonDefine.ITEMID_XINYUNFU) < CommonDefine.ADDLUCK_USE_XYF_NUM then
-            Player.SendSelfMsg(actor, '幸运符不足！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+            Player.SendSelfMsg(actor, '幸运符不足！', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
             return
         end
     end
@@ -261,7 +261,7 @@ function weapon_addluck_once(actor)
     local bUseBaoDiFuFlag = getflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_USE_BDF)
     if bUseBaoDiFuFlag == 1 then
         if Player.GetItemNumInBag(actor, CommonDefine.ITEMID_BAODIFU) < CommonDefine.ADDLUCK_USE_BDF_NUM then
-            Player.SendSelfMsg(actor, '保底符不足！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+            Player.SendSelfMsg(actor, '保底符不足！', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
             return
         end
     end    
@@ -292,7 +292,7 @@ function weapon_addluck_once(actor)
         refreshitem(actor, weaponitem)
         recalcabilitys(actor)        
 
-        Player.SendSelfMsg(actor, '祝福成功！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+        Player.SendSelfMsg(actor, '祝福成功！', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
     else
         --祝福失败
         if bUseBaoDiFuFlag ~= 1 then
@@ -306,7 +306,7 @@ function weapon_addluck_once(actor)
                 recalcabilitys(actor)             
             end
         end
-        Player.SendSelfMsg(actor, '祝福失败！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)                     
+        Player.SendSelfMsg(actor, '祝福失败！', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)                     
     end
 
     inner_show_page(actor)
@@ -338,7 +338,7 @@ function weapon_auto_addluck(actor)
     end
     local cfgNextKey = nextLuckLevel
     if cfgWeaponLuck[cfgNextKey] == nil then
-        Player.SendSelfMsg(actor, '当前祝福已达到上限！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+        Player.SendSelfMsg(actor, '当前祝福已达到上限！', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
         return
     end
 
@@ -351,7 +351,7 @@ function weapon_auto_addluck(actor)
     local bUseXinYunFuFlag = getflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_USE_XYF)
     if bUseXinYunFuFlag == 1 then
         if Player.GetItemNumInBag(actor, CommonDefine.ITEMID_XINYUNFU) < CommonDefine.ADDLUCK_USE_XYF_NUM then
-            Player.SendSelfMsg(actor, '幸运符不足！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+            Player.SendSelfMsg(actor, '幸运符不足！', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
             return
         end
     end
@@ -360,7 +360,7 @@ function weapon_auto_addluck(actor)
     local bUseBaoDiFuFlag = getflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_USE_BDF)
     if bUseBaoDiFuFlag == 1 then
         if Player.GetItemNumInBag(actor, CommonDefine.ITEMID_BAODIFU) < CommonDefine.ADDLUCK_USE_BDF_NUM then
-            Player.SendSelfMsg(actor, '保底符不足！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+            Player.SendSelfMsg(actor, '保底符不足！', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
             return
         end
     end 

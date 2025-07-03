@@ -336,9 +336,9 @@ function GMHelper.DoGmOper(actor, sid)
         setplaydef(actor, CommonDefine.VAR_J_DAY_BAOZHU_BOSS_TIMES, 0)
     elseif sid == '18' then
         if RandomBossManager.CreateNewRandomBoss(actor) ~= -1 then
-            Player.SendSelfMsg(actor, '战力首领已刷出，请前往首领尊者查看！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+            Player.SendSelfMsg(actor, '战力首领已刷出，请前往首领尊者查看！', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
         else
-            Player.SendSelfMsg(actor, '战力首领已达上限或者玩家战力超过界限！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+            Player.SendSelfMsg(actor, '战力首领已达上限或者玩家战力超过界限！', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
         end
     elseif sid == '19' then
         RandomBossManager.TestClearAllFightingMapInfo()
@@ -358,10 +358,10 @@ function GMHelper.DoGmOper(actor, sid)
         if currVIPLv < FreeVIPManager.MAX_LEVEL then
             currVIPLv = currVIPLv + 1
             FreeVIPManager.SetVIPLevel(actor, currVIPLv)            
-            Player.SendSelfMsg(actor, 'VIP升级到'..currVIPLv, CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+            Player.SendSelfMsg(actor, 'VIP升级到'..currVIPLv, CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
         else
             setplaydef(actor, CommonDefine.VAR_U_FREEVIP_LEVEL, 0)
-            Player.SendSelfMsg(actor, 'VIP回到'..0, CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+            Player.SendSelfMsg(actor, 'VIP回到'..0, CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
         end
     elseif sid == '31' then
         addhpper(actor, '=', 1)
@@ -380,7 +380,7 @@ function GMHelper.DoGmOper(actor, sid)
         TaskManager.DeleteTask(actor, CommonDefine.TASK_LINE_ID_BRANCH)
     elseif sid == '38' then
         setplaydef(actor, CommonDefine.VAR_U_FREEVIP_LEVEL, 0)
-        Player.SendSelfMsg(actor, 'VIP回到'..0, CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)    
+        Player.SendSelfMsg(actor, 'VIP回到'..0, CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)    
     elseif sid == '39' then
         changelevel(actor, '+', 1)
         Player.FullHPMP(actor)        
@@ -473,32 +473,32 @@ function GMHelper.DoGmOper(actor, sid)
         setsysvar(CommonDefine.VAR_G_OPENSERVER_DAY, 0)
         setsysvar(CommonDefine.VAR_G_OPENSERVER_MINITUE_COUNTER, 0)
         setsysvar(CommonDefine.VAR_G_OPENSERVER_SECOND_COUNTER, 0)
-        Player.SendSelfMsg(actor, '重置为开服第1天 0分 0秒', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+        Player.SendSelfMsg(actor, '重置为开服第1天 0分 0秒', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
         GMHelper.OpenPanel(actor)
     elseif sid == '1902' then
         local openday = getsysvar(CommonDefine.VAR_G_OPENSERVER_DAY) + 1        
         setsysvar(CommonDefine.VAR_G_OPENSERVER_DAY, openday)
-        Player.SendSelfMsg(actor, '设置开服天数:'..openday, CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+        Player.SendSelfMsg(actor, '设置开服天数:'..openday, CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
         GMHelper.OpenPanel(actor)
     elseif sid == '1903' then
         local counter = getsysvar(CommonDefine.VAR_G_OPENSERVER_MINITUE_COUNTER) + 10        
         setsysvar(CommonDefine.VAR_G_OPENSERVER_MINITUE_COUNTER, counter)
-        Player.SendSelfMsg(actor, '设置开服分钟:'..counter, CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+        Player.SendSelfMsg(actor, '设置开服分钟:'..counter, CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
         GMHelper.OpenPanel(actor)
     elseif sid == '1904' then
         local counter = getsysvar(CommonDefine.VAR_G_OPENSERVER_MINITUE_COUNTER) + 1        
         setsysvar(CommonDefine.VAR_G_OPENSERVER_MINITUE_COUNTER, counter)
-        Player.SendSelfMsg(actor, '设置开服分钟:'..counter, CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+        Player.SendSelfMsg(actor, '设置开服分钟:'..counter, CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
         GMHelper.OpenPanel(actor)
     elseif sid == '1905' then
         local strPaoKuSwitch = getsysvar(CommonDefine.VAR_A_PAOKU_SWITCH)
         if strPaoKuSwitch == '已开启' then
             setsysvar(CommonDefine.VAR_A_PAOKU_SWITCH, '')
-            Player.SendSelfMsg(actor, '跑酷已关闭', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+            Player.SendSelfMsg(actor, '跑酷已关闭', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
             GMHelper.OpenPanel(actor)            
         else
             setsysvar(CommonDefine.VAR_A_PAOKU_SWITCH, '已开启')
-            Player.SendSelfMsg(actor, '跑酷已开启', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+            Player.SendSelfMsg(actor, '跑酷已开启', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
             GMHelper.OpenPanel(actor)            
         end
     elseif sid == '1995' then

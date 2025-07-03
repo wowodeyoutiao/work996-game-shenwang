@@ -264,7 +264,7 @@ local function GetDayReward(actor)
 
     local getrewardflag = getplaydef(actor, CommonDefine.VAR_J_DAY_GUAZHI_GETREWARD)
     if getrewardflag == 1 then
-        Player.SendSelfMsg(actor, '今日的官俸奖励已领取，请明日再来！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+        Player.SendSelfMsg(actor, '今日的官俸奖励已领取，请明日再来！', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
         return
     end
 

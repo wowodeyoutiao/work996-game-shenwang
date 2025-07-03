@@ -3,8 +3,10 @@
 Check [2] 1
 #ACT
 MOV N$按钮灰化 1
+MOV S$按钮文字 已经开启
 #ELSEACT
 MOV N$按钮灰化 0
+MOV S$按钮文字 开启狂暴
 
 
 #IF
@@ -17,7 +19,7 @@ MOV N$按钮灰化 0
 <Text|x=400|y=100.0|color=103|size=18|outline=1|text=消耗：元宝×10万(击杀者获得2万)>
 <Text|x=400|y=130.0|color=7|size=18|outline=1|text=只有被人物击杀此状态才会丢失>
 <Text|x=400|y=160.0|color=7|size=18|outline=1|text=5分钟内只能获得1次狂暴奖励>
-<Button|id=60|x=500|y=190|nimg=public/wz/bt21.png|text=开启狂暴|color=251|size=18|link=@开启狂暴|grey=<$STR(N$按钮灰化)>>
+<Button|id=60|x=500|y=190|nimg=public/wz/bt21.png|text=<$STR(S$按钮文字)>|color=251|size=18|link=@开启狂暴|grey=<$STR(N$按钮灰化)>>
 
 <Text|x=480|y=320.0|color=250|size=18|outline=1|text=★人物倍攻1.2倍\★打怪爆率1.3倍\★人物体力50%\攻击附带毒素效果>
 

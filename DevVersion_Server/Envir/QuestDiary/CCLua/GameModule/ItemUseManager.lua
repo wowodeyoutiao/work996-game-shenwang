@@ -16,7 +16,7 @@ function ItemUseManager.DoUse(actor, smakeindex)
     local itemid = getiteminfo(actor, itemobj, CommonDefine.ITEMINFO_ITEMIDX)
     local anicount = getstditeminfo(itemid, CommonDefine.STDITEMINFO_ANICOUNT)
     if anicount == 0 then
-        Player.SendSelfMsg(actor, '道具功能还未开启！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+        Player.SendSelfMsg(actor, '道具功能还未开启！', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
         return false
     -- elseif anicount == 10 then
     --     --随机传送石
@@ -111,11 +111,11 @@ function ItemUseManager.DoUse(actor, smakeindex)
                 delitembymakeindex(actor, smakeindex, nil, '使用筛子 id:'..itemid..' num:'..nPileCount)
                 return false
             else
-                Player.SendSelfMsg(actor, '已经达到了今日的最大可用次数！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)                
+                Player.SendSelfMsg(actor, '已经达到了今日的最大可用次数！', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)                
                 return false
             end
         else
-            Player.SendSelfMsg(actor, '无法开启 ！！！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+            Player.SendSelfMsg(actor, '无法开启 ！！！', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
             return false
         end
     end

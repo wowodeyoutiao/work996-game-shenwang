@@ -42,7 +42,7 @@ function JumpAreaRandomFighting.GMResetCfg(actor)
     local tempstr = tbl2json(ACTIVITY_BASE_CONFIG)
     setsysvar(CommonDefine.VAR_A_JUMPAREA_RANDFIGHTING_TEST_CFG_DATA, tempstr)
     setsysvar(CommonDefine.VAR_G_JUMPAREA_RANDFIGHTING_REWARD_STATUS, 0) 
-    Player.SendSelfMsg(actor, '跨服大乱斗设置成当前开启，5分钟后结束，结束3分钟后发奖（本服）！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+    Player.SendSelfMsg(actor, '跨服大乱斗设置成当前开启，5分钟后结束，结束3分钟后发奖（本服）！', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
 end
 
 --显示规则面板
@@ -236,19 +236,19 @@ function JumpAreaRandomFighting.EnterBossMap(actor)
 
     local weekday = os.date("%w")
     if not table.indexof(ACTIVITY_BASE_CONFIG.validweekday, weekday) then
-        Player.SendSelfMsg(actor, '不在活动日，无法进入！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+        Player.SendSelfMsg(actor, '不在活动日，无法进入！', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
         return
     end
 
     if (currhour<ACTIVITY_BASE_CONFIG.starttime.hour) or (currhour==ACTIVITY_BASE_CONFIG.starttime.hour and currmin<ACTIVITY_BASE_CONFIG.starttime.min) or
        (currhour>ACTIVITY_BASE_CONFIG.endtime.hour) or (currhour==ACTIVITY_BASE_CONFIG.endtime.hour and currmin>ACTIVITY_BASE_CONFIG.endtime.min) then
-        Player.SendSelfMsg(actor, '不在活动时间段内，无法进入！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+        Player.SendSelfMsg(actor, '不在活动时间段内，无法进入！', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
         return      
     end
 
     local lastentertime = getplaydef(actor, CommonDefine.VAR_J_DAY_JUMPAREA_BOSS_LAST_ENTERTIME)
     if math.abs(currtime - lastentertime) < ACTIVITY_BASE_CONFIG.enterintervalseconds then
-        Player.SendSelfMsg(actor, '还在间隔CD中，等待进入！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+        Player.SendSelfMsg(actor, '还在间隔CD中，等待进入！', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
         return
     end
     setplaydef(actor, CommonDefine.VAR_J_DAY_JUMPAREA_BOSS_LAST_ENTERTIME, currtime)
@@ -535,7 +535,7 @@ function JumpAreaRandomFighting.OnPlayerDie(actor, killername)
     realive(actor)
     Player.FullHPMP(actor)
     map(actor, ACTIVITY_BASE_CONFIG.bossmap)
-    Player.SendSelfMsg(actor, '你被'..killername..'击杀，已复活请再接再厉！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+    Player.SendSelfMsg(actor, '你被'..killername..'击杀，已复活请再接再厉！', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
 end
 
 --击杀怪物触发

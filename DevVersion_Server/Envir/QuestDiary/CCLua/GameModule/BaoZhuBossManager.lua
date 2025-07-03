@@ -105,9 +105,9 @@ function BaoZhuBossManager.DoMapButton(actor, sid)
             if idstr == mapidstr then
                 local myguild = getmyguild(actor) 
                 if BF_IsNullObj(myguild) then
-                    Player.SendSelfMsg(actor, '当前没有行会！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+                    Player.SendSelfMsg(actor, '当前没有行会！', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
                 else
-                    Player.SendGuildMsg(actor, '行会成员['..Player.GetName(actor)..']在灵玉副本['..value.showname..']中进行挑战，速来助他一臂之力！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+                    Player.SendGuildMsg(actor, '行会成员['..Player.GetName(actor)..']在灵玉副本['..value.showname..']中进行挑战，速来助他一臂之力！', CommonDefine.MSG_POS_TYPE_GUILD_CHANNEL)
                 end
                 break
             end
@@ -335,7 +335,7 @@ end
 local function GotoBossMap(actor, id)
     local currentertimes = getplaydef(actor, CommonDefine.VAR_J_DAY_BAOZHU_BOSS_TIMES)
     if currentertimes >= CommonDefine.DAY_BAOZHUBOSS_GETREWARD_MAXTIMES then
-        Player.SendSelfMsg(actor, '今日可挑战次数已用完！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+        Player.SendSelfMsg(actor, '今日可挑战次数已用完！', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
         return
     end
     if (id < 1) or (id > #cfgBaoZhuBossInfo) then
@@ -346,7 +346,7 @@ local function GotoBossMap(actor, id)
         return
     end
     if Player.GetPlayerPower(actor) < bossinfo.needscore then
-        Player.SendSelfMsg(actor, '挑战需要的战力不足！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+        Player.SendSelfMsg(actor, '挑战需要的战力不足！', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
         return
     end
 

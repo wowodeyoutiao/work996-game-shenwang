@@ -126,7 +126,7 @@ function do_buytimes(actor)
     end
     local leftbuytimes = SingleBossManager.GetLeftBuyTimes(actor)
     if currshowtimes > leftbuytimes then
-        Player.SendSelfMsg(actor, '剩余今日购买次数不足！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+        Player.SendSelfMsg(actor, '剩余今日购买次数不足！', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
         return
     end
  
@@ -154,7 +154,7 @@ function goto_boss(actor, sid)
     end
     local lefttimes = SingleBossManager.GetLeftKillTimes(actor)
     if lefttimes <= 0 then
-        Player.SendSelfMsg(actor, '挑战剩余次数不足，可以购买增加次数！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+        Player.SendSelfMsg(actor, '挑战剩余次数不足，可以购买增加次数！', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
         return
     end
 
@@ -167,13 +167,13 @@ function goto_boss(actor, sid)
         return
     end
     if Player.GetLevel(actor) < bossinfo.needlevel then
-        Player.SendSelfMsg(actor, '挑战需要的等级不足！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+        Player.SendSelfMsg(actor, '挑战需要的等级不足！', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
         return
     end
 
     local humcount = getplaycountinmap(actor, bossinfo.mapid, 0)
     if humcount > 0 then
-        Player.SendSelfMsg(actor, '有玩家还在地图中，无人时方可进入！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+        Player.SendSelfMsg(actor, '有玩家还在地图中，无人时方可进入！', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
         return
     end
 

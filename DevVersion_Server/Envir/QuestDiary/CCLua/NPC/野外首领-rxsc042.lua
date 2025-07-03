@@ -83,7 +83,7 @@ function goto_boss(actor, sid)
         return
     end
     if Player.GetLevel(actor) < bossinfo.needlevel then
-        Player.SendSelfMsg(actor, '挑战需要的等级不足！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+        Player.SendSelfMsg(actor, '挑战需要的等级不足！', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
         return
     end
 

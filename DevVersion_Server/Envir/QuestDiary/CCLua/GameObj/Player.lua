@@ -306,7 +306,7 @@ function Player.CheckItemsEnough(actor, checkitems, notifyreason, multiple)
         local bagItemNum, needitemname = Player.GetItemNumInBag(actor, nameOrIdx, true);
         if bagItemNum < itemnum then
             if notifyreason and (notifyreason~='') and (needitemname~=nil) then
-                Player.SendSelfMsg(actor, notifyreason..'所需的'..needitemname..'不足！', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+                Player.SendSelfMsg(actor, notifyreason..'所需的'..needitemname..'不足！', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
             end
             return false
         end
@@ -411,7 +411,7 @@ function Player.GiveItemsByMail(actor, rewarditems, mailtitle, maildesc)
 
     local playerid = Player.GetPlayerIDStr(actor)
     sendmail(playerid, CommonDefine.MAIL_ID_BAGFULL, mailtitle, maildesc, itemstr)    
-    Player.SendSelfMsg(actor, '请查收邮件:'..mailtitle, CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+    Player.SendSelfMsg(actor, '请查收邮件:'..mailtitle, CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
 end
 
 --按照playerid给玩家发奖励邮件
@@ -610,7 +610,7 @@ function Player.InitNewPlayer(actor)
         --触发点击初始NPC
         opennpcshowex(actor, 1, 3, 3)
         --系统消息
-        Player.SendSelfMsg(actor, parsetext('[系统：]欢迎玩家{[<$USERNAME>]|251:249:1}进入{[<$SERVERNAME>]|255:180:1}！', actor), CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+        Player.SendSelfMsg(actor, parsetext('[系统：]欢迎玩家{[<$USERNAME>]|251:249:1}进入{[<$SERVERNAME>]|255:180:1}！', actor), CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
         Player.SendServerMsg(actor, parsetext('[系统：]欢迎玩家[<$USERNAME>]进入[<$SERVERNAME>]！', actor), CommonDefine.MSG_POS_TYPE_TOP_ROLL, CSS.CHAT_YELLOW, CSS.CHAT_BLACK)
     end
 end
@@ -753,7 +753,7 @@ function Player.QuickGoTo(actor, gotoid)
             openhyperlink(actor, 7)
             navigation(actor, 1, makeindex, '双击使用藏宝图')
         else
-            Player.SendSelfMsg(actor, '暂无藏宝图', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+            Player.SendSelfMsg(actor, '暂无藏宝图', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
         end
     elseif gotoid == CommonDefine.QUICK_GOTO_GUANZHI then
         --官职
@@ -779,7 +779,7 @@ function Player.QuickGoTo(actor, gotoid)
             openhyperlink(actor, 7)
             navigation(actor, 1, makeindex, '双击获取开箱次数')
         else
-            Player.SendSelfMsg(actor, '暂无可用于增加开箱次数的道具', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+            Player.SendSelfMsg(actor, '暂无可用于增加开箱次数的道具', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
         end
     end
 end
