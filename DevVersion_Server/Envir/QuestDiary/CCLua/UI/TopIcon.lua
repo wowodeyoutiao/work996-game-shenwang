@@ -11,6 +11,7 @@ local ICON_EXTENDGIFT = '8'                     --进阶礼包
 local ICON_FREEVIP = '9'                        --免费VIP
 local ICON_JUMPAREA = '10'                      --跨服玩法
 local ICON_EVERYDAY_TASK = '11'                 --每日必做
+local ICON_BAIPIAO_GIFT = '12'                  --白嫖礼包
 
 local ICON_EXTEND_STORAGE_MAKESURE = '13'       --仓库扩容，确认
 local ICON_SHOW_QUICK_TIP_PANEL = '14'          --打开有红点功能对应的快捷提示框
@@ -25,6 +26,7 @@ local MAINICON_ID_4 = 'mainicon_4'              --首充 iconid
 local MAINICON_ID_5 = 'mainicon_5'              --每日必做 iconid
 local MAINICON_ID_6 = 'mainicon_6'              --免费VIP iconid
 local MAINICON_ID_7 = 'mainicon_7'              --跨服玩法 iconid
+local MAINICON_ID_8 = 'mainicon_8'              --白嫖礼包 iconid
 
 
 function TopIcon.InitUI(actor)
@@ -88,6 +90,14 @@ function TopIcon.OpenPanel(actor, sid, sparam)
         setplaydef(actor, CommonDefine.VAR_N_CURR_FUNCTION_ID, CommonDefine.FUNC_ID_JUMPAREA_BASE)        
         setplaydef(actor, CommonDefine.VAR_N_LAST_NPC_CHOOSEID, -1)
         JumpAreaManager.ShowBasePanel(actor)
+    elseif sid == ICON_BAIPIAO_GIFT then
+        --白嫖礼包        
+        if not Player.IsFunctionOpen(actor, CommonDefine.FUNC_ID_BAIPIAO_GIFT, true) then
+            return
+        end
+        setplaydef(actor, CommonDefine.VAR_N_CURR_FUNCTION_ID, CommonDefine.FUNC_ID_BAIPIAO_GIFT)
+        setplaydef(actor, CommonDefine.VAR_N_LAST_NPC_CHOOSEID, -1)
+        BaiPiaoGift.ShowBasePanel(actor)
     elseif sid == ICON_EXTEND_STORAGE_MAKESURE then
         --扩容仓库 确定
         TopIcon.DoExtendStorage(actor)
@@ -152,6 +162,10 @@ function TopIcon.InnerExtendPanel(actor)
             currIconX = currIconX - 80
             buttonstr = buttonstr..'<Button|id='..MAINICON_ID_3..'|x='..currIconX..'|y=80|nimg=private/cc_func_icon/3.png|link=@topicon_openpanel#sid='..ICON_NEWPLAYER_RECHARGEACTIVITY..'>'
         end            
+        if BaiPiaoGift.CanShowIcon(actor) then
+            currIconX = currIconX - 80
+            buttonstr = buttonstr..'<Button|id='..MAINICON_ID_8..'|x='..currIconX..'|y=80|nimg=private/cc_func_icon/11.png|link=@topicon_openpanel#sid='..ICON_BAIPIAO_GIFT..'>'        
+        end        
         addbutton(actor, 102, CommonDefine.ADD_BUTTON_ID_34, buttonstr)
     end
 end

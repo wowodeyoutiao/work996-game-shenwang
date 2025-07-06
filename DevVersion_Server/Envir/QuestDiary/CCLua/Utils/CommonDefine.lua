@@ -315,6 +315,7 @@ CommonDefine = {
 
     VAR_G_JUMPAREA_DAMAGERANK_REWARD_STATUS = 'G101',   --跨服boss伤害 活动状态 1活动未发奖 2活动已发奖
     VAR_G_JUMPAREA_RANDFIGHTING_REWARD_STATUS = 'G102', --跨服大乱斗 活动状态 1活动未发奖 2活动已发奖
+    VAR_G_BAIPIAOGIFT_VERSION = 'G103',                 --白嫖礼包的服务器版本
 
     VAR_G_OPENSERVER_SECOND_COUNTER = 'G200',           --开服后 秒计数 有人才计数
     VAR_G_OPENSERVER_MINITUE_COUNTER = 'G387',          --开服后 分钟计数 有人才计数
@@ -468,6 +469,7 @@ CommonDefine = {
     VAR_U_JUMPAREA_BOSS_DAMAGE_LOW = 'U215',    --玩家今日    对跨服boss造成伤害 万位以下
     VAR_U_JUMPAREA_FIGHTING_KMVALUE = 'U216',   --玩家今日    跨服大乱斗抗魔值
     VAR_U_TREASUREMAP_CURRID = 'U217',          --当前对应的藏宝图配置id
+    VAR_U_BAIPIAOGIFT_VERSION = 'U218',         --白嫖礼包的玩家版本
     
     --玩家字符型变量，下线保存 T0 - T254
     VAR_T_EQUIPPOS_STRENGTH_INFO = 'T41',        --玩家的装备位强化信息
@@ -485,6 +487,7 @@ CommonDefine = {
     VAR_T_OPENSERVER_REWARDDATA4 = 'T53',                --开服活动领奖信息--战力达标
     VAR_T_EXTENDGIFT_REWARDDATA = 'T54',                 --进阶礼包领奖信息
     VAR_T_JUMPAREA_SHOP_BUYDATA = 'T55',                 --跨服商店兑换信息
+    VAR_T_BAIPIAOGIFT_DATA = 'T56',                      --白嫖礼包的玩家数据
 
     --玩家数字变量，下线保存，0点重置 J0 - J499
     --[[        
@@ -682,6 +685,7 @@ CommonDefine = {
     FUNC_ID_JUMPAREA_3 = 33,                    --跨服活动  跨服BOSS
     FUNC_ID_JUMPAREA_4 = 34,                    --跨服活动  跨服夺宝
     FUNC_ID_JUMPAREA_5 = 35,                    --跨服活动  跨服商店
+    FUNC_ID_BAIPIAO_GIFT = 36,                  --白嫖礼包
     
 
     --快捷前往
@@ -744,6 +748,7 @@ CommonDefine = {
     TASK_TYPE_EQUIPPOS_STRENGTH = 6,              --装备槽位强化
     TASK_TYPE_SKILL_UPGRADE = 7,                  --技能升级
     TASK_TYPE_SUPERBOX_UPGRADE = 8,               --宝箱升级
+    TASK_TYPE_TITLE_UPGRADE = 9,                  --升级称号
 
 
     --任务线状态
