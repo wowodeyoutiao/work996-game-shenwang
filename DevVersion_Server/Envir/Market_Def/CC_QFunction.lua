@@ -267,6 +267,11 @@ function killmon(actor, monobjidstr, killtype, mapidstr)
     GameEventManager.DoTriggerEvent(CommonDefine.EVENT_NAME_KILL_MON, actor, mon, killtype, mapidstr)    
 end
 
+--称号改变
+function ontitleupgrade(actor)
+    release_print('ontitleupgrade')
+    TaskManager.OnTitleUpgrade(actor)
+end
 
 ----------------------------------------改名相关-----------------------------------------
 
