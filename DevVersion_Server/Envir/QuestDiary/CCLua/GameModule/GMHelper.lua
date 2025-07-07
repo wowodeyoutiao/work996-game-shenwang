@@ -518,8 +518,10 @@ function GMHelper.DoGmOper(actor, sid)
         --setplaydef(actor, CommonDefine.VAR_J_DAY_SUPERBOX_OPENNUM, 0)
         --addattlist(actor, CommonDefine.ABILITY_GROUP_TEMPTEST, "+", "3#72#1")      
         --recalcabilitys(actor)        
-        mapmove(actor, 'rxsc1560', 648, 622, 3)
-        setplaydef(actor, 'U1', 18)
+        --mapmove(actor, 'rxsc1560', 648, 622, 3)
+        --setplaydef(actor, 'U1', 18)
+        setplaydef(actor, CommonDefine.VAR_T_BAIPIAOGIFT_DATA, '')
+        setplaydef(actor, CommonDefine.VAR_U_BAIPIAOGIFT_VERSION, 0)
     else
         --³¬¼¶Ìø×ª
         for index, value in ipairs(TEST_SUPER_JUMP_CFG) do

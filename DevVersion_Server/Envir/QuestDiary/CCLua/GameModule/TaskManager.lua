@@ -745,6 +745,8 @@ function TaskManager.OnPlayerClickTask(actor, clicktaskidstr)
                             Player.QuickGoTo(actor, CommonDefine.QUICK_GOTO_SKILL_UPGRADE)
                         elseif singletask.tasktype == CommonDefine.TASK_TYPE_SUPERBOX_UPGRADE then
                             Player.QuickGoTo(actor, CommonDefine.QUICK_GOTO_SUPERBOX_UPGRADE)
+                        elseif singletask.taskstype == CommonDefine.TASK_TYPE_TITLE_UPGRADE then
+                            Player.QuickGoTo(actor, CommonDefine.QUICK_GOTO_TITLE_UPGRADE)
                         else
                             if singletask.targpos then                
                                 if BF_GetDistanceFromMapPoint(actor, singletask.targpos.mapid, singletask.targpos.x, singletask.targpos.y) < 5 then

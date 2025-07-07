@@ -2,6 +2,7 @@ local config = {
 	[101] = { 
 		giftid = 101,
 		groupid = 1,
+<<<<<<< HEAD
 		groupname = "礼包分组1",
 		innerseq = 1,
 		giftname = "礼包1",
@@ -11,10 +12,22 @@ local config = {
 		maxbuytimes = 5,
 		needitemslist = "[[{\"name\":\"元宝\", \"num\":600}],[{\"name\":\"元宝\", \"num\":550}],[{\"name\":\"元宝\", \"num\":500}],[{\"name\":\"元宝\", \"num\":450}],[{\"name\":\"元宝\", \"num\":400}]]",
 		giftitems = "[{\"name\":\"1级筛子\", \"num\":2},{\"name\":\"强化石\", \"num\":300}, {\"name\":\"金币\", \"num\":1000000}]",
+=======
+		groupname = "开箱礼包",
+		innerseq = 1,
+		giftname = "加速礼包",
+		giftnamecolor = 255,
+		valueshow = "原价：68元",
+		freeminutes = 840,
+		maxbuytimes = 5,
+		needitemslist = "[[{\"name\":\"元宝\", \"num\":6000}],[{\"name\":\"元宝\", \"num\":5000}],[{\"name\":\"元宝\", \"num\":4000}],[{\"name\":\"元宝\", \"num\":3500}],[{\"name\":\"元宝\", \"num\":3000}]]",
+		giftitems = "[{\"name\":\"加速卷轴\", \"num\":1000}, {\"name\":\"金币\", \"num\":1000000}]",
+>>>>>>> 464c2f673c31ee838f91e05a5e363efaa4e605e4
 	},
 	[102] = { 
 		giftid = 102,
 		groupid = 1,
+<<<<<<< HEAD
 		groupname = "礼包分组1",
 		innerseq = 2,
 		giftname = "礼包2",
@@ -24,10 +37,22 @@ local config = {
 		maxbuytimes = 5,
 		needitemslist = "[[{\"name\":\"元宝\", \"num\":600}],[{\"name\":\"元宝\", \"num\":550}],[{\"name\":\"元宝\", \"num\":500}],[{\"name\":\"元宝\", \"num\":450}],[{\"name\":\"元宝\", \"num\":400}]]",
 		giftitems = "[{\"name\":\"2级筛子\", \"num\":2},{\"name\":\"书页\", \"num\":300}, {\"name\":\"金币\", \"num\":2000000}]",
+=======
+		groupname = "开箱礼包",
+		innerseq = 2,
+		giftname = "箱子礼包Ⅰ",
+		giftnamecolor = 255,
+		valueshow = "原价：100元",
+		freeminutes = 1200,
+		maxbuytimes = 5,
+		needitemslist = "[[{\"name\":\"元宝\", \"num\":9000}],[{\"name\":\"元宝\", \"num\":8000}],[{\"name\":\"元宝\", \"num\":7500}],[{\"name\":\"元宝\", \"num\":7000}],[{\"name\":\"元宝\", \"num\":6500}]]",
+		giftitems = "[{\"name\":\"4级筛子\", \"num\":50}]",
+>>>>>>> 464c2f673c31ee838f91e05a5e363efaa4e605e4
 	},
 	[103] = { 
 		giftid = 103,
 		groupid = 1,
+<<<<<<< HEAD
 		groupname = "礼包分组1",
 		innerseq = 3,
 		giftname = "礼包3",
@@ -37,10 +62,22 @@ local config = {
 		maxbuytimes = 5,
 		needitemslist = "[[{\"name\":\"元宝\", \"num\":600}],[{\"name\":\"元宝\", \"num\":550}],[{\"name\":\"元宝\", \"num\":500}],[{\"name\":\"元宝\", \"num\":450}],[{\"name\":\"元宝\", \"num\":400}]]",
 		giftitems = "[{\"name\":\"升星石\", \"num\":500}, {\"name\":\"特级升星符\", \"num\":1}, {\"name\":\"金币\", \"num\":5000000}]",
+=======
+		groupname = "开箱礼包",
+		innerseq = 3,
+		giftname = "箱子礼包Ⅱ",
+		giftnamecolor = 255,
+		valueshow = "原价：180元",
+		freeminutes = 2160,
+		maxbuytimes = 5,
+		needitemslist = "[[{\"name\":\"元宝\", \"num\":16000}],[{\"name\":\"元宝\", \"num\":15000}],[{\"name\":\"元宝\", \"num\":14000}],[{\"name\":\"元宝\", \"num\":13000}],[{\"name\":\"元宝\", \"num\":12000}]]",
+		giftitems = "[{\"name\":\"5级筛子\", \"num\":60}]",
+>>>>>>> 464c2f673c31ee838f91e05a5e363efaa4e605e4
 	},
 	[104] = { 
 		giftid = 104,
 		groupid = 1,
+<<<<<<< HEAD
 		groupname = "礼包分组1",
 		innerseq = 4,
 		giftname = "礼包4",
@@ -63,10 +100,22 @@ local config = {
 		maxbuytimes = 5,
 		needitemslist = "[[{\"name\":\"元宝\", \"num\":600}],[{\"name\":\"元宝\", \"num\":550}],[{\"name\":\"元宝\", \"num\":500}],[{\"name\":\"元宝\", \"num\":450}],[{\"name\":\"元宝\", \"num\":400}]]",
 		giftitems = "[{\"name\":\"8星直升宝石\", \"num\":1},{\"name\":\"4级筛子\", \"num\":5}, {\"name\":\"绑定元宝\", \"num\":3000}]",
+=======
+		groupname = "开箱礼包",
+		innerseq = 4,
+		giftname = "箱子礼包Ⅲ",
+		giftnamecolor = 255,
+		valueshow = "原价：388元",
+		freeminutes = 4680,
+		maxbuytimes = 5,
+		needitemslist = "[[{\"name\":\"元宝\", \"num\":37000}],[{\"name\":\"元宝\", \"num\":36000}],[{\"name\":\"元宝\", \"num\":35000}],[{\"name\":\"元宝\", \"num\":34000}],[{\"name\":\"元宝\", \"num\":33000}]]",
+		giftitems = "[{\"name\":\"6级筛子\", \"num\":100}]",
+>>>>>>> 464c2f673c31ee838f91e05a5e363efaa4e605e4
 	},
 	[201] = { 
 		giftid = 201,
 		groupid = 2,
+<<<<<<< HEAD
 		groupname = "礼包分组2",
 		innerseq = 1,
 		giftname = "礼包6",
@@ -76,10 +125,22 @@ local config = {
 		maxbuytimes = 5,
 		needitemslist = "[[{\"name\":\"元宝\", \"num\":600}],[{\"name\":\"元宝\", \"num\":550}],[{\"name\":\"元宝\", \"num\":500}],[{\"name\":\"元宝\", \"num\":450}],[{\"name\":\"元宝\", \"num\":400}]]",
 		giftitems = "[{\"name\":\"10星直升宝石\", \"num\":1}, {\"name\":\"传奇经验珠\", \"num\":2}, {\"name\":\"金币\", \"num\":5000000}]",
+=======
+		groupname = "强化礼包",
+		innerseq = 1,
+		giftname = "强化礼包Ⅰ",
+		giftnamecolor = 255,
+		valueshow = "原价：88元",
+		freeminutes = 1080,
+		maxbuytimes = 5,
+		needitemslist = "[[{\"name\":\"元宝\", \"num\":8000}],[{\"name\":\"元宝\", \"num\":7000}],[{\"name\":\"元宝\", \"num\":6500}],[{\"name\":\"元宝\", \"num\":5000}],[{\"name\":\"元宝\", \"num\":4500}]]",
+		giftitems = "[{\"name\":\"强化石\", \"num\":1000}, {\"name\":\"金币\", \"num\":2000000}]",
+>>>>>>> 464c2f673c31ee838f91e05a5e363efaa4e605e4
 	},
 	[202] = { 
 		giftid = 202,
 		groupid = 2,
+<<<<<<< HEAD
 		groupname = "礼包分组2",
 		innerseq = 2,
 		giftname = "礼包7",
@@ -89,10 +150,22 @@ local config = {
 		maxbuytimes = 5,
 		needitemslist = "[[{\"name\":\"元宝\", \"num\":600}],[{\"name\":\"元宝\", \"num\":550}],[{\"name\":\"元宝\", \"num\":500}],[{\"name\":\"元宝\", \"num\":450}],[{\"name\":\"元宝\", \"num\":400}]]",
 		giftitems = "[{\"name\":\"1级筛子\", \"num\":2},{\"name\":\"强化石\", \"num\":300}, {\"name\":\"金币\", \"num\":1000000}]",
+=======
+		groupname = "强化礼包",
+		innerseq = 2,
+		giftname = "强化礼包Ⅱ",
+		giftnamecolor = 255,
+		valueshow = "原价：128元",
+		freeminutes = 1560,
+		maxbuytimes = 5,
+		needitemslist = "[[{\"name\":\"元宝\", \"num\":11000}],[{\"name\":\"元宝\", \"num\":10000}],[{\"name\":\"元宝\", \"num\":9000}],[{\"name\":\"元宝\", \"num\":8000}],[{\"name\":\"元宝\", \"num\":7000}]]",
+		giftitems = "[{\"name\":\"强化石\", \"num\":1500}, {\"name\":\"金币\", \"num\":4000000}]",
+>>>>>>> 464c2f673c31ee838f91e05a5e363efaa4e605e4
 	},
 	[203] = { 
 		giftid = 203,
 		groupid = 2,
+<<<<<<< HEAD
 		groupname = "礼包分组2",
 		innerseq = 3,
 		giftname = "礼包8",
@@ -102,10 +175,22 @@ local config = {
 		maxbuytimes = 5,
 		needitemslist = "[[{\"name\":\"元宝\", \"num\":600}],[{\"name\":\"元宝\", \"num\":550}],[{\"name\":\"元宝\", \"num\":500}],[{\"name\":\"元宝\", \"num\":450}],[{\"name\":\"元宝\", \"num\":400}]]",
 		giftitems = "[{\"name\":\"2级筛子\", \"num\":2},{\"name\":\"书页\", \"num\":300}, {\"name\":\"金币\", \"num\":2000000}]",
+=======
+		groupname = "强化礼包",
+		innerseq = 3,
+		giftname = "强化礼包Ⅲ",
+		giftnamecolor = 255,
+		valueshow = "原价：288元",
+		freeminutes = 3480,
+		maxbuytimes = 5,
+		needitemslist = "[[{\"name\":\"元宝\", \"num\":26000}],[{\"name\":\"元宝\", \"num\":25000}],[{\"name\":\"元宝\", \"num\":24000}],[{\"name\":\"元宝\", \"num\":23000}],[{\"name\":\"元宝\", \"num\":22000}]]",
+		giftitems = "[{\"name\":\"强化石\", \"num\":3000}, {\"name\":\"金币\", \"num\":6000000}]",
+>>>>>>> 464c2f673c31ee838f91e05a5e363efaa4e605e4
 	},
 	[204] = { 
 		giftid = 204,
 		groupid = 2,
+<<<<<<< HEAD
 		groupname = "礼包分组2",
 		innerseq = 4,
 		giftname = "礼包9",
@@ -128,10 +213,22 @@ local config = {
 		maxbuytimes = 5,
 		needitemslist = "[[{\"name\":\"元宝\", \"num\":600}],[{\"name\":\"元宝\", \"num\":550}],[{\"name\":\"元宝\", \"num\":500}],[{\"name\":\"元宝\", \"num\":450}],[{\"name\":\"元宝\", \"num\":400}]]",
 		giftitems = "[{\"name\":\"6星直升宝石\", \"num\":1},{\"name\":\"3级筛子\", \"num\":3}, {\"name\":\"金币\", \"num\":3000000}]",
+=======
+		groupname = "强化礼包",
+		innerseq = 4,
+		giftname = "强化礼包Ⅳ",
+		giftnamecolor = 255,
+		valueshow = "原价：468元",
+		freeminutes = 5640,
+		maxbuytimes = 5,
+		needitemslist = "[[{\"name\":\"元宝\", \"num\":45000}],[{\"name\":\"元宝\", \"num\":43000}],[{\"name\":\"元宝\", \"num\":41000}],[{\"name\":\"元宝\", \"num\":39000}],[{\"name\":\"元宝\", \"num\":37000}]]",
+		giftitems = "[{\"name\":\"强化石\", \"num\":6000}, {\"name\":\"金币\", \"num\":10000000}]",
+>>>>>>> 464c2f673c31ee838f91e05a5e363efaa4e605e4
 	},
 	[301] = { 
 		giftid = 301,
 		groupid = 3,
+<<<<<<< HEAD
 		groupname = "礼包分组3",
 		innerseq = 1,
 		giftname = "礼包11",
@@ -141,10 +238,22 @@ local config = {
 		maxbuytimes = 5,
 		needitemslist = "[[{\"name\":\"元宝\", \"num\":600}],[{\"name\":\"元宝\", \"num\":550}],[{\"name\":\"元宝\", \"num\":500}],[{\"name\":\"元宝\", \"num\":450}],[{\"name\":\"元宝\", \"num\":400}]]",
 		giftitems = "[{\"name\":\"8星直升宝石\", \"num\":1},{\"name\":\"4级筛子\", \"num\":5}, {\"name\":\"绑定元宝\", \"num\":3000}]",
+=======
+		groupname = "升星礼包",
+		innerseq = 1,
+		giftname = "升星礼包Ⅰ",
+		giftnamecolor = 255,
+		valueshow = "原价：98元",
+		freeminutes = 1200,
+		maxbuytimes = 5,
+		needitemslist = "[[{\"name\":\"元宝\", \"num\":9000}],[{\"name\":\"元宝\", \"num\":8000}],[{\"name\":\"元宝\", \"num\":7000}],[{\"name\":\"元宝\", \"num\":6000}],[{\"name\":\"元宝\", \"num\":5000}]]",
+		giftitems = "[{\"name\":\"升星石\", \"num\":500}, {\"name\":\"金币\", \"num\":1000000}]",
+>>>>>>> 464c2f673c31ee838f91e05a5e363efaa4e605e4
 	},
 	[302] = { 
 		giftid = 302,
 		groupid = 3,
+<<<<<<< HEAD
 		groupname = "礼包分组3",
 		innerseq = 2,
 		giftname = "礼包12",
@@ -154,10 +263,22 @@ local config = {
 		maxbuytimes = 5,
 		needitemslist = "[[{\"name\":\"元宝\", \"num\":600}],[{\"name\":\"元宝\", \"num\":550}],[{\"name\":\"元宝\", \"num\":500}],[{\"name\":\"元宝\", \"num\":450}],[{\"name\":\"元宝\", \"num\":400}]]",
 		giftitems = "[{\"name\":\"1级筛子\", \"num\":2},{\"name\":\"强化石\", \"num\":300}, {\"name\":\"金币\", \"num\":1000000}]",
+=======
+		groupname = "升星礼包",
+		innerseq = 2,
+		giftname = "升星礼包Ⅱ",
+		giftnamecolor = 255,
+		valueshow = "原价：198元",
+		freeminutes = 2400,
+		maxbuytimes = 5,
+		needitemslist = "[[{\"name\":\"元宝\", \"num\":18000}],[{\"name\":\"元宝\", \"num\":17000}],[{\"name\":\"元宝\", \"num\":16000}],[{\"name\":\"元宝\", \"num\":15000}],[{\"name\":\"元宝\", \"num\":14000}]]",
+		giftitems = "[{\"name\":\"升星石\", \"num\":1000}, {\"name\":\"金币\", \"num\":2000000}]",
+>>>>>>> 464c2f673c31ee838f91e05a5e363efaa4e605e4
 	},
 	[303] = { 
 		giftid = 303,
 		groupid = 3,
+<<<<<<< HEAD
 		groupname = "礼包分组3",
 		innerseq = 3,
 		giftname = "礼包13",
@@ -167,10 +288,22 @@ local config = {
 		maxbuytimes = 5,
 		needitemslist = "[[{\"name\":\"元宝\", \"num\":600}],[{\"name\":\"元宝\", \"num\":550}],[{\"name\":\"元宝\", \"num\":500}],[{\"name\":\"元宝\", \"num\":450}],[{\"name\":\"元宝\", \"num\":400}]]",
 		giftitems = "[{\"name\":\"2级筛子\", \"num\":2},{\"name\":\"书页\", \"num\":300}, {\"name\":\"金币\", \"num\":2000000}]",
+=======
+		groupname = "升星礼包",
+		innerseq = 3,
+		giftname = "升星礼包Ⅲ",
+		giftnamecolor = 255,
+		valueshow = "原价：398元",
+		freeminutes = 4800,
+		maxbuytimes = 5,
+		needitemslist = "[[{\"name\":\"元宝\", \"num\":38000}],[{\"name\":\"元宝\", \"num\":36000}],[{\"name\":\"元宝\", \"num\":34000}],[{\"name\":\"元宝\", \"num\":32000}],[{\"name\":\"元宝\", \"num\":30000}]]",
+		giftitems = "[{\"name\":\"升星石\", \"num\":2000}, {\"name\":\"金币\", \"num\":3000000}]",
+>>>>>>> 464c2f673c31ee838f91e05a5e363efaa4e605e4
 	},
 	[304] = { 
 		giftid = 304,
 		groupid = 3,
+<<<<<<< HEAD
 		groupname = "礼包分组3",
 		innerseq = 4,
 		giftname = "礼包14",
@@ -193,10 +326,22 @@ local config = {
 		maxbuytimes = 5,
 		needitemslist = "[[{\"name\":\"元宝\", \"num\":600}],[{\"name\":\"元宝\", \"num\":550}],[{\"name\":\"元宝\", \"num\":500}],[{\"name\":\"元宝\", \"num\":450}],[{\"name\":\"元宝\", \"num\":400}]]",
 		giftitems = "[{\"name\":\"6星直升宝石\", \"num\":1},{\"name\":\"3级筛子\", \"num\":3}, {\"name\":\"金币\", \"num\":3000000}]",
+=======
+		groupname = "升星礼包",
+		innerseq = 4,
+		giftname = "升星礼包Ⅳ",
+		giftnamecolor = 255,
+		valueshow = "原价：648元",
+		freeminutes = 7800,
+		maxbuytimes = 5,
+		needitemslist = "[[{\"name\":\"元宝\", \"num\":60000}],[{\"name\":\"元宝\", \"num\":58000}],[{\"name\":\"元宝\", \"num\":56000}],[{\"name\":\"元宝\", \"num\":54000}],[{\"name\":\"元宝\", \"num\":52000}]]",
+		giftitems = "[{\"name\":\"升星石\", \"num\":4000}, {\"name\":\"金币\", \"num\":4000000}]",
+>>>>>>> 464c2f673c31ee838f91e05a5e363efaa4e605e4
 	},
 	[401] = { 
 		giftid = 401,
 		groupid = 4,
+<<<<<<< HEAD
 		groupname = "礼包分组4",
 		innerseq = 1,
 		giftname = "礼包1",
@@ -206,10 +351,22 @@ local config = {
 		maxbuytimes = 5,
 		needitemslist = "[[{\"name\":\"元宝\", \"num\":600}],[{\"name\":\"元宝\", \"num\":550}],[{\"name\":\"元宝\", \"num\":500}],[{\"name\":\"元宝\", \"num\":450}],[{\"name\":\"元宝\", \"num\":400}]]",
 		giftitems = "[{\"name\":\"1级筛子\", \"num\":2},{\"name\":\"强化石\", \"num\":300}, {\"name\":\"金币\", \"num\":1000000}]",
+=======
+		groupname = "技能礼包",
+		innerseq = 1,
+		giftname = "技能提升Ⅰ",
+		giftnamecolor = 255,
+		valueshow = "原价：78元",
+		freeminutes = 960,
+		maxbuytimes = 5,
+		needitemslist = "[[{\"name\":\"元宝\", \"num\":7000}],[{\"name\":\"元宝\", \"num\":6000}],[{\"name\":\"元宝\", \"num\":5000}],[{\"name\":\"元宝\", \"num\":4000}],[{\"name\":\"元宝\", \"num\":3500}]]",
+		giftitems = "[{\"name\":\"书页\", \"num\":800},{\"name\":\"技能秘籍\", \"num\":10}]",
+>>>>>>> 464c2f673c31ee838f91e05a5e363efaa4e605e4
 	},
 	[402] = { 
 		giftid = 402,
 		groupid = 4,
+<<<<<<< HEAD
 		groupname = "礼包分组4",
 		innerseq = 2,
 		giftname = "礼包2",
@@ -219,10 +376,22 @@ local config = {
 		maxbuytimes = 5,
 		needitemslist = "[[{\"name\":\"元宝\", \"num\":600}],[{\"name\":\"元宝\", \"num\":550}],[{\"name\":\"元宝\", \"num\":500}],[{\"name\":\"元宝\", \"num\":450}],[{\"name\":\"元宝\", \"num\":400}]]",
 		giftitems = "[{\"name\":\"2级筛子\", \"num\":2},{\"name\":\"书页\", \"num\":300}, {\"name\":\"金币\", \"num\":2000000}]",
+=======
+		groupname = "技能礼包",
+		innerseq = 2,
+		giftname = "技能提升Ⅱ",
+		giftnamecolor = 255,
+		valueshow = "原价：178元",
+		freeminutes = 2160,
+		maxbuytimes = 5,
+		needitemslist = "[[{\"name\":\"元宝\", \"num\":16000}],[{\"name\":\"元宝\", \"num\":15000}],[{\"name\":\"元宝\", \"num\":14000}],[{\"name\":\"元宝\", \"num\":13000}],[{\"name\":\"元宝\", \"num\":12000}]]",
+		giftitems = "[{\"name\":\"书页\", \"num\":1500},{\"name\":\"技能秘籍\", \"num\":20}]",
+>>>>>>> 464c2f673c31ee838f91e05a5e363efaa4e605e4
 	},
 	[403] = { 
 		giftid = 403,
 		groupid = 4,
+<<<<<<< HEAD
 		groupname = "礼包分组4",
 		innerseq = 3,
 		giftname = "礼包3",
@@ -232,10 +401,22 @@ local config = {
 		maxbuytimes = 5,
 		needitemslist = "[[{\"name\":\"元宝\", \"num\":600}],[{\"name\":\"元宝\", \"num\":550}],[{\"name\":\"元宝\", \"num\":500}],[{\"name\":\"元宝\", \"num\":450}],[{\"name\":\"元宝\", \"num\":400}]]",
 		giftitems = "[{\"name\":\"升星石\", \"num\":500}, {\"name\":\"特级升星符\", \"num\":1}, {\"name\":\"金币\", \"num\":5000000}]",
+=======
+		groupname = "技能礼包",
+		innerseq = 3,
+		giftname = "技能提升Ⅲ",
+		giftnamecolor = 255,
+		valueshow = "原价：378元",
+		freeminutes = 4560,
+		maxbuytimes = 5,
+		needitemslist = "[[{\"name\":\"元宝\", \"num\":36000}],[{\"name\":\"元宝\", \"num\":34000}],[{\"name\":\"元宝\", \"num\":32000}],[{\"name\":\"元宝\", \"num\":30000}],[{\"name\":\"元宝\", \"num\":28000}]]",
+		giftitems = "[{\"name\":\"书页\", \"num\":3000},{\"name\":\"技能秘籍\", \"num\":40}]",
+>>>>>>> 464c2f673c31ee838f91e05a5e363efaa4e605e4
 	},
 	[404] = { 
 		giftid = 404,
 		groupid = 4,
+<<<<<<< HEAD
 		groupname = "礼包分组4",
 		innerseq = 4,
 		giftname = "礼包4",
@@ -258,10 +439,22 @@ local config = {
 		maxbuytimes = 5,
 		needitemslist = "[[{\"name\":\"元宝\", \"num\":600}],[{\"name\":\"元宝\", \"num\":550}],[{\"name\":\"元宝\", \"num\":500}],[{\"name\":\"元宝\", \"num\":450}],[{\"name\":\"元宝\", \"num\":400}]]",
 		giftitems = "[{\"name\":\"8星直升宝石\", \"num\":1},{\"name\":\"4级筛子\", \"num\":5}, {\"name\":\"绑定元宝\", \"num\":3000}]",
+=======
+		groupname = "技能礼包",
+		innerseq = 4,
+		giftname = "技能提升Ⅳ",
+		giftnamecolor = 255,
+		valueshow = "原价：578元",
+		freeminutes = 6960,
+		maxbuytimes = 5,
+		needitemslist = "[[{\"name\":\"元宝\", \"num\":56000}],[{\"name\":\"元宝\", \"num\":54000}],[{\"name\":\"元宝\", \"num\":52000}],[{\"name\":\"元宝\", \"num\":50000}],[{\"name\":\"元宝\", \"num\":48000}]]",
+		giftitems = "[{\"name\":\"书页\", \"num\":500},{\"name\":\"技能秘籍\", \"num\":80}]",
+>>>>>>> 464c2f673c31ee838f91e05a5e363efaa4e605e4
 	},
 	[501] = { 
 		giftid = 501,
 		groupid = 5,
+<<<<<<< HEAD
 		groupname = "礼包分组5",
 		innerseq = 1,
 		giftname = "礼包6",
@@ -271,10 +464,22 @@ local config = {
 		maxbuytimes = 5,
 		needitemslist = "[[{\"name\":\"元宝\", \"num\":600}],[{\"name\":\"元宝\", \"num\":550}],[{\"name\":\"元宝\", \"num\":500}],[{\"name\":\"元宝\", \"num\":450}],[{\"name\":\"元宝\", \"num\":400}]]",
 		giftitems = "[{\"name\":\"10星直升宝石\", \"num\":1}, {\"name\":\"传奇经验珠\", \"num\":2}, {\"name\":\"金币\", \"num\":5000000}]",
+=======
+		groupname = "魂石礼包",
+		innerseq = 1,
+		giftname = "5级魂石Ⅰ",
+		giftnamecolor = 255,
+		valueshow = "原价：58元",
+		freeminutes = 720,
+		maxbuytimes = 5,
+		needitemslist = "[[{\"name\":\"元宝\", \"num\":5000}],[{\"name\":\"元宝\", \"num\":4500}],[{\"name\":\"元宝\", \"num\":4000}],[{\"name\":\"元宝\", \"num\":3500}],[{\"name\":\"元宝\", \"num\":3000}]]",
+		giftitems = "[{\"name\":\"5级红魂石\", \"num\":2}, {\"name\":\"5级蓝魂石\", \"num\":2}, {\"name\":\"5级绿魂石\", \"num\":2}, {\"name\":\"5级黄魂石\", \"num\":2}]",
+>>>>>>> 464c2f673c31ee838f91e05a5e363efaa4e605e4
 	},
 	[502] = { 
 		giftid = 502,
 		groupid = 5,
+<<<<<<< HEAD
 		groupname = "礼包分组5",
 		innerseq = 2,
 		giftname = "礼包7",
@@ -284,10 +489,22 @@ local config = {
 		maxbuytimes = 5,
 		needitemslist = "[[{\"name\":\"元宝\", \"num\":600}],[{\"name\":\"元宝\", \"num\":550}],[{\"name\":\"元宝\", \"num\":500}],[{\"name\":\"元宝\", \"num\":450}],[{\"name\":\"元宝\", \"num\":400}]]",
 		giftitems = "[{\"name\":\"1级筛子\", \"num\":2},{\"name\":\"强化石\", \"num\":300}, {\"name\":\"金币\", \"num\":1000000}]",
+=======
+		groupname = "魂石礼包",
+		innerseq = 2,
+		giftname = "6级魂石Ⅰ",
+		giftnamecolor = 255,
+		valueshow = "原价：168元",
+		freeminutes = 2040,
+		maxbuytimes = 5,
+		needitemslist = "[[{\"name\":\"元宝\", \"num\":15000}],[{\"name\":\"元宝\", \"num\":14000}],[{\"name\":\"元宝\", \"num\":13000}],[{\"name\":\"元宝\", \"num\":12000}],[{\"name\":\"元宝\", \"num\":11000}]]",
+		giftitems = "[{\"name\":\"6级红魂石(火)\", \"num\":1}, {\"name\":\"6级蓝魂石(火)\", \"num\":1}, {\"name\":\"6级绿魂石(火)\", \"num\":1}, {\"name\":\"6级黄魂石(火)\", \"num\":1}]",
+>>>>>>> 464c2f673c31ee838f91e05a5e363efaa4e605e4
 	},
 	[503] = { 
 		giftid = 503,
 		groupid = 5,
+<<<<<<< HEAD
 		groupname = "礼包分组5",
 		innerseq = 3,
 		giftname = "礼包8",
@@ -297,10 +514,22 @@ local config = {
 		maxbuytimes = 5,
 		needitemslist = "[[{\"name\":\"元宝\", \"num\":600}],[{\"name\":\"元宝\", \"num\":550}],[{\"name\":\"元宝\", \"num\":500}],[{\"name\":\"元宝\", \"num\":450}],[{\"name\":\"元宝\", \"num\":400}]]",
 		giftitems = "[{\"name\":\"2级筛子\", \"num\":2},{\"name\":\"书页\", \"num\":300}, {\"name\":\"金币\", \"num\":2000000}]",
+=======
+		groupname = "魂石礼包",
+		innerseq = 3,
+		giftname = "7级魂石Ⅰ",
+		giftnamecolor = 255,
+		valueshow = "原价：298元",
+		freeminutes = 3600,
+		maxbuytimes = 5,
+		needitemslist = "[[{\"name\":\"元宝\", \"num\":28000}],[{\"name\":\"元宝\", \"num\":26000}],[{\"name\":\"元宝\", \"num\":25000}],[{\"name\":\"元宝\", \"num\":24000}],[{\"name\":\"元宝\", \"num\":23000}]]",
+		giftitems = "[{\"name\":\"7级红魂石(金)\", \"num\":1}, {\"name\":\"7级蓝魂石(金)\", \"num\":1}, {\"name\":\"7级绿魂石(金)\", \"num\":1}, {\"name\":\"7级黄魂石(金)\", \"num\":1}]",
+>>>>>>> 464c2f673c31ee838f91e05a5e363efaa4e605e4
 	},
 	[504] = { 
 		giftid = 504,
 		groupid = 5,
+<<<<<<< HEAD
 		groupname = "礼包分组5",
 		innerseq = 4,
 		giftname = "礼包9",
@@ -323,10 +552,22 @@ local config = {
 		maxbuytimes = 5,
 		needitemslist = "[[{\"name\":\"元宝\", \"num\":600}],[{\"name\":\"元宝\", \"num\":550}],[{\"name\":\"元宝\", \"num\":500}],[{\"name\":\"元宝\", \"num\":450}],[{\"name\":\"元宝\", \"num\":400}]]",
 		giftitems = "[{\"name\":\"6星直升宝石\", \"num\":1},{\"name\":\"3级筛子\", \"num\":3}, {\"name\":\"金币\", \"num\":3000000}]",
+=======
+		groupname = "魂石礼包",
+		innerseq = 4,
+		giftname = "8级魂石Ⅰ",
+		giftnamecolor = 255,
+		valueshow = "原价：468元",
+		freeminutes = 5640,
+		maxbuytimes = 5,
+		needitemslist = "[[{\"name\":\"元宝\", \"num\":45000}],[{\"name\":\"元宝\", \"num\":44000}],[{\"name\":\"元宝\", \"num\":43000}],[{\"name\":\"元宝\", \"num\":42000}],[{\"name\":\"元宝\", \"num\":41000}]]",
+		giftitems = "[{\"name\":\"8级红魂石(木)\", \"num\":1}, {\"name\":\"8级蓝魂石(木)\", \"num\":1}, {\"name\":\"8级绿魂石(木)\", \"num\":1}, {\"name\":\"8级黄魂石(木)\", \"num\":1}]",
+>>>>>>> 464c2f673c31ee838f91e05a5e363efaa4e605e4
 	},
 	[601] = { 
 		giftid = 601,
 		groupid = 6,
+<<<<<<< HEAD
 		groupname = "礼包分组6",
 		innerseq = 1,
 		giftname = "礼包11",
@@ -336,10 +577,22 @@ local config = {
 		maxbuytimes = 5,
 		needitemslist = "[[{\"name\":\"元宝\", \"num\":600}],[{\"name\":\"元宝\", \"num\":550}],[{\"name\":\"元宝\", \"num\":500}],[{\"name\":\"元宝\", \"num\":450}],[{\"name\":\"元宝\", \"num\":400}]]",
 		giftitems = "[{\"name\":\"8星直升宝石\", \"num\":1},{\"name\":\"4级筛子\", \"num\":5}, {\"name\":\"绑定元宝\", \"num\":3000}]",
+=======
+		groupname = "补给礼包",
+		innerseq = 1,
+		giftname = "强效红蓝药",
+		giftnamecolor = 255,
+		valueshow = "原价：38元",
+		freeminutes = 480,
+		maxbuytimes = 5,
+		needitemslist = "[[{\"name\":\"元宝\", \"num\":3500}],[{\"name\":\"元宝\", \"num\":3300}],[{\"name\":\"元宝\", \"num\":3100}],[{\"name\":\"元宝\", \"num\":3000}],[{\"name\":\"元宝\", \"num\":2900}]]",
+		giftitems = "[{\"name\":\"强效金创药\", \"num\":300},{\"name\":\"强效魔法药\", \"num\":100}, {\"name\":\"绑定元宝\", \"num\":2000}]",
+>>>>>>> 464c2f673c31ee838f91e05a5e363efaa4e605e4
 	},
 	[602] = { 
 		giftid = 602,
 		groupid = 6,
+<<<<<<< HEAD
 		groupname = "礼包分组6",
 		innerseq = 2,
 		giftname = "礼包12",
@@ -349,10 +602,22 @@ local config = {
 		maxbuytimes = 5,
 		needitemslist = "[[{\"name\":\"元宝\", \"num\":600}],[{\"name\":\"元宝\", \"num\":550}],[{\"name\":\"元宝\", \"num\":500}],[{\"name\":\"元宝\", \"num\":450}],[{\"name\":\"元宝\", \"num\":400}]]",
 		giftitems = "[{\"name\":\"1级筛子\", \"num\":2},{\"name\":\"强化石\", \"num\":300}, {\"name\":\"金币\", \"num\":1000000}]",
+=======
+		groupname = "补给礼包",
+		innerseq = 2,
+		giftname = "太阳水",
+		giftnamecolor = 255,
+		valueshow = "原价：138元",
+		freeminutes = 1680,
+		maxbuytimes = 5,
+		needitemslist = "[[{\"name\":\"元宝\", \"num\":13000}],[{\"name\":\"元宝\", \"num\":12000}],[{\"name\":\"元宝\", \"num\":11000}],[{\"name\":\"元宝\", \"num\":10000}],[{\"name\":\"元宝\", \"num\":9800}]]",
+		giftitems = "[{\"name\":\"强效太阳水\", \"num\":100},{\"name\":\"太阳水\", \"num\":300}, {\"name\":\"绑定元宝\", \"num\":5888}]",
+>>>>>>> 464c2f673c31ee838f91e05a5e363efaa4e605e4
 	},
 	[603] = { 
 		giftid = 603,
 		groupid = 6,
+<<<<<<< HEAD
 		groupname = "礼包分组6",
 		innerseq = 3,
 		giftname = "礼包13",
@@ -362,10 +627,22 @@ local config = {
 		maxbuytimes = 5,
 		needitemslist = "[[{\"name\":\"元宝\", \"num\":600}],[{\"name\":\"元宝\", \"num\":550}],[{\"name\":\"元宝\", \"num\":500}],[{\"name\":\"元宝\", \"num\":450}],[{\"name\":\"元宝\", \"num\":400}]]",
 		giftitems = "[{\"name\":\"2级筛子\", \"num\":2},{\"name\":\"书页\", \"num\":300}, {\"name\":\"金币\", \"num\":2000000}]",
+=======
+		groupname = "补给礼包",
+		innerseq = 3,
+		giftname = "疗伤药",
+		giftnamecolor = 255,
+		valueshow = "原价：268元",
+		freeminutes = 3240,
+		maxbuytimes = 5,
+		needitemslist = "[[{\"name\":\"元宝\", \"num\":25000}],[{\"name\":\"元宝\", \"num\":24000}],[{\"name\":\"元宝\", \"num\":23000}],[{\"name\":\"元宝\", \"num\":22000}],[{\"name\":\"元宝\", \"num\":21000}]]",
+		giftitems = "[{\"name\":\"疗伤药\", \"num\":500},{\"name\":\"绑定元宝\", \"num\":10000}, {\"name\":\"金币\", \"num\":3000000}]",
+>>>>>>> 464c2f673c31ee838f91e05a5e363efaa4e605e4
 	},
 	[604] = { 
 		giftid = 604,
 		groupid = 6,
+<<<<<<< HEAD
 		groupname = "礼包分组6",
 		innerseq = 4,
 		giftname = "礼包14",
@@ -388,6 +665,17 @@ local config = {
 		maxbuytimes = 5,
 		needitemslist = "[[{\"name\":\"元宝\", \"num\":600}],[{\"name\":\"元宝\", \"num\":550}],[{\"name\":\"元宝\", \"num\":500}],[{\"name\":\"元宝\", \"num\":450}],[{\"name\":\"元宝\", \"num\":400}]]",
 		giftitems = "[{\"name\":\"6星直升宝石\", \"num\":1},{\"name\":\"3级筛子\", \"num\":3}, {\"name\":\"金币\", \"num\":3000000}]",
+=======
+		groupname = "补给礼包",
+		innerseq = 4,
+		giftname = "万年雪霜",
+		giftnamecolor = 255,
+		valueshow = "原价：388元",
+		freeminutes = 4680,
+		maxbuytimes = 5,
+		needitemslist = "[[{\"name\":\"元宝\", \"num\":37000}],[{\"name\":\"元宝\", \"num\":36000}],[{\"name\":\"元宝\", \"num\":35000}],[{\"name\":\"元宝\", \"num\":34000}],[{\"name\":\"元宝\", \"num\":33000}]]",
+		giftitems = "[{\"name\":\"万年雪霜\", \"num\":800},{\"name\":\"绑定元宝\", \"num\":28000}, {\"name\":\"金币\", \"num\":8000000}]",
+>>>>>>> 464c2f673c31ee838f91e05a5e363efaa4e605e4
 	},
 }
 return config

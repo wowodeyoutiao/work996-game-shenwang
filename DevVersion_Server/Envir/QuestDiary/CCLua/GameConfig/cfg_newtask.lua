@@ -55,14 +55,14 @@ local config = {
 	},
 	[110] = { 
 		ID = 110,
-		TaskTitle = "<font color='#F7E700'>[主线]  提升等级</font>",
-		Haveinfo = "<font colorStyleID='1030'>等级</font>&nbsp;&nbsp;<u><font color = '#28ef01' size = '16'>达到&nbsp;%s/40级</font></u>",
+		TaskTitle = "<font color='#F7E700'>[主线]  称号提升</font>",
+		Haveinfo = "<font colorStyleID='1030'>解锁</font>&nbsp;&nbsp;<u><font color = '#28ef01' size = '16'>称号&nbsp;初入江湖</font></u>",
 		Completeinfo = "<font colorStyleID='1030'>任务完成</font>&nbsp;&nbsp;<u><font color = '#28ef01' size = '16'>领取强化石奖励</font></u>",
 	},
 	[111] = { 
 		ID = 111,
-		TaskTitle = "<font color='#F7E700'>[主线]  提升战力</font>",
-		Haveinfo = "<font colorStyleID='1030'>战力</font>&nbsp;&nbsp;<u><font color = '#28ef01' size = '16'>达到&nbsp;%s/8万</font></u>",
+		TaskTitle = "<font color='#F7E700'>[主线]  降妖除魔</font>",
+		Haveinfo = "<font colorStyleID='1030'>击杀1</font>&nbsp;&nbsp;<u><font color = '#28ef01' size = '16'>击杀沃玛守卫&nbsp;%s/15只</font></u>",
 		Completeinfo = "<font colorStyleID='1030'>任务完成</font>&nbsp;&nbsp;<u><font color = '#28ef01' size = '16'>领取强化石奖励</font></u>",
 	},
 	[112] = { 
@@ -73,14 +73,14 @@ local config = {
 	},
 	[113] = { 
 		ID = 113,
-		TaskTitle = "<font color='#F7E700'>[主线]  提升等级</font>",
-		Haveinfo = "<font colorStyleID='1030'>等级</font>&nbsp;&nbsp;<u><font color = '#28ef01' size = '16'>达到&nbsp;%s/50级</font></u>",
+		TaskTitle = "<font color='#F7E700'>[主线]  称号提升</font>",
+		Haveinfo = "<font colorStyleID='1030'>解锁</font>&nbsp;&nbsp;<u><font color = '#28ef01' size = '16'>称号&nbsp;展露头角</font></u>",
 		Completeinfo = "<font colorStyleID='1030'>任务完成</font>&nbsp;&nbsp;<u><font color = '#28ef01' size = '16'>领取强化石奖励</font></u>",
 	},
 	[114] = { 
 		ID = 114,
-		TaskTitle = "<font color='#F7E700'>[主线]  开箱换装</font>",
-		Haveinfo = "<font colorStyleID='1030'>累计</font>&nbsp;&nbsp;<u><font color = '#28ef01' size = '16'>开箱&nbsp;%s/40次</font></u>",
+		TaskTitle = "<font color='#F7E700'>[主线]  降妖除魔</font>",
+		Haveinfo = "<font colorStyleID='1030'>击杀1</font>&nbsp;&nbsp;<u><font color = '#28ef01' size = '16'>击杀白野猪&nbsp;%s/15只</font></u>",
 		Completeinfo = "<font colorStyleID='1030'>任务完成</font>&nbsp;&nbsp;<u><font color = '#28ef01' size = '16'>领取强化石奖励</font></u>",
 	},
 	[115] = { 

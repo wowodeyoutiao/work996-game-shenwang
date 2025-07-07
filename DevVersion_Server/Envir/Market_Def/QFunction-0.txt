@@ -5834,6 +5834,12 @@ BREAK
 CALLLUA CC_QFunction @common_relive_button
 BREAK
 
+[@baipiao_refresh]
+#IF
+#ACT
+CALLLUA CC_QFunction @baipiao_refresh
+BREAK
+
 ;回调类的
 [@equippos_star_auto_upgrade]
 #IF

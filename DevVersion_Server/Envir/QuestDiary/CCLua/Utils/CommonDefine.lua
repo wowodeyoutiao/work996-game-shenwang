@@ -714,6 +714,7 @@ CommonDefine = {
     QUICK_GOTO_SKILL_UPGRADE = 23,              --技能升级
     QUICK_GOTO_SUPERBOX_UPGRADE = 24,           --开宝箱升级
     QUICK_GOTO_COMMON_NAVIGATION = 25,          --通用引导
+    QUICK_GOTO_TITLE_UPGRADE = 26,              --称号升级
 
     --脚本创建的动态npcid    最终的npcid是 系统组编号*10000+动态id
     --[[
@@ -733,7 +734,7 @@ CommonDefine = {
     NPC_ID_PUBLIC_BOSS = 503,                     --野外BOSS
     NPC_ID_BIAOCHE_START = 504,                   --运镖NPC
     NPC_ID_BIAOCHE_FINISH = 505,                  --接镖NPC
-
+    NPC_ID_TITLE_UPGRADE_1 = 3,                   --称号专属
 
     --任务线ID
     TASK_LINE_ID_MAIN = 100,                      --任务线，主线任务

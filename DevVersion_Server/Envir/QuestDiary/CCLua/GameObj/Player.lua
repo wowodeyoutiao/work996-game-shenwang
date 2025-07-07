@@ -772,6 +772,9 @@ function Player.QuickGoTo(actor, gotoid)
     elseif gotoid == CommonDefine.QUICK_GOTO_SUPERBOX_UPGRADE then
         --升级开宝箱
         OpenSuperBoxManager.DoOperButton(actor, '4', '')
+    elseif gotoid == CommonDefine.QUICK_GOTO_TITLE_UPGRADE then
+        --称号升级
+        opennpcshowex(actor, CommonDefine.NPC_ID_TITLE_UPGRADE_1, 3, 3)        
     elseif gotoid == CommonDefine.QUICK_GOTO_BAG_USEDICE then
         --背包使用骰子
         local makeindex = OpenSuperBoxManager.GetOpenBoxDiceMakeIndex(actor)

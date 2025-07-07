@@ -200,7 +200,14 @@ function TopIcon.CheckRedPoint(actor)
     else
         Player.DelRedPoint(actor, 102, MAINICON_ID_5)
     end
-    
+
+    if BaiPiaoGift.IsTopIconHaveRedPoint(actor) then
+        Player.AddRedPoint(actor, 102, MAINICON_ID_8, 10, 10)    
+    else
+        Player.DelRedPoint(actor, 102, MAINICON_ID_8)
+    end
+
+
 
     if EquipPosStrengthManager.IsTopIconHaveRedPoint(actor) then
         Player.AddRedPoint(actor, 109, NewMainUIBase.UI_ICON_POSSTRENGTH, 10, 10)    
