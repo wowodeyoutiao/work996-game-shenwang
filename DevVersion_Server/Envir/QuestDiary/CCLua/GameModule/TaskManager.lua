@@ -83,6 +83,9 @@ function TaskManager.AcceptTask(actor, tasklineid)
             elseif singletask.tasktype == CommonDefine.TASK_TYPE_SUPERBOX_UPGRADE then
                 local currlv = getplaydef(actor, CommonDefine.VAR_U_SUPER_BOX_CURR_LV)
                 newchangetask(actor, taskid, currlv..'')
+            elseif singletask.tasktype == CommonDefine.TASK_TYPE_TITLE_UPGRADE then
+                local currlv = getplaydef(actor, CommonDefine.VAR_U_OLD_TITLE_LEVEL)
+                newchangetask(actor, taskid, '')                
             else
                 newchangetask(actor, taskid, '0', '0', '0')                
             end            
@@ -118,6 +121,11 @@ function TaskManager.AcceptTask(actor, tasklineid)
                 end      
             elseif singletask.tasktype == CommonDefine.TASK_TYPE_SUPERBOX_UPGRADE then
                 local currlv = getplaydef(actor, CommonDefine.VAR_U_SUPER_BOX_CURR_LV)
+                if currlv >= singletask.tasktargparam then
+                    TaskManager.FinishTask(actor, tasklineid)
+                end
+            elseif singletask.tasktype == CommonDefine.TASK_TYPE_TITLE_UPGRADE then
+                local currlv = getplaydef(actor, CommonDefine.VAR_U_OLD_TITLE_LEVEL)
                 if currlv >= singletask.tasktargparam then
                     TaskManager.FinishTask(actor, tasklineid)
                 end
@@ -639,6 +647,30 @@ function TaskManager.OnSkillUpgrade(actor)
             if taskid > 0 and status == CommonDefine.TASK_STATUS_ACCEPT then
                 local singletask = lineconfig.taskDataList[taskid]                
                 if singletask and (singletask.tasktype == CommonDefine.TASK_TYPE_SKILL_UPGRADE) and singletask.tasktargparam then
+                    local currnum = getplaydef(actor, CommonDefine.VAR_U_OLD_TITLE_LEVEL)
+                    if currnum >= singletask.tasktargparam then
+                        TaskManager.FinishTask(actor, tasklineid)
+                    else
+                        newchangetask(actor, taskid, '')
+                    end
+                end            
+            end
+        end
+    end  
+end
+
+--Íæ¼Ò³ÆºÅÉý¼¶
+function TaskManager.OnTitleUpgrade(actor)
+	if BF_IsNullObj(actor) then
+		return
+	end	
+
+    for tasklineid, lineconfig in pairs(TaskLineConfig) do
+        if lineconfig and lineconfig.taskDataList then
+            local taskid, status = TaskManager.GetCurrTaskLineInfo(actor, tasklineid) 
+            if taskid > 0 and status == CommonDefine.TASK_STATUS_ACCEPT then
+                local singletask = lineconfig.taskDataList[taskid]                
+                if singletask and (singletask.tasktype == CommonDefine.TASK_TYPE_TITLE_UPGRADE) and singletask.tasktargparam then
                     local currnum = SkillUpgrade.GetAllSkillsMaxLevel(actor)
                     if currnum >= singletask.tasktargparam then
                         TaskManager.FinishTask(actor, tasklineid)
@@ -648,7 +680,7 @@ function TaskManager.OnSkillUpgrade(actor)
                 end            
             end
         end
-    end  
+    end   
 end
 
 --Íæ¼ÒµÇÂ¼Ê±´¥·¢

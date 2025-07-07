@@ -45,6 +45,8 @@ local function _Includes()
     cfgSuperBoxRewardPool = require("Envir/QuestDiary/CCLua/GameConfig/cfgSuperBoxRewardPool")
     cfgJumpAreaShop = require("Envir/QuestDiary/CCLua/GameConfig/cfgJumpAreaShop")
     cfgItemSimpleRecycle = require("Envir/QuestDiary/CCLua/GameConfig/cfgItemSimpleRecycle")
+    cfgBaiPiaoGift = require("Envir/QuestDiary/CCLua/GameConfig/cfgBaiPiaoGift")
+    cfgBaiPiaoGroupList = {}
 
 
     --通用定义
@@ -109,6 +111,7 @@ local function _Includes()
     require("Envir/QuestDiary/CCLua/GameModule/JumpAreaScoreShop")
     require("Envir/QuestDiary/CCLua/GameModule/JumpAreaRandomFighting")
     require("Envir/QuestDiary/CCLua/GameModule/WeaponAddLuckManager")
+    require("Envir/QuestDiary/CCLua/GameModule/BaiPiaoGift")
 
 
     -- --调试日志
@@ -527,6 +530,29 @@ local function _Includes()
             value.randomrewards_tab = {}
         end        
     end    
+
+    --BaiPiaoGift
+    for _, value in pairs(cfgBaiPiaoGift) do
+        if (value.giftitems ~= nil) and (value.giftitems ~= '') then
+            value.giftitems_tab = BF_Json2Table(value.giftitems)
+        else
+            value.giftitems_tab = {}
+        end
+
+        if (value.needitemslist ~= nil) and (value.needitemslist ~= '') then
+            value.needitemslist_tab = BF_Json2Table(value.needitemslist)
+        else
+            value.needitemslist_tab = {}
+        end
+
+        if cfgBaiPiaoGroupList[value.groupid] == nil then
+            cfgBaiPiaoGroupList[value.groupid] = {groupid=value.groupid, groupname=value.groupname, giftlist={}}
+        end
+        if cfgBaiPiaoGroupList[value.groupid].giftlist[value.innerseq] == nil then
+            cfgBaiPiaoGroupList[value.groupid].giftlist[value.innerseq] = {}    
+        end
+        cfgBaiPiaoGroupList[value.groupid].giftlist[value.innerseq] = value
+    end
 
     -- --MoFangZhen
     -- for _, value in pairs(cfgMoFangZhen) do

@@ -97,29 +97,29 @@ MOV N77 <$STR(G24)>
 ;<Text|x=50|y=360|color=7|size=18|text=怪物血量越高爆率越好\地图等级越高爆率越好>
 
 <RText|x=320.0|y=70.0|outline=1|color=250|size=18|text=◆选择要进入的地图<(等级100级进入)>>
-<Button|x=320|y=100.0|width=90|nimg=public/wz/bt11.png|color=116|size=18|text=蓝色庄园|link=@后续传送<$STR(N77)>#<$username>#地图ID=jyt01#落点X=71#落点Y=71>
+<Button|x=320|y=100.0|width=90|nimg=public/wz/bt11.png|color=116|size=18|text=碧湖庄园|link=@后续传送<$STR(N77)>#<$username>#地图ID=jyt01#落点X=71#落点Y=71>
 
 
 #IF
 LARGE U1 2
 #SAY
-<Button|x=430|y=100.0|width=90|nimg=public/wz/bt11.png|color=116|size=18|text=沉默山谷|link=@后续传送<$STR(N77)>#地图ID=jyt02#落点X=52#落点Y=49>
+<Button|x=430|y=100.0|width=90|nimg=public/wz/bt11.png|color=116|size=18|text=幽暗山谷|link=@后续传送<$STR(N77)>#地图ID=jyt02#落点X=52#落点Y=49>
 #IF
 LARGE U1 5
 #SAY
-<Button|x=540|y=100.0|width=90|nimg=public/wz/bt11.png|color=116|size=18|text=寂静神庙|link=@后续传送<$STR(N77)>#地图ID=jyt03#落点X=20#落点Y=22>
+<Button|x=540|y=100.0|width=90|nimg=public/wz/bt11.png|color=116|size=18|text=上古神庙|link=@后续传送<$STR(N77)>#地图ID=jyt03#落点X=20#落点Y=22>
 #IF
 LARGE U1 8
 #SAY
-<Button|x=320|y=160.0|width=90|nimg=public/wz/bt11.png|color=116|size=18|text=米尔皇宫|link=@后续传送<$STR(N77)>#地图ID=jyt04#落点X=15#落点Y=19>
+<Button|x=320|y=160.0|width=90|nimg=public/wz/bt11.png|color=116|size=18|text=落寞皇宫|link=@后续传送<$STR(N77)>#地图ID=jyt04#落点X=15#落点Y=19>
 #IF
 LARGE U1 11
 #SAY
-<Button|x=430|y=160.0|width=90|nimg=public/wz/bt11.png|color=116|size=18|text=幽冥帝都|link=@后续传送<$STR(N77)>#地图ID=jyt05#落点X=26#落点Y=26>
+<Button|x=430|y=160.0|width=90|nimg=public/wz/bt11.png|color=116|size=18|text=幽冥大殿|link=@后续传送<$STR(N77)>#地图ID=jyt05#落点X=26#落点Y=26>
 #IF
 LARGE U1 14
 #SAY
-<Button|x=540|y=160.0|width=90|nimg=public/wz/bt11.png|color=116|size=18|text=命运之门|link=@后续传送<$STR(N77)>#地图ID=jyt06#落点X=79#落点Y=48>
+<Button|x=540|y=160.0|width=90|nimg=public/wz/bt11.png|color=116|size=18|text=时光之门|link=@后续传送<$STR(N77)>#地图ID=jyt06#落点X=79#落点Y=48>
 
 #IF
 LARGE U1 17

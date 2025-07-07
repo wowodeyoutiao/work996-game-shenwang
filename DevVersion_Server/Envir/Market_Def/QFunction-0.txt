@@ -790,10 +790,10 @@ SENDMSG 9 当前区域不能使用拍卖行
 BREAK
 
 #IF
-SMALL U3 5
+SMALL U211 10
 #ACT
 ALLOWPAIMAI 1
-SENDMSG 9 开通至尊会员激活拍卖行上架资格
+SENDMSG 9 免费VIP10激活拍卖行上架资格
 BREAK
 
 #IF

@@ -607,7 +607,7 @@ function BF_GetSimpleItemTableDescStr(itemsTab)
         if sDescStr ~= '' then
             sDescStr = sDescStr..';'
         end
-        sDescStr = sDescStr..item.name..'*'..BF_NumToShowStr(item.num)
+        sDescStr = sDescStr..item.name..'X'..BF_NumToShowStr(item.num)
     end
     return sDescStr
 end

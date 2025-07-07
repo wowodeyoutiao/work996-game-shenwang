@@ -267,6 +267,11 @@ function killmon(actor, monobjidstr, killtype, mapidstr)
     GameEventManager.DoTriggerEvent(CommonDefine.EVENT_NAME_KILL_MON, actor, mon, killtype, mapidstr)    
 end
 
+--称号改变
+function ontitleupgrade(actor)
+    release_print('ontitleupgrade')
+    TaskManager.OnTitleUpgrade(actor)
+end
 
 ----------------------------------------改名相关-----------------------------------------
 
@@ -516,6 +521,8 @@ function show_rule_panel(actor)
         JumpAreaManager.ShowRulePanel(actor)
     elseif currfuncid == CommonDefine.FUNC_ID_BAOZHU then
         BaoZhuManagerNew.ShowRulePanel(actor)
+    elseif currfuncid == CommonDefine.FUNC_ID_BAIPIAO_GIFT then
+        BaiPiaoGift.ShowRulePanel(actor)
     end
 end
 
@@ -540,6 +547,8 @@ function show_base_panel(actor, sparam)
         FreeVIPManager.ShowBasePanel(actor)
     elseif currfuncid == CommonDefine.FUNC_ID_JUMPAREA_BASE then
         JumpAreaManager.ShowBasePanel(actor)
+    elseif currfuncid == CommonDefine.FUNC_ID_BAIPIAO_GIFT then
+        BaiPiaoGift.ShowBasePanel(actor)
     end    
 end
 
@@ -568,6 +577,8 @@ function function_button(actor, sid, sparam)
         BaoZhuManagerNew.DoOperButton(actor, sid, sparam)
     elseif currfuncid == CommonDefine.FUNC_ID_EVERYDAY_TASK then
         EverydayTask.DoOperButton(actor, sid, sparam)
+    elseif currfuncid == CommonDefine.FUNC_ID_BAIPIAO_GIFT then
+        BaiPiaoGift.DoOperButton(actor, sid, sparam)
     end
 end
 

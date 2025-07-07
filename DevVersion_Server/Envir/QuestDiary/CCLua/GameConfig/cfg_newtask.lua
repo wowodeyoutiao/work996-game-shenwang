@@ -119,6 +119,24 @@ local config = {
 		Haveinfo = "<font colorStyleID='1030'>等级</font>&nbsp;&nbsp;<u><font color = '#28ef01' size = '16'>达到&nbsp;%s/100级</font></u>",
 		Completeinfo = "<font colorStyleID='1030'>任务完成</font>&nbsp;&nbsp;<u><font color = '#28ef01' size = '16'>领取强化石奖励</font></u>",
 	},
+	[121] = { 
+		ID = 121,
+		TaskTitle = "<font color='#F7E700'>[主线]  提升称号1</font>",
+		Haveinfo = "<font colorStyleID='1030'>称号</font>&nbsp;&nbsp;<u><font color = '#28ef01' size = '16'>达到&nbsp;展露头角</font></u>",
+		Completeinfo = "<font colorStyleID='1030'>任务完成</font>&nbsp;&nbsp;<u><font color = '#28ef01' size = '16'>领取强化石奖励</font></u>",
+	},
+	[122] = { 
+		ID = 122,
+		TaskTitle = "<font color='#F7E700'>[主线]  提升称号2</font>",
+		Haveinfo = "<font colorStyleID='1030'>称号</font>&nbsp;&nbsp;<u><font color = '#28ef01' size = '16'>达到&nbsp;江湖少侠</font></u>",
+		Completeinfo = "<font colorStyleID='1030'>任务完成</font>&nbsp;&nbsp;<u><font color = '#28ef01' size = '16'>领取强化石奖励</font></u>",
+	},
+	[123] = { 
+		ID = 123,
+		TaskTitle = "<font color='#F7E700'>[主线]  提升称号3</font>",
+		Haveinfo = "<font colorStyleID='1030'>称号</font>&nbsp;&nbsp;<u><font color = '#28ef01' size = '16'>达到&nbsp;武林豪杰</font></u>",
+		Completeinfo = "<font colorStyleID='1030'>任务完成</font>&nbsp;&nbsp;<u><font color = '#28ef01' size = '16'>领取强化石奖励</font></u>",
+	},
 	[501] = { 
 		ID = 501,
 		TaskTitle = "<font color='#F7E700'>[支线]  解锁VIP1</font>",
