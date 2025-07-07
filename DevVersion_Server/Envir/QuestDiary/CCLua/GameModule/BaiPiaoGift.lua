@@ -4,8 +4,6 @@ BaiPiaoGift = {}
 local NPCPANEL_BUTTONFUNC_ID_1 = 1      --切换礼包页签
 local NPCPANEL_BUTTONFUNC_ID_2 = 2      --购买礼包
 local NPCPANEL_BUTTONFUNC_ID_3 = 3      --礼包种草
-<<<<<<< HEAD
-=======
 local NPCPANEL_BUTTONFUNC_ID_4 = 4      --免费领取种草礼包
 
 local SHOW_BAG_ITEMS = {'元宝'}
@@ -13,7 +11,6 @@ local SHOW_BAG_ITEMS = {'元宝'}
 
 --一轮活动持续的天数
 local ONE_ROUND_LAST_DAYS = 14
->>>>>>> 464c2f673c31ee838f91e05a5e363efaa4e605e4
 
 --是否显示功能入口icon
 function BaiPiaoGift.CanShowIcon(actor)
@@ -21,18 +18,6 @@ function BaiPiaoGift.CanShowIcon(actor)
         return false
     end
 
-<<<<<<< HEAD
-    return false
-end
-
---检测玩家数据版本
-function BaiPiaoGift.CheckGameDataVersion(actor)
-    if BF_IsNullObj(actor) then
-        return
-    end
-    local playerversion = getplaydef(actor, CommonDefine.VAR_U_BAIPIAOGIFT_VERSION)
-    local gameversion = getsysvar(CommonDefine.VAR_G_BAIPIAOGIFT_VERSION)
-=======
     return true
 end
 
@@ -87,7 +72,6 @@ function BaiPiaoGift.CheckPlayerDataVersion(actor)
     end
     local gameversion = getsysvar(CommonDefine.VAR_G_BAIPIAOGIFT_VERSION)
     local playerversion = getplaydef(actor, CommonDefine.VAR_U_BAIPIAOGIFT_VERSION)    
->>>>>>> 464c2f673c31ee838f91e05a5e363efaa4e605e4
     if playerversion ~= gameversion then
         setplaydef(actor, CommonDefine.VAR_U_BAIPIAOGIFT_VERSION, gameversion)
 
@@ -96,32 +80,17 @@ function BaiPiaoGift.CheckPlayerDataVersion(actor)
             local groupinfo = cfgBaiPiaoGroupList[i]
             if groupinfo ~= nil then
                 local rec = {groupid=groupinfo.groupid, grassseq=0, giftdatalist={}}
-<<<<<<< HEAD
-                allgiftdata_tab[groupinfo.groupid] = rec
-            end
-        end
-        local str = tbl2json(allgiftdata_tab)
-        setplaydef(actor, CommonDefine.VAR_U_BAIPIAOGIFT_VERSION, str)
-=======
                 local strgid = groupinfo.groupid..''
                 allgiftdata_tab[strgid] = rec
             end
         end
         local str = tbl2json(allgiftdata_tab)
         setplaydef(actor, CommonDefine.VAR_T_BAIPIAOGIFT_DATA, str)
->>>>>>> 464c2f673c31ee838f91e05a5e363efaa4e605e4
     end
 end
 
 --玩家登录时触发
 function BaiPiaoGift.OnPlayerEnterGame(actor)	
-<<<<<<< HEAD
-    BaiPiaoGift.CheckGameDataVersion(actor)
-    --增加 ontimer
-end
-
-GameEventManager.AddListener(CommonDefine.EVENT_NAME_PLAYER_ENTERGAME, BaiPiaoGift.OnPlayerEnterGame, CommonDefine.FUNC_ID_BAIPIAO_GIFT)
-=======
     BaiPiaoGift.CheckActivityVersion()
     BaiPiaoGift.CheckPlayerDataVersion(actor)
 end
@@ -133,18 +102,13 @@ end
 
 GameEventManager.AddListener(CommonDefine.EVENT_NAME_PLAYER_ENTERGAME, BaiPiaoGift.OnPlayerEnterGame, CommonDefine.FUNC_ID_BAIPIAO_GIFT)
 GameEventManager.AddListener(CommonDefine.EVENT_NAME_PLAYER_RESETDAY, BaiPiaoGift.OnResetDay, CommonDefine.FUNC_ID_BAIPIAO_GIFT)
->>>>>>> 464c2f673c31ee838f91e05a5e363efaa4e605e4
 
 
 --------------------------------------------------------主面板相关--------------------------------------------------------------------
 function BaiPiaoGift.ShowRulePanel(actor)
     local strPanelInfo = '<Img|id=10|children={11,12,21,22,23,24,25}|x=268.0|y=69.0|show=0|esc=1|reset=1|img=private/cc_common/rule_panel.png|bg=1|move=0>'..
         '<Layout|id=11|x=525.0|y=-1.0|width=80|height=80|link=@show_base_panel>'..
-<<<<<<< HEAD
-        '<Button|id=12|x=528.0|y=0.0|nimg=public/1900000510.png|pimg=public/1900000511.png|link=@show_base_panel>'
-=======
         '<Button|id=12|x=528.0|y=0.0|nimg=public/1900000510.png|pimg=public/1900000511.png|link=@show_base_panel>'    
->>>>>>> 464c2f673c31ee838f91e05a5e363efaa4e605e4
 
     local tempCurrX = 20
     local tempCurrY = 50
@@ -179,10 +143,7 @@ local function GetSingleShowInfo(actor, groupid)
     local strPanelInfo = ''
     local idstr = '300,'
     local listitemidstr = ''
-<<<<<<< HEAD
-=======
     local currtime = os.time()
->>>>>>> 464c2f673c31ee838f91e05a5e363efaa4e605e4
 
     for seq, singleGift in ipairs(groupConfig.giftlist) do
         local imgbaseid = 300 + seq * 20
@@ -190,14 +151,6 @@ local function GetSingleShowInfo(actor, groupid)
             listitemidstr = listitemidstr..','
         end
         listitemidstr = listitemidstr..imgbaseid
-<<<<<<< HEAD
-
-        local groupdata = allgiftdata_tab[singleGift.groupid]     
-        local singledata = nil
-        local grassseq = 0
-        if groupdata~=nil and groupdata.giftdatalist~=nil then
-            singledata = groupdata.giftdatalist[singleGift.innerseq]
-=======
         local strgid = singleGift.groupid..''
         local groupdata = allgiftdata_tab[strgid]     
         local singledata = nil
@@ -205,7 +158,6 @@ local function GetSingleShowInfo(actor, groupid)
         if groupdata~=nil and groupdata.giftdatalist~=nil then
             local strsid = singleGift.innerseq..''
             singledata = groupdata.giftdatalist[strsid]
->>>>>>> 464c2f673c31ee838f91e05a5e363efaa4e605e4
             grassseq = groupdata.grassseq
         end
 
@@ -224,18 +176,6 @@ local function GetSingleShowInfo(actor, groupid)
         
         if grassseq == 0 then
             --还需要增加一个已领种草奖的状态
-<<<<<<< HEAD
-            strPanelInfo = strPanelInfo..'<Button|id='..buttonid1..'|x=300|y=45|text=免费种草|size=18|color='..CSS.NPC_LIGHTGREEN..
-                '|pimg=private/cc_common/button_down1.png|mimg=private/cc_common/button_up1.png|nimg=private/cc_common/button_up1.png|link=@function_button,'..
-                NPCPANEL_BUTTONFUNC_ID_3..','..singleGift.giftid..'>'..
-                '<Text|id='..textid3..'|text=种草期:'..math.floor(singleGift.freeminutes / 60)..'小时|size=16|color='..CSS.NPC_WHITE..'|x=390.0|y=50.0>'..
-                '<Text|id='..textid4..'|text=限领:1/1|size=16|color='..CSS.NPC_WHITE..'|x=500.0|y=50.0>'
-        else
-            if grassseq == singleGift.innerseq then
-                strPanelInfo = strPanelInfo..'<Text|id='..textid3..'|text=XXXX时间后可免费领取|size=18|color='..CSS.NPC_WHITE..'|x=400.0|y=50.0>'
-            else
-                strPanelInfo = strPanelInfo..'<Text|id='..textid3..'|text=已种草其它礼包|size=18|color='..CSS.NPC_WHITE..'|x=400.0|y=50.0>'
-=======
             local freerewardflag = 0
             if singledata ~= nil then
                 freerewardflag = singledata.freerewardflag
@@ -269,7 +209,6 @@ local function GetSingleShowInfo(actor, groupid)
                 end
             else
                 strPanelInfo = strPanelInfo..'<Text|id='..textid3..'|text=已种草其它礼包|size=18|color='..CSS.NPC_WHITE..'|x=300.0|y=50.0>'
->>>>>>> 464c2f673c31ee838f91e05a5e363efaa4e605e4
             end
         end
 
@@ -279,18 +218,6 @@ local function GetSingleShowInfo(actor, groupid)
         end
         local leftbuycount = math.max(0, singleGift.maxbuytimes - curbuytimes)
         if curbuytimes >= #singleGift.needitemslist_tab then
-<<<<<<< HEAD
-            release_print('BaiPiaoGift:GetSingleShowInfo error groupid:'..singleGift.giftid..'  seq:'..singleGift.innerseq)
-            return ''
-        end
-        
-        local needitemstr = BF_GetSimpleItemTableDescStr(singleGift.needitemslist_tab[curbuytimes+1])
-        strPanelInfo = strPanelInfo..'<Button|id='..buttonid2..'|x=300|y=85|text=元宝购买|size=18|color='..CSS.NPC_ORANGE..
-            '|pimg=private/cc_common/button_down1.png|mimg=private/cc_common/button_up1.png|nimg=private/cc_common/button_up1.png|link=@function_button,'..
-            NPCPANEL_BUTTONFUNC_ID_2..','..singleGift.giftid..'>'..
-            '<Text|id='..textid5..'|text='..needitemstr..'|size=16|color='..CSS.NPC_WHITE..'|x=390.0|y=90.0>'..
-            '<Text|id='..textid6..'|text=限购:'..leftbuycount..'/'..singleGift.maxbuytimes..'|size=16|color='..CSS.NPC_WHITE..'|x=500.0|y=90.0>'
-=======
             strPanelInfo = strPanelInfo..'<Text|id='..textid6..'|text=本轮该礼包已售罄！|size=18|color='..CSS.NPC_WHITE..'|x=300.0|y=90.0>'
         else
             local needitemstr = BF_GetSimpleItemTableDescStr(singleGift.needitemslist_tab[curbuytimes+1])
@@ -300,7 +227,6 @@ local function GetSingleShowInfo(actor, groupid)
                 '<Text|id='..textid5..'|text='..needitemstr..'|size=16|color='..CSS.NPC_WHITE..'|x=390.0|y=90.0>'..
                 '<Text|id='..textid6..'|text=限购:'..leftbuycount..'/'..singleGift.maxbuytimes..'|size=16|color='..CSS.NPC_WHITE..'|x=500.0|y=90.0>'    
         end        
->>>>>>> 464c2f673c31ee838f91e05a5e363efaa4e605e4
             
         for seq1, singleitem in ipairs(singleGift.giftitems_tab) do
             local itemidx = getstditeminfo(singleitem.name, CommonDefine.STDITEMINFO_IDX)
@@ -319,19 +245,13 @@ local function GetSingleShowInfo(actor, groupid)
 end
 
 function BaiPiaoGift.ShowBasePanel(actor)        
-<<<<<<< HEAD
-    local strPanelInfo = '<Img|id=10|children={11,12,13,14,15,16,17}|x='..CSS.BASE_PANEL_START_X..'|y='..CSS.BASE_PANEL_START_Y..'|height=448|esc=1|bg=1|img=private/cc_baipiao/8.png|loadDelay=0|reset=1|show=0|move=0>'..
-=======
     local strPanelInfo = '<Img|id=10|children={11,12,13,14,15,16,17,18,19}|x='..CSS.BASE_PANEL_START_X..'|y='..CSS.BASE_PANEL_START_Y..'|height=448|esc=1|bg=1|img=private/cc_baipiao/8.png|loadDelay=0|reset=1|show=0|move=0>'..
->>>>>>> 464c2f673c31ee838f91e05a5e363efaa4e605e4
         '<Layout|id=11|x=812.0|y=12.0|width=80|height=80|link=@exit>'..
         '<Button|id=12|x=813.0|y=13.0|pimg=public/1900000511.png|nimg=public/1900000510.png|link=@exit>'..
         '<Button|id=13|x=700.0|y=14.0|esc=0|nimg=private/cc_common/button_help.png|pimg=private/cc_common/button_help.png|link=@show_rule_panel>'..
         '<Img|id=16|x=160|y=90|width=300|height=22|img=private/cc_baipiao/1.png>'..
         '<Img|id=17|x=460|y=90|width=320|height=22|img=private/cc_baipiao/2.png>'
 
-<<<<<<< HEAD
-=======
     strPanelInfo = strPanelInfo..Item.GetBagItemsShowInfo(actor, SHOW_BAG_ITEMS, 18, CSS.BAG_ITEMSHOW_PANEL_X, CSS.BAG_ITEMSHOW_PANEL_Y - 2) 
     
     local currday = BF_GetDay(os.time())
@@ -339,7 +259,6 @@ function BaiPiaoGift.ShowBasePanel(actor)
     local leftday = ONE_ROUND_LAST_DAYS - (currday - startday)
     strPanelInfo = strPanelInfo..'<Text|id=19|x=600.0|y=60.0|size=20|color='..CSS.NPC_LIGHTGREEN..'|text='..leftday..'天后重置活动>'
 
->>>>>>> 464c2f673c31ee838f91e05a5e363efaa4e605e4
     local chooseid = getplaydef(actor, CommonDefine.VAR_N_LAST_NPC_CHOOSEID)
     local listitemidstr = ''
     for i = 1, #cfgBaiPiaoGroupList, 1 do
@@ -389,35 +308,20 @@ function BaiPiaoGift.BuySingleGift(actor, giftid)
     if singleGiftConfig == nil then
         return
     end
-<<<<<<< HEAD
-    local groupid = singleGiftConfig.groupid
-    local innerseq = singleGiftConfig.innerseq
-
-    local curbuytimes = 0
-    local datastr = getplaydef(actor, CommonDefine.VAR_T_BAIPIAOGIFT_DATA)
-=======
     local strgid = singleGiftConfig.groupid..''
     local strsid = singleGiftConfig.innerseq..''
 
     local curbuytimes = 0
     local datastr = getplaydef(actor, CommonDefine.VAR_T_BAIPIAOGIFT_DATA)
   
->>>>>>> 464c2f673c31ee838f91e05a5e363efaa4e605e4
     local allgiftdata_tab = {}
     if datastr ~= '' then
         allgiftdata_tab = json2tbl(datastr)
     end    
-<<<<<<< HEAD
-    local groupdata = allgiftdata_tab[groupid]     
-    local singledata = nil
-    if groupdata~=nil and groupdata.giftdatalist~=nil then
-        singledata = groupdata.giftdatalist[innerseq]
-=======
     local groupdata = allgiftdata_tab[strgid]     
     local singledata = nil
     if groupdata~=nil and groupdata.giftdatalist~=nil then
         singledata = groupdata.giftdatalist[strsid]
->>>>>>> 464c2f673c31ee838f91e05a5e363efaa4e605e4
         if singledata then
             curbuytimes = singledata.curbuytimes
         end
@@ -442,22 +346,14 @@ function BaiPiaoGift.BuySingleGift(actor, giftid)
     Player.GiveItemsToBagOrMail(actor, singleGiftConfig.giftitems_tab, '白嫖礼包')
 
     if singledata == nil then
-<<<<<<< HEAD
-        allgiftdata_tab[groupid].giftlist[innerseq] = {curbuytimes = 0, freegrasstime = 0, freerewardflag = 0}
-    end
-    allgiftdata_tab[groupid].giftlist[innerseq].curbuytimes = allgiftdata_tab[groupid].giftlist[innerseq].curbuytimes + 1
-=======
         allgiftdata_tab[strgid].giftdatalist[strsid] = {curbuytimes = 0, freegrasstime = 0, freerewardflag = 0}
     end
     allgiftdata_tab[strgid].giftdatalist[strsid].curbuytimes = allgiftdata_tab[strgid].giftdatalist[strsid].curbuytimes + 1
->>>>>>> 464c2f673c31ee838f91e05a5e363efaa4e605e4
 
     local tempstr = tbl2json(allgiftdata_tab)
     setplaydef(actor, CommonDefine.VAR_T_BAIPIAOGIFT_DATA, tempstr)
 end
 
-<<<<<<< HEAD
-=======
 --种草礼包
 function BaiPiaoGift.GrassSingleGift(actor, giftid)
     if BF_IsNullObj(actor) then
@@ -568,7 +464,6 @@ function BaiPiaoGift.FetchGrassSingleGift(actor, giftid)
     end
 end
 
->>>>>>> 464c2f673c31ee838f91e05a5e363efaa4e605e4
 --处理button回调
 function BaiPiaoGift.DoOperButton(actor, sid, sparam)
     if BF_IsNullObj(actor) or not BF_IsNumberStr(sid) then
@@ -581,19 +476,13 @@ function BaiPiaoGift.DoOperButton(actor, sid, sparam)
         nparam = tonumber(sparam)
     end
 
-<<<<<<< HEAD
-    BaiPiaoGift.CheckGameDataVersion(actor)
-=======
     BaiPiaoGift.CheckPlayerDataVersion(actor)
->>>>>>> 464c2f673c31ee838f91e05a5e363efaa4e605e4
 
     if funcid == NPCPANEL_BUTTONFUNC_ID_1 then
         setplaydef(actor, CommonDefine.VAR_N_LAST_NPC_CHOOSEID,  nparam)
         BaiPiaoGift.ShowBasePanel(actor)
     elseif funcid == NPCPANEL_BUTTONFUNC_ID_2 then
         BaiPiaoGift.BuySingleGift(actor, nparam)
-<<<<<<< HEAD
-=======
         BaiPiaoGift.ShowBasePanel(actor)
     elseif funcid == NPCPANEL_BUTTONFUNC_ID_3 then
         BaiPiaoGift.GrassSingleGift(actor, nparam)
@@ -601,7 +490,6 @@ function BaiPiaoGift.DoOperButton(actor, sid, sparam)
     elseif funcid == NPCPANEL_BUTTONFUNC_ID_4 then
         BaiPiaoGift.FetchGrassSingleGift(actor, nparam)
         BaiPiaoGift.ShowBasePanel(actor)
->>>>>>> 464c2f673c31ee838f91e05a5e363efaa4e605e4
     end
 end
 
@@ -613,8 +501,6 @@ function BaiPiaoGift.IsHaveQuickTip(actor)
     return false
 end
 
-<<<<<<< HEAD
-=======
 --小红点提示
 function BaiPiaoGift.IsTopIconHaveRedPoint(actor)
     if not Player.IsFunctionOpen(actor, CommonDefine.FUNC_ID_BAIPIAO_GIFT, false) then
@@ -648,6 +534,5 @@ function BaiPiaoGift.IsTopIconHaveRedPoint(actor)
 
     return false
 end
->>>>>>> 464c2f673c31ee838f91e05a5e363efaa4e605e4
 
 return BaiPiaoGift

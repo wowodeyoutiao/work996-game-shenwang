@@ -1,0 +1,601 @@
+--任务线配置
+TaskLineConfig = {
+    [CommonDefine.TASK_LINE_ID_MAIN] = {
+        taskIDVar = CommonDefine.VAR_U_ID_TASKLINE1,
+        taskStatusVar = CommonDefine.VAR_U_STATUS_TASKLINE1,
+        taskCounterVar = CommonDefine.VAR_T_COUNTERDATA_TASKLINE1,
+        taskSingleCounterVar = CommonDefine.VAR_U_COUNTER_TASKLINE1,
+        firstTaskID = 101,
+        taskDataList = { 
+          
+            [101] = {
+                nextid = 102, 
+                acceptnpcid = 0,      --'接任务NPC',
+                submitnpcid = 0,      --'交任务NPC',
+                autoaccept=1, 
+                autosubmit=0,
+                acceptdialogue = '',
+                submitdialogue = '',
+                tasktype = CommonDefine.TASK_TYPE_KILLMON,
+                --一个子任务最多支持三个目标，扩展另开发
+                tasktarg_tab = {{monname='钉耙猫', num=5}},
+                targpos = {mapid='em000', x=37, y=41},                
+                tasktargparam = 20,
+                reward_tab = {{name='经验', num=5000}},
+                openbox_num = 10,      --任务完成，直接增加开箱数量
+            },
+            [102] = {
+                nextid = 103, 
+                acceptnpcid = 0,      --'接任务NPC',
+                submitnpcid = 0,      --'交任务NPC',
+                autoaccept=1, 
+                autosubmit=0,
+                acceptdialogue = '',
+                submitdialogue = '',
+                tasktype = CommonDefine.TASK_TYPE_OPENBOXNUM,
+                --一个子任务最多支持三个目标，扩展另开发
+                tasktargparam = 10,
+                tasktargdesc = '',
+                reward_tab = {{name='强化石', num=200},{name='金币', num=200000}},
+                openbox_num = 20,      --任务完成，直接增加开箱数量
+            }, 
+           [103] = {
+                nextid = 104, 
+                acceptnpcid = 0,      --'接任务NPC',
+                submitnpcid = 0,      --'交任务NPC',
+                autoaccept=1, 
+                autosubmit=0,
+                acceptdialogue = '',
+                submitdialogue = '',
+                tasktype = CommonDefine.TASK_TYPE_LEVEL,
+                --一个子任务最多支持三个目标，扩展另开发
+                tasktargparam = 20,
+                tasktargdesc = '',
+                reward_tab = {{name='经验', num=5000},{name='金币', num=200000}},
+                openbox_num = 20,      --任务完成，直接增加开箱数量
+            },
+           [104] = {
+                nextid = 105, 
+                acceptnpcid = 0,      --'接任务NPC',
+                submitnpcid = 0,      --'交任务NPC',
+                autoaccept=1, 
+                autosubmit=0,
+                acceptdialogue = '',
+                submitdialogue = '',
+                tasktype = CommonDefine.TASK_TYPE_KILLMON,
+                --一个子任务最多支持三个目标，扩展另开发
+                tasktarg_tab = {{monname='黄沙蚁', num=5}},
+                targpos = {mapid='fmg', x=246, y=105},                
+                tasktargparam = 20,
+                reward_tab = {{name='强化石', num=500},{name='经验', num=50000}},
+		openbox_num = 20,
+            },
+           [105] = {
+                nextid = 106, 
+                acceptnpcid = 0,      --'接任务NPC',
+                submitnpcid = 0,      --'交任务NPC',
+                autoaccept=1, 
+                autosubmit=0,
+                acceptdialogue = '',
+                submitdialogue = '',
+                tasktype = CommonDefine.TASK_TYPE_EQUIPPOS_STRENGTH,
+                --一个子任务最多支持三个目标，扩展另开发
+                tasktargparam = 10,
+                tasktargdesc = '',
+                reward_tab = {{name='强化石', num=200},{name='经验', num=50000}},
+                openbox_num = 0,      --任务完成，直接增加开箱数量
+            },
+            [106] = {
+                nextid = 107, 
+                acceptnpcid = 0,      --'接任务NPC',
+                submitnpcid = 0,      --'交任务NPC',
+                autoaccept=1, 
+                autosubmit=0,
+                acceptdialogue = '',
+                submitdialogue = '',
+                tasktype = CommonDefine.TASK_TYPE_KILLMON,
+                --一个子任务最多支持三个目标，扩展另开发
+                tasktarg_tab = {{monname='白沙蚁', num=10}},
+                targpos = {mapid='fmg', x=252, y=93},                
+                tasktargparam = 20,
+                reward_tab = {{name='书页', num=300},{name='金币', num=200000}},
+		openbox_num = 20,
+            },
+            [107] = {
+                nextid = 108, 
+                acceptnpcid = 0,      --'接任务NPC',
+                submitnpcid = 0,      --'交任务NPC',
+                autoaccept=1, 
+                autosubmit=0,
+                acceptdialogue = '',
+                submitdialogue = '',
+                tasktype = CommonDefine.TASK_TYPE_SKILL_UPGRADE,
+                --一个子任务最多支持三个目标，扩展另开发
+                tasktargparam = 3,
+                tasktargdesc = '',
+                reward_tab = {{name='强化石', num=200},{name='经验', num=100000}},
+                openbox_num = 0,      --任务完成，直接增加开箱数量
+            },
+            [108] = {
+                nextid = 109, 
+                acceptnpcid = 0,      --'接任务NPC',
+                submitnpcid = 0,      --'交任务NPC',
+                autoaccept=1, 
+                autosubmit=0,
+                acceptdialogue = '',
+                submitdialogue = '',
+                tasktype = CommonDefine.TASK_TYPE_KILLMON,
+                --一个子任务最多支持三个目标，扩展另开发
+                tasktarg_tab = {{monname='虎斑蚁', num=15}},
+                targpos = {mapid='hero1', x=220, y=40},                
+                tasktargparam = 15,
+                reward_tab = {{name='绑定元宝', num=500},{name='金币', num=200000}},
+		openbox_num = 20,
+            },
+            [109] = {
+                nextid = 110, 
+                acceptnpcid = 0,      --'接任务NPC',
+                submitnpcid = 0,      --'交任务NPC',
+                autoaccept=1, 
+                autosubmit=0,
+                acceptdialogue = '',
+                submitdialogue = '',
+                tasktype = CommonDefine.TASK_TYPE_SUPERBOX_UPGRADE,
+                --一个子任务最多支持三个目标，扩展另开发
+                tasktargparam = 2,
+                tasktargdesc = '',
+                reward_tab = {{name='升星石', num=200},{name='金币', num=700000}},
+                openbox_num = 20,      --任务完成，直接增加开箱数量
+            },   
+           [110] = {
+                nextid = 111, 
+                acceptnpcid = 0,      --'接任务NPC',
+                submitnpcid = 0,      --'交任务NPC',
+                autoaccept=1, 
+                autosubmit=0,
+                acceptdialogue = '',
+                submitdialogue = '',
+                tasktype = CommonDefine.TASK_TYPE_TITLE_UPGRADE,
+                --一个子任务最多支持三个目标，扩展另开发
+                tasktargparam = 1,
+                tasktargdesc = '',
+                reward_tab = {{name='强化石', num=200},{name='金币', num=700000}},
+                openbox_num = 20,      --任务完成，直接增加开箱数量
+            },   
+           [111] = {
+                nextid = 112, 
+                 acceptnpcid = 0,      --'接任务NPC',
+                submitnpcid = 0,      --'交任务NPC',
+                autoaccept=1, 
+                autosubmit=0,
+                acceptdialogue = '',
+                submitdialogue = '',
+                tasktype = CommonDefine.TASK_TYPE_KILLMON,
+                --一个子任务最多支持三个目标，扩展另开发
+                tasktarg_tab = {{monname='沃玛守卫', num=15}},
+                targpos = {mapid='lhzd', x=220, y=40}, 
+                tasktargparam = 15,
+                tasktargdesc = '',
+                reward_tab = {{name='强化石', num=200},{name='金币', num=300000}},
+                openbox_num = 20,      --任务完成，直接增加开箱数量
+            },   
+            [112] = {
+                nextid = 113, 
+                acceptnpcid = 0,      --'接任务NPC',
+                submitnpcid = 0,      --'交任务NPC',
+                autoaccept=1, 
+                autosubmit=0,
+                acceptdialogue = '',
+                submitdialogue = '',
+                tasktype = CommonDefine.TASK_TYPE_OPENBOXNUM,
+                --一个子任务最多支持三个目标，扩展另开发
+                tasktargparam = 30,
+                tasktargdesc = '',
+                reward_tab = {{name='强化石', num=200},{name='金币', num=200000}},
+                openbox_num = 20,      --任务完成，直接增加开箱数量
+            },   
+            [113] = {
+                nextid = 114, 
+                acceptnpcid = 0,      --'接任务NPC',
+                submitnpcid = 0,      --'交任务NPC',
+                autoaccept=1, 
+                autosubmit=0,
+                acceptdialogue = '',
+                submitdialogue = '',
+                tasktype = CommonDefine.TASK_TYPE_TITLE_UPGRADE,
+                --一个子任务最多支持三个目标，扩展另开发
+                tasktargparam = 2,
+                tasktargdesc = '',
+                reward_tab = {{name='强化石', num=200},{name='金币', num=700000}},
+                openbox_num = 20,      --任务完成，直接增加开箱数量
+            },   
+            [114] = {
+                nextid = 115, 
+               acceptnpcid = 0,      --'接任务NPC',
+                submitnpcid = 0,      --'交任务NPC',
+                autoaccept=1, 
+                autosubmit=0,
+                acceptdialogue = '',
+                submitdialogue = '',
+                tasktype = CommonDefine.TASK_TYPE_KILLMON,
+                --一个子任务最多支持三个目标，扩展另开发
+                tasktarg_tab = {{monname='白野猪', num=15}},
+                targpos = {mapid='zwd', x=220, y=40}, 
+                tasktargparam = 15,
+                tasktargdesc = '',
+                reward_tab = {{name='强化石', num=200},{name='金币', num=200000}},
+                openbox_num = 20,      --任务完成，直接增加开箱数量
+
+            },   
+            [115] = {
+                nextid = 116, 
+               acceptnpcid = 0,      --'接任务NPC',
+                submitnpcid = 0,      --'交任务NPC',
+                autoaccept=1, 
+                autosubmit=0,
+                acceptdialogue = '',
+                submitdialogue = '',
+                tasktype = CommonDefine.TASK_TYPE_POWERSCORE,
+                --一个子任务最多支持三个目标，扩展另开发
+                tasktargparam = 200000,
+                tasktargdesc = '',
+                reward_tab = {{name='强化石', num=200},{name='金币', num=300000}},
+                openbox_num = 20,      --任务完成，直接增加开箱数量
+
+            },   
+            [116] = {
+                nextid = 117, 
+               acceptnpcid = 0,      --'接任务NPC',
+                submitnpcid = 0,      --'交任务NPC',
+                autoaccept=1, 
+                autosubmit=0,
+                acceptdialogue = '',
+                submitdialogue = '',
+                tasktype = CommonDefine.TASK_TYPE_LEVEL,
+                --一个子任务最多支持三个目标，扩展另开发
+                tasktargparam = 60,
+                tasktargdesc = '',
+                reward_tab = {{name='强化石', num=200},{name='金币', num=700000}},
+                openbox_num = 20,      --任务完成，直接增加开箱数量
+
+            },   
+           [117] = {
+                nextid = 118, 
+                acceptnpcid = 0,      --'接任务NPC',
+                submitnpcid = 0,      --'交任务NPC',
+                autoaccept=1, 
+                autosubmit=0,
+                acceptdialogue = '',
+                submitdialogue = '',
+                tasktype = CommonDefine.TASK_TYPE_KILLMON,
+                --一个子任务最多支持三个目标，扩展另开发
+                tasktarg_tab = {{monname='沃玛守卫', num=25}},
+                targpos = {mapid='rxsc1891', x=101, y=131},                
+                tasktargparam = 20,
+                reward_tab = {{name='绑定元宝', num=500},{name='金币', num=200000}},
+		openbox_num = 20,
+
+            },   
+            [118] = {
+                nextid = 119, 
+                acceptnpcid = 0,      --'接任务NPC',
+                submitnpcid = 0,      --'交任务NPC',
+                autoaccept=1, 
+                autosubmit=0,
+                acceptdialogue = '',
+                submitdialogue = '',
+                tasktype = CommonDefine.TASK_TYPE_POWERSCORE,
+                --一个子任务最多支持三个目标，扩展另开发
+                tasktargparam = 500000,
+                tasktargdesc = '',
+                reward_tab = {{name='强化石', num=200},{name='金币', num=300000}},
+                openbox_num = 20,      --任务完成，直接增加开箱数量
+
+            },   
+           [119] = {
+                nextid = 120, 
+                acceptnpcid = 0,      --'接任务NPC',
+                submitnpcid = 0,      --'交任务NPC',
+                autoaccept=1, 
+                autosubmit=0,
+                acceptdialogue = '',
+                submitdialogue = '',
+                tasktype = CommonDefine.TASK_TYPE_OPENBOXNUM,
+                --一个子任务最多支持三个目标，扩展另开发
+                tasktargparam = 100,
+                tasktargdesc = '',
+                reward_tab = {{name='强化石', num=200},{name='金币', num=200000}},
+                openbox_num = 20,      --任务完成，直接增加开箱数量
+
+            },   
+            [120] = {
+                nextid = 0, 
+                acceptnpcid = 0,      --'接任务NPC',
+                submitnpcid = 0,      --'交任务NPC',
+                autoaccept=1, 
+                autosubmit=0,
+                acceptdialogue = '',
+                submitdialogue = '',
+                tasktype = CommonDefine.TASK_TYPE_LEVEL,
+                --一个子任务最多支持三个目标，扩展另开发
+                tasktargparam = 100,
+                tasktargdesc = '',
+                reward_tab = {{name='强化石', num=200},{name='金币', num=700000}},
+                openbox_num = 20,      --任务完成，直接增加开箱数量
+            },
+
+            --下面是升级称号的任务类型示例
+            -- [121] = {
+                -- nextid = 122, 
+                -- acceptnpcid = 0,      --'接任务NPC',
+                -- submitnpcid = 0,      --'交任务NPC',
+                -- autoaccept=1, 
+                -- autosubmit=0,
+                -- acceptdialogue = '',
+                -- submitdialogue = '',
+                -- tasktype = CommonDefine.TASK_TYPE_TITLE_UPGRADE,
+                -- --一个子任务最多支持三个目标，扩展另开发
+                -- tasktargparam = 2,
+                -- tasktargdesc = '',
+                -- reward_tab = {{name='强化石', num=200},{name='金币', num=700000}},
+                -- openbox_num = 20,      --任务完成，直接增加开箱数量
+            -- },
+            -- [122] = {
+                -- nextid = 123, 
+                -- acceptnpcid = 0,      --'接任务NPC',
+                -- submitnpcid = 0,      --'交任务NPC',
+                -- autoaccept=1, 
+                -- autosubmit=0,
+                -- acceptdialogue = '',
+                -- submitdialogue = '',
+                -- tasktype = CommonDefine.TASK_TYPE_TITLE_UPGRADE,
+                -- --一个子任务最多支持三个目标，扩展另开发
+                -- tasktargparam = 3,
+                -- tasktargdesc = '',
+                -- reward_tab = {{name='强化石', num=200},{name='金币', num=700000}},
+                -- openbox_num = 20,      --任务完成，直接增加开箱数量
+            -- },
+            -- [123] = {
+                -- nextid = 0, 
+                -- acceptnpcid = 0,      --'接任务NPC',
+                -- submitnpcid = 0,      --'交任务NPC',
+                -- autoaccept=1, 
+                -- autosubmit=0,
+                -- acceptdialogue = '',
+                -- submitdialogue = '',
+                -- tasktype = CommonDefine.TASK_TYPE_TITLE_UPGRADE,
+                -- --一个子任务最多支持三个目标，扩展另开发
+                -- tasktargparam = 4,
+                -- tasktargdesc = '',
+                -- reward_tab = {{name='强化石', num=200},{name='金币', num=700000}},
+                -- openbox_num = 20,      --任务完成，直接增加开箱数量
+            -- },            
+            
+        }
+    },
+
+    [CommonDefine.TASK_LINE_ID_BRANCH] = {
+        taskIDVar = CommonDefine.VAR_U_ID_TASKLINE2,
+        taskStatusVar = CommonDefine.VAR_U_STATUS_TASKLINE2,
+        taskCounterVar = CommonDefine.VAR_T_COUNTERDATA_TASKLINE2,
+        taskSingleCounterVar = CommonDefine.VAR_U_COUNTER_TASKLINE2,
+        firstTaskID = 501,
+        taskDataList = { 
+            [501] = {
+                nextid = 502, 
+                acceptnpcid = 0,      --'接任务NPC',
+                submitnpcid = 0,      --'交任务NPC',
+                autoaccept=1, 
+                autosubmit=0,
+                acceptdialogue = '免费的不一定是廉价的！',
+                submitdialogue = '只要有付出就一定会有收获的！',
+                tasktype = CommonDefine.TASK_TYPE_FREEVIP,
+                --一个子任务最多支持三个目标，扩展另开发
+                tasktargparam = 1,
+                tasktargdesc = '解锁VIP1',
+                reward_tab = {{name='绑定元宝', num=1000}},
+                openbox_num = 0,
+            },
+            [502] = {
+                nextid = 503, 
+                acceptnpcid = 0,      --'接任务NPC',
+                submitnpcid = 0,      --'交任务NPC',
+                autoaccept=1, 
+                autosubmit=0,
+                 acceptdialogue = '免费的不一定是廉价的！',
+                submitdialogue = '只要有付出就一定会有收获的！',
+                tasktype = CommonDefine.TASK_TYPE_FREEVIP,
+                --一个子任务最多支持三个目标，扩展另开发
+                tasktargparam = 2,
+                tasktargdesc = '解锁VIP2',
+                reward_tab = {{name='绑定元宝', num=2000}},
+            }, 
+            [503] = {
+                nextid = 504, 
+                acceptnpcid = 0,      --'接任务NPC',
+                submitnpcid = 0,      --'交任务NPC',
+                autoaccept=1, 
+                autosubmit=0,
+                acceptdialogue = '免费的不一定是廉价的！',
+                submitdialogue = '只要有付出就一定会有收获的！',
+                tasktype = CommonDefine.TASK_TYPE_FREEVIP,
+                --一个子任务最多支持三个目标，扩展另开发
+                tasktargparam = 3,
+                tasktargdesc = '解锁VIP3',
+                reward_tab = {{name='绑定元宝', num=3000}},
+            },   
+            [504] = {
+                nextid = 505, 
+                acceptnpcid = 0,      --'接任务NPC',
+                submitnpcid = 0,      --'交任务NPC',
+                autoaccept=1, 
+                autosubmit=0,
+                acceptdialogue = '免费的不一定是廉价的！',
+                submitdialogue = '只要有付出就一定会有收获的！',
+                tasktype = CommonDefine.TASK_TYPE_FREEVIP,
+                --一个子任务最多支持三个目标，扩展另开发
+                tasktargparam = 4,
+                tasktargdesc = '解锁VIP4',
+                reward_tab = {{name='绑定元宝', num=4000}},
+            },             
+           [505] = {
+                nextid = 506, 
+                acceptnpcid = 0,      --'接任务NPC',
+                submitnpcid = 0,      --'交任务NPC',
+                autoaccept=1, 
+                autosubmit=0,
+                acceptdialogue = '免费的不一定是廉价的！',
+                submitdialogue = '只要有付出就一定会有收获的！',
+                tasktype = CommonDefine.TASK_TYPE_FREEVIP,
+                --一个子任务最多支持三个目标，扩展另开发
+                tasktargparam = 5,
+                tasktargdesc = '解锁VIP5',
+                reward_tab = {{name='绑定元宝', num=5000}},
+            },             
+            [506] = {
+                nextid = 507, 
+                acceptnpcid = 0,      --'接任务NPC',
+                submitnpcid = 0,      --'交任务NPC',
+                autoaccept=1, 
+                autosubmit=0,
+                acceptdialogue = '免费的不一定是廉价的！',
+                submitdialogue = '只要有付出就一定会有收获的！',
+                tasktype = CommonDefine.TASK_TYPE_FREEVIP,
+                --一个子任务最多支持三个目标，扩展另开发
+                tasktargparam = 6,
+                tasktargdesc = '解锁VIP6',
+                reward_tab = {{name='绑定元宝', num=6000}},
+            },             
+            [507] = {
+                nextid = 508, 
+                acceptnpcid = 0,      --'接任务NPC',
+                submitnpcid = 0,      --'交任务NPC',
+                autoaccept=1, 
+                autosubmit=0,
+                acceptdialogue = '免费的不一定是廉价的！',
+                submitdialogue = '只要有付出就一定会有收获的！',
+                tasktype = CommonDefine.TASK_TYPE_FREEVIP,
+                --一个子任务最多支持三个目标，扩展另开发
+                tasktargparam = 7,
+                tasktargdesc = '解锁VIP7',
+                reward_tab = {{name='绑定元宝', num=7000}},
+            },           
+            [508] = {
+                nextid = 509, 
+                acceptnpcid = 0,      --'接任务NPC',
+                submitnpcid = 0,      --'交任务NPC',
+                autoaccept=1, 
+                autosubmit=0,
+                acceptdialogue = '免费的不一定是廉价的！',
+                submitdialogue = '只要有付出就一定会有收获的！',
+                tasktype = CommonDefine.TASK_TYPE_FREEVIP,
+                --一个子任务最多支持三个目标，扩展另开发
+                tasktargparam = 8,
+                tasktargdesc = '解锁VIP8',
+                reward_tab = {{name='绑定元宝', num=8000}},
+            },           
+           [509] = {
+                nextid = 510, 
+                acceptnpcid = 0,      --'接任务NPC',
+                submitnpcid = 0,      --'交任务NPC',
+                autoaccept=1, 
+                autosubmit=0,
+                acceptdialogue = '免费的不一定是廉价的！',
+                submitdialogue = '只要有付出就一定会有收获的！',
+                tasktype = CommonDefine.TASK_TYPE_FREEVIP,
+                --一个子任务最多支持三个目标，扩展另开发
+                tasktargparam = 9,
+                tasktargdesc = '解锁VIP9',
+                reward_tab = {{name='绑定元宝', num=9000}},
+            },           
+            [510] = {
+                nextid = 511, 
+                acceptnpcid = 0,      --'接任务NPC',
+                submitnpcid = 0,      --'交任务NPC',
+                autoaccept=1, 
+                autosubmit=0,
+                acceptdialogue = '免费的不一定是廉价的！',
+                submitdialogue = '只要有付出就一定会有收获的！',
+                tasktype = CommonDefine.TASK_TYPE_FREEVIP,
+                --一个子任务最多支持三个目标，扩展另开发
+                tasktargparam = 10,
+                tasktargdesc = '解锁VIP10',
+                reward_tab = {{name='绑定元宝', num=10000}},
+            },           
+            [511] = {
+                nextid = 512, 
+                acceptnpcid = 0,      --'接任务NPC',
+                submitnpcid = 0,      --'交任务NPC',
+                autoaccept=1, 
+                autosubmit=0,
+                acceptdialogue = '免费的不一定是廉价的！',
+                submitdialogue = '只要有付出就一定会有收获的！',
+                tasktype = CommonDefine.TASK_TYPE_FREEVIP,
+                --一个子任务最多支持三个目标，扩展另开发
+                tasktargparam = 11,
+                tasktargdesc = '解锁VIP11',
+                reward_tab = {{name='绑定元宝', num=11000}},
+            },           
+            [512] = {
+                nextid = 513, 
+                acceptnpcid = 0,      --'接任务NPC',
+                submitnpcid = 0,      --'交任务NPC',
+                autoaccept=1, 
+                autosubmit=0,
+                acceptdialogue = '免费的不一定是廉价的！',
+                submitdialogue = '只要有付出就一定会有收获的！',
+                tasktype = CommonDefine.TASK_TYPE_FREEVIP,
+                --一个子任务最多支持三个目标，扩展另开发
+                tasktargparam = 12,
+                tasktargdesc = '解锁VIP12',
+                reward_tab = {{name='绑定元宝', num=12000}},
+            },      
+            [513] = {
+                nextid = 514, 
+                acceptnpcid = 0,      --'接任务NPC',
+                submitnpcid = 0,      --'交任务NPC',
+                autoaccept=1, 
+                autosubmit=0,
+                acceptdialogue = '免费的不一定是廉价的！',
+                submitdialogue = '只要有付出就一定会有收获的！',
+                tasktype = CommonDefine.TASK_TYPE_FREEVIP,
+                --一个子任务最多支持三个目标，扩展另开发
+                tasktargparam = 13,
+                tasktargdesc = '解锁VIP13',
+                reward_tab = {{name='绑定元宝', num=13000}},
+            },          
+           [514] = {
+                nextid = 515, 
+                acceptnpcid = 0,      --'接任务NPC',
+                submitnpcid = 0,      --'交任务NPC',
+                autoaccept=1, 
+                autosubmit=0,
+                acceptdialogue = '免费的不一定是廉价的！',
+                submitdialogue = '只要有付出就一定会有收获的！',
+                tasktype = CommonDefine.TASK_TYPE_FREEVIP,
+                --一个子任务最多支持三个目标，扩展另开发
+                tasktargparam = 14,
+                tasktargdesc = '解锁VIP14',
+                reward_tab = {{name='绑定元宝', num=14000}},
+            },          
+            [515] = {
+                nextid = 0, 
+                acceptnpcid = 0,      --'接任务NPC',
+                submitnpcid = 0,      --'交任务NPC',
+                autoaccept=1, 
+                autosubmit=0,
+                acceptdialogue = '免费的不一定是廉价的！',
+                submitdialogue = '只要有付出就一定会有收获的！',
+                tasktype = CommonDefine.TASK_TYPE_FREEVIP,
+                --一个子任务最多支持三个目标，扩展另开发
+                tasktargparam = 15,
+                tasktargdesc = '解锁VIP15',
+                reward_tab = {{name='绑定元宝', num=15000}},
+            },          
+
+        }
+    }    
+
+}
+
+return TaskLineConfig
