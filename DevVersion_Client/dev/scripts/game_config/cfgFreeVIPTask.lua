@@ -247,7 +247,7 @@ local config = {
 		tasktargnum = 20,
 		taskparam = 0,
 		taskdesc = "累计击杀%s次灵玉首领",
-		finishrewards = "[{\"name\":\"灵玉精华\", \"num\"500}]",
+		finishrewards = "[{\"name\":\"灵玉精华\", \"num\":500}]",
 	},
 	[501] = { 
 		id = 501,
