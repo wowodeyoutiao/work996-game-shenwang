@@ -322,54 +322,7 @@ TaskLineConfig = {
                 tasktargdesc = '',
                 reward_tab = {{name='强化石', num=200},{name='金币', num=700000}},
                 openbox_num = 20,      --任务完成，直接增加开箱数量
-            },
-
-            --下面是升级称号的任务类型示例
-            -- [121] = {
-                -- nextid = 122, 
-                -- acceptnpcid = 0,      --'接任务NPC',
-                -- submitnpcid = 0,      --'交任务NPC',
-                -- autoaccept=1, 
-                -- autosubmit=0,
-                -- acceptdialogue = '',
-                -- submitdialogue = '',
-                -- tasktype = CommonDefine.TASK_TYPE_TITLE_UPGRADE,
-                -- --一个子任务最多支持三个目标，扩展另开发
-                -- tasktargparam = 2,
-                -- tasktargdesc = '',
-                -- reward_tab = {{name='强化石', num=200},{name='金币', num=700000}},
-                -- openbox_num = 20,      --任务完成，直接增加开箱数量
-            -- },
-            -- [122] = {
-                -- nextid = 123, 
-                -- acceptnpcid = 0,      --'接任务NPC',
-                -- submitnpcid = 0,      --'交任务NPC',
-                -- autoaccept=1, 
-                -- autosubmit=0,
-                -- acceptdialogue = '',
-                -- submitdialogue = '',
-                -- tasktype = CommonDefine.TASK_TYPE_TITLE_UPGRADE,
-                -- --一个子任务最多支持三个目标，扩展另开发
-                -- tasktargparam = 3,
-                -- tasktargdesc = '',
-                -- reward_tab = {{name='强化石', num=200},{name='金币', num=700000}},
-                -- openbox_num = 20,      --任务完成，直接增加开箱数量
-            -- },
-            -- [123] = {
-                -- nextid = 0, 
-                -- acceptnpcid = 0,      --'接任务NPC',
-                -- submitnpcid = 0,      --'交任务NPC',
-                -- autoaccept=1, 
-                -- autosubmit=0,
-                -- acceptdialogue = '',
-                -- submitdialogue = '',
-                -- tasktype = CommonDefine.TASK_TYPE_TITLE_UPGRADE,
-                -- --一个子任务最多支持三个目标，扩展另开发
-                -- tasktargparam = 4,
-                -- tasktargdesc = '',
-                -- reward_tab = {{name='强化石', num=200},{name='金币', num=700000}},
-                -- openbox_num = 20,      --任务完成，直接增加开箱数量
-            -- },            
+            },    
             
         }
     },

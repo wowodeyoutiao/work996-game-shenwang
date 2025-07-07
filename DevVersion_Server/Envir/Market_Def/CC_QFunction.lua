@@ -492,6 +492,10 @@ function jumparea_button(actor, sid)
     JumpAreaManager.DoJumpAreaButton(actor, sid)
 end
 
+function baipiao_refresh(actor)
+    BaiPiaoGift.ShowBasePanel(actor)
+end
+
 -------------------------------------------------------新逻辑还是从原来的NPC脚本走--------------------------------------------
 --灵玉功能相关
 function baozhu_button_function(actor, sid, sparam)
