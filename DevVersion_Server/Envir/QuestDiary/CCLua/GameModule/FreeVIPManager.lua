@@ -78,7 +78,7 @@ function FreeVIPManager.QuickGoTo(actor, tasktype)
     elseif tasktype == FreeVIPManager.TASK_TYPE_COMPOSE_EQUIP_SUCCESSTIMES then   
         Player.QuickGoTo(actor, CommonDefine.QUICK_GOTO_EQUIP_COMPOSE)
     elseif tasktype == FreeVIPManager.TASK_TYPE_COMPOSE_SOULSTONE_SUCCESSTIMES then 
-        Player.QuickGoTo(actor, CommonDefine.QUICK_GOTO_SOULSTONE)
+        Player.QuickGoTo(actor, CommonDefine.QUICK_GOTO_SOULSTONE_COMPOSE)
     elseif tasktype == FreeVIPManager.TASK_TYPE_COMPOSE_BAOZHU_SUCCESSTIMES then   
         Player.QuickGoTo(actor, CommonDefine.QUICK_GOTO_BAOZHU)
     elseif tasktype == FreeVIPManager.TASK_TYPE_ALL_EQUIPPOS_MINSTRENGTHLV then   

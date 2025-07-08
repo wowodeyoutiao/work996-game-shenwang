@@ -716,6 +716,10 @@ function Player.QuickGoTo(actor, gotoid)
     elseif gotoid == CommonDefine.QUICK_GOTO_EQUIP_COMPOSE then
         --装备合成
         NewMainUIBase.OpenPanel(actor, NewMainUIBase.UI_ICON_COMPOSE)
+    elseif gotoid == CommonDefine.QUICK_GOTO_SOULSTONE_COMPOSE then
+        --魂石合成
+        NewMainUIBase.OpenPanel(actor, NewMainUIBase.UI_ICON_COMPOSE)
+        ItemComposeManager.DoOperButton(actor, '1', '3')
     elseif gotoid == CommonDefine.QUICK_GOTO_SOULSTONE then
         --魂石系统
         NewMainUIBase.OpenPanel(actor, NewMainUIBase.UI_ICON_SOULSTONE)

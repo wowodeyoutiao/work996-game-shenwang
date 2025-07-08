@@ -537,8 +537,8 @@ CommonDefine = {
     VAR_HUM_BITFLAG_AUTO_EQUIPSTAR_FLAG = 205,       --自动升星标记
     VAR_HUM_BITFLAG_AUTO_OPEN_SUPERBOX_PAUSE = 206,  --暂停自动开启超级宝箱   
     VAR_HUM_BITFLAG_SUPERBOX_NOCHECK_TAKEON = 207,   --开宝箱时不触发穿戴检测的状态【一键穿戴不触发】
-
-    VAR_HUM_BITFLAG_RELIVE_DIALOGUE_FLAG = 301,     --玩家是否当前已有复活框弹出
+    VAR_HUM_BITFLAG_RELIVE_DIALOGUE_FLAG = 208,      --玩家是否当前已有复活框弹出
+    VAR_HUM_BITFLAG_OPEN_BAIPIAO_GRASS_FLAG = 209,   --玩家申请种草弹出面板 打开标记
 
     --300-800 都是可以下线保存的
     VAR_HUM_BITFLAG_AUTORECYCLE_ITEM1 = 300,         --勾选装备自动回收    
@@ -715,6 +715,7 @@ CommonDefine = {
     QUICK_GOTO_SUPERBOX_UPGRADE = 24,           --开宝箱升级
     QUICK_GOTO_COMMON_NAVIGATION = 25,          --通用引导
     QUICK_GOTO_TITLE_UPGRADE = 26,              --称号升级
+    QUICK_GOTO_SOULSTONE_COMPOSE = 27,          --魂石合成
 
     --脚本创建的动态npcid    最终的npcid是 系统组编号*10000+动态id
     --[[

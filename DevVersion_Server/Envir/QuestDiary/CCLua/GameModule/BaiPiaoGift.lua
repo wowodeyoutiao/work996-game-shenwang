@@ -5,6 +5,8 @@ local NPCPANEL_BUTTONFUNC_ID_1 = 1      --切换礼包页签
 local NPCPANEL_BUTTONFUNC_ID_2 = 2      --购买礼包
 local NPCPANEL_BUTTONFUNC_ID_3 = 3      --礼包种草
 local NPCPANEL_BUTTONFUNC_ID_4 = 4      --免费领取种草礼包
+local NPCPANEL_BUTTONFUNC_ID_5 = 5      --打开种草礼包的申请对话框
+local NPCPANEL_BUTTONFUNC_ID_6 = 6      --关闭种草礼包的申请对话框
 
 local SHOW_BAG_ITEMS = {'元宝'}
 
@@ -112,7 +114,7 @@ function BaiPiaoGift.ShowRulePanel(actor)
 
     local tempCurrX = 20
     local tempCurrY = 50
-    strPanelInfo = strPanelInfo..'<Text|id=21|text=白嫖礼包规则说明:|size=20|x='..tempCurrX..'|y='..tempCurrY..'|color='..CSS.NPC_LIGHTGREEN..'>'
+    strPanelInfo = strPanelInfo..'<Text|id=21|text=白票礼包规则说明:|size=20|x='..tempCurrX..'|y='..tempCurrY..'|color='..CSS.NPC_LIGHTGREEN..'>'
     tempCurrY = tempCurrY + 35
     strPanelInfo = strPanelInfo..'<Text|id=22|text=1、XXXXXXX|x='..tempCurrX..'|y='..tempCurrY..'|color='..CSS.NPC_WHITE..'>'
     tempCurrY = tempCurrY + 30
@@ -141,7 +143,7 @@ local function GetSingleShowInfo(actor, groupid)
     end    
 
     local strPanelInfo = ''
-    local idstr = '300,'
+    local idstr = '300,301,'
     local listitemidstr = ''
     local currtime = os.time()
 
@@ -184,7 +186,7 @@ local function GetSingleShowInfo(actor, groupid)
             if freerewardflag == 0 then
                 strPanelInfo = strPanelInfo..'<Button|id='..buttonid1..'|x=300|y=45|text=免费种草|size=18|color='..CSS.NPC_LIGHTGREEN..
                     '|pimg=private/cc_common/button_down1.png|mimg=private/cc_common/button_up1.png|nimg=private/cc_common/button_up1.png|link=@function_button,'..
-                    NPCPANEL_BUTTONFUNC_ID_3..','..singleGift.giftid..'>'..
+                    NPCPANEL_BUTTONFUNC_ID_5..','..singleGift.giftid..'>'..
                     '<Text|id='..textid3..'|text=种草期:'..math.floor(singleGift.freeminutes / 60)..'小时|size=16|color='..CSS.NPC_WHITE..'|x=390.0|y=50.0>'..
                     '<Text|id='..textid4..'|text=限领:1/1|size=16|color='..CSS.NPC_WHITE..'|x=500.0|y=50.0>'
             else
@@ -201,7 +203,7 @@ local function GetSingleShowInfo(actor, groupid)
                 if leftseconds > 0 then
                     strPanelInfo = strPanelInfo..'<COUNTDOWN|id='..textid4..'|x=300.0|y=50.0|color='..CSS.NPC_LIGHTGREEN..
                         '|size=18|showWay=1|time='..leftseconds..'|link=@baipiao_refresh>'..
-                        '<Text|id='..textid3..'|text=后可免费领取|size=18|color='..CSS.NPC_WHITE..'|x=380.0|y=50.0>'
+                        '<Text|id='..textid3..'|text=后可免费领取|size=18|color='..CSS.NPC_WHITE..'|x=420.0|y=50.0>'
                 else
                     strPanelInfo = strPanelInfo..'<Button|id='..buttonid1..'|x=300|y=45|text=免费领取|size=18|color='..CSS.NPC_LIGHTGREEN..
                         '|pimg=private/cc_common/button_down1.png|mimg=private/cc_common/button_up1.png|nimg=private/cc_common/button_up1.png|link=@function_button,'..
@@ -240,6 +242,25 @@ local function GetSingleShowInfo(actor, groupid)
     end
  
     strPanelInfo = strPanelInfo..'<ListView|id=300|children={'..listitemidstr..'}|x=0.0|y=0.0|width=578|height=310|direction=1>'
+
+    if getflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_OPEN_BAIPIAO_GRASS_FLAG) == 1 then
+        local choosegiftid = getplaydef(actor, CommonDefine.VAR_N_NPC_TEMPPARAM1)
+        local singleGiftConfig = nil
+        for _, value in pairs(cfgBaiPiaoGift) do
+            if value.giftid == choosegiftid then
+                singleGiftConfig = value
+                break
+            end
+        end
+        if singleGiftConfig ~= nil then
+            local grassNeedHour = math.floor(singleGiftConfig.freeminutes / 60)
+            strPanelInfo = strPanelInfo..'<Img|id=301|children={302,303,304}|x=0|y=0|img=private/cc_baipiao/7.png|move=0>'..
+                '<RText|id=302|x=20|y=30|outline=1|color=103|size=18|text=每一类礼包只能选择一档进行种草，种草之后经过\\种草期即可免费领取,当前礼包的种草期为'..grassNeedHour..'小时,\\是否确定种草?>'..
+                '<Button|id=303|x=50.0|y=200.0|text=我再想想|pimg=private/cc_common/button_down.png|mimg=private/cc_common/button_up.png|nimg=private/cc_common/button_up.png|link=@function_button,'..NPCPANEL_BUTTONFUNC_ID_6..'>'..
+                '<Button|id=304|x=250.0|y=200.0|text=就是它了|pimg=private/cc_common/button_down.png|mimg=private/cc_common/button_up.png|nimg=private/cc_common/button_up.png|link=@function_button,'..NPCPANEL_BUTTONFUNC_ID_3..','..choosegiftid..'>'
+        end
+    end
+
     strPanelInfo = strPanelInfo..'<Layout|id=15|children={'..idstr..'}|x=214.0|y=116.0|width=578|height=310>'
     return strPanelInfo
 end
@@ -337,13 +358,13 @@ function BaiPiaoGift.BuySingleGift(actor, giftid)
     end
 
     --条件判断
-    if not Player.CheckItemsEnough(actor, singleGiftConfig.needitemslist_tab[curbuytimes+1], '购买白嫖礼包') then
+    if not Player.CheckItemsEnough(actor, singleGiftConfig.needitemslist_tab[curbuytimes+1], '购买白票礼包') then
         return
     end
     --扣除消耗
-    Player.TakeItems(actor, singleGiftConfig.needitemslist_tab[curbuytimes+1], '购买白嫖礼包')
+    Player.TakeItems(actor, singleGiftConfig.needitemslist_tab[curbuytimes+1], '购买白票礼包')
     --给与礼包物品
-    Player.GiveItemsToBagOrMail(actor, singleGiftConfig.giftitems_tab, '白嫖礼包')
+    Player.GiveItemsToBagOrMail(actor, singleGiftConfig.giftitems_tab, '白票礼包')
 
     if singledata == nil then
         allgiftdata_tab[strgid].giftdatalist[strsid] = {curbuytimes = 0, freegrasstime = 0, freerewardflag = 0}
@@ -457,7 +478,7 @@ function BaiPiaoGift.FetchGrassSingleGift(actor, giftid)
         allgiftdata_tab[strgid].grassseq = 0
 
         --给与礼包物品
-        Player.GiveItemsToBagOrMail(actor, singleGiftConfig.giftitems_tab, '白嫖礼包')            
+        Player.GiveItemsToBagOrMail(actor, singleGiftConfig.giftitems_tab, '白票礼包')            
 
         local tempstr = tbl2json(allgiftdata_tab)
         setplaydef(actor, CommonDefine.VAR_T_BAIPIAOGIFT_DATA, tempstr)        
@@ -486,9 +507,17 @@ function BaiPiaoGift.DoOperButton(actor, sid, sparam)
         BaiPiaoGift.ShowBasePanel(actor)
     elseif funcid == NPCPANEL_BUTTONFUNC_ID_3 then
         BaiPiaoGift.GrassSingleGift(actor, nparam)
+        setflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_OPEN_BAIPIAO_GRASS_FLAG, 0)
         BaiPiaoGift.ShowBasePanel(actor)
     elseif funcid == NPCPANEL_BUTTONFUNC_ID_4 then
         BaiPiaoGift.FetchGrassSingleGift(actor, nparam)
+        BaiPiaoGift.ShowBasePanel(actor)
+    elseif funcid == NPCPANEL_BUTTONFUNC_ID_5 then
+        setflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_OPEN_BAIPIAO_GRASS_FLAG, 1)
+        setplaydef(actor, CommonDefine.VAR_N_NPC_TEMPPARAM1, nparam)
+        BaiPiaoGift.ShowBasePanel(actor)
+    elseif funcid == NPCPANEL_BUTTONFUNC_ID_6 then
+        setflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_OPEN_BAIPIAO_GRASS_FLAG, 0)
         BaiPiaoGift.ShowBasePanel(actor)
     end
 end
