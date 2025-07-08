@@ -33,7 +33,7 @@ local TREASURE_MAP_RANDOM_REWARDS = {
 	{prop=80, items={{name='保底符', num=1}}},
 	{prop=80, items={{name='无双经验珠', num=2}}},
 	{prop=100, items={{name='金砖', num=1}}},
-	{prop=60, items={{name='魔方阵凭证', num=1}}},
+	{prop=60, items={{name='3级筛子', num=1}}},
 	{prop=60, items={{name='武卫精魄', num=5}}},
 	{prop=60, items={{name='御卫精魄', num=5}}},
 	{prop=60, items={{name='虎卫精魄', num=5}}},
