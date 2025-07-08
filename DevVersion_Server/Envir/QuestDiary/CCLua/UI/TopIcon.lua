@@ -97,6 +97,7 @@ function TopIcon.OpenPanel(actor, sid, sparam)
         end
         setplaydef(actor, CommonDefine.VAR_N_CURR_FUNCTION_ID, CommonDefine.FUNC_ID_BAIPIAO_GIFT)
         setplaydef(actor, CommonDefine.VAR_N_LAST_NPC_CHOOSEID, -1)
+        setplaydef(actor, CommonDefine.VAR_N_NPC_TEMPPARAM1, 0)
         BaiPiaoGift.ShowBasePanel(actor)
     elseif sid == ICON_EXTEND_STORAGE_MAKESURE then
         --À©ÈÝ²Ö¿â È·¶¨
