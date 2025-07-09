@@ -101,9 +101,9 @@ local config = {
 	},
 	[11] = { 
 		id = 11,
-		tasktype = 7,
+		tasktype = 24,
 		tasktargnum = 1,
-		taskparam = 0,
+		taskparam = 3,
 		gotoid = 11,
 		tasktitle = "魂石合成",
 		taskdesc = "进行1次魂石合成",

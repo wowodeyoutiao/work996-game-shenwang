@@ -269,7 +269,6 @@ end
 
 --³ÆºÅ¸Ä±ä
 function ontitleupgrade(actor)
-    release_print('ontitleupgrade')
     TaskManager.OnTitleUpgrade(actor)
 end
 

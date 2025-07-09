@@ -125,27 +125,27 @@ LARGE U1 14
 LARGE U1 17
 NOT SMALL U120 300000
 #SAY
-<Button|x=190|y=230|width=100|nimg=public/wz/bt25.png|color=116|size=18|text=远古比奇省|link=@后续传送<$STR(N77)>#地图ID=jyt07#落点X=330#落点Y=268>
+<Button|x=190|y=170|width=100|nimg=public/wz/bt25.png|color=116|size=18|text=远古比奇省|link=@后续传送<$STR(N77)>#地图ID=jyt07#落点X=330#落点Y=268>
 #IF
 NOT SMALL U120 1000000
 #SAY
-<Button|x=80|y=230|width=100|nimg=public/wz/bt25.png|color=250|size=18|text=远古封魔谷|link=@后续传送<$STR(N77)>#地图ID=jyt08#落点X=240#落点Y=200>
+<Button|x=80|y=170|width=100|nimg=public/wz/bt25.png|color=250|size=18|text=远古封魔谷|link=@后续传送<$STR(N77)>#地图ID=jyt08#落点X=240#落点Y=200>
 #IF
 NOT SMALL U120 1650000
 #SAY
-<Button|x=190|y=170|width=100|nimg=public/wz/bt25.png|color=116|size=18|text=远古白日门|link=@后续传送<$STR(N77)>#地图ID=jyt09#落点X=180#落点Y=325>
+<Button|x=190|y=110|width=100|nimg=public/wz/bt25.png|color=116|size=18|text=远古白日门|link=@后续传送<$STR(N77)>#地图ID=jyt09#落点X=180#落点Y=325>
 #IF
 NOT SMALL U120 2200000
 #SAY
-<Button|x=80|y=170|width=100|nimg=public/wz/bt25.png|color=250|size=18|text=远古魔龙城|link=@后续传送<$STR(N77)>#地图ID=jyt10#落点X=125#落点Y=155>
-#IF
-NOT SMALL U120 2800000
-#SAY
-<Button|x=190|y=110|width=100|nimg=public/wz/bt25.png|color=116|size=18|text=蛮荒之城|link=@后续传送<$STR(N77)>#地图ID=mhzc#落点X=137#落点Y=187>
-#IF
-NOT SMALL U120 3500000
-#SAY
-<Button|x=80|y=110|width=100|nimg=public/wz/bt25.png|color=116|size=18|text=无尽之海|link=@后续传送<$STR(N77)>#地图ID=haidi6#落点X=67#落点Y=83>
+<Button|x=80|y=110|width=100|nimg=public/wz/bt25.png|color=250|size=18|text=远古魔龙城|link=@后续传送<$STR(N77)>#地图ID=jyt10#落点X=125#落点Y=155>
+;#IF
+;NOT SMALL U120 2800000
+;#SAY
+;<Button|x=190|y=110|width=100|nimg=public/wz/bt25.png|color=116|size=18|text=蛮荒之城|link=@后续传送<$STR(N77)>#地图ID=mhzc#落点X=137#落点Y=187>
+;#IF
+;NOT SMALL U120 3500000
+;#SAY
+;<Button|x=80|y=110|width=100|nimg=public/wz/bt25.png|color=116|size=18|text=无尽之海|link=@后续传送<$STR(N77)>#地图ID=haidi6#落点X=67#落点Y=83>
 
 
 [@提交验证]

@@ -395,7 +395,7 @@ local function UpdateTaskProgress(actor, taskid, tasktype, counterlist, counterv
         local currlv = EquipPosStrengthManager.GetAllCommonEquipPosMaxLevel(actor)
         s1 = currlv..''
     elseif tasktype == CommonDefine.TASK_TYPE_SKILL_UPGRADE then
-        local currlv = SkillUpgrade.GetAllSkillsMaxLevel(actor)
+        local currlv = SkillUpgrade.GetAllSkillsMaxLevel(actor)    
         s1 = currlv..''
     elseif tasktype == CommonDefine.TASK_TYPE_SUPERBOX_UPGRADE then
         local currlv = getplaydef(actor, CommonDefine.VAR_U_SUPER_BOX_CURR_LV)
@@ -646,12 +646,12 @@ function TaskManager.OnSkillUpgrade(actor)
             local taskid, status = TaskManager.GetCurrTaskLineInfo(actor, tasklineid) 
             if taskid > 0 and status == CommonDefine.TASK_STATUS_ACCEPT then
                 local singletask = lineconfig.taskDataList[taskid]                
-                if singletask and (singletask.tasktype == CommonDefine.TASK_TYPE_SKILL_UPGRADE) and singletask.tasktargparam then
-                    local currnum = getplaydef(actor, CommonDefine.VAR_U_OLD_TITLE_LEVEL)
+                if singletask and (singletask.tasktype == CommonDefine.TASK_TYPE_SKILL_UPGRADE) and singletask.tasktargparam then                    
+                    local currnum = SkillUpgrade.GetAllSkillsMaxLevel(actor)
                     if currnum >= singletask.tasktargparam then
                         TaskManager.FinishTask(actor, tasklineid)
                     else
-                        newchangetask(actor, taskid, '')
+                        newchangetask(actor, taskid, currnum..'')
                     end
                 end            
             end
@@ -671,7 +671,7 @@ function TaskManager.OnTitleUpgrade(actor)
             if taskid > 0 and status == CommonDefine.TASK_STATUS_ACCEPT then
                 local singletask = lineconfig.taskDataList[taskid]                
                 if singletask and (singletask.tasktype == CommonDefine.TASK_TYPE_TITLE_UPGRADE) and singletask.tasktargparam then
-                    local currnum = SkillUpgrade.GetAllSkillsMaxLevel(actor)
+                    local currnum = getplaydef(actor, CommonDefine.VAR_U_OLD_TITLE_LEVEL)
                     if currnum >= singletask.tasktargparam then
                         TaskManager.FinishTask(actor, tasklineid)
                     else

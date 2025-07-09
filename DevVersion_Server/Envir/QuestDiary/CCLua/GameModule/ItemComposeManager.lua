@@ -427,15 +427,11 @@ function ItemComposeManager.ShowRulePanel(actor)
     local tempCurrY = 50
     strPanelInfo = strPanelInfo..'<Text|id=21|text=道具合成规则说明:|size=20|x='..tempCurrX..'|y='..tempCurrY..'|color='..CSS.NPC_LIGHTGREEN..'>'
     tempCurrY = tempCurrY + 35
-    strPanelInfo = strPanelInfo..'<Text|id=22|text=1、装备合成后会有几率获得更高等级装备的同时，生成|x='..tempCurrX..'|y='..tempCurrY..'|color='..CSS.NPC_WHITE..'>'
+    strPanelInfo = strPanelInfo..'<Text|id=24|text=1、升星宝石合成成功之后将获得高一级的升星宝石。|x='..tempCurrX..'|y='..tempCurrY..'|color='..CSS.NPC_WHITE..'>'
     tempCurrY = tempCurrY + 30
-    strPanelInfo = strPanelInfo..'<Text|id=23|text=天赋属性或者极品属性|x='..tempCurrX..'|y='..tempCurrY..'|color='..CSS.NPC_WHITE..'>'
+    strPanelInfo = strPanelInfo..'<Text|id=25|text=2、魂石合成成功之后将获得高一级的魂石|x='..tempCurrX..'|y='..tempCurrY..'|color='..CSS.NPC_WHITE..'>'
     tempCurrY = tempCurrY + 30
-    strPanelInfo = strPanelInfo..'<Text|id=24|text=2、升星宝石合成成功之后将获得高一级的升星宝石。|x='..tempCurrX..'|y='..tempCurrY..'|color='..CSS.NPC_WHITE..'>'
-    tempCurrY = tempCurrY + 30
-    strPanelInfo = strPanelInfo..'<Text|id=25|text=3、魂石合成成功之后将获得高一级的魂石|x='..tempCurrX..'|y='..tempCurrY..'|color='..CSS.NPC_WHITE..'>'
-    tempCurrY = tempCurrY + 30
-    strPanelInfo = strPanelInfo..'<Text|id=26|text=4、所有的合成物品，如果合成失败，将不会返还合成|x='..tempCurrX..'|y='..tempCurrY..'|color='..CSS.NPC_WHITE..'>'
+    strPanelInfo = strPanelInfo..'<Text|id=26|text=3、所有的合成物品，如果合成失败，将不会返还合成|x='..tempCurrX..'|y='..tempCurrY..'|color='..CSS.NPC_WHITE..'>'
 	tempCurrY = tempCurrY + 30
     strPanelInfo = strPanelInfo..'<Text|id=27|text=材料和合成消耗|x='..tempCurrX..'|y='..tempCurrY..'|color='..CSS.NPC_WHITE..'>'
 
@@ -726,7 +722,14 @@ local function DoComposeEx(actor)
 	end
 
     --每日必做计数   
-    EverydayTask.AddTaskCounter(actor, CommonDefine.FUNC_ID_COMPOSE, pilecount)       	
+    EverydayTask.AddTaskCounter(actor, CommonDefine.FUNC_ID_COMPOSE, pilecount, composetype)       	
+
+	--触发合成成功
+	if composetype == COMPOSE_TYPE_2 then
+		FreeVIPManager.TriggerChgTaskCounter(actor, FreeVIPManager.TASK_TYPE_COMPOSE_BAOZHU_SUCCESSTIMES, '+', pilecount)       
+	elseif composetype == COMPOSE_TYPE_3 then
+		FreeVIPManager.TriggerChgTaskCounter(actor, FreeVIPManager.TASK_TYPE_COMPOSE_SOULSTONE_SUCCESSTIMES, '+', pilecount)       
+	end
 end
 
 --处理button回调

@@ -257,7 +257,7 @@ function EverydayTask.DoOperButton(actor, sid, sparam)
 end
 
 --触发任务计数增加
-function EverydayTask.AddTaskCounter(actor, tasktype, addnum)
+function EverydayTask.AddTaskCounter(actor, tasktype, addnum, taskparam)
     local datastr = getplaydef(actor, CommonDefine.VAR_Z_DAY_EVERYDAYTASK_COUNTER_DATA)
     local countertab = {}
     if datastr ~= '' then

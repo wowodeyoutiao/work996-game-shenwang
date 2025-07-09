@@ -496,7 +496,7 @@ end
 
 function RandomBossManager.ShowBasePanel(actor)    
     local leftentertimes = math.max(0, CommonDefine.DAY_RANDOMBOSS_GETREWARD_MAXTIMES - getplaydef(actor, CommonDefine.VAR_J_DAY_RANDOMBOSS_REWARDTIMES))
-    local strPanelInfo = '<Img|id=10|children={11,12,13,14,15}|x=205.0|y=31.0|height=448|bg=1|reset=1|img=private/cc_bosslist_ex/3.png|loadDelay=0|show=0|move=0|esc=1>'..
+    local strPanelInfo = '<Img|id=10|children={11,12,13,14,15,16}|x=205.0|y=31.0|height=448|bg=1|reset=1|img=private/cc_bosslist_ex/3.png|loadDelay=0|show=0|move=0|esc=1>'..
 		'<Layout|id=11|x=693.0|y=14.0|width=80|height=80|link=@exit>'..
 		'<Button|id=12|x=696.0|y=15.0|pimg=public/1900000511.png|nimg=public/1900000510.png|link=@exit>'..		
 		'<Text|id=13|x=278.0|y=399.0|color=151|size=20|text=今日剩余奖励次数:'..leftentertimes..'>'..
@@ -506,7 +506,8 @@ function RandomBossManager.ShowBasePanel(actor)
 	local currpower = Player.GetPlayerPower(actor)
 	local currFightingInfoList, _ = RandomBossManager.GetCurrFightingInfoList(currpower, 0, 999)
 	if #currFightingInfoList == 0 then
-		strPanelInfo = strPanelInfo..'<Text|id=14|text=当前没有可以挑战的首领|size=25|x=240|y=200|color='..CSS.NPC_WHITE..'>'
+		strPanelInfo = strPanelInfo..'<Text|id=14|text=当前没有可以挑战的首领|size=25|x=240|y=200|color='..CSS.NPC_WHITE..'>'..
+			'<Text|id=16|text=提示：使用藏宝图或者地图击杀怪物均有几率触发战力首领！|size=18|x=150|y=250|color='..CSS.NPC_LIGHTGREEN..'>'
 	else
 		local baseid = 400
 		for seq, info in ipairs(currFightingInfoList) do

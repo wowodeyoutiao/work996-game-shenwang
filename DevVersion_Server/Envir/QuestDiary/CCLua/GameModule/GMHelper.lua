@@ -323,6 +323,7 @@ function GMHelper.DoGmOper(actor, sid)
         end
     elseif sid == '14' then
         GuanZhiManager.AddExp(actor, 500)
+        EverydayTask.AddTaskCounter(actor, CommonDefine.FUNC_ID_GUANZHI, 500)  
     elseif sid == '15' then
         local times = getplaydef(actor, CommonDefine.VAR_J_DAY_MOFANG_LEFT_FREETIMES)
         setplaydef(actor, CommonDefine.VAR_J_DAY_MOFANG_LEFT_FREETIMES, times+3)
