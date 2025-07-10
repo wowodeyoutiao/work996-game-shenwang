@@ -114,8 +114,39 @@ function PublicBossManager.OnPlayerDie(actor, killername)
     Player.ShowReliveDialogue(actor, msg)
 end
 
+--怪物被击杀回调
+function PublicBossManager.OnMonKilled(hitter, mon)
+    if BF_IsNullObj(mon) then
+        return
+    end
+    local mapidstr = Player.GetMapIDStr(mon)
+    if not PublicBossManager.IsBossMap(mapidstr) then
+        return
+    end
+    local idx = Player.GetMonIdx(mon)
+    local cfgBossInfo = nil
+    for _, value in pairs(cfgSingleBossInfo) do
+        if value.monidx == idx then
+            cfgBossInfo = value
+            break
+        end
+    end
+    if cfgBossInfo == nil then
+        return
+    end
+    if Player.IsPlayer(hitter) then
+        --免费VIP任务
+        FreeVIPManager.TriggerChgTaskCounter(hitter, FreeVIPManager.TASK_TYPE_PUBLICBOSS_KILLTIMES, '+', 1)        
+    end
+
+	--10秒后清理战斗地图
+	Player.SendMapMsg(hitter, 'BOSS已被击杀，60秒后自动传出地图', CommonDefine.MSG_POS_TYPE_SYS_CHANNEL)
+	grobaldelaygoto(60*1000, 'g_delay_SingleBossManager_ClearFightingMap,'..mapidstr)    
+end
+
 GameEventManager.AddListener(CommonDefine.EVENT_NAME_PLAYER_ENTERMAP, PublicBossManager.OnEnterMap, CommonDefine.FUNC_ID_PUBLIC_BOSS)
 GameEventManager.AddListener(CommonDefine.EVENT_NAME_PLAYER_LEAVEMAP, PublicBossManager.OnLeaveMap, CommonDefine.FUNC_ID_PUBLIC_BOSS)
 GameEventManager.AddListener(CommonDefine.EVENT_NAME_PLAYER_DIE, PublicBossManager.OnPlayerDie, CommonDefine.FUNC_ID_PUBLIC_BOSS)
+GameEventManager.AddListener(CommonDefine.EVENT_NAME_MON_KILLED, PublicBossManager.OnMonKilled, CommonDefine.FUNC_ID_PUBLIC_BOSS)
 
 return PublicBossManager

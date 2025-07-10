@@ -172,6 +172,8 @@ function SingleBossManager.OnMonKilled(hitter, mon)
         setplaydef(hitter, CommonDefine.VAR_J_DAY_SINGLEBOSS_KILLTIMES, killtimes)
         --每日必做计数        
         EverydayTask.AddTaskCounter(hitter, CommonDefine.FUNC_ID_SINGLE_BOSS, 1)      
+        --免费VIP任务
+        FreeVIPManager.TriggerChgTaskCounter(hitter, FreeVIPManager.TASK_TYPE_SINGLEBOSS_KILLTIMES, '+', 1)        
     end
 
 	--10秒后清理战斗地图

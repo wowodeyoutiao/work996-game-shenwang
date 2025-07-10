@@ -699,6 +699,13 @@ function Player.QuickGoTo(actor, gotoid)
     elseif gotoid == CommonDefine.QUICK_GOTO_KILL_BAOZHUBOSS then
         --»÷É±±¦Öé¡¾ÁéÓñ¡¿boss
         opennpcshowex(actor, CommonDefine.NPC_ID_BAOZHU_BOSS, 3, 3)
+    elseif gotoid == CommonDefine.QUICK_GOTO_KILL_SINGLEBOSS then
+        --»÷É±µ¥ÈËboss
+        opennpcshowex(actor, CommonDefine.NPC_ID_RANDOM_BOSS, 3, 3)
+    elseif gotoid == CommonDefine.QUICK_GOTO_KILL_PUBLICBOSS then
+        --»÷É±Ò°Íâboss
+        opennpcshowex(actor, CommonDefine.NPC_ID_RANDOM_BOSS, 3, 3)
+        
     elseif gotoid == CommonDefine.QUICK_GOTO_ENTER_MOFANGZHEN then
         --½øÈëÄ§·½Õó
         --opennpcshowex(actor, 211, 3, 3)

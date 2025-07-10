@@ -24,6 +24,8 @@ FreeVIPManager.TASK_TYPE_COMPOSE_BAOZHU_SUCCESSTIMES = 12       --宝珠(灵玉)合成
 FreeVIPManager.TASK_TYPE_ALL_EQUIPPOS_MINSTRENGTHLV = 13        --全身装备位的最小强化等级
 FreeVIPManager.TASK_TYPE_OPEN_SUPERBOX_TIMES = 14               --累计开箱次数
 FreeVIPManager.TASK_TYPE_YUNBIAO = 15                           --运镖【接任务后】
+FreeVIPManager.TASK_TYPE_SINGLEBOSS_KILLTIMES = 16          --个人boss击杀次数【接任务后】
+FreeVIPManager.TASK_TYPE_PUBLICBOSS_KILLTIMES = 17          --野外boss击杀次数【接任务后】
 
 
 FreeVIPManager.TASK_COUNTER_VARLIST = {
@@ -67,6 +69,10 @@ function FreeVIPManager.QuickGoTo(actor, tasktype)
         Player.QuickGoTo(actor, CommonDefine.QUICK_GOTO_KILL_RANDOMBOSS)
     elseif tasktype == FreeVIPManager.TASK_TYPE_BAOZHUBOSS_KILLTIMES then        
         Player.QuickGoTo(actor, CommonDefine.QUICK_GOTO_KILL_BAOZHUBOSS)
+    elseif tasktype == FreeVIPManager.TASK_TYPE_SINGLEBOSS_KILLTIMES then
+        Player.QuickGoTo(actor, CommonDefine.QUICK_GOTO_KILL_SINGLEBOSS)
+    elseif tasktype == FreeVIPManager.TASK_TYPE_PUBLICBOSS_KILLTIMES then
+        Player.QuickGoTo(actor, CommonDefine.QUICK_GOTO_KILL_PUBLICBOSS)
     elseif tasktype == FreeVIPManager.TASK_TYPE_MOFANGZHEN_ENTERTIMES then        
         Player.QuickGoTo(actor, CommonDefine.QUICK_GOTO_ENTER_MOFANGZHEN)
     elseif tasktype == FreeVIPManager.TASK_TYPE_UPGRADE_EQUIPSTAR then   
@@ -135,7 +141,8 @@ function FreeVIPManager.TriggerChgTaskCounter(actor, tasktype, oper, num)
                (tasktype == FreeVIPManager.TASK_TYPE_EQUIPRANDOMAB_GOLDTIMES) or (tasktype == FreeVIPManager.TASK_TYPE_EQUIPRANDOMAB_YBTIMES) or
                (tasktype == FreeVIPManager.TASK_TYPE_COMPOSE_EQUIP_SUCCESSTIMES) or (tasktype == FreeVIPManager.TASK_TYPE_COMPOSE_SOULSTONE_SUCCESSTIMES) or
                (tasktype == FreeVIPManager.TASK_TYPE_COMPOSE_BAOZHU_SUCCESSTIMES) or (tasktype == FreeVIPManager.TASK_TYPE_OPEN_SUPERBOX_TIMES) or
-               (tasktype == FreeVIPManager.TASK_TYPE_YUNBIAO) then
+               (tasktype == FreeVIPManager.TASK_TYPE_YUNBIAO) or (tasktype == FreeVIPManager.TASK_TYPE_SINGLEBOSS_KILLTIMES) or
+               (tasktype == FreeVIPManager.TASK_TYPE_PUBLICBOSS_KILLTIMES) then
                 local currcounter = getplaydef(actor, FreeVIPManager.TASK_COUNTER_VARLIST[i])
                 if oper == '+' then
                     currcounter = currcounter + num

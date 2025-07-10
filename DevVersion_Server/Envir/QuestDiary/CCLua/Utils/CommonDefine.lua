@@ -716,6 +716,8 @@ CommonDefine = {
     QUICK_GOTO_COMMON_NAVIGATION = 25,          --通用引导
     QUICK_GOTO_TITLE_UPGRADE = 26,              --称号升级
     QUICK_GOTO_SOULSTONE_COMPOSE = 27,          --魂石合成
+    QUICK_GOTO_KILL_SINGLEBOSS = 28,            --单人boss
+    QUICK_GOTO_KILL_PUBLICBOSS = 29,            --野外boss
 
     --脚本创建的动态npcid    最终的npcid是 系统组编号*10000+动态id
     --[[
