@@ -588,7 +588,7 @@ function FreeVIPManager.IsHaveQuickTip(actor)
 
     local currVIPLv = getplaydef(actor, CommonDefine.VAR_U_FREEVIP_LEVEL)
     local cfgCurrVip = cfgFreeVIP[currVIPLv]
-    if cfgCurrVip then
+    if (currVIPLv>0) and cfgCurrVip then
         return true
     end
     return false

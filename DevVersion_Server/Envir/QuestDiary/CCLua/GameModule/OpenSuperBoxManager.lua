@@ -142,7 +142,6 @@ function OpenSuperBoxManager.AddNewBoxNum(actor, addnum)
     local nCurrBoxNum = getplaydef(actor, CommonDefine.VAR_U_SUPER_BOX_TOTAL_NUM)
     nCurrBoxNum = nCurrBoxNum + nFinalAddNum
     setplaydef(actor, CommonDefine.VAR_U_SUPER_BOX_TOTAL_NUM, nCurrBoxNum)
-
     OpenSuperBoxManager.UpdateSuperBoxInfo(actor)
     return true
 end
@@ -154,8 +153,7 @@ function OpenSuperBoxManager.GMAddNewBoxNum(actor, addnum)
 
     local nCurrBoxNum = getplaydef(actor, CommonDefine.VAR_U_SUPER_BOX_TOTAL_NUM)
     nCurrBoxNum = nCurrBoxNum + addnum
-    setplaydef(actor, CommonDefine.VAR_U_SUPER_BOX_TOTAL_NUM, nCurrBoxNum)
-
+    setplaydef(actor, CommonDefine.VAR_U_SUPER_BOX_TOTAL_NUM, nCurrBoxNum)   
     OpenSuperBoxManager.UpdateSuperBoxInfo(actor)
 end
 
@@ -190,7 +188,7 @@ function OpenSuperBoxManager.UpdateSuperBoxInfo(actor)
         OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_6..'|text='..sText1..'>'..
         '<Img|id=2008|children={2002}|x=58.0|y=70.0|width=86|esc=0|img=private/cc_superbox_1/bg_baoxiangbeishu.png>'..
         '<Text|id=2002|x=30.0|y=5.0|color=255|size=20|text='..nOnceOpenNum..'>'
-    
+
     if strItemUniqueIDs ~= '' then
         local tabUniqueIDs = string.split(strItemUniqueIDs, ',')      
         if tabUniqueIDs ~= false then
@@ -259,18 +257,20 @@ function OpenSuperBoxManager.UpdateSuperBoxInfo(actor)
                 strPanel = strPanel..'<Button|id='..buttonid3..'|x=50|y='..tempy..'|clickInterval=500|mimg=private/cc_common/button_1.png|nimg=private/cc_superbox_1/button_yjcd.png|size=18|color=255|text=一键穿戴|link=@opensuperboxmanager_button#sid='..
                 OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_12..'>'
             end
-        end
-    else
-        if getflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_AUTO_OPEN_SUPERBOX) == 1 then
-            if getflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_AUTO_OPEN_SUPERBOX_PAUSE) == 1 then
-                setflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_AUTO_OPEN_SUPERBOX_PAUSE, 0)
-                delaygoto(actor, 2000, 'superbox_delay_checkrecycle', 0)    
-            end
-        end        
+        end       
     end
 
     delbutton(actor, 108, CommonDefine.ADD_BUTTON_ID_1)
     addbutton(actor, 108, CommonDefine.ADD_BUTTON_ID_1, strPanel)    
+end
+
+local function ContinueAutoOpen(actor)
+    if getflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_AUTO_OPEN_SUPERBOX) == 1 then
+        if getflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_AUTO_OPEN_SUPERBOX_PAUSE) == 1 then          
+            setflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_AUTO_OPEN_SUPERBOX_PAUSE, 0)
+            delaygoto(actor, 2000, 'superbox_delay_checkrecycle', 0)    
+        end
+    end   
 end
 
 local function CloseOpenBoxItemListPanel(actor)
@@ -442,6 +442,7 @@ function OpenSuperBoxManager.ClientKeepEquipItem(actor, makeindex)
             setplaydef(actor, CommonDefine.VAR_S_SUPERBOX_ITEMLIST, strNewItemUniqueIDs)
         end
     end
+ 
     OpenSuperBoxManager.UpdateSuperBoxInfo(actor)
 end
 
@@ -491,7 +492,7 @@ function OpenSuperBoxManager.GMUpgradeBaoXiangLevel(actor)
         return
     end
     setplaydef(actor, CommonDefine.VAR_U_SUPER_BOX_CURR_LV, nBoxCurrLv + 1)
-    setplaydef(actor, CommonDefine.VAR_U_SUPER_BOX_ONCE_OPEN_NUM, nextLevelConfig.maxopennum)
+    setplaydef(actor, CommonDefine.VAR_U_SUPER_BOX_ONCE_OPEN_NUM, nextLevelConfig.maxopennum)  
     OpenSuperBoxManager.UpdateSuperBoxInfo(actor) 
 
     --任务触发
@@ -653,6 +654,7 @@ local function StartUpgradeBoxLevel(actor)
     Player.TakeItems(actor, levelConfig.upgradeneeditems_tab, '升级超级宝箱')         
 
     setplaydef(actor, CommonDefine.VAR_U_SUPER_BOX_START_UPGRADE_TIME, os.time())    
+
     OpenSuperBoxManager.UpdateSuperBoxInfo(actor)
     OpenUpgradeBoxLevelPanel(actor)
 end
@@ -749,6 +751,7 @@ function OpenSuperBoxManager.DoUpgradeBoxLevel(actor)
     setplaydef(actor, CommonDefine.VAR_U_SUPER_BOX_START_UPGRADE_TIME, 0)
     setplaydef(actor, CommonDefine.VAR_U_SUPER_BOX_CURR_LV, nBoxCurrLv+1)  
     setplaydef(actor, CommonDefine.VAR_U_SUPER_BOX_ONCE_OPEN_NUM, nextLevelConfig.maxopennum)
+
     OpenSuperBoxManager.UpdateSuperBoxInfo(actor)
     OpenUpgradeBoxLevelPanel(actor)
 
@@ -758,7 +761,7 @@ end
 
 --关闭升级宝箱的界面
 local function CloseUpgradeBoxLevelPanel(actor)
-    delbutton(actor, 108, CommonDefine.ADD_BUTTON_ID_5)
+    delbutton(actor, 108, CommonDefine.ADD_BUTTON_ID_5)    
 end
 
 --打开设置自动开宝箱的界面
@@ -844,7 +847,7 @@ local function CloseAutoOpenBoxPanel(actor)
     delbutton(actor, 108, CommonDefine.ADD_BUTTON_ID_5)
     if getflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_AUTO_OPEN_SUPERBOX) == 0 then
         if FirstRecharge.HasFirstRecharge(actor) then
-            setflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_AUTO_OPEN_SUPERBOX, 1)
+            setflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_AUTO_OPEN_SUPERBOX, 1)                       
             setflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_AUTO_OPEN_SUPERBOX_PAUSE, 0)
             OpenSuperBoxManager.AutoOpenSuperBox(actor)  
         else
@@ -936,7 +939,7 @@ local function QuickRecycleOpenItemList(actor)
                 RecycleManager.SuperBoxForceRecycleItemList(actor, itemobjlist)
             end
         end
-        setplaydef(actor, CommonDefine.VAR_S_SUPERBOX_ITEMLIST, '')  
+        setplaydef(actor, CommonDefine.VAR_S_SUPERBOX_ITEMLIST, '')      
         OpenSuperBoxManager.UpdateSuperBoxInfo(actor)
     end    
 end
@@ -1006,7 +1009,7 @@ function OpenSuperBoxManager.OnTakeOnEquipItem(actor, strmakeindex)
         if bChanged == true then
             setplaydef(actor, CommonDefine.VAR_S_SUPERBOX_ITEMLIST, strNewItemUniqueIDs)
         end
-    end
+    end 
     OpenSuperBoxManager.UpdateSuperBoxInfo(actor)
 end
 
@@ -1015,7 +1018,6 @@ function OpenSuperBoxManager.AutoOpenSuperBox(actor)
     if getflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_AUTO_OPEN_SUPERBOX) == 0 then
         return
     end
-
     if getflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_AUTO_OPEN_SUPERBOX_PAUSE) == 0 then
         --自动开宝箱
         local openitemlist = {}
@@ -1058,7 +1060,7 @@ function OpenSuperBoxManager.AutoOpenSuperBox(actor)
             end
         end
         if bNeedPause == true then
-            setflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_AUTO_OPEN_SUPERBOX_PAUSE, 1)
+            setflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_AUTO_OPEN_SUPERBOX_PAUSE, 1)      
             OpenSuperBoxManager.UpdateSuperBoxInfo(actor)
             return
         end     
@@ -1069,58 +1071,65 @@ end
 
 --延迟检测开启的道具是否自动回收，并触发一下轮开启
 function OpenSuperBoxManager.DelayCheckRecycle(actor)
-    --根据结果判断是否回收[勾选自动回收的条件下]
-    local checkrecycleflag1 = getflagstatus(actor, RECYCLE_CHECKBOX_INFO[1].bitflag)
-    local checkrecycleflag2 = getflagstatus(actor, RECYCLE_CHECKBOX_INFO[2].bitflag)
-    local dorecycleflag = getflagstatus(actor, RECYCLE_CHECKBOX_INFO[6].bitflag)
-    if dorecycleflag == 1 then
-        local recycleitemlist = {}
-        local strItemUniqueIDs = getplaydef(actor, CommonDefine.VAR_S_SUPERBOX_ITEMLIST)
-        if strItemUniqueIDs ~= '' then
-            local strNewItemUniqueIDs = ''
-            local tabUniqueIDs = string.split(strItemUniqueIDs, ',')
-            if tabUniqueIDs ~= false then
-                for _, value in ipairs(tabUniqueIDs) do
-                    local nItemUniqueID = tonumber(value)
-                    local itemobj = getitembymakeindex(actor, nItemUniqueID)
-                    if (not BF_IsNullObj(itemobj)) and (not Player.CheckEquipIsOnBody(actor, itemobj)) then
-                        local bNeedRecycle = true
-                        if checkrecycleflag1 == 1 then
-                            local chooseseq = getplaydef(actor, CommonDefine.VAR_U_SUPER_BOX_CHOOSE_CONDITION_1)
-                            if (chooseseq >= 1) and (chooseseq <= #SELECT_CONDITION_QUALITY_LIST) then
-                                if Item.GetItemQualityLv(actor, itemobj) >= SELECT_CONDITION_QUALITY_LIST[chooseseq].minquality then
-                                    bNeedRecycle = false
+    if getflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_AUTO_OPEN_SUPERBOX) == 0 then
+        return
+    end
+
+    if getflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_AUTO_OPEN_SUPERBOX_PAUSE) == 0 then
+        --根据结果判断是否回收[勾选自动回收的条件下]
+        local checkrecycleflag1 = getflagstatus(actor, RECYCLE_CHECKBOX_INFO[1].bitflag)
+        local checkrecycleflag2 = getflagstatus(actor, RECYCLE_CHECKBOX_INFO[2].bitflag)
+        local dorecycleflag = getflagstatus(actor, RECYCLE_CHECKBOX_INFO[6].bitflag)
+        if dorecycleflag == 1 then
+            local recycleitemlist = {}
+            local strItemUniqueIDs = getplaydef(actor, CommonDefine.VAR_S_SUPERBOX_ITEMLIST)
+            if strItemUniqueIDs ~= '' then
+                local strNewItemUniqueIDs = ''
+                local tabUniqueIDs = string.split(strItemUniqueIDs, ',')
+                if tabUniqueIDs ~= false then
+                    for _, value in ipairs(tabUniqueIDs) do
+                        local nItemUniqueID = tonumber(value)
+                        local itemobj = getitembymakeindex(actor, nItemUniqueID)
+                        if (not BF_IsNullObj(itemobj)) and (not Player.CheckEquipIsOnBody(actor, itemobj)) then
+                            local bNeedRecycle = true
+                            if checkrecycleflag1 == 1 then
+                                local chooseseq = getplaydef(actor, CommonDefine.VAR_U_SUPER_BOX_CHOOSE_CONDITION_1)
+                                if (chooseseq >= 1) and (chooseseq <= #SELECT_CONDITION_QUALITY_LIST) then
+                                    if Item.GetItemQualityLv(actor, itemobj) >= SELECT_CONDITION_QUALITY_LIST[chooseseq].minquality then
+                                        bNeedRecycle = false
+                                    end
                                 end
                             end
-                        end
-                        if (bNeedRecycle == false) and (checkrecycleflag2 == 1) then
-                            local chooseseq = getplaydef(actor, CommonDefine.VAR_U_SUPER_BOX_CHOOSE_CONDITION_2)
-                            if (chooseseq >= 1) and (chooseseq <= #SELECT_CONDITION_LEVEL_LIST) then
-                                local itemid = getiteminfo(actor, itemobj, CommonDefine.ITEMINFO_ITEMIDX)
-                                local needlv = getstditeminfo(itemid, CommonDefine.STDITEMINFO_NEEDLV)                 
-                                if needlv >= SELECT_CONDITION_LEVEL_LIST[chooseseq].minlevel then
-                                    bNeedRecycle = false
-                                end
-                            end                            
-                        end
-                        if bNeedRecycle == true then
-                            recycleitemlist[#recycleitemlist+1] = itemobj
-                        else
-                            if strNewItemUniqueIDs ~= '' then
-                                strNewItemUniqueIDs = strNewItemUniqueIDs..','
+                            if (bNeedRecycle == false) and (checkrecycleflag2 == 1) then
+                                local chooseseq = getplaydef(actor, CommonDefine.VAR_U_SUPER_BOX_CHOOSE_CONDITION_2)
+                                if (chooseseq >= 1) and (chooseseq <= #SELECT_CONDITION_LEVEL_LIST) then
+                                    local itemid = getiteminfo(actor, itemobj, CommonDefine.ITEMINFO_ITEMIDX)
+                                    local needlv = getstditeminfo(itemid, CommonDefine.STDITEMINFO_NEEDLV)                 
+                                    if needlv >= SELECT_CONDITION_LEVEL_LIST[chooseseq].minlevel then
+                                        bNeedRecycle = false
+                                    end
+                                end                            
                             end
-                            strNewItemUniqueIDs = strNewItemUniqueIDs..nItemUniqueID
+                            if bNeedRecycle == true then
+                                recycleitemlist[#recycleitemlist+1] = itemobj
+                            else
+                                if strNewItemUniqueIDs ~= '' then
+                                    strNewItemUniqueIDs = strNewItemUniqueIDs..','
+                                end
+                                strNewItemUniqueIDs = strNewItemUniqueIDs..nItemUniqueID
+                            end
                         end
                     end
                 end
-            end
-            --进行回收操作
-            if not table.isempty(recycleitemlist) then
-                RecycleManager.SuperBoxForceRecycleItemList(actor, recycleitemlist)        
-                setplaydef(actor, CommonDefine.VAR_S_SUPERBOX_ITEMLIST, strNewItemUniqueIDs)
-                OpenSuperBoxManager.UpdateSuperBoxInfo(actor)
-            end
-        end            
+                --进行回收操作
+                if not table.isempty(recycleitemlist) then
+                    if RecycleManager.SuperBoxForceRecycleItemList(actor, recycleitemlist) == true then
+                        setplaydef(actor, CommonDefine.VAR_S_SUPERBOX_ITEMLIST, strNewItemUniqueIDs)
+                        OpenSuperBoxManager.UpdateSuperBoxInfo(actor)
+                    end
+                end
+            end            
+        end
     end
 
     delaygoto(actor, 1500, 'superbox_auto_open', 0)
@@ -1154,12 +1163,13 @@ function OpenSuperBoxManager.DoOperButton(actor, sid, sparam)
     elseif funcid == OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_4 then
         setflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_AUTO_OPEN_SUPERBOX_PAUSE, 1)
         OpenUpgradeBoxLevelPanel(actor)
-    elseif funcid == OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_5 then
+    elseif funcid == OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_5 then                    
         setflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_AUTO_OPEN_SUPERBOX_PAUSE, 0)
         CloseUpgradeBoxLevelPanel(actor)
+        ContinueAutoOpen(actor)
     elseif funcid == OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_6 then
         if getflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_AUTO_OPEN_SUPERBOX) == 1 then
-            setflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_AUTO_OPEN_SUPERBOX, 0) 
+            setflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_AUTO_OPEN_SUPERBOX, 0)         
             OpenSuperBoxManager.UpdateSuperBoxInfo(actor)
         else
             OpenAutoOpenBoxPanel(actor)
@@ -1172,10 +1182,13 @@ function OpenSuperBoxManager.DoOperButton(actor, sid, sparam)
         SpeedupUpgradeBoxLevel(actor, nil)
     elseif funcid == OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_10 then
         QuickRecycleOpenItemList(actor)
+        ContinueAutoOpen(actor)
     elseif funcid == OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_11 then
         CloseOpenBoxItemListPanel(actor)
+        ContinueAutoOpen(actor)
     elseif funcid == OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_12 then
-        QuickTakeOnBetterEquip(actor)          
+        QuickTakeOnBetterEquip(actor)  
+        ContinueAutoOpen(actor)
     elseif funcid == OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_22 then
         SelectRecycleConditionByQuality(actor)
     elseif funcid == OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_24 then
@@ -1255,7 +1268,7 @@ function OpenSuperBoxManager.OnPlayerEnterGame(actor)
     --每次上线都把除保留的都自动回收的这个选项勾选
     setflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_SUPERBOX_RECYCLE_CHECK3, 1)
     setflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_SUPERBOX_RECYCLE_CHECK6, 1)
-    OpenSuperBoxManager.ShowBaseInvisiblePanel(actor)
+    OpenSuperBoxManager.ShowBaseInvisiblePanel(actor) 
     OpenSuperBoxManager.UpdateSuperBoxInfo(actor)
 end
 

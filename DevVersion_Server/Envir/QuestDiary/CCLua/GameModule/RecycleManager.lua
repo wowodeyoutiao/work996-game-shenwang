@@ -435,8 +435,9 @@ end
 
 --单独做个回收给开超级宝箱用
 function RecycleManager.SuperBoxForceRecycleItemList(actor, itemobjlist)
+    local flag = false
     if BF_IsNullObj(actor) or (itemobjlist==nil) then 
-        return
+        return flag
     end
     if type(itemobjlist)=="table" then
         local finalrecycitems = {}
@@ -454,9 +455,11 @@ function RecycleManager.SuperBoxForceRecycleItemList(actor, itemobjlist)
                 itemcount = math.max(1, itemcount)
                 delitembymakeindex(actor, makeindex, itemcount, 'opensuperboxrecycle')              
                 Player.GiveItemsToBagOrMail(actor, value.recycleitems, '超级宝箱一键回收')
+                flag = true
             end
         end
     end
+    return flag
 end
 
 
