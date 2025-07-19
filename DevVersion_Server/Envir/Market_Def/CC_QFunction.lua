@@ -39,8 +39,8 @@ function kuafuend(actor)
     --显示上面的topicon
     TopIcon.InitUI(actor)
     --更新开宝箱界面
-    OpenSuperBoxManager.ShowBaseInvisiblePanel(actor)
-    OpenSuperBoxManager.UpdateSuperBoxInfo(actor)    
+    --OpenSuperBoxManager.ShowBaseInvisiblePanel(actor)
+    --OpenSuperBoxManager.UpdateSuperBoxInfo(actor)
 end
 
 --跨周

@@ -18,6 +18,8 @@ local OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_14 = 14  --前往商城引导购买升级卷轴
 local OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_15 = 15  --关闭设置宝箱自动的界面  仅关闭
 local OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_16 = 16  --关闭设置宝箱自动的界面  跳转到首充界面
 local OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_17 = 17  --一键补足升级卷轴
+local OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_18 = 18  --关闭界面
+local OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_19 = 19  --引导增加开箱次数上限
 
 
 local OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_21 = 21  --勾选 保留的品质条件
@@ -159,35 +161,43 @@ end
 
 --更新超级宝箱界面
 function OpenSuperBoxManager.UpdateSuperBoxInfo(actor)
-    local sText1 = '开启'
+    local sText1 = '开启设置'
     if getflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_AUTO_OPEN_SUPERBOX) == 1 then
-        sText1 = '停止'
+        sText1 = '停止自动'
     end
 
     local nCurrBoxNum = getplaydef(actor, CommonDefine.VAR_U_SUPER_BOX_TOTAL_NUM)
     local nOnceOpenNum = getplaydef(actor, CommonDefine.VAR_U_SUPER_BOX_ONCE_OPEN_NUM)
     local nBoxCurrLv = getplaydef(actor, CommonDefine.VAR_U_SUPER_BOX_CURR_LV)
     local strItemUniqueIDs = getplaydef(actor, CommonDefine.VAR_S_SUPERBOX_ITEMLIST)
+    local nDayMaxOpenNum = GetDayMaxOpenBoxNum(actor)
     local boxpic = 'private/cc_superbox_1/btn_baoxiang.png'
     if strItemUniqueIDs ~= '' then
         boxpic = 'private/cc_superbox_1/btn_baoxiang_1.png'
     end
 
-    local strPanel = '<Layout|id=2000|children={2001,2004,2005,2006,2007,2008,2010}|x=-130|y=-300|bg=1|move=0|show=0|loadDelay=1>'.. 
-        '<Button|id=2001|children={2009}|x=68.0|y=0.0|width=72|height=63|clickInterval=500|nimg='..boxpic..'|mimg='..boxpic..'|link=@opensuperboxmanager_button#sid='..
+    --local strPanel = '<Layout|id=2000|children={2001,2004,2005,2006,2007,2008,2010}|x=-130|y=-300|bg=1|move=0|show=0|loadDelay=1>'.. 
+    local strPanel = '<Img|id=2000|children={2001,2003,2004,2005,2006,2007,2008,2010,2012,2013,2014,2015}|x=-450|y=-600|img=private/cc_superbox_1/base_panel.png|bg=1|move=0|show=0|loadDelay=1>'.. 
+        '<Layout|id=2012|x=812.0|y=12.0|width=80|height=80|link=@opensuperboxmanager_button#sid='..OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_18..'>'..
+        '<Button|id=2013|x=813.0|y=13.0|pimg=public/1900000511.png|nimg=public/1900000510.png|link=@opensuperboxmanager_button#sid='..OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_18..'>'..
+        '<Button|id=2001|x=400.0|y=200.0|width=72|height=63|clickInterval=500|nimg='..boxpic..'|mimg='..boxpic..'|link=@opensuperboxmanager_button#sid='..
         OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_1..'>'..
-        '<Img|id=2009|children={2003}|x=-12.0|y=40.0|width=100|height=24|esc=0|img=private/cc_superbox_1/bg_baoxiangshuliang.png>'..
-        '<Text|id=2003|x=32.0|y=2.0|color=255|size=20|text='..nCurrBoxNum..'>'..
-        '<Button|id=2004|x=142.0|y=68.0|clickInterval=500|size=18|color=255|nimg=private/cc_superbox_1/btn_7.png|mimg=private/cc_superbox_1/btn_7.png|link=@opensuperboxmanager_button#sid='..
+        --'<Img|id=2009|children={2003}|x=-12.0|y=40.0|width=100|height=24|esc=0|img=private/cc_superbox_1/bg_baoxiangshuliang.png>'..
+        '<Text|id=2003|x=80.0|y=446.0|color=255|size=20|text=持有数量:'..nCurrBoxNum..'>'..        
+        '<Button|id=2004|x=500.0|y=440.0|clickInterval=500|size=18|color=255|nimg=private/cc_superbox_1/btn_7.png|mimg=private/cc_superbox_1/btn_7.png|link=@opensuperboxmanager_button#sid='..
         OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_2..'>'..
-        '<Button|id=2005|x=33.0|y=68.0|clickInterval=500|size=18|mimg=private/cc_superbox_1/btn_8.png|color=255|nimg=private/cc_superbox_1/btn_8.png|link=@opensuperboxmanager_button#sid='..
+        '<Button|id=2005|x=350.0|y=440.0|clickInterval=500|size=18|mimg=private/cc_superbox_1/btn_8.png|color=255|nimg=private/cc_superbox_1/btn_8.png|link=@opensuperboxmanager_button#sid='..
         OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_3..'>'..
-        '<Button|id=2006|x=175.0|y=52.0|clickInterval=500|size=20|mimg=private/cc_superbox_1/bg_dengji_baoxiang.png|color=255|nimg=private/cc_superbox_1/bg_dengji_baoxiang.png|link=@opensuperboxmanager_button#sid='..
-        OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_4..'|text=LV.'..nBoxCurrLv..'>'..        
-        '<Button|id=2007|x=-45.0|y=52.0|clickInterval=500|size=20|mimg=private/cc_superbox_1/bg_dengji_baoxiang.png|color=255|nimg=private/cc_superbox_1/bg_dengji_baoxiang.png|link=@opensuperboxmanager_button#sid='..
+        '<Button|id=2006|x=650.0|y=300.0|clickInterval=500|size=20|nimg=private/cc_common/button_up.png|pimg=private/cc_common/button_down.png|mimg=private/cc_common/button_down.png|link=@opensuperboxmanager_button#sid='..
+        --OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_4..'|text=LV.'..nBoxCurrLv..'>'..        
+        OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_4..'|text=宝盒升级>'..        
+        '<Button|id=2007|x=100.0|y=300.0|clickInterval=500|size=20|nimg=private/cc_common/button_up.png|pimg=private/cc_common/button_down.png|mimg=private/cc_common/button_down.png|link=@opensuperboxmanager_button#sid='..
         OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_6..'|text='..sText1..'>'..
-        '<Img|id=2008|children={2002}|x=58.0|y=70.0|width=86|esc=0|img=private/cc_superbox_1/bg_baoxiangbeishu.png>'..
-        '<Text|id=2002|x=30.0|y=5.0|color=255|size=20|text='..nOnceOpenNum..'>'
+        '<Img|id=2008|children={2002}|x=400.0|y=440.0|width=86|esc=0|img=private/cc_superbox_1/bg_baoxiangbeishu.png>'..
+        '<Text|id=2002|x=30.0|y=5.0|color=255|size=20|text='..nOnceOpenNum..'>'..
+        '<Text|id=2014|x=540.0|y=446.0|color=255|size=20|text=今日开启上限:'..nDayMaxOpenNum..'>'..
+        '<Button|id=2015|x=750.0|y=440.0|clickInterval=500|size=18|mimg=private/cc_common/button_add.png|nimg=private/cc_common/button_add.png|link=@opensuperboxmanager_button#sid='..
+        OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_19..'>'
 
     if strItemUniqueIDs ~= '' then
         local tabUniqueIDs = string.split(strItemUniqueIDs, ',')      
@@ -248,7 +258,7 @@ function OpenSuperBoxManager.UpdateSuperBoxInfo(actor)
             local buttonid3 = 2097
             strIDs = strIDs..','..buttonid1..','..buttonid2..','..buttonid3
             local tempy = 30 + 100 * nLine + 30            
-            strPanel = strPanel..'<Img|id=2010|children={'..strIDs..'}|x=-120|y=-200|width=450|height='..(tempy+50)..'|bg=1|move=0|scale9r=10|scale9l=10|scale9b=10|scale9t=10|img=private/cc_superbox_1/panel_itemlist.png>'..
+            strPanel = strPanel..'<Img|id=2010|children={'..strIDs..'}|x=210|y=80|width=450|height='..(tempy+50)..'|bg=1|move=0|scale9r=10|scale9l=10|scale9b=10|scale9t=10|img=private/cc_superbox_1/panel_itemlist.png>'..
                 '<Button|id='..buttonid1..'|x=180|y='..tempy..'|clickInterval=500|mimg=private/cc_common/button_1.png|nimg=private/cc_superbox_1/button_yjhs.png|size=18|color=255|text=一键回收|link=@opensuperboxmanager_button#sid='..
                 OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_10..'>'..
                 '<Button|id='..buttonid2..'|x=310|y='..tempy..'|clickInterval=500|mimg=private/cc_common/button_1.png|nimg=private/cc_superbox_1/button_tc.png|size=18|color=255|text=退    出|link=@opensuperboxmanager_button#sid='..
@@ -1217,6 +1227,11 @@ function OpenSuperBoxManager.DoOperButton(actor, sid, sparam)
         FirstRecharge.OpenPanel(actor)
     elseif funcid == OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_17 then
         SpeedupUpgradeBoxLevel(actor, true)
+    elseif funcid == OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_18 then
+        OpenSuperBoxManager.HideUI(actor)
+        setflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_AUTO_OPEN_SUPERBOX, 0)
+    elseif funcid == OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_19 then
+        Player.QuickGoTo(actor, CommonDefine.QUICK_GOTO_FREEVIP)
     end
 end
 
@@ -1268,8 +1283,8 @@ function OpenSuperBoxManager.OnPlayerEnterGame(actor)
     --每次上线都把除保留的都自动回收的这个选项勾选
     setflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_SUPERBOX_RECYCLE_CHECK3, 1)
     setflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_SUPERBOX_RECYCLE_CHECK6, 1)
-    OpenSuperBoxManager.ShowBaseInvisiblePanel(actor) 
-    OpenSuperBoxManager.UpdateSuperBoxInfo(actor)
+    --OpenSuperBoxManager.ShowBaseInvisiblePanel(actor) 
+    --OpenSuperBoxManager.UpdateSuperBoxInfo(actor)
 end
 
 GameEventManager.AddListener(CommonDefine.EVENT_NAME_PLAYER_ENTERGAME, OpenSuperBoxManager.OnPlayerEnterGame, CommonDefine.FUNC_ID_SUPERBOX)

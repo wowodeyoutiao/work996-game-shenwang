@@ -798,6 +798,8 @@ CommonDefine = {
     ADD_BUTTON_ID_37 = 9037,                      --快捷物品栏上中央提示    
     ADD_BUTTON_ID_38 = 9038,                      --复活框
     ADD_BUTTON_ID_39 = 9039,                      --超级宝箱界面对应防穿透底板的buttonid
+
+    ADD_BUTTON_ID_40 = 9040,                      --超级宝箱 月光宝盒 对应的界面按钮入口
 }
 
 --装备位对应的名称

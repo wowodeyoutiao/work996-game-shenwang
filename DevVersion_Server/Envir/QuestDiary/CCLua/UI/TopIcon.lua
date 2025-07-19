@@ -2,7 +2,7 @@ TopIcon = {}
 
 local ICON_GATHER = '1'                         --收缩面板
 local ICON_EXTEND = '2'                         --展开面板
-
+local ICON_SUPERBOX = '3'                       --月光宝盒
 local ICON_GMMODE = '4'                         --管理模式
 local ICON_FIRSTRECHARGE = '5'                  --首充
 local ICON_NEWPLAYER_RECHARGEACTIVITY = '6'     --新人充值返利
@@ -27,6 +27,7 @@ local MAINICON_ID_5 = 'mainicon_5'              --每日必做 iconid
 local MAINICON_ID_6 = 'mainicon_6'              --免费VIP iconid
 local MAINICON_ID_7 = 'mainicon_7'              --跨服玩法 iconid
 local MAINICON_ID_8 = 'mainicon_8'              --白嫖礼包 iconid
+local MAINICON_ID_9 = 'mainicon_9'              --月光宝盒 iconid
 
 
 function TopIcon.InitUI(actor)
@@ -99,6 +100,11 @@ function TopIcon.OpenPanel(actor, sid, sparam)
         setplaydef(actor, CommonDefine.VAR_N_LAST_NPC_CHOOSEID, -1)
         setplaydef(actor, CommonDefine.VAR_N_NPC_TEMPPARAM1, 0)
         BaiPiaoGift.ShowBasePanel(actor)
+    elseif sid == ICON_SUPERBOX then
+        if not Player.IsFunctionOpen(actor, CommonDefine.FUNC_ID_SUPERBOX, true) then
+            return
+        end    
+        OpenSuperBoxManager.UpdateSuperBoxInfo(actor)
     elseif sid == ICON_EXTEND_STORAGE_MAKESURE then
         --扩容仓库 确定
         TopIcon.DoExtendStorage(actor)
@@ -122,7 +128,7 @@ end
 function TopIcon.InnerExtendPanel(actor)
     local curlv = Player.GetLevel(actor)
 
-    delbutton(actor, 102, CommonDefine.ADD_BUTTON_ID_33)
+    delbutton(actor, 102, CommonDefine.ADD_BUTTON_ID_33)    
     local currIconX = -220
     local buttonstr = '<Button|x='..currIconX..'|y=14|nimg=custom/30002.png|link=@topicon_openpanel#sid='..ICON_GATHER..'>'    
     currIconX = currIconX - 80
@@ -169,6 +175,11 @@ function TopIcon.InnerExtendPanel(actor)
         end        
         addbutton(actor, 102, CommonDefine.ADD_BUTTON_ID_34, buttonstr)
     end
+
+
+    delbutton(actor, 101, CommonDefine.ADD_BUTTON_ID_40)
+    local btnstr = '<Button|id='..MAINICON_ID_9..'|x=10|y=240|nimg=private/cc_func_icon/9.png|link=@topicon_openpanel#sid='..ICON_SUPERBOX..'>'
+    addbutton(actor, 101, CommonDefine.ADD_BUTTON_ID_40, btnstr)
 end
 
 function TopIcon.CheckRedPoint(actor)
@@ -315,12 +326,14 @@ function TopIcon.DoQuickInfoTipGoTo(actor, gotoid)
     TopIcon.HideQuickInfoTipPanel(actor)
 end
 
+TopIcon.LastShowQuickTipInfoFlag = false
+
 function TopIcon.CheckQuickInfoTip(actor)
     if Player.GetLevel(actor) < CommonDefine.SHOW_QUICK_TIP_MIN_LEVEL then
         return
     end
 
-    delbutton(actor, 108, CommonDefine.ADD_BUTTON_ID_32)
+    local bCurrShowFlag = false    
     if EquipPosStrengthManager.IsHaveQuickTip(actor) or 
         SoulStoneManager.IsHaveQuickTip(actor) or 
         --BaoZhuManager.IsHaveQuickTip(actor) or
@@ -334,9 +347,18 @@ function TopIcon.CheckQuickInfoTip(actor)
         OfflineHuWeiManager.IsHaveQuickTipUpgrade(actor) or
         OfflineHuWeiManager.IsHaveQuickTipReward(actor) or
         OpenSuperBoxManager.IsHaveQuickTipReward(actor) then
+        bCurrShowFlag = true        
+    end
 
-        local buttonstr = '<Button|x=180|y=-240|nimg=private/cc_quicktip/1.png|link=@topicon_openpanel#sid='..ICON_SHOW_QUICK_TIP_PANEL..'>'
-        addbutton(actor, 108, CommonDefine.ADD_BUTTON_ID_32, buttonstr)    
+    if bCurrShowFlag ~= TopIcon.LastShowQuickTipInfoFlag then
+        if bCurrShowFlag == true then
+            delbutton(actor, 108, CommonDefine.ADD_BUTTON_ID_32)
+            local buttonstr = '<Button|x=180|y=-240|nimg=private/cc_quicktip/1.png|link=@topicon_openpanel#sid='..ICON_SHOW_QUICK_TIP_PANEL..'>'
+            addbutton(actor, 108, CommonDefine.ADD_BUTTON_ID_32, buttonstr)    
+        else
+            delbutton(actor, 108, CommonDefine.ADD_BUTTON_ID_32)
+        end
+        TopIcon.LastShowQuickTipInfoFlag = bCurrShowFlag
     end
 end
 
