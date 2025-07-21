@@ -12,6 +12,7 @@ MOV N$奖励跨服积分 <$cfg_称号升级配置(<$STR(U1)>_8)>
 MOV N$称号特效ID <$cfg_称号升级配置(<$STR(U1)>_9)>
 MOV N$偏移X      <$cfg_称号升级配置(<$STR(U1)>_10)>
 MOV N$偏移Y      <$cfg_称号升级配置(<$STR(U1)>_11)>
+MOV N$切割      <$cfg_称号升级配置(<$STR(U1)>_15)>
 
 GetDBItemFieldValue <$DRESS> Looks N$clothID
 GetDBItemFieldValue <$DRESS> sEffect S$clothEffectID
@@ -33,9 +34,10 @@ GetDBItemFieldValue 元宝 idx N$元宝IDX
 攻击暴涨    <+<$STR(N$称号攻击)>/FCOLOR=250>\
 打怪爆率    <+<$STR(N$称号爆率)>%/FCOLOR=250>\
 最大生命    <+<$STR(N$称号生命)>%/FCOLOR=250>\
+切割伤害    <+<$STR(N$切割)>/FCOLOR=250>\
 额外奖励    <跨服积分+<$STR(N$奖励跨服积分)>/FCOLOR=250>>
 
-<RText|x=500|y=224|color=7|size=14|text=提示：优先使用元宝提升称号等级可增加<大量>\<人物属性>和<专属地图>元宝作为本服充值唯一货\币，可通过<回收装备获得>>
+;<RText|x=500|y=224|color=7|size=14|text=提示：优先使用元宝提升称号等级可增加<大量>\<人物属性>和<专属地图>元宝作为本服充值唯一货\币，可通过<回收装备获得>>
 
 <ItemShow|id=11|x=610.0|y=350|width=70|height=70|itemid=<$STR(N$元宝IDX)>|itemcount=<$STR(N$称号元宝)>|showtips=0|bgtype=1>
 <Button|id=660|x=590|y=430|nimg=public/wz/bt11.png|color=251|size=18|text=提升称号|link=@升级称号>

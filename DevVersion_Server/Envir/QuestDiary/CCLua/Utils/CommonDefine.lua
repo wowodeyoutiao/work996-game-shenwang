@@ -611,6 +611,9 @@ CommonDefine = {
     MAP_STRVAR_RANDOMBOSS_MONNAME = 2,              --触发随机boss的怪物名字
     MAP_STRVAR_RANDOMBOSS_MONUNIQUEID = 3,          --触发随机boss的怪物唯一ID
 
+    --飘字特效
+    HP_EFFECT_ID_QIEGE = 12,                            --切割
+
     --监听事件类型名
     EVENT_NAME_PLAYER_ENTERGAME = 'player_entergame',   --玩家进入游戏
     EVENT_NAME_PLAYER_LEAVEGAME = 'player_leavegame',   --玩家退出游戏

@@ -357,6 +357,16 @@ function attackdamage(actor, damagevalue)
     if currtarg == nil then
         return
     end
+
+    --¶Ô¹ÖÇÐ¸î
+    local monid = Player.GetMonIdx(currtarg)
+    if monid > 0 then
+        local nQieGePoint = 100 * getplaydef(actor, CommonDefine.VAR_U_OLD_TITLE_LEVEL)
+        if nQieGePoint > 0 then
+            humanhp(currtarg, '-', nQieGePoint, CommonDefine.HP_EFFECT_ID_QIEGE, 0, actor, 1, 1) 
+        end
+    end
+
     damagevalue = GuanZhiManager.DoAttackDamage(actor, currtarg, damagevalue)
     damagevalue = JumpAreaBossDamageRank.DoAttackDamage(actor, currtarg, damagevalue) 
     callscriptex(actor, "ChangeDamageValue", 0, "=", damagevalue)
