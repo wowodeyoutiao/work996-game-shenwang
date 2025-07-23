@@ -1,4 +1,54 @@
 local config = { 
+	[101] = { 
+		itemidx = 101,
+		itemname = "初级绑元红包",
+		randomrewards = "[{\"rewards\":[{\"name\":\"绑定元宝\", \"num\":1}], \"prop\":100},{\"rewards\":[{\"name\":\"绑定元宝\", \"num\":2}], \"prop\":100},{\"rewards\":[{\"name\":\"绑定元宝\", \"num\":3}], \"prop\":100},{\"rewards\":[{\"name\":\"绑定元宝\", \"num\":5}], \"prop\":80},{\"rewards\":[{\"name\":\"绑定元宝\", \"num\":7}], \"prop\":50},{\"rewards\":[{\"name\":\"绑定元宝\", \"num\":10}], \"prop\":10}]",
+	},
+	[102] = { 
+		itemidx = 102,
+		itemname = "中级绑元红包",
+		randomrewards = "[{\"rewards\":[{\"name\":\"绑定元宝\", \"num\":11}], \"prop\":100},{\"rewards\":[{\"name\":\"绑定元宝\", \"num\":20}], \"prop\":100},{\"rewards\":[{\"name\":\"绑定元宝\", \"num\":30}], \"prop\":100},{\"rewards\":[{\"name\":\"绑定元宝\", \"num\":35}], \"prop\":80},{\"rewards\":[{\"name\":\"绑定元宝\", \"num\":40}], \"prop\":50},{\"rewards\":[{\"name\":\"绑定元宝\", \"num\":50}], \"prop\":10}]",
+	},
+	[103] = { 
+		itemidx = 103,
+		itemname = "高级绑元红包",
+		randomrewards = "[{\"rewards\":[{\"name\":\"绑定元宝\", \"num\":51}], \"prop\":100},{\"rewards\":[{\"name\":\"绑定元宝\", \"num\":60}], \"prop\":100},{\"rewards\":[{\"name\":\"绑定元宝\", \"num\":70}], \"prop\":100},{\"rewards\":[{\"name\":\"绑定元宝\", \"num\":80}], \"prop\":80},{\"rewards\":[{\"name\":\"绑定元宝\", \"num\":90}], \"prop\":50},{\"rewards\":[{\"name\":\"绑定元宝\", \"num\":100}], \"prop\":10}]",
+	},
+	[104] = { 
+		itemidx = 104,
+		itemname = "特级绑元红包",
+		randomrewards = "[{\"rewards\":[{\"name\":\"绑定元宝\", \"num\":101}], \"prop\":100},{\"rewards\":[{\"name\":\"绑定元宝\", \"num\":200}], \"prop\":100},{\"rewards\":[{\"name\":\"绑定元宝\", \"num\":300}], \"prop\":100},{\"rewards\":[{\"name\":\"绑定元宝\", \"num\":400}], \"prop\":80},{\"rewards\":[{\"name\":\"绑定元宝\", \"num\":450}], \"prop\":50},{\"rewards\":[{\"name\":\"绑定元宝\", \"num\":500}], \"prop\":10}]",
+	},
+	[105] = { 
+		itemidx = 105,
+		itemname = "顶级绑元红包",
+		randomrewards = "[{\"rewards\":[{\"name\":\"绑定元宝\", \"num\":501}], \"prop\":100},{\"rewards\":[{\"name\":\"绑定元宝\", \"num\":600}], \"prop\":100},{\"rewards\":[{\"name\":\"绑定元宝\", \"num\":700}], \"prop\":100},{\"rewards\":[{\"name\":\"绑定元宝\", \"num\":800}], \"prop\":80},{\"rewards\":[{\"name\":\"绑定元宝\", \"num\":900}], \"prop\":50},{\"rewards\":[{\"name\":\"绑定元宝\", \"num\":1000}], \"prop\":10}]",
+	},
+	[106] = { 
+		itemidx = 106,
+		itemname = "初级强化原石",
+		randomrewards = "[{\"rewards\":[{\"name\":\"强化石\", \"num\":1}], \"prop\":100},{\"rewards\":[{\"name\":\"强化石\", \"num\":2}], \"prop\":100},{\"rewards\":[{\"name\":\"强化石\", \"num\":3}], \"prop\":100},{\"rewards\":[{\"name\":\"强化石\", \"num\":5}], \"prop\":80},{\"rewards\":[{\"name\":\"强化石\", \"num\":7}], \"prop\":50},{\"rewards\":[{\"name\":\"强化石\", \"num\":10}], \"prop\":10}]",
+	},
+	[107] = { 
+		itemidx = 107,
+		itemname = "中级强化原石",
+		randomrewards = "[{\"rewards\":[{\"name\":\"强化石\", \"num\":11}], \"prop\":100},{\"rewards\":[{\"name\":\"强化石\", \"num\":20}], \"prop\":100},{\"rewards\":[{\"name\":\"强化石\", \"num\":30}], \"prop\":100},{\"rewards\":[{\"name\":\"强化石\", \"num\":35}], \"prop\":80},{\"rewards\":[{\"name\":\"强化石\", \"num\":40}], \"prop\":50},{\"rewards\":[{\"name\":\"强化石\", \"num\":50}], \"prop\":10}]",
+	},
+	[108] = { 
+		itemidx = 108,
+		itemname = "高级强化原石",
+		randomrewards = "[{\"rewards\":[{\"name\":\"强化石\", \"num\":51}], \"prop\":100},{\"rewards\":[{\"name\":\"强化石\", \"num\":60}], \"prop\":100},{\"rewards\":[{\"name\":\"强化石\", \"num\":70}], \"prop\":100},{\"rewards\":[{\"name\":\"强化石\", \"num\":80}], \"prop\":80},{\"rewards\":[{\"name\":\"强化石\", \"num\":90}], \"prop\":50},{\"rewards\":[{\"name\":\"强化石\", \"num\":100}], \"prop\":10}]",
+	},
+	[109] = { 
+		itemidx = 109,
+		itemname = "特级强化原石",
+		randomrewards = "[{\"rewards\":[{\"name\":\"强化石\", \"num\":101}], \"prop\":100},{\"rewards\":[{\"name\":\"强化石\", \"num\":200}], \"prop\":100},{\"rewards\":[{\"name\":\"强化石\", \"num\":300}], \"prop\":100},{\"rewards\":[{\"name\":\"强化石\", \"num\":400}], \"prop\":80},{\"rewards\":[{\"name\":\"强化石\", \"num\":450}], \"prop\":50},{\"rewards\":[{\"name\":\"强化石\", \"num\":500}], \"prop\":10}]",
+	},
+	[110] = { 
+		itemidx = 110,
+		itemname = "顶级强化原石",
+		randomrewards = "[{\"rewards\":[{\"name\":\"强化石\", \"num\":501}], \"prop\":100},{\"rewards\":[{\"name\":\"强化石\", \"num\":600}], \"prop\":100},{\"rewards\":[{\"name\":\"强化石\", \"num\":700}], \"prop\":100},{\"rewards\":[{\"name\":\"强化石\", \"num\":800}], \"prop\":80},{\"rewards\":[{\"name\":\"强化石\", \"num\":900}], \"prop\":50},{\"rewards\":[{\"name\":\"强化石\", \"num\":1000}], \"prop\":10}]",
+	},
 	[307] = { 
 		itemidx = 307,
 		itemname = "小型经验珠",
