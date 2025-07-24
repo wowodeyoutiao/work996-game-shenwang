@@ -756,6 +756,7 @@ CommonDefine = {
     TASK_TYPE_SKILL_UPGRADE = 7,                  --技能升级
     TASK_TYPE_SUPERBOX_UPGRADE = 8,               --宝箱升级
     TASK_TYPE_TITLE_UPGRADE = 9,                  --升级称号
+    TASK_TYPE_KILL_SINGLEBOSS = 10,               --击杀个人BOSS
 
 
     --任务线状态

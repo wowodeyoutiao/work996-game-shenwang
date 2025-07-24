@@ -71,7 +71,8 @@ function TaskManager.AcceptTask(actor, tasklineid)
             elseif singletask.tasktype == CommonDefine.TASK_TYPE_POWERSCORE then
                 local currlv = Player.GetPlayerPower(actor)
                 newchangetask(actor, taskid, currlv..'')
-            elseif singletask.tasktype == CommonDefine.TASK_TYPE_OPENBOXNUM then
+            elseif (singletask.tasktype == CommonDefine.TASK_TYPE_OPENBOXNUM) or
+                   (singletask.tasktype == CommonDefine.TASK_TYPE_KILL_SINGLEBOSS) then
                 local currlv = getplaydef(actor, config.taskSingleCounterVar)
                 newchangetask(actor, taskid, currlv..'')
             elseif singletask.tasktype == CommonDefine.TASK_TYPE_EQUIPPOS_STRENGTH then
@@ -386,7 +387,8 @@ local function UpdateTaskProgress(actor, taskid, tasktype, counterlist, counterv
     elseif tasktype == CommonDefine.TASK_TYPE_POWERSCORE then
         local currlv = Player.GetPlayerPower(actor)
         s1 = currlv..''
-    elseif tasktype == CommonDefine.TASK_TYPE_OPENBOXNUM then
+    elseif (tasktype == CommonDefine.TASK_TYPE_OPENBOXNUM) or
+           (tasktype == CommonDefine.TASK_TYPE_KILL_SINGLEBOSS) then
         if countervar ~= nil then
             local currlv = getplaydef(actor, countervar)
             s1 = currlv..''
@@ -587,6 +589,31 @@ function TaskManager.OnAddOpenBoxNum(actor, addnum)
     end
 end
 
+--玩家击杀个人BOSS
+function TaskManager.OnKillSingleBoss(actor) 
+	if BF_IsNullObj(actor) then
+		return
+	end	
+
+    for tasklineid, lineconfig in pairs(TaskLineConfig) do
+        if lineconfig and lineconfig.taskDataList then
+            local taskid, status = TaskManager.GetCurrTaskLineInfo(actor, tasklineid) 
+            if taskid > 0 and status == CommonDefine.TASK_STATUS_ACCEPT then
+                local singletask = lineconfig.taskDataList[taskid]                
+                if singletask and (singletask.tasktype == CommonDefine.TASK_TYPE_KILL_SINGLEBOSS) and singletask.tasktargparam then
+                    local currnum = getplaydef(actor, lineconfig.taskSingleCounterVar) + 1
+                    setplaydef(actor, lineconfig.taskSingleCounterVar, currnum)
+                    if currnum >= singletask.tasktargparam then
+                        TaskManager.FinishTask(actor, tasklineid)
+                    else
+                        newchangetask(actor, taskid, currnum..'')
+                    end
+                end
+            end
+        end
+    end
+end
+
 --玩家装备槽位强化
 function TaskManager.OnEquipStrength(actor) 
 	if BF_IsNullObj(actor) then
@@ -747,6 +774,8 @@ function TaskManager.OnPlayerClickTask(actor, clicktaskidstr)
                             Player.QuickGoTo(actor, CommonDefine.QUICK_GOTO_SUPERBOX_UPGRADE)
                         elseif singletask.taskstype == CommonDefine.TASK_TYPE_TITLE_UPGRADE then
                             Player.QuickGoTo(actor, CommonDefine.QUICK_GOTO_TITLE_UPGRADE)
+                        elseif singletask.tasktype == CommonDefine.TASK_TYPE_KILL_SINGLEBOSS then
+                            Player.QuickGoTo(actor, CommonDefine.QUICK_GOTO_KILL_SINGLEBOSS)
                         else
                             if singletask.targpos then                
                                 if BF_GetDistanceFromMapPoint(actor, singletask.targpos.mapid, singletask.targpos.x, singletask.targpos.y) < 5 then
