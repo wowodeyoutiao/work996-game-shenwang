@@ -51864,5 +51864,27 @@ local config = {
 		stand_pos_y = 1,
 		idle_interval = 0.3,
 	},
+	[3191] = { 
+		index = 3191,
+		id = 90001,
+		type = 4,
+		sex = 0,
+		dir = 1,
+		blendmode = 0,
+		stand_pos_x = 0,
+		stand_pos_y = 1,
+		idle_interval = 0.1,
+	},
+	[3192] = { 
+		index = 3192,
+		id = 90002,
+		type = 4,
+		sex = 0,
+		dir = 1,
+		blendmode = 0,
+		stand_pos_x = 0,
+		stand_pos_y = 1,
+		idle_interval = 0.1,
+	},
 }
 return config

@@ -663,6 +663,10 @@ function superbox_auto_open(actor)
     OpenSuperBoxManager.AutoOpenSuperBox(actor)
 end
 
+function superbox_delay_openboxonce(actor)
+    OpenSuperBoxManager.DoOpenBoxOnce(actor, false, nil)
+end
+
 ----------------------------------------------------------------Íæ¼ÒÑÓ³Ù»Øµ÷end--------------------------------------------------------------------------
 
 

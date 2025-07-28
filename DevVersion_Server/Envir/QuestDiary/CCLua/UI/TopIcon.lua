@@ -178,7 +178,7 @@ function TopIcon.InnerExtendPanel(actor)
 
 
     delbutton(actor, 101, CommonDefine.ADD_BUTTON_ID_40)
-    local btnstr = '<Button|id='..MAINICON_ID_9..'|x=10|y=240|nimg=private/cc_func_icon/9.png|link=@topicon_openpanel#sid='..ICON_SUPERBOX..'>'
+    local btnstr = '<Button|id='..MAINICON_ID_9..'|x=10|y=240|nimg=private/cc_func_icon/12.png|link=@topicon_openpanel#sid='..ICON_SUPERBOX..'>'
     addbutton(actor, 101, CommonDefine.ADD_BUTTON_ID_40, btnstr)
 end
 
