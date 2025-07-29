@@ -26,6 +26,24 @@ function Item.GetItemQualityLvByID(itemid)
     return qualitylv
 end
 
+function Item.GetAutoUseFlag(itemid)
+    if itemid == nil then
+        return 0
+    end
+    local cfgInfo = cfg_equip[itemid]
+    if cfgInfo == nil then
+        cfgInfo = cfg_item[itemid]
+    end
+    if cfgInfo == nil then
+        return 0
+    end    
+    if cfgInfo.AutoUseFlag == nil then
+        return 0
+    else
+        return cfgInfo.AutoUseFlag
+    end
+end
+
 --返回道具的品质
 function Item.GetItemQualityLv(actor, equipitem)
     local qualitylv = CommonDefine.ITEM_QUALITY_WHITE

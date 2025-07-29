@@ -1673,6 +1673,7 @@ local config = {
 		Desc = "使用后可以增加10000角色经验",
 		pickset = "12#1#1#1",
 		QualityLv = 1,
+		AutoUseFlag = 1,
 	},
 	[308] = { 
 		Idx = 308,
