@@ -12,11 +12,13 @@ local ICON_FREEVIP = '9'                        --免费VIP
 local ICON_JUMPAREA = '10'                      --跨服玩法
 local ICON_EVERYDAY_TASK = '11'                 --每日必做
 local ICON_BAIPIAO_GIFT = '12'                  --白嫖礼包
-
 local ICON_EXTEND_STORAGE_MAKESURE = '13'       --仓库扩容，确认
 local ICON_SHOW_QUICK_TIP_PANEL = '14'          --打开有红点功能对应的快捷提示框
 local ICON_QUICK_TIP_GOTO = '15'                --对应红点功能提示的快捷前往
 local ICON_HIDE_QUICK_TIP_PANEL = '16'          --关闭有红点功能对应的快捷提示框
+
+local ICON_GATHER_POP_ABILITY = '20'            --收缩快捷属性面板
+local ICON_EXTEND_POP_ABILITY = '21'            --展开快捷属性面板
 
 
 local MAINICON_ID_1 = 'mainicon_1'              --进阶礼包 iconid
@@ -33,6 +35,7 @@ local MAINICON_ID_9 = 'mainicon_9'              --月光宝盒 iconid
 function TopIcon.InitUI(actor)
     --主界面入口icon
     TopIcon.InnerExtendPanel(actor)
+    TopIcon.InnerExtendPanel2(actor)
 
     setontimer(actor, CommonDefine.TIMER_ID_CHECK_TOPICON_REDPOINT, 10, 0, 0)
     setontimer(actor, CommonDefine.TIMER_ID_CHECK_QUICK_GOTO_TIP, 30, 0, 0)
@@ -115,7 +118,11 @@ function TopIcon.OpenPanel(actor, sid, sparam)
         TopIcon.HideQuickInfoTipPanel(actor)
     elseif sid == ICON_QUICK_TIP_GOTO then
         --对应红点功能提示的快捷前往
-        TopIcon.DoQuickInfoTipGoTo(actor, nparam)        
+        TopIcon.DoQuickInfoTipGoTo(actor, nparam)       
+    elseif sid == ICON_GATHER_POP_ABILITY then
+        TopIcon.InnerGatherPanel2(actor)
+    elseif sid == ICON_EXTEND_POP_ABILITY then
+        TopIcon.InnerExtendPanel2(actor)        
     end
 end
 
@@ -176,10 +183,32 @@ function TopIcon.InnerExtendPanel(actor)
         addbutton(actor, 102, CommonDefine.ADD_BUTTON_ID_34, buttonstr)
     end
 
-
     delbutton(actor, 101, CommonDefine.ADD_BUTTON_ID_40)
-    local btnstr = '<Button|id='..MAINICON_ID_9..'|x=10|y=240|nimg=private/cc_func_icon/12.png|link=@topicon_openpanel#sid='..ICON_SUPERBOX..'>'
+    local btnstr = '<Button|id='..MAINICON_ID_9..'|x=10|y=230|nimg=private/cc_func_icon/12.png|link=@topicon_openpanel#sid='..ICON_SUPERBOX..'>'
     addbutton(actor, 101, CommonDefine.ADD_BUTTON_ID_40, btnstr)
+end
+
+function TopIcon.InnerGatherPanel2(actor)
+    delbutton(actor, 105, CommonDefine.ADD_BUTTON_ID_41)
+    addbutton(actor, 105, CommonDefine.ADD_BUTTON_ID_41, '<Button|x=10|y=-20|nimg=private/cc_popshow/3.png|link=@topicon_openpanel#sid='..ICON_EXTEND_POP_ABILITY..'>')
+end
+
+function TopIcon.InnerExtendPanel2(actor)
+    delbutton(actor, 105, CommonDefine.ADD_BUTTON_ID_41)
+    local nGiftValue1 = getplaydef(actor, CommonDefine.VAR_N_GIFT_ABILITY_1)
+    local nGiftValue2 = getplaydef(actor, CommonDefine.VAR_N_GIFT_ABILITY_2)
+    local nGiftValue3 = getplaydef(actor, CommonDefine.VAR_N_GIFT_ABILITY_3)
+    local nGiftValue4 = getplaydef(actor, CommonDefine.VAR_N_GIFT_ABILITY_4)
+    local nQieGePoint = Player.GetQieGePoint(actor)
+    local sPanelStr = '<Layout|id=5500|children={5507,5501,5502,5503,5504,5505,5506}|x=10|y=10|width=150|height=120|color='..CSS.NPC_GRAY..'>'..
+        '<Img|id=5507||x=0|y=0|img=private/cc_popshow/1.png>'..
+        '<Button|id=5501|x=0|y=-30|nimg=private/cc_popshow/2.png|link=@topicon_openpanel#sid='..ICON_GATHER_POP_ABILITY..'>'..
+        '<Text|id=5502|x=110|y=2|color='..CSS.NPC_LIGHTGREEN..'|size=16|text='..nGiftValue1..'>'..
+        '<Text|id=5503|x=110|y=28|color='..CSS.NPC_LIGHTGREEN..'|size=16|text='..nGiftValue2..'>'..
+        '<Text|id=5504|x=110|y=52|color='..CSS.NPC_LIGHTGREEN..'|size=16|text='..nGiftValue3..'>'..
+        '<Text|id=5505|x=110|y=76|color='..CSS.NPC_LIGHTGREEN..'|size=16|text='..nGiftValue4..'>'..
+        '<Text|id=5506|x=110|y=100|color='..CSS.NPC_LIGHTGREEN..'|size=16|text='..nQieGePoint..'>'
+    addbutton(actor, 105, CommonDefine.ADD_BUTTON_ID_41, sPanelStr)
 end
 
 function TopIcon.CheckRedPoint(actor)

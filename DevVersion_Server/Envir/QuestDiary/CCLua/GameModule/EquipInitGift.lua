@@ -46,14 +46,10 @@ function EquipInitGift.InitEquipGiftAB(actor, equipitem)
     end
     refreshitem(actor, equipitem)
 
-    --如果是风属性，则记录装备的加速
-    if cfgInitInfo.ID == 1 then
-        setitemintparam(actor, -2, CommonDefine.ITEM_INTVAR_ATTACK_SPEEDUP_INITGIFT, randValue, equipitem)    
-    end
-
-    --保存装备的天赋类型
+    --保存装备的天赋类型 天赋加成点数
     if cfgInitInfo.ID > 0 then
         setitemintparam(actor, -2, CommonDefine.ITEM_INTVAR_INITGIFT_TYPE, cfgInitInfo.ID, equipitem)        
+        setitemintparam(actor, -2, CommonDefine.ITEM_INTVAR_ADDPOINT_INITGIFT, randValue, equipitem)    
     end
     
     return true
@@ -122,6 +118,32 @@ function EquipInitGift.UpdateEquipposInitGiftIcon(actor, equippos)
             addbutton(actor, CommonDefine.WINDOWS_ID_EQUIPMENT, buttonid, buttonstr)
         end
     end 
+end
+
+--更新玩家的风雨雷电的临时属性记录
+function EquipInitGift.UpdateEquipGiftAbilityInfo(actor)
+    if BF_IsNullObj(actor) then
+        return
+    end
+    
+    local giftabilitylist = {0, 0, 0, 0}
+    for i = 1, #CommonDefine.BASE_EQUIPMENT_POS, 1 do
+        local equipitem = linkbodyitem(actor, CommonDefine.BASE_EQUIPMENT_POS[i])
+        if not BF_IsNullObj(equipitem) then
+            local giftid = getitemintparam(actor, -2, CommonDefine.ITEM_INTVAR_INITGIFT_TYPE, equipitem)
+            if giftid~=nil and giftid > 0 and giftid <= #giftabilitylist then                
+                local naddnum = getitemintparam(actor, -2, CommonDefine.ITEM_INTVAR_ADDPOINT_INITGIFT, equipitem)
+                if naddnum ~= nil then 
+                    giftabilitylist[giftid] = giftabilitylist[giftid] + naddnum
+                end                    
+            end
+        end
+    end
+
+    setplaydef(actor, CommonDefine.VAR_N_GIFT_ABILITY_1, giftabilitylist[1])
+    setplaydef(actor, CommonDefine.VAR_N_GIFT_ABILITY_2, giftabilitylist[2])
+    setplaydef(actor, CommonDefine.VAR_N_GIFT_ABILITY_3, giftabilitylist[3])
+    setplaydef(actor, CommonDefine.VAR_N_GIFT_ABILITY_4, giftabilitylist[4])    
 end
 
 return EquipInitGift

@@ -145,6 +145,14 @@ function Player.IsPCClient(actor)
     return sFlag == '1'
 end
 
+--返回玩家的切割点数
+function Player.GetQieGePoint(actor)
+    if BF_IsNullObj(actor) then
+        return 0        
+    end
+    return 100 * getplaydef(actor, CommonDefine.VAR_U_OLD_TITLE_LEVEL)
+end
+
 --判断玩家是否重连
 function Player.IsReconnectLogin(actor)
     local sFlag = parsetext("<$LoginState>", actor);
@@ -816,9 +824,13 @@ function Player.CheckSpeedUpStatus(actor)
             end
 
             --判断装备的天赋的加速属性
-            local naddnum = getitemintparam(actor, -2, CommonDefine.ITEM_INTVAR_ATTACK_SPEEDUP_INITGIFT, equipitem)
-            if naddnum ~= nil then 
-                nSpeedUp = nSpeedUp + naddnum
+            local giftid = getitemintparam(actor, -2, CommonDefine.ITEM_INTVAR_INITGIFT_TYPE, equipitem)
+            if giftid~=nil and giftid == 1 then
+                --计算风天赋加成
+                local naddnum = getitemintparam(actor, -2, CommonDefine.ITEM_INTVAR_ADDPOINT_INITGIFT, equipitem)
+                if naddnum ~= nil then 
+                    nSpeedUp = nSpeedUp + naddnum
+                end                    
             end
         end
     end

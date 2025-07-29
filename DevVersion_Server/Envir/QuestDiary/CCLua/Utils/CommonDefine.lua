@@ -367,6 +367,10 @@ CommonDefine = {
     VAR_N_COMMON_LOCAL_RELIVE_TIMES = 'N79',    --通用原地复活次数    
     VAR_N_NPC_TEMPPARAM2 = 'N80',               --玩家NPC操作的参数2
     VAR_N_NPC_TEMPPARAM3 = 'N81',               --玩家NPC操作的参数3
+    VAR_N_GIFT_ABILITY_1 = 'N82',               --玩家装备天赋属性 风
+    VAR_N_GIFT_ABILITY_2 = 'N83',               --玩家装备天赋属性 雨
+    VAR_N_GIFT_ABILITY_3 = 'N84',               --玩家装备天赋属性 雷
+    VAR_N_GIFT_ABILITY_4 = 'N85',               --玩家装备天赋属性 电
 
         
     --玩家数字型变量，切地图不保存 M0-M99
@@ -595,7 +599,7 @@ CommonDefine = {
     ITEM_INTVAR_RANDOMAB_NUM = 2,                   --装备洗炼属性的条数
     ITEM_INTVAR_RANDOMAB_CURR_SEQ = 3,              --装备洗炼当前选择的第几条属性  未洗炼状态  作为临时变量
     ITEM_INTVAR_RANDOMAB_STATS = 4,                 --装备洗炼的当前状态 0无洗炼属性待洗炼状态  1已洗炼出属性待处理状态
-    ITEM_INTVAR_ATTACK_SPEEDUP_INITGIFT = 6,        --装备加速属性【由装备天赋给予的】
+    ITEM_INTVAR_ADDPOINT_INITGIFT = 6,              --装备加成属性【由装备天赋给予的】
     ITEM_INTVAR_INITGIFT_TYPE = 7,                  --装备的天赋类型 风雨雷电
 
     --道具的字符串变量 1-20
@@ -802,8 +806,9 @@ CommonDefine = {
     ADD_BUTTON_ID_37 = 9037,                      --快捷物品栏上中央提示    
     ADD_BUTTON_ID_38 = 9038,                      --复活框
     ADD_BUTTON_ID_39 = 9039,                      --超级宝箱界面对应防穿透底板的buttonid
-
     ADD_BUTTON_ID_40 = 9040,                      --超级宝箱 月光宝盒 对应的界面按钮入口
+
+    ADD_BUTTON_ID_41 = 9041,                      --人物特殊属性的展现面板
 }
 
 --装备位对应的名称
