@@ -107,6 +107,7 @@ function TopIcon.OpenPanel(actor, sid, sparam)
         if not Player.IsFunctionOpen(actor, CommonDefine.FUNC_ID_SUPERBOX, true) then
             return
         end    
+        setflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_SHOW_SUPERBOX_UI_FLAG, 1)        
         OpenSuperBoxManager.UpdateSuperBoxInfo(actor)
     elseif sid == ICON_EXTEND_STORAGE_MAKESURE then
         --À©ÈÝ²Ö¿â È·¶¨
@@ -161,6 +162,8 @@ function TopIcon.InnerExtendPanel(actor)
         currIconX = currIconX - 80
         buttonstr = buttonstr..'<Button|id='..MAINICON_ID_5..'|x='..currIconX..'|y=10|nimg=private/cc_func_icon/10.png|link=@topicon_openpanel#sid='..ICON_EVERYDAY_TASK..'>'        
     end
+    currIconX = currIconX - 80
+    buttonstr = buttonstr..'<Button|id='..MAINICON_ID_9..'|x='..currIconX..'|y=10|nimg=private/cc_func_icon/12.png|link=@topicon_openpanel#sid='..ICON_SUPERBOX..'>'
     addbutton(actor, 102, CommonDefine.ADD_BUTTON_ID_33, buttonstr)
 
     if curlv >= 40 then
@@ -176,8 +179,6 @@ function TopIcon.InnerExtendPanel(actor)
             currIconX = currIconX - 80
             buttonstr = buttonstr..'<Button|id='..MAINICON_ID_3..'|x='..currIconX..'|y=80|nimg=private/cc_func_icon/3.png|link=@topicon_openpanel#sid='..ICON_NEWPLAYER_RECHARGEACTIVITY..'>'
         end 
-        currIconX = currIconX - 80
-        buttonstr = buttonstr..'<Button|id='..MAINICON_ID_9..'|x='..currIconX..'|y=80|nimg=private/cc_func_icon/12.png|link=@topicon_openpanel#sid='..ICON_SUPERBOX..'>'
         if BaiPiaoGift.CanShowIcon(actor) then
             currIconX = currIconX - 80
             buttonstr = buttonstr..'<Button|id='..MAINICON_ID_8..'|x='..currIconX..'|y=80|nimg=private/cc_func_icon/11.png|link=@topicon_openpanel#sid='..ICON_BAIPIAO_GIFT..'>'        

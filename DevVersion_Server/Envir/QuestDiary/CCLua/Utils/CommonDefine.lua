@@ -544,6 +544,7 @@ CommonDefine = {
     VAR_HUM_BITFLAG_SUPERBOX_NOCHECK_TAKEON = 207,   --开宝箱时不触发穿戴检测的状态【一键穿戴不触发】
     VAR_HUM_BITFLAG_RELIVE_DIALOGUE_FLAG = 208,      --玩家是否当前已有复活框弹出
     VAR_HUM_BITFLAG_OPEN_BAIPIAO_GRASS_FLAG = 209,   --玩家申请种草弹出面板 打开标记
+    VAR_HUM_BITFLAG_SHOW_SUPERBOX_UI_FLAG = 210,     --月光宝盒界面是否打开的标记
 
     --300-800 都是可以下线保存的
     VAR_HUM_BITFLAG_AUTORECYCLE_ITEM1 = 300,         --勾选装备自动回收    
@@ -745,7 +746,6 @@ CommonDefine = {
     NPC_ID_PUBLIC_BOSS = 503,                     --野外BOSS
     NPC_ID_BIAOCHE_START = 504,                   --运镖NPC
     NPC_ID_BIAOCHE_FINISH = 505,                  --接镖NPC
-    NPC_ID_TITLE_UPGRADE_1 = 3,                   --称号专属
 
     --任务线ID
     TASK_LINE_ID_MAIN = 100,                      --任务线，主线任务

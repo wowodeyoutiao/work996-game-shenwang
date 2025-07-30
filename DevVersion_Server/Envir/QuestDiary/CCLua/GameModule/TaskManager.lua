@@ -749,7 +749,7 @@ function TaskManager.OnPlayerClickTask(actor, clicktaskidstr)
         if taskid == clicktaskid then
             if taskid > 0 and lineconfig then    
                 local singletask = lineconfig.taskDataList[taskid]
-                if singletask then               
+                if singletask then   
                     if status == CommonDefine.TASK_STATUS_ADD then
                         if singletask.acceptnpcid then
                             opennpcshowex(actor, singletask.acceptnpcid, 3, 3)
@@ -772,7 +772,7 @@ function TaskManager.OnPlayerClickTask(actor, clicktaskidstr)
                             Player.QuickGoTo(actor, CommonDefine.QUICK_GOTO_SKILL_UPGRADE)
                         elseif singletask.tasktype == CommonDefine.TASK_TYPE_SUPERBOX_UPGRADE then
                             Player.QuickGoTo(actor, CommonDefine.QUICK_GOTO_SUPERBOX_UPGRADE)
-                        elseif singletask.taskstype == CommonDefine.TASK_TYPE_TITLE_UPGRADE then
+                        elseif singletask.tasktype == CommonDefine.TASK_TYPE_TITLE_UPGRADE then                         
                             Player.QuickGoTo(actor, CommonDefine.QUICK_GOTO_TITLE_UPGRADE)
                         elseif singletask.tasktype == CommonDefine.TASK_TYPE_KILL_SINGLEBOSS then
                             Player.QuickGoTo(actor, CommonDefine.QUICK_GOTO_KILL_SINGLEBOSS)

@@ -160,7 +160,11 @@ function OpenSuperBoxManager.GMAddNewBoxNum(actor, addnum)
 end
 
 --更新超级宝箱界面
-function OpenSuperBoxManager.UpdateSuperBoxInfo(actor, bShowOpenEffect)
+function OpenSuperBoxManager.UpdateSuperBoxInfo(actor, bShowOpenEffect)    
+    if getflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_SHOW_SUPERBOX_UI_FLAG) == 0 then
+        return
+    end
+
     local sText1 = '开启设置'
     if getflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_AUTO_OPEN_SUPERBOX) == 1 then
         sText1 = '停止自动'
@@ -1242,7 +1246,8 @@ function OpenSuperBoxManager.DoOperButton(actor, sid, sparam)
     elseif funcid == OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_17 then
         SpeedupUpgradeBoxLevel(actor, true)
     elseif funcid == OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_18 then
-        OpenSuperBoxManager.HideUI(actor)
+        OpenSuperBoxManager.HideUI(actor)        
+        setflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_SHOW_SUPERBOX_UI_FLAG, 0)
         setflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_AUTO_OPEN_SUPERBOX, 0)
     elseif funcid == OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_19 then
         Player.QuickGoTo(actor, CommonDefine.QUICK_GOTO_FREEVIP)
@@ -1297,8 +1302,6 @@ function OpenSuperBoxManager.OnPlayerEnterGame(actor)
     --每次上线都把除保留的都自动回收的这个选项勾选
     setflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_SUPERBOX_RECYCLE_CHECK3, 1)
     setflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_SUPERBOX_RECYCLE_CHECK6, 1)
-    --OpenSuperBoxManager.ShowBaseInvisiblePanel(actor) 
-    --OpenSuperBoxManager.UpdateSuperBoxInfo(actor)
 end
 
 GameEventManager.AddListener(CommonDefine.EVENT_NAME_PLAYER_ENTERGAME, OpenSuperBoxManager.OnPlayerEnterGame, CommonDefine.FUNC_ID_SUPERBOX)

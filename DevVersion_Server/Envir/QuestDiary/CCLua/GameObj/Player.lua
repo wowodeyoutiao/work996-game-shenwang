@@ -792,8 +792,35 @@ function Player.QuickGoTo(actor, gotoid)
         --升级开宝箱
         OpenSuperBoxManager.DoOperButton(actor, '4', '')
     elseif gotoid == CommonDefine.QUICK_GOTO_TITLE_UPGRADE then
-        --称号升级
-        opennpcshowex(actor, CommonDefine.NPC_ID_TITLE_UPGRADE_1, 3, 3)        
+        --称号升级  这里要根据称号升级限制调整的
+        --称号升级  这里要根据称号升级限制调整的
+        --称号升级  这里要根据称号升级限制调整的
+        --称号升级  这里要根据称号升级限制调整的
+        --称号升级  这里要根据称号升级限制调整的
+        local currlv = getplaydef(actor, CommonDefine.VAR_U_OLD_TITLE_LEVEL)        
+        if currlv < 2 then
+            opennpcshowex(actor, 21, 3, 3)        
+        elseif currlv < 3 then
+            opennpcshowex(actor, 31, 3, 3)
+        elseif currlv < 6 then
+            opennpcshowex(actor, 32, 3, 3)
+        elseif currlv < 9 then
+            opennpcshowex(actor, 33, 3, 3)
+        elseif currlv < 12 then
+            opennpcshowex(actor, 34, 3, 3)
+        elseif currlv < 15 then
+            opennpcshowex(actor, 35, 3, 3)
+        elseif currlv < 18 then
+            opennpcshowex(actor, 36, 3, 3)
+        elseif currlv < 26 then
+            opennpcshowex(actor, 37, 3, 3)
+        elseif currlv < 30 then
+            opennpcshowex(actor, 38, 3, 3)
+        elseif currlv < 32 then
+            opennpcshowex(actor, 66, 3, 3)
+        else
+            opennpcshowex(actor, 66, 3, 3)
+        end
     elseif gotoid == CommonDefine.QUICK_GOTO_BAG_USEDICE then
         --背包使用骰子
         local makeindex = OpenSuperBoxManager.GetOpenBoxDiceMakeIndex(actor)
