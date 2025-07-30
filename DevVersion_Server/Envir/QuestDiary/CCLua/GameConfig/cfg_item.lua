@@ -825,6 +825,7 @@ local config = {
 		sEffect = 0,
 		bEffect = 0,
 		rizhi = 1,
+		AutoUseFlag = 1,
 	},
 	[102] = { 
 		Idx = 102,
@@ -853,6 +854,7 @@ local config = {
 		sEffect = 0,
 		bEffect = 0,
 		rizhi = 1,
+		AutoUseFlag = 1,
 	},
 	[103] = { 
 		Idx = 103,
@@ -881,6 +883,7 @@ local config = {
 		sEffect = 0,
 		bEffect = 0,
 		rizhi = 1,
+		AutoUseFlag = 1,
 	},
 	[104] = { 
 		Idx = 104,
@@ -909,6 +912,7 @@ local config = {
 		sEffect = 0,
 		bEffect = 0,
 		rizhi = 1,
+		AutoUseFlag = 1,
 	},
 	[105] = { 
 		Idx = 105,
@@ -937,6 +941,7 @@ local config = {
 		sEffect = 0,
 		bEffect = 0,
 		rizhi = 1,
+		AutoUseFlag = 1,
 	},
 	[106] = { 
 		Idx = 106,
@@ -959,6 +964,7 @@ local config = {
 		Job = 0,
 		effectParam = 0,
 		Desc = "使用后可随机获得1~10强化石",
+		AutoUseFlag = 1,
 	},
 	[107] = { 
 		Idx = 107,
@@ -981,6 +987,7 @@ local config = {
 		Job = 0,
 		effectParam = 0,
 		Desc = "使用后可随机获得11~50强化石",
+		AutoUseFlag = 1,
 	},
 	[108] = { 
 		Idx = 108,
@@ -1003,6 +1010,7 @@ local config = {
 		Job = 0,
 		effectParam = 0,
 		Desc = "使用后可随机获得51~100强化石",
+		AutoUseFlag = 1,
 	},
 	[109] = { 
 		Idx = 109,
@@ -1025,6 +1033,7 @@ local config = {
 		Job = 0,
 		effectParam = 0,
 		Desc = "使用后可随机获得101~500强化石",
+		AutoUseFlag = 1,
 	},
 	[110] = { 
 		Idx = 110,
@@ -1047,6 +1056,7 @@ local config = {
 		Job = 0,
 		effectParam = 0,
 		Desc = "使用后可随机获得501~1000强化石",
+		AutoUseFlag = 1,
 	},
 	[151] = { 
 		Idx = 151,
@@ -1698,6 +1708,7 @@ local config = {
 		Desc = "使用后可以增加50000角色经验",
 		pickset = "12#1#1#1",
 		QualityLv = 2,
+		AutoUseFlag = 1,
 	},
 	[309] = { 
 		Idx = 309,
@@ -1723,6 +1734,7 @@ local config = {
 		pickset = "12#1#1#1",
 		guangzhu = "16003#1",
 		QualityLv = 3,
+		AutoUseFlag = 1,
 	},
 	[310] = { 
 		Idx = 310,
@@ -1749,6 +1761,7 @@ local config = {
 		guangzhu = "16004#1",
 		bEffect = "14004#0#-90#85#1.15#0|14004#0#-121#113#0#1.5",
 		QualityLv = 4,
+		AutoUseFlag = 1,
 	},
 	[311] = { 
 		Idx = 311,
@@ -1775,6 +1788,7 @@ local config = {
 		guangzhu = "16005#1",
 		bEffect = "14004#0#-90#85#1.15#0|14004#0#-121#113#0#1.5",
 		QualityLv = 5,
+		AutoUseFlag = 1,
 	},
 	[312] = { 
 		Idx = 312,
@@ -1799,6 +1813,7 @@ local config = {
 		Desc = "使用后可以获得10000金币",
 		pickset = "12#1#1#1",
 		QualityLv = 2,
+		AutoUseFlag = 1,
 	},
 	[313] = { 
 		Idx = 313,
@@ -1824,6 +1839,7 @@ local config = {
 		pickset = "12#1#1#1",
 		guangzhu = "16003#1",
 		QualityLv = 3,
+		AutoUseFlag = 1,
 	},
 	[314] = { 
 		Idx = 314,
@@ -1850,6 +1866,7 @@ local config = {
 		guangzhu = "16004#1",
 		bEffect = "15009#1",
 		QualityLv = 4,
+		AutoUseFlag = 1,
 	},
 	[316] = { 
 		Idx = 316,
@@ -2800,6 +2817,7 @@ local config = {
 		bEffect = "14004#0#-90#85#1.15#0|14004#0#-121#113#0#1.5",
 		ITEMPAEAM1 = 5,
 		QualityLv = 1,
+		AutoUseFlag = 1,
 	},
 	[1003] = { 
 		Idx = 1003,
@@ -2824,6 +2842,7 @@ local config = {
 		pickset = "12#1#1#1",
 		ITEMPAEAM1 = 10,
 		QualityLv = 2,
+		AutoUseFlag = 1,
 	},
 	[1004] = { 
 		Idx = 1004,
@@ -2849,6 +2868,7 @@ local config = {
 		guangzhu = "16003#1",
 		ITEMPAEAM1 = 15,
 		QualityLv = 3,
+		AutoUseFlag = 1,
 	},
 	[1005] = { 
 		Idx = 1005,
@@ -2875,6 +2895,7 @@ local config = {
 		bEffect = "14004#0#-90#85#1.15#0|14004#0#-121#113#0#1.5",
 		ITEMPAEAM1 = 20,
 		QualityLv = 4,
+		AutoUseFlag = 1,
 	},
 	[1006] = { 
 		Idx = 1006,
@@ -2901,6 +2922,7 @@ local config = {
 		bEffect = "14004#0#-90#85#1.15#0|14004#0#-121#113#0#1.5",
 		ITEMPAEAM1 = 25,
 		QualityLv = 5,
+		AutoUseFlag = 1,
 	},
 	[1007] = { 
 		Idx = 1007,
@@ -2927,6 +2949,7 @@ local config = {
 		bEffect = "14004#0#-90#85#1.15#0|14004#0#-121#113#0#1.5",
 		ITEMPAEAM1 = 30,
 		QualityLv = 6,
+		AutoUseFlag = 1,
 	},
 	[1101] = { 
 		Idx = 1101,
