@@ -144,7 +144,7 @@ function OpenSuperBoxManager.AddNewBoxNum(actor, addnum)
     local nCurrBoxNum = getplaydef(actor, CommonDefine.VAR_U_SUPER_BOX_TOTAL_NUM)
     nCurrBoxNum = nCurrBoxNum + nFinalAddNum
     setplaydef(actor, CommonDefine.VAR_U_SUPER_BOX_TOTAL_NUM, nCurrBoxNum)
-    OpenSuperBoxManager.UpdateSuperBoxInfo(actor)
+    OpenSuperBoxManager.UpdateSuperBoxInfo(actor)   
     return true
 end
 
@@ -156,7 +156,7 @@ function OpenSuperBoxManager.GMAddNewBoxNum(actor, addnum)
     local nCurrBoxNum = getplaydef(actor, CommonDefine.VAR_U_SUPER_BOX_TOTAL_NUM)
     nCurrBoxNum = nCurrBoxNum + addnum
     setplaydef(actor, CommonDefine.VAR_U_SUPER_BOX_TOTAL_NUM, nCurrBoxNum)   
-    OpenSuperBoxManager.UpdateSuperBoxInfo(actor)
+    OpenSuperBoxManager.UpdateSuperBoxInfo(actor)   
 end
 
 --更新超级宝箱界面
@@ -963,7 +963,7 @@ local function QuickRecycleOpenItemList(actor)
             end
         end
         setplaydef(actor, CommonDefine.VAR_S_SUPERBOX_ITEMLIST, '')      
-        OpenSuperBoxManager.UpdateSuperBoxInfo(actor)
+        OpenSuperBoxManager.UpdateSuperBoxInfo(actor)        
     end    
 end
 
@@ -1031,9 +1031,9 @@ function OpenSuperBoxManager.OnTakeOnEquipItem(actor, strmakeindex)
         end
         if bChanged == true then
             setplaydef(actor, CommonDefine.VAR_S_SUPERBOX_ITEMLIST, strNewItemUniqueIDs)
+            OpenSuperBoxManager.UpdateSuperBoxInfo(actor)
         end
-    end 
-    OpenSuperBoxManager.UpdateSuperBoxInfo(actor)
+    end     
 end
 
 --自动开宝箱

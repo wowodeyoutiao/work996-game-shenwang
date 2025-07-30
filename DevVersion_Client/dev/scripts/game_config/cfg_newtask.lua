@@ -8,7 +8,7 @@ local config = {
 	[102] = { 
 		ID = 102,
 		TaskTitle = "<font color='#F7E700'>[主线]  初入江湖</font>",
-		Haveinfo = "<font colorStyleID='1030'>解锁</font>&nbsp;&nbsp;<u><font color = '#28ef01' size = '16'>称号&nbsp;%s/初入江湖</font></u>",
+		Haveinfo = "<font colorStyleID='1030'>解锁</font>&nbsp;&nbsp;<u><font color = '#28ef01' size = '16'>称号&nbsp;初入江湖</font></u>",
 		Completeinfo = "<font colorStyleID='1030'>任务完成</font>&nbsp;&nbsp;<u><font color = '#28ef01' size = '16'>领取强化石奖励</font></u>",
 	},
 	[103] = { 
@@ -20,7 +20,7 @@ local config = {
 	[104] = { 
 		ID = 104,
 		TaskTitle = "<font color='#F7E700'>[主线]  挑战首领</font>",
-		Haveinfo = "<font colorStyleID='1030'>首领1</font>&nbsp;&nbsp;<u><font color = '#28ef01' size = '16'>击杀个人首领&nbsp;%s/1次</font></u>",
+		Haveinfo = "<font colorStyleID='1030'>个人首领</font>&nbsp;&nbsp;<u><font color = '#28ef01' size = '16'>击杀个人首领&nbsp;%s/1次</font></u>",
 		Completeinfo = "<font colorStyleID='1030'>任务完成</font>&nbsp;&nbsp;<u><font color = '#28ef01' size = '16'>领取强化石奖励</font></u>",
 	},
 	[105] = { 
@@ -38,7 +38,7 @@ local config = {
 	[107] = { 
 		ID = 107,
 		TaskTitle = "<font color='#F7E700'>[主线]  展露头角</font>",
-		Haveinfo = "<font colorStyleID='1030'>解锁</font>&nbsp;&nbsp;<u><font color = '#28ef01' size = '16'>称号&nbsp;%s/展露头角</font></u>",
+		Haveinfo = "<font colorStyleID='1030'>解锁</font>&nbsp;&nbsp;<u><font color = '#28ef01' size = '16'>称号&nbsp;展露头角</font></u>",
 		Completeinfo = "<font colorStyleID='1030'>任务完成</font>&nbsp;&nbsp;<u><font color = '#28ef01' size = '16'>领取强化石奖励</font></u>",
 	},
 	[108] = { 
@@ -50,7 +50,7 @@ local config = {
 	[109] = { 
 		ID = 109,
 		TaskTitle = "<font color='#F7E700'>[主线]  挑战首领</font>",
-		Haveinfo = "<font colorStyleID='1030'>首领1</font>&nbsp;&nbsp;<u><font color = '#28ef01' size = '16'>击杀个人首领&nbsp;%s/1次</font></u>",
+		Haveinfo = "<font colorStyleID='1030'>个人首领</font>&nbsp;&nbsp;<u><font color = '#28ef01' size = '16'>击杀个人首领&nbsp;%s/1次</font></u>",
 		Completeinfo = "<font colorStyleID='1030'>任务完成</font>&nbsp;&nbsp;<u><font color = '#28ef01' size = '16'>领取绑元奖励</font></u>",
 	},
 	[110] = { 
@@ -62,7 +62,7 @@ local config = {
 	[111] = { 
 		ID = 111,
 		TaskTitle = "<font color='#F7E700'>[主线]  挑战首领</font>",
-		Haveinfo = "<font colorStyleID='1030'>首领1</font>&nbsp;&nbsp;<u><font color = '#28ef01' size = '16'>击杀个人首领&nbsp;%s/1次</font></u>",
+		Haveinfo = "<font colorStyleID='1030'>个人首领</font>&nbsp;&nbsp;<u><font color = '#28ef01' size = '16'>击杀个人首领&nbsp;%s/1次</font></u>",
 		Completeinfo = "<font colorStyleID='1030'>任务完成</font>&nbsp;&nbsp;<u><font color = '#28ef01' size = '16'>领取强化石奖励</font></u>",
 	},
 	[112] = { 
@@ -92,7 +92,7 @@ local config = {
 	[116] = { 
 		ID = 116,
 		TaskTitle = "<font color='#F7E700'>[主线]  挑战首领</font>",
-		Haveinfo = "<font colorStyleID='1030'>首领1</font>&nbsp;&nbsp;<u><font color = '#28ef01' size = '16'>击杀个人首领&nbsp;%s/1次</font></u>",
+		Haveinfo = "<font colorStyleID='1030'>个人首领</font>&nbsp;&nbsp;<u><font color = '#28ef01' size = '16'>击杀个人首领&nbsp;%s/1次</font></u>",
 		Completeinfo = "<font colorStyleID='1030'>任务完成</font>&nbsp;&nbsp;<u><font color = '#28ef01' size = '16'>领取绑元奖励</font></u>",
 	},
 	[117] = { 
@@ -134,7 +134,7 @@ local config = {
 	[123] = { 
 		ID = 123,
 		TaskTitle = "<font color='#F7E700'>[主线]  挑战首领</font>",
-		Haveinfo = "<font colorStyleID='1030'>首领1</font>&nbsp;&nbsp;<u><font color = '#28ef01' size = '16'>击杀个人首领&nbsp;%s/1次</font></u>",
+		Haveinfo = "<font colorStyleID='1030'>个人首领</font>&nbsp;&nbsp;<u><font color = '#28ef01' size = '16'>击杀个人首领&nbsp;%s/1次</font></u>",
 		Completeinfo = "<font colorStyleID='1030'>任务完成</font>&nbsp;&nbsp;<u><font color = '#28ef01' size = '16'>领取绑元奖励</font></u>",
 	},
 	[124] = { 
@@ -152,7 +152,7 @@ local config = {
 	[126] = { 
 		ID = 126,
 		TaskTitle = "<font color='#F7E700'>[主线]  挑战首领</font>",
-		Haveinfo = "<font colorStyleID='1030'>首领1</font>&nbsp;&nbsp;<u><font color = '#28ef01' size = '16'>击杀个人首领&nbsp;%s/1次</font></u>",
+		Haveinfo = "<font colorStyleID='1030'>个人首领</font>&nbsp;&nbsp;<u><font color = '#28ef01' size = '16'>击杀个人首领&nbsp;%s/1次</font></u>",
 		Completeinfo = "<font colorStyleID='1030'>任务完成</font>&nbsp;&nbsp;<u><font color = '#28ef01' size = '16'>领取绑元奖励</font></u>",
 	},
 	[127] = { 
@@ -176,7 +176,7 @@ local config = {
 	[130] = { 
 		ID = 130,
 		TaskTitle = "<font color='#F7E700'>[主线]  挑战首领</font>",
-		Haveinfo = "<font colorStyleID='1030'>首领1</font>&nbsp;&nbsp;<u><font color = '#28ef01' size = '16'>击杀个人首领&nbsp;%s/1次</font></u>",
+		Haveinfo = "<font colorStyleID='1030'>个人首领</font>&nbsp;&nbsp;<u><font color = '#28ef01' size = '16'>击杀个人首领&nbsp;%s/1次</font></u>",
 		Completeinfo = "<font colorStyleID='1030'>任务完成</font>&nbsp;&nbsp;<u><font color = '#28ef01' size = '16'>领取绑元奖励</font></u>",
 	},
 	[131] = { 
@@ -200,7 +200,7 @@ local config = {
 	[134] = { 
 		ID = 134,
 		TaskTitle = "<font color='#F7E700'>[主线]  挑战首领</font>",
-		Haveinfo = "<font colorStyleID='1030'>首领1</font>&nbsp;&nbsp;<u><font color = '#28ef01' size = '16'>击杀个人首领&nbsp;%s/1次</font></u>",
+		Haveinfo = "<font colorStyleID='1030'>个人首领</font>&nbsp;&nbsp;<u><font color = '#28ef01' size = '16'>击杀个人首领&nbsp;%s/1次</font></u>",
 		Completeinfo = "<font colorStyleID='1030'>任务完成</font>&nbsp;&nbsp;<u><font color = '#28ef01' size = '16'>领取强化石奖励</font></u>",
 	},
 	[135] = { 
@@ -212,7 +212,7 @@ local config = {
 	[136] = { 
 		ID = 136,
 		TaskTitle = "<font color='#F7E700'>[主线]  挑战首领</font>",
-		Haveinfo = "<font colorStyleID='1030'>首领1</font>&nbsp;&nbsp;<u><font color = '#28ef01' size = '16'>击杀个人首领&nbsp;%s/1次</font></u>",
+		Haveinfo = "<font colorStyleID='1030'>个人首领</font>&nbsp;&nbsp;<u><font color = '#28ef01' size = '16'>击杀个人首领&nbsp;%s/1次</font></u>",
 		Completeinfo = "<font colorStyleID='1030'>任务完成</font>&nbsp;&nbsp;<u><font color = '#28ef01' size = '16'>领取强化石奖励</font></u>",
 	},
 	[137] = { 
@@ -224,7 +224,7 @@ local config = {
 	[138] = { 
 		ID = 138,
 		TaskTitle = "<font color='#F7E700'>[主线]  挑战首领</font>",
-		Haveinfo = "<font colorStyleID='1030'>首领1</font>&nbsp;&nbsp;<u><font color = '#28ef01' size = '16'>击杀个人首领&nbsp;%s/1次</font></u>",
+		Haveinfo = "<font colorStyleID='1030'>个人首领</font>&nbsp;&nbsp;<u><font color = '#28ef01' size = '16'>击杀个人首领&nbsp;%s/1次</font></u>",
 		Completeinfo = "<font colorStyleID='1030'>任务完成</font>&nbsp;&nbsp;<u><font color = '#28ef01' size = '16'>领取强化石奖励</font></u>",
 	},
 	[139] = { 
@@ -236,7 +236,7 @@ local config = {
 	[140] = { 
 		ID = 140,
 		TaskTitle = "<font color='#F7E700'>[主线]  挑战首领</font>",
-		Haveinfo = "<font colorStyleID='1030'>首领1</font>&nbsp;&nbsp;<u><font color = '#28ef01' size = '16'>击杀个人首领&nbsp;%s/1次</font></u>",
+		Haveinfo = "<font colorStyleID='1030'>个人首领</font>&nbsp;&nbsp;<u><font color = '#28ef01' size = '16'>击杀个人首领&nbsp;%s/1次</font></u>",
 		Completeinfo = "<font colorStyleID='1030'>任务完成</font>&nbsp;&nbsp;<u><font color = '#28ef01' size = '16'>领取强化石奖励</font></u>",
 	},
 	[141] = { 
@@ -260,7 +260,7 @@ local config = {
 	[144] = { 
 		ID = 144,
 		TaskTitle = "<font color='#F7E700'>[主线]  挑战首领</font>",
-		Haveinfo = "<font colorStyleID='1030'>首领1</font>&nbsp;&nbsp;<u><font color = '#28ef01' size = '16'>击杀个人首领&nbsp;%s/1次</font></u>",
+		Haveinfo = "<font colorStyleID='1030'>个人首领</font>&nbsp;&nbsp;<u><font color = '#28ef01' size = '16'>击杀个人首领&nbsp;%s/1次</font></u>",
 		Completeinfo = "<font colorStyleID='1030'>任务完成</font>&nbsp;&nbsp;<u><font color = '#28ef01' size = '16'>领取强化石奖励</font></u>",
 	},
 	[145] = { 
@@ -278,7 +278,7 @@ local config = {
 	[147] = { 
 		ID = 147,
 		TaskTitle = "<font color='#F7E700'>[主线]  挑战首领</font>",
-		Haveinfo = "<font colorStyleID='1030'>首领1</font>&nbsp;&nbsp;<u><font color = '#28ef01' size = '16'>击杀个人首领&nbsp;%s/1次</font></u>",
+		Haveinfo = "<font colorStyleID='1030'>个人首领</font>&nbsp;&nbsp;<u><font color = '#28ef01' size = '16'>击杀个人首领&nbsp;%s/1次</font></u>",
 		Completeinfo = "<font colorStyleID='1030'>任务完成</font>&nbsp;&nbsp;<u><font color = '#28ef01' size = '16'>领取强化石奖励</font></u>",
 	},
 	[148] = { 
