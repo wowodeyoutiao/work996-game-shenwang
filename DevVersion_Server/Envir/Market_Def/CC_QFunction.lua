@@ -213,10 +213,11 @@ function addbag(actor, makeindex)
     --if (not BF_IsNullObj(itemobj)) and (not Player.CheckEquipIsOnBody(actor, itemobj)) then
     if not BF_IsNullObj(itemobj) then
         --触发玩家道具进背包的事件监听
+        local itemidx = getiteminfo(actor, itemobj, CommonDefine.ITEMINFO_ITEMIDX)
         GameEventManager.DoTriggerEvent(CommonDefine.EVENT_NAME_PLAYER_ADDBAGITEM, actor, itemobj, makeindex)    
 
         --延迟调用道具使用提示
-        setplaydef(actor, CommonDefine.VAR_N_TEMP_ADDITEM_MAKEINDEX, makeindex)
+        setplaydef(actor, CommonDefine.VAR_N_TEMP_ADDITEMID, itemidx)
         delaygoto(actor, 300, 'send_item_use_tip', 0)
     end
 end
@@ -686,10 +687,10 @@ function send_item_use_tip(actor)
     end
 
     --检测道具是否还存在
-    local makeindex = getplaydef(actor, CommonDefine.VAR_N_TEMP_ADDITEM_MAKEINDEX)
-    local itemobj = getitembymakeindex(actor, makeindex)
+    local itemid = getplaydef(actor, CommonDefine.VAR_N_TEMP_ADDITEMID)
+    local itemobj = Bag.getItemObjByItemID(actor, itemid)    
     if not BF_IsNullObj(itemobj) then
-        local itemid = getiteminfo(actor, itemobj, CommonDefine.ITEMINFO_ITEMIDX)
+        local makeindex = getiteminfo(actor, itemobj, CommonDefine.ITEMINFO_UNIQUEID)
         local nAutoUseFlag = Item.GetAutoUseFlag(itemid)
         if nAutoUseFlag > 0 then
             local infoTab = {itemmakeidx = makeindex, autouseflag = nAutoUseFlag}

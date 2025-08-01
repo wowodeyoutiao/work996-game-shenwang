@@ -709,10 +709,10 @@ function Player.QuickGoTo(actor, gotoid)
         opennpcshowex(actor, CommonDefine.NPC_ID_BAOZHU_BOSS, 3, 3)
     elseif gotoid == CommonDefine.QUICK_GOTO_KILL_SINGLEBOSS then
         --击杀单人boss
-        opennpcshowex(actor, CommonDefine.NPC_ID_RANDOM_BOSS, 3, 3)
+        opennpcshowex(actor, CommonDefine.NPC_ID_SINGLE_BOSS, 3, 3)
     elseif gotoid == CommonDefine.QUICK_GOTO_KILL_PUBLICBOSS then
         --击杀野外boss
-        opennpcshowex(actor, CommonDefine.NPC_ID_RANDOM_BOSS, 3, 3)
+        opennpcshowex(actor, CommonDefine.NPC_ID_PUBLIC_BOSS, 3, 3)
         
     elseif gotoid == CommonDefine.QUICK_GOTO_ENTER_MOFANGZHEN then
         --进入魔方阵

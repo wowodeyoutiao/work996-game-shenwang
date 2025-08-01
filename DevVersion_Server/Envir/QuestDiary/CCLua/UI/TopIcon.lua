@@ -189,7 +189,7 @@ end
 
 function TopIcon.InnerGatherPanel2(actor)
     delbutton(actor, 105, CommonDefine.ADD_BUTTON_ID_41)
-    addbutton(actor, 105, CommonDefine.ADD_BUTTON_ID_41, '<Button|x=10|y=-80|nimg=private/cc_popshow/3.png|link=@topicon_openpanel#sid='..ICON_EXTEND_POP_ABILITY..'>')
+    addbutton(actor, 105, CommonDefine.ADD_BUTTON_ID_41, '<Button|x=10|y=-40|nimg=private/cc_popshow/3.png|link=@topicon_openpanel#sid='..ICON_EXTEND_POP_ABILITY..'>')
 end
 
 function TopIcon.InnerExtendPanel2(actor)
@@ -199,9 +199,9 @@ function TopIcon.InnerExtendPanel2(actor)
     local nGiftValue3 = getplaydef(actor, CommonDefine.VAR_N_GIFT_ABILITY_3)
     local nGiftValue4 = getplaydef(actor, CommonDefine.VAR_N_GIFT_ABILITY_4)
     local nQieGePoint = Player.GetQieGePoint(actor)
-    local sPanelStr = '<Layout|id=5500|children={5507,5501,5502,5503,5504,5505,5506}|x=10|y=-50|width=150|height=120|color='..CSS.NPC_GRAY..'>'..
-        '<Img|id=5507||x=0|y=0|img=private/cc_popshow/1.png>'..
-        '<Button|id=5501|x=0|y=-30|nimg=private/cc_popshow/2.png|link=@topicon_openpanel#sid='..ICON_GATHER_POP_ABILITY..'>'..
+    local sPanelStr = '<Layout|id=5500|children={5507,5501,5502,5503,5504,5505,5506}|x=70|y=-40|width=150|height=120|color='..CSS.NPC_GRAY..'>'..
+        '<Img|id=5507|x=0|y=0|img=private/cc_popshow/1.png>'..
+        '<Button|id=5501|x=-60|y=0|nimg=private/cc_popshow/2.png|link=@topicon_openpanel#sid='..ICON_GATHER_POP_ABILITY..'>'..
         '<Text|id=5502|x=110|y=2|color='..CSS.NPC_LIGHTGREEN..'|size=16|text='..nGiftValue1..'>'..
         '<Text|id=5503|x=110|y=28|color='..CSS.NPC_LIGHTGREEN..'|size=16|text='..nGiftValue2..'>'..
         '<Text|id=5504|x=110|y=52|color='..CSS.NPC_LIGHTGREEN..'|size=16|text='..nGiftValue3..'>'..

@@ -371,7 +371,7 @@ CommonDefine = {
     VAR_N_GIFT_ABILITY_2 = 'N83',               --玩家装备天赋属性 雨
     VAR_N_GIFT_ABILITY_3 = 'N84',               --玩家装备天赋属性 雷
     VAR_N_GIFT_ABILITY_4 = 'N85',               --玩家装备天赋属性 电
-    VAR_N_TEMP_ADDITEM_MAKEINDEX = 'N86',       --临时的加入背包的道具makeindex
+    VAR_N_TEMP_ADDITEMID = 'N86',               --临时的加入背包的道具itemid
 
         
     --玩家数字型变量，切地图不保存 M0-M99

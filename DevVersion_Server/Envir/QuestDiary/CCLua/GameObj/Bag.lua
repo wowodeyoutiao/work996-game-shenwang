@@ -136,6 +136,18 @@ function Bag.GetBagItemIDInStdmodeStr(actor, stdmode, shape, min, max)
 	return strItemList, bFinished
 end
 
+--获取背包中某件物品对象
+function Bag.getItemObjByItemID(actor, id)
+	local item_num = getbaseinfo(actor, CommonDefine.INFO_HUMBAGITEMNUM)
+	for i=0, item_num-1 do
+		local itemobj = getiteminfobyindex(actor, i)
+		local itemidx = getiteminfo(actor, itemobj, CommonDefine.ITEMINFO_ITEMIDX)
+		if itemidx == id then
+			return itemobj
+		end
+	end
+end
+
 --[[
 
 --检查物品数量
@@ -168,18 +180,6 @@ function Bag.checkBagEmptyItems(actor, items)
         end
     end
 	return bagEmptyNum >= needEmptyNum
-end
-
---获取背包中某件物品对象
-function Bag.getItemObjByIdx(actor, idx)
-	local item_num = getbaseinfo(actor, ConstCfg.gbase.bag_num)
-	for i=0, item_num-1 do
-		local itemobj = getiteminfobyindex(actor, i)
-		local itemidx = getiteminfo(actor, itemobj, ConstCfg.iteminfo.idx)
-		if itemidx == idx then
-			return itemobj
-		end
-	end
 end
 
 --获取背包中某件物品唯一id

@@ -72,7 +72,7 @@ local config = {
 	[20] = { 
 		id = 20,
 		name = "个人首领",
-		needlv = 30,
+		needlv = 20,
 	},
 	[21] = { 
 		id = 21,
