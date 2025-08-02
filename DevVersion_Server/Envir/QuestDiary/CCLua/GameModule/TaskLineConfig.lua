@@ -98,7 +98,7 @@ TaskLineConfig = {
                 tasktarg_tab = {{monname='白沙蚁', num=8}},
                 targpos = {mapid='fmg', x=252, y=93},                
                 tasktargparam = 8,
-                reward_tab = {{name='绑元', num=50000},{name='金币', num=200000}},
+                reward_tab = {{name='绑定元宝', num=50000},{name='金币', num=200000}},
 		openbox_num = 20,
             },
             [107] = {
