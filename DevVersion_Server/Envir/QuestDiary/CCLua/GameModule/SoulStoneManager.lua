@@ -71,11 +71,11 @@ SoulStoneManager.JI_BAN_CFG_INFO = {
 
 --魂石槽位五行配置
 SoulStoneManager.WU_XING_CFG_INFO = {
-    {wxtype=SoulStoneManager.STONE_WX.WX_GOLD, wxname='金', desc='攻击时2%几率使目标处于破物甲状态5秒,破物甲状态下目标物防降低25%'},
-    {wxtype=SoulStoneManager.STONE_WX.WX_WOOD, wxname='木', desc='攻击时2%几率使自己恢复血量上限的5%的生命,冷却10秒'},
-    {wxtype=SoulStoneManager.STONE_WX.WX_WATER, wxname='水', desc='攻击时2%几率使目标处于破魔甲状态5秒,破魔甲状态下目标魔防降低25%'},
-    {wxtype=SoulStoneManager.STONE_WX.WX_FIRE, wxname='火', desc='攻击时2%几率使目标处于烧伤状态5秒,烧伤状态下目标每秒掉血1%总血量'},
-    {wxtype=SoulStoneManager.STONE_WX.WX_SOIL, wxname='土', desc='攻击时2%几率使目标处于恐惧状态5秒,恐惧状态下目标攻击力降低10%'},
+    {wxtype=SoulStoneManager.STONE_WX.WX_GOLD, wxname='金', desc='攻击时2%几率使目标处于破物甲状态5秒,\\破物甲状态下目标物防降低25%'},
+    {wxtype=SoulStoneManager.STONE_WX.WX_WOOD, wxname='木', desc='攻击时2%几率使自己恢复血量上限的5%的\\生命,冷却10秒'},
+    {wxtype=SoulStoneManager.STONE_WX.WX_WATER, wxname='水', desc='攻击时2%几率使目标处于破魔甲状态5秒,\\破魔甲状态下目标魔防降低25%'},
+    {wxtype=SoulStoneManager.STONE_WX.WX_FIRE, wxname='火', desc='攻击时2%几率使目标处于烧伤状态5秒,烧伤\\状态下目标每秒掉血1%总血量'},
+    {wxtype=SoulStoneManager.STONE_WX.WX_SOIL, wxname='土', desc='攻击时2%几率使目标处于恐惧状态5秒,恐惧\\状态下目标攻击力降低10%'},
 }
 
 function SoulStoneManager.IsValidPos(id)
@@ -799,8 +799,8 @@ function SoulStoneManager.ShowBasePanel(actor)
             local idstr2 = textid1..','..textid2..','..textid3            
             strPanelInfo = strPanelInfo..'<Text|id='..textid1..'|text=4颗'..cfgwx.wxname..'属性魂石可激活:|size=18|x='..tempCurrX..'|y='..tempCurrY..'|color='..color..'>'..
                         '<Text|id='..textid2..'|text=('..wxstone..'/4):|size=18|x='..(tempCurrX+180)..'|y='..tempCurrY..'|color='..color..'>'
-            strPanelInfo = strPanelInfo..'<Text|id='..textid3..'|text='..cfgwx.desc..'|size=15|x='..tempCurrX..'|y='..(tempCurrY+25)..'|color='..color..'>'
-            strPanelInfo = strPanelInfo..'<Layout|id='..baseid..'|children={'..idstr2..'}|x=0|y=0|width=300|height=60>'
+            strPanelInfo = strPanelInfo..'<RText|id='..textid3..'|text='..cfgwx.desc..'|size=15|x='..tempCurrX..'|y='..(tempCurrY+25)..'|color='..color..'>'
+            strPanelInfo = strPanelInfo..'<Layout|id='..baseid..'|children={'..idstr2..'}|x=0|y=0|width=300|height=80>'
             if idstr1 ~= '' then
                 idstr1 = idstr1..','
             end
@@ -997,6 +997,31 @@ function SoulStoneManager.IsHaveQuickTip(actor)
             end
         end
     end 
+
+    return false
+end
+
+
+--是否有小红点提示
+function SoulStoneManager.IsTopIconHaveRedPoint(actor)
+    if not Player.IsFunctionOpen(actor, CommonDefine.FUNC_ID_SOUL_STONE, false) then
+        return false
+    end
+
+    local infoStr = getplaydef(actor, CommonDefine.VAR_T_SOULSTONE_SLOT_INFO)
+    local infoTab = {}
+    if infoStr ~= '' then
+        infoTab = json2tbl(infoStr)
+    end 
+
+    for _, value in ipairs(SoulStoneManager.SLOT_CFG_INFO) do
+        local sid = value.id..''
+        if infoTab[sid] ~= nil then
+            if IsSlotHaveBetterStone(actor, value.id, infoTab) then
+                return true
+            end
+        end
+    end
 
     return false
 end

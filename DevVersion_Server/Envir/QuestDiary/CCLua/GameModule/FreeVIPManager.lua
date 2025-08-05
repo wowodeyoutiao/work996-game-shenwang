@@ -385,9 +385,11 @@ local function GetSingleShowInfo(actor, viplevel)
                     if getflagstatus(actor, FreeVIPManager.TASK_DRAWREWARD_FLAGLIST[i]) == 1 then
                         strPanelInfo = strPanelInfo..'<Text|id='..textid4..'|text=已完成|size=15|x='..(tempCurrX+100)..'|y='..tempCurrY..'|color='..CSS.NPC_LIGHTGREEN..'>'
                         finishtasknum = finishtasknum + 1
+                        Player.DelRedPoint(actor, 0, textid4)
                     else
                         strPanelInfo = strPanelInfo..'<Button|id='..textid4..'|x='..(tempCurrX+120)..'|y='..tempCurrY..'|width=60|color='..CSS.NPC_WHITE..
                             '|pimg=private/cc_common/button_down1.png|mimg=private/cc_common/button_up1.png|nimg=private/cc_common/button_up1.png|size=15|text=领奖|link=@function_button,'..NPCPANEL_BUTTONFUNC_ID_3..','..i..'>'
+                        Player.AddRedPoint(actor, 0, textid4, 0, 0)                            
                     end
                 end
             elseif currVIPLv >= viplevel then
@@ -485,6 +487,7 @@ local function GetSingleShowInfo(actor, viplevel)
                 strPanelInfo = strPanelInfo..'<Button|id=351|x='..(tempCurrX+30)..'|y='..tempCurrY..'|color='..CSS.NPC_WHITE..
                 '|pimg=private/cc_common/button_down1.png|mimg=private/cc_common/button_up1.png|nimg=private/cc_common/button_up1.png|size=18|text=领取|link=@function_button,'..
                 NPCPANEL_BUTTONFUNC_ID_4..'>'
+                Player.AddRedPoint(actor, 0, 351, 0, 0)
             end
         else
             strPanelInfo = strPanelInfo..'<Text|id=352|text=已领取|size=15|x='..(tempCurrX+30)..'|y='..tempCurrY..'|color='..CSS.NPC_LIGHTGREEN..'>'

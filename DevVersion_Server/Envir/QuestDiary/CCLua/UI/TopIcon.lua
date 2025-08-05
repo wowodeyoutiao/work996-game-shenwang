@@ -202,10 +202,10 @@ function TopIcon.InnerExtendPanel2(actor)
     local sPanelStr = '<Layout|id=5500|children={5507,5501,5502,5503,5504,5505,5506}|x=70|y=-40|width=150|height=120|color='..CSS.NPC_GRAY..'>'..
         '<Img|id=5507|x=0|y=0|img=private/cc_popshow/1.png>'..
         '<Button|id=5501|x=-60|y=0|nimg=private/cc_popshow/2.png|link=@topicon_openpanel#sid='..ICON_GATHER_POP_ABILITY..'>'..
-        '<Text|id=5502|x=110|y=2|color='..CSS.NPC_LIGHTGREEN..'|size=16|text='..nGiftValue1..'>'..
-        '<Text|id=5503|x=110|y=28|color='..CSS.NPC_LIGHTGREEN..'|size=16|text='..nGiftValue2..'>'..
-        '<Text|id=5504|x=110|y=52|color='..CSS.NPC_LIGHTGREEN..'|size=16|text='..nGiftValue3..'>'..
-        '<Text|id=5505|x=110|y=76|color='..CSS.NPC_LIGHTGREEN..'|size=16|text='..nGiftValue4..'>'..
+        '<Text|id=5502|x=110|y=2|color='..CSS.NPC_LIGHTGREEN..'|size=16|text='..nGiftValue1..'%>'..
+        '<Text|id=5503|x=110|y=28|color='..CSS.NPC_LIGHTGREEN..'|size=16|text='..nGiftValue2..'%>'..
+        '<Text|id=5504|x=110|y=52|color='..CSS.NPC_LIGHTGREEN..'|size=16|text='..nGiftValue3..'%>'..
+        '<Text|id=5505|x=110|y=76|color='..CSS.NPC_LIGHTGREEN..'|size=16|text='..nGiftValue4..'%>'..
         '<Text|id=5506|x=110|y=100|color='..CSS.NPC_LIGHTGREEN..'|size=16|text='..nQieGePoint..'>'
     addbutton(actor, 105, CommonDefine.ADD_BUTTON_ID_41, sPanelStr)
 end
@@ -277,6 +277,12 @@ function TopIcon.CheckRedPoint(actor)
         Player.AddRedPoint(actor, 109, NewMainUIBase.UI_ICON_SKILL, 10, 10)    
     else
         Player.DelRedPoint(actor, 109, NewMainUIBase.UI_ICON_SKILL)
+    end
+
+    if SoulStoneManager.IsTopIconHaveRedPoint(actor) then
+        Player.AddRedPoint(actor, 109, NewMainUIBase.UI_ICON_SOULSTONE, 10, 10)    
+    else
+        Player.DelRedPoint(actor, 109, NewMainUIBase.UI_ICON_SOULSTONE)
     end
 end
 

@@ -259,6 +259,7 @@ local function InitMapUI(actor)
 end
 
 local function ClearMapUI(actor)
+	close(actor)
     delbutton(actor, 101, CommonDefine.ADD_BUTTON_ID_8)
 end
 

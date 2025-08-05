@@ -295,7 +295,7 @@ local function ContinueAutoOpen(actor)
     if getflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_AUTO_OPEN_SUPERBOX) == 1 then
         if getflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_AUTO_OPEN_SUPERBOX_PAUSE) == 1 then          
             setflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_AUTO_OPEN_SUPERBOX_PAUSE, 0)
-            delaygoto(actor, 2000, 'superbox_delay_checkrecycle', 0)    
+            delaygoto(actor, 600, 'superbox_delay_checkrecycle', 0)    
         end
     end   
 end
@@ -1060,6 +1060,10 @@ function OpenSuperBoxManager.AutoOpenSuperBox(actor)
         local checkstopflag2 = getflagstatus(actor, RECYCLE_CHECKBOX_INFO[4].bitflag)
         local checkstopflag3 = getflagstatus(actor, RECYCLE_CHECKBOX_INFO[5].bitflag)
 
+release_print('checkstopflag1:'..checkstopflag1)
+release_print('checkstopflag2:'..checkstopflag2)
+release_print('checkstopflag3:'..checkstopflag3)
+
         for _, value in ipairs(openitemlist) do
             if not BF_IsNullObj(value.itemobj) then
                 local itemname = Item.GetItemShowName(actor, value.itemobj)
@@ -1071,17 +1075,17 @@ function OpenSuperBoxManager.AutoOpenSuperBox(actor)
                     end
                 end        
                 if checkstopflag2 == 1 then
-                    if value.randabflag == 1 then
-                        bNeedPause = true
-                        Player.SendSelfMsg(actor, '请查看装备：'..itemname..' 有极品属性！', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
-                        break                    
-                    end
-                end
-                if checkstopflag3 == 1 then
                     if value.giftabflag == 1 then
                         bNeedPause = true
                         Player.SendSelfMsg(actor, '请查看装备：'..itemname..' 有天赋属性！', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
                         break
+                    end                    
+                end
+                if checkstopflag3 == 1 then
+                    if value.randabflag == 1 then
+                        bNeedPause = true
+                        Player.SendSelfMsg(actor, '请查看装备：'..itemname..' 有极品属性！', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
+                        break                    
                     end
                 end
             end
@@ -1093,7 +1097,7 @@ function OpenSuperBoxManager.AutoOpenSuperBox(actor)
         end     
     end
 
-    delaygoto(actor, 2000, 'superbox_delay_checkrecycle', 0)
+    delaygoto(actor, 600, 'superbox_delay_checkrecycle', 0)
 end
 
 --延迟检测开启的道具是否自动回收，并触发一下轮开启
@@ -1159,7 +1163,7 @@ function OpenSuperBoxManager.DelayCheckRecycle(actor)
         end
     end
 
-    delaygoto(actor, 1500, 'superbox_auto_open', 0)
+    delaygoto(actor, 600, 'superbox_auto_open', 0)
 end
 
 local function SendEquipItemCompareRequest(actor, strMakeIndex)

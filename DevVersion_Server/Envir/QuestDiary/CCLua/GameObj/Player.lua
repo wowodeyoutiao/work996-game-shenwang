@@ -783,11 +783,9 @@ function Player.QuickGoTo(actor, gotoid)
     elseif gotoid == CommonDefine.QUICK_GOTO_AUTO_OPENBOX then
         --引导开宝箱
         close(actor)
-        --setflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_AUTO_OPEN_SUPERBOX, 1)
-        --setflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_AUTO_OPEN_SUPERBOX_PAUSE, 0)
-        --OpenSuperBoxManager.AutoOpenSuperBox(actor)
+        TopIcon.OpenPanel(actor, '3', '')
 
-        navigation(actor,108,2001,"点击开宝箱")
+        --navigation(actor,108,2001,"点击开宝箱")
     elseif gotoid == CommonDefine.QUICK_GOTO_SUPERBOX_UPGRADE then
         --升级开宝箱
         OpenSuperBoxManager.DoOperButton(actor, '4', '')
