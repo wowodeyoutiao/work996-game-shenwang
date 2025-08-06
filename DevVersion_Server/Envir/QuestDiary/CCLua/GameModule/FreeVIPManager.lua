@@ -597,4 +597,34 @@ function FreeVIPManager.IsHaveQuickTip(actor)
     return false
 end
 
+function FreeVIPManager.IsTopIconHaveRedPoint(actor)
+    if not Player.IsFunctionOpen(actor, CommonDefine.FUNC_ID_FREEVIP, false) then
+        return false
+    end
+
+    if getplaydef(actor, CommonDefine.VAR_J_DAY_FREEVIP_REWARDTIMES) == 0 then
+        local currVIPLv = getplaydef(actor, CommonDefine.VAR_U_FREEVIP_LEVEL)
+        local cfgCurrVip = cfgFreeVIP[currVIPLv]
+        if (currVIPLv>0) and cfgCurrVip then
+            return true
+        end     
+    end
+
+    local currVIPLv = getplaydef(actor, CommonDefine.VAR_U_FREEVIP_LEVEL)    
+    for i = 1, FreeVIPManager.MAX_TASK_NUM, 1 do   
+        local taskcfgkey = FreeVIPManager.GetVIPTaskCfgKey(currVIPLv, i)
+        local taskconfig = cfgFreeVIPTask[taskcfgkey]
+        if taskconfig then
+            local currcounter = FreeVIPManager.GetCurrTaskCounter(actor, i)
+            if currcounter >= taskconfig.tasktargnum then
+                if getflagstatus(actor, FreeVIPManager.TASK_DRAWREWARD_FLAGLIST[i]) == 0 then
+                    return true
+                end
+            end           
+        end        
+    end
+
+    return false
+end
+
 return FreeVIPManager

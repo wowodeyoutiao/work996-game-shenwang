@@ -54,6 +54,29 @@ function ItemUseManager.DoUse(actor, smakeindex)
         end   
         setflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_ITEMUSE, 1)
         return true
+    elseif anicount == 207 then
+        --使用道具后获得对应的道具，支持固定奖励 和 随机奖励
+        local itemname = getstditeminfo(itemid, CommonDefine.STDITEMINFO_NAME)
+        local config = cfgUnpackItem[itemid]
+        if config == nil then
+            return false
+        end
+        local nPileCount = getiteminfo(actor, itemobj, CommonDefine.ITEMINFO_OVERLAP)
+        for i = 1, nPileCount, 1 do
+            --固定奖励
+            if config.fixedrewards_tab and not table.isempty(config.fixedrewards_tab) then
+                Player.GiveItemsToBagOrMail(actor, config.fixedrewards_tab, '使用:'..itemname)            
+            end
+            --随机奖励
+            if config.randomrewards_tab and not table.isempty(config.randomrewards_tab) then
+                local finalrewards = BF_GetRandomTab(config.randomrewards_tab, -1)
+                if finalrewards and finalrewards.rewards and not table.isempty(finalrewards.rewards) then
+                    Player.GiveItemsToBagOrMail(actor, finalrewards.rewards, '使用:'..itemname)
+                end
+            end               
+        end
+        delitembymakeindex(actor, smakeindex, nil, '使用物品 id:'..itemid..' num:'..nPileCount)
+        return false    
     elseif anicount == 203 then
         --装备槽位直接升星宝石
         local starconfig = {

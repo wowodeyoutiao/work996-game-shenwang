@@ -39,6 +39,9 @@ function TopIcon.InitUI(actor)
 
     setontimer(actor, CommonDefine.TIMER_ID_CHECK_TOPICON_REDPOINT, 10, 0, 0)
     setontimer(actor, CommonDefine.TIMER_ID_CHECK_QUICK_GOTO_TIP, 30, 0, 0)
+
+    TopIcon.CheckRedPoint(actor)
+    TopIcon.CheckQuickInfoTip(actor)
 end
 
 function TopIcon.HideUI(actor)
@@ -245,6 +248,12 @@ function TopIcon.CheckRedPoint(actor)
         Player.AddRedPoint(actor, 102, MAINICON_ID_8, 10, 10)    
     else
         Player.DelRedPoint(actor, 102, MAINICON_ID_8)
+    end
+
+    if FreeVIPManager.IsTopIconHaveRedPoint(actor) then
+        Player.AddRedPoint(actor, 102, MAINICON_ID_6, 10, 10)    
+    else
+        Player.DelRedPoint(actor, 102, MAINICON_ID_6)
     end
 
 
