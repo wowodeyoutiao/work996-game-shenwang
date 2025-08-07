@@ -5739,6 +5739,15 @@ check [202] 0
 #ACT
 STOP
 
+[@StdModeFunc207]
+#IF
+#ACT
+CALLLUA CC_QFunction @stdmodefunc207,<$Param2>
+#IF
+check [202] 0
+#ACT
+STOP
+
 ;==============================================================================新功能回调 cookie========================================================
 [@opensuperboxmanager_button]
 #IF

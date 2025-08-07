@@ -5,6 +5,7 @@ function ItemUseManager.DoUse(actor, smakeindex)
     if BF_IsNullObj(actor) or not BF_IsNumberStr(smakeindex) then
         return false
     end
+release_print(111111)    
     setflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_ITEMUSE, 0)
         
     local makeindex = tonumber(smakeindex)
@@ -15,6 +16,7 @@ function ItemUseManager.DoUse(actor, smakeindex)
 
     local itemid = getiteminfo(actor, itemobj, CommonDefine.ITEMINFO_ITEMIDX)
     local anicount = getstditeminfo(itemid, CommonDefine.STDITEMINFO_ANICOUNT)
+release_print('anicount:'..anicount)    
     if anicount == 0 then
         Player.SendSelfMsg(actor, '道具功能还未开启！', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
         return false

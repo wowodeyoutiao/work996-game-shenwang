@@ -211,8 +211,7 @@ end
 function addbag(actor, makeindex)
     local itemobj = getitembymakeindex(actor, makeindex)
     --if (not BF_IsNullObj(itemobj)) and (not Player.CheckEquipIsOnBody(actor, itemobj)) then
-    if not BF_IsNullObj(itemobj) then
-release_print(1111)        
+    if not BF_IsNullObj(itemobj) then     
         --触发玩家道具进背包的事件监听
         local itemidx = getiteminfo(actor, itemobj, CommonDefine.ITEMINFO_ITEMIDX)
         GameEventManager.DoTriggerEvent(CommonDefine.EVENT_NAME_PLAYER_ADDBAGITEM, actor, itemobj, makeindex)    
@@ -686,14 +685,12 @@ function send_item_use_tip(actor)
     if BF_IsNullObj(actor) then
         return
     end
-release_print('send_item_use_tip')
     --检测道具是否还存在
     local itemid = getplaydef(actor, CommonDefine.VAR_N_TEMP_ADDITEMID)
     local itemobj = Bag.getItemObjByItemID(actor, itemid)    
     if not BF_IsNullObj(itemobj) then
         local makeindex = getiteminfo(actor, itemobj, CommonDefine.ITEMINFO_UNIQUEID)
-        local nAutoUseFlag = Item.GetAutoUseFlag(itemid)
-release_print('nAutoUseFlag:'..nAutoUseFlag)        
+        local nAutoUseFlag = Item.GetAutoUseFlag(itemid)      
         if nAutoUseFlag > 0 then
             local infoTab = {itemmakeidx = makeindex, autouseflag = nAutoUseFlag}
             local strTabData = tbl2json(infoTab)              
@@ -822,5 +819,10 @@ end
 
 --使用筛子
 function stdmodefunc206(actor, smakeindex)
+    return ItemUseManager.DoUse(actor, smakeindex)
+end
+
+--使用筛子
+function stdmodefunc207(actor, smakeindex)
     return ItemUseManager.DoUse(actor, smakeindex)
 end
