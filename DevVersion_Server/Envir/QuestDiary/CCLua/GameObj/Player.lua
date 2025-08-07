@@ -150,7 +150,7 @@ function Player.GetQieGePoint(actor)
     if BF_IsNullObj(actor) then
         return 0        
     end
-    return 100 * getplaydef(actor, CommonDefine.VAR_U_OLD_TITLE_LEVEL)
+    return 500 * getplaydef(actor, CommonDefine.VAR_U_OLD_TITLE_LEVEL)
 end
 
 --判断玩家是否重连
