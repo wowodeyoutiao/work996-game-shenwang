@@ -1060,10 +1060,6 @@ function OpenSuperBoxManager.AutoOpenSuperBox(actor)
         local checkstopflag2 = getflagstatus(actor, RECYCLE_CHECKBOX_INFO[4].bitflag)
         local checkstopflag3 = getflagstatus(actor, RECYCLE_CHECKBOX_INFO[5].bitflag)
 
-release_print('checkstopflag1:'..checkstopflag1)
-release_print('checkstopflag2:'..checkstopflag2)
-release_print('checkstopflag3:'..checkstopflag3)
-
         for _, value in ipairs(openitemlist) do
             if not BF_IsNullObj(value.itemobj) then
                 local itemname = Item.GetItemShowName(actor, value.itemobj)
@@ -1291,6 +1287,26 @@ function OpenSuperBoxManager.IsHaveQuickTipReward(actor)
     end
     
     return false
+end
+
+--是否有小红点
+function OpenSuperBoxManager.IsTopIconHaveRedPoint(actor)
+    if not Player.IsFunctionOpen(actor, CommonDefine.FUNC_ID_SUPERBOX, false) then
+        return false
+    end
+
+    local nCurrBoxNum = getplaydef(actor, CommonDefine.VAR_U_SUPER_BOX_TOTAL_NUM)
+    if nCurrBoxNum <= 0 then        
+        return false
+    end    
+
+    local DAY_MAX_OPEN_NUM = GetDayMaxOpenBoxNum(actor)
+    local nDayOpenNum = getplaydef(actor, CommonDefine.VAR_J_DAY_SUPERBOX_OPENNUM)
+    if nDayOpenNum >= DAY_MAX_OPEN_NUM then
+        return false
+    end
+
+    return true
 end
 
 --玩家登录时触发

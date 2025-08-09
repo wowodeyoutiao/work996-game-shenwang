@@ -823,6 +823,7 @@ function Player.QuickGoTo(actor, gotoid)
         --背包使用骰子
         local makeindex = OpenSuperBoxManager.GetOpenBoxDiceMakeIndex(actor)
         if makeindex > 0 then
+            delbutton(actor, CommonDefine.WINDOWS_ID_BAG, CommonDefine.ADD_BUTTON_ID_4)
             openhyperlink(actor, 7)
             navigation(actor, 1, makeindex, '双击获取开箱次数')
         else

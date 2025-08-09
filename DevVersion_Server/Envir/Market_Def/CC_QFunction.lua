@@ -678,7 +678,9 @@ function superbox_auto_open(actor)
 end
 
 function superbox_delay_openboxonce(actor)
-    OpenSuperBoxManager.DoOpenBoxOnce(actor, false, nil)
+    if not OpenSuperBoxManager.DoOpenBoxOnce(actor, false, nil) then
+        OpenSuperBoxManager.UpdateSuperBoxInfo(actor)
+    end
 end
 
 function send_item_use_tip(actor)

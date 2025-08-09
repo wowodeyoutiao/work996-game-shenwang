@@ -256,6 +256,11 @@ function TopIcon.CheckRedPoint(actor)
         Player.DelRedPoint(actor, 102, MAINICON_ID_6)
     end
 
+    if OpenSuperBoxManager.IsTopIconHaveRedPoint(actor) then
+        Player.AddRedPoint(actor, 102, MAINICON_ID_9, 10, 10)    
+    else
+        Player.DelRedPoint(actor, 102, MAINICON_ID_9)
+    end
 
 
     if EquipPosStrengthManager.IsTopIconHaveRedPoint(actor) then
@@ -369,14 +374,12 @@ function TopIcon.DoQuickInfoTipGoTo(actor, gotoid)
     TopIcon.HideQuickInfoTipPanel(actor)
 end
 
-TopIcon.LastShowQuickTipInfoFlag = false
-
 function TopIcon.CheckQuickInfoTip(actor)
     if Player.GetLevel(actor) < CommonDefine.SHOW_QUICK_TIP_MIN_LEVEL then
         return
     end
 
-    local bCurrShowFlag = false    
+    local bCurrShowFlag = 0    
     if EquipPosStrengthManager.IsHaveQuickTip(actor) or 
         SoulStoneManager.IsHaveQuickTip(actor) or 
         --BaoZhuManager.IsHaveQuickTip(actor) or
@@ -390,18 +393,18 @@ function TopIcon.CheckQuickInfoTip(actor)
         OfflineHuWeiManager.IsHaveQuickTipUpgrade(actor) or
         OfflineHuWeiManager.IsHaveQuickTipReward(actor) or
         OpenSuperBoxManager.IsHaveQuickTipReward(actor) then
-        bCurrShowFlag = true        
+        bCurrShowFlag = 1        
     end
 
-    if bCurrShowFlag ~= TopIcon.LastShowQuickTipInfoFlag then
-        if bCurrShowFlag == true then
+    if bCurrShowFlag ~= getflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_SHOW_QUICKTIP_FLAG) then
+        if bCurrShowFlag == 1 then
             delbutton(actor, 108, CommonDefine.ADD_BUTTON_ID_32)
             local buttonstr = '<Button|x=180|y=-240|nimg=private/cc_quicktip/1.png|link=@topicon_openpanel#sid='..ICON_SHOW_QUICK_TIP_PANEL..'>'
             addbutton(actor, 108, CommonDefine.ADD_BUTTON_ID_32, buttonstr)    
         else
             delbutton(actor, 108, CommonDefine.ADD_BUTTON_ID_32)
         end
-        TopIcon.LastShowQuickTipInfoFlag = bCurrShowFlag
+        setflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_SHOW_QUICKTIP_FLAG, bCurrShowFlag)        
     end
 end
 

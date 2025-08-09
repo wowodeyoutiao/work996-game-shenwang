@@ -545,6 +545,7 @@ CommonDefine = {
     VAR_HUM_BITFLAG_RELIVE_DIALOGUE_FLAG = 208,      --玩家是否当前已有复活框弹出
     VAR_HUM_BITFLAG_OPEN_BAIPIAO_GRASS_FLAG = 209,   --玩家申请种草弹出面板 打开标记
     VAR_HUM_BITFLAG_SHOW_SUPERBOX_UI_FLAG = 210,     --月光宝盒界面是否打开的标记
+    VAR_HUM_BITFLAG_SHOW_QUICKTIP_FLAG = 211,        --快捷提示的显示标记
 
     --300-800 都是可以下线保存的
     VAR_HUM_BITFLAG_AUTORECYCLE_ITEM1 = 300,         --勾选装备自动回收    
