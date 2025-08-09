@@ -64,9 +64,9 @@ TaskLineConfig = {
                 autosubmit=0,
                 acceptdialogue = '',
                 submitdialogue = '',
-                tasktype = CommonDefine.TASK_TYPE_KILL_SINGLEBOSS ,
+                tasktype = CommonDefine.TASK_TYPE_OPENBOXNUM ,
                 --一个子任务最多支持三个目标，扩展另开发             
-                tasktargparam = 1,
+                tasktargparam = 10,
                 reward_tab = {{name='强化石', num=500},{name='经验', num=50000}},
 		openbox_num = 20,
             },
