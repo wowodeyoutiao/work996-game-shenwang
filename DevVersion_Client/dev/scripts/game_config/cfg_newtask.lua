@@ -19,8 +19,8 @@ local config = {
 	},
 	[104] = { 
 		ID = 104,
-		TaskTitle = "<font color='#F7E700'>[主线]  挑战首领</font>",
-		Haveinfo = "<font colorStyleID='1030'>个人首领</font>&nbsp;&nbsp;<u><font color = '#28ef01' size = '16'>击杀个人首领&nbsp;%s/1次</font></u>",
+		TaskTitle = "<font color='#F7E700'>[主线]  开箱换装</font>",
+		Haveinfo = "<font colorStyleID='1030'>月光宝盒</font>&nbsp;&nbsp;<u><font color = '#28ef01' size = '16'>开启&nbsp;%s/10次</font></u>",
 		Completeinfo = "<font colorStyleID='1030'>任务完成</font>&nbsp;&nbsp;<u><font color = '#28ef01' size = '16'>领取强化石奖励</font></u>",
 	},
 	[105] = { 
