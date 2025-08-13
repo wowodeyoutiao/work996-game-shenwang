@@ -300,7 +300,7 @@ TaskLineConfig = {
                 submitdialogue = '',
                tasktype = CommonDefine.TASK_TYPE_EQUIPPOS_STRENGTH,
                 --一个子任务最多支持三个目标，扩展另开发
-                tasktargparam = 15,
+                tasktargparam = 10,
                 tasktargdesc = '',
                 reward_tab = {{name='强化石', num=200},{name='绑定元宝', num=20000}},
                 openbox_num = 20,      --任务完成，直接增加开箱数量

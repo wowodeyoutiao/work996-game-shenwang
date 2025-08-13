@@ -210,15 +210,15 @@ end
 --道具进背包 这里是异步的
 function addbag(actor, makeindex, itemid)
     local itemobj = getitembymakeindex(actor, makeindex)
-    --if (not BF_IsNullObj(itemobj)) and (not Player.CheckEquipIsOnBody(actor, itemobj)) then
-    if not BF_IsNullObj(itemobj) then       
+
+    if (not BF_IsNullObj(itemobj)) and (not Player.CheckEquipIsOnBody(actor, itemobj)) then      
         --触发玩家道具进背包的事件监听        
         GameEventManager.DoTriggerEvent(CommonDefine.EVENT_NAME_PLAYER_ADDBAGITEM, actor, itemobj, makeindex)    
     end
 
     --延迟调用道具使用提示
-    setplaydef(actor, CommonDefine.VAR_N_TEMP_ADDITEMID, itemid)
-    delaygoto(actor, 300, 'send_item_use_tip', 0)    
+    --setplaydef(actor, CommonDefine.VAR_N_TEMP_ADDITEMID, itemid)
+    --delaygoto(actor, 100, 'send_item_use_tip', 0)    
 end
 
 --进入地图触发
