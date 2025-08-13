@@ -5349,7 +5349,7 @@ MESSAGEBOX 系统：编辑公共需要领取第六档礼包!
 ;新的装备回收
 #IF
 #ACT
-CALLLUA CC_QFunction @addbag,<$NEWBAGITEMID>
+CALLLUA CC_QFunction @addbag,<$NEWBAGITEMID>,<$NEWBAGITEM>
 
 [@DeleteTask]
 ;#IF
