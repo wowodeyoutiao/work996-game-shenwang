@@ -576,6 +576,7 @@ CommonDefine = {
     VAR_HUM_BITFLAG_RECYCLE_ITEM1_5 = 334,           --粉色装备是否回收
     VAR_HUM_BITFLAG_RECYCLE_ITEM1_6 = 335,           --金色装备是否回收
     VAR_HUM_BITFLAG_RECYCLE_ITEM1_7 = 336,           --红色装备是否回收 
+    VAR_HUM_BITFLAG_RECYCLE_ITEM1_8 = 337,           --无双装备是否回收
 
     VAR_HUM_BITFLAG_RECYCLE_ITEM2_3 = 340,           --蓝色直升宝石是否回收
     VAR_HUM_BITFLAG_RECYCLE_ITEM2_4 = 341,           --紫色直升宝石是否回收
@@ -696,6 +697,7 @@ CommonDefine = {
     FUNC_ID_JUMPAREA_4 = 34,                    --跨服活动  跨服夺宝
     FUNC_ID_JUMPAREA_5 = 35,                    --跨服活动  跨服商店
     FUNC_ID_BAIPIAO_GIFT = 36,                  --白嫖礼包
+    FUNC_ID_PRIVILEGE_CARD = 37,                --特权卡
     
 
     --快捷前往

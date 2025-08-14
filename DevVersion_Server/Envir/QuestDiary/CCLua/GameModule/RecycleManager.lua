@@ -214,6 +214,11 @@ function RecycleManager.ActivatedAutoRecycle(actor)
     if BF_IsNullObj(actor) then
         return
     end
+
+    if getflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_ACTIVATED_AUTORECYCLE) == 1 then
+        Player.SendSelfMsg(actor, '你已开通自动回收！', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
+        return
+    end
     
     if Player.GetItemNumInBag(actor, CommonDefine.ITEMID_YB) < CommonDefine.ACTIVATED_AUTORECYCLE_NEEDYB then
         Player.SendSelfMsg(actor, '你的元宝不足，请先去充值！', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)

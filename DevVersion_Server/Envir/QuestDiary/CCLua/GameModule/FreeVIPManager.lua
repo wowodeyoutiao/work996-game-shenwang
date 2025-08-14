@@ -211,6 +211,33 @@ function FreeVIPManager.FetchTaskReward(actor, taskseq)
     FreeVIPManager.CheckUpgradeLevel(actor)
 end
 
+function FreeVIPManager.GMFetchTaskReward(actor, taskseq)
+    if BF_IsNullObj(actor) then
+        return
+    end
+    if (taskseq < 1) or (taskseq > FreeVIPManager.MAX_TASK_NUM) then
+        return
+    end     
+    if getflagstatus(actor, FreeVIPManager.TASK_DRAWREWARD_FLAGLIST[taskseq]) == 1 then
+        Player.SendSelfMsg(actor, '任务奖励已领取过！', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
+        return 
+    end
+
+    local currVIPLv = getplaydef(actor, CommonDefine.VAR_U_FREEVIP_LEVEL)
+    local taskcfgkey = FreeVIPManager.GetVIPTaskCfgKey(currVIPLv, taskseq)
+    local taskconfig = cfgFreeVIPTask[taskcfgkey]
+    if taskconfig == nil then
+        return
+    end
+
+    setflagstatus(actor, FreeVIPManager.TASK_DRAWREWARD_FLAGLIST[taskseq], 1)
+    if #taskconfig.finishrewards_tab > 0 then
+        Player.GiveItemsToBagOrMail(actor, taskconfig.finishrewards_tab, '免费VIP任务奖励')
+    end
+    Player.SendSelfMsg(actor, '成功领取VIP任务奖励！', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
+    FreeVIPManager.CheckUpgradeLevel(actor)
+end
+
 function FreeVIPManager.SetVIPLevel(actor, newlv)
     local currVIPLv = newlv
     setplaydef(actor, CommonDefine.VAR_U_FREEVIP_LEVEL, currVIPLv)

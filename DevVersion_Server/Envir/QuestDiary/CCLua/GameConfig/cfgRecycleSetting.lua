@@ -83,6 +83,18 @@ local config = {
 		recycleitems = "[{\"name\":\"元宝\", \"num\":10}]",
 		stdmodelist = "[5,6,10,11,19,20,21,15,22,23,24,26,54,64,52,62]",
 	},
+	[108] = { 
+		id = 108,
+		tip = "无双装备",
+		showcolor = 151,
+		recycletype = 1,
+		checktype = 1,
+		checkparam = 7,
+		tempvar = "N58",
+		flagvar = 337,
+		recycleitems = "[{\"name\":\"元宝\", \"num\":50}]",
+		stdmodelist = "[5,6,10,11,19,20,21,15,22,23,24,26,54,64,52,62]",
+	},
 	[201] = { 
 		id = 201,
 		tip = "蓝色直升宝石",

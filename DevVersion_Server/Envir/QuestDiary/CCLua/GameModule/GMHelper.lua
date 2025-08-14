@@ -102,7 +102,12 @@ function GMHelper.OpenPanel(actor)
         '<Button|x=500|y=120|nimg=public/bg_hhzy_01_3.png|text=模拟充值100元|link=@gmhelper_button#sid1=157>'..        
         '<Button|x=500|y=150|nimg=public/bg_hhzy_01_3.png|text=清空跨天变量|link=@gmhelper_button#sid1=158>'..        
         '<Button|x=500|y=180|nimg=public/bg_hhzy_01_3.png|text=功能NPC面板|color=252|link=@gmhelper_button#sid1=1995>'..
-        '<Button|x=500|y=210|nimg=public/bg_hhzy_01_3.png|text=临时测试|link=@gmhelper_button#sid1=1999>'
+        '<Button|x=500|y=210|nimg=public/bg_hhzy_01_3.png|text=临时测试|link=@gmhelper_button#sid1=1999>'..
+        '<Button|x=500|y=240|nimg=public/bg_hhzy_01_3.png|text=完成会员任务一|link=@gmhelper_button#sid1=160>'..
+        '<Button|x=500|y=270|nimg=public/bg_hhzy_01_3.png|text=完成会员任务二|link=@gmhelper_button#sid1=161>'..
+        '<Button|x=500|y=300|nimg=public/bg_hhzy_01_3.png|text=完成会员任务三|link=@gmhelper_button#sid1=162>'..
+        '<Button|x=500|y=330|nimg=public/bg_hhzy_01_3.png|text=完成会员任务四|link=@gmhelper_button#sid1=163>'..
+        '<Button|x=500|y=360|nimg=public/bg_hhzy_01_3.png|text=完成会员任务五|link=@gmhelper_button#sid1=164>'
     --[[                                      
         '<Button|x=40|y=120|nimg=public/bg_hhzy_01_3.png|text=无敌|link=@gmhelper_button,4>'..        
         
@@ -442,6 +447,16 @@ function GMHelper.DoGmOper(actor, sid)
         setplaydef(actor, CommonDefine.VAR_J_DAY_RANDOMBOSS_TRIGGERTIMES, 0)     
         setplaydef(actor, CommonDefine.VAR_U_JUMPAREA_BOSS_DAMAGE_HIGH, 0)
         setplaydef(actor, CommonDefine.VAR_U_JUMPAREA_BOSS_DAMAGE_LOW, 0)
+    elseif sid == '160' then
+        FreeVIPManager.GMFetchTaskReward(actor, 1)
+    elseif sid == '161' then
+        FreeVIPManager.GMFetchTaskReward(actor, 2)
+    elseif sid == '162' then
+        FreeVIPManager.GMFetchTaskReward(actor, 3)
+    elseif sid == '163' then
+        FreeVIPManager.GMFetchTaskReward(actor, 4)
+    elseif sid == '164' then
+        FreeVIPManager.GMFetchTaskReward(actor, 5)
     elseif sid == '999' then
         Player.TestSuperInitPlayer(actor)
     elseif sid == '1001' then

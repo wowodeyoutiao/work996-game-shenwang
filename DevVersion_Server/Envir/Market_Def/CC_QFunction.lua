@@ -546,6 +546,8 @@ function show_rule_panel(actor)
         BaoZhuManagerNew.ShowRulePanel(actor)
     elseif currfuncid == CommonDefine.FUNC_ID_BAIPIAO_GIFT then
         BaiPiaoGift.ShowRulePanel(actor)
+    elseif currfuncid == CommonDefine.FUNC_ID_PRIVILEGE_CARD then
+        PrivilegeCardManager.ShowRulePanel(actor)
     end
 end
 
@@ -572,6 +574,8 @@ function show_base_panel(actor, sparam)
         JumpAreaManager.ShowBasePanel(actor)
     elseif currfuncid == CommonDefine.FUNC_ID_BAIPIAO_GIFT then
         BaiPiaoGift.ShowBasePanel(actor)
+    elseif currfuncid == CommonDefine.FUNC_ID_PRIVILEGE_CARD then
+        PrivilegeCardManager.ShowBasePanel(actor)
     end    
 end
 
@@ -602,6 +606,8 @@ function function_button(actor, sid, sparam)
         EverydayTask.DoOperButton(actor, sid, sparam)
     elseif currfuncid == CommonDefine.FUNC_ID_BAIPIAO_GIFT then
         BaiPiaoGift.DoOperButton(actor, sid, sparam)
+    elseif currfuncid == CommonDefine.FUNC_ID_PRIVILEGE_CARD then
+        PrivilegeCardManager.DoOperButton(actor, sid, sparam)
     end
 end
 

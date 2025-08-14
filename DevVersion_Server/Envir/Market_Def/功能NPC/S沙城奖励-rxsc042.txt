@@ -9,7 +9,7 @@ GETDBITEMFIELDVALUE 沉默水晶 IDX N$水晶IDX
 <Img|width=740|rotate=0|show=4|reset=1|loadDelay=0|bg=1|img=public/cc_new/sbk_prize_panel.png|move=0|esc=1>
 <Layout|x=724.0|y=15.0|width=80|height=80|link=@exit>
 <Button|x=724.0|y=15.0|color=255|size=18|pimg=public/1900000510_2.png|nimg=public/1900000510_1.png|link=@exit>
-<Text|x=70.0|y=300.0|size=16|color=151|text=注：领奖时间为22:01-23:59分，过时无法领取\需要等级大于430级|outline=1>
+<Text|x=70.0|y=300.0|size=16|color=151|text=注：领奖时间为22:01-23:59分，过时无法领取\需要等级大于50级|outline=1>
 
 <RText|x=450.0|y=100.0|outline=1|color=222|size=16|text=沙巴克首次奖励<[城主]/FCOLOR=249>>
 <RText|x=450.0|y=120.0|outline=1|color=222|size=16|text=沙巴克城主<[全属性+88 爆率+100%]/FCOLOR=249>>
@@ -65,7 +65,7 @@ SENDMSG 9 今日未攻沙，无法领取。
 BREAK
 
 #IF
-CHECKLEVELEX < 430
+CHECKLEVELEX < 50
 #Act
 SendMsg 9 抱歉，领取奖励需要等级达到430级！
 Break

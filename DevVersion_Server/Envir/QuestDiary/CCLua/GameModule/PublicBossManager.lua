@@ -125,7 +125,7 @@ function PublicBossManager.OnMonKilled(hitter, mon)
     end
     local idx = Player.GetMonIdx(mon)
     local cfgBossInfo = nil
-    for _, value in pairs(cfgSingleBossInfo) do
+    for _, value in pairs(cfgPublicBossInfo) do
         if value.monidx == idx then
             cfgBossInfo = value
             break
@@ -133,7 +133,7 @@ function PublicBossManager.OnMonKilled(hitter, mon)
     end
     if cfgBossInfo == nil then
         return
-    end
+    end 
     if Player.IsPlayer(hitter) then
         --√‚∑—VIP»ŒŒÒ
         FreeVIPManager.TriggerChgTaskCounter(hitter, FreeVIPManager.TASK_TYPE_PUBLICBOSS_KILLTIMES, '+', 1)        

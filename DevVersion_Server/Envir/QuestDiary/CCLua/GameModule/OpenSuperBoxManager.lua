@@ -352,10 +352,16 @@ function OpenSuperBoxManager.DoOpenBoxOnce(actor, autoflag, openitemlist)
 
     local nPlayerLv = Player.GetLevel(actor)
     local boxPoolConfig = cfgSuperBoxRewardPool[nPlayerLv]
-    if boxPoolConfig == nil then        
-        Player.SendSelfMsg(actor, '当前没有可以开启的宝箱！ '..nPlayerLv, CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
-        release_print('DoOpenBoxOnce error 1111 level:'..nPlayerLv)
-        return false
+    if boxPoolConfig == nil then     
+        if nPlayerLv >= #cfgSuperBoxRewardPool then
+            nPlayerLv = #cfgSuperBoxRewardPool
+            boxPoolConfig = cfgSuperBoxRewardPool[nPlayerLv]
+        end
+        if boxPoolConfig == nil then
+            Player.SendSelfMsg(actor, '当前没有可以开启的宝箱！ '..nPlayerLv, CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
+            release_print('DoOpenBoxOnce error 1111 level:'..nPlayerLv)
+            return false
+        end
     end
 
     setplaydef(actor, CommonDefine.VAR_J_DAY_SUPERBOX_OPENNUM, nDayOpenNum)

@@ -825,27 +825,27 @@ h010 155,156 -> h009 151,105
 
 
 
-[testmap1|b101 宝珠副本1] onkillmon FIGHT3(0) dark noreconnect(rxsc042) nodearrecall
-[testmap2|b101 宝珠副本2] onkillmon FIGHT3(0) dark noreconnect(rxsc042) nodearrecall
-[testmap3|b101 宝珠副本3] onkillmon FIGHT3(0) dark noreconnect(rxsc042) nodearrecall
-[testmap4|b101 宝珠副本4] onkillmon FIGHT3(0) dark noreconnect(rxsc042) nodearrecall
-[testmap5|b101 宝珠副本5] onkillmon FIGHT3(0) dark noreconnect(rxsc042) nodearrecall
-[testmap6|b101 宝珠副本6] onkillmon FIGHT3(0) dark noreconnect(rxsc042) nodearrecall
-[testmap7|b101 宝珠副本7] onkillmon FIGHT3(0) dark noreconnect(rxsc042) nodearrecall
-[testmap8|b101 宝珠副本8] onkillmon FIGHT3(0) dark noreconnect(rxsc042) nodearrecall
-[testmap9|b101 宝珠副本9] onkillmon FIGHT3(0) dark noreconnect(rxsc042) nodearrecall
-[testmap10|b101 宝珠副本10] onkillmon FIGHT3(0) dark noreconnect(rxsc042) nodearrecall
-[testmap11|b101 宝珠副本11] onkillmon FIGHT3(0) dark noreconnect(rxsc042) nodearrecall
-[testmap12|b101 宝珠副本12] onkillmon FIGHT3(0) dark noreconnect(rxsc042) nodearrecall
-[testmap13|b101 宝珠副本13] onkillmon FIGHT3(0) dark noreconnect(rxsc042) nodearrecall
-[testmap14|b101 宝珠副本14] onkillmon FIGHT3(0) dark noreconnect(rxsc042) nodearrecall
-[testmap15|b101 宝珠副本15] onkillmon FIGHT3(0) dark noreconnect(rxsc042) nodearrecall
-[testmap16|b101 宝珠副本16] onkillmon FIGHT3(0) dark noreconnect(rxsc042) nodearrecall
-[testmap17|b101 宝珠副本17] onkillmon FIGHT3(0) dark noreconnect(rxsc042) nodearrecall
-[testmap18|b101 宝珠副本18] onkillmon FIGHT3(0) dark noreconnect(rxsc042) nodearrecall
-[testmap19|b101 宝珠副本19] onkillmon FIGHT3(0) dark noreconnect(rxsc042) nodearrecall
-[testmap20|b101 宝珠副本20] onkillmon FIGHT3(0) dark noreconnect(rxsc042) nodearrecall
-[testmap21|b101 宝珠副本21] onkillmon FIGHT3(0) dark noreconnect(rxsc042) nodearrecall
+[testmap1|b101 灵玉副本1] onkillmon FIGHT3(0) dark noreconnect(rxsc042) nodearrecall
+[testmap2|b101 灵玉副本2] onkillmon FIGHT3(0) dark noreconnect(rxsc042) nodearrecall
+[testmap3|b101 灵玉副本3] onkillmon FIGHT3(0) dark noreconnect(rxsc042) nodearrecall
+[testmap4|b101 灵玉副本4] onkillmon FIGHT3(0) dark noreconnect(rxsc042) nodearrecall
+[testmap5|b101 灵玉副本5] onkillmon FIGHT3(0) dark noreconnect(rxsc042) nodearrecall
+[testmap6|b101 灵玉副本6] onkillmon FIGHT3(0) dark noreconnect(rxsc042) nodearrecall
+[testmap7|b101 灵玉副本7] onkillmon FIGHT3(0) dark noreconnect(rxsc042) nodearrecall
+[testmap8|b101 灵玉副本8] onkillmon FIGHT3(0) dark noreconnect(rxsc042) nodearrecall
+[testmap9|b101 灵玉副本9] onkillmon FIGHT3(0) dark noreconnect(rxsc042) nodearrecall
+[testmap10|b101 灵玉副本10] onkillmon FIGHT3(0) dark noreconnect(rxsc042) nodearrecall
+[testmap11|b101 灵玉副本11] onkillmon FIGHT3(0) dark noreconnect(rxsc042) nodearrecall
+[testmap12|b101 灵玉副本12] onkillmon FIGHT3(0) dark noreconnect(rxsc042) nodearrecall
+[testmap13|b101 灵玉副本13] onkillmon FIGHT3(0) dark noreconnect(rxsc042) nodearrecall
+[testmap14|b101 灵玉副本14] onkillmon FIGHT3(0) dark noreconnect(rxsc042) nodearrecall
+[testmap15|b101 灵玉副本15] onkillmon FIGHT3(0) dark noreconnect(rxsc042) nodearrecall
+[testmap16|b101 灵玉副本16] onkillmon FIGHT3(0) dark noreconnect(rxsc042) nodearrecall
+[testmap17|b101 灵玉副本17] onkillmon FIGHT3(0) dark noreconnect(rxsc042) nodearrecall
+[testmap18|b101 灵玉副本18] onkillmon FIGHT3(0) dark noreconnect(rxsc042) nodearrecall
+[testmap19|b101 灵玉副本19] onkillmon FIGHT3(0) dark noreconnect(rxsc042) nodearrecall
+[testmap20|b101 灵玉副本20] onkillmon FIGHT3(0) dark noreconnect(rxsc042) nodearrecall
+[testmap21|b101 灵玉副本21] onkillmon FIGHT3(0) dark noreconnect(rxsc042) nodearrecall
 
 
 [randboss_1|b101 首领boss] onkillmon FIGHT5 dark noreconnect(rxsc042) nodearrecall

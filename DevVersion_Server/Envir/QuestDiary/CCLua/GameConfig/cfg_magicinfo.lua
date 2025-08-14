@@ -1674,7 +1674,7 @@ local config = {
 		desc = "<烈火剑法:/FCOLOR=251>\\<战士高级必杀剑法。剑生烈焰，/FCOLOR=250>\\<从而造成强力的额外伤害。霸道无双，招发必取人命。/FCOLOR=250>",
 		priority = 4,
 		type = 1,
-		icon = 81,
+		icon = 56,
 		launchmode = 5,
 		launchmode_pc = 4,
 		action = 0,
