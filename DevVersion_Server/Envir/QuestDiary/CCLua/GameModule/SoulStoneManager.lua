@@ -631,6 +631,50 @@ local function IsSlotHaveBetterStone(actor, slotid, infoTab)
     return false
 end
 
+function SoulStoneManager.IsStoneItemBetterReplace(actor, itemobj)
+    if BF_IsNullObj(actor) or BF_IsNullObj(itemobj) then
+        return false
+    end
+    local itemidx = getiteminfo(actor, itemobj, CommonDefine.ITEMINFO_ITEMIDX)                        
+    local itemStdmode = getstditeminfo(itemidx, CommonDefine.STDITEMINFO_STDMODE)
+    local itemShape = getstditeminfo(itemidx, CommonDefine.STDITEMINFO_SHAPE) 
+    if itemStdmode ~= CommonDefine.ITEM_STDMODE_SOULSTONE then
+        return false
+    end
+
+    local infoStr = getplaydef(actor, CommonDefine.VAR_T_SOULSTONE_SLOT_INFO)
+    local infoTab = {}
+    if infoStr ~= '' then
+        infoTab = json2tbl(infoStr)
+    end 
+    if table.isempty(infoTab) then
+        return true
+    end
+
+    local stoneLevel = SoulStoneManager.GetStoneLevel(itemidx)
+    for slotid = 1, #SoulStoneManager.SLOT_CFG_INFO, 1 do
+        local cfgSlot = SoulStoneManager.SLOT_CFG_INFO[slotid]
+        if cfgSlot and cfgSlot.shape==itemShape then
+            local sid = ''..slotid
+            if infoTab[sid]==nil or infoTab[sid].holelist==nil then
+                return true
+            end
+            for i = 1, #infoTab[sid].holelist, 1 do
+                local tempid = infoTab[sid].holelist[i]
+                if tempid == 0 then
+                    return true
+                end
+                local templv = SoulStoneManager.GetStoneLevel(tempid)
+                if stoneLevel > templv then
+                    return true
+                end
+            end
+        end    
+    end
+
+    return false
+end
+
 --œ‘ æ≥ı º√Ê∞Â
 function SoulStoneManager.ShowBasePanel(actor)
     local strPanelInfo = '<Img|id=10|children={11,12,400,13,14,15,501,502}|x='..CSS.BASE_PANEL_START_X..'|y='..CSS.BASE_PANEL_START_Y..'|reset=1|img=private/cc_soulstone/9.png|show=0|esc=1|move=0|bg=1|loadDelay=0>'..

@@ -273,7 +273,7 @@ CommonDefine = {
     OPEN_SUPERBOX_SPEEDUP_ONCE_NEEDITEMS = {{name='加速卷轴', num=1}},    --超级宝箱升级加速一次需要的道具
     OPEN_SUPERBOX_SPEEDUP_ONCE_ADDSECONDS = 60,                          --超级宝箱升级加速一次对应的秒数
     NEW_PLAYER_EMAIL_ITEMS = {{name='元宝', num=5000}},                   --新玩家登录给与的邮件奖励
-    AUTO_ADDEXP_MAX_LEVEL = 200,                                          --泡点自动得经验的最大等级
+    AUTO_ADDEXP_MAX_LEVEL = 150,                                          --泡点自动得经验的最大等级
     RECHARGE_YB_RATE = 100,                                               --充值转元宝的比率
 
     --道具用元宝快捷补充的对应关系
@@ -322,6 +322,7 @@ CommonDefine = {
 
     --系统全局字符型变量，重启保存 A0-A499
     VAR_A_PAOKU_SWITCH = 'A10',                         --跑酷活动开关  '已开启'表示开启
+    VAR_A_SBK_GM_SWITCH = 'A56',                        --沙巴克手动开启开关 攻沙 不攻沙
     ---------------------
     VAR_A_JUMPAREA_DAMAGE_RANK_DATA = 'A100',           --跨服boss伤害排行数据
     VAR_A_JUMPAREA_DAMAGE_TEST_CFG_DATA = 'A101',       --跨服boss伤害排行测试配置

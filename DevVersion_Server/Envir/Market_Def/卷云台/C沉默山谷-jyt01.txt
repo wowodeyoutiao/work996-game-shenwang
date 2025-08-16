@@ -1,6 +1,6 @@
 [@main]
 #IF
-LARGE u1 2
+LARGE u1 3
 #ACT
 mapmove jyt02 52 49
 #ELSEACT

@@ -749,6 +749,7 @@ function ItemComposeManager.DoOperButton(actor, sid, sparam)
 		setplaydef(actor, CommonDefine.VAR_N_ITEM_COMPOSE_CHOOSE_ITEM1, 0)
 		setplaydef(actor, CommonDefine.VAR_S_SELECT_COMPOSE_ITEMS, '')
 		setplaydef(actor, CommonDefine.VAR_N_SELECT_COMPOSE_PILE_NUM, 0)
+		setplaydef(actor, CommonDefine.VAR_N_NPC_TEMPPARAM1, 0)
 		ItemComposeManager.ShowBasePanel(actor)
     elseif funcid == COMPOSE_BUTTONFUNC_ID_2 then
 		local currPageNo = getplaydef(actor, CommonDefine.VAR_N_CURR_NPC_DATA_PAGE1)

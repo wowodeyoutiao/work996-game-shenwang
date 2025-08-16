@@ -94,6 +94,8 @@ function GMHelper.OpenPanel(actor)
         --'<Button|x=350|y=240|nimg=public/bg_hhzy_01_3.png|text='..strPaoKuMenu..'|link=@gmhelper_button#sid1=1905>'..
         '<Button|x=350|y=240|nimg=public/bg_hhzy_01_3.png|text=重置VIP等级|link=@gmhelper_button#sid1=38>'..
         '<Button|x=350|y=270|nimg=public/bg_hhzy_01_3.png|text=刷出战力首领|link=@gmhelper_button#sid1=18>'..
+        '<Button|x=350|y=300|nimg=public/bg_hhzy_01_3.png|text=开启攻沙|link=@gmhelper_button#sid1=165>'..
+        '<Button|x=350|y=330|nimg=public/bg_hhzy_01_3.png|text=关闭攻沙|link=@gmhelper_button#sid1=166>'..
         
 
         '<Button|x=500|y=30|nimg=public/bg_hhzy_01_3.png|text=清空首充|link=@gmhelper_button#sid1=154>'..
@@ -186,6 +188,21 @@ function GMHelper.OpenSuperJumpPanel(actor)
     end
     
     BF_NPCSayExt(actor, sPanelStr, 1, 650, 350)
+end
+
+function GMHelper.GMStartSBK(actor)
+    --开启前需要把所有行会添加到攻城列表]
+    addtocastlewarlistex("*")
+    gmexecute("0","ForcedWallConQuestwar")
+    setsysvar(CommonDefine.VAR_A_SBK_GM_SWITCH, '攻沙')    
+end
+
+function GMHelper.GMStopSBK(actor)
+    --攻城战开启状态下再次调用ForcedWallConQuestwar命令即可关闭攻城战
+    if castleinfo(5) then
+        gmexecute("0","ForcedWallConQuestwar")
+        setsysvar(CommonDefine.VAR_A_SBK_GM_SWITCH, '不攻沙')
+    end    
 end
 
 function GMHelper.DoGmOper(actor, sid)
@@ -457,6 +474,10 @@ function GMHelper.DoGmOper(actor, sid)
         FreeVIPManager.GMFetchTaskReward(actor, 4)
     elseif sid == '164' then
         FreeVIPManager.GMFetchTaskReward(actor, 5)
+    elseif sid == '165' then
+        GMHelper.GMStartSBK(actor)
+    elseif sid == '166' then
+        GMHelper.GMStopSBK(actor)
     elseif sid == '999' then
         Player.TestSuperInitPlayer(actor)
     elseif sid == '1001' then

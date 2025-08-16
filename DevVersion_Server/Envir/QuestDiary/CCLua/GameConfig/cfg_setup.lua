@@ -11,7 +11,7 @@ local config = {
 		idx = 2,
 		id = 33,
 		content = "Ö»ÏÔÈËÃû",
-		default = 1,
+		default = 0,
 		platform = 0,
 		order = 1001,
 	},

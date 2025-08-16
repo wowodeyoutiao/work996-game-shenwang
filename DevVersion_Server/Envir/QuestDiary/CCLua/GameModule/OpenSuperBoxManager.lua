@@ -559,8 +559,10 @@ local function OpenUpgradeBoxLevelPanel(actor, bShowBuySpeedupTip)
         '<Button|id=2113|x=524.0|y=56.0|nimg=private/cc_superbox_1/btn_fanhui.png|color=255|size=18|mimg=private/cc_superbox_1/btn_fanhui.png|link=@opensuperboxmanager_button#sid='..
         OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_5..'>'..
         '<Layout|id=2115|x=524.0|y=56.0|width=80|height=80|link=@opensuperboxmanager_button#sid='..OPENSUPERBOX_MANAGER_BUTTONFUNC_ID_5..'>'..
-        '<Text|id=2116|x=340|y=90|color='..CSS.NPC_LIGHTGREEN..'|size=18|text='..(nBoxCurrLv)..'>'..
-        '<Text|id=2117|x=508|y=90|color='..CSS.NPC_LIGHTGREEN..'|size=18|text='..(nBoxCurrLv+1)..'>'
+        '<Text|id=2116|x=340|y=90|color='..CSS.NPC_LIGHTGREEN..'|size=18|text='..(nBoxCurrLv)..'>'
+    if nextLevelConfig ~= nil then
+        strPanel = strPanel..'<Text|id=2117|x=508|y=90|color='..CSS.NPC_LIGHTGREEN..'|size=18|text='..(nBoxCurrLv+1)..'>'
+    end
 
     local strItems = ''
     local nStartID = 2120

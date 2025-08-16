@@ -183,13 +183,18 @@ function takeonbefore12(actor, makeindx)
             local itemidx = getiteminfo(actor, itemobj, CommonDefine.ITEMINFO_ITEMIDX)
             local stdmode = getstditeminfo(itemidx, CommonDefine.STDITEMINFO_STDMODE)
             if stdmode == CommonDefine.ITEM_STDMODE_SOULSTONE then
-                Player.SendSelfMsg(actor, '请在魂石系统中穿戴！', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
+                if SoulStoneManager.IsStoneItemBetterReplace(actor, itemobj) then
+                    Player.SendSelfMsg(actor, '请在魂石系统中穿戴！', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
 
-                setplaydef(actor, CommonDefine.VAR_N_CURR_FUNCTION_ID, CommonDefine.FUNC_ID_SOUL_STONE)
-                setplaydef(actor, CommonDefine.VAR_N_LAST_NPC_CHOOSEID, -1)
-                setplaydef(actor, CommonDefine.VAR_N_CHOOSE_ITEM_MAKEIDX, 0)        --清空选择的道具
-                setplaydef(actor, CommonDefine.VAR_N_CURR_NPC_DATA_PAGE1, 1)        --设置数据页面编号为1                    
-                SoulStoneManager.ShowBasePanel(actor)
+                    setplaydef(actor, CommonDefine.VAR_N_CURR_FUNCTION_ID, CommonDefine.FUNC_ID_SOUL_STONE)
+                    setplaydef(actor, CommonDefine.VAR_N_LAST_NPC_CHOOSEID, -1)
+                    setplaydef(actor, CommonDefine.VAR_N_CHOOSE_ITEM_MAKEIDX, 0)        --清空选择的道具
+                    setplaydef(actor, CommonDefine.VAR_N_CURR_NPC_DATA_PAGE1, 1)        --设置数据页面编号为1       
+                    setplaydef(actor, CommonDefine.VAR_N_NPC_TEMPPARAM1, 0)
+                    SoulStoneManager.ShowBasePanel(actor)
+                else
+                    Player.SendSelfMsg(actor, '当前已穿戴更高级的魂石！', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
+                end
                 return false
             end            
         end
@@ -369,12 +374,14 @@ function attackdamage(actor, damagevalue)
     end
 
     --对怪切割
-    local monid = Player.GetMonIdx(currtarg)
-    if monid > 0 then
-        local nQieGePoint = Player.GetQieGePoint(actor)
-        if nQieGePoint > 0 then
-            humanhp(currtarg, '-', nQieGePoint, CommonDefine.HP_EFFECT_ID_QIEGE, 0, actor, 1, 1) 
-        end
+    if ismon(currtarg) then
+        local monid = Player.GetMonIdx(currtarg)
+        if monid > 0 then
+            local nQieGePoint = Player.GetQieGePoint(actor)
+            if nQieGePoint > 0 then
+                humanhp(currtarg, '-', nQieGePoint, CommonDefine.HP_EFFECT_ID_QIEGE, 0, actor, 1, 1) 
+            end
+        end   
     end
 
     damagevalue = GuanZhiManager.DoAttackDamage(actor, currtarg, damagevalue)

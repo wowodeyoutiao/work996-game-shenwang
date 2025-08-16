@@ -820,6 +820,9 @@ function EquipPosStarManager.RandomUpgradePosToTargStarNum(actor, targstarnum)
     EquipPosStarManager.UpdateEquipStarLvInPos(actor, poslist[rand])
 
     FreeVIPManager.TriggerChgTaskCounter(actor, FreeVIPManager.TASK_TYPE_UPGRADE_EQUIPSTAR, 'max', targstarnum) 
+    --每日必做计数        
+    EverydayTask.AddTaskCounter(actor, CommonDefine.FUNC_ID_EQUIPPOS_STAR, 1)  
+    
     Player.SendSelfMsg(actor, CommonDefine.EQUIPPOS_NAME[currpos]..'槽位星级升至'..targstarnum, CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
     return true
 end
