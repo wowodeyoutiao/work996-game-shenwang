@@ -16,6 +16,7 @@ local ICON_EXTEND_STORAGE_MAKESURE = '13'       --仓库扩容，确认
 local ICON_SHOW_QUICK_TIP_PANEL = '14'          --打开有红点功能对应的快捷提示框
 local ICON_QUICK_TIP_GOTO = '15'                --对应红点功能提示的快捷前往
 local ICON_HIDE_QUICK_TIP_PANEL = '16'          --关闭有红点功能对应的快捷提示框
+local ICON_PRIVILEGE_CARD = '17'                --特权卡
 
 local ICON_GATHER_POP_ABILITY = '20'            --收缩快捷属性面板
 local ICON_EXTEND_POP_ABILITY = '21'            --展开快捷属性面板
@@ -30,6 +31,7 @@ local MAINICON_ID_6 = 'mainicon_6'              --免费VIP iconid
 local MAINICON_ID_7 = 'mainicon_7'              --跨服玩法 iconid
 local MAINICON_ID_8 = 'mainicon_8'              --白嫖礼包 iconid
 local MAINICON_ID_9 = 'mainicon_9'              --月光宝盒 iconid
+local MAINICON_ID_10 = 'mainicon_10'            --特权卡 iconid
 
 
 function TopIcon.InitUI(actor)
@@ -112,6 +114,12 @@ function TopIcon.OpenPanel(actor, sid, sparam)
         end    
         setflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_SHOW_SUPERBOX_UI_FLAG, 1)        
         OpenSuperBoxManager.UpdateSuperBoxInfo(actor)
+    elseif sid == ICON_PRIVILEGE_CARD then
+        if not Player.IsFunctionOpen(actor, CommonDefine.FUNC_ID_PRIVILEGE_CARD, true) then
+            return
+        end
+        setplaydef(actor, CommonDefine.VAR_N_CURR_FUNCTION_ID, CommonDefine.FUNC_ID_PRIVILEGE_CARD)        
+        PrivilegeCardManager.ShowBasePanel(actor)               
     elseif sid == ICON_EXTEND_STORAGE_MAKESURE then
         --扩容仓库 确定
         TopIcon.DoExtendStorage(actor)
@@ -185,7 +193,11 @@ function TopIcon.InnerExtendPanel(actor)
         if BaiPiaoGift.CanShowIcon(actor) then
             currIconX = currIconX - 80
             buttonstr = buttonstr..'<Button|id='..MAINICON_ID_8..'|x='..currIconX..'|y=80|nimg=private/cc_func_icon/11.png|link=@topicon_openpanel#sid='..ICON_BAIPIAO_GIFT..'>'        
-        end        
+        end     
+        if PrivilegeCardManager.CanShowIcon(actor) then
+            currIconX = currIconX - 80
+            buttonstr = buttonstr..'<Button|id='..MAINICON_ID_10..'|x='..currIconX..'|y=80|nimg=private/cc_func_icon/13.png|link=@topicon_openpanel#sid='..ICON_PRIVILEGE_CARD..'>'        
+        end         
         addbutton(actor, 102, CommonDefine.ADD_BUTTON_ID_34, buttonstr)
     end
 end

@@ -9,15 +9,15 @@
 <Text|x=40.0|y=49.0|color=7|size=18|text=本服百种BUFF、千件装备，爆率全开。\小怪一样出终极！真正不花一分钱也能到终极的良心服！>
 <RText|x=19.0|y=105.0|color=250|size=18|text=---------------------------复刻经典，超级好玩--------------------------->
 <Text|x=171.0|y=130.0|color=251|size=18|text=★战力达到：30万★>
-<Text|x=171.0|y=160.0|color=251|size=18|text=★称号：战神归来★>
+<Text|x=171.0|y=160.0|color=251|size=18|text=★称号：独孤求败★>
 <Button|x=37.0|y=140.0|color=251|nimg=public/wz/bt11.png|size=18|clickInterval=666|text=进入地图|link=@进入地图>
 
 
 [@进入地图]
 #IF
-SMALL u1 18
+SMALL u1 19
 #ACT
-SENDMSG 9 传送失败，进入此地图需要【战神归来】及以上称号！
+SENDMSG 9 传送失败，进入此地图需要【独孤求败】及以上称号！
 Break
 
 #IF

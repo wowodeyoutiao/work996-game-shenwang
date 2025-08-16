@@ -4,5 +4,5 @@ LARGE u1 3
 #ACT
 mapmove jyt02 52 49
 #ELSEACT
-SENDMSG 9 传送失败，进入此地图需要【江湖少侠】及以上称号！
+SENDMSG 9 传送失败，进入此地图需要【武林豪杰】及以上称号！
 BREAK

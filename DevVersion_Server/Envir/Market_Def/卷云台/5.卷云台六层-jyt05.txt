@@ -1,7 +1,7 @@
 [@main]
 #IF
-LARGE u1 14
+LARGE u1 15
 #ACT
   mapmove jyt06 79 49 2
 #ELSEACT
-SENDMSG 9 传送失败，进入此地图需要【笑傲江湖】及以上称号！
+SENDMSG 9 传送失败，进入此地图需要【天下无双】及以上称号！

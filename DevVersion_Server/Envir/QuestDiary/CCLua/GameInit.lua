@@ -112,7 +112,7 @@ local function _Includes()
     require("Envir/QuestDiary/CCLua/GameModule/JumpAreaRandomFighting")
     require("Envir/QuestDiary/CCLua/GameModule/WeaponAddLuckManager")
     require("Envir/QuestDiary/CCLua/GameModule/BaiPiaoGift")
-    --require("Envir/QuestDiary/CCLua/GameModule/PrivilegeCardManager")
+    require("Envir/QuestDiary/CCLua/GameModule/PrivilegeCardManager")
 
 
     -- --µ˜ ‘»’÷æ
