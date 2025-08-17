@@ -384,7 +384,10 @@ function attackdamage(actor, damagevalue)
         end   
     end
 
-    damagevalue = GuanZhiManager.DoAttackDamage(actor, currtarg, damagevalue)
+    local addrate = GuanZhiManager.GetAttackDamageAddRate(actor, currtarg) + PrivilegeCardManager.GetAttackDamageAddRate(actor, currtarg)
+    if addrate > 0 then
+       damagevalue = math.floor(damagevalue * ((100 + addrate) / 100))
+    end
     damagevalue = JumpAreaBossDamageRank.DoAttackDamage(actor, currtarg, damagevalue) 
     callscriptex(actor, "ChangeDamageValue", 0, "=", damagevalue)
 end

@@ -100,7 +100,7 @@ end
 --返回每天最大可以开箱的数量
 local function GetDayMaxOpenBoxNum(actor)
     local viplv = getplaydef(actor, CommonDefine.VAR_U_FREEVIP_LEVEL)
-    local maxopencount = CommonDefine.DAY_SUPER_BOX_MAX_OPEN_NUM + FreeVIPManager.GetDayOpenBoxAddNumByVipLevel(viplv)    
+    local maxopencount = CommonDefine.DAY_SUPER_BOX_MAX_OPEN_NUM + FreeVIPManager.GetDayOpenBoxAddNumByVipLevel(viplv) + PrivilegeCardManager.GetSuperBoxDayOpenAddNum(actor)    
     return maxopencount
 end
 

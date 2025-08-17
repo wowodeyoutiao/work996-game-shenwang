@@ -90,8 +90,8 @@ function GMHelper.OpenPanel(actor)
         '<Button|x=350|y=120|nimg=public/bg_hhzy_01_3.png|text=重置开服天分秒|link=@gmhelper_button#sid1=1901>'..        
         '<Button|x=350|y=150|nimg=public/bg_hhzy_01_3.png|text=开服天数+1|link=@gmhelper_button#sid1=1902>'..        
         '<Button|x=350|y=180|nimg=public/bg_hhzy_01_3.png|text=开服分钟+10|link=@gmhelper_button#sid1=1903>'..
-        '<Button|x=350|y=210|nimg=public/bg_hhzy_01_3.png|text=开服分钟+1|link=@gmhelper_button#sid1=1904>'..
-        --'<Button|x=350|y=240|nimg=public/bg_hhzy_01_3.png|text='..strPaoKuMenu..'|link=@gmhelper_button#sid1=1905>'..
+        --'<Button|x=350|y=210|nimg=public/bg_hhzy_01_3.png|text=开服分钟+1|link=@gmhelper_button#sid1=1904>'..
+        '<Button|x=350|y=210|nimg=public/bg_hhzy_01_3.png|text=清空特权卡|link=@gmhelper_button#sid1=1905>'..
         '<Button|x=350|y=240|nimg=public/bg_hhzy_01_3.png|text=重置VIP等级|link=@gmhelper_button#sid1=38>'..
         '<Button|x=350|y=270|nimg=public/bg_hhzy_01_3.png|text=刷出战力首领|link=@gmhelper_button#sid1=18>'..
         '<Button|x=350|y=300|nimg=public/bg_hhzy_01_3.png|text=开启攻沙|link=@gmhelper_button#sid1=165>'..
@@ -104,7 +104,7 @@ function GMHelper.OpenPanel(actor)
         '<Button|x=500|y=120|nimg=public/bg_hhzy_01_3.png|text=模拟充值100元|link=@gmhelper_button#sid1=157>'..        
         '<Button|x=500|y=150|nimg=public/bg_hhzy_01_3.png|text=清空跨天变量|link=@gmhelper_button#sid1=158>'..        
         '<Button|x=500|y=180|nimg=public/bg_hhzy_01_3.png|text=功能NPC面板|color=252|link=@gmhelper_button#sid1=1995>'..
-        '<Button|x=500|y=210|nimg=public/bg_hhzy_01_3.png|text=临时测试|link=@gmhelper_button#sid1=1999>'..
+        '<Button|x=500|y=210|nimg=public/bg_hhzy_01_3.png|text=触发跨天|link=@gmhelper_button#sid1=1999>'..
         '<Button|x=500|y=240|nimg=public/bg_hhzy_01_3.png|text=完成会员任务一|link=@gmhelper_button#sid1=160>'..
         '<Button|x=500|y=270|nimg=public/bg_hhzy_01_3.png|text=完成会员任务二|link=@gmhelper_button#sid1=161>'..
         '<Button|x=500|y=300|nimg=public/bg_hhzy_01_3.png|text=完成会员任务三|link=@gmhelper_button#sid1=162>'..
@@ -528,16 +528,10 @@ function GMHelper.DoGmOper(actor, sid)
         Player.SendSelfMsg(actor, '设置开服分钟:'..counter, CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
         GMHelper.OpenPanel(actor)
     elseif sid == '1905' then
-        local strPaoKuSwitch = getsysvar(CommonDefine.VAR_A_PAOKU_SWITCH)
-        if strPaoKuSwitch == '已开启' then
-            setsysvar(CommonDefine.VAR_A_PAOKU_SWITCH, '')
-            Player.SendSelfMsg(actor, '跑酷已关闭', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
-            GMHelper.OpenPanel(actor)            
-        else
-            setsysvar(CommonDefine.VAR_A_PAOKU_SWITCH, '已开启')
-            Player.SendSelfMsg(actor, '跑酷已开启', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
-            GMHelper.OpenPanel(actor)            
-        end
+        setplaydef(actor, CommonDefine.VAR_U_PRIVILEGE_CARD_1_BUY_DAY, 0)
+        setplaydef(actor, CommonDefine.VAR_U_PRIVILEGE_CARD_2_BUY_DAY, 0)
+        setplaydef(actor, CommonDefine.VAR_U_PRIVILEGE_CARD_3_BUY_DAY, 0)
+        PrivilegeCardManager.ShowBasePanel(actor)
     elseif sid == '1995' then
         GMHelper.OpenSuperJumpPanel(actor)
     elseif sid == '1996' then
@@ -550,15 +544,7 @@ function GMHelper.DoGmOper(actor, sid)
     elseif sid == '1998' then
         JumpAreaRandomFighting.GMResetCfg(actor)
     elseif sid == '1999' then 
-        --changeexp(actor, '+', 500, true)
-        --delbutton(actor, 108, CommonDefine.ADD_BUTTON_ID_5)
-        --setplaydef(actor, CommonDefine.VAR_J_DAY_SUPERBOX_OPENNUM, 0)
-        --addattlist(actor, CommonDefine.ABILITY_GROUP_TEMPTEST, "+", "3#72#1")      
-        --recalcabilitys(actor)        
-        --mapmove(actor, 'rxsc1560', 648, 622, 3)
-        --setplaydef(actor, 'U1', 18)
-        setplaydef(actor, CommonDefine.VAR_T_BAIPIAOGIFT_DATA, '')
-        setplaydef(actor, CommonDefine.VAR_U_BAIPIAOGIFT_VERSION, 0)
+        GameEventManager.DoTriggerEvent(CommonDefine.EVENT_NAME_PLAYER_RESETDAY, actor)
     else
         --超级跳转
         for index, value in ipairs(TEST_SUPER_JUMP_CFG) do

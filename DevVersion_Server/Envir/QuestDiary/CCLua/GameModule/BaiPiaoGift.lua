@@ -100,6 +100,7 @@ end
 --玩家跨天回调
 function BaiPiaoGift.OnResetDay(actor)    
     BaiPiaoGift.CheckActivityVersion()
+    BaiPiaoGift.CheckPlayerDataVersion(actor)
 end
 
 GameEventManager.AddListener(CommonDefine.EVENT_NAME_PLAYER_ENTERGAME, BaiPiaoGift.OnPlayerEnterGame, CommonDefine.FUNC_ID_BAIPIAO_GIFT)

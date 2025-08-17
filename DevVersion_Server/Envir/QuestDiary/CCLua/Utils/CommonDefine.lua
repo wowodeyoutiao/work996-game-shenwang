@@ -476,6 +476,9 @@ CommonDefine = {
     VAR_U_JUMPAREA_FIGHTING_KMVALUE = 'U216',   --玩家今日    跨服大乱斗抗魔值
     VAR_U_TREASUREMAP_CURRID = 'U217',          --当前对应的藏宝图配置id
     VAR_U_BAIPIAOGIFT_VERSION = 'U218',         --白嫖礼包的玩家版本
+    VAR_U_PRIVILEGE_CARD_1_BUY_DAY = 'U219',    --特权卡1级 购买日期
+    VAR_U_PRIVILEGE_CARD_2_BUY_DAY = 'U220',    --特权卡2级 购买日期
+    VAR_U_PRIVILEGE_CARD_3_BUY_DAY = 'U221',    --特权卡3级 购买日期
     
     --玩家字符型变量，下线保存 T0 - T254
     VAR_T_EQUIPPOS_STRENGTH_INFO = 'T41',        --玩家的装备位强化信息
