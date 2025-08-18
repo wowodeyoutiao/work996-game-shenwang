@@ -37,9 +37,9 @@ local PRIVILEGE_CARD_CONFIG = {
         ShowName = '季卡',
         NeedItems = {{name='元宝', num=20000}},
         ValidDays = 90,
-        Desc = '1、购买后每日可领200元宝\\2、月光宝盒每日开启上限增加\\400次（与VIP增加次数叠加生效）\\3、对怪增伤提升：20%\\4、对人增伤提升：20%',
+        Desc = '1、购买后每日可领200元宝\\2、月光宝盒每日开启上限增加\\400次（与VIP增加次数叠加生效）\\3、对怪增伤提升：20%\\4、对人增伤提升：20%\\5、每日邮件可领季卡盲盒，大\\几率获得沉默水晶',
         BuyDayVar = CommonDefine.VAR_U_PRIVILEGE_CARD_3_BUY_DAY,
-        DayGiveItems = {{name='元宝', num=200}},
+        DayGiveItems = {{name='元宝', num=200},{name='季卡盲盒', num=1}},
         SuperBoxMaxDayOpenAddNum = 400,
         MonAddDamageRate = 20,
         HumAddDamageRate = 20,
@@ -177,45 +177,48 @@ end
 
 --基础面板
 function PrivilegeCardManager.ShowBasePanel(actor)        
-    local strPanelInfo = '<Img|id=10|children={11,12,13,21,22,23,31,32,33}|x='..CSS.BASE_PANEL_START_X..'|y='..CSS.BASE_PANEL_START_Y..'|height=448|esc=1|bg=1|img=private/cc_privilege_card/1.png|loadDelay=0|reset=1|show=0|move=0>'..
+    local strPanelInfo = '<Img|id=10|children={11,12,13,21,22,23,24,25,26,31,32,33}|x='..CSS.BASE_PANEL_START_X..'|y='..CSS.BASE_PANEL_START_Y..'|height=448|esc=1|bg=1|img=private/cc_privilege_card/1.png|loadDelay=0|reset=1|show=0|move=0>'..
         '<Layout|id=11|x=812.0|y=12.0|width=80|height=80|link=@exit>'..
         '<Button|id=12|x=813.0|y=13.0|pimg=public/1900000511.png|nimg=public/1900000510.png|link=@exit>'..
         '<Button|id=13|x=700.0|y=14.0|esc=0|nimg=private/cc_common/button_help.png|pimg=private/cc_common/button_help.png|link=@show_rule_panel>'
 
     local cfgPrivilege = PRIVILEGE_CARD_CONFIG[PRIVILEGE_LEVEL_1]
-    strPanelInfo = strPanelInfo..'<RText|id=31|x=80|y=240|size=15|text='..cfgPrivilege.Desc..'>'
+    strPanelInfo = strPanelInfo..'<RText|id=31|x=80|y=220|size=15|text='..cfgPrivilege.Desc..'>'
     local leftValidDays = GetCardLeftValidDays(actor, PRIVILEGE_LEVEL_1)
     if leftValidDays > 0 then
-        strPanelInfo = strPanelInfo..'<Button|id=21|x=130|y=370|text=剩余'..leftValidDays..'天|size=18|color='..CSS.NPC_LIGHTGREEN..
+        strPanelInfo = strPanelInfo..'<Button|id=21|x=130|y=360|text=剩余'..leftValidDays..'天|size=18|color='..CSS.NPC_WHITE..
         '|pimg=private/cc_common/button_down.png|mimg=private/cc_common/button_up.png|nimg=private/cc_common/button_up.png>'
     else
-        strPanelInfo = strPanelInfo..'<Button|id=21|x=130|y=370|text=购买周卡|size=18|color='..CSS.NPC_LIGHTGREEN..
+        strPanelInfo = strPanelInfo..'<Button|id=21|x=130|y=360|text=购买周卡|size=18|color='..CSS.NPC_WHITE..
         '|pimg=private/cc_common/button_down.png|mimg=private/cc_common/button_up.png|nimg=private/cc_common/button_up.png|link=@function_button,'..
         PRIVILEGECARD_BUTTONFUNC_ID_2..','..PRIVILEGE_LEVEL_1..'>'
+        strPanelInfo = strPanelInfo..'<Text|id=24|x=130|y=400|color='..CSS.NPC_LIGHTGREEN..'|text=需:'..cfgPrivilege.NeedItems[1].name..'X'..cfgPrivilege.NeedItems[1].num..'>'
     end
 
     cfgPrivilege = PRIVILEGE_CARD_CONFIG[PRIVILEGE_LEVEL_2]
-    strPanelInfo = strPanelInfo..'<RText|id=32|x=320|y=240|size=15|text='..cfgPrivilege.Desc..'>'
+    strPanelInfo = strPanelInfo..'<RText|id=32|x=320|y=220|size=15|text='..cfgPrivilege.Desc..'>'
     leftValidDays = GetCardLeftValidDays(actor, PRIVILEGE_LEVEL_2)
     if leftValidDays > 0 then
-        strPanelInfo = strPanelInfo..'<Button|id=22|x=370|y=370|text=剩余'..leftValidDays..'天|size=18|color='..CSS.NPC_LIGHTGREEN..
+        strPanelInfo = strPanelInfo..'<Button|id=22|x=370|y=360|text=剩余'..leftValidDays..'天|size=18|color='..CSS.NPC_WHITE..
         '|pimg=private/cc_common/button_down.png|mimg=private/cc_common/button_up.png|nimg=private/cc_common/button_up.png>'
     else
-        strPanelInfo = strPanelInfo..'<Button|id=22|x=370|y=370|text=购买月卡|size=18|color='..CSS.NPC_LIGHTGREEN..
+        strPanelInfo = strPanelInfo..'<Button|id=22|x=370|y=360|text=购买月卡|size=18|color='..CSS.NPC_WHITE..
         '|pimg=private/cc_common/button_down.png|mimg=private/cc_common/button_up.png|nimg=private/cc_common/button_up.png|link=@function_button,'..
         PRIVILEGECARD_BUTTONFUNC_ID_2..','..PRIVILEGE_LEVEL_2..'>'
+        strPanelInfo = strPanelInfo..'<Text|id=25|x=370|y=400|color='..CSS.NPC_LIGHTGREEN..'|text=需:'..cfgPrivilege.NeedItems[1].name..'X'..cfgPrivilege.NeedItems[1].num..'>'
     end    
 
     cfgPrivilege = PRIVILEGE_CARD_CONFIG[PRIVILEGE_LEVEL_3]
-    strPanelInfo = strPanelInfo..'<RText|id=33|x=570|y=240|size=15|text='..cfgPrivilege.Desc..'>'    
+    strPanelInfo = strPanelInfo..'<RText|id=33|x=570|y=220|size=15|text='..cfgPrivilege.Desc..'>'    
     leftValidDays = GetCardLeftValidDays(actor, PRIVILEGE_LEVEL_3)
     if leftValidDays > 0 then
-        strPanelInfo = strPanelInfo..'<Button|id=23|x=620|y=370|text=剩余'..leftValidDays..'天|size=18|color='..CSS.NPC_LIGHTGREEN..
+        strPanelInfo = strPanelInfo..'<Button|id=23|x=620|y=360|text=剩余'..leftValidDays..'天|size=18|color='..CSS.NPC_WHITE..
         '|pimg=private/cc_common/button_down.png|mimg=private/cc_common/button_up.png|nimg=private/cc_common/button_up.png>'
     else
-        strPanelInfo = strPanelInfo..'<Button|id=23|x=620|y=370|text=购买季卡|size=18|color='..CSS.NPC_LIGHTGREEN..
+        strPanelInfo = strPanelInfo..'<Button|id=23|x=620|y=360|text=购买季卡|size=18|color='..CSS.NPC_WHITE..
         '|pimg=private/cc_common/button_down.png|mimg=private/cc_common/button_up.png|nimg=private/cc_common/button_up.png|link=@function_button,'..
         PRIVILEGECARD_BUTTONFUNC_ID_2..','..PRIVILEGE_LEVEL_3..'>'
+        strPanelInfo = strPanelInfo..'<Text|id=26|x=620|y=400|color='..CSS.NPC_LIGHTGREEN..'|text=需:'..cfgPrivilege.NeedItems[1].name..'X'..cfgPrivilege.NeedItems[1].num..'>'
     end
     
     BF_ShowSpecialUI(actor, strPanelInfo)
@@ -267,7 +270,7 @@ function PrivilegeCardManager.BuyCard(actor, cardlevel)
     Player.TakeItems(actor, cfgPrivilege.NeedItems, '购买特权卡：'..cardlevel)
 
     setplaydef(actor, cfgPrivilege.BuyDayVar, BF_GetDay(os.time()))
-    Player.GiveItemsByMail(actor, cfgPrivilege.DayGiveItems, '特权卡奖励', '购买'..cfgPrivilege.ShowName..'，发放每日奖励！')   
+    Player.GiveItemsByMail(actor, cfgPrivilege.DayGiveItems, '特权卡-'..cfgPrivilege.ShowName..'奖励', '购买'..cfgPrivilege.ShowName..'，发放每日奖励！')   
     Player.SendSelfMsg(actor, '成功购买'..cfgPrivilege.ShowName..',有效期'..cfgPrivilege.ValidDays..'天！', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
     PrivilegeCardManager.ShowBasePanel(actor)
 end
@@ -279,15 +282,15 @@ function PrivilegeCardManager.OnResetDay(actor)
     end    
     if GetCardLeftValidDays(actor, PRIVILEGE_LEVEL_3) > 0 then
         local cfgPrivilege = PRIVILEGE_CARD_CONFIG[PRIVILEGE_LEVEL_3]
-        Player.GiveItemsByMail(actor, cfgPrivilege.DayGiveItems, '特权卡奖励', '购买'..cfgPrivilege.ShowName..'，发放每日奖励！')   
+        Player.GiveItemsByMail(actor, cfgPrivilege.DayGiveItems, '特权卡-'..cfgPrivilege.ShowName..'奖励', '发放'..cfgPrivilege.ShowName..'每日奖励！')   
     end
     if GetCardLeftValidDays(actor, PRIVILEGE_LEVEL_2) > 0 then
         local cfgPrivilege = PRIVILEGE_CARD_CONFIG[PRIVILEGE_LEVEL_2]
-        Player.GiveItemsByMail(actor, cfgPrivilege.DayGiveItems, '特权卡奖励', '购买'..cfgPrivilege.ShowName..'，发放每日奖励！')   
+        Player.GiveItemsByMail(actor, cfgPrivilege.DayGiveItems, '特权卡-'..cfgPrivilege.ShowName..'奖励', '发放'..cfgPrivilege.ShowName..'每日奖励！')   
     end
     if GetCardLeftValidDays(actor, PRIVILEGE_LEVEL_1) > 0 then
         local cfgPrivilege = PRIVILEGE_CARD_CONFIG[PRIVILEGE_LEVEL_1]
-        Player.GiveItemsByMail(actor, cfgPrivilege.DayGiveItems, '特权卡奖励', '购买'..cfgPrivilege.ShowName..'，发放每日奖励！')   
+        Player.GiveItemsByMail(actor, cfgPrivilege.DayGiveItems, '特权卡-'..cfgPrivilege.ShowName..'奖励', '发放'..cfgPrivilege.ShowName..'每日奖励！')   
     end 
 end
 

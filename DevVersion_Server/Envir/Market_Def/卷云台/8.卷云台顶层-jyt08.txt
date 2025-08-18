@@ -2,6 +2,6 @@
 #IF
 LARGE u1 30
 #ACT
-  mapmove jyt09 49 62
+  mapmove jyt09 182 328
 #ELSEACT
   SENDMSG 9 传送失败，进入此地图需要【众生俯仰】及以上称号！
