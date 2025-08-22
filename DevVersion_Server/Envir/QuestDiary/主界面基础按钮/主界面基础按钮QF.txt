@@ -349,12 +349,12 @@ BREAK
 
 
 [@StartAutoPlayGame]
-#IF
-LARGE N$PK 0
-#ACT
-StopAutoPlayGame
-SENDMSG 9 战斗状态无法挂机。
-BREAK
+;#IF
+;LARGE N$PK 0
+;#ACT
+;StopAutoPlayGame
+;SENDMSG 9 战斗状态无法挂机。
+;BREAK
 
 ;#OR
 ;ISONMAP dgfx

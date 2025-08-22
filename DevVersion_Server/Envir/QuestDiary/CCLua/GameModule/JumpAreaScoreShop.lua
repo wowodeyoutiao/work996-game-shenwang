@@ -12,18 +12,14 @@ function JumpAreaScoreShop.ShowRulePanel(actor)
     local tempCurrY = 50
     strPanelInfo = strPanelInfo..'<Text|id=21|text=跨服商店规则说明:|size=20|x='..tempCurrX..'|y='..tempCurrY..'|color='..CSS.NPC_LIGHTGREEN..'>'
     tempCurrY = tempCurrY + 35
-    strPanelInfo = strPanelInfo..'<Text|id=22|text=1、......|x='..tempCurrX..'|y='..tempCurrY..'|color='..CSS.NPC_WHITE..'>'
+    strPanelInfo = strPanelInfo..'<Text|id=22|text=1、跨服商店可以使用跨服积分进行多种稀有道具的兑换。|x='..tempCurrX..'|y='..tempCurrY..'|color='..CSS.NPC_WHITE..'>'
     tempCurrY = tempCurrY + 30
-    strPanelInfo = strPanelInfo..'<Text|id=23|text=......|x='..tempCurrX..'|y='..tempCurrY..'|color='..CSS.NPC_WHITE..'>'
+    strPanelInfo = strPanelInfo..'<Text|id=24|text=2、不同物品兑换所需的跨服积分不同，且有每日可兑换次数|x='..tempCurrX..'|y='..tempCurrY..'|color='..CSS.NPC_WHITE..'>'
     tempCurrY = tempCurrY + 30
-    strPanelInfo = strPanelInfo..'<Text|id=24|text=2、......|x='..tempCurrX..'|y='..tempCurrY..'|color='..CSS.NPC_WHITE..'>'
+    strPanelInfo = strPanelInfo..'<Text|id=25|text=的限定。|x='..tempCurrX..'|y='..tempCurrY..'|color='..CSS.NPC_WHITE..'>'
     tempCurrY = tempCurrY + 30
-    strPanelInfo = strPanelInfo..'<Text|id=25|text=3、......|x='..tempCurrX..'|y='..tempCurrY..'|color='..CSS.NPC_WHITE..'>'
-    tempCurrY = tempCurrY + 30
-    strPanelInfo = strPanelInfo..'<Text|id=26|text=4、......|x='..tempCurrX..'|y='..tempCurrY..'|color='..CSS.NPC_WHITE..'>'
-    tempCurrY = tempCurrY + 30
-    strPanelInfo = strPanelInfo..'<Text|id=27|text=......|x='..tempCurrX..'|y='..tempCurrY..'|color='..CSS.NPC_WHITE..'>'
- 
+    strPanelInfo = strPanelInfo..'<Text|id=26|text=3、跨服积分可以通过参加跨服活动进行获取。|x='..tempCurrX..'|y='..tempCurrY..'|color='..CSS.NPC_WHITE..'>'
+
     return strPanelInfo
 end
 

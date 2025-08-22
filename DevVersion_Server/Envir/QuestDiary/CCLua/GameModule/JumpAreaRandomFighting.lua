@@ -55,18 +55,16 @@ function JumpAreaRandomFighting.ShowRulePanel(actor)
     local tempCurrY = 50
     strPanelInfo = strPanelInfo..'<Text|id=21|text=跨服大乱斗规则说明:|size=20|x='..tempCurrX..'|y='..tempCurrY..'|color='..CSS.NPC_LIGHTGREEN..'>'
     tempCurrY = tempCurrY + 35
-    strPanelInfo = strPanelInfo..'<Text|id=22|text=1、......|x='..tempCurrX..'|y='..tempCurrY..'|color='..CSS.NPC_WHITE..'>'
+    strPanelInfo = strPanelInfo..'<Text|id=22|text=1、地图内为全体战斗模式，可以对其他玩家和怪物进行无差|x='..tempCurrX..'|y='..tempCurrY..'|color='..CSS.NPC_WHITE..'>'
     tempCurrY = tempCurrY + 30
-    strPanelInfo = strPanelInfo..'<Text|id=23|text=......|x='..tempCurrX..'|y='..tempCurrY..'|color='..CSS.NPC_WHITE..'>'
+    strPanelInfo = strPanelInfo..'<Text|id=23|text=别攻击。|x='..tempCurrX..'|y='..tempCurrY..'|color='..CSS.NPC_WHITE..'>'
     tempCurrY = tempCurrY + 30
-    strPanelInfo = strPanelInfo..'<Text|id=24|text=2、......|x='..tempCurrX..'|y='..tempCurrY..'|color='..CSS.NPC_WHITE..'>'
+    strPanelInfo = strPanelInfo..'<Text|id=24|text=2、击杀副本内怪物之后将会依据怪物品质获得不同的抗魔值；|x='..tempCurrX..'|y='..tempCurrY..'|color='..CSS.NPC_WHITE..'>'
     tempCurrY = tempCurrY + 30
-    strPanelInfo = strPanelInfo..'<Text|id=25|text=3、......|x='..tempCurrX..'|y='..tempCurrY..'|color='..CSS.NPC_WHITE..'>'
+    strPanelInfo = strPanelInfo..'<Text|id=25|text=击杀其他玩家获取对方10%的抗魔值，对方扣减相同的抗魔值。|x='..tempCurrX..'|y='..tempCurrY..'|color='..CSS.NPC_WHITE..'>'
     tempCurrY = tempCurrY + 30
-    strPanelInfo = strPanelInfo..'<Text|id=26|text=4、......|x='..tempCurrX..'|y='..tempCurrY..'|color='..CSS.NPC_WHITE..'>'
-    tempCurrY = tempCurrY + 30
-    strPanelInfo = strPanelInfo..'<Text|id=27|text=......|x='..tempCurrX..'|y='..tempCurrY..'|color='..CSS.NPC_WHITE..'>'
- 
+    strPanelInfo = strPanelInfo..'<Text|id=26|text=3、活动结束后按抗魔值高低名次进行奖励的发放。|x='..tempCurrX..'|y='..tempCurrY..'|color='..CSS.NPC_WHITE..'>'
+
     return strPanelInfo
 end
 
@@ -527,7 +525,7 @@ function JumpAreaRandomFighting.OnPlayerDie(actor, killername)
             UpdateKMScoreShow(actor)
             UpdateRankData(actor, currscore - chgscore)
             UpdateKMScoreShow(killer)
-            UpdateRankData(actor, killerscore + chgscore)
+            UpdateRankData(killer, killerscore + chgscore)
         end
     end
 

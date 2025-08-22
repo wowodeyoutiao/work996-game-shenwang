@@ -66,192 +66,193 @@ Mov	N$狂暴倍攻	10
 ;----------------------------------------------↓称号倍攻↓------------------------------------------------
 ;--------------------------------------------------------------------------------------------------------
 #IF
-CheckTitLe	初入江湖
+EQUAL U1 1
 #Act
 Mov	N$称号倍攻	10
 
 #IF
-CheckTitLe	展露头角
+EQUAL U1 2
 #Act
 Mov	N$称号倍攻	20
 
 #IF
-CheckTitLe	江湖少侠
+EQUAL U1 3
 #Act
 Mov	N$称号倍攻	30
 
 #IF
-CheckTitLe	武林豪杰
+EQUAL U1 4
 #Act
 Mov	N$称号倍攻	40
 
 #IF
-CheckTitLe	侠骨柔情
+EQUAL U1 5
 #Act
 Mov	N$称号倍攻	50
+
 #IF
-CheckTitLe	名动江湖
+EQUAL U1 6
 #Act
 Mov	N$称号倍攻	60
 
 #IF
-CheckTitLe	叱诧风云
+EQUAL U1 7
 #Act
 Mov	N$称号倍攻	70
 
 #IF
-CheckTitLe	赤胆雄心
+EQUAL U1 8
 #Act
 Mov	N$称号倍攻	80
 
 #IF
-CheckTitLe	威震八方
+EQUAL U1 9
 #Act
 Mov	N$称号倍攻	90
 
 #IF
-CheckTitLe	一代宗师
+EQUAL U1 10
 #Act
 Mov	N$称号倍攻	100
 
 #IF
-CheckTitLe	横扫千军
+EQUAL U1 11
 #Act
 Mov	N$称号倍攻	110
 
 #IF
-CheckTitLe	剑舞风行
+EQUAL U1 12
 #Act
 Mov	N$称号倍攻	120
 
 #IF
-CheckTitLe	傲视群雄
+EQUAL U1 13
 #Act
 Mov	N$称号倍攻	130
 
 #IF
-CheckTitLe	独领风骚
+EQUAL U1 14
 #Act
 Mov	N$称号倍攻	140
 
 #IF
-CheckTitLe	笑傲江湖
+EQUAL U1 15
 #Act
 Mov	N$称号倍攻	150
 
 #IF
-CheckTitLe	天下无双
+EQUAL U1 16
 #Act
 Mov	N$称号倍攻	160
 
 #IF
-CheckTitLe	雄霸天下
+EQUAL U1 17
 #Act
 Mov	N$称号倍攻	170
 
 #IF
-CheckTitLe	战神归来
+EQUAL U1 18
 #Act
 Mov	N$称号倍攻	180
 
 #IF
-CheckTitLe	独孤求败
+EQUAL U1 19
 #Act
 Mov	N$称号倍攻	190
 
 #IF
-CheckTitLe	永恒霸主
+EQUAL U1 20
 #Act
 Mov	N$称号倍攻	200
 
 #IF
-CheckTitLe	天煞孤星
+EQUAL U1 21
 #Act
 Mov	N$称号倍攻	210
 
 #IF
-CheckTitLe	逆天改命
+EQUAL U1 22
 #Act
 Mov	N$称号倍攻	220
 
 #IF
-CheckTitLe	武定乾坤
+EQUAL U1 23
 #Act
 Mov	N$称号倍攻	230
 
 #IF
-CheckTitLe	修罗万象
+EQUAL U1 24
 #Act
 Mov	N$称号倍攻	240
 
 #IF
-CheckTitLe	剑指苍穹
+EQUAL U1 25
 #Act
 Mov	N$称号倍攻	250
 
 #IF
-CheckTitLe	破天轩辕
+EQUAL U1 26
 #Act
 Mov	N$称号倍攻	260
 
 #IF
-CheckTitLe	出神入化
+EQUAL U1 27
 #Act
 Mov	N$称号倍攻	270
 
 #IF
-CheckTitLe	毁天灭地
+EQUAL U1 28
 #Act
 Mov	N$称号倍攻	280
 
 #IF
-CheckTitLe	玛法主宰
+EQUAL U1 29
 #Act
 Mov	N$称号倍攻	290
 
 #IF
-CheckTitLe	问鼎诛仙
+EQUAL U1 30
 #Act
 Mov	N$称号倍攻	300
 
 #IF
-CheckTitLe	众生俯仰
+EQUAL U1 31
 #Act
 Mov	N$称号倍攻	310
 
 #IF
-CheckTitLe	一念三千
+EQUAL U1 32
 #Act
 Mov	N$称号倍攻	320
 
 ;天下排名
-#IF
-CHECKTITLE 天下第一
-#Act
-MOV N$龙虎倍攻 80
-seticon 0 1 15094 -53 -5 1 0 0
-#ELSEACT
-seticon 0 -1
+;#IF
+;CHECKTITLE 天下第一
+;#Act
+;MOV N$龙虎倍攻 80
+;seticon 0 1 15094 -53 -5 1 0 0
+;#ELSEACT
+;seticon 0 -1
 
-#IF
-CHECKTITLE 天下第二
-#Act
-MOV N$龙虎倍攻 60
+;#IF
+;CHECKTITLE 天下第二
+;#Act
+;MOV N$龙虎倍攻 60
 
-#IF
-CHECKTITLE 天下第三
-#Act
-MOV N$龙虎倍攻 40
+;#IF
+;CHECKTITLE 天下第三
+;#Act
+;MOV N$龙虎倍攻 40
 
-#IF
-CHECKTITLE 天下第四
-#Act
-MOV N$龙虎倍攻 20
+;#IF
+;CHECKTITLE 天下第四
+;#Act
+;MOV N$龙虎倍攻 20
 
-#IF
-CHECKTITLE 天下第五
-#Act
-MOV N$龙虎倍攻 10
+;#IF
+;CHECKTITLE 天下第五
+;#Act
+;MOV N$龙虎倍攻 10
 
 #IF
 #Act
@@ -266,6 +267,5 @@ LARGE N$人物倍攻 100
 #ACT
 POWERRATE <$Str(N$人物倍攻)> 65535
 SENDMSG 6 当前人物倍攻:<$Str(N$人物倍攻)>%
-
 
 }

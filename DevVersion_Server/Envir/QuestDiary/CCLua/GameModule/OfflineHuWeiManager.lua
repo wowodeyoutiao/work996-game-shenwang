@@ -348,6 +348,7 @@ function OfflineHuWeiManager.ShowBasePanel(actor, sparam)
 
     idstr = '61,62,63,64,65,'
     local offlineitemdesc = ''
+    local offlineitemdesc1 = ''
     if cfgCurrLv.offlineitemname and (cfgCurrLv.offlineitemname ~= '') then    
         local infoTab = GetOfflineRewardInfoTab(actor)
         local sHWType = ''..huweitype
@@ -356,7 +357,8 @@ function OfflineHuWeiManager.ShowBasePanel(actor, sparam)
             local passseconds = math.max(0, os.time() - infoTab[sHWType].starttime)
             local currnum = cfgCurrLv.offlineitemnum * math.floor(passseconds / 60)
             currnum = math.min(dayleftnum, currnum)    
-            offlineitemdesc = 'X'..BF_NumToShowStr(currnum)..'/'..BF_NumToShowStr(dayleftnum)
+            offlineitemdesc = 'X'..BF_NumToShowStr(currnum)
+            offlineitemdesc1 = '今日剩余:  '..BF_NumToShowStr(dayleftnum)
         end
     end
 
@@ -365,10 +367,11 @@ function OfflineHuWeiManager.ShowBasePanel(actor, sparam)
     if offlineitemdesc ~= '' then
         local itemidx = getstditeminfo(cfgCurrLv.offlineitemname, CommonDefine.STDITEMINFO_IDX)
         local imgpath = Item.GetItemImgPath(itemidx)        
-        strPanelInfo = strPanelInfo..'<Text|id=61|text=离线收益|size=16|x='..(tempCurrX+60)..'|y='..(tempCurrY+0)..'|color='..CSS.NPC_WHITE..'>'
+        strPanelInfo = strPanelInfo..'<Text|id=61|text=当前累计:|size=16|x='..(tempCurrX-0)..'|y='..(tempCurrY+0)..'|color='..CSS.NPC_WHITE..'>'
 
-        strPanelInfo = strPanelInfo..'<Img|id=62|x='..(tempCurrX+20)..'|y='..(tempCurrY+30)..'|width=24|height=24|img='..imgpath..'>'
-        strPanelInfo = strPanelInfo..'<Text|id=63|text='..offlineitemdesc..' |size=16|x='..(tempCurrX+50)..'|y='..(tempCurrY+30)..'|color='..CSS.NPC_WHITE..'>'
+        strPanelInfo = strPanelInfo..'<Img|id=62|x='..(tempCurrX+80)..'|y='..(tempCurrY+0)..'|width=24|height=24|img='..imgpath..'>'
+        strPanelInfo = strPanelInfo..'<Text|id=63|text='..offlineitemdesc..' |size=16|x='..(tempCurrX+110)..'|y='..(tempCurrY+0)..'|color='..CSS.NPC_WHITE..'>'
+        strPanelInfo = strPanelInfo..'<Text|id=64|text='..offlineitemdesc1..' |size=16|x='..(tempCurrX-0)..'|y='..(tempCurrY+30)..'|color='..CSS.NPC_WHITE..'>'
 
         --strPanelInfo = strPanelInfo..'<Text|id=64|text=(收益达到上限后不再累计)|size=16|x='..tempCurrX..'|y='..(tempCurrY+80)..'|color='..CSS.NPC_LIGHTGREEN..'>'       
         strPanelInfo = strPanelInfo..'<Button|id=65|x='..(tempCurrX+40)..'|y='..(tempCurrY+80)..'|color='..CSS.NPC_WHITE..

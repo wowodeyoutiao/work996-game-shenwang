@@ -56,18 +56,14 @@ function JumpAreaBossDamageRank.ShowRulePanel(actor)
     local tempCurrY = 50
     strPanelInfo = strPanelInfo..'<Text|id=21|text=跨服BOSS规则说明:|size=20|x='..tempCurrX..'|y='..tempCurrY..'|color='..CSS.NPC_LIGHTGREEN..'>'
     tempCurrY = tempCurrY + 35
-    strPanelInfo = strPanelInfo..'<Text|id=22|text=1、......|x='..tempCurrX..'|y='..tempCurrY..'|color='..CSS.NPC_WHITE..'>'
+    strPanelInfo = strPanelInfo..'<Text|id=22|text=1、活动时间内可以直接进入副本进行boss的挑战。|x='..tempCurrX..'|y='..tempCurrY..'|color='..CSS.NPC_WHITE..'>'
     tempCurrY = tempCurrY + 30
-    strPanelInfo = strPanelInfo..'<Text|id=23|text=......|x='..tempCurrX..'|y='..tempCurrY..'|color='..CSS.NPC_WHITE..'>'
+    strPanelInfo = strPanelInfo..'<Text|id=24|text=2、在限定时间内对boss造成的累积伤害越高，则最终的排名|x='..tempCurrX..'|y='..tempCurrY..'|color='..CSS.NPC_WHITE..'>'
     tempCurrY = tempCurrY + 30
-    strPanelInfo = strPanelInfo..'<Text|id=24|text=2、......|x='..tempCurrX..'|y='..tempCurrY..'|color='..CSS.NPC_WHITE..'>'
+    strPanelInfo = strPanelInfo..'<Text|id=25|text=奖励越丰厚。|x='..tempCurrX..'|y='..tempCurrY..'|color='..CSS.NPC_WHITE..'>'
     tempCurrY = tempCurrY + 30
-    strPanelInfo = strPanelInfo..'<Text|id=25|text=3、......|x='..tempCurrX..'|y='..tempCurrY..'|color='..CSS.NPC_WHITE..'>'
-    tempCurrY = tempCurrY + 30
-    strPanelInfo = strPanelInfo..'<Text|id=26|text=4、......|x='..tempCurrX..'|y='..tempCurrY..'|color='..CSS.NPC_WHITE..'>'
-    tempCurrY = tempCurrY + 30
-    strPanelInfo = strPanelInfo..'<Text|id=27|text=......|x='..tempCurrX..'|y='..tempCurrY..'|color='..CSS.NPC_WHITE..'>'
- 
+    strPanelInfo = strPanelInfo..'<Text|id=26|text= 3、多次的挑战伤害将会累积进行排名。|x='..tempCurrX..'|y='..tempCurrY..'|color='..CSS.NPC_WHITE..'>'
+
     return strPanelInfo
 end
 
