@@ -486,7 +486,11 @@ function JumpAreaBossDamageRank.OnPlayerDie(actor, killername)
     end
 
     --死亡返回原服盟重主城
-    Player.GoMZHome(actor)
+    realive(actor)
+    Player.FullHPMP(actor)
+    Player.SendSelfMsg(actor, '你被跨服BOSS击杀，已复活请再接再厉！', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
+    setflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_RELIVE_DIALOGUE_FLAG, 1)    
+    JumpAreaManager.DoJumpAreaButton(actor, '1')
 end
 
 GameEventManager.AddListener(CommonDefine.EVENT_NAME_PLAYER_RESETDAY, JumpAreaBossDamageRank.OnResetDay, CommonDefine.FUNC_ID_JUMPAREA_3)

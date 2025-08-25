@@ -478,6 +478,7 @@ local function ClearMapUI(actor)
     delbutton(actor, 101, CommonDefine.ADD_BUTTON_ID_9)
     delbutton(actor, 101, CommonDefine.ADD_BUTTON_ID_35)
     delbutton(actor, 108, CommonDefine.ADD_BUTTON_ID_37)
+    delbutton(actor, 1101, CommonDefine.ADD_BUTTON_ID_4)
 end
 
 --玩家跨天回调
@@ -534,6 +535,7 @@ function JumpAreaRandomFighting.OnPlayerDie(actor, killername)
     Player.FullHPMP(actor)
     map(actor, ACTIVITY_BASE_CONFIG.bossmap)
     Player.SendSelfMsg(actor, '你被'..killername..'击杀，已复活请再接再厉！', CommonDefine.MSG_POS_TYPE_SYSTEM_TIPS)
+    setflagstatus(actor, CommonDefine.VAR_HUM_BITFLAG_RELIVE_DIALOGUE_FLAG, 1)
 end
 
 --击杀怪物触发
