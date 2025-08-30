@@ -5351,6 +5351,12 @@ MESSAGEBOX 系统：编辑公共需要领取第六档礼包!
 #ACT
 CALLLUA CC_QFunction @addbag,<$NEWBAGITEMID>,<$NEWBAGITEM>
 
+[@AddBagBefore]
+#IF
+#ACT
+CALLLUA CC_QFunction @addbagbefore,<$NEWBAGITEMID>,<$NEWBAGITEM>
+
+
 [@DeleteTask]
 ;#IF
 ;EQUAL U50 99

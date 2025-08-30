@@ -371,8 +371,7 @@ CommonDefine = {
     VAR_N_GIFT_ABILITY_1 = 'N82',               --玩家装备天赋属性 风
     VAR_N_GIFT_ABILITY_2 = 'N83',               --玩家装备天赋属性 雨
     VAR_N_GIFT_ABILITY_3 = 'N84',               --玩家装备天赋属性 雷
-    VAR_N_GIFT_ABILITY_4 = 'N85',               --玩家装备天赋属性 电
-    VAR_N_TEMP_ADDITEMID = 'N86',               --临时的加入背包的道具itemid
+    VAR_N_GIFT_ABILITY_4 = 'N85',               --玩家装备天赋属性 电    
 
         
     --玩家数字型变量，切地图不保存 M0-M99
@@ -386,6 +385,7 @@ CommonDefine = {
     VAR_S_SELECT_MENUITEM_2 = 'S54',             --下拉菜单2
     VAR_S_SELECT_MENUITEM_3 = 'S55',             --下拉菜单3
     VAR_S_SELECT_DECOMPOSE_ITEMS = 'S56',        --选择的所有待分解的灵玉 唯一ID ,分割 
+    VAR_S_TEMP_ADDITEMID_LIST = 'S57',           --临时的加入背包的道具itemid 列表
 
     --玩家数字变量，下线保存   U0 - U254  lua脚本使用从130开始
     VAR_U_OLD_TITLE_LEVEL = 'U1',               --原来版本的称号等级

@@ -219,12 +219,32 @@ function addbag(actor, makeindex, itemid)
     if (not BF_IsNullObj(itemobj)) and (not Player.CheckEquipIsOnBody(actor, itemobj)) then      
         --触发玩家道具进背包的事件监听        
         GameEventManager.DoTriggerEvent(CommonDefine.EVENT_NAME_PLAYER_ADDBAGITEM, actor, itemobj, makeindex)    
+    end  
+end
+
+--道具进背包前
+function addbagbefore(actor, makeindex, itemid)    
+    local tempstr = getplaydef(actor, CommonDefine.VAR_S_TEMP_ADDITEMID_LIST)
+    local itemstrlist = string.split(tempstr, ',')
+    local bFind = false
+    local itemidstr = itemid..''
+    if itemstrlist ~= false then
+        for _, value in ipairs(itemstrlist) do        
+            if value == itemidstr then
+                bFind = true
+                break
+            end
+        end        
     end
 
-    --延迟调用道具使用提示
-    --setplaydef(actor, CommonDefine.VAR_N_TEMP_ADDITEMID, itemid)
-    --delaygoto(actor, 100, 'send_item_use_tip', 0)    
+    if bFind == false then
+        --延迟调用道具使用提示
+        tempstr = tempstr..','..itemid
+        setplaydef(actor, CommonDefine.VAR_S_TEMP_ADDITEMID_LIST, tempstr)
+        delaygoto(actor, 100, 'send_item_use_tip', 0)            
+    end
 end
+
 
 --进入地图触发
 function entermap(actor, mapid)
@@ -703,16 +723,25 @@ function send_item_use_tip(actor)
         return
     end
     --检测道具是否还存在
-    local itemid = getplaydef(actor, CommonDefine.VAR_N_TEMP_ADDITEMID)
-    local itemobj = Bag.getItemObjByItemID(actor, itemid)    
-    if not BF_IsNullObj(itemobj) then
-        local makeindex = getiteminfo(actor, itemobj, CommonDefine.ITEMINFO_UNIQUEID)
-        local nAutoUseFlag = Item.GetAutoUseFlag(itemid)      
-        if nAutoUseFlag > 0 then
-            local infoTab = {itemmakeidx = makeindex, autouseflag = nAutoUseFlag}
-            local strTabData = tbl2json(infoTab)              
-            sendluamsg(actor, MsgDefine.SM_ITEM_QUICK_USE_TIP, 0, 0, 0, strTabData)
+    local tempstr = getplaydef(actor, CommonDefine.VAR_S_TEMP_ADDITEMID_LIST)
+    local itemstrlist = string.split(tempstr, ',')
+    if itemstrlist ~= false then
+        for _, value in ipairs(itemstrlist) do        
+            if BF_IsNumberStr(value) then
+                local itemid = tonumber(value)
+                local itemobj = Bag.getItemObjByItemID(actor, itemid)    
+                if not BF_IsNullObj(itemobj) then
+                    local makeindex = getiteminfo(actor, itemobj, CommonDefine.ITEMINFO_UNIQUEID)
+                    local nAutoUseFlag = Item.GetAutoUseFlag(itemid)      
+                    if nAutoUseFlag > 0 then
+                        local infoTab = {itemmakeidx = makeindex, autouseflag = nAutoUseFlag}
+                        local strTabData = tbl2json(infoTab)              
+                        sendluamsg(actor, MsgDefine.SM_ITEM_QUICK_USE_TIP, 0, 0, 0, strTabData)
+                    end
+                end
+            end
         end
+        setplaydef(actor, CommonDefine.VAR_S_TEMP_ADDITEMID_LIST, '')
     end
 end
 
